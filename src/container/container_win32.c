@@ -344,7 +344,17 @@ extit_module_scan(
 		return EXTIT_STATUS_INVALID;
 
 	if(fnfilter == NULL)
+	{
+#ifdef	EXTIT_DEBUG
+		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_TRACE)
+		{
+			fprintf(stderr,
+			 "[extit:module] Using default filename filter.\n");
+		}
+#endif	/* EXTIT_DEBUG */
+
 		fnfilter = extit_module_scan_fnfilter_default;
+	}
 
 #ifdef	EXTIT_DEBUG
 	if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
@@ -507,7 +517,17 @@ extit_module_scan_wc(
 		return EXTIT_STATUS_INVALID;
 
 	if(fnfilter == NULL)
+	{
+#ifdef	EXTIT_DEBUG
+		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_TRACE)
+		{
+			fprintf(stderr,
+			 "[extit:module] Using default filename filter.\n");
+		}
+#endif	/* EXTIT_DEBUG */
+
 		fnfilter = extit_module_scan_fnfilter_wc_default;
+	}
 
 #ifdef	EXTIT_DEBUG
 	if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
