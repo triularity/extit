@@ -59,9 +59,6 @@ struct _extit_ir
 };
 
 
-//
-//
-
 static
 unsigned int
 hashstring(const char *str);
@@ -600,7 +597,7 @@ extit_ir_create(unsigned int flags)
 
 #ifdef	EXTIT_DEBUG
 	if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
-		fprintf(stderr, "[extit:ir] {%p} Create.\n", ir);
+		fprintf(stderr, "[extit:ir] {%p} Create.\n", (void *) ir);
 #endif	/* EXTIT_DEBUG */
 
 	return ir;
@@ -617,7 +614,7 @@ extit_ir_cleanup(extit_ir_t *ir, unsigned int flags)
 
 #ifdef	EXTIT_DEBUG
 	if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
-		fprintf(stderr, "[extit:ir] {%p} Cleanup.\n", ir);
+		fprintf(stderr, "[extit:ir] {%p} Cleanup.\n", (void *) ir);
 #endif	/* EXTIT_DEBUG */
 
 	for(idx = 0; idx < HASH_SIZE; idx++)
@@ -637,7 +634,7 @@ extit_ir_destroy(extit_ir_t *ir, unsigned int flags)
 
 #ifdef	EXTIT_DEBUG
 	if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
-		fprintf(stderr, "[extit:ir] {%p} Destroy.\n", ir);
+		fprintf(stderr, "[extit:ir] {%p} Destroy.\n", (void *) ir);
 #endif	/* EXTIT_DEBUG */
 
 	for(idx = 0; idx < HASH_SIZE; idx++)
@@ -661,7 +658,7 @@ extit_ir_get(const extit_ir_t *ir, unsigned int flags, const char *id, extit_iv_
 	{
 		fprintf(stderr,
 			"[extit:ir] {%p} Get interface [%s@%d.%d].\n",
-			ir,
+			(void *) ir,
 			id,
 			EXTIT_IV_MAJOR(version),
 			EXTIT_IV_MINOR(version));
@@ -698,7 +695,7 @@ extit_ir_query(const extit_ir_t *ir, unsigned int flags, const char *id, extit_i
 	{
 		fprintf(stderr,
 			"[extit:ir] {%p} Query interface [%s@%d.%d].\n",
-			ir,
+			(void *) ir,
 			id,
 			EXTIT_IV_MAJOR(base_version),
 			EXTIT_IV_MINOR(base_version));
@@ -738,7 +735,7 @@ extit_ir_remove(extit_ir_t *ir, unsigned int flags, const char *id, extit_iv_t v
 	{
 		fprintf(stderr,
 			"[extit:ir] {%p} Remove interface [%s@%d.%d].\n",
-			ir,
+			(void *) ir,
 			id,
 			EXTIT_IV_MAJOR(version),
 			EXTIT_IV_MINOR(version));
@@ -801,7 +798,7 @@ extit_ir_set(extit_ir_t *ir, unsigned int flags, const char *id, extit_iv_t vers
 	{
 		fprintf(stderr,
 			"[extit:ir] {%p} Set interface [%s@%d.%d].\n",
-			ir,
+			(void *) ir,
 			id,
 			EXTIT_IV_MAJOR(version),
 			EXTIT_IV_MINOR(version));

@@ -523,7 +523,7 @@ extit_plugin_deactivate
 			module->api_version,
 			module->container,
 			EXTIT_SPI_CMD_DEACTIVATE,
-			plugin->spi_ctx,
+			&params,
 			flags);
 
 	if(status == EXTIT_STATUS_OK)

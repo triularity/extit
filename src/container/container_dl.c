@@ -41,12 +41,6 @@
 #endif
 #endif	/* __BSD__ */
 
-#ifdef	EXTIT_HAVE_DLFUNC
-#define	DLFUNC(l,n)	dlfunc((l),(n))
-#else
-#define	DLFUNC(l,n)	dlsym((l),(n))
-#endif
-
 
 EXTIT_EXPORT
 extit_func_t
@@ -54,7 +48,17 @@ EXTIT_DECL
 extit_container_get_function_default(
 	const char *name)
 {
-	return DLFUNC(RTLD_DEFAULT, name);
+#ifdef	EXTIT_HAVE_DLFUNC
+	return dlfunc(RTLD_DEFAULT, name);
+#else
+	{
+		extit_func_t	fptr;
+
+
+		*((void **) &fptr) = dlsym(RTLD_DEFAULT, name);
+		return fptr;
+	}
+#endif	/* EXTIT_HAVE_DLFUNC */
 }
 
 
@@ -77,7 +81,17 @@ extit_module_getFunction
 	const char *name
 )
 {
-	return DLFUNC(module->handle, name);
+#ifdef	EXTIT_HAVE_DLFUNC
+	return dlfunc(module->handle, name);
+#else
+	{
+		extit_func_t	fptr;
+
+
+		*((void **) &fptr) = dlsym(module->handle, name);
+		return fptr;
+	}
+#endif	/* EXTIT_HAVE_DLFUNC */
 }
 
 

@@ -1,6 +1,6 @@
 project(extit)
 
-cmake_minimum_required(VERSION 2.8.12)
+cmake_minimum_required(VERSION 2.8)
 
 #
 # Defaults
@@ -100,7 +100,7 @@ if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
 endif()
 
 if("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
-	add_compile_options("-Wall" "-pedantic")
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -pedantic")
 elseif(MSVC)
 	add_definitions("-D_CRT_SECURE_NO_WARNINGS")
 endif()
