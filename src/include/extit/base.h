@@ -108,11 +108,11 @@ typedef	unsigned int		extit_status_t;
  * Function Declaration (for call style)
  */
 #ifndef	EXTIT_DECL
-#define	EXTIT_DECL		__cdecl
+#define	EXTIT_DECL		/* __cdecl */
 #endif
 
 #ifndef	EXTIT_DECL_VARGS
-#define	EXTIT_DECL_VARGS	__cdecl
+#define	EXTIT_DECL_VARGS	/* __cdecl */
 #endif
 
 #endif	/* !__extit__base_h */

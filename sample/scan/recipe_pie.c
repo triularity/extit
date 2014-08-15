@@ -33,6 +33,7 @@ prepare_pie(void *ctx)
 
 
 	pie_env = (pie_env_t *) ctx;
+	pie_env->stage = 0;
 
 	fprintf(stderr, "Making some pie...\n");
 }

@@ -33,6 +33,7 @@ prepare_tacos(void *ctx)
 
 
 	tacos_env = (tacos_env_t *) ctx;
+	tacos_env->stage = 0;
 
 	fprintf(stderr, "Making some tacos...\n");
 }

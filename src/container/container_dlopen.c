@@ -31,6 +31,22 @@
 #define	EXTIT_PATH_MAX	1024
 #endif
 
+#ifdef	__BSD__
+#ifndef	_DIRENT_HAVE_D_TYPE
+#define	_DIRENT_HAVE_D_TYPE
+#endif
+
+#ifndef	_DIRENT_HAVE_D_NAMLEN
+#define	_DIRENT_HAVE_D_NAMLEN
+#endif
+#endif	/* __BSD__ */
+
+#ifdef	EXTIT_HAVE_DLFUNC
+#define	DLFUNC(l,n)	dlfunc((l),(n))
+#else
+#define	DLFUNC(l,n)	dlsym((l),(n))
+#endif
+
 
 EXTIT_EXPORT
 extit_func_t
@@ -38,7 +54,7 @@ EXTIT_DECL
 extit_container_get_function_default(
 	const char *name)
 {
-	return dlfunc(RTLD_DEFAULT, name);
+	return DLFUNC(RTLD_DEFAULT, name);
 }
 
 
@@ -61,7 +77,7 @@ extit_module_getFunction
 	const char *name
 )
 {
-	return dlfunc(module->handle, name);
+	return DLFUNC(module->handle, name);
 }
 
 
@@ -119,7 +135,7 @@ extit_module_load(
 	}
 #endif	/* EXTIT_DEBUG */
 
-	if((handle = dlopen(path, RTLD_LOCAL)) == NULL)
+	if((handle = dlopen(path, RTLD_LAZY|RTLD_LOCAL)) == NULL)
 	{
 #ifdef	EXTIT_DEBUG
 		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
@@ -237,8 +253,9 @@ extit_module_scan(
 )
 {
 	DIR *			dir;
-	struct dirent *		entry;
 	size_t			dlen;
+	struct dirent *		entry;
+	size_t			namelen;
 	char			path[EXTIT_PATH_MAX];
 	extit_module_t *	module;
 
@@ -302,6 +319,7 @@ extit_module_scan(
 #endif	/* EXTIT_DEBUG */
 		}
 
+#ifdef	_DIRENT_HAVE_D_TYPE
 		if((entry->d_type != DT_REG) && (entry->d_type != DT_LNK))
 		{
 #ifdef	EXTIT_DEBUG
@@ -316,11 +334,18 @@ extit_module_scan(
 
 			continue;
 		}
+#endif	/* _DIRENT_HAVE_D_TYPE */
 
-		if(!fnfilter(entry->d_name, entry->d_namlen))
+#ifdef	_DIRENT_HAVE_D_NAMLEN
+		namelen = entry->d_namlen;
+#else
+		namelen = strlen(entry->d_name);
+#endif
+
+		if(!fnfilter(entry->d_name, namelen))
 			continue;
 
-		if((dlen + entry->d_namlen + 2) > EXTIT_PATH_MAX)
+		if((dlen + namelen + 2) > EXTIT_PATH_MAX)
 			continue;
 
 		strcpy(path + dlen + 1, entry->d_name);

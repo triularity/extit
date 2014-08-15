@@ -33,6 +33,7 @@ prepare_tea(void *ctx)
 
 
 	tea_env = (tea_env_t *) ctx;
+	tea_env->stage = 0;
 
 	fprintf(stderr, "Making some tea...\n");
 }

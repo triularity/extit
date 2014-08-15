@@ -5,16 +5,20 @@ cmake_minimum_required(VERSION 2.8)
 #
 # Defaults
 #
+set(DEFAULT_WCHAR FALSE)
+set(DEFAULT_HAVE_DLFUNC FALSE)
 
 if(CMAKE_HOST_WIN32)
 	set(DEFAULT_LIB_LOADER "win32")
 	set(DEFAULT_WCHAR TRUE)
 elseif(CMAKE_HOST_APPLE)
 	set(DEFAULT_LIB_LOADER "dylib")
-	set(DEFAULT_WCHAR FALSE)
 else()
 	set(DEFAULT_LIB_LOADER "dlopen")
-	set(DEFAULT_WCHAR FALSE)
+endif()
+
+if(${CMAKE_SYSTEM_NAME} MATCHES "BSD$")
+	set(DEFAULT_HAVE_DLFUNC TRUE)
 endif()
 
 set(EXTIT_PARANOID TRUE CACHE BOOL "Enable Paranoid Code Checks")
@@ -23,103 +27,82 @@ set(EXTIT_WITH_CXX FALSE CACHE BOOL "Enable C++ Wrappers")
 set(EXTIT_COMPILE_SAMPLES FALSE CACHE BOOL "Compile Sample Programs")
 set(EXTIT_LIB_LOADER ${DEFAULT_LIB_LOADER} CACHE STRING "Library Loader (dlopen|win32|dylib)")
 set(EXTIT_WCHAR ${DEFAULT_WCHAR} CACHE BOOL "Enable wchar_t support")
+set(EXTIT_HAVE_DLFUNC ${DEFAULT_HAVE_DLFUNC} CACHE BOOL "Platform supports dlfunc()")
 
 
-include_directories(
-	BEFORE
-		src/include
-)
+include_directories(BEFORE src/include)
 
-set(EXTIT_SOURCE_FILES
-	src/container/container_common.c
-)
+set(EXTIT_SOURCE_FILES src/container/container_common.c)
 
-set(EXTIT_IR_SOURCE_FILES
-	src/ir/ir.c
-)
+set(EXTIT_IR_SOURCE_FILES src/ir/ir.c)
 
 
 #
-# Select library loader type
+# Library Loader
 #
 if(EXTIT_LIB_LOADER STREQUAL "dlopen")
-set(EXTIT_SOURCE_FILES
-	${EXTIT_SOURCE_FILES}
-	src/container/container_dlopen.c)
+	set(EXTIT_SOURCE_FILES
+		${EXTIT_SOURCE_FILES} src/container/container_dlopen.c)
 elseif(EXTIT_LIB_LOADER STREQUAL "win32")
-set(EXTIT_SOURCE_FILES
-	${EXTIT_SOURCE_FILES}
-	src/container/container_win32.c)
+	set(EXTIT_SOURCE_FILES
+		${EXTIT_SOURCE_FILES} src/container/container_win32.c)
 elseif(EXTIT_LIB_LOADER STREQUAL "dylib")
-set(EXTIT_SOURCE_FILES
-	${EXTIT_SOURCE_FILES}
-	src/container/container_dylib.c)
+	set(EXTIT_SOURCE_FILES
+		${EXTIT_SOURCE_FILES} src/container/container_dylib.c)
 else()
-message(FATAL_ERROR "Unsupported library loader: ${EXTIT_LIB_LOADER}")
+	message(FATAL_ERROR "Unsupported library loader: ${EXTIT_LIB_LOADER}")
 endif()
 
 
 #
-# C++ support
+# C++ Support
 #
 if(EXTIT_WITH_CXX)
-set(EXTIT_SOURCE_FILES
-	${EXTIT_SOURCE_FILES}
-	src/container/container_cxx.cc
-)
+	set(EXTIT_SOURCE_FILES
+		${EXTIT_SOURCE_FILES} src/container/container_cxx.cc)
 
-set(EXTIT_IR_SOURCE_FILES
-	${EXTIT_IR_SOURCE_FILES}
-	src/ir/ir_cxx.cc
-)
+	set(EXTIT_IR_SOURCE_FILES
+		${EXTIT_IR_SOURCE_FILES} src/ir/ir_cxx.cc)
 endif()
 
 
-add_library(
-	extit
-		${EXTIT_SOURCE_FILES}
-)
-
-add_library(
-	extit_ir
-		${EXTIT_IR_SOURCE_FILES}
-)
-
-
 #
-# Pre-processor defines
+# Configuration Options
 #
 if(EXTIT_PARANOID)
-	add_definitions(
-		"-DEXTIT_PARANOID"
-	)
+	add_definitions("-DEXTIT_PARANOID")
 endif()
 
 if(EXTIT_DEBUG)
-	add_definitions(
-		"-DEXTIT_DEBUG"
-	)
+	add_definitions("-DEXTIT_DEBUG")
 endif()
 
 if(EXTIT_WCHAR)
-	add_definitions(
-		"-DEXTIT_WCHAR"
-	)
+	add_definitions("-DEXTIT_WCHAR")
+endif()
+
+if(EXTIT_HAVE_DLFUNC)
+	add_definitions("-DEXTIT_HAVE_DLFUNC")
 endif()
 
 
+add_library(extit ${EXTIT_SOURCE_FILES})
+
+add_library(extit_ir ${EXTIT_IR_SOURCE_FILES})
+
+
 #
-# Compiler specific settings
+# Platform Specific
 #
+if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
+	add_definitions("-D_GNU_SOURCE")
+	target_link_libraries(extit dl)
+endif()
+
 if("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
-	add_compile_options(
-		"-Wall"
-		"-pedantic"
-	)
+	add_compile_options("-Wall" "-pedantic")
 elseif(MSVC)
-	add_definitions(
-		"-D_CRT_SECURE_NO_WARNINGS"
-	)
+	add_definitions("-D_CRT_SECURE_NO_WARNINGS")
 endif()
 
 
@@ -136,19 +119,17 @@ if(NOT DEFINED LIBNAME_POSTFIX)
 			set(LIBNAME_POSTFIX ${LIBNAME_POSTFIX_STATIC})
 		endif()
 	endif()
-endif()
+endif(NOT DEFINED LIBNAME_POSTFIX)
 
 if(DEFINED LIBNAME_POSTFIX)
 	set_target_properties(
 		extit PROPERTIES
-			OUTPUT_NAME "extit${LIBNAME_POSTFIX}"
-	)
+			OUTPUT_NAME "extit${LIBNAME_POSTFIX}")
 
 	set_target_properties(
 		extit_ir PROPERTIES
-			OUTPUT_NAME "extit_ir${LIBNAME_POSTFIX}"
-	)
-endif()
+			OUTPUT_NAME "extit_ir${LIBNAME_POSTFIX}")
+endif(DEFINED LIBNAME_POSTFIX)
 
 
 #
@@ -158,8 +139,7 @@ install(
 	TARGETS
 		extit
 		extit_ir
-	DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
-)
+	DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
 
 install(
 	FILES
@@ -168,8 +148,7 @@ install(
 		src/include/extit/ir.h
 		src/include/extit/platform.h
 		src/include/extit/plugin_spi.h
-	DESTINATION ${CMAKE_INSTALL_PREFIX}/include/extit
-)
+	DESTINATION ${CMAKE_INSTALL_PREFIX}/include/extit)
 
 
 #
@@ -181,64 +160,45 @@ if(EXTIT_COMPILE_SAMPLES)
 	#
 	add_executable(
 		sample_scan_server
-			sample/scan/recipe_server.c
-	)
+			sample/scan/recipe_server.c)
 
-	target_link_libraries(
-		sample_scan_server
-			extit
-	)
+	target_link_libraries(sample_scan_server extit)
 
 
 	add_library(
 		sample_scan_plugin_pie SHARED
-			sample/scan/recipe_pie.c
-	)
+			sample/scan/recipe_pie.c)
 
 	set_target_properties(
 		sample_scan_plugin_pie PROPERTIES
 			PREFIX ""
-			OUTPUT_NAME "recipe-pie"
-	)
+			OUTPUT_NAME "recipe-pie")
 
-	target_link_libraries(
-		sample_scan_plugin_pie
-			extit
-	)
+	target_link_libraries(sample_scan_plugin_pie extit)
 
 
 	add_library(
 		sample_scan_plugin_tea SHARED
-			sample/scan/recipe_tea.c
-	)
+			sample/scan/recipe_tea.c)
 
 	set_target_properties(
 		sample_scan_plugin_tea PROPERTIES
 			PREFIX ""
-			OUTPUT_NAME "recipe-tea"
-	)
+			OUTPUT_NAME "recipe-tea")
 
-	target_link_libraries(
-		sample_scan_plugin_tea
-			extit
-	)
+	target_link_libraries(sample_scan_plugin_tea extit)
 
 
 	add_library(
 		sample_scan_plugin_tacos SHARED
-			sample/scan/recipe_tacos.c
-	)
+			sample/scan/recipe_tacos.c)
 
 	set_target_properties(
 		sample_scan_plugin_tacos PROPERTIES
 			PREFIX ""
-			OUTPUT_NAME "recipe-tacos"
-	)
+			OUTPUT_NAME "recipe-tacos")
 
-	target_link_libraries(
-		sample_scan_plugin_tacos
-			extit
-	)
+	target_link_libraries(sample_scan_plugin_tacos extit)
 
 
 	#
@@ -246,22 +206,14 @@ if(EXTIT_COMPILE_SAMPLES)
 	#
 	add_executable(
 		sample_simple_server
-			sample/simple/simple_server.c
-	)
+			sample/simple/simple_server.c)
 
-	target_link_libraries(
-		sample_simple_server
-			extit
-	)
+	target_link_libraries(sample_simple_server extit)
 
 	add_library(
 		sample_simple_plugin SHARED
-			sample/simple/simple_plugin.c
-	)
+			sample/simple/simple_plugin.c)
 
-	target_link_libraries(
-		sample_simple_plugin
-			extit
-	)
+	target_link_libraries(sample_simple_plugin extit)
 endif(EXTIT_COMPILE_SAMPLES)
 
