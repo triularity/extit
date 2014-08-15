@@ -14,7 +14,7 @@ if(CMAKE_HOST_WIN32)
 elseif(CMAKE_HOST_APPLE)
 	set(DEFAULT_LIB_LOADER "dylib")
 else()
-	set(DEFAULT_LIB_LOADER "dlopen")
+	set(DEFAULT_LIB_LOADER "dl")
 endif()
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "BSD$")
@@ -25,7 +25,7 @@ set(EXTIT_PARANOID TRUE CACHE BOOL "Enable Paranoid Code Checks")
 set(EXTIT_DEBUG TRUE CACHE BOOL "Enable Runtime Debugging")
 set(EXTIT_WITH_CXX FALSE CACHE BOOL "Enable C++ Wrappers")
 set(EXTIT_COMPILE_SAMPLES FALSE CACHE BOOL "Compile Sample Programs")
-set(EXTIT_LIB_LOADER ${DEFAULT_LIB_LOADER} CACHE STRING "Library Loader (dlopen|win32|dylib)")
+set(EXTIT_LIB_LOADER ${DEFAULT_LIB_LOADER} CACHE STRING "Library Loader (dl|win32|dylib)")
 set(EXTIT_WCHAR ${DEFAULT_WCHAR} CACHE BOOL "Enable wchar_t support")
 set(EXTIT_HAVE_DLFUNC ${DEFAULT_HAVE_DLFUNC} CACHE BOOL "Platform supports dlfunc()")
 
@@ -40,9 +40,9 @@ set(EXTIT_IR_SOURCE_FILES src/ir/ir.c)
 #
 # Library Loader
 #
-if(EXTIT_LIB_LOADER STREQUAL "dlopen")
+if(EXTIT_LIB_LOADER STREQUAL "dl")
 	set(EXTIT_SOURCE_FILES
-		${EXTIT_SOURCE_FILES} src/container/container_dlopen.c)
+		${EXTIT_SOURCE_FILES} src/container/container_dl.c)
 elseif(EXTIT_LIB_LOADER STREQUAL "win32")
 	set(EXTIT_SOURCE_FILES
 		${EXTIT_SOURCE_FILES} src/container/container_win32.c)

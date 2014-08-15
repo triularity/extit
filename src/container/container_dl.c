@@ -1,7 +1,7 @@
 /*
- * @(#) container/container_dlopen.c
+ * @(#) container/container_dl.c
  *
- * dlopen specific implementations of container library.
+ * [lib]dl specific implementations of container library.
  *
  * Copyright (c) 2014, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
