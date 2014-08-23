@@ -522,7 +522,7 @@ bucket_set(hash_bucket_t **bucketp, const char *id, unsigned int hash, extit_iv_
 	{
 		count = bucket->count;
 
-		if((available == NULL) && (bucket->count < HASH_BUCKET_SIZE))
+		if((available == NULL) && (count < HASH_BUCKET_SIZE))
 			available = bucket;
 
 		for(idx = 0; idx < count; idx++)
@@ -556,7 +556,7 @@ bucket_set(hash_bucket_t **bucketp, const char *id, unsigned int hash, extit_iv_
 
 	entry = &available->entries[available->count];
 
-	if((entry->id = malloc(strlen(id + 1))) == NULL)
+	if((entry->id = malloc(strlen(id) + 1)) == NULL)
 		return EXTIT_STATUS_NOMEM;
 
 	strcpy(entry->id, id);
@@ -636,6 +636,8 @@ extit_ir_destroy(extit_ir_t *ir)
 
 	for(idx = 0; idx < HASH_SIZE; idx++)
 		bucket_destroy(ir->buckets[idx], flags);
+
+	free(ir);
 }
 
 
