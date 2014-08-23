@@ -73,6 +73,7 @@ int
 main(int argc, char **argv)
 {
 	extit_ir_t *		ir;
+	extit_iv_t		version;
 	general_iface_t *	gi;
 
 
@@ -176,6 +177,185 @@ main(int argc, char **argv)
 			"Failed to register %s@3.0\n", BAR_INTERFACE_NAME);
 
 		return 2;
+	}
+
+
+	/**
+	 ** Query interfaces
+	 **/
+
+	if((version = extit_ir_queryInterface(
+	 ir, FOO_INTERFACE_NAME, EXTIT_IV(0,1))) != EXTIT_IV_NONE)
+	{
+		fprintf(stderr,
+			"Found interface %s@%u.%u (from v0.1)\n",
+			FOO_INTERFACE_NAME,
+			EXTIT_IV_MAJOR(version),
+			EXTIT_IV_MINOR(version));
+	}
+	else
+	{
+		fprintf(stderr,
+			"Couldn't query interface >= %s@0.1\n",
+			FOO_INTERFACE_NAME);
+	}
+
+	if((version = extit_ir_queryInterface(
+	 ir, FOO_INTERFACE_NAME, EXTIT_IV(0,4))) != EXTIT_IV_NONE)
+	{
+		fprintf(stderr,
+			"Found interface %s@%u.%u (from v0.4)\n",
+			FOO_INTERFACE_NAME,
+			EXTIT_IV_MAJOR(version),
+			EXTIT_IV_MINOR(version));
+	}
+	else
+	{
+		fprintf(stderr,
+			"Couldn't query interface >= %s@0.4\n",
+			FOO_INTERFACE_NAME);
+	}
+
+	if((version = extit_ir_queryInterface(
+	 ir, FOO_INTERFACE_NAME, EXTIT_IV(1,0))) != EXTIT_IV_NONE)
+	{
+		fprintf(stderr,
+			"Found interface %s@%u.%u (from v1.0)\n",
+			FOO_INTERFACE_NAME,
+			EXTIT_IV_MAJOR(version),
+			EXTIT_IV_MINOR(version));
+	}
+	else
+	{
+		fprintf(stderr,
+			"Couldn't query interface >= %s@1.0\n",
+			FOO_INTERFACE_NAME);
+	}
+
+	if((version = extit_ir_queryInterface(
+	 ir, FOO_INTERFACE_NAME, EXTIT_IV(1,4))) != EXTIT_IV_NONE)
+	{
+		fprintf(stderr,
+			"Found interface %s@%u.%u (from v1.4)\n",
+			FOO_INTERFACE_NAME,
+			EXTIT_IV_MAJOR(version),
+			EXTIT_IV_MINOR(version));
+	}
+	else
+	{
+		fprintf(stderr,
+			"Couldn't query interface >= %s@1.4\n",
+			FOO_INTERFACE_NAME);
+	}
+
+	if((version = extit_ir_queryInterface(
+	 ir, FOO_INTERFACE_NAME, EXTIT_IV(1,5))) != EXTIT_IV_NONE)
+	{
+		fprintf(stderr,
+			"Found unexpected interface %s@%u.%u (from v1.5)\n",
+			FOO_INTERFACE_NAME,
+			EXTIT_IV_MAJOR(version),
+			EXTIT_IV_MINOR(version));
+	}
+
+	if((version = extit_ir_queryInterface(
+	 ir, FOO_INTERFACE_NAME, EXTIT_IV(2,0))) != EXTIT_IV_NONE)
+	{
+		fprintf(stderr,
+			"Found interface %s@%u.%u (from v2.0)\n",
+			FOO_INTERFACE_NAME,
+			EXTIT_IV_MAJOR(version),
+			EXTIT_IV_MINOR(version));
+	}
+	else
+	{
+		fprintf(stderr,
+			"Couldn't query interface >= %s@2.0\n",
+			FOO_INTERFACE_NAME);
+	}
+
+	if((version = extit_ir_queryInterface(
+	 ir, FOO_INTERFACE_NAME, EXTIT_IV(2,2))) != EXTIT_IV_NONE)
+	{
+		fprintf(stderr,
+			"Found interface %s@%u.%u (from v2.2)\n",
+			FOO_INTERFACE_NAME,
+			EXTIT_IV_MAJOR(version),
+			EXTIT_IV_MINOR(version));
+	}
+	else
+	{
+		fprintf(stderr,
+			"Couldn't query interface >= %s@2.2\n",
+			FOO_INTERFACE_NAME);
+	}
+
+	if((version = extit_ir_queryInterface(
+	 ir, FOO_INTERFACE_NAME, EXTIT_IV(3,0))) != EXTIT_IV_NONE)
+	{
+		fprintf(stderr,
+			"Found unexpected interface %s@%u.%u (from v3.0)\n",
+			FOO_INTERFACE_NAME,
+			EXTIT_IV_MAJOR(version),
+			EXTIT_IV_MINOR(version));
+	}
+
+	if((version = extit_ir_queryInterface(
+	 ir, BAR_INTERFACE_NAME, EXTIT_IV(1,0))) != EXTIT_IV_NONE)
+	{
+		fprintf(stderr,
+			"Found interface %s@%u.%u (from v1.0)\n",
+			BAR_INTERFACE_NAME,
+			EXTIT_IV_MAJOR(version),
+			EXTIT_IV_MINOR(version));
+	}
+	else
+	{
+		fprintf(stderr,
+			"Couldn't query interface >= %s@1.0\n",
+			BAR_INTERFACE_NAME);
+	}
+
+	if((version = extit_ir_queryInterface(
+	 ir, BAR_INTERFACE_NAME, EXTIT_IV(2,0))) != EXTIT_IV_NONE)
+	{
+		fprintf(stderr,
+			"Found interface %s@%u.%u (from v2.0)\n",
+			BAR_INTERFACE_NAME,
+			EXTIT_IV_MAJOR(version),
+			EXTIT_IV_MINOR(version));
+	}
+	else
+	{
+		fprintf(stderr,
+			"Couldn't query interface >= %s@2.0\n",
+			BAR_INTERFACE_NAME);
+	}
+
+	if((version = extit_ir_queryInterface(
+	 ir, BAR_INTERFACE_NAME, EXTIT_IV(3,0))) != EXTIT_IV_NONE)
+	{
+		fprintf(stderr,
+			"Found interface %s@%u.%u (from v3.0)\n",
+			BAR_INTERFACE_NAME,
+			EXTIT_IV_MAJOR(version),
+			EXTIT_IV_MINOR(version));
+	}
+	else
+	{
+		fprintf(stderr,
+			"Couldn't query interface >= %s@3.0\n",
+			BAR_INTERFACE_NAME);
+	}
+
+	if((version = extit_ir_queryInterface(
+	 ir, BAR_INTERFACE_NAME, EXTIT_IV(4,0))) != EXTIT_IV_NONE)
+	{
+		fprintf(stderr,
+			"Found unexpected interface %s@%u.%u (from v4.0)\n",
+			BAR_INTERFACE_NAME,
+			EXTIT_IV_MAJOR(version),
+			EXTIT_IV_MINOR(version));
 	}
 
 
@@ -567,5 +747,6 @@ main(int argc, char **argv)
 
 
 	extit_ir_destroy(ir);
+	exit(0);
 }
 

@@ -37,10 +37,10 @@ typedef	unsigned int		extit_iv_t;
 
 
 /*
- * ExtIt Library Version (v0.2.0)
+ * ExtIt Library Version (v0.3.0)
  */
 #define	EXTIT_LIB_VERSION_MAJOR		0
-#define	EXTIT_LIB_VERSION_MINOR		2
+#define	EXTIT_LIB_VERSION_MINOR		3
 #define	EXTIT_LIB_VERSION_PATCH		0
 #define	EXTIT_LIB_VERSION		((EXTIT_LIB_VERSION_MAJOR << 16)|(EXTIT_LIB_VERSION_MINOR<<8)|EXTIT_LIB_VERSION_PATCH)
 
