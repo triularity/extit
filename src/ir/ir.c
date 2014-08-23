@@ -55,6 +55,7 @@ struct _hash_bucket
 struct _extit_ir
 {
 	hash_bucket_t *		buckets[HASH_SIZE];
+	unsigned int		flags;
 	unsigned int		num_deletes;
 };
 
@@ -303,7 +304,7 @@ vlist_set(version_list_t **vlistp, extit_iv_t version, void *value, void **old_v
 	 * New entry
 	 */
 	if((vlist_new = vlist_create()) == NULL)
-		return EXTIT_STATUS_FAIL;
+		return EXTIT_STATUS_NOMEM;
 
 	vlist_new->version = version;
 	vlist_new->value = value;
@@ -468,9 +469,6 @@ bucket_get(const hash_bucket_t *bucket, const char *id, unsigned int hash, extit
 	version_list_t **	vlistp;
 
 
-	if(version == EXTIT_IV_NONE)
-		return NULL;
-
 	if((vlistp = bucket_get_vlistp(bucket, id, hash)) == NULL)
 		return NULL;
 
@@ -485,9 +483,6 @@ bucket_query(const hash_bucket_t *bucket, const char *id, unsigned int hash, ext
 	version_list_t **	vlistp;
 
 
-	if(base_version == EXTIT_IV_NONE)
-		return EXTIT_IV_NONE;
-
 	if((vlistp = bucket_get_vlistp(bucket, id, hash)) == NULL)
 		return EXTIT_IV_NONE;
 
@@ -501,9 +496,6 @@ bucket_remove(hash_bucket_t **bucketp, const char *id, unsigned int hash, extit_
 {
 	version_list_t **	vlistp;
 
-
-	if(version == EXTIT_IV_NONE)
-		return EXTIT_STATUS_UNSUPPORTED;
 
 	if((vlistp = bucket_get_vlistp(*bucketp, id, hash)) == NULL)
 		return EXTIT_STATUS_FAIL;
@@ -522,9 +514,6 @@ bucket_set(hash_bucket_t **bucketp, const char *id, unsigned int hash, extit_iv_
 	size_t			idx;
 	hash_bucket_entry_t *	entry;
 
-
-	if(version == EXTIT_IV_NONE)
-		return EXTIT_STATUS_UNSUPPORTED;
 
 	bucket = *bucketp;
 	available = NULL;
@@ -568,7 +557,7 @@ bucket_set(hash_bucket_t **bucketp, const char *id, unsigned int hash, extit_iv_
 	entry = &available->entries[available->count];
 
 	if((entry->id = malloc(strlen(id + 1))) == NULL)
-		return EXTIT_STATUS_FAIL;
+		return EXTIT_STATUS_NOMEM;
 
 	strcpy(entry->id, id);
 
@@ -586,31 +575,15 @@ bucket_set(hash_bucket_t **bucketp, const char *id, unsigned int hash, extit_iv_
  **/
 
 EXTIT_EXPORT
-extit_ir_t *
-EXTIT_DECL
-extit_ir_create(unsigned int flags)
-{
-	extit_ir_t *	ir;
-
-
-	ir = calloc(1, sizeof(extit_ir_t));
-
-#ifdef	EXTIT_DEBUG
-	if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
-		fprintf(stderr, "[extit:ir] {%p} Create.\n", (void *) ir);
-#endif	/* EXTIT_DEBUG */
-
-	return ir;
-}
-
-
-EXTIT_EXPORT
 void
 EXTIT_DECL
-extit_ir_cleanup(extit_ir_t *ir, unsigned int flags)
+extit_ir_cleanup(extit_ir_t *ir)
 {
 	size_t		idx;
+	unsigned int	flags;
 
+
+	flags = ir->flags;
 
 #ifdef	EXTIT_DEBUG
 	if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
@@ -625,12 +598,36 @@ extit_ir_cleanup(extit_ir_t *ir, unsigned int flags)
 
 
 EXTIT_EXPORT
+extit_ir_t *
+EXTIT_DECL
+extit_ir_create(unsigned int flags)
+{
+	extit_ir_t *	ir;
+
+
+	ir = calloc(1, sizeof(extit_ir_t));
+
+#ifdef	EXTIT_DEBUG
+	if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
+		fprintf(stderr, "[extit:ir] {%p} Create.\n", (void *) ir);
+#endif	/* EXTIT_DEBUG */
+
+	ir->flags = flags;
+
+	return ir;
+}
+
+
+EXTIT_EXPORT
 void
 EXTIT_DECL
-extit_ir_destroy(extit_ir_t *ir, unsigned int flags)
+extit_ir_destroy(extit_ir_t *ir)
 {
 	size_t		idx;
+	unsigned int	flags;
 
+
+	flags = ir->flags;
 
 #ifdef	EXTIT_DEBUG
 	if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
@@ -643,15 +640,27 @@ extit_ir_destroy(extit_ir_t *ir, unsigned int flags)
 
 
 EXTIT_EXPORT
+unsigned int
+EXTIT_DECL
+extit_ir_getFlags(const extit_ir_t *ir)
+{
+	return ir->flags;
+}
+
+
+EXTIT_EXPORT
 void *
 EXTIT_DECL
-extit_ir_get(const extit_ir_t *ir, unsigned int flags, const char *id, extit_iv_t version)
+extit_ir_getInterface(const extit_ir_t *ir, const char *id, extit_iv_t version)
 {
 	unsigned int	hash;
+	unsigned int	flags;
 
 
 	if(id == NULL)
 		return NULL;
+
+	flags = ir->flags;
 
 #ifdef	EXTIT_DEBUG
 	if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
@@ -682,13 +691,16 @@ extit_ir_get(const extit_ir_t *ir, unsigned int flags, const char *id, extit_iv_
 EXTIT_EXPORT
 extit_iv_t
 EXTIT_DECL
-extit_ir_query(const extit_ir_t *ir, unsigned int flags, const char *id, extit_iv_t base_version)
+extit_ir_queryInterface(const extit_ir_t *ir, const char *id, extit_iv_t base_version)
 {
 	unsigned int	hash;
+	unsigned int	flags;
 
 
 	if(id == NULL)
-		return EXTIT_STATUS_FAIL;
+		return EXTIT_STATUS_INVALID;
+
+	flags = ir->flags;
 
 #ifdef	EXTIT_DEBUG
 	if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
@@ -701,6 +713,9 @@ extit_ir_query(const extit_ir_t *ir, unsigned int flags, const char *id, extit_i
 			EXTIT_IV_MINOR(base_version));
 	}
 #endif	/* EXTIT_DEBUG */
+
+	if(base_version == EXTIT_IV_NONE)
+		return EXTIT_STATUS_INVALID;
 
 	hash = hashstring(id);
 
@@ -720,15 +735,18 @@ extit_ir_query(const extit_ir_t *ir, unsigned int flags, const char *id, extit_i
 EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
-extit_ir_remove(extit_ir_t *ir, unsigned int flags, const char *id, extit_iv_t version, void *value, void *old_valuep)
+extit_ir_removeInterface(extit_ir_t *ir, const char *id, extit_iv_t version, void *old_valuep)
 {
+	unsigned int	flags;
 	void *		old_value;
 	unsigned int	hash;
 	extit_status_t	status;
 
 
 	if(id == NULL)
-		return EXTIT_STATUS_FAIL;
+		return EXTIT_STATUS_INVALID;
+
+	flags = ir->flags;
 
 #ifdef	EXTIT_DEBUG
 	if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
@@ -743,7 +761,7 @@ extit_ir_remove(extit_ir_t *ir, unsigned int flags, const char *id, extit_iv_t v
 #endif	/* EXTIT_DEBUG */
 
 	if(version == EXTIT_IV_NONE)
-		return EXTIT_STATUS_UNSUPPORTED;
+		return EXTIT_STATUS_INVALID;
 
 	if(old_valuep == NULL)
 		old_valuep = &old_value;
@@ -768,7 +786,7 @@ extit_ir_remove(extit_ir_t *ir, unsigned int flags, const char *id, extit_iv_t v
 	if(status == EXTIT_STATUS_OK)
 	{
 		if(++ir->num_deletes >= DELETES_PER_CLEANUP)
-			extit_ir_cleanup(ir, flags);
+			extit_ir_cleanup(ir);
 	}
 
 	return status;
@@ -776,22 +794,34 @@ extit_ir_remove(extit_ir_t *ir, unsigned int flags, const char *id, extit_iv_t v
 
 
 EXTIT_EXPORT
+void
+EXTIT_DECL
+extit_ir_setFlags(extit_ir_t *ir, unsigned int flags)
+{
+	ir->flags = flags;
+}
+
+
+EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
-extit_ir_set(extit_ir_t *ir, unsigned int flags, const char *id, extit_iv_t version, void *value, void *old_valuep)
+extit_ir_setInterface(extit_ir_t *ir, const char *id, extit_iv_t version, void *value, void *old_valuep)
 {
+	unsigned int	flags;
 	unsigned int	hash;
 	void *		old_value;
 
+
+	if(id == NULL)
+		return EXTIT_STATUS_INVALID;
 
 	/*
 	 * Can't 'unset' this way
 	 */
 	if(value == NULL)
-		return EXTIT_STATUS_UNSUPPORTED;
+		return EXTIT_STATUS_INVALID;
 
-	if(id == NULL)
-		return EXTIT_STATUS_FAIL;
+	flags = ir->flags;
 
 #ifdef	EXTIT_DEBUG
 	if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
@@ -806,7 +836,7 @@ extit_ir_set(extit_ir_t *ir, unsigned int flags, const char *id, extit_iv_t vers
 #endif	/* EXTIT_DEBUG */
 
 	if(version == EXTIT_IV_NONE)
-		return EXTIT_STATUS_UNSUPPORTED;
+		return EXTIT_STATUS_INVALID;
 
 	if(old_valuep == NULL)
 		old_valuep = &old_value;
