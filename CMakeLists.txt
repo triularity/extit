@@ -155,6 +155,17 @@ install(
 # Sample Code
 #
 if(EXTIT_COMPILE_SAMPLES)
+
+	#
+	# Interface Repository
+	#
+	add_executable(
+		sample_ir
+			sample/ir/repository.c)
+
+	target_link_libraries(sample_ir extit extit_ir)
+
+
 	#
 	# Plugin Scanning
 	#
