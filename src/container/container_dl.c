@@ -45,8 +45,11 @@
 EXTIT_EXPORT
 extit_func_t
 EXTIT_DECL
-extit_container_get_function_default(
-	const char *name)
+extit_container_get_function_default
+(
+	const extit_container_t *container,
+	const char *name
+)
 {
 #ifdef	EXTIT_HAVE_DLFUNC
 	return dlfunc(RTLD_DEFAULT, name);
@@ -65,8 +68,11 @@ extit_container_get_function_default(
 EXTIT_EXPORT
 void *
 EXTIT_DECL
-extit_container_get_symbol_default(
-	const char *name)
+extit_container_get_symbol_default
+(
+	const extit_container_t *container,
+	const char *name
+)
 {
 	return dlsym(RTLD_DEFAULT, name);
 }
@@ -113,7 +119,6 @@ extit_module_t *
 EXTIT_DECL
 extit_module_load(
 	const extit_container_t *container,
-	extit_iv_t container_version,
 	const char *path,
 	unsigned int flags
 )
@@ -126,14 +131,14 @@ extit_module_load(
 	/*
 	 * Supported container version?
 	 */
-	if(EXTIT_IV_MAJOR(container_version) != 1)
+	if(EXTIT_IV_MAJOR(container->version) != 1)
 	{
 #ifdef	EXTIT_DEBUG
 		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
 		{
 			fprintf(stderr,
 		"[extit:module] Unsupported container version: %u.x.\n",
-				EXTIT_IV_MAJOR(container_version));
+				EXTIT_IV_MAJOR(container->version));
 		}
 #endif	/* EXTIT_DEBUG */
 
@@ -184,8 +189,7 @@ extit_module_load(
 	/*
 	 * Create the module from a descriptor
 	 */
-	module = extit_module_bind(
-			container, container_version, descriptor, flags);
+	module = extit_module_bind(container, descriptor, flags);
 
 	if(module == NULL)
 	{
@@ -258,7 +262,6 @@ extit_status_t
 EXTIT_DECL
 extit_module_scan(
 	const extit_container_t *container,
-	extit_iv_t container_version,
 	const char *directory,
 	extit_module_scan_callback_t callback,
 	void *client_data,
@@ -364,11 +367,7 @@ extit_module_scan(
 
 		strcpy(path + dlen + 1, entry->d_name);
 
-		module = extit_module_load(
-				container,
-				container_version,
-				path,
-				flags);
+		module = extit_module_load(container, path, flags);
 
 		if(module != NULL)
 		{

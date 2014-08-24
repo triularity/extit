@@ -33,39 +33,6 @@ typedef void		(EXTIT_DECL *extit_func_t)();
 #endif
 
 
-typedef struct _extit_container_1_0
-{
-	/*
-	 * Get a raw named symbol
-	 */
-	void *		(EXTIT_DECL *get_symbol)(const char *name);
-
-	/*
-	 * Get a raw named function
-	 */
-	extit_func_t	(EXTIT_DECL *get_function)(const char *name);
-
-	/*
-	 * Get a named interface object by version
-	 */
-	void *		(EXTIT_DECL *get_interface)(const char *name, extit_iv_t version);
-
-	/*
-	 * Query the supported version of an interface
-	 */
-	extit_iv_t	(EXTIT_DECL *query_interface)(const char *name, extit_iv_t base_version);
-
-	/*
-	 * Log a simple message
-	 */
-	void		(EXTIT_DECL *log)(const char *message);
-} extit_container_1_0_t;
-
-
-typedef struct _extit_module	extit_module_t;
-typedef struct _extit_plugin	extit_plugin_t;
-
-
 /*
  * Aliases for API target
  */
@@ -74,6 +41,44 @@ typedef struct _extit_plugin	extit_plugin_t;
 #else
 #error	Unsupported API target
 #endif
+
+
+typedef struct _extit_container_1_0	extit_container_1_0_t;
+
+struct _extit_container_1_0
+{
+	extit_iv_t	version;		/* EXTIT_API_VERSION */
+	void *		_priv;			/* Private container data */
+
+	/*
+	 * Get a raw named symbol
+	 */
+	void *		(EXTIT_DECL *get_symbol)(const extit_container_t *container, const char *name);
+
+	/*
+	 * Get a raw named function
+	 */
+	extit_func_t	(EXTIT_DECL *get_function)(const extit_container_t *container, const char *name);
+
+	/*
+	 * Get a named interface object by version
+	 */
+	void *		(EXTIT_DECL *get_interface)(const extit_container_t *container, const char *name, extit_iv_t version);
+
+	/*
+	 * Query the supported version of an interface
+	 */
+	extit_iv_t	(EXTIT_DECL *query_interface)(const extit_container_t *container, const char *name, extit_iv_t base_version);
+
+	/*
+	 * Log a simple message
+	 */
+	void		(EXTIT_DECL *log)(const extit_container_t *container, const char *message);
+};
+
+
+typedef struct _extit_module	extit_module_t;
+typedef struct _extit_plugin	extit_plugin_t;
 
 
 typedef	extit_status_t	(EXTIT_DECL *extit_module_scan_callback_t)(
@@ -93,27 +98,32 @@ typedef	unsigned int	(EXTIT_DECL *extit_module_scan_fnfilter_wc_t)(
 EXTIT_EXPORT
 extit_func_t		EXTIT_DECL
 			extit_container_get_function_default(
+				const extit_container_t *container,
 				const char *name);
 
 EXTIT_EXPORT
 void *			EXTIT_DECL
 			extit_container_get_interface_default(
+				const extit_container_t *container,
 				const char *name,
 				extit_iv_t version);
 
 EXTIT_EXPORT
 void *			EXTIT_DECL
 			extit_container_get_symbol_default(
+				const extit_container_t *container,
 				const char *name);
 
 EXTIT_EXPORT
 void			EXTIT_DECL
 			extit_container_log_default(
+				const extit_container_t *container,
 				const char *message);
 
 EXTIT_EXPORT
 extit_iv_t		EXTIT_DECL
 			extit_container_query_interface_default(
+				const extit_container_t *container,
 				const char *name,
 				extit_iv_t base_version);
 
@@ -126,7 +136,6 @@ EXTIT_EXPORT
 extit_module_t *	EXTIT_DECL
 			extit_module_bind(
 				const extit_container_t *container,
-				extit_iv_t container_version,
 				const void *descriptor,
 				unsigned int flags);
 
@@ -186,7 +195,6 @@ EXTIT_EXPORT
 extit_module_t *	EXTIT_DECL
 			extit_module_load(
 				const extit_container_t *container,
-				extit_iv_t container_version,
 				const char *path,
 				unsigned int flags);
 
@@ -195,7 +203,6 @@ EXTIT_EXPORT
 extit_module_t *	EXTIT_DECL
 			extit_module_load_wc(
 				const extit_container_t *container,
-				extit_iv_t container_version,
 				const wchar_t *path,
 				unsigned int flags);
 #endif  /* EXTIT_WCHAR */
@@ -204,7 +211,6 @@ EXTIT_EXPORT
 extit_status_t		EXTIT_DECL
 			extit_module_scan(
 				const extit_container_t *container,
-				extit_iv_t container_version,
 				const char *directory,
 				extit_module_scan_callback_t callback,
 				void *client_data,
@@ -216,7 +222,6 @@ EXTIT_EXPORT
 extit_status_t		EXTIT_DECL
 			extit_module_scan_wc(
 				const extit_container_t *container,
-				extit_iv_t container_version,
 				const wchar_t *directory,
 				extit_module_scan_callback_t callback,
 				void *client_data,

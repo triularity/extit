@@ -25,6 +25,8 @@ struct _module_list
 
 static extit_container_t my_container =
 {
+	EXTIT_API_VERSION_1_0,
+	NULL,
 	extit_container_get_symbol_default,
 	extit_container_get_function_default,
 	extit_container_get_interface_default,
@@ -63,7 +65,6 @@ main(int argc, char **argv)
 
 	status = extit_module_scan(
 			&my_container,
-			EXTIT_API_VERSION_1_0,
 			argv[1],
 			process_module_load,
 			&modules,

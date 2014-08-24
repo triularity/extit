@@ -25,9 +25,12 @@
 EXTIT_EXPORT
 void *
 EXTIT_DECL
-extit_container_get_interface_default(
+extit_container_get_interface_default
+(
+	const extit_container_t *container,
 	const char *name,
-	extit_iv_t version)
+	extit_iv_t version
+)
 {
 	return NULL;
 }
@@ -36,8 +39,11 @@ extit_container_get_interface_default(
 EXTIT_EXPORT
 void
 EXTIT_DECL
-extit_container_log_default(
-	const char *message)
+extit_container_log_default
+(
+	const extit_container_t *container,
+	const char *message
+)
 {
 	fputs(message, stderr);
 }
@@ -46,9 +52,12 @@ extit_container_log_default(
 EXTIT_EXPORT
 extit_iv_t
 EXTIT_DECL
-extit_container_query_interface_default(
+extit_container_query_interface_default
+(
+	const extit_container_t *container,
 	const char *name,
-	extit_iv_t base_version)
+	extit_iv_t base_version
+)
 {
 	return EXTIT_IV_NONE;
 }
@@ -66,11 +75,12 @@ extit_getVersion(void)
 EXTIT_EXPORT
 extit_module_t *
 EXTIT_DECL
-extit_module_bind(
+extit_module_bind
+(
 	const extit_container_t *container,
-	extit_iv_t container_version,
 	const void *descriptor,
-	unsigned int flags)
+	unsigned int flags
+)
 {
 	const extit_spi_descriptor_base_t *	descriptor_base;
 	const extit_spi_descriptor_1_0_t *	descriptor_1_0;
@@ -115,7 +125,7 @@ extit_module_bind(
 		return NULL;
 
 	api_version =
-		MIN(container_version,
+		MIN(container->version,
 			MIN(descriptor_base->extit_version,
 				EXTIT_API_VERSION));
 

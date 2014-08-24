@@ -11,6 +11,8 @@
 
 static extit_container_t my_container =
 {
+	EXTIT_API_VERSION_1_0,
+	NULL,
 	extit_container_get_symbol_default,
 	extit_container_get_function_default,
 	extit_container_get_interface_default,
@@ -34,7 +36,6 @@ main(int argc, char **argv)
 
 	module = extit_module_load(
 			&my_container,
-			EXTIT_API_TARGET,
 			argv[1],
 			EXTIT_FLAG_LOG_TRACE);
 
