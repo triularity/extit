@@ -747,6 +747,6 @@ main(int argc, char **argv)
 
 
 	extit_ir_destroy(ir);
-	exit(0);
+	return 0;
 }
 
