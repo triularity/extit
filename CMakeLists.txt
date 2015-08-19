@@ -219,8 +219,8 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	set_target_properties(
 		sample_multiver_server_1_0 PROPERTIES
-			COMPILE_FLAGS
-			"-DPERSISTENCE_INTERFACE_TARGET='IV_VERSION(1,0)'")
+			COMPILE_DEFINITIONS
+				"PERSISTENCE_INTERFACE_TARGET=IV_VERSION(1,0)")
 
 	target_link_libraries(sample_multiver_server_1_0 extit iv_repository)
 
@@ -232,8 +232,8 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	set_target_properties(
 		sample_multiver_server_1_1 PROPERTIES
-			COMPILE_FLAGS
-			"-DPERSISTENCE_INTERFACE_TARGET='IV_VERSION(1,1)'")
+			COMPILE_DEFINITIONS
+				"PERSISTENCE_INTERFACE_TARGET=IV_VERSION(1,1)")
 
 	target_link_libraries(sample_multiver_server_1_1 extit iv_repository)
 
@@ -245,8 +245,8 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	set_target_properties(
 		sample_multiver_server_1_2 PROPERTIES
-			COMPILE_FLAGS
-			"-DPERSISTENCE_INTERFACE_TARGET='IV_VERSION(1,2)'")
+			COMPILE_DEFINITIONS
+				"PERSISTENCE_INTERFACE_TARGET=IV_VERSION(1,2)")
 
 	target_link_libraries(sample_multiver_server_1_2 extit iv_repository)
 
@@ -257,8 +257,8 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	set_target_properties(
 		sample_multiver_plugin_1_0 PROPERTIES
-			COMPILE_FLAGS
-			"-DPERSISTENCE_INTERFACE_TARGET='IV_VERSION(1,0)'")
+			COMPILE_DEFINITIONS
+				"PERSISTENCE_INTERFACE_TARGET=IV_VERSION(1,0)")
 
 
 
@@ -268,8 +268,8 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	set_target_properties(
 		sample_multiver_plugin_1_1 PROPERTIES
-			COMPILE_FLAGS
-			"-DPERSISTENCE_INTERFACE_TARGET='IV_VERSION(1,1)'")
+			COMPILE_DEFINITIONS
+				"PERSISTENCE_INTERFACE_TARGET=IV_VERSION(1,1)")
 
 
 
@@ -279,8 +279,8 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	set_target_properties(
 		sample_multiver_plugin_1_2 PROPERTIES
-			COMPILE_FLAGS
-			"-DPERSISTENCE_INTERFACE_TARGET='IV_VERSION(1,2)'")
+			COMPILE_DEFINITIONS
+			"PERSISTENCE_INTERFACE_TARGET=IV_VERSION(1,2)")
 
 
 	#
