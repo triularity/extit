@@ -33,13 +33,27 @@ set(EXTIT_COMPAT TRUE CACHE BOOL "Enable Backward Compatibility")
 
 include_directories(BEFORE src/include)
 
+
+set(IV_HEADER_FILES 
+	src/include/iv/base.h
+	src/include/iv/repository.h)
+
+set(EXTIT_HEADER_FILES 
+	src/include/extit/base.h
+	src/include/extit/container.h
+	src/include/extit/platform.h
+	src/include/extit/plugin_spi.h)
+
+set(IV_REPOSITORY_SOURCE_FILES src/iv/repository.c)
+
 set(EXTIT_SOURCE_FILES src/container/container_common.c)
 
 if(EXTIT_COMPAT)
+	set(EXTIT_HEADER_FILES
+		${EXTIT_HEADER_FILES} src/include/extit/ir.h)
+
 	set(EXTIT_IR_SOURCE_FILES src/ir/ir.c)
 endif()
-
-set(IV_REPOSITORY_SOURCE_FILES src/iv/repository.c)
 
 
 #
@@ -172,12 +186,11 @@ if(EXTIT_COMPAT)
 endif()
 
 install(
-	FILES
-		src/include/extit/base.h
-		src/include/extit/container.h
-		src/include/extit/ir.h
-		src/include/extit/platform.h
-		src/include/extit/plugin_spi.h
+	FILES ${IV_HEADER_FILES}
+	DESTINATION ${CMAKE_INSTALL_PREFIX}/include/iv)
+
+install(
+	FILES ${EXTIT_HEADER_FILES}
 	DESTINATION ${CMAKE_INSTALL_PREFIX}/include/extit)
 
 
