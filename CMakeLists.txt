@@ -130,7 +130,7 @@ if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
 	target_link_libraries(extit dl)
 endif()
 
-if("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
+if(${CMAKE_CXX_COMPILER_ID} MATCHES "GNU" OR ${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -pedantic")
 elseif(MSVC)
 	add_definitions("-D_CRT_SECURE_NO_WARNINGS")

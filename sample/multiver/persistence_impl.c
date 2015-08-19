@@ -12,7 +12,7 @@
 #include <limits.h>
 
 #ifdef	_WIN32
-#include <windows.h>
+#include <direct.h>
 #else
 #include <sys/stat.h>
 #endif
