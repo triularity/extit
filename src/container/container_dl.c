@@ -3,7 +3,7 @@
  *
  * [lib]dl specific implementations of container library.
  *
- * Copyright (c) 2014, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2014, 2015, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -131,14 +131,14 @@ extit_module_load(
 	/*
 	 * Supported container version?
 	 */
-	if(EXTIT_IV_MAJOR(container->version) != 1)
+	if(IV_VERSION_MAJOR(container->version) != 1)
 	{
 #ifdef	EXTIT_DEBUG
 		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
 		{
 			fprintf(stderr,
 		"[extit:module] Unsupported container version: %u.x.\n",
-				EXTIT_IV_MAJOR(container->version));
+				IV_VERSION_MAJOR(container->version));
 		}
 #endif	/* EXTIT_DEBUG */
 

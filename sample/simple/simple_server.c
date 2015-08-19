@@ -6,6 +6,7 @@
 
 #include <stdio.h>
 
+#include <iv/base.h>
 #include <extit/container.h>
 
 
@@ -43,14 +44,14 @@ main(int argc, char **argv)
 	{
 		fprintf(stderr,
 			"*** Module API: %u.%u\n",
-			EXTIT_IV_MAJOR(extit_module_getAPIVersion(module)),
-			EXTIT_IV_MINOR(extit_module_getAPIVersion(module)));
+			IV_VERSION_MAJOR(extit_module_getAPIVersion(module)),
+			IV_VERSION_MINOR(extit_module_getAPIVersion(module)));
 
 		fprintf(stderr,
 			"*** Module Effective API: %u.%u\n",
-			EXTIT_IV_MAJOR(
+			IV_VERSION_MAJOR(
 				extit_module_getEffectiveAPIVersion(module)),
-			EXTIT_IV_MINOR(
+			IV_VERSION_MINOR(
 				extit_module_getEffectiveAPIVersion(module)));
 
 		fprintf(stderr,

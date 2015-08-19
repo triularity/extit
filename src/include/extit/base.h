@@ -3,46 +3,32 @@
  *
  * ExtIt base declarations.
  *
- * Copyright (c) 2014, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2014, 2015, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
 #ifndef	__extit__base_h
 #define	__extit__base_h
 
-/*
- * Interface Version
- */
-typedef	unsigned int		extit_iv_t;
+#include <iv/base.h>
 
 /*
- * Create an interface version
- */
-#define	EXTIT_IV(major, minor)	((((major)&0xFFFF)<<16)|((minor)&0xFFFF))
-
-/*
- * Get the major version number
- */
-#define	EXTIT_IV_MAJOR(v)	(((v) >> 16) & 0xFFFF)
-
-/*
- * Get the minor version number
- */
-#define	EXTIT_IV_MINOR(v)	((v) & 0xFFFF)
-
-/*
- * Unspecified interface version.
- */
-#define	EXTIT_IV_NONE		EXTIT_IV(0, 0)
-
-
-/*
- * ExtIt Library Version (v0.3.0)
+ * ExtIt Library Version (v0.4.0)
  */
 #define	EXTIT_LIB_VERSION_MAJOR		0
-#define	EXTIT_LIB_VERSION_MINOR		3
+#define	EXTIT_LIB_VERSION_MINOR		4
 #define	EXTIT_LIB_VERSION_PATCH		0
 #define	EXTIT_LIB_VERSION		((EXTIT_LIB_VERSION_MAJOR << 16)|(EXTIT_LIB_VERSION_MINOR<<8)|EXTIT_LIB_VERSION_PATCH)
+
+
+#ifdef	EXTIT_COMPAT
+typedef	iv_version_t		extit_iv_t;
+
+#define	EXTIT_IV(major, minor)		IV_VERSION((major), (minor))
+#define	EXTIT_IV_MAJOR(v)		IV_VERSION_MAJOR(v)
+#define	EXTIT_IV_MINOR(v)		IV_VERSION_MINOR(v)
+#define	EXTIT_IV_NONE			IV_VERSION_NONE
+#endif	/* EXTIT_COMPAT */
 
 
 /*
@@ -50,9 +36,9 @@ typedef	unsigned int		extit_iv_t;
  */
 #define	EXTIT_API_VERSION_MAJOR	1
 #define	EXTIT_API_VERSION_MINOR	0
-#define	EXTIT_API_VERSION		EXTIT_IV(EXTIT_API_VERSION_MAJOR, EXTIT_API_VERSION_MINOR)
+#define	EXTIT_API_VERSION		IV_VERSION(EXTIT_API_VERSION_MAJOR, EXTIT_API_VERSION_MINOR)
 
-#define	EXTIT_API_VERSION_1_0		EXTIT_IV(1,0)
+#define	EXTIT_API_VERSION_1_0		IV_VERSION(1,0)
 
 
 /*
@@ -72,8 +58,6 @@ typedef	unsigned int		extit_iv_t;
 #define	EXTIT_FLAG_LOG_DEBUG		0x00000002
 #define	EXTIT_FLAG_LOG_TRACE		0x00000003
 
-#define	EXTIT_FLAG_CUSTOM		0xFF000000
-
 
 /*
  * Status Codes (v1.0)
@@ -85,7 +69,7 @@ typedef	unsigned int		extit_iv_t;
 #define	EXTIT_STATUS_UNSUPPORTED	4
 #define	EXTIT_STATUS_BUSY		5
 
-#define	EXTIT_STATUS_CUSTOM_BASE	32768
+#define	EXTIT_STATUS_CUSTOM_MASK	0x8000
 
 typedef	unsigned int		extit_status_t;
 
@@ -101,6 +85,14 @@ typedef	unsigned int		extit_status_t;
 #endif
 #else
 #define	EXTIT_EXPORT
+#endif
+
+
+/*
+ * Structure Packing
+ */
+#ifndef	EXTIT_PACK
+#define	EXTIT_PACK		/* */
 #endif
 
 

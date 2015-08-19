@@ -4,6 +4,7 @@
  * This file is in the Public Domain.
  */
 
+#include <iv/base.h>
 #include <extit/base.h>
 #include <extit/plugin_spi.h>
 
@@ -13,7 +14,7 @@ extit_status_t
 EXTIT_DECL
 plugin_handler
 (
-	extit_iv_t api_version,
+	iv_version_t api_version,
 	const extit_container_t *container,
 	unsigned int cmd,
 	void *param,
@@ -56,5 +57,5 @@ plugin_handler
 	}
 }
 
-EXTIT_DECLARE_SPI("{16a0590c-1acd-11e4-a457-406186e454c1}", EXTIT_IV(1,0), "Simple Plugin", "1.0", plugin_handler)
+EXTIT_DECLARE_SPI("{16a0590c-1acd-11e4-a457-406186e454c1}", IV_VERSION(1,0), "Simple Plugin", "1.0", plugin_handler)
 

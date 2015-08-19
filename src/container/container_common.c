@@ -3,7 +3,7 @@
  *
  * Platform neutral container library implementation.
  *
- * Copyright (c) 2014, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2014, 2015, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -29,7 +29,7 @@ extit_container_get_interface_default
 (
 	const extit_container_t *container,
 	const char *name,
-	extit_iv_t version
+	iv_version_t version
 )
 {
 	return NULL;
@@ -50,21 +50,21 @@ extit_container_log_default
 
 
 EXTIT_EXPORT
-extit_iv_t
+iv_version_t
 EXTIT_DECL
 extit_container_query_interface_default
 (
 	const extit_container_t *container,
 	const char *name,
-	extit_iv_t base_version
+	iv_version_t base_version
 )
 {
-	return EXTIT_IV_NONE;
+	return IV_VERSION_NONE;
 }
 
 
 EXTIT_EXPORT
-extit_iv_t
+iv_version_t
 EXTIT_DECL
 extit_getVersion(void)
 {
@@ -84,7 +84,7 @@ extit_module_bind
 {
 	const extit_spi_descriptor_base_t *	descriptor_base;
 	const extit_spi_descriptor_1_0_t *	descriptor_1_0;
-	extit_iv_t				api_version;
+	iv_version_t				api_version;
 	extit_status_t				status;
 	extit_module_t *			module;
 
@@ -113,15 +113,15 @@ extit_module_bind
 	{
 		fprintf(stderr,
 			"[extit:module] Found descriptor (v%u.%u).\n",
-			EXTIT_IV_MAJOR(descriptor_base->extit_version),
-			EXTIT_IV_MINOR(descriptor_base->extit_version));
+			IV_VERSION_MAJOR(descriptor_base->extit_version),
+			IV_VERSION_MINOR(descriptor_base->extit_version));
 	}
 #endif	/* EXTIT_DEBUG */
 
 	/*
 	 * Supported plugin version?
 	 */
-	if(EXTIT_IV_MAJOR(descriptor_base->extit_version) != 1)
+	if(IV_VERSION_MAJOR(descriptor_base->extit_version) != 1)
 		return NULL;
 
 	api_version =
@@ -134,8 +134,8 @@ extit_module_bind
 	{
 		fprintf(stderr,
 			"[extit:module] Using API v%u.%u.\n",
-			EXTIT_IV_MAJOR(api_version),
-			EXTIT_IV_MINOR(api_version));
+			IV_VERSION_MAJOR(api_version),
+			IV_VERSION_MINOR(api_version));
 	}
 #endif	/* EXTIT_DEBUG */
 
@@ -228,7 +228,7 @@ extit_module_createPlugin
 	flags = module->flags;
 
 #ifdef	EXTIT_PARANOID
-	if(EXTIT_IV_MAJOR(module->api_version) != 1)
+	if(IV_VERSION_MAJOR(module->api_version) != 1)
 		return NULL;
 #endif
 
@@ -295,7 +295,7 @@ extit_module_createPlugin
 
 
 EXTIT_EXPORT
-extit_iv_t
+iv_version_t
 EXTIT_DECL
 extit_module_getAPIVersion
 (
@@ -307,7 +307,7 @@ extit_module_getAPIVersion
 
 
 EXTIT_EXPORT
-extit_iv_t
+iv_version_t
 EXTIT_DECL
 extit_module_getEffectiveAPIVersion
 (
@@ -339,7 +339,7 @@ extit_module_getId
 )
 {
 #ifdef	EXTIT_PARANOID
-	if(EXTIT_IV_MAJOR(module->api_version) != 1)
+	if(IV_VERSION_MAJOR(module->api_version) != 1)
 		return NULL;
 #endif
 
@@ -356,7 +356,7 @@ extit_module_getIdVersion
 )
 {
 #ifdef	EXTIT_PARANOID
-	if(EXTIT_IV_MAJOR(module->api_version) != 1)
+	if(IV_VERSION_MAJOR(module->api_version) != 1)
 		return 0;
 #endif
 
@@ -373,7 +373,7 @@ extit_module_getName
 )
 {
 #ifdef	EXTIT_PARANOID
-	if(EXTIT_IV_MAJOR(module->api_version) != 1)
+	if(IV_VERSION_MAJOR(module->api_version) != 1)
 		return NULL;
 #endif
 
@@ -390,7 +390,7 @@ extit_module_getVersion
 )
 {
 #ifdef	EXTIT_PARANOID
-	if(EXTIT_IV_MAJOR(module->api_version) != 1)
+	if(IV_VERSION_MAJOR(module->api_version) != 1)
 		return NULL;
 #endif
 
@@ -430,7 +430,7 @@ extit_plugin_activate
 	module = plugin->module;
 
 #ifdef	EXTIT_PARANOID
-	if(EXTIT_IV_MAJOR(module->api_version) != 1)
+	if(IV_VERSION_MAJOR(module->api_version) != 1)
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
@@ -508,7 +508,7 @@ extit_plugin_deactivate
 	module = plugin->module;
 
 #ifdef	EXTIT_PARANOID
-	if(EXTIT_IV_MAJOR(module->api_version) != 1)
+	if(IV_VERSION_MAJOR(module->api_version) != 1)
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
@@ -562,7 +562,7 @@ extit_plugin_destroy
 	module = plugin->module;
 
 #ifdef	EXTIT_PARANOID
-	if(EXTIT_IV_MAJOR(module->api_version) != 1)
+	if(IV_VERSION_MAJOR(module->api_version) != 1)
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
@@ -629,7 +629,7 @@ extit_plugin_getInterface
 (
 	extit_plugin_t *plugin,
 	const char *name,
-	extit_iv_t version
+	iv_version_t version
 )
 {
 	unsigned int			flags;
@@ -643,7 +643,7 @@ extit_plugin_getInterface
 	module = plugin->module;
 
 #ifdef	EXTIT_PARANOID
-	if(EXTIT_IV_MAJOR(module->api_version) != 1)
+	if(IV_VERSION_MAJOR(module->api_version) != 1)
 		return NULL;
 #endif
 
@@ -698,7 +698,7 @@ extit_plugin_ping
 	module = plugin->module;
 
 #ifdef	EXTIT_PARANOID
-	if(EXTIT_IV_MAJOR(module->api_version) != 1)
+	if(IV_VERSION_MAJOR(module->api_version) != 1)
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
@@ -716,13 +716,13 @@ extit_plugin_ping
 
 
 EXTIT_EXPORT
-extit_iv_t
+iv_version_t
 EXTIT_DECL
 extit_plugin_queryInterface
 (
 	extit_plugin_t *plugin,
 	const char *name,
-	extit_iv_t base_version
+	iv_version_t base_version
 )
 {
 	unsigned int				flags;
@@ -736,8 +736,8 @@ extit_plugin_queryInterface
 	module = plugin->module;
 
 #ifdef	EXTIT_PARANOID
-	if(EXTIT_IV_MAJOR(module->api_version) != 1)
-		return EXTIT_IV_NONE;
+	if(IV_VERSION_MAJOR(module->api_version) != 1)
+		return IV_VERSION_NONE;
 #endif
 
 	descriptor = (extit_spi_descriptor_1_0_t *) module->descriptor;
@@ -747,7 +747,7 @@ extit_plugin_queryInterface
 	params.base_version = base_version;
 
 #ifdef	EXTIT_PARANOID
-	params.version = EXTIT_IV_NONE;
+	params.version = IV_VERSION_NONE;
 #endif
 
 	status = descriptor->handler(
@@ -764,14 +764,14 @@ extit_plugin_queryInterface
 			fprintf(stderr,
 	"Error querying interface %s:%u.%u for plugin %s:%u, status = %u.",
 				name,
-				EXTIT_IV_MAJOR(base_version),
-				EXTIT_IV_MINOR(base_version),
+				IV_VERSION_MAJOR(base_version),
+				IV_VERSION_MINOR(base_version),
 				descriptor->id,
 				descriptor->id_version,
 				status);
 		}
 
-		return EXTIT_IV_NONE;
+		return IV_VERSION_NONE;
 	}
 
 	return params.version;

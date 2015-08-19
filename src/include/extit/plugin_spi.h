@@ -3,7 +3,7 @@
  *
  * Plugin SPI.
  *
- * Copyright (c) 2014, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2014, 2015, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -78,7 +78,7 @@ typedef struct _extit_spi_param_get_interface_1_0
 {
 	void *				spi_ctx;		/* IN */
 	const char *			name;			/* IN */
-	extit_iv_t			version;		/* IN */
+	iv_version_t			version;		/* IN */
 	void *				interface_ptr;		/* OUT */
 } extit_spi_param_get_interface_1_0_t;
 
@@ -89,8 +89,8 @@ typedef	struct _extit_spi_param_query_interface_1_0
 {
 	void *				spi_ctx;		/* IN */
 	const char *			name;			/* IN */
-	extit_iv_t			base_version;		/* IN */
-	extit_iv_t			version;		/* OUT */
+	iv_version_t			base_version;		/* IN */
+	iv_version_t			version;		/* OUT */
 } extit_spi_param_query_interface_1_0_t;
 
 
@@ -99,7 +99,7 @@ typedef	struct _extit_spi_param_query_interface_1_0
  */
 typedef extit_status_t	(EXTIT_DECL *extit_spi_handler_t)
 				(
-					extit_iv_t		api_version,
+					iv_version_t		api_version,
 					const extit_container_t *
 								container,
 					unsigned int		cmd,
@@ -119,7 +119,7 @@ typedef extit_status_t	(EXTIT_DECL *extit_spi_handler_t)
 typedef struct _extit_spi_descriptor_base
 {
 	unsigned int		magic;		/* EXTIT_SPI_MAGIC */
-	extit_iv_t		extit_version;	/* EXTIT_API_VERSION */
+	iv_version_t		extit_version;	/* EXTIT_API_VERSION */
 } extit_spi_descriptor_base_t;
 
 /*
@@ -128,7 +128,7 @@ typedef struct _extit_spi_descriptor_base
 typedef struct _extit_spi_descriptor_1_0
 {
 	unsigned int		magic;		/* EXTIT_SPI_MAGIC */
-	extit_iv_t		extit_version;	/* EXTIT_API_VERSION */
+	iv_version_t		extit_version;	/* EXTIT_API_VERSION */
 	const char *		id;		/* Unique ID */
 	unsigned int		id_version;	/* Unique ID Relative Version */
 	const char *		name;

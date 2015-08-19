@@ -3,7 +3,7 @@
  *
  * Container API.
  *
- * Copyright (c) 2014, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2014, 2015, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -43,11 +43,25 @@ typedef void		(EXTIT_DECL *extit_func_t)();
 #endif
 
 
+/*
+ * Container (base)
+ */
+typedef struct _extit_container_base	extit_container_base_t;
+
+struct _extit_container_base
+{
+	iv_version_t	version;		/* EXTIT_API_VERSION */
+};
+
+
+/*
+ * Container (v1.0)
+ */
 typedef struct _extit_container_1_0	extit_container_1_0_t;
 
 struct _extit_container_1_0
 {
-	extit_iv_t	version;		/* EXTIT_API_VERSION */
+	iv_version_t	version;		/* EXTIT_API_VERSION */
 	void *		_priv;			/* Private container data */
 
 	/*
@@ -63,12 +77,12 @@ struct _extit_container_1_0
 	/*
 	 * Get a named interface object by version
 	 */
-	void *		(EXTIT_DECL *get_interface)(const extit_container_t *container, const char *name, extit_iv_t version);
+	void *		(EXTIT_DECL *get_interface)(const extit_container_t *container, const char *name, iv_version_t version);
 
 	/*
 	 * Query the supported version of an interface
 	 */
-	extit_iv_t	(EXTIT_DECL *query_interface)(const extit_container_t *container, const char *name, extit_iv_t base_version);
+	iv_version_t	(EXTIT_DECL *query_interface)(const extit_container_t *container, const char *name, iv_version_t base_version);
 
 	/*
 	 * Log a simple message
@@ -106,7 +120,7 @@ void *			EXTIT_DECL
 			extit_container_get_interface_default(
 				const extit_container_t *container,
 				const char *name,
-				extit_iv_t version);
+				iv_version_t version);
 
 EXTIT_EXPORT
 void *			EXTIT_DECL
@@ -121,14 +135,14 @@ void			EXTIT_DECL
 				const char *message);
 
 EXTIT_EXPORT
-extit_iv_t		EXTIT_DECL
+iv_version_t		EXTIT_DECL
 			extit_container_query_interface_default(
 				const extit_container_t *container,
 				const char *name,
-				extit_iv_t base_version);
+				iv_version_t base_version);
 
 EXTIT_EXPORT
-extit_iv_t		EXTIT_DECL
+iv_version_t		EXTIT_DECL
 			extit_getVersion(void);
 
 
@@ -145,12 +159,12 @@ extit_plugin_t *	EXTIT_DECL
 				extit_module_t *module);
 
 EXTIT_EXPORT
-extit_iv_t		EXTIT_DECL
+iv_version_t		EXTIT_DECL
 			extit_module_getAPIVersion(
 				extit_module_t *module);
 
 EXTIT_EXPORT
-extit_iv_t		EXTIT_DECL
+iv_version_t		EXTIT_DECL
 			extit_module_getEffectiveAPIVersion(
 				extit_module_t *module);
 
@@ -283,7 +297,7 @@ void *			EXTIT_DECL
 			extit_plugin_getInterface(
 				extit_plugin_t *plugin,
 				const char *id,
-				extit_iv_t version);
+				iv_version_t version);
 
 EXTIT_EXPORT
 extit_module_t *	EXTIT_DECL
@@ -296,11 +310,11 @@ extit_status_t		EXTIT_DECL
 				extit_plugin_t *plugin);
 
 EXTIT_EXPORT
-extit_iv_t		EXTIT_DECL
+iv_version_t		EXTIT_DECL
 			extit_plugin_queryInterface(
 				extit_plugin_t *plugin,
 				const char *id,
-				extit_iv_t base_version);
+				iv_version_t base_version);
 
 EXTIT_EXPORT
 void			EXTIT_DECL

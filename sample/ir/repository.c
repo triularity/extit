@@ -8,8 +8,8 @@
 
 #include <stdio.h>
 
-#include <extit/base.h>
-#include <extit/ir.h>
+#include <iv/base.h>
+#include <iv/repository.h>
 
 
 #define	FOO_INTERFACE_NAME		"foo"
@@ -72,12 +72,14 @@ static general_iface_t bar_release_3_0 =
 int
 main(int argc, char **argv)
 {
-	extit_ir_t *		ir;
-	extit_iv_t		version;
+	iv_repository_t *	ir;
+	iv_version_t		version;
 	general_iface_t *	gi;
 
 
-	ir = extit_ir_create(EXTIT_FLAG_LOG_DEBUG);
+	iv_repository_setDefaultFlags(IV_REPOSITORY_FLAG_LOG_DEBUG);
+
+	ir = iv_repository_create();
 
 	if(ir == NULL)
 	{
@@ -89,8 +91,8 @@ main(int argc, char **argv)
 	/*
 	 * Register all interfaces
 	 */
-	if(extit_ir_setInterface(ir, FOO_INTERFACE_NAME, EXTIT_IV(0,1),
-	 &foo_prototype_0_1, NULL) != EXTIT_STATUS_OK)
+	if(iv_repository_set(ir, FOO_INTERFACE_NAME, IV_VERSION(0,1),
+	 &foo_prototype_0_1, NULL) != IV_REPOSITORY_STATUS_OK)
 	{
 		fprintf(stderr,
 			"Failed to register %s@0.1\n", FOO_INTERFACE_NAME);
@@ -98,8 +100,8 @@ main(int argc, char **argv)
 		return 2;
 	}
 
-	if(extit_ir_setInterface(ir, FOO_INTERFACE_NAME, EXTIT_IV(0,2),
-	 &foo_prototype_0_2, NULL) != EXTIT_STATUS_OK)
+	if(iv_repository_set(ir, FOO_INTERFACE_NAME, IV_VERSION(0,2),
+	 &foo_prototype_0_2, NULL) != IV_REPOSITORY_STATUS_OK)
 	{
 		fprintf(stderr,
 			"Failed to register %s@0.2\n", FOO_INTERFACE_NAME);
@@ -107,8 +109,8 @@ main(int argc, char **argv)
 		return 2;
 	}
 
-	if(extit_ir_setInterface(ir, FOO_INTERFACE_NAME, EXTIT_IV(0,4),
-	 &foo_prototype_0_5, NULL) != EXTIT_STATUS_OK)
+	if(iv_repository_set(ir, FOO_INTERFACE_NAME, IV_VERSION(0,4),
+	 &foo_prototype_0_5, NULL) != IV_REPOSITORY_STATUS_OK)
 	{
 		fprintf(stderr,
 			"Failed to register %s@0.4\n", FOO_INTERFACE_NAME);
@@ -116,8 +118,8 @@ main(int argc, char **argv)
 		return 2;
 	}
 
-	if(extit_ir_setInterface(ir, FOO_INTERFACE_NAME, EXTIT_IV(0,5),
-	 &foo_prototype_0_5, NULL) != EXTIT_STATUS_OK)
+	if(iv_repository_set(ir, FOO_INTERFACE_NAME, IV_VERSION(0,5),
+	 &foo_prototype_0_5, NULL) != IV_REPOSITORY_STATUS_OK)
 	{
 		fprintf(stderr,
 			"Failed to register %s@0.5\n", FOO_INTERFACE_NAME);
@@ -125,8 +127,8 @@ main(int argc, char **argv)
 		return 2;
 	}
 
-	if(extit_ir_setInterface(ir, FOO_INTERFACE_NAME, EXTIT_IV(1,4),
-	 &foo_release_1_4, NULL) != EXTIT_STATUS_OK)
+	if(iv_repository_set(ir, FOO_INTERFACE_NAME, IV_VERSION(1,4),
+	 &foo_release_1_4, NULL) != IV_REPOSITORY_STATUS_OK)
 	{
 		fprintf(stderr,
 			"Failed to register %s@1.4\n", FOO_INTERFACE_NAME);
@@ -134,8 +136,8 @@ main(int argc, char **argv)
 		return 2;
 	}
 
-	if(extit_ir_setInterface(ir, FOO_INTERFACE_NAME, EXTIT_IV(2,1),
-	 &foo_release_2_1, NULL) != EXTIT_STATUS_OK)
+	if(iv_repository_set(ir, FOO_INTERFACE_NAME, IV_VERSION(2,1),
+	 &foo_release_2_1, NULL) != IV_REPOSITORY_STATUS_OK)
 	{
 		fprintf(stderr,
 			"Failed to register %s@2.1\n", FOO_INTERFACE_NAME);
@@ -143,8 +145,8 @@ main(int argc, char **argv)
 		return 2;
 	}
 
-	if(extit_ir_setInterface(ir, FOO_INTERFACE_NAME, EXTIT_IV(2,2),
-	 &foo_release_2_2, NULL) != EXTIT_STATUS_OK)
+	if(iv_repository_set(ir, FOO_INTERFACE_NAME, IV_VERSION(2,2),
+	 &foo_release_2_2, NULL) != IV_REPOSITORY_STATUS_OK)
 	{
 		fprintf(stderr,
 			"Failed to register %s@2.2\n", FOO_INTERFACE_NAME);
@@ -152,8 +154,8 @@ main(int argc, char **argv)
 		return 2;
 	}
 
-	if(extit_ir_setInterface(ir, BAR_INTERFACE_NAME, EXTIT_IV(1,3),
-	 &bar_release_1_3, NULL) != EXTIT_STATUS_OK)
+	if(iv_repository_set(ir, BAR_INTERFACE_NAME, IV_VERSION(1,3),
+	 &bar_release_1_3, NULL) != IV_REPOSITORY_STATUS_OK)
 	{
 		fprintf(stderr,
 			"Failed to register %s@1.3\n", BAR_INTERFACE_NAME);
@@ -161,8 +163,8 @@ main(int argc, char **argv)
 		return 2;
 	}
 
-	if(extit_ir_setInterface(ir, BAR_INTERFACE_NAME, EXTIT_IV(2,2),
-	 &bar_release_2_2, NULL) != EXTIT_STATUS_OK)
+	if(iv_repository_set(ir, BAR_INTERFACE_NAME, IV_VERSION(2,2),
+	 &bar_release_2_2, NULL) != IV_REPOSITORY_STATUS_OK)
 	{
 		fprintf(stderr,
 			"Failed to register %s@2.2\n", BAR_INTERFACE_NAME);
@@ -170,8 +172,8 @@ main(int argc, char **argv)
 		return 2;
 	}
 
-	if(extit_ir_setInterface(ir, BAR_INTERFACE_NAME, EXTIT_IV(3,0),
-	 &bar_release_3_0, NULL) != EXTIT_STATUS_OK)
+	if(iv_repository_set(ir, BAR_INTERFACE_NAME, IV_VERSION(3,0),
+	 &bar_release_3_0, NULL) != IV_REPOSITORY_STATUS_OK)
 	{
 		fprintf(stderr,
 			"Failed to register %s@3.0\n", BAR_INTERFACE_NAME);
@@ -184,14 +186,14 @@ main(int argc, char **argv)
 	 ** Query interfaces
 	 **/
 
-	if((version = extit_ir_queryInterface(
-	 ir, FOO_INTERFACE_NAME, EXTIT_IV(0,1))) != EXTIT_IV_NONE)
+	if((version = iv_repository_query(
+	 ir, FOO_INTERFACE_NAME, IV_VERSION(0,1))) != IV_VERSION_NONE)
 	{
 		fprintf(stderr,
 			"Found interface %s@%u.%u (from v0.1)\n",
 			FOO_INTERFACE_NAME,
-			EXTIT_IV_MAJOR(version),
-			EXTIT_IV_MINOR(version));
+			IV_VERSION_MAJOR(version),
+			IV_VERSION_MINOR(version));
 	}
 	else
 	{
@@ -200,14 +202,14 @@ main(int argc, char **argv)
 			FOO_INTERFACE_NAME);
 	}
 
-	if((version = extit_ir_queryInterface(
-	 ir, FOO_INTERFACE_NAME, EXTIT_IV(0,4))) != EXTIT_IV_NONE)
+	if((version = iv_repository_query(
+	 ir, FOO_INTERFACE_NAME, IV_VERSION(0,4))) != IV_VERSION_NONE)
 	{
 		fprintf(stderr,
 			"Found interface %s@%u.%u (from v0.4)\n",
 			FOO_INTERFACE_NAME,
-			EXTIT_IV_MAJOR(version),
-			EXTIT_IV_MINOR(version));
+			IV_VERSION_MAJOR(version),
+			IV_VERSION_MINOR(version));
 	}
 	else
 	{
@@ -216,14 +218,14 @@ main(int argc, char **argv)
 			FOO_INTERFACE_NAME);
 	}
 
-	if((version = extit_ir_queryInterface(
-	 ir, FOO_INTERFACE_NAME, EXTIT_IV(1,0))) != EXTIT_IV_NONE)
+	if((version = iv_repository_query(
+	 ir, FOO_INTERFACE_NAME, IV_VERSION(1,0))) != IV_VERSION_NONE)
 	{
 		fprintf(stderr,
 			"Found interface %s@%u.%u (from v1.0)\n",
 			FOO_INTERFACE_NAME,
-			EXTIT_IV_MAJOR(version),
-			EXTIT_IV_MINOR(version));
+			IV_VERSION_MAJOR(version),
+			IV_VERSION_MINOR(version));
 	}
 	else
 	{
@@ -232,14 +234,14 @@ main(int argc, char **argv)
 			FOO_INTERFACE_NAME);
 	}
 
-	if((version = extit_ir_queryInterface(
-	 ir, FOO_INTERFACE_NAME, EXTIT_IV(1,4))) != EXTIT_IV_NONE)
+	if((version = iv_repository_query(
+	 ir, FOO_INTERFACE_NAME, IV_VERSION(1,4))) != IV_VERSION_NONE)
 	{
 		fprintf(stderr,
 			"Found interface %s@%u.%u (from v1.4)\n",
 			FOO_INTERFACE_NAME,
-			EXTIT_IV_MAJOR(version),
-			EXTIT_IV_MINOR(version));
+			IV_VERSION_MAJOR(version),
+			IV_VERSION_MINOR(version));
 	}
 	else
 	{
@@ -248,24 +250,24 @@ main(int argc, char **argv)
 			FOO_INTERFACE_NAME);
 	}
 
-	if((version = extit_ir_queryInterface(
-	 ir, FOO_INTERFACE_NAME, EXTIT_IV(1,5))) != EXTIT_IV_NONE)
+	if((version = iv_repository_query(
+	 ir, FOO_INTERFACE_NAME, IV_VERSION(1,5))) != IV_VERSION_NONE)
 	{
 		fprintf(stderr,
 			"Found unexpected interface %s@%u.%u (from v1.5)\n",
 			FOO_INTERFACE_NAME,
-			EXTIT_IV_MAJOR(version),
-			EXTIT_IV_MINOR(version));
+			IV_VERSION_MAJOR(version),
+			IV_VERSION_MINOR(version));
 	}
 
-	if((version = extit_ir_queryInterface(
-	 ir, FOO_INTERFACE_NAME, EXTIT_IV(2,0))) != EXTIT_IV_NONE)
+	if((version = iv_repository_query(
+	 ir, FOO_INTERFACE_NAME, IV_VERSION(2,0))) != IV_VERSION_NONE)
 	{
 		fprintf(stderr,
 			"Found interface %s@%u.%u (from v2.0)\n",
 			FOO_INTERFACE_NAME,
-			EXTIT_IV_MAJOR(version),
-			EXTIT_IV_MINOR(version));
+			IV_VERSION_MAJOR(version),
+			IV_VERSION_MINOR(version));
 	}
 	else
 	{
@@ -274,14 +276,14 @@ main(int argc, char **argv)
 			FOO_INTERFACE_NAME);
 	}
 
-	if((version = extit_ir_queryInterface(
-	 ir, FOO_INTERFACE_NAME, EXTIT_IV(2,2))) != EXTIT_IV_NONE)
+	if((version = iv_repository_query(
+	 ir, FOO_INTERFACE_NAME, IV_VERSION(2,2))) != IV_VERSION_NONE)
 	{
 		fprintf(stderr,
 			"Found interface %s@%u.%u (from v2.2)\n",
 			FOO_INTERFACE_NAME,
-			EXTIT_IV_MAJOR(version),
-			EXTIT_IV_MINOR(version));
+			IV_VERSION_MAJOR(version),
+			IV_VERSION_MINOR(version));
 	}
 	else
 	{
@@ -290,24 +292,24 @@ main(int argc, char **argv)
 			FOO_INTERFACE_NAME);
 	}
 
-	if((version = extit_ir_queryInterface(
-	 ir, FOO_INTERFACE_NAME, EXTIT_IV(3,0))) != EXTIT_IV_NONE)
+	if((version = iv_repository_query(
+	 ir, FOO_INTERFACE_NAME, IV_VERSION(3,0))) != IV_VERSION_NONE)
 	{
 		fprintf(stderr,
 			"Found unexpected interface %s@%u.%u (from v3.0)\n",
 			FOO_INTERFACE_NAME,
-			EXTIT_IV_MAJOR(version),
-			EXTIT_IV_MINOR(version));
+			IV_VERSION_MAJOR(version),
+			IV_VERSION_MINOR(version));
 	}
 
-	if((version = extit_ir_queryInterface(
-	 ir, BAR_INTERFACE_NAME, EXTIT_IV(1,0))) != EXTIT_IV_NONE)
+	if((version = iv_repository_query(
+	 ir, BAR_INTERFACE_NAME, IV_VERSION(1,0))) != IV_VERSION_NONE)
 	{
 		fprintf(stderr,
 			"Found interface %s@%u.%u (from v1.0)\n",
 			BAR_INTERFACE_NAME,
-			EXTIT_IV_MAJOR(version),
-			EXTIT_IV_MINOR(version));
+			IV_VERSION_MAJOR(version),
+			IV_VERSION_MINOR(version));
 	}
 	else
 	{
@@ -316,14 +318,14 @@ main(int argc, char **argv)
 			BAR_INTERFACE_NAME);
 	}
 
-	if((version = extit_ir_queryInterface(
-	 ir, BAR_INTERFACE_NAME, EXTIT_IV(2,0))) != EXTIT_IV_NONE)
+	if((version = iv_repository_query(
+	 ir, BAR_INTERFACE_NAME, IV_VERSION(2,0))) != IV_VERSION_NONE)
 	{
 		fprintf(stderr,
 			"Found interface %s@%u.%u (from v2.0)\n",
 			BAR_INTERFACE_NAME,
-			EXTIT_IV_MAJOR(version),
-			EXTIT_IV_MINOR(version));
+			IV_VERSION_MAJOR(version),
+			IV_VERSION_MINOR(version));
 	}
 	else
 	{
@@ -332,14 +334,14 @@ main(int argc, char **argv)
 			BAR_INTERFACE_NAME);
 	}
 
-	if((version = extit_ir_queryInterface(
-	 ir, BAR_INTERFACE_NAME, EXTIT_IV(3,0))) != EXTIT_IV_NONE)
+	if((version = iv_repository_query(
+	 ir, BAR_INTERFACE_NAME, IV_VERSION(3,0))) != IV_VERSION_NONE)
 	{
 		fprintf(stderr,
 			"Found interface %s@%u.%u (from v3.0)\n",
 			BAR_INTERFACE_NAME,
-			EXTIT_IV_MAJOR(version),
-			EXTIT_IV_MINOR(version));
+			IV_VERSION_MAJOR(version),
+			IV_VERSION_MINOR(version));
 	}
 	else
 	{
@@ -348,14 +350,14 @@ main(int argc, char **argv)
 			BAR_INTERFACE_NAME);
 	}
 
-	if((version = extit_ir_queryInterface(
-	 ir, BAR_INTERFACE_NAME, EXTIT_IV(4,0))) != EXTIT_IV_NONE)
+	if((version = iv_repository_query(
+	 ir, BAR_INTERFACE_NAME, IV_VERSION(4,0))) != IV_VERSION_NONE)
 	{
 		fprintf(stderr,
 			"Found unexpected interface %s@%u.%u (from v4.0)\n",
 			BAR_INTERFACE_NAME,
-			EXTIT_IV_MAJOR(version),
-			EXTIT_IV_MINOR(version));
+			IV_VERSION_MAJOR(version),
+			IV_VERSION_MINOR(version));
 	}
 
 
@@ -366,7 +368,7 @@ main(int argc, char **argv)
 	/*
 	 * foo@0.x
 	 */
-	if((gi = extit_ir_getInterface(ir, FOO_INTERFACE_NAME, EXTIT_IV(0,1)))
+	if((gi = iv_repository_get(ir, FOO_INTERFACE_NAME, IV_VERSION(0,1)))
 	 != NULL)
 	{
 		fprintf(stderr,
@@ -381,7 +383,7 @@ main(int argc, char **argv)
 			FOO_INTERFACE_NAME);
 	}
 
-	if((gi = extit_ir_getInterface(ir, FOO_INTERFACE_NAME, EXTIT_IV(0,2)))
+	if((gi = iv_repository_get(ir, FOO_INTERFACE_NAME, IV_VERSION(0,2)))
 	 != NULL)
 	{
 		fprintf(stderr,
@@ -396,7 +398,7 @@ main(int argc, char **argv)
 			FOO_INTERFACE_NAME);
 	}
 
-	if((gi = extit_ir_getInterface(ir, FOO_INTERFACE_NAME, EXTIT_IV(0,3)))
+	if((gi = iv_repository_get(ir, FOO_INTERFACE_NAME, IV_VERSION(0,3)))
 	 != NULL)
 	{
 		fprintf(stderr,
@@ -405,7 +407,7 @@ main(int argc, char **argv)
 			gi->name);
 	}
 
-	if((gi = extit_ir_getInterface(ir, FOO_INTERFACE_NAME, EXTIT_IV(0,4)))
+	if((gi = iv_repository_get(ir, FOO_INTERFACE_NAME, IV_VERSION(0,4)))
 	 != NULL)
 	{
 		fprintf(stderr,
@@ -420,7 +422,7 @@ main(int argc, char **argv)
 			FOO_INTERFACE_NAME);
 	}
 
-	if((gi = extit_ir_getInterface(ir, FOO_INTERFACE_NAME, EXTIT_IV(0,5)))
+	if((gi = iv_repository_get(ir, FOO_INTERFACE_NAME, IV_VERSION(0,5)))
 	 != NULL)
 	{
 		fprintf(stderr,
@@ -435,7 +437,7 @@ main(int argc, char **argv)
 			FOO_INTERFACE_NAME);
 	}
 
-	if((gi = extit_ir_getInterface(ir, FOO_INTERFACE_NAME, EXTIT_IV(0,8)))
+	if((gi = iv_repository_get(ir, FOO_INTERFACE_NAME, IV_VERSION(0,8)))
 	 != NULL)
 	{
 		fprintf(stderr,
@@ -448,7 +450,7 @@ main(int argc, char **argv)
 	/*
 	 * foo@1.x
 	 */
-	if((gi = extit_ir_getInterface(ir, FOO_INTERFACE_NAME, EXTIT_IV(1,0)))
+	if((gi = iv_repository_get(ir, FOO_INTERFACE_NAME, IV_VERSION(1,0)))
 	 != NULL)
 	{
 		fprintf(stderr,
@@ -463,7 +465,7 @@ main(int argc, char **argv)
 			FOO_INTERFACE_NAME);
 	}
 
-	if((gi = extit_ir_getInterface(ir, FOO_INTERFACE_NAME, EXTIT_IV(1,1)))
+	if((gi = iv_repository_get(ir, FOO_INTERFACE_NAME, IV_VERSION(1,1)))
 	 != NULL)
 	{
 		fprintf(stderr,
@@ -478,7 +480,7 @@ main(int argc, char **argv)
 			FOO_INTERFACE_NAME);
 	}
 
-	if((gi = extit_ir_getInterface(ir, FOO_INTERFACE_NAME, EXTIT_IV(1,4)))
+	if((gi = iv_repository_get(ir, FOO_INTERFACE_NAME, IV_VERSION(1,4)))
 	 != NULL)
 	{
 		fprintf(stderr,
@@ -493,7 +495,7 @@ main(int argc, char **argv)
 			FOO_INTERFACE_NAME);
 	}
 
-	if((gi = extit_ir_getInterface(ir, FOO_INTERFACE_NAME, EXTIT_IV(1,5)))
+	if((gi = iv_repository_get(ir, FOO_INTERFACE_NAME, IV_VERSION(1,5)))
 	 != NULL)
 	{
 		fprintf(stderr,
@@ -506,7 +508,7 @@ main(int argc, char **argv)
 	/*
 	 * foo@2.x
 	 */
-	if((gi = extit_ir_getInterface(ir, FOO_INTERFACE_NAME, EXTIT_IV(2,0)))
+	if((gi = iv_repository_get(ir, FOO_INTERFACE_NAME, IV_VERSION(2,0)))
 	 != NULL)
 	{
 		fprintf(stderr,
@@ -521,7 +523,7 @@ main(int argc, char **argv)
 			FOO_INTERFACE_NAME);
 	}
 
-	if((gi = extit_ir_getInterface(ir, FOO_INTERFACE_NAME, EXTIT_IV(2,1)))
+	if((gi = iv_repository_get(ir, FOO_INTERFACE_NAME, IV_VERSION(2,1)))
 	 != NULL)
 	{
 		fprintf(stderr,
@@ -536,7 +538,7 @@ main(int argc, char **argv)
 			FOO_INTERFACE_NAME);
 	}
 
-	if((gi = extit_ir_getInterface(ir, FOO_INTERFACE_NAME, EXTIT_IV(2,2)))
+	if((gi = iv_repository_get(ir, FOO_INTERFACE_NAME, IV_VERSION(2,2)))
 	 != NULL)
 	{
 		fprintf(stderr,
@@ -551,7 +553,7 @@ main(int argc, char **argv)
 			FOO_INTERFACE_NAME);
 	}
 
-	if((gi = extit_ir_getInterface(ir, FOO_INTERFACE_NAME, EXTIT_IV(2,3)))
+	if((gi = iv_repository_get(ir, FOO_INTERFACE_NAME, IV_VERSION(2,3)))
 	 != NULL)
 	{
 		fprintf(stderr,
@@ -564,7 +566,7 @@ main(int argc, char **argv)
 	/*
 	 * foo@3.x
 	 */
-	if((gi = extit_ir_getInterface(ir, FOO_INTERFACE_NAME, EXTIT_IV(3,0)))
+	if((gi = iv_repository_get(ir, FOO_INTERFACE_NAME, IV_VERSION(3,0)))
 	 != NULL)
 	{
 		fprintf(stderr,
@@ -577,7 +579,7 @@ main(int argc, char **argv)
 	/*
 	 * bar@1.x
 	 */
-	if((gi = extit_ir_getInterface(ir, BAR_INTERFACE_NAME, EXTIT_IV(1,0)))
+	if((gi = iv_repository_get(ir, BAR_INTERFACE_NAME, IV_VERSION(1,0)))
 	 != NULL)
 	{
 		fprintf(stderr,
@@ -592,7 +594,7 @@ main(int argc, char **argv)
 			BAR_INTERFACE_NAME);
 	}
 
-	if((gi = extit_ir_getInterface(ir, BAR_INTERFACE_NAME, EXTIT_IV(1,1)))
+	if((gi = iv_repository_get(ir, BAR_INTERFACE_NAME, IV_VERSION(1,1)))
 	 != NULL)
 	{
 		fprintf(stderr,
@@ -607,7 +609,7 @@ main(int argc, char **argv)
 			BAR_INTERFACE_NAME);
 	}
 
-	if((gi = extit_ir_getInterface(ir, BAR_INTERFACE_NAME, EXTIT_IV(1,2)))
+	if((gi = iv_repository_get(ir, BAR_INTERFACE_NAME, IV_VERSION(1,2)))
 	 != NULL)
 	{
 		fprintf(stderr,
@@ -622,7 +624,7 @@ main(int argc, char **argv)
 			BAR_INTERFACE_NAME);
 	}
 
-	if((gi = extit_ir_getInterface(ir, BAR_INTERFACE_NAME, EXTIT_IV(1,3)))
+	if((gi = iv_repository_get(ir, BAR_INTERFACE_NAME, IV_VERSION(1,3)))
 	 != NULL)
 	{
 		fprintf(stderr,
@@ -637,7 +639,7 @@ main(int argc, char **argv)
 			BAR_INTERFACE_NAME);
 	}
 
-	if((gi = extit_ir_getInterface(ir, BAR_INTERFACE_NAME, EXTIT_IV(1,4)))
+	if((gi = iv_repository_get(ir, BAR_INTERFACE_NAME, IV_VERSION(1,4)))
 	 != NULL)
 	{
 		fprintf(stderr,
@@ -650,7 +652,7 @@ main(int argc, char **argv)
 	/*
 	 * bar@2.x
 	 */
-	if((gi = extit_ir_getInterface(ir, BAR_INTERFACE_NAME, EXTIT_IV(2,0)))
+	if((gi = iv_repository_get(ir, BAR_INTERFACE_NAME, IV_VERSION(2,0)))
 	 != NULL)
 	{
 		fprintf(stderr,
@@ -665,7 +667,7 @@ main(int argc, char **argv)
 			BAR_INTERFACE_NAME);
 	}
 
-	if((gi = extit_ir_getInterface(ir, BAR_INTERFACE_NAME, EXTIT_IV(2,1)))
+	if((gi = iv_repository_get(ir, BAR_INTERFACE_NAME, IV_VERSION(2,1)))
 	 != NULL)
 	{
 		fprintf(stderr,
@@ -680,7 +682,7 @@ main(int argc, char **argv)
 			BAR_INTERFACE_NAME);
 	}
 
-	if((gi = extit_ir_getInterface(ir, BAR_INTERFACE_NAME, EXTIT_IV(2,2)))
+	if((gi = iv_repository_get(ir, BAR_INTERFACE_NAME, IV_VERSION(2,2)))
 	 != NULL)
 	{
 		fprintf(stderr,
@@ -695,7 +697,7 @@ main(int argc, char **argv)
 			BAR_INTERFACE_NAME);
 	}
 
-	if((gi = extit_ir_getInterface(ir, BAR_INTERFACE_NAME, EXTIT_IV(2,3)))
+	if((gi = iv_repository_get(ir, BAR_INTERFACE_NAME, IV_VERSION(2,3)))
 	 != NULL)
 	{
 		fprintf(stderr,
@@ -708,7 +710,7 @@ main(int argc, char **argv)
 	/*
 	 * bar@3.x
 	 */
-	if((gi = extit_ir_getInterface(ir, BAR_INTERFACE_NAME, EXTIT_IV(3,0)))
+	if((gi = iv_repository_get(ir, BAR_INTERFACE_NAME, IV_VERSION(3,0)))
 	 != NULL)
 	{
 		fprintf(stderr,
@@ -723,7 +725,7 @@ main(int argc, char **argv)
 			BAR_INTERFACE_NAME);
 	}
 
-	if((gi = extit_ir_getInterface(ir, BAR_INTERFACE_NAME, EXTIT_IV(3,1)))
+	if((gi = iv_repository_get(ir, BAR_INTERFACE_NAME, IV_VERSION(3,1)))
 	 != NULL)
 	{
 		fprintf(stderr,
@@ -736,7 +738,7 @@ main(int argc, char **argv)
 	/*
 	 * bar@4.x
 	 */
-	if((gi = extit_ir_getInterface(ir, BAR_INTERFACE_NAME, EXTIT_IV(4,0)))
+	if((gi = iv_repository_get(ir, BAR_INTERFACE_NAME, IV_VERSION(4,0)))
 	 != NULL)
 	{
 		fprintf(stderr,
@@ -746,7 +748,7 @@ main(int argc, char **argv)
 	}
 
 
-	extit_ir_destroy(ir);
+	iv_repository_destroy(ir);
 	return 0;
 }
 

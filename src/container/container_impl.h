@@ -3,7 +3,7 @@
  *
  * Container API implementation.
  *
- * Copyright (c) 2014, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2014, 2015, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -12,6 +12,7 @@
 
 #include <extit/container.h>
 #include <extit/plugin_spi.h>
+#include <iv/base.h>
 
 #ifdef	_WIN32
 #include <windows.h>
@@ -25,7 +26,7 @@ struct _extit_module
 {
 	unsigned int				refcount;
 	unsigned int				flags;
-	extit_iv_t				api_version;
+	iv_version_t				api_version;
 	const extit_container_t *		container;
 	const extit_spi_descriptor_base_t *	descriptor;
 

@@ -28,13 +28,18 @@ set(EXTIT_COMPILE_SAMPLES FALSE CACHE BOOL "Compile Sample Programs")
 set(EXTIT_LIB_LOADER ${DEFAULT_LIB_LOADER} CACHE STRING "Library Loader (dl|win32|dylib)")
 set(EXTIT_WCHAR ${DEFAULT_WCHAR} CACHE BOOL "Enable wchar_t support")
 set(EXTIT_HAVE_DLFUNC ${DEFAULT_HAVE_DLFUNC} CACHE BOOL "Platform supports dlfunc()")
+set(EXTIT_COMPAT TRUE CACHE BOOL "Enable Backward Compatibility")
 
 
 include_directories(BEFORE src/include)
 
 set(EXTIT_SOURCE_FILES src/container/container_common.c)
 
-set(EXTIT_IR_SOURCE_FILES src/ir/ir.c)
+if(EXTIT_COMPAT)
+	set(EXTIT_IR_SOURCE_FILES src/ir/ir.c)
+endif()
+
+set(IV_REPOSITORY_SOURCE_FILES src/iv/repository.c)
 
 
 #
@@ -61,8 +66,10 @@ if(EXTIT_WITH_CXX)
 	set(EXTIT_SOURCE_FILES
 		${EXTIT_SOURCE_FILES} src/container/container_cxx.cc)
 
-	set(EXTIT_IR_SOURCE_FILES
-		${EXTIT_IR_SOURCE_FILES} src/ir/ir_cxx.cc)
+	if(EXTIT_COMPAT)
+		set(EXTIT_IR_SOURCE_FILES
+			${EXTIT_IR_SOURCE_FILES} src/ir/ir_cxx.cc)
+	endif()
 endif()
 
 
@@ -75,6 +82,7 @@ endif()
 
 if(EXTIT_DEBUG)
 	add_definitions("-DEXTIT_DEBUG")
+	add_definitions("-DIV_REPOSITORY_DEBUG")
 endif()
 
 if(EXTIT_WCHAR)
@@ -85,10 +93,19 @@ if(EXTIT_HAVE_DLFUNC)
 	add_definitions("-DEXTIT_HAVE_DLFUNC")
 endif()
 
+if(EXTIT_COMPAT)
+	add_definitions("-DEXTIT_COMPAT")
+endif()
+
+
+add_library(iv_repository ${IV_REPOSITORY_SOURCE_FILES})
 
 add_library(extit ${EXTIT_SOURCE_FILES})
 
-add_library(extit_ir ${EXTIT_IR_SOURCE_FILES})
+if(EXTIT_COMPAT)
+	add_library(extit_ir ${EXTIT_IR_SOURCE_FILES})
+	target_link_libraries(extit_ir iv_repository)
+endif()
 
 
 #
@@ -123,12 +140,18 @@ endif(NOT DEFINED LIBNAME_POSTFIX)
 
 if(DEFINED LIBNAME_POSTFIX)
 	set_target_properties(
+		iv_repository PROPERTIES
+			OUTPUT_NAME "iv_repository${LIBNAME_POSTFIX}")
+
+	set_target_properties(
 		extit PROPERTIES
 			OUTPUT_NAME "extit${LIBNAME_POSTFIX}")
 
-	set_target_properties(
-		extit_ir PROPERTIES
-			OUTPUT_NAME "extit_ir${LIBNAME_POSTFIX}")
+	if(EXTIT_COMPAT)
+		set_target_properties(
+			extit_ir PROPERTIES
+				OUTPUT_NAME "extit_ir${LIBNAME_POSTFIX}")
+	endif()
 endif(DEFINED LIBNAME_POSTFIX)
 
 
@@ -137,9 +160,16 @@ endif(DEFINED LIBNAME_POSTFIX)
 #
 install(
 	TARGETS
+		iv_repository
 		extit
-		extit_ir
 	DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+
+if(EXTIT_COMPAT)
+	install(
+		TARGETS
+			extit_ir
+		DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+endif()
 
 install(
 	FILES
@@ -160,10 +190,84 @@ if(EXTIT_COMPILE_SAMPLES)
 	# Interface Repository
 	#
 	add_executable(
-		sample_ir
+		sample_iv_repository
 			sample/ir/repository.c)
 
-	target_link_libraries(sample_ir extit extit_ir)
+	target_link_libraries(sample_iv_repository iv_repository)
+
+
+	#
+	# Multi-Version
+	#
+	add_executable(
+		sample_multiver_server_1_0
+			sample/multiver/persistence_impl.c
+			sample/multiver/multiver_server.c)
+
+	set_target_properties(
+		sample_multiver_server_1_0 PROPERTIES
+			COMPILE_FLAGS
+			"-DPERSISTENCE_INTERFACE_TARGET='IV_VERSION(1,0)'")
+
+	target_link_libraries(sample_multiver_server_1_0 extit iv_repository)
+
+
+	add_executable(
+		sample_multiver_server_1_1
+			sample/multiver/persistence_impl.c
+			sample/multiver/multiver_server.c)
+
+	set_target_properties(
+		sample_multiver_server_1_1 PROPERTIES
+			COMPILE_FLAGS
+			"-DPERSISTENCE_INTERFACE_TARGET='IV_VERSION(1,1)'")
+
+	target_link_libraries(sample_multiver_server_1_1 extit iv_repository)
+
+
+	add_executable(
+		sample_multiver_server_1_2
+			sample/multiver/persistence_impl.c
+			sample/multiver/multiver_server.c)
+
+	set_target_properties(
+		sample_multiver_server_1_2 PROPERTIES
+			COMPILE_FLAGS
+			"-DPERSISTENCE_INTERFACE_TARGET='IV_VERSION(1,2)'")
+
+	target_link_libraries(sample_multiver_server_1_2 extit iv_repository)
+
+
+	add_library(
+		sample_multiver_plugin_1_0 SHARED
+			sample/multiver/multiver_plugin.c)
+
+	set_target_properties(
+		sample_multiver_plugin_1_0 PROPERTIES
+			COMPILE_FLAGS
+			"-DPERSISTENCE_INTERFACE_TARGET='IV_VERSION(1,0)'")
+
+
+
+	add_library(
+		sample_multiver_plugin_1_1 SHARED
+			sample/multiver/multiver_plugin.c)
+
+	set_target_properties(
+		sample_multiver_plugin_1_1 PROPERTIES
+			COMPILE_FLAGS
+			"-DPERSISTENCE_INTERFACE_TARGET='IV_VERSION(1,1)'")
+
+
+
+	add_library(
+		sample_multiver_plugin_1_2 SHARED
+			sample/multiver/multiver_plugin.c)
+
+	set_target_properties(
+		sample_multiver_plugin_1_2 PROPERTIES
+			COMPILE_FLAGS
+			"-DPERSISTENCE_INTERFACE_TARGET='IV_VERSION(1,2)'")
 
 
 	#
@@ -185,8 +289,6 @@ if(EXTIT_COMPILE_SAMPLES)
 			PREFIX ""
 			OUTPUT_NAME "recipe-pie")
 
-	target_link_libraries(sample_scan_plugin_pie extit)
-
 
 	add_library(
 		sample_scan_plugin_tea SHARED
@@ -197,8 +299,6 @@ if(EXTIT_COMPILE_SAMPLES)
 			PREFIX ""
 			OUTPUT_NAME "recipe-tea")
 
-	target_link_libraries(sample_scan_plugin_tea extit)
-
 
 	add_library(
 		sample_scan_plugin_tacos SHARED
@@ -208,8 +308,6 @@ if(EXTIT_COMPILE_SAMPLES)
 		sample_scan_plugin_tacos PROPERTIES
 			PREFIX ""
 			OUTPUT_NAME "recipe-tacos")
-
-	target_link_libraries(sample_scan_plugin_tacos extit)
 
 
 	#
@@ -224,7 +322,5 @@ if(EXTIT_COMPILE_SAMPLES)
 	add_library(
 		sample_simple_plugin SHARED
 			sample/simple/simple_plugin.c)
-
-	target_link_libraries(sample_simple_plugin extit)
 endif(EXTIT_COMPILE_SAMPLES)
 

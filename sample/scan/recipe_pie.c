@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <iv/base.h>
 #include <extit/base.h>
 #include <extit/plugin_spi.h>
 
@@ -53,7 +54,7 @@ extit_status_t
 EXTIT_DECL
 plugin_handler
 (
-	extit_iv_t api_version,
+	iv_version_t api_version,
 	const extit_container_t *container,
 	unsigned int cmd,
 	void *param,
@@ -128,8 +129,8 @@ plugin_handler
 				return EXTIT_STATUS_UNSUPPORTED;
 			}
 
-			if(EXTIT_IV_MAJOR(param_query_interface->base_version)
-			 != EXTIT_IV_MAJOR(RECIPE_INTERFACE_VERSION))
+			if(IV_VERSION_MAJOR(param_query_interface->base_version)
+			 != IV_VERSION_MAJOR(RECIPE_INTERFACE_VERSION))
 			{
 				return EXTIT_STATUS_UNSUPPORTED;
 			}
@@ -150,5 +151,5 @@ plugin_handler
 	}
 }
 
-EXTIT_DECLARE_SPI("{3e29e568-234d-11e4-a457-406186e454c1}", EXTIT_IV(1,0), "Pecan Pie Recipe", "1.0", plugin_handler)
+EXTIT_DECLARE_SPI("{3e29e568-234d-11e4-a457-406186e454c1}", IV_VERSION(1,0), "Pecan Pie Recipe", "1.0", plugin_handler)
 

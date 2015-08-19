@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <iv/base.h>
 #include <extit/container.h>
 #include <extit/platform.h>
 
@@ -179,8 +180,8 @@ prepare_recipe(extit_module_t *module)
 		fprintf(stderr,
 		"Unable to find plugin interface %s:%u.%u in module %s (%s)\n",
 			RECIPE_INTERFACE_NAME,
-			EXTIT_IV_MAJOR(RECIPE_INTERFACE_VERSION),
-			EXTIT_IV_MINOR(RECIPE_INTERFACE_VERSION),
+			IV_VERSION_MAJOR(RECIPE_INTERFACE_VERSION),
+			IV_VERSION_MINOR(RECIPE_INTERFACE_VERSION),
 			extit_module_getName(module),
 			extit_module_getVersion(module));
 	}
