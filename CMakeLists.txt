@@ -191,7 +191,7 @@ if(EXTIT_COMPILE_SAMPLES)
 	#
 	add_executable(
 		sample_iv_repository
-			sample/ir/repository.c)
+			sample/iv_repository/repository.c)
 
 	target_link_libraries(sample_iv_repository iv_repository)
 
