@@ -58,7 +58,7 @@ extit_container_get_symbol_default
 	const char *name
 )
 {
-	return GetProcAddress(GetModuleHandle(NULL), name);
+	return (void *) GetProcAddress(GetModuleHandle(NULL), name);
 }
 
 
@@ -84,7 +84,7 @@ extit_module_getSymbol
 	const char *name
 )
 {
-	return GetProcAddress(module->handle, name);
+	return (void *) GetProcAddress(module->handle, name);
 }
 
 
@@ -146,8 +146,8 @@ extit_module_load(
 	/*
 	 * Find the plugin descriptor
 	 */
-	if((descriptor = GetProcAddress(handle, EXTIT_SPI_DESCRIPTOR_SYMBOL))
-	 == NULL)
+	if((descriptor = (void *)
+	 GetProcAddress(handle, EXTIT_SPI_DESCRIPTOR_SYMBOL)) == NULL)
 	{
 #ifdef	EXTIT_DEBUG
 		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)

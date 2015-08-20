@@ -133,6 +133,7 @@ endif()
 if(${CMAKE_CXX_COMPILER_ID} MATCHES "GNU" OR ${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -pedantic")
 elseif(MSVC)
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W4 /wd4054 /wd4100")
 	add_definitions("-D_CRT_SECURE_NO_WARNINGS")
 endif()
 
