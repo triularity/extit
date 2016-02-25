@@ -12,8 +12,8 @@
 #include <iv/repository.h>
 
 
-#define	FOO_INTERFACE_NAME		"foo"
-#define	BAR_INTERFACE_NAME		"bar"
+#define	FOO_INTERFACE_ID		"foo"
+#define	BAR_INTERFACE_ID		"bar"
 
 typedef struct _general_iface
 {
@@ -91,92 +91,92 @@ main(int argc, char **argv)
 	/*
 	 * Register all interfaces
 	 */
-	if(iv_repository_set(ir, FOO_INTERFACE_NAME, IV_VERSION(0,1),
+	if(iv_repository_set(ir, FOO_INTERFACE_ID, IV_VERSION(0,1),
 	 &foo_prototype_0_1, NULL) != IV_REPOSITORY_STATUS_OK)
 	{
 		fprintf(stderr,
-			"Failed to register %s@0.1\n", FOO_INTERFACE_NAME);
+			"Failed to register %s@0.1\n", FOO_INTERFACE_ID);
 
 		return 2;
 	}
 
-	if(iv_repository_set(ir, FOO_INTERFACE_NAME, IV_VERSION(0,2),
+	if(iv_repository_set(ir, FOO_INTERFACE_ID, IV_VERSION(0,2),
 	 &foo_prototype_0_2, NULL) != IV_REPOSITORY_STATUS_OK)
 	{
 		fprintf(stderr,
-			"Failed to register %s@0.2\n", FOO_INTERFACE_NAME);
+			"Failed to register %s@0.2\n", FOO_INTERFACE_ID);
 
 		return 2;
 	}
 
-	if(iv_repository_set(ir, FOO_INTERFACE_NAME, IV_VERSION(0,4),
+	if(iv_repository_set(ir, FOO_INTERFACE_ID, IV_VERSION(0,4),
 	 &foo_prototype_0_5, NULL) != IV_REPOSITORY_STATUS_OK)
 	{
 		fprintf(stderr,
-			"Failed to register %s@0.4\n", FOO_INTERFACE_NAME);
+			"Failed to register %s@0.4\n", FOO_INTERFACE_ID);
 
 		return 2;
 	}
 
-	if(iv_repository_set(ir, FOO_INTERFACE_NAME, IV_VERSION(0,5),
+	if(iv_repository_set(ir, FOO_INTERFACE_ID, IV_VERSION(0,5),
 	 &foo_prototype_0_5, NULL) != IV_REPOSITORY_STATUS_OK)
 	{
 		fprintf(stderr,
-			"Failed to register %s@0.5\n", FOO_INTERFACE_NAME);
+			"Failed to register %s@0.5\n", FOO_INTERFACE_ID);
 
 		return 2;
 	}
 
-	if(iv_repository_set(ir, FOO_INTERFACE_NAME, IV_VERSION(1,4),
+	if(iv_repository_set(ir, FOO_INTERFACE_ID, IV_VERSION(1,4),
 	 &foo_release_1_4, NULL) != IV_REPOSITORY_STATUS_OK)
 	{
 		fprintf(stderr,
-			"Failed to register %s@1.4\n", FOO_INTERFACE_NAME);
+			"Failed to register %s@1.4\n", FOO_INTERFACE_ID);
 
 		return 2;
 	}
 
-	if(iv_repository_set(ir, FOO_INTERFACE_NAME, IV_VERSION(2,1),
+	if(iv_repository_set(ir, FOO_INTERFACE_ID, IV_VERSION(2,1),
 	 &foo_release_2_1, NULL) != IV_REPOSITORY_STATUS_OK)
 	{
 		fprintf(stderr,
-			"Failed to register %s@2.1\n", FOO_INTERFACE_NAME);
+			"Failed to register %s@2.1\n", FOO_INTERFACE_ID);
 
 		return 2;
 	}
 
-	if(iv_repository_set(ir, FOO_INTERFACE_NAME, IV_VERSION(2,2),
+	if(iv_repository_set(ir, FOO_INTERFACE_ID, IV_VERSION(2,2),
 	 &foo_release_2_2, NULL) != IV_REPOSITORY_STATUS_OK)
 	{
 		fprintf(stderr,
-			"Failed to register %s@2.2\n", FOO_INTERFACE_NAME);
+			"Failed to register %s@2.2\n", FOO_INTERFACE_ID);
 
 		return 2;
 	}
 
-	if(iv_repository_set(ir, BAR_INTERFACE_NAME, IV_VERSION(1,3),
+	if(iv_repository_set(ir, BAR_INTERFACE_ID, IV_VERSION(1,3),
 	 &bar_release_1_3, NULL) != IV_REPOSITORY_STATUS_OK)
 	{
 		fprintf(stderr,
-			"Failed to register %s@1.3\n", BAR_INTERFACE_NAME);
+			"Failed to register %s@1.3\n", BAR_INTERFACE_ID);
 
 		return 2;
 	}
 
-	if(iv_repository_set(ir, BAR_INTERFACE_NAME, IV_VERSION(2,2),
+	if(iv_repository_set(ir, BAR_INTERFACE_ID, IV_VERSION(2,2),
 	 &bar_release_2_2, NULL) != IV_REPOSITORY_STATUS_OK)
 	{
 		fprintf(stderr,
-			"Failed to register %s@2.2\n", BAR_INTERFACE_NAME);
+			"Failed to register %s@2.2\n", BAR_INTERFACE_ID);
 
 		return 2;
 	}
 
-	if(iv_repository_set(ir, BAR_INTERFACE_NAME, IV_VERSION(3,0),
+	if(iv_repository_set(ir, BAR_INTERFACE_ID, IV_VERSION(3,0),
 	 &bar_release_3_0, NULL) != IV_REPOSITORY_STATUS_OK)
 	{
 		fprintf(stderr,
-			"Failed to register %s@3.0\n", BAR_INTERFACE_NAME);
+			"Failed to register %s@3.0\n", BAR_INTERFACE_ID);
 
 		return 2;
 	}
@@ -187,11 +187,11 @@ main(int argc, char **argv)
 	 **/
 
 	if((version = iv_repository_query(
-	 ir, FOO_INTERFACE_NAME, IV_VERSION(0,1))) != IV_VERSION_NONE)
+	 ir, FOO_INTERFACE_ID, IV_VERSION(0,1))) != IV_VERSION_NONE)
 	{
 		fprintf(stderr,
 			"Found interface %s@%u.%u (from v0.1)\n",
-			FOO_INTERFACE_NAME,
+			FOO_INTERFACE_ID,
 			IV_VERSION_MAJOR(version),
 			IV_VERSION_MINOR(version));
 	}
@@ -199,15 +199,15 @@ main(int argc, char **argv)
 	{
 		fprintf(stderr,
 			"Couldn't query interface >= %s@0.1\n",
-			FOO_INTERFACE_NAME);
+			FOO_INTERFACE_ID);
 	}
 
 	if((version = iv_repository_query(
-	 ir, FOO_INTERFACE_NAME, IV_VERSION(0,4))) != IV_VERSION_NONE)
+	 ir, FOO_INTERFACE_ID, IV_VERSION(0,4))) != IV_VERSION_NONE)
 	{
 		fprintf(stderr,
 			"Found interface %s@%u.%u (from v0.4)\n",
-			FOO_INTERFACE_NAME,
+			FOO_INTERFACE_ID,
 			IV_VERSION_MAJOR(version),
 			IV_VERSION_MINOR(version));
 	}
@@ -215,15 +215,15 @@ main(int argc, char **argv)
 	{
 		fprintf(stderr,
 			"Couldn't query interface >= %s@0.4\n",
-			FOO_INTERFACE_NAME);
+			FOO_INTERFACE_ID);
 	}
 
 	if((version = iv_repository_query(
-	 ir, FOO_INTERFACE_NAME, IV_VERSION(1,0))) != IV_VERSION_NONE)
+	 ir, FOO_INTERFACE_ID, IV_VERSION(1,0))) != IV_VERSION_NONE)
 	{
 		fprintf(stderr,
 			"Found interface %s@%u.%u (from v1.0)\n",
-			FOO_INTERFACE_NAME,
+			FOO_INTERFACE_ID,
 			IV_VERSION_MAJOR(version),
 			IV_VERSION_MINOR(version));
 	}
@@ -231,15 +231,15 @@ main(int argc, char **argv)
 	{
 		fprintf(stderr,
 			"Couldn't query interface >= %s@1.0\n",
-			FOO_INTERFACE_NAME);
+			FOO_INTERFACE_ID);
 	}
 
 	if((version = iv_repository_query(
-	 ir, FOO_INTERFACE_NAME, IV_VERSION(1,4))) != IV_VERSION_NONE)
+	 ir, FOO_INTERFACE_ID, IV_VERSION(1,4))) != IV_VERSION_NONE)
 	{
 		fprintf(stderr,
 			"Found interface %s@%u.%u (from v1.4)\n",
-			FOO_INTERFACE_NAME,
+			FOO_INTERFACE_ID,
 			IV_VERSION_MAJOR(version),
 			IV_VERSION_MINOR(version));
 	}
@@ -247,25 +247,25 @@ main(int argc, char **argv)
 	{
 		fprintf(stderr,
 			"Couldn't query interface >= %s@1.4\n",
-			FOO_INTERFACE_NAME);
+			FOO_INTERFACE_ID);
 	}
 
 	if((version = iv_repository_query(
-	 ir, FOO_INTERFACE_NAME, IV_VERSION(1,5))) != IV_VERSION_NONE)
+	 ir, FOO_INTERFACE_ID, IV_VERSION(1,5))) != IV_VERSION_NONE)
 	{
 		fprintf(stderr,
 			"Found unexpected interface %s@%u.%u (from v1.5)\n",
-			FOO_INTERFACE_NAME,
+			FOO_INTERFACE_ID,
 			IV_VERSION_MAJOR(version),
 			IV_VERSION_MINOR(version));
 	}
 
 	if((version = iv_repository_query(
-	 ir, FOO_INTERFACE_NAME, IV_VERSION(2,0))) != IV_VERSION_NONE)
+	 ir, FOO_INTERFACE_ID, IV_VERSION(2,0))) != IV_VERSION_NONE)
 	{
 		fprintf(stderr,
 			"Found interface %s@%u.%u (from v2.0)\n",
-			FOO_INTERFACE_NAME,
+			FOO_INTERFACE_ID,
 			IV_VERSION_MAJOR(version),
 			IV_VERSION_MINOR(version));
 	}
@@ -273,15 +273,15 @@ main(int argc, char **argv)
 	{
 		fprintf(stderr,
 			"Couldn't query interface >= %s@2.0\n",
-			FOO_INTERFACE_NAME);
+			FOO_INTERFACE_ID);
 	}
 
 	if((version = iv_repository_query(
-	 ir, FOO_INTERFACE_NAME, IV_VERSION(2,2))) != IV_VERSION_NONE)
+	 ir, FOO_INTERFACE_ID, IV_VERSION(2,2))) != IV_VERSION_NONE)
 	{
 		fprintf(stderr,
 			"Found interface %s@%u.%u (from v2.2)\n",
-			FOO_INTERFACE_NAME,
+			FOO_INTERFACE_ID,
 			IV_VERSION_MAJOR(version),
 			IV_VERSION_MINOR(version));
 	}
@@ -289,25 +289,25 @@ main(int argc, char **argv)
 	{
 		fprintf(stderr,
 			"Couldn't query interface >= %s@2.2\n",
-			FOO_INTERFACE_NAME);
+			FOO_INTERFACE_ID);
 	}
 
 	if((version = iv_repository_query(
-	 ir, FOO_INTERFACE_NAME, IV_VERSION(3,0))) != IV_VERSION_NONE)
+	 ir, FOO_INTERFACE_ID, IV_VERSION(3,0))) != IV_VERSION_NONE)
 	{
 		fprintf(stderr,
 			"Found unexpected interface %s@%u.%u (from v3.0)\n",
-			FOO_INTERFACE_NAME,
+			FOO_INTERFACE_ID,
 			IV_VERSION_MAJOR(version),
 			IV_VERSION_MINOR(version));
 	}
 
 	if((version = iv_repository_query(
-	 ir, BAR_INTERFACE_NAME, IV_VERSION(1,0))) != IV_VERSION_NONE)
+	 ir, BAR_INTERFACE_ID, IV_VERSION(1,0))) != IV_VERSION_NONE)
 	{
 		fprintf(stderr,
 			"Found interface %s@%u.%u (from v1.0)\n",
-			BAR_INTERFACE_NAME,
+			BAR_INTERFACE_ID,
 			IV_VERSION_MAJOR(version),
 			IV_VERSION_MINOR(version));
 	}
@@ -315,15 +315,15 @@ main(int argc, char **argv)
 	{
 		fprintf(stderr,
 			"Couldn't query interface >= %s@1.0\n",
-			BAR_INTERFACE_NAME);
+			BAR_INTERFACE_ID);
 	}
 
 	if((version = iv_repository_query(
-	 ir, BAR_INTERFACE_NAME, IV_VERSION(2,0))) != IV_VERSION_NONE)
+	 ir, BAR_INTERFACE_ID, IV_VERSION(2,0))) != IV_VERSION_NONE)
 	{
 		fprintf(stderr,
 			"Found interface %s@%u.%u (from v2.0)\n",
-			BAR_INTERFACE_NAME,
+			BAR_INTERFACE_ID,
 			IV_VERSION_MAJOR(version),
 			IV_VERSION_MINOR(version));
 	}
@@ -331,15 +331,15 @@ main(int argc, char **argv)
 	{
 		fprintf(stderr,
 			"Couldn't query interface >= %s@2.0\n",
-			BAR_INTERFACE_NAME);
+			BAR_INTERFACE_ID);
 	}
 
 	if((version = iv_repository_query(
-	 ir, BAR_INTERFACE_NAME, IV_VERSION(3,0))) != IV_VERSION_NONE)
+	 ir, BAR_INTERFACE_ID, IV_VERSION(3,0))) != IV_VERSION_NONE)
 	{
 		fprintf(stderr,
 			"Found interface %s@%u.%u (from v3.0)\n",
-			BAR_INTERFACE_NAME,
+			BAR_INTERFACE_ID,
 			IV_VERSION_MAJOR(version),
 			IV_VERSION_MINOR(version));
 	}
@@ -347,15 +347,15 @@ main(int argc, char **argv)
 	{
 		fprintf(stderr,
 			"Couldn't query interface >= %s@3.0\n",
-			BAR_INTERFACE_NAME);
+			BAR_INTERFACE_ID);
 	}
 
 	if((version = iv_repository_query(
-	 ir, BAR_INTERFACE_NAME, IV_VERSION(4,0))) != IV_VERSION_NONE)
+	 ir, BAR_INTERFACE_ID, IV_VERSION(4,0))) != IV_VERSION_NONE)
 	{
 		fprintf(stderr,
 			"Found unexpected interface %s@%u.%u (from v4.0)\n",
-			BAR_INTERFACE_NAME,
+			BAR_INTERFACE_ID,
 			IV_VERSION_MAJOR(version),
 			IV_VERSION_MINOR(version));
 	}
@@ -368,81 +368,81 @@ main(int argc, char **argv)
 	/*
 	 * foo@0.x
 	 */
-	if((gi = iv_repository_get(ir, FOO_INTERFACE_NAME, IV_VERSION(0,1)))
+	if((gi = iv_repository_get(ir, FOO_INTERFACE_ID, IV_VERSION(0,1)))
 	 != NULL)
 	{
 		fprintf(stderr,
 			"Found interface %s@0.1  [%s]\n",
-			FOO_INTERFACE_NAME,
+			FOO_INTERFACE_ID,
 			gi->name);
 	}
 	else
 	{
 		fprintf(stderr,
 			"Couldn't find interface %s@0.1\n",
-			FOO_INTERFACE_NAME);
+			FOO_INTERFACE_ID);
 	}
 
-	if((gi = iv_repository_get(ir, FOO_INTERFACE_NAME, IV_VERSION(0,2)))
+	if((gi = iv_repository_get(ir, FOO_INTERFACE_ID, IV_VERSION(0,2)))
 	 != NULL)
 	{
 		fprintf(stderr,
 			"Found interface %s@0.2  [%s]\n",
-			FOO_INTERFACE_NAME,
+			FOO_INTERFACE_ID,
 			gi->name);
 	}
 	else
 	{
 		fprintf(stderr,
 			"Couldn't find interface %s@0.2\n",
-			FOO_INTERFACE_NAME);
+			FOO_INTERFACE_ID);
 	}
 
-	if((gi = iv_repository_get(ir, FOO_INTERFACE_NAME, IV_VERSION(0,3)))
+	if((gi = iv_repository_get(ir, FOO_INTERFACE_ID, IV_VERSION(0,3)))
 	 != NULL)
 	{
 		fprintf(stderr,
 			"Found unexpected interface %s@0.3  [%s]\n",
-			FOO_INTERFACE_NAME,
+			FOO_INTERFACE_ID,
 			gi->name);
 	}
 
-	if((gi = iv_repository_get(ir, FOO_INTERFACE_NAME, IV_VERSION(0,4)))
+	if((gi = iv_repository_get(ir, FOO_INTERFACE_ID, IV_VERSION(0,4)))
 	 != NULL)
 	{
 		fprintf(stderr,
 			"Found interface %s@0.4  [%s]\n",
-			FOO_INTERFACE_NAME,
+			FOO_INTERFACE_ID,
 			gi->name);
 	}
 	else
 	{
 		fprintf(stderr,
 			"Couldn't find interface %s@0.4\n",
-			FOO_INTERFACE_NAME);
+			FOO_INTERFACE_ID);
 	}
 
-	if((gi = iv_repository_get(ir, FOO_INTERFACE_NAME, IV_VERSION(0,5)))
+	if((gi = iv_repository_get(ir, FOO_INTERFACE_ID, IV_VERSION(0,5)))
 	 != NULL)
 	{
 		fprintf(stderr,
 			"Found interface %s@0.5  [%s]\n",
-			FOO_INTERFACE_NAME,
+			FOO_INTERFACE_ID,
 			gi->name);
 	}
 	else
 	{
 		fprintf(stderr,
 			"Couldn't find interface %s@0.5\n",
-			FOO_INTERFACE_NAME);
+			FOO_INTERFACE_ID);
 	}
 
-	if((gi = iv_repository_get(ir, FOO_INTERFACE_NAME, IV_VERSION(0,8)))
+	if((gi = iv_repository_get(ir, FOO_INTERFACE_ID, IV_VERSION(0,8)))
 	 != NULL)
 	{
 		fprintf(stderr,
 			"Found unexpected interface %s@0.8  [%s]\n",
-			FOO_INTERFACE_NAME,
+			FOO_INTERFACE_ID,
 			gi->name);
 	}
 
@@ -450,57 +450,57 @@ main(int argc, char **argv)
 	/*
 	 * foo@1.x
 	 */
-	if((gi = iv_repository_get(ir, FOO_INTERFACE_NAME, IV_VERSION(1,0)))
+	if((gi = iv_repository_get(ir, FOO_INTERFACE_ID, IV_VERSION(1,0)))
 	 != NULL)
 	{
 		fprintf(stderr,
 			"Found interface %s@1.0  [%s]\n",
-			FOO_INTERFACE_NAME,
+			FOO_INTERFACE_ID,
 			gi->name);
 	}
 	else
 	{
 		fprintf(stderr,
 			"Couldn't find interface %s@1.0\n",
-			FOO_INTERFACE_NAME);
+			FOO_INTERFACE_ID);
 	}
 
-	if((gi = iv_repository_get(ir, FOO_INTERFACE_NAME, IV_VERSION(1,1)))
+	if((gi = iv_repository_get(ir, FOO_INTERFACE_ID, IV_VERSION(1,1)))
 	 != NULL)
 	{
 		fprintf(stderr,
 			"Found interface %s@1.1  [%s]\n",
-			FOO_INTERFACE_NAME,
+			FOO_INTERFACE_ID,
 			gi->name);
 	}
 	else
 	{
 		fprintf(stderr,
 			"Couldn't find interface %s@1.1\n",
-			FOO_INTERFACE_NAME);
+			FOO_INTERFACE_ID);
 	}
 
-	if((gi = iv_repository_get(ir, FOO_INTERFACE_NAME, IV_VERSION(1,4)))
+	if((gi = iv_repository_get(ir, FOO_INTERFACE_ID, IV_VERSION(1,4)))
 	 != NULL)
 	{
 		fprintf(stderr,
 			"Found interface %s@1.4  [%s]\n",
-			FOO_INTERFACE_NAME,
+			FOO_INTERFACE_ID,
 			gi->name);
 	}
 	else
 	{
 		fprintf(stderr,
 			"Couldn't find interface %s@1.4\n",
-			FOO_INTERFACE_NAME);
+			FOO_INTERFACE_ID);
 	}
 
-	if((gi = iv_repository_get(ir, FOO_INTERFACE_NAME, IV_VERSION(1,5)))
+	if((gi = iv_repository_get(ir, FOO_INTERFACE_ID, IV_VERSION(1,5)))
 	 != NULL)
 	{
 		fprintf(stderr,
 			"Found unexpected interface %s@1.5  [%s]\n",
-			FOO_INTERFACE_NAME,
+			FOO_INTERFACE_ID,
 			gi->name);
 	}
 
@@ -508,57 +508,57 @@ main(int argc, char **argv)
 	/*
 	 * foo@2.x
 	 */
-	if((gi = iv_repository_get(ir, FOO_INTERFACE_NAME, IV_VERSION(2,0)))
+	if((gi = iv_repository_get(ir, FOO_INTERFACE_ID, IV_VERSION(2,0)))
 	 != NULL)
 	{
 		fprintf(stderr,
 			"Found interface %s@2.0  [%s]\n",
-			FOO_INTERFACE_NAME,
+			FOO_INTERFACE_ID,
 			gi->name);
 	}
 	else
 	{
 		fprintf(stderr,
 			"Couldn't find interface %s@2.0\n",
-			FOO_INTERFACE_NAME);
+			FOO_INTERFACE_ID);
 	}
 
-	if((gi = iv_repository_get(ir, FOO_INTERFACE_NAME, IV_VERSION(2,1)))
+	if((gi = iv_repository_get(ir, FOO_INTERFACE_ID, IV_VERSION(2,1)))
 	 != NULL)
 	{
 		fprintf(stderr,
 			"Found interface %s@2.1  [%s]\n",
-			FOO_INTERFACE_NAME,
+			FOO_INTERFACE_ID,
 			gi->name);
 	}
 	else
 	{
 		fprintf(stderr,
 			"Couldn't find interface %s@2.1\n",
-			FOO_INTERFACE_NAME);
+			FOO_INTERFACE_ID);
 	}
 
-	if((gi = iv_repository_get(ir, FOO_INTERFACE_NAME, IV_VERSION(2,2)))
+	if((gi = iv_repository_get(ir, FOO_INTERFACE_ID, IV_VERSION(2,2)))
 	 != NULL)
 	{
 		fprintf(stderr,
 			"Found interface %s@2.2  [%s]\n",
-			FOO_INTERFACE_NAME,
+			FOO_INTERFACE_ID,
 			gi->name);
 	}
 	else
 	{
 		fprintf(stderr,
 			"Couldn't find interface %s@2.2\n",
-			FOO_INTERFACE_NAME);
+			FOO_INTERFACE_ID);
 	}
 
-	if((gi = iv_repository_get(ir, FOO_INTERFACE_NAME, IV_VERSION(2,3)))
+	if((gi = iv_repository_get(ir, FOO_INTERFACE_ID, IV_VERSION(2,3)))
 	 != NULL)
 	{
 		fprintf(stderr,
 			"Found unexpected interface %s@2.3  [%s]\n",
-			FOO_INTERFACE_NAME,
+			FOO_INTERFACE_ID,
 			gi->name);
 	}
 
@@ -566,12 +566,12 @@ main(int argc, char **argv)
 	/*
 	 * foo@3.x
 	 */
-	if((gi = iv_repository_get(ir, FOO_INTERFACE_NAME, IV_VERSION(3,0)))
+	if((gi = iv_repository_get(ir, FOO_INTERFACE_ID, IV_VERSION(3,0)))
 	 != NULL)
 	{
 		fprintf(stderr,
 			"Found unexpected interface %s@3.0  [%s]\n",
-			FOO_INTERFACE_NAME,
+			FOO_INTERFACE_ID,
 			gi->name);
 	}
 
@@ -579,72 +579,72 @@ main(int argc, char **argv)
 	/*
 	 * bar@1.x
 	 */
-	if((gi = iv_repository_get(ir, BAR_INTERFACE_NAME, IV_VERSION(1,0)))
+	if((gi = iv_repository_get(ir, BAR_INTERFACE_ID, IV_VERSION(1,0)))
 	 != NULL)
 	{
 		fprintf(stderr,
 			"Found interface %s@1.0  [%s]\n",
-			BAR_INTERFACE_NAME,
+			BAR_INTERFACE_ID,
 			gi->name);
 	}
 	else
 	{
 		fprintf(stderr,
 			"Couldn't find interface %s@1.0\n",
-			BAR_INTERFACE_NAME);
+			BAR_INTERFACE_ID);
 	}
 
-	if((gi = iv_repository_get(ir, BAR_INTERFACE_NAME, IV_VERSION(1,1)))
+	if((gi = iv_repository_get(ir, BAR_INTERFACE_ID, IV_VERSION(1,1)))
 	 != NULL)
 	{
 		fprintf(stderr,
 			"Found interface %s@1.1  [%s]\n",
-			BAR_INTERFACE_NAME,
+			BAR_INTERFACE_ID,
 			gi->name);
 	}
 	else
 	{
 		fprintf(stderr,
 			"Couldn't find interface %s@1.1\n",
-			BAR_INTERFACE_NAME);
+			BAR_INTERFACE_ID);
 	}
 
-	if((gi = iv_repository_get(ir, BAR_INTERFACE_NAME, IV_VERSION(1,2)))
+	if((gi = iv_repository_get(ir, BAR_INTERFACE_ID, IV_VERSION(1,2)))
 	 != NULL)
 	{
 		fprintf(stderr,
 			"Found interface %s@1.2  [%s]\n",
-			BAR_INTERFACE_NAME,
+			BAR_INTERFACE_ID,
 			gi->name);
 	}
 	else
 	{
 		fprintf(stderr,
 			"Couldn't find interface %s@1.2\n",
-			BAR_INTERFACE_NAME);
+			BAR_INTERFACE_ID);
 	}
 
-	if((gi = iv_repository_get(ir, BAR_INTERFACE_NAME, IV_VERSION(1,3)))
+	if((gi = iv_repository_get(ir, BAR_INTERFACE_ID, IV_VERSION(1,3)))
 	 != NULL)
 	{
 		fprintf(stderr,
 			"Found interface %s@1.3  [%s]\n",
-			BAR_INTERFACE_NAME,
+			BAR_INTERFACE_ID,
 			gi->name);
 	}
 	else
 	{
 		fprintf(stderr,
 			"Couldn't find interface %s@1.3\n",
-			BAR_INTERFACE_NAME);
+			BAR_INTERFACE_ID);
 	}
 
-	if((gi = iv_repository_get(ir, BAR_INTERFACE_NAME, IV_VERSION(1,4)))
+	if((gi = iv_repository_get(ir, BAR_INTERFACE_ID, IV_VERSION(1,4)))
 	 != NULL)
 	{
 		fprintf(stderr,
 			"Found unexpected interface %s@1.4  [%s]\n",
-			BAR_INTERFACE_NAME,
+			BAR_INTERFACE_ID,
 			gi->name);
 	}
 
@@ -652,57 +652,57 @@ main(int argc, char **argv)
 	/*
 	 * bar@2.x
 	 */
-	if((gi = iv_repository_get(ir, BAR_INTERFACE_NAME, IV_VERSION(2,0)))
+	if((gi = iv_repository_get(ir, BAR_INTERFACE_ID, IV_VERSION(2,0)))
 	 != NULL)
 	{
 		fprintf(stderr,
 			"Found interface %s@2.0  [%s]\n",
-			BAR_INTERFACE_NAME,
+			BAR_INTERFACE_ID,
 			gi->name);
 	}
 	else
 	{
 		fprintf(stderr,
 			"Couldn't find interface %s@2.0\n",
-			BAR_INTERFACE_NAME);
+			BAR_INTERFACE_ID);
 	}
 
-	if((gi = iv_repository_get(ir, BAR_INTERFACE_NAME, IV_VERSION(2,1)))
+	if((gi = iv_repository_get(ir, BAR_INTERFACE_ID, IV_VERSION(2,1)))
 	 != NULL)
 	{
 		fprintf(stderr,
 			"Found interface %s@2.1  [%s]\n",
-			BAR_INTERFACE_NAME,
+			BAR_INTERFACE_ID,
 			gi->name);
 	}
 	else
 	{
 		fprintf(stderr,
 			"Couldn't find interface %s@2.1\n",
-			BAR_INTERFACE_NAME);
+			BAR_INTERFACE_ID);
 	}
 
-	if((gi = iv_repository_get(ir, BAR_INTERFACE_NAME, IV_VERSION(2,2)))
+	if((gi = iv_repository_get(ir, BAR_INTERFACE_ID, IV_VERSION(2,2)))
 	 != NULL)
 	{
 		fprintf(stderr,
 			"Found interface %s@2.2  [%s]\n",
-			BAR_INTERFACE_NAME,
+			BAR_INTERFACE_ID,
 			gi->name);
 	}
 	else
 	{
 		fprintf(stderr,
 			"Couldn't find interface %s@2.2\n",
-			BAR_INTERFACE_NAME);
+			BAR_INTERFACE_ID);
 	}
 
-	if((gi = iv_repository_get(ir, BAR_INTERFACE_NAME, IV_VERSION(2,3)))
+	if((gi = iv_repository_get(ir, BAR_INTERFACE_ID, IV_VERSION(2,3)))
 	 != NULL)
 	{
 		fprintf(stderr,
 			"Found unexpected interface %s@2.3  [%s]\n",
-			BAR_INTERFACE_NAME,
+			BAR_INTERFACE_ID,
 			gi->name);
 	}
 
@@ -710,27 +710,27 @@ main(int argc, char **argv)
 	/*
 	 * bar@3.x
 	 */
-	if((gi = iv_repository_get(ir, BAR_INTERFACE_NAME, IV_VERSION(3,0)))
+	if((gi = iv_repository_get(ir, BAR_INTERFACE_ID, IV_VERSION(3,0)))
 	 != NULL)
 	{
 		fprintf(stderr,
 			"Found interface %s@3.0  [%s]\n",
-			BAR_INTERFACE_NAME,
+			BAR_INTERFACE_ID,
 			gi->name);
 	}
 	else
 	{
 		fprintf(stderr,
 			"Couldn't find interface %s@3.0\n",
-			BAR_INTERFACE_NAME);
+			BAR_INTERFACE_ID);
 	}
 
-	if((gi = iv_repository_get(ir, BAR_INTERFACE_NAME, IV_VERSION(3,1)))
+	if((gi = iv_repository_get(ir, BAR_INTERFACE_ID, IV_VERSION(3,1)))
 	 != NULL)
 	{
 		fprintf(stderr,
 			"Found unexpected interface %s@3.1  [%s]\n",
-			BAR_INTERFACE_NAME,
+			BAR_INTERFACE_ID,
 			gi->name);
 	}
 
@@ -738,12 +738,12 @@ main(int argc, char **argv)
 	/*
 	 * bar@4.x
 	 */
-	if((gi = iv_repository_get(ir, BAR_INTERFACE_NAME, IV_VERSION(4,0)))
+	if((gi = iv_repository_get(ir, BAR_INTERFACE_ID, IV_VERSION(4,0)))
 	 != NULL)
 	{
 		fprintf(stderr,
 			"Found unexpected interface %s@4.0  [%s]\n",
-			BAR_INTERFACE_NAME,
+			BAR_INTERFACE_ID,
 			gi->name);
 	}
 

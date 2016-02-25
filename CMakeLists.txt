@@ -28,7 +28,7 @@ set(EXTIT_COMPILE_SAMPLES FALSE CACHE BOOL "Compile Sample Programs")
 set(EXTIT_LIB_LOADER ${DEFAULT_LIB_LOADER} CACHE STRING "Library Loader (dl|win32|dylib)")
 set(EXTIT_WCHAR ${DEFAULT_WCHAR} CACHE BOOL "Enable wchar_t support")
 set(EXTIT_HAVE_DLFUNC ${DEFAULT_HAVE_DLFUNC} CACHE BOOL "Platform supports dlfunc()")
-set(EXTIT_COMPAT TRUE CACHE BOOL "Enable Backward Compatibility")
+set(EXTIT_COMPAT FALSE CACHE BOOL "Enable Backward Compatibility")
 
 
 include_directories(BEFORE src/include)
@@ -112,12 +112,12 @@ if(EXTIT_COMPAT)
 endif()
 
 
-add_library(iv_repository ${IV_REPOSITORY_SOURCE_FILES})
+add_library(iv_repository ${IV_REPOSITORY_SOURCE_FILES} ${IV_HEADER_FILES})
 
-add_library(extit ${EXTIT_SOURCE_FILES})
+add_library(extit ${EXTIT_SOURCE_FILES} ${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
 
 if(EXTIT_COMPAT)
-	add_library(extit_ir ${EXTIT_IR_SOURCE_FILES})
+	add_library(extit_ir ${EXTIT_IR_SOURCE_FILES} ${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
 	target_link_libraries(extit_ir iv_repository)
 endif()
 
@@ -205,7 +205,8 @@ if(EXTIT_COMPILE_SAMPLES)
 	#
 	add_executable(
 		sample_iv_repository
-			sample/iv_repository/repository.c)
+			sample/iv_repository/repository.c
+			${IV_HEADER_FILES})
 
 	target_link_libraries(sample_iv_repository iv_repository)
 
@@ -216,7 +217,8 @@ if(EXTIT_COMPILE_SAMPLES)
 	add_executable(
 		sample_multiver_server_1_0
 			sample/multiver/persistence_impl.c
-			sample/multiver/multiver_server.c)
+			sample/multiver/multiver_server.c
+			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
 
 	set_target_properties(
 		sample_multiver_server_1_0 PROPERTIES
@@ -229,7 +231,8 @@ if(EXTIT_COMPILE_SAMPLES)
 	add_executable(
 		sample_multiver_server_1_1
 			sample/multiver/persistence_impl.c
-			sample/multiver/multiver_server.c)
+			sample/multiver/multiver_server.c
+			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
 
 	set_target_properties(
 		sample_multiver_server_1_1 PROPERTIES
@@ -242,7 +245,8 @@ if(EXTIT_COMPILE_SAMPLES)
 	add_executable(
 		sample_multiver_server_1_2
 			sample/multiver/persistence_impl.c
-			sample/multiver/multiver_server.c)
+			sample/multiver/multiver_server.c
+			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
 
 	set_target_properties(
 		sample_multiver_server_1_2 PROPERTIES
@@ -254,7 +258,8 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	add_library(
 		sample_multiver_plugin_1_0 SHARED
-			sample/multiver/multiver_plugin.c)
+			sample/multiver/multiver_plugin.c
+			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
 
 	set_target_properties(
 		sample_multiver_plugin_1_0 PROPERTIES
@@ -265,7 +270,8 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	add_library(
 		sample_multiver_plugin_1_1 SHARED
-			sample/multiver/multiver_plugin.c)
+			sample/multiver/multiver_plugin.c
+			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
 
 	set_target_properties(
 		sample_multiver_plugin_1_1 PROPERTIES
@@ -276,7 +282,8 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	add_library(
 		sample_multiver_plugin_1_2 SHARED
-			sample/multiver/multiver_plugin.c)
+			sample/multiver/multiver_plugin.c
+			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
 
 	set_target_properties(
 		sample_multiver_plugin_1_2 PROPERTIES
@@ -289,14 +296,16 @@ if(EXTIT_COMPILE_SAMPLES)
 	#
 	add_executable(
 		sample_scan_server
-			sample/scan/recipe_server.c)
+			sample/scan/recipe_server.c
+			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
 
 	target_link_libraries(sample_scan_server extit)
 
 
 	add_library(
 		sample_scan_plugin_pie SHARED
-			sample/scan/recipe_pie.c)
+			sample/scan/recipe_pie.c
+			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
 
 	set_target_properties(
 		sample_scan_plugin_pie PROPERTIES
@@ -306,7 +315,8 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	add_library(
 		sample_scan_plugin_tea SHARED
-			sample/scan/recipe_tea.c)
+			sample/scan/recipe_tea.c
+			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
 
 	set_target_properties(
 		sample_scan_plugin_tea PROPERTIES
@@ -316,7 +326,8 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	add_library(
 		sample_scan_plugin_tacos SHARED
-			sample/scan/recipe_tacos.c)
+			sample/scan/recipe_tacos.c
+			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
 
 	set_target_properties(
 		sample_scan_plugin_tacos PROPERTIES
@@ -329,12 +340,14 @@ if(EXTIT_COMPILE_SAMPLES)
 	#
 	add_executable(
 		sample_simple_server
-			sample/simple/simple_server.c)
+			sample/simple/simple_server.c
+			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
 
 	target_link_libraries(sample_simple_server extit)
 
 	add_library(
 		sample_simple_plugin SHARED
-			sample/simple/simple_plugin.c)
+			sample/simple/simple_plugin.c
+			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
 endif(EXTIT_COMPILE_SAMPLES)
 

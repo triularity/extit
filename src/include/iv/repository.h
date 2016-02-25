@@ -3,7 +3,7 @@
  *
  * Interface Versioning Repository API.
  *
- * Copyright (c) 2015, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2015, 2016, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -30,14 +30,18 @@ typedef struct _iv_repository	iv_repository_t;
 
 
 /*
- * Status Codes (v1.0)
+ * Status Codes
  */
-#define	IV_REPOSITORY_STATUS_OK			0
-#define	IV_REPOSITORY_STATUS_FAIL		1
-#define	IV_REPOSITORY_STATUS_NOMEM		2
-#define	IV_REPOSITORY_STATUS_INVALID		3
-
-typedef	unsigned int		iv_repository_status_t;
+typedef enum _iv_repository_status
+{
+	/*
+	 * v1.0
+	 */
+	IV_REPOSITORY_STATUS_OK			= 0,
+	IV_REPOSITORY_STATUS_FAIL		= 1,
+	IV_REPOSITORY_STATUS_NOMEM		= 2,
+	IV_REPOSITORY_STATUS_INVALID		= 3
+} iv_repository_status_t;
 
 
 /*

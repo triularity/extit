@@ -3,7 +3,7 @@
  *
  * Platform neutral container library implementation.
  *
- * Copyright (c) 2014, 2015, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2014-2016, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -622,6 +622,7 @@ extit_plugin_destroy
 }
 
 
+#ifdef	EXTIT_COMPAT
 EXTIT_EXPORT
 void *
 EXTIT_DECL
@@ -666,6 +667,7 @@ extit_plugin_getInterface
 
 	return (status == EXTIT_STATUS_OK) ? params.interface_ptr : NULL;
 }
+#endif	/* EXTIT_COMPAT */
 
 
 EXTIT_EXPORT
@@ -715,6 +717,7 @@ extit_plugin_ping
 }
 
 
+#ifdef	EXTIT_COMPAT
 EXTIT_EXPORT
 iv_version_t
 EXTIT_DECL
@@ -776,6 +779,7 @@ extit_plugin_queryInterface
 
 	return params.version;
 }
+#endif	/* EXTIT_COMPAT */
 
 
 EXTIT_EXPORT

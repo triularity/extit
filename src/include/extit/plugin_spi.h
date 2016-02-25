@@ -3,7 +3,7 @@
  *
  * Plugin SPI.
  *
- * Copyright (c) 2014, 2015, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2014-2016, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -18,18 +18,28 @@ extern "C" {
 #endif
 
 /*
- * Plugin SPI Commands (v1.0)
+ * Plugin SPI Commands
  */
-#define	EXTIT_SPI_CMD_PROBE		1
-#define	EXTIT_SPI_CMD_CREATE		2
-#define	EXTIT_SPI_CMD_ACTIVATE		3
-#define	EXTIT_SPI_CMD_DEACTIVATE	4
-#define	EXTIT_SPI_CMD_DESTROY		5
-#define	EXTIT_SPI_CMD_PING		6
-#define	EXTIT_SPI_CMD_GET_INTERFACE	7
-#define	EXTIT_SPI_CMD_QUERY_INTERFACE	8
+typedef enum _extit_spi_command
+{
+	/*
+	 * v1.0
+	 */
+	EXTIT_SPI_CMD_PROBE		= 1,
+	EXTIT_SPI_CMD_CREATE		= 2,
+	EXTIT_SPI_CMD_ACTIVATE		= 3,
+	EXTIT_SPI_CMD_DEACTIVATE	= 4,
+	EXTIT_SPI_CMD_DESTROY		= 5,
+	EXTIT_SPI_CMD_PING		= 6,
 
-#define	EXTIT_SPI_CMD_CUSTOM_BASE	32768
+#ifdef	EXTIT_COMPAT
+	EXTIT_SPI_CMD_GET_INTERFACE	= 7,
+	EXTIT_SPI_CMD_QUERY_INTERFACE	= 8,
+#endif	/* EXTIT_COMPAT */
+
+	EXTIT_SPI_CMD_CUSTOM_BASE	= 0x8000
+} extit_spi_command_t;
+
 
 /*
  * EXTIT_SPI_CMD_CREATE Parameter (v1.0)
@@ -71,6 +81,8 @@ typedef struct _extit_spi_param_ping_1_0
 	void *				spi_ctx;		/* IN */
 } extit_spi_param_ping_1_0_t;
 
+
+#ifdef	EXTIT_COMPAT
 /*
  * EXTIT_SPI_CMD_GET_INTERFACE Parameter (v1.0)
  */
@@ -92,6 +104,7 @@ typedef	struct _extit_spi_param_query_interface_1_0
 	iv_version_t			base_version;		/* IN */
 	iv_version_t			version;		/* OUT */
 } extit_spi_param_query_interface_1_0_t;
+#endif	/* EXTIT_COMPAT */
 
 
 /*
@@ -102,7 +115,7 @@ typedef extit_status_t	(EXTIT_DECL *extit_spi_handler_t)
 					iv_version_t		api_version,
 					const extit_container_t *
 								container,
-					unsigned int		cmd,
+					extit_spi_command_t	cmd,
 					void *			param,
 					unsigned int		flags
 				);
@@ -155,11 +168,15 @@ typedef struct _extit_spi_descriptor_1_0
 
 #define	extit_spi_param_ping_t	extit_spi_param_ping_1_0_t
 
+
+#ifdef	EXTIT_COMPAT
 #define	extit_spi_param_get_interface_t \
 				extit_spi_param_get_interface_1_0_t
 
 #define	_extit_spi_param_query_interface \
 				_extit_spi_param_query_interface_1_0
+#endif	/* EXTIT_COMPAT */
+
 
 #define	extit_spi_param_query_interface_t \
 				extit_spi_param_query_interface_1_0_t

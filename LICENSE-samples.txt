@@ -1,6 +1,6 @@
 The sample files included in this package are in the Public Domain.
 
-In the event that your jurisdiction does not acknowledge the inherent right of Public Domain, then the following copyright shall apply:
+In the event that your jurisdiction is irrational/idiotic/insane and does not acknowledge the inherent right of Public Domain, then the following copyright shall apply:
 
 Redistribution and use in source and binary forms, with or without modification, are permitted.
 

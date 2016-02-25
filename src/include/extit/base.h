@@ -3,7 +3,7 @@
  *
  * ExtIt base declarations.
  *
- * Copyright (c) 2014, 2015, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2014-2016, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -13,11 +13,11 @@
 #include <iv/base.h>
 
 /*
- * ExtIt Library Version (v0.4.0)
+ * ExtIt Library Version (v0.4.1)
  */
 #define	EXTIT_LIB_VERSION_MAJOR		0
 #define	EXTIT_LIB_VERSION_MINOR		4
-#define	EXTIT_LIB_VERSION_PATCH		0
+#define	EXTIT_LIB_VERSION_PATCH		1
 #define	EXTIT_LIB_VERSION		((EXTIT_LIB_VERSION_MAJOR << 16)|(EXTIT_LIB_VERSION_MINOR<<8)|EXTIT_LIB_VERSION_PATCH)
 
 
@@ -62,16 +62,17 @@ typedef	iv_version_t		extit_iv_t;
 /*
  * Status Codes (v1.0)
  */
-#define	EXTIT_STATUS_OK			0
-#define	EXTIT_STATUS_FAIL		1
-#define	EXTIT_STATUS_NOMEM		2
-#define	EXTIT_STATUS_INVALID		3
-#define	EXTIT_STATUS_UNSUPPORTED	4
-#define	EXTIT_STATUS_BUSY		5
+typedef enum _extit_status
+{
+	EXTIT_STATUS_OK			= 0,
+	EXTIT_STATUS_FAIL		= 1,
+	EXTIT_STATUS_NOMEM		= 2,
+	EXTIT_STATUS_INVALID		= 3,
+	EXTIT_STATUS_UNSUPPORTED	= 4,
+	EXTIT_STATUS_BUSY		= 5,
 
-#define	EXTIT_STATUS_CUSTOM_MASK	0x8000
-
-typedef	unsigned int		extit_status_t;
+	EXTIT_STATUS_CUSTOM_MASK	= 0x8000
+} extit_status_t;
 
 
 /*
