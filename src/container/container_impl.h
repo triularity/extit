@@ -3,7 +3,7 @@
  *
  * Container API implementation.
  *
- * Copyright (c) 2014, 2015, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2014-2016, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -47,6 +47,12 @@ struct _extit_plugin
 	void *					spi_ctx;
 	unsigned int				state;
 };
+
+
+EXTIT_EXPORT
+extit_status_t		EXTIT_DECL
+			_extit_module_unload(
+				extit_module_t *module);
 
 #ifdef	__cplusplus
 }

@@ -3,7 +3,7 @@
  *
  * Interface Repository implementation.
  *
- * Copyright (c) 2014, 2015, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2014-2016, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -88,6 +88,9 @@ ivr_to_extit_status(iv_repository_status_t status)
 
 		case IV_REPOSITORY_STATUS_OK:
 			return EXTIT_STATUS_OK;
+
+		case IV_REPOSITORY_STATUS_NOTFOUND:
+			return EXTIT_STATUS_NOTFOUND;
 
 		default:
 			return EXTIT_STATUS_FAIL;

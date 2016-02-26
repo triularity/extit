@@ -3,18 +3,22 @@
  *
  * Interface Versioning base.
  *
- * Copyright (c) 2015, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2015, 2016, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
 #ifndef	__iv__base_h
 #define	__iv__base_h
 
+#ifdef	__cplusplus
+extern "C" {
+#endif
+
 /*
- * Library version (v0.1.0)
+ * Library version (v0.2.0)
  */
 #define	IV_LIB_VERSION_MAJOR		0
-#define	IV_LIB_VERSION_MINOR		1
+#define	IV_LIB_VERSION_MINOR		2
 #define	IV_LIB_VERSION_PATCH		0
 #define	IV_LIB_VERSION			((IV_LIB_VERSION_MAJOR << 16)|(IV_LIB_VERSION_MINOR<<8)|IV_LIB_VERSION_PATCH)
 
@@ -23,6 +27,16 @@
  * Interface Version
  */
 typedef	unsigned int		iv_version_t;
+
+/*
+ * IV boolean
+ */
+typedef	enum _iv_bool
+{
+	IV_FALSE = 0,
+	IV_TRUE = 1
+} iv_bool_t;
+
 
 /*
  * Create an interface version
@@ -69,6 +83,11 @@ typedef	unsigned int		iv_version_t;
 
 #ifndef	IV_DECL_VARGS
 #define	IV_DECL_VARGS		/* __cdecl */
+#endif
+
+
+#ifdef	__cplusplus
+}
 #endif
 
 #endif	/* !__iv__base_h */

@@ -9,44 +9,38 @@
 #include <string.h>
 
 #include <iv/base.h>
+#include <iv/util.h>
 #include <extit/base.h>
 #include <extit/plugin_spi.h>
 
 #include "recipe.h"
 
 
-typedef struct _pie_env
+typedef struct _plugin_ctx
 {
 	/*
 	 * Some hypothetical state information needed for making pie
 	 */
 	unsigned int	stage;
 	unsigned int	time_passed;
-} pie_env_t;
+
+	recipe_t	recipe;
+} plugin_ctx_t;
 
 
 static
 void
 EXTIT_DECL
-prepare_pie(void *ctx)
+prepare_pie(recipe_t *recipe)
 {
-	pie_env_t *	pie_env;
+	plugin_ctx_t *	ctx;
 
 
-	pie_env = (pie_env_t *) ctx;
-	pie_env->stage = 0;
+	ctx = (plugin_ctx_t *) recipe->_priv;
+	ctx->stage = 0;
 
 	fprintf(stderr, "Making some pie...\n");
 }
-
-
-static recipe_t	pie_recipe =
-{
-	"Pecan Pie",
-	15,
-	65,
-	prepare_pie
-};
 
 
 static
@@ -61,7 +55,7 @@ plugin_handler
 	unsigned int flags
 )
 {
-	pie_env_t *				pie_env;
+	plugin_ctx_t *				ctx;
 	extit_spi_param_create_t *		param_create;
 	extit_spi_param_destroy_t *		param_destroy;
 	extit_spi_param_get_interface_t *	param_get_interface;
@@ -82,10 +76,19 @@ plugin_handler
 		case EXTIT_SPI_CMD_CREATE:
 			param_create = (extit_spi_param_create_t *) param;
 
-			if((pie_env = calloc(1, sizeof(pie_env_t))) == NULL)
+			if((ctx = calloc(1, sizeof(plugin_ctx_t))) == NULL)
 				return EXTIT_STATUS_NOMEM;
 
-			param_create->spi_ctx = pie_env;
+			ctx->stage = 0;
+			ctx->time_passed = 0;
+
+			ctx->recipe._priv = ctx;
+			ctx->recipe.name = "Pecan Pie";
+			ctx->recipe.prep_time = 15;
+			ctx->recipe.total_time = 65;
+			ctx->recipe.prepare = prepare_pie;
+
+			param_create->spi_ctx = ctx;
 			return EXTIT_STATUS_OK;
 
 		case EXTIT_SPI_CMD_DESTROY:
@@ -101,19 +104,17 @@ plugin_handler
 			/*
 			 * Recipe is the only supported interface by this
 			 */
-			if(strcmp(param_get_interface->name,
-			 RECIPE_INTERFACE_NAME) != 0)
+			if(!iv_matches(RECIPE_INTERFACE_ID,
+			 RECIPE_INTERFACE_VERSION,
+			 param_get_interface->id,
+			 param_get_interface->version))
 			{
-				return EXTIT_STATUS_UNSUPPORTED;
+				return EXTIT_STATUS_NOTFOUND;
 			}
 
-			if(param_get_interface->version
-			 != RECIPE_INTERFACE_VERSION)
-			{
-				return EXTIT_STATUS_UNSUPPORTED;
-			}
+			ctx = (plugin_ctx_t *) param_get_interface->spi_ctx;
+			param_get_interface->interface_ptr = &ctx->recipe;
 
-			param_get_interface->interface_ptr = &pie_recipe;
 			return EXTIT_STATUS_OK;
 
 		case EXTIT_SPI_CMD_QUERY_INTERFACE:
@@ -123,22 +124,12 @@ plugin_handler
 			/*
 			 * Recipe is the only supported interface by this
 			 */
-			if(strcmp(param_query_interface->name,
-			 RECIPE_INTERFACE_NAME) != 0)
+			if(!iv_matches(RECIPE_INTERFACE_ID,
+			 RECIPE_INTERFACE_VERSION,
+			 param_query_interface->id,
+			 param_query_interface->base_version))
 			{
-				return EXTIT_STATUS_UNSUPPORTED;
-			}
-
-			if(IV_VERSION_MAJOR(param_query_interface->base_version)
-			 != IV_VERSION_MAJOR(RECIPE_INTERFACE_VERSION))
-			{
-				return EXTIT_STATUS_UNSUPPORTED;
-			}
-
-			if(param_query_interface->base_version
-			 > RECIPE_INTERFACE_VERSION)
-			{
-				return EXTIT_STATUS_UNSUPPORTED;
+				return EXTIT_STATUS_NOTFOUND;
 			}
 
 			param_query_interface->version =
@@ -147,7 +138,7 @@ plugin_handler
 			return EXTIT_STATUS_OK;
 
 		default:
-			return EXTIT_STATUS_UNSUPPORTED;
+			return EXTIT_STATUS_NOTIMPLEMENTED;
 	}
 }
 

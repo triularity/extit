@@ -14,16 +14,19 @@
 extern "C" {
 #endif
 
-#define	RECIPE_INTERFACE_NAME		"recipe"
+#define	RECIPE_INTERFACE_ID		"recipe"
 #define	RECIPE_INTERFACE_VERSION	IV_VERSION(1,0)
 
-typedef struct _recipe
+typedef struct _recipe	recipe_t;
+
+struct _recipe
 {
+	void *		_priv;
 	const char *	name;
 	unsigned int	prep_time;
 	unsigned int	total_time;
-	void 		(EXTIT_DECL *prepare)(void *ctx);
-} recipe_t;
+	void 		(EXTIT_DECL *prepare)(recipe_t *recipe);
+};
 
 #ifdef	__cplusplus
 }

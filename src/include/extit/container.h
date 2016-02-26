@@ -268,6 +268,7 @@ extit_status_t		EXTIT_DECL
 			extit_module_release(
 				extit_module_t *module);
 
+
 EXTIT_EXPORT
 extit_status_t		EXTIT_DECL
 			extit_plugin_activate(
@@ -292,6 +293,7 @@ EXTIT_EXPORT
 unsigned int		EXTIT_DECL
 			extit_plugin_getFlags(
 				extit_plugin_t *plugin);
+
 EXTIT_EXPORT
 void *			EXTIT_DECL
 			extit_plugin_getInterface(

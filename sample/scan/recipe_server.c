@@ -9,6 +9,7 @@
 #include <string.h>
 
 #include <iv/base.h>
+#include <iv/util.h>
 #include <extit/container.h>
 #include <extit/platform.h>
 
@@ -169,17 +170,17 @@ prepare_recipe(extit_module_t *module)
 	}
 
 	recipe = (recipe_t *) extit_plugin_getInterface(
-		plugin, RECIPE_INTERFACE_NAME, RECIPE_INTERFACE_VERSION);
+		plugin, RECIPE_INTERFACE_ID, RECIPE_INTERFACE_VERSION);
 
 	if(recipe != NULL)
 	{
-		recipe->prepare(extit_plugin_getContext(plugin));
+		recipe->prepare(recipe);
 	}
 	else
 	{
 		fprintf(stderr,
 		"Unable to find plugin interface %s:%u.%u in module %s (%s)\n",
-			RECIPE_INTERFACE_NAME,
+			RECIPE_INTERFACE_ID,
 			IV_VERSION_MAJOR(RECIPE_INTERFACE_VERSION),
 			IV_VERSION_MINOR(RECIPE_INTERFACE_VERSION),
 			extit_module_getName(module),

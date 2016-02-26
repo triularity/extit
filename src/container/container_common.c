@@ -28,7 +28,7 @@ EXTIT_DECL
 extit_container_get_interface_default
 (
 	const extit_container_t *container,
-	const char *name,
+	const char *id,
 	iv_version_t version
 )
 {
@@ -55,7 +55,7 @@ EXTIT_DECL
 extit_container_query_interface_default
 (
 	const extit_container_t *container,
-	const char *name,
+	const char *id,
 	iv_version_t base_version
 )
 {
@@ -414,6 +414,77 @@ extit_module_setFlags
 EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
+_extit_module_unload
+(
+	extit_module_t *module
+)
+{
+	unsigned int			flags;
+	extit_spi_descriptor_1_0_t *	descriptor;
+	extit_status_t			status;
+
+
+	flags = module->flags;
+
+#ifdef	EXTIT_DEBUG
+	if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_TRACE)
+	{
+		fprintf(stderr,
+			"[extit:module] Unloading module, ID: %s.\n",
+			extit_module_getId(module));
+	}
+#endif
+
+	if(module->refcount != 0)
+	{
+#ifdef	EXTIT_DEBUG
+		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
+		{
+			fprintf(stderr,
+			 "[extit:module] Module is busy, refcount = %u.\n",
+				module->refcount);
+		}
+#endif
+
+		return EXTIT_STATUS_BUSY;
+	}
+
+#ifdef	EXTIT_PARANOID
+	if(IV_VERSION_MAJOR(module->api_version) != 1)
+		return EXTIT_STATUS_UNSUPPORTED;
+#endif
+
+	descriptor = (extit_spi_descriptor_1_0_t *) module->descriptor;
+
+	status = descriptor->handler(
+			module->api_version,
+			module->container,
+			EXTIT_SPI_CMD_UNLOAD,
+			NULL,
+			flags);
+
+	if(status == EXTIT_STATUS_NOTIMPLEMENTED)
+		status = EXTIT_STATUS_OK;
+
+#ifdef	EXTIT_DEBUG
+	if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
+	{
+		if(status != EXTIT_STATUS_OK)
+		{
+			fprintf(stderr,
+ 				"[extit:module] Unload failed, status = %u.\n",
+				status);
+		}
+	}
+#endif	/* EXTIT_DEBUG */
+
+	return status;
+}
+
+
+EXTIT_EXPORT
+extit_status_t
+EXTIT_DECL
 extit_plugin_activate
 (
 	extit_plugin_t *plugin
@@ -622,14 +693,13 @@ extit_plugin_destroy
 }
 
 
-#ifdef	EXTIT_COMPAT
 EXTIT_EXPORT
 void *
 EXTIT_DECL
 extit_plugin_getInterface
 (
 	extit_plugin_t *plugin,
-	const char *name,
+	const char *id,
 	iv_version_t version
 )
 {
@@ -651,7 +721,7 @@ extit_plugin_getInterface
 	descriptor = (extit_spi_descriptor_1_0_t *) module->descriptor;
 
 	params.spi_ctx = plugin->spi_ctx;
-	params.name = name;
+	params.id = id;
 	params.version = version;
 
 #ifdef	EXTIT_PARANOID
@@ -667,7 +737,6 @@ extit_plugin_getInterface
 
 	return (status == EXTIT_STATUS_OK) ? params.interface_ptr : NULL;
 }
-#endif	/* EXTIT_COMPAT */
 
 
 EXTIT_EXPORT
@@ -717,14 +786,13 @@ extit_plugin_ping
 }
 
 
-#ifdef	EXTIT_COMPAT
 EXTIT_EXPORT
 iv_version_t
 EXTIT_DECL
 extit_plugin_queryInterface
 (
 	extit_plugin_t *plugin,
-	const char *name,
+	const char *id,
 	iv_version_t base_version
 )
 {
@@ -746,7 +814,7 @@ extit_plugin_queryInterface
 	descriptor = (extit_spi_descriptor_1_0_t *) module->descriptor;
 
 	params.spi_ctx = plugin->spi_ctx;
-	params.name = name;
+	params.id = id;
 	params.base_version = base_version;
 
 #ifdef	EXTIT_PARANOID
@@ -766,7 +834,7 @@ extit_plugin_queryInterface
 		{
 			fprintf(stderr,
 	"Error querying interface %s:%u.%u for plugin %s:%u, status = %u.",
-				name,
+				id,
 				IV_VERSION_MAJOR(base_version),
 				IV_VERSION_MINOR(base_version),
 				descriptor->id,
@@ -779,7 +847,6 @@ extit_plugin_queryInterface
 
 	return params.version;
 }
-#endif	/* EXTIT_COMPAT */
 
 
 EXTIT_EXPORT

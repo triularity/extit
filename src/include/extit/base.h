@@ -64,14 +64,16 @@ typedef	iv_version_t		extit_iv_t;
  */
 typedef enum _extit_status
 {
-	EXTIT_STATUS_OK			= 0,
-	EXTIT_STATUS_FAIL		= 1,
-	EXTIT_STATUS_NOMEM		= 2,
-	EXTIT_STATUS_INVALID		= 3,
-	EXTIT_STATUS_UNSUPPORTED	= 4,
-	EXTIT_STATUS_BUSY		= 5,
+	EXTIT_STATUS_OK			= 0,	/* Success */
+	EXTIT_STATUS_FAIL		= 1,	/* General error */
+	EXTIT_STATUS_NOMEM		= 2,	/* Memory allocation failed */
+	EXTIT_STATUS_INVALID		= 3,	/* Invalid parameter/state */
+	EXTIT_STATUS_UNSUPPORTED	= 4,	/* API/version not supported */
+	EXTIT_STATUS_BUSY		= 5,	/* In use */
+	EXTIT_STATUS_NOTIMPLEMENTED	= 6,	/* Function not implemented */
+	EXTIT_STATUS_NOTFOUND		= 7,	/* Result not found */
 
-	EXTIT_STATUS_CUSTOM_MASK	= 0x8000
+	EXTIT_STATUS_CUSTOM_BASE	= 0x8000
 } extit_status_t;
 
 

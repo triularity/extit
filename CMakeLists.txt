@@ -36,13 +36,16 @@ include_directories(BEFORE src/include)
 
 set(IV_HEADER_FILES 
 	src/include/iv/base.h
-	src/include/iv/repository.h)
+	src/include/iv/repository.h
+	src/include/iv/util.h)
 
 set(EXTIT_HEADER_FILES 
 	src/include/extit/base.h
 	src/include/extit/container.h
 	src/include/extit/platform.h
 	src/include/extit/plugin_spi.h)
+
+set(IV_SOURCE_FILES src/iv/util.c)
 
 set(IV_REPOSITORY_SOURCE_FILES src/iv/repository.c)
 
@@ -111,6 +114,12 @@ if(EXTIT_COMPAT)
 	add_definitions("-DEXTIT_COMPAT")
 endif()
 
+
+add_library(iv ${IV_SOURCE_FILES} ${IV_HEADER_FILES})
+
+set_target_properties(
+	iv PROPERTIES
+		POSITION_INDEPENDENT_CODE ON)
 
 add_library(iv_repository ${IV_REPOSITORY_SOURCE_FILES} ${IV_HEADER_FILES})
 
@@ -307,6 +316,8 @@ if(EXTIT_COMPILE_SAMPLES)
 			sample/scan/recipe_pie.c
 			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
 
+	target_link_libraries(sample_scan_plugin_pie iv)
+
 	set_target_properties(
 		sample_scan_plugin_pie PROPERTIES
 			PREFIX ""
@@ -318,6 +329,8 @@ if(EXTIT_COMPILE_SAMPLES)
 			sample/scan/recipe_tea.c
 			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
 
+	target_link_libraries(sample_scan_plugin_tea iv)
+
 	set_target_properties(
 		sample_scan_plugin_tea PROPERTIES
 			PREFIX ""
@@ -328,6 +341,8 @@ if(EXTIT_COMPILE_SAMPLES)
 		sample_scan_plugin_tacos SHARED
 			sample/scan/recipe_tacos.c
 			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
+
+	target_link_libraries(sample_scan_plugin_tacos iv)
 
 	set_target_properties(
 		sample_scan_plugin_tacos PROPERTIES

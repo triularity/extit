@@ -31,11 +31,9 @@ typedef enum _extit_spi_command
 	EXTIT_SPI_CMD_DEACTIVATE	= 4,
 	EXTIT_SPI_CMD_DESTROY		= 5,
 	EXTIT_SPI_CMD_PING		= 6,
-
-#ifdef	EXTIT_COMPAT
 	EXTIT_SPI_CMD_GET_INTERFACE	= 7,
 	EXTIT_SPI_CMD_QUERY_INTERFACE	= 8,
-#endif	/* EXTIT_COMPAT */
+	EXTIT_SPI_CMD_UNLOAD		= 9,
 
 	EXTIT_SPI_CMD_CUSTOM_BASE	= 0x8000
 } extit_spi_command_t;
@@ -82,14 +80,13 @@ typedef struct _extit_spi_param_ping_1_0
 } extit_spi_param_ping_1_0_t;
 
 
-#ifdef	EXTIT_COMPAT
 /*
  * EXTIT_SPI_CMD_GET_INTERFACE Parameter (v1.0)
  */
 typedef struct _extit_spi_param_get_interface_1_0
 {
 	void *				spi_ctx;		/* IN */
-	const char *			name;			/* IN */
+	const char *			id;			/* IN */
 	iv_version_t			version;		/* IN */
 	void *				interface_ptr;		/* OUT */
 } extit_spi_param_get_interface_1_0_t;
@@ -100,11 +97,10 @@ typedef struct _extit_spi_param_get_interface_1_0
 typedef	struct _extit_spi_param_query_interface_1_0
 {
 	void *				spi_ctx;		/* IN */
-	const char *			name;			/* IN */
+	const char *			id;			/* IN */
 	iv_version_t			base_version;		/* IN */
 	iv_version_t			version;		/* OUT */
 } extit_spi_param_query_interface_1_0_t;
-#endif	/* EXTIT_COMPAT */
 
 
 /*
@@ -168,15 +164,11 @@ typedef struct _extit_spi_descriptor_1_0
 
 #define	extit_spi_param_ping_t	extit_spi_param_ping_1_0_t
 
-
-#ifdef	EXTIT_COMPAT
 #define	extit_spi_param_get_interface_t \
 				extit_spi_param_get_interface_1_0_t
 
 #define	_extit_spi_param_query_interface \
 				_extit_spi_param_query_interface_1_0
-#endif	/* EXTIT_COMPAT */
-
 
 #define	extit_spi_param_query_interface_t \
 				extit_spi_param_query_interface_1_0_t

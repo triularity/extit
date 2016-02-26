@@ -3,7 +3,7 @@
  *
  * [lib]dl specific implementations of container library.
  *
- * Copyright (c) 2014, 2015, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2014-2016, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -31,7 +31,7 @@
 #define	EXTIT_PATH_MAX	1024
 #endif
 
-#ifdef	__BSD__
+#if	defined(__FreeBSD__) || defined(__NetBSD__) || defined(__OpenBSD__) || defined(__bsdi__) || defined(__DragonFly__)
 #ifndef	_DIRENT_HAVE_D_TYPE
 #define	_DIRENT_HAVE_D_TYPE
 #endif
@@ -39,7 +39,7 @@
 #ifndef	_DIRENT_HAVE_D_NAMLEN
 #define	_DIRENT_HAVE_D_NAMLEN
 #endif
-#endif	/* __BSD__ */
+#endif	/* __FreeBSD__ || __NetBSD__ || __OpenBSD__ || __bsdi__ || __DragonFly__*/
 
 
 EXTIT_EXPORT
@@ -210,33 +210,16 @@ extit_module_release(
 	extit_module_t *module
 )
 {
+	extit_status_t		status;
 	unsigned int		flags;
 
 
+	status = _extit_module_unload(module);
+
+	if(status != EXTIT_STATUS_OK)
+		return status;
+
 	flags = module->flags;
-
-#ifdef	EXTIT_DEBUG
-	if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_TRACE)
-	{
-		fprintf(stderr,
-			"[extit:module] Releasing module, ID: %s.\n",
-			extit_module_getId(module));
-	}
-#endif
-
-	if(module->refcount != 0)
-	{
-#ifdef	EXTIT_DEBUG
-		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
-		{
-			fprintf(stderr,
-			 "[extit:module] Module is busy, refcount = %u.\n",
-				module->refcount);
-		}
-#endif
-
-		return EXTIT_STATUS_BUSY;
-	}
 
 	if(module->handle != NULL)
 	{

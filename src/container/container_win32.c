@@ -3,7 +3,7 @@
  *
  * Windows specific implementations of container library.
  *
- * Copyright (c) 2014, 2015, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2014-2016, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -277,33 +277,16 @@ extit_module_release(
 	extit_module_t *module
 )
 {
+	extit_status_t		status;
 	unsigned int		flags;
 
 
+	status = _extit_module_unload(module);
+
+	if(status != EXTIT_STATUS_OK)
+		return status;
+
 	flags = module->flags;
-
-#ifdef	EXTIT_DEBUG
-	if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_TRACE)
-	{
-		fprintf(stderr,
-			"[extit:module] Releasing module, ID: %s.\n",
-			extit_module_getId(module));
-	}
-#endif
-
-	if(module->refcount != 0)
-	{
-#ifdef	EXTIT_DEBUG
-		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
-		{
-			fprintf(stderr,
-			 "[extit:module] Module is busy, refcount = %u.\n",
-				module->refcount);
-		}
-#endif
-
-		return EXTIT_STATUS_BUSY;
-	}
 
 	if(!FreeLibrary(module->handle))
 	{

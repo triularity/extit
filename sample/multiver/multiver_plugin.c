@@ -78,7 +78,7 @@ plugin_handler
 			return EXTIT_STATUS_OK;
 
 		default:
-			return EXTIT_STATUS_UNSUPPORTED;
+			return EXTIT_STATUS_NOTIMPLEMENTED;
 	}
 }
 
