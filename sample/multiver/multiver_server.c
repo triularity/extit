@@ -72,7 +72,7 @@ main(int argc, char **argv)
 
 	if(iv_repository_set(ir, PERSISTENCE_INTERFACE_ID,
 	 PERSISTENCE_INTERFACE_TARGET, &persistence_interface, NULL)
-	 != EXTIT_STATUS_OK)
+	 != IV_REPOSITORY_STATUS_OK)
 	{
 		fprintf(stderr, "Unable to register interface %s@%u.%u\n",
 			PERSISTENCE_INTERFACE_ID,
