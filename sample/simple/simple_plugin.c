@@ -5,6 +5,7 @@
  */
 
 #include <iv/base.h>
+#include <iv/util.h>
 #include <extit/base.h>
 #include <extit/plugin_spi.h>
 
@@ -27,9 +28,13 @@ plugin_handler
 			/*
 			 * We only need to support v1.0 for what we do
 			 */
-			if(api_version < EXTIT_API_VERSION_1_0)
+			if(!iv_matches(api_version, EXTIT_API_VERSION_1_0))
 				return EXTIT_STATUS_UNSUPPORTED;
 
+			/*
+			 * No need to check api_version for other commands
+			 * since they will only be called if v1.0+ after this
+			 */
 			return EXTIT_STATUS_OK;
 
 		case EXTIT_SPI_CMD_CREATE:
@@ -53,7 +58,7 @@ plugin_handler
 			return EXTIT_STATUS_OK;
 
 		default:
-			return EXTIT_STATUS_UNSUPPORTED;
+			return EXTIT_STATUS_NOTIMPLEMENTED;
 	}
 }
 

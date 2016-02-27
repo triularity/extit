@@ -163,7 +163,19 @@ extit_module_bind
 			NULL,
 			flags);
 
-	if(status != EXTIT_STATUS_OK)
+#ifdef	EXTIT_DEBUG
+	if(status == EXTIT_STATUS_NOTIMPLEMENTED)
+	{
+		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_TRACE)
+		{
+			fprintf(stderr,
+ 				"[extit:module] Probe not implemented\n");
+		}
+	}
+#endif	/* EXTIT_DEBUG */
+
+	if((status != EXTIT_STATUS_OK)
+	 && (status != EXTIT_STATUS_NOTIMPLEMENTED))
 	{
 #ifdef	EXTIT_DEBUG
 		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
@@ -238,7 +250,7 @@ extit_module_createPlugin
 	if(module->refcount >= 0xF0000000)
 	{
 		fprintf(stderr,
-			"Excessive number of instances for plugin %s:%u.",
+			"[extit:module] Excessive number of instances for plugin %s:%u.",
 			descriptor->id,
 			descriptor->id_version);
 
@@ -251,7 +263,7 @@ extit_module_createPlugin
 		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
 		{
 			fprintf(stderr,
-		"Allocation failed creating instance for plugin %s:%u.",
+				"[extit:module] Allocation failed creating instance for plugin %s:%u.",
 				descriptor->id,
 				descriptor->id_version);
 		}
@@ -275,7 +287,7 @@ extit_module_createPlugin
 		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
 		{
 			fprintf(stderr,
-		"Unable to create instance for plugin %s:%u, status = %u.",
+				"[extit:module] Unable to create instance for plugin %s:%u, status = %u.",
 				descriptor->id,
 				descriptor->id_version,
 				status);
@@ -464,7 +476,17 @@ _extit_module_unload
 			flags);
 
 	if(status == EXTIT_STATUS_NOTIMPLEMENTED)
+	{
 		status = EXTIT_STATUS_OK;
+
+#ifdef	EXTIT_DEBUG
+		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_TRACE)
+		{
+			fprintf(stderr,
+ 				"[extit:module] Unload not implemented\n");
+		}
+#endif	/* EXTIT_DEBUG */
+	}
 
 #ifdef	EXTIT_DEBUG
 	if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
@@ -512,7 +534,7 @@ extit_plugin_activate
 		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
 		{
 			fprintf(stderr,
-	"Attempting to activate already active instance for plugin %s:%u.",
+				"[extit:plugin] Attempting to activate already active instance for plugin %s:%u.",
 				descriptor->id,
 				descriptor->id_version);
 		}
@@ -590,7 +612,7 @@ extit_plugin_deactivate
 		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
 		{
 			fprintf(stderr,
-		"Attempting to deactivate inactive instance for plugin %s:%u.",
+				"[extit:plugin] Attempting to deactivate inactive instance for plugin %s:%u.",
 				descriptor->id,
 				descriptor->id_version);
 		}
@@ -643,7 +665,7 @@ extit_plugin_destroy
 	if(module->refcount == 0)
 	{
 		fprintf(stderr,
- "Attempting to destroy an instances for plugin %s:%u, which has no instances.",
+			"[extit:plugin] Attempting to destroy an instance for plugin %s:%u, which has no instances.",
 			descriptor->id,
 			descriptor->id_version);
 
@@ -658,7 +680,7 @@ extit_plugin_destroy
 		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
 		{
 			fprintf(stderr,
-		"Implicitly deactivaing instance for plugin %s:%u on destroy.",
+				"[extit:plugin] Implicitly deactivaing instance for plugin %s:%u on destroy.",
 				descriptor->id,
 				descriptor->id_version);
 		}
@@ -666,7 +688,7 @@ extit_plugin_destroy
 		if(status != EXTIT_STATUS_OK)
 		{
 			fprintf(stderr,
-		"Unable to deactive instance for plugin %s:%u on destroy.",
+				"[extit:plugin] Unable to deactive instance for plugin %s:%u on destroy.",
 				descriptor->id,
 				descriptor->id_version);
 
@@ -763,6 +785,7 @@ extit_plugin_ping
 	extit_module_t *		module;
 	extit_spi_descriptor_1_0_t *	descriptor;
 	extit_spi_param_ping_t		params;
+	extit_status_t			status;
 
 
 	flags = plugin->flags;
@@ -777,12 +800,27 @@ extit_plugin_ping
 
 	params.spi_ctx = plugin->spi_ctx;
 
-	return descriptor->handler(
+	status = descriptor->handler(
 			module->api_version,
 			module->container,
 			EXTIT_SPI_CMD_PING,
 			&params,
 			flags);
+
+	if(status == EXTIT_STATUS_NOTIMPLEMENTED)
+	{
+		status = EXTIT_STATUS_OK;
+
+#ifdef	EXTIT_DEBUG
+		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_TRACE)
+		{
+			fprintf(stderr,
+ 				"[extit:plugin] Ping not implemented\n");
+		}
+#endif	/* EXTIT_DEBUG */
+	}
+
+	return status;
 }
 
 
@@ -833,7 +871,7 @@ extit_plugin_queryInterface
 		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
 		{
 			fprintf(stderr,
-	"Error querying interface %s:%u.%u for plugin %s:%u, status = %u.",
+				"[extit:plugin] Error querying interface %s:%u.%u for plugin %s:%u, status = %u.",
 				id,
 				IV_VERSION_MAJOR(base_version),
 				IV_VERSION_MINOR(base_version),

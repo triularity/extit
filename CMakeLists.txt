@@ -270,6 +270,8 @@ if(EXTIT_COMPILE_SAMPLES)
 			sample/multiver/multiver_plugin.c
 			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
 
+	target_link_libraries(sample_multiver_plugin_1_0 iv)
+
 	set_target_properties(
 		sample_multiver_plugin_1_0 PROPERTIES
 			COMPILE_DEFINITIONS
@@ -282,6 +284,8 @@ if(EXTIT_COMPILE_SAMPLES)
 			sample/multiver/multiver_plugin.c
 			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
 
+	target_link_libraries(sample_multiver_plugin_1_1 iv)
+
 	set_target_properties(
 		sample_multiver_plugin_1_1 PROPERTIES
 			COMPILE_DEFINITIONS
@@ -293,6 +297,8 @@ if(EXTIT_COMPILE_SAMPLES)
 		sample_multiver_plugin_1_2 SHARED
 			sample/multiver/multiver_plugin.c
 			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
+
+	target_link_libraries(sample_multiver_plugin_1_2 iv)
 
 	set_target_properties(
 		sample_multiver_plugin_1_2 PROPERTIES
@@ -365,4 +371,6 @@ if(EXTIT_COMPILE_SAMPLES)
 			sample/simple/simple_plugin.c
 			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
 endif(EXTIT_COMPILE_SAMPLES)
+
+	target_link_libraries(sample_simple_plugin iv)
 

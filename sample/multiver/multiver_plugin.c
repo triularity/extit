@@ -7,6 +7,7 @@
 #include <stdio.h>
 
 #include <iv/base.h>
+#include <iv/util.h>
 #include <extit/base.h>
 #include <extit/plugin_spi.h>
 
@@ -34,7 +35,7 @@ plugin_handler
 			/*
 			 * We only need to support v1.0 for what we do
 			 */
-			if(api_version < EXTIT_API_VERSION_1_0)
+			if(!iv_matches(api_version, EXTIT_API_VERSION_1_0))
 				return EXTIT_STATUS_UNSUPPORTED;
 
 			/*
@@ -42,14 +43,14 @@ plugin_handler
 			 */
 			version = container->query_interface(
 				container, 
-				PERSISTENCE_INTERFACE_NAME,
+				PERSISTENCE_INTERFACE_ID,
 				PERSISTENCE_INTERFACE_TARGET);
 
 			if(version == IV_VERSION_NONE)
 			{
 				fprintf(stderr,
 					"Interface %s@%u.%u required\n",
-					PERSISTENCE_INTERFACE_NAME,
+					PERSISTENCE_INTERFACE_ID,
 					IV_VERSION_MAJOR(PERSISTENCE_INTERFACE_TARGET),
 					IV_VERSION_MINOR(PERSISTENCE_INTERFACE_TARGET));
 
@@ -60,7 +61,7 @@ plugin_handler
 			{
 				fprintf(stderr,
 					"Interface %s@%u.%u required (found %u.%u)\n",
-					PERSISTENCE_INTERFACE_NAME,
+					PERSISTENCE_INTERFACE_ID,
 					IV_VERSION_MAJOR(PERSISTENCE_INTERFACE_TARGET),
 					IV_VERSION_MINOR(PERSISTENCE_INTERFACE_TARGET),
 					IV_VERSION_MAJOR(version),
