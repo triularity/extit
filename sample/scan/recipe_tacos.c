@@ -68,9 +68,13 @@ plugin_handler
 			/*
 			 * We only need to support v1.0 for what we do
 			 */
-			if(api_version < EXTIT_API_VERSION_1_0)
+			if(!iv_matches(api_version, EXTIT_API_VERSION_1_0))
 				return EXTIT_STATUS_UNSUPPORTED;
 
+			/*
+			 * No need to check api_version for other commands
+			 * since they will only be called if v1.0+ after this
+			 */
 			return EXTIT_STATUS_OK;
 
 		case EXTIT_SPI_CMD_CREATE:
@@ -104,9 +108,13 @@ plugin_handler
 			/*
 			 * Recipe is the only supported interface by this
 			 */
-			if(!iv_matches(RECIPE_INTERFACE_ID,
-			 RECIPE_INTERFACE_VERSION,
-			 param_get_interface->id,
+			if(strcmp(RECIPE_INTERFACE_ID,
+			 param_get_interface->id) != 0)
+			{
+				return EXTIT_STATUS_NOTFOUND;
+			}
+
+			if(!iv_matches(RECIPE_INTERFACE_VERSION,
 			 param_get_interface->version))
 			{
 				return EXTIT_STATUS_NOTFOUND;
@@ -124,9 +132,13 @@ plugin_handler
 			/*
 			 * Recipe is the only supported interface by this
 			 */
-			if(!iv_matches(RECIPE_INTERFACE_ID,
-			 RECIPE_INTERFACE_VERSION,
-			 param_query_interface->id,
+			if(strcmp(RECIPE_INTERFACE_ID,
+			 param_query_interface->id) != 0)
+			{
+				return EXTIT_STATUS_NOTFOUND;
+			}
+
+			if(!iv_matches(RECIPE_INTERFACE_VERSION,
 			 param_query_interface->base_version))
 			{
 				return EXTIT_STATUS_NOTFOUND;

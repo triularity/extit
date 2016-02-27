@@ -19,9 +19,7 @@ extern "C" {
 IV_EXPORT
 iv_bool_t		IV_DECL
 			iv_matches(
-				const char *id,
 				iv_version_t version,
-				const char *req_id,
 				iv_version_t req_version);
 
 #ifdef	__cplusplus
