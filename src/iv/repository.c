@@ -613,17 +613,18 @@ iv_repository_create()
 
 	flags = _iv_repository_defaultFlags;
 
-	ivr = calloc(1, sizeof(iv_repository_t));
-
-#ifdef	IV_REPOSITORY_DEBUG
-	if((flags & IV_REPOSITORY_FLAG_LOG) >= IV_REPOSITORY_FLAG_LOG_DEBUG)
+	if((ivr = calloc(1, sizeof(iv_repository_t))) != NULL)
 	{
-		fprintf(stderr, "[iv:repository] {%p} Create.\n",
-			(void *) ivr);
-	}
+#ifdef	IV_REPOSITORY_DEBUG
+		if((flags & IV_REPOSITORY_FLAG_LOG) >= IV_REPOSITORY_FLAG_LOG_DEBUG)
+		{
+			fprintf(stderr, "[iv:repository] {%p} Create.\n",
+				(void *) ivr);
+		}
 #endif	/* IV_REPOSITORY_DEBUG */
 
-	ivr->flags = flags;
+		ivr->flags = flags;
+	}
 
 	return ivr;
 }
