@@ -373,7 +373,7 @@ if(EXTIT_COMPILE_SAMPLES)
 		sample_simple_plugin SHARED
 			sample/simple/simple_plugin.c
 			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
-endif(EXTIT_COMPILE_SAMPLES)
 
 	target_link_libraries(sample_simple_plugin iv)
+endif(EXTIT_COMPILE_SAMPLES)
 
