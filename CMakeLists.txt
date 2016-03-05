@@ -43,13 +43,16 @@ set(EXTIT_HEADER_FILES
 	src/include/extit/base.h
 	src/include/extit/container.h
 	src/include/extit/platform.h
-	src/include/extit/plugin_spi.h)
+	src/include/extit/plugin_spi.h
+	src/include/extit/util.h)
 
 set(IV_SOURCE_FILES src/iv/util.c)
 
 set(IV_REPOSITORY_SOURCE_FILES src/iv/repository.c)
 
-set(EXTIT_SOURCE_FILES src/container/container_common.c)
+set(EXTIT_SOURCE_FILES
+	src/container/container_common.c
+	src/util/refcount.c)
 
 if(EXTIT_COMPAT)
 	set(EXTIT_HEADER_FILES
