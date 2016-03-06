@@ -25,6 +25,7 @@ set(EXTIT_PARANOID TRUE CACHE BOOL "Enable Paranoid Code Checks")
 set(EXTIT_DEBUG TRUE CACHE BOOL "Enable Runtime Debugging")
 set(EXTIT_WITH_CXX FALSE CACHE BOOL "Enable C++ Wrappers")
 set(EXTIT_COMPILE_SAMPLES FALSE CACHE BOOL "Compile Sample Programs")
+set(EXTIT_COMPILE_TESTS FALSE CACHE BOOL "Compile Unit Tests")
 set(EXTIT_LIB_LOADER ${DEFAULT_LIB_LOADER} CACHE STRING "Library Loader (dl|win32|dylib)")
 set(EXTIT_WCHAR ${DEFAULT_WCHAR} CACHE BOOL "Enable wchar_t support")
 set(EXTIT_HAVE_DLFUNC ${DEFAULT_HAVE_DLFUNC} CACHE BOOL "Platform supports dlfunc()")
@@ -376,4 +377,24 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	target_link_libraries(sample_simple_plugin iv)
 endif(EXTIT_COMPILE_SAMPLES)
+
+
+if(EXTIT_COMPILE_TESTS)
+	add_executable(
+		test_iv_version
+			tests/iv_version/test_iv_version.c
+			${IV_HEADER_FILES})
+
+	add_executable(
+		test_iv_bool
+			tests/iv_bool/test_iv_bool.c
+			${IV_HEADER_FILES})
+
+	add_executable(
+		test_iv_matches
+			tests/iv_matches/test_iv_matches.c
+			${IV_HEADER_FILES})
+
+	target_link_libraries(test_iv_matches iv)
+endif(EXTIT_COMPILE_TESTS)
 
