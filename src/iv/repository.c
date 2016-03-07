@@ -3,7 +3,7 @@
  *
  * Interface Versioning Repository implementation.
  *
- * Copyright (c) 2015, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2015, 2016, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -761,7 +761,7 @@ iv_repository_query(const iv_repository_t *ivr, const char *id, iv_version_t bas
 IV_EXPORT
 iv_repository_status_t
 IV_DECL
-iv_repository_remove(iv_repository_t *ivr, const char *id, iv_version_t version, void *old_valuep)
+iv_repository_remove(iv_repository_t *ivr, const char *id, iv_version_t version, void **old_valuep)
 {
 	unsigned int	flags;
 	void *		old_value;
@@ -822,7 +822,7 @@ iv_repository_remove(iv_repository_t *ivr, const char *id, iv_version_t version,
 IV_EXPORT
 iv_repository_status_t
 IV_DECL
-iv_repository_set(iv_repository_t *ivr, const char *id, iv_version_t version, void *value, void *old_valuep)
+iv_repository_set(iv_repository_t *ivr, const char *id, iv_version_t version, void *value, void **old_valuep)
 {
 	unsigned int	flags;
 	unsigned int	hash;

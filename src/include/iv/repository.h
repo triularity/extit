@@ -91,7 +91,7 @@ iv_repository_status_t	IV_DECL
 				iv_repository_t *ir,
 				const char *id,
 				iv_version_t version,
-				void *old_valuep);
+				void **old_valuep);
 
 IV_EXPORT
 iv_repository_status_t	IV_DECL
@@ -100,7 +100,7 @@ iv_repository_status_t	IV_DECL
 				const char *id,
 				iv_version_t version,
 				void *value,
-				void *old_valuep);
+				void **old_valuep);
 
 IV_EXPORT
 void			IV_DECL
