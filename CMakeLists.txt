@@ -47,6 +47,14 @@ set(EXTIT_HEADER_FILES
 	src/include/extit/plugin_spi.h
 	src/include/extit/util.h)
 
+set(EXTIT_IFACE_HEADER_FILES 
+	src/include/extit/iface/disposable.h
+	src/include/extit/iface/disposable_impl.h
+	src/include/extit/iface/multi.h
+	src/include/extit/iface/multi_impl.h
+	src/include/extit/iface/refcount.h
+	src/include/extit/iface/refcount_impl.h)
+
 set(IV_SOURCE_FILES src/iv/util.c)
 
 set(IV_REPOSITORY_SOURCE_FILES src/iv/repository.c)
@@ -54,6 +62,10 @@ set(IV_REPOSITORY_SOURCE_FILES src/iv/repository.c)
 set(EXTIT_SOURCE_FILES
 	src/container/container_common.c
 	src/util/refcount.c)
+
+set(EXTIT_IFACE_SOURCE_FILES
+	src/iface/disposable.c
+	src/iface/refcount.c)
 
 if(EXTIT_COMPAT)
 	set(EXTIT_HEADER_FILES
@@ -119,18 +131,39 @@ if(EXTIT_COMPAT)
 endif()
 
 
-add_library(iv ${IV_SOURCE_FILES} ${IV_HEADER_FILES})
+add_library(iv
+	${IV_SOURCE_FILES}
+	${IV_HEADER_FILES})
 
 set_target_properties(
 	iv PROPERTIES
 		POSITION_INDEPENDENT_CODE ON)
 
-add_library(iv_repository ${IV_REPOSITORY_SOURCE_FILES} ${IV_HEADER_FILES})
+add_library(iv_repository
+	${IV_REPOSITORY_SOURCE_FILES}
+	${IV_HEADER_FILES})
 
-add_library(extit ${EXTIT_SOURCE_FILES} ${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
+add_library(extit
+	${EXTIT_SOURCE_FILES}
+	${IV_HEADER_FILES}
+	${EXTIT_HEADER_FILES})
+
+add_library(extit_iface
+	${EXTIT_IFACE_SOURCE_FILES}
+	${IV_HEADER_FILES}
+	${EXTIT_HEADER_FILES}
+	${EXTIT_IFACE_HEADER_FILES})
+
+if(EXTIT_PARANOID)
+	target_link_libraries(extit_iface iv)
+endif()
 
 if(EXTIT_COMPAT)
-	add_library(extit_ir ${EXTIT_IR_SOURCE_FILES} ${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
+	add_library(extit_ir
+		${EXTIT_IR_SOURCE_FILES}
+		${IV_HEADER_FILES}
+		${EXTIT_HEADER_FILES})
+
 	target_link_libraries(extit_ir iv_repository)
 endif()
 
@@ -175,6 +208,10 @@ if(DEFINED LIBNAME_POSTFIX)
 		extit PROPERTIES
 			OUTPUT_NAME "extit${LIBNAME_POSTFIX}")
 
+	set_target_properties(
+		extit_iface PROPERTIES
+			OUTPUT_NAME "extit_iface${LIBNAME_POSTFIX}")
+
 	if(EXTIT_COMPAT)
 		set_target_properties(
 			extit_ir PROPERTIES
@@ -190,6 +227,7 @@ install(
 	TARGETS
 		iv_repository
 		extit
+		extit_iface
 	DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
 
 if(EXTIT_COMPAT)
