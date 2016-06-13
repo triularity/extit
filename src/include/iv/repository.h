@@ -50,7 +50,7 @@ typedef enum _iv_repository_status
  */
 IV_EXPORT
 iv_repository_t *	IV_DECL
-			iv_repository_create();
+			iv_repository_create(void);
 
 IV_EXPORT
 void			IV_DECL
@@ -71,7 +71,7 @@ void *			IV_DECL
 
 IV_EXPORT
 unsigned int		IV_DECL
-			iv_repository_getDefaultFlags();
+			iv_repository_getDefaultFlags(void);
 
 IV_EXPORT
 unsigned int		IV_DECL
