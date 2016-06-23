@@ -50,8 +50,6 @@ set(EXTIT_HEADER_FILES
 set(EXTIT_IFACE_HEADER_FILES 
 	src/include/extit/iface/disposable.h
 	src/include/extit/iface/disposable_impl.h
-	src/include/extit/iface/multi.h
-	src/include/extit/iface/multi_impl.h
 	src/include/extit/iface/refcount.h
 	src/include/extit/iface/refcount_impl.h)
 
