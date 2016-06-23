@@ -1,14 +1,14 @@
 /*
- * @(#) extit/iface/disposable.c
+ * @(#) extit/if/disposable.c
  *
- * Disposable Interface API wrappers.
+ * Disposable Interface client API wrappers.
  *
  * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
 #include <extit/base.h>
-#include <extit/iface/disposable_impl.h>
+#include <extit/if/disposable_impl.h>
 
 #ifdef	EXTIT_PARANOID
 #include <iv/util.h>
@@ -18,15 +18,15 @@
 EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
-extit_iface_disposable_free
+extit_if_disposable_free
 (
-	extit_iface_disposable_t *iface
+	extit_if_disposable_t *disposable
 )
 {
 #ifdef	EXTIT_PARANOID
-	if(!iv_matches(iface->version, EXTIT_IFACE_DISPOSABLE_VERSION_1_0))
+	if(!iv_matches(disposable->version, EXTIT_IF_DISPOSABLE_VERSION_1_0))
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return EXTIT_IFACE_DISPOSABLE_FREE(iface);
+	return EXTIT_IF_DISPOSABLE_FREE(disposable);
 }

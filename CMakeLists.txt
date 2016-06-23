@@ -45,13 +45,14 @@ set(EXTIT_HEADER_FILES
 	src/include/extit/container.h
 	src/include/extit/platform.h
 	src/include/extit/plugin_spi.h
+	src/include/extit/types.h
 	src/include/extit/util.h)
 
 set(EXTIT_IFACE_HEADER_FILES 
-	src/include/extit/iface/disposable.h
-	src/include/extit/iface/disposable_impl.h
-	src/include/extit/iface/refcount.h
-	src/include/extit/iface/refcount_impl.h)
+	src/include/extit/if/disposable.h
+	src/include/extit/if/disposable_impl.h
+	src/include/extit/if/refcount.h
+	src/include/extit/if/refcount_impl.h)
 
 set(IV_SOURCE_FILES src/iv/util.c)
 
@@ -62,8 +63,8 @@ set(EXTIT_SOURCE_FILES
 	src/util/refcount.c)
 
 set(EXTIT_IFACE_SOURCE_FILES
-	src/iface/disposable.c
-	src/iface/refcount.c)
+	src/if/disposable.c
+	src/if/refcount.c)
 
 if(EXTIT_COMPAT)
 	set(EXTIT_HEADER_FILES
@@ -146,14 +147,14 @@ add_library(extit
 	${IV_HEADER_FILES}
 	${EXTIT_HEADER_FILES})
 
-add_library(extit_iface
+add_library(extit_if
 	${EXTIT_IFACE_SOURCE_FILES}
 	${IV_HEADER_FILES}
 	${EXTIT_HEADER_FILES}
 	${EXTIT_IFACE_HEADER_FILES})
 
 if(EXTIT_PARANOID)
-	target_link_libraries(extit_iface iv)
+	target_link_libraries(extit_if iv)
 endif()
 
 if(EXTIT_COMPAT)
@@ -207,8 +208,8 @@ if(DEFINED LIBNAME_POSTFIX)
 			OUTPUT_NAME "extit${LIBNAME_POSTFIX}")
 
 	set_target_properties(
-		extit_iface PROPERTIES
-			OUTPUT_NAME "extit_iface${LIBNAME_POSTFIX}")
+		extit_if PROPERTIES
+			OUTPUT_NAME "extit_if${LIBNAME_POSTFIX}")
 
 	if(EXTIT_COMPAT)
 		set_target_properties(
@@ -225,7 +226,7 @@ install(
 	TARGETS
 		iv_repository
 		extit
-		extit_iface
+		extit_if
 	DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
 
 if(EXTIT_COMPAT)

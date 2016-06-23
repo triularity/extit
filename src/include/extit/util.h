@@ -11,6 +11,7 @@
 #define	__extit__util_h
 
 #include <extit/base.h>
+#include <extit/types.h>
 
 #ifdef	__cplusplus
 extern "C" {
@@ -19,7 +20,7 @@ extern "C" {
 #define	EXTIT_REFCOUNT_NONE	0
 #define	EXTIT_REFCOUNT_MAX	0xFFFFFFFF
 
-typedef unsigned int		extit_refcount_t;
+typedef uint32_t		extit_refcount_t;
 
 
 EXTIT_EXPORT
