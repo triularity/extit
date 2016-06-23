@@ -48,9 +48,11 @@ set(EXTIT_HEADER_FILES
 	src/include/extit/types.h
 	src/include/extit/util.h)
 
-set(EXTIT_IFACE_HEADER_FILES 
+set(EXTIT_IF_HEADER_FILES 
 	src/include/extit/if/disposable.h
 	src/include/extit/if/disposable_impl.h
+	src/include/extit/if/messaging.h
+	src/include/extit/if/messaging_impl.h
 	src/include/extit/if/refcount.h
 	src/include/extit/if/refcount_impl.h)
 
@@ -62,8 +64,9 @@ set(EXTIT_SOURCE_FILES
 	src/container/container_common.c
 	src/util/refcount.c)
 
-set(EXTIT_IFACE_SOURCE_FILES
+set(EXTIT_IF_SOURCE_FILES
 	src/if/disposable.c
+	src/if/messaging.c
 	src/if/refcount.c)
 
 if(EXTIT_COMPAT)
@@ -148,10 +151,10 @@ add_library(extit
 	${EXTIT_HEADER_FILES})
 
 add_library(extit_if
-	${EXTIT_IFACE_SOURCE_FILES}
+	${EXTIT_IF_SOURCE_FILES}
 	${IV_HEADER_FILES}
 	${EXTIT_HEADER_FILES}
-	${EXTIT_IFACE_HEADER_FILES})
+	${EXTIT_IF_HEADER_FILES})
 
 if(EXTIT_PARANOID)
 	target_link_libraries(extit_if iv)
