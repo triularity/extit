@@ -42,6 +42,16 @@ typedef	iv_version_t		extit_iv_t;
 
 
 /*
+ * ExtIt boolean
+ */
+typedef	enum _extit_bool
+{
+	EXTIT_FALSE = 0,
+	EXTIT_TRUE = 1
+} extit_bool_t;
+
+
+/*
  * Default Target Version
  */
 #ifndef	EXTIT_API_TARGET
