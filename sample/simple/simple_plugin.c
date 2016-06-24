@@ -38,23 +38,23 @@ plugin_handler
 			return EXTIT_STATUS_OK;
 
 		case EXTIT_SPI_CMD_CREATE:
-			container->log(container, "Creating plugin\n");
+			container->ops->log(container, "Creating plugin\n");
 			return EXTIT_STATUS_OK;
 
 		case EXTIT_SPI_CMD_ACTIVATE:
-			container->log(container, "Activating plugin\n");
+			container->ops->log(container, "Activating plugin\n");
 			return EXTIT_STATUS_OK;
 
 		case EXTIT_SPI_CMD_DEACTIVATE:
-			container->log(container, "Deactivating plugin\n");
+			container->ops->log(container, "Deactivating plugin\n");
 			return EXTIT_STATUS_OK;
 
 		case EXTIT_SPI_CMD_DESTROY:
-			container->log(container, "Destroying plugin\n");
+			container->ops->log(container, "Destroying plugin\n");
 			return EXTIT_STATUS_OK;
 
 		case EXTIT_SPI_CMD_PING:
-			container->log(container, "Pong\n");
+			container->ops->log(container, "Pong\n");
 			return EXTIT_STATUS_OK;
 
 		default:

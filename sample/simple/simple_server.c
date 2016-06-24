@@ -10,15 +10,22 @@
 #include <extit/container.h>
 
 
-static extit_container_t my_container =
+static
+extit_container_ops_1_0_t	my_container_ops =
 {
-	EXTIT_API_VERSION_1_0,
-	NULL,
-	extit_container_get_symbol_default,
-	extit_container_get_function_default,
-	extit_container_get_interface_default,
-	extit_container_query_interface_default,
-	extit_container_log_default
+	extit_container_get_symbol_default,		/* get_symbol */
+	extit_container_get_function_default,		/* get_function */
+	extit_container_get_interface_default,		/* get_interface */
+	extit_container_query_interface_default,	/* query_interface */
+	extit_container_log_default			/* log */
+};
+
+static
+extit_container_t		my_container =
+{
+	EXTIT_API_VERSION_1_0,				/* version */
+	&my_container_ops,				/* ops */
+	NULL						/* _priv */
 };
 
 

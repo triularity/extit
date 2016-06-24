@@ -41,7 +41,7 @@ plugin_handler
 			/*
 			 * Quick check for dependencies
 			 */
-			version = container->query_interface(
+			version = container->ops->query_interface(
 				container, 
 				PERSISTENCE_INTERFACE_ID,
 				PERSISTENCE_INTERFACE_TARGET);
