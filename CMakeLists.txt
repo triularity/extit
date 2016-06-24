@@ -255,6 +255,21 @@ install(
 # Sample Code
 #
 if(EXTIT_COMPILE_SAMPLES)
+	#
+	# Refcount Interface
+	#
+	add_executable(
+		sample_if_refcount
+			sample/if_refcount/client.c
+			sample/if_refcount/myobj.h
+			sample/if_refcount/provider.c
+			sample/if_refcount/provider.h
+			sample/if_refcount/worklist.c
+			sample/if_refcount/worklist.h
+			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
+
+	target_link_libraries(sample_if_refcount extit_if extit)
+
 
 	#
 	# Interface Repository
