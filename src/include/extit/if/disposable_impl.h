@@ -26,13 +26,13 @@ typedef struct _extit_if_disposable_1_0_ops
 struct _extit_if_disposable_1_0
 {
 	iv_version_t			version;	/* 1.0+ */
-	extit_if_disposable_ops_1_0_t	ops;
+	extit_if_disposable_ops_1_0_t *	ops;
 	void *				priv;
 };
 
 
 #define	EXTIT_IF_DISPOSABLE_FREE(disposable)	\
-			((disposable)->ops.free(disposable))
+			((disposable)->ops->free(disposable))
 
 #ifdef	__cplusplus
 }

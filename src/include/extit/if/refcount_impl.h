@@ -33,19 +33,19 @@ typedef struct _extit_if_refcount_ops_1_0
 struct _extit_if_refcount_1_0
 {
 	iv_version_t			version;	/* 1.0+ */
-	extit_if_refcount_ops_1_0_t	ops;
+	extit_if_refcount_ops_1_0_t *	ops;
 	void *				priv;
 };
 
 
 #define	EXTIT_IF_REFCOUNT_ADD(refcount)	\
-			((refcount)->ops.add(refcount))
+			((refcount)->ops->add(refcount))
 
 #define	EXTIT_IF_REFCOUNT_GET(refcount)	\
-			((refcount)->ops.get(refcount))
+			((refcount)->ops->get(refcount))
 
 #define	EXTIT_IF_REFCOUNT_RELEASE(refcount)	\
-			((refcount)->ops.release(refcount))
+			((refcount)->ops->release(refcount))
 
 #ifdef	__cplusplus
 }

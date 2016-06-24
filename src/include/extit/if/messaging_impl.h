@@ -91,43 +91,43 @@ typedef struct _extit_if_messaging_ops_1_0
 struct _extit_if_messaging_1_0
 {
 	iv_version_t			version;	/* 1.0+ */
-	extit_if_messaging_ops_1_0_t	ops;
+	extit_if_messaging_ops_1_0_t *	ops;
 	void *				priv;
 };
 
 
 #define	EXTIT_IF_MESSAGING_ADD_LISTENER(messaging, mid, iid, version, callback, client_data)	\
-			((messaging)->ops.add_listener((messaging), (mid), (iid), (version), (callback), (client_data)))
+			((messaging)->ops->add_listener((messaging), (mid), (iid), (version), (callback), (client_data)))
 
 #define	EXTIT_IF_MESSAGING_BIND(messaging, mid, iid, version)	\
-			((messaging)->ops.bind((messaging), (mid), (iid), (version)))
+			((messaging)->ops->bind((messaging), (mid), (iid), (version)))
 
 #define	EXTIT_IF_MESSAGING_BOUND_ADD_LISTENER(messaging, bound, callback, client_data)	\
-			((messaging)->ops.bound_add_listener((messaging), (bound), (callback), (client_data)))
+			((messaging)->ops->bound_add_listener((messaging), (bound), (callback), (client_data)))
 
 #define	EXTIT_IF_MESSAGING_BOUND_HAS_LISTENER(messaging, bound)	\
-			((messaging)->ops.bound_has_listener((messaging), (bound)))
+			((messaging)->ops->bound_has_listener((messaging), (bound)))
 
 #define	EXTIT_IF_MESSAGING_BOUND_REMOVE_LISTENER(messaging, bound, callback, client_data)	\
-			((messaging)->ops.bound_remove_listener((messaging), (bound), (callback), (client_data)))
+			((messaging)->ops->bound_remove_listener((messaging), (bound), (callback), (client_data)))
 
 #define	EXTIT_IF_MESSAGING_BOUND_SEND(messaging, bound, data)	\
-			((messaging)->ops.bound_send((messaging), (bound), (data)))
+			((messaging)->ops->bound_send((messaging), (bound), (data)))
 
 #define	EXTIT_IF_MESSAGING_HAS_LISTENER(messaging, mid, iid, version)	\
-			((messaging)->ops.has_listener((messaging), (mid), (iid), (version)))
+			((messaging)->ops->has_listener((messaging), (mid), (iid), (version)))
 
 #define	EXTIT_IF_MESSAGING_REMOVE_LISTENER(messaging, mid, iid, version, callback, client_data)	\
-			((messaging)->ops.remove_listener((messaging), (mid), (iid), (version), (callback), (client_data)))
+			((messaging)->ops->remove_listener((messaging), (mid), (iid), (version), (callback), (client_data)))
 
 #define	EXTIT_IF_MESSAGING_REMOVE_LISTENER_BY_ID(messaging, id)	\
-			((messaging)->ops.remove_listener_by_id((messaging), (id)))
+			((messaging)->ops->remove_listener_by_id((messaging), (id)))
 
 #define	EXTIT_IF_MESSAGING_SEND(messaging, mid, iid, version, data)	\
-			((messaging)->ops.send((messaging), (mid), (iid), (version), (data)))
+			((messaging)->ops->send((messaging), (mid), (iid), (version), (data)))
 
 #define	EXTIT_IF_MESSAGING_UNBIND(messaging, bound)	\
-			((messaging)->ops.unbind((messaging), (bound)))
+			((messaging)->ops->unbind((messaging), (bound)))
 
 #ifdef	__cplusplus
 }
