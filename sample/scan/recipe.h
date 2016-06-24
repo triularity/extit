@@ -21,10 +21,11 @@ typedef struct _recipe	recipe_t;
 
 struct _recipe
 {
-	void *		_priv;
 	const char *	name;
 	unsigned int	prep_time;
 	unsigned int	total_time;
+
+	/* Could be in a recipe_ops_t struct if there was man functions */
 	void 		(EXTIT_DECL *prepare)(recipe_t *recipe);
 };
 

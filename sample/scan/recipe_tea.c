@@ -16,16 +16,17 @@
 #include "recipe.h"
 
 
-typedef struct _plugin_ctx
+typedef struct _recipe_impl
 {
+	recipe_t	recipe;
+
 	/*
 	 * Some hypothetical state information needed for making tea
 	 */
 	unsigned int	stage;
 	unsigned int	time_passed;
-
-	recipe_t	recipe;
-} plugin_ctx_t;
+	extit_bool_t	cup_ready;
+} recipe_impl_t;
 
 
 static
@@ -33,11 +34,11 @@ void
 EXTIT_DECL
 prepare_tea(recipe_t *recipe)
 {
-	plugin_ctx_t *	ctx;
+	recipe_impl_t *	impl;
 
 
-	ctx = (plugin_ctx_t *) recipe->_priv;
-	ctx->stage = 0;
+	impl = (recipe_impl_t *) recipe;
+	impl->stage = 0;
 
 	fprintf(stderr, "Making some tea...\n");
 }
@@ -55,7 +56,7 @@ plugin_handler
 	unsigned int flags
 )
 {
-	plugin_ctx_t *				ctx;
+	recipe_impl_t *				ctx;
 	extit_spi_param_create_t *		param_create;
 	extit_spi_param_destroy_t *		param_destroy;
 	extit_spi_param_get_interface_t *	param_get_interface;
@@ -80,17 +81,17 @@ plugin_handler
 		case EXTIT_SPI_CMD_CREATE:
 			param_create = (extit_spi_param_create_t *) param;
 
-			if((ctx = calloc(1, sizeof(plugin_ctx_t))) == NULL)
+			if((ctx = malloc(sizeof(recipe_impl_t))) == NULL)
 				return EXTIT_STATUS_NOMEM;
 
-			ctx->stage = 0;
-			ctx->time_passed = 0;
-
-			ctx->recipe._priv = ctx;
 			ctx->recipe.name = "Tea";
 			ctx->recipe.prep_time = 10;
 			ctx->recipe.total_time = 13;
 			ctx->recipe.prepare = prepare_tea;
+
+			ctx->stage = 0;
+			ctx->time_passed = 0;
+			ctx->cup_ready = EXTIT_FALSE;
 
 			param_create->spi_ctx = ctx;
 			return EXTIT_STATUS_OK;
@@ -120,7 +121,7 @@ plugin_handler
 				return EXTIT_STATUS_NOTFOUND;
 			}
 
-			ctx = (plugin_ctx_t *) param_get_interface->spi_ctx;
+			ctx = (recipe_impl_t *) param_get_interface->spi_ctx;
 			param_get_interface->interface_ptr = &ctx->recipe;
 
 			return EXTIT_STATUS_OK;
