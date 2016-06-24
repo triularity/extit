@@ -89,7 +89,7 @@ typedef struct _extit_container_ops_1_0
 	iv_version_t		(EXTIT_DECL *query_interface)(
 					const extit_container_t *container,
 					const char *name,
- iv_version_t base_version);
+					iv_version_t base_version);
 
 	/*
 	 * Log a simple message
@@ -104,7 +104,6 @@ struct _extit_container_1_0
 {
 	iv_version_t			version;/* EXTIT_API_VERSION */
 	extit_container_ops_1_0_t *	ops;
-	void *				_priv;	/* Private container data */
 };
 
 

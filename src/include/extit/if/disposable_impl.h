@@ -27,7 +27,6 @@ struct _extit_if_disposable_1_0
 {
 	iv_version_t			version;	/* 1.0+ */
 	extit_if_disposable_ops_1_0_t *	ops;
-	void *				priv;
 };
 
 

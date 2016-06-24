@@ -24,8 +24,7 @@ static
 extit_container_t		my_container =
 {
 	EXTIT_API_VERSION_1_0,				/* version */
-	&my_container_ops,				/* ops */
-	NULL						/* _priv */
+	&my_container_ops				/* ops */
 };
 
 
