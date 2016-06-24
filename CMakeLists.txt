@@ -54,7 +54,9 @@ set(EXTIT_IF_HEADER_FILES
 	src/include/extit/if/messaging.h
 	src/include/extit/if/messaging_impl.h
 	src/include/extit/if/refcount.h
-	src/include/extit/if/refcount_impl.h)
+	src/include/extit/if/refcount_impl.h
+	src/include/extit/if/resolvable.h
+	src/include/extit/if/resolvable_impl.h)
 
 set(IV_SOURCE_FILES src/iv/util.c)
 
@@ -67,7 +69,8 @@ set(EXTIT_SOURCE_FILES
 set(EXTIT_IF_SOURCE_FILES
 	src/if/disposable.c
 	src/if/messaging.c
-	src/if/refcount.c)
+	src/if/refcount.c
+	src/if/resolvable.c)
 
 if(EXTIT_COMPAT)
 	set(EXTIT_HEADER_FILES
