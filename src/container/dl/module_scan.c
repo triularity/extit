@@ -1,9 +1,9 @@
 /*
- * @(#) container/container_dl.c
+ * @(#) container/dl/module_scan.c
  *
  * [lib]dl specific implementations of container library.
  *
- * Copyright (c) 2014-2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -14,14 +14,11 @@
 
 #include <sys/types.h>
 #include <dirent.h>
-#include <dlfcn.h>
 
 #include <extit/base.h>
-#include <extit/plugin_spi.h>
 #include <extit/container.h>
-#include <extit/platform.h>
 
-#include "container_impl.h"
+#include "../container_impl.h"
 
 
 /*
@@ -40,204 +37,6 @@
 #define	_DIRENT_HAVE_D_NAMLEN
 #endif
 #endif	/* __FreeBSD__ || __NetBSD__ || __OpenBSD__ || __bsdi__ || __DragonFly__*/
-
-
-EXTIT_EXPORT
-extit_func_t
-EXTIT_DECL
-extit_container_get_function_default
-(
-	const extit_container_t *container,
-	const char *name
-)
-{
-#ifdef	EXTIT_HAVE_DLFUNC
-	return dlfunc(RTLD_DEFAULT, name);
-#else
-	{
-		extit_func_t	fptr;
-
-
-		*((void **) &fptr) = dlsym(RTLD_DEFAULT, name);
-		return fptr;
-	}
-#endif	/* EXTIT_HAVE_DLFUNC */
-}
-
-
-EXTIT_EXPORT
-void *
-EXTIT_DECL
-extit_container_get_symbol_default
-(
-	const extit_container_t *container,
-	const char *name
-)
-{
-	return dlsym(RTLD_DEFAULT, name);
-}
-
-
-EXTIT_EXPORT
-extit_func_t
-EXTIT_DECL
-extit_module_getFunction
-(
-	extit_module_t *module,
-	const char *name
-)
-{
-#ifdef	EXTIT_HAVE_DLFUNC
-	return dlfunc(module->handle, name);
-#else
-	{
-		extit_func_t	fptr;
-
-
-		*((void **) &fptr) = dlsym(module->handle, name);
-		return fptr;
-	}
-#endif	/* EXTIT_HAVE_DLFUNC */
-}
-
-
-EXTIT_EXPORT
-void *
-EXTIT_DECL
-extit_module_getSymbol
-(
-	extit_module_t *module,
-	const char *name
-)
-{
-	return dlsym(module->handle, name);
-}
-
-
-EXTIT_EXPORT
-extit_module_t *
-EXTIT_DECL
-extit_module_load(
-	const extit_container_t *container,
-	const char *path,
-	unsigned int flags
-)
-{
-	void *			handle;
-	const void *		descriptor;
-	extit_module_t *	module;
-
-
-	/*
-	 * Supported container version?
-	 */
-	if(IV_VERSION_MAJOR(container->version) != 1)
-	{
-#ifdef	EXTIT_DEBUG
-		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
-		{
-			fprintf(stderr,
-		"[extit:module] Unsupported container version: %u.x.\n",
-				IV_VERSION_MAJOR(container->version));
-		}
-#endif	/* EXTIT_DEBUG */
-
-		return NULL;
-	}
-
-#ifdef	EXTIT_DEBUG
-	if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_TRACE)
-	{
-		fprintf(stderr,
-			"[extit:module] Loading '%s'.\n",
-			path);
-	}
-#endif	/* EXTIT_DEBUG */
-
-	if((handle = dlopen(path, RTLD_LAZY|RTLD_LOCAL)) == NULL)
-	{
-#ifdef	EXTIT_DEBUG
-		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
-		{
-			fprintf(stderr,
-				"[extit:module] Error loading '%s': %s.\n",
-				path,
-				dlerror());
-		}
-#endif	/* EXTIT_DEBUG */
-
-		return NULL;
-	}
-
-	/*
-	 * Find the plugin descriptor
-	 */
-	if((descriptor = dlsym(handle, EXTIT_SPI_DESCRIPTOR_SYMBOL)) == NULL)
-	{
-#ifdef	EXTIT_DEBUG
-		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
-		{
-			fprintf(stderr,
-				"[extit:module] No plugin descriptor.\n");
-		}
-#endif	/* EXTIT_DEBUG */
-
-		dlclose(handle);
-		return NULL;
-	}
-
-	/*
-	 * Create the module from a descriptor
-	 */
-	module = extit_module_bind(container, descriptor, flags);
-
-	if(module == NULL)
-	{
-		dlclose(handle);
-		return NULL;
-	}
-
-	module->handle = handle;
-
-	return module;
-}
-
-
-EXTIT_EXPORT
-extit_status_t
-EXTIT_DECL
-extit_module_release(
-	extit_module_t *module
-)
-{
-	extit_status_t		status;
-	unsigned int		flags;
-
-
-	status = _extit_module_unload(module);
-
-	if(status != EXTIT_STATUS_OK)
-		return status;
-
-	flags = module->flags;
-
-	if(module->handle != NULL)
-	{
-		if(dlclose(module->handle) != 0)
-		{
-			if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
-			{
-				fprintf(stderr,
-			"[extit:module] Error unloading library: %s\n",
-					dlerror());
-			}
-		}
-	}
-
-	free(module);
-
-	return EXTIT_STATUS_OK;
-}
 
 
 EXTIT_EXPORT
@@ -387,23 +186,3 @@ extit_module_scan(
 
 	return EXTIT_STATUS_OK;
 }
-
-
-EXTIT_EXPORT
-unsigned int
-EXTIT_DECL
-extit_module_scan_fnfilter_default
-(
-	const char *basename,
-	size_t length
-)
-{
-	/*
-	 * Must have a ".so" extension
-	 */
-	if(length < 4)
-		return 0;
-
-	return (EXTIT_FN_STRCMP(basename + length - 3, ".so") == 0);
-}
-

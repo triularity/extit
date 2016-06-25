@@ -63,7 +63,29 @@ set(IV_SOURCE_FILES src/iv/util.c)
 set(IV_REPOSITORY_SOURCE_FILES src/iv/repository.c)
 
 set(EXTIT_SOURCE_FILES
-	src/container/container_common.c
+	src/container/container_defaults.c
+	src/container/module_bind.c
+	src/container/module_createPlugin.c
+	src/container/module_getAPIVersion.c
+	src/container/module_getEffectiveAPIVersion.c
+	src/container/module_getFlags.c
+	src/container/module_getId.c
+	src/container/module_getIdVersion.c
+	src/container/module_getName.c
+	src/container/module_getVersion.c
+	src/container/module_unload.c
+	src/container/module_setFlags.c
+	src/container/plugin_activate.c
+	src/container/plugin_deactivate.c
+	src/container/plugin_destroy.c
+	src/container/plugin_getContext.c
+	src/container/plugin_getFlags.c
+	src/container/plugin_getInterface.c
+	src/container/plugin_getModule.c
+	src/container/plugin_ping.c
+	src/container/plugin_queryInterface.c
+	src/container/plugin_setFlags.c
+	src/container/version.c
 	src/util/refcount.c)
 
 set(EXTIT_IF_SOURCE_FILES
@@ -85,10 +107,24 @@ endif()
 #
 if(EXTIT_LIB_LOADER STREQUAL "dl")
 	set(EXTIT_SOURCE_FILES
-		${EXTIT_SOURCE_FILES} src/container/container_dl.c)
+		${EXTIT_SOURCE_FILES}
+		src/container/dl/container_defaults.c
+		src/container/dl/module_defaults.c
+		src/container/dl/module_getFunction.c
+		src/container/dl/module_getSymbol.c
+		src/container/dl/module_load.c
+		src/container/dl/module_release.c
+		src/container/dl/module_scan.c)
 elseif(EXTIT_LIB_LOADER STREQUAL "win32")
 	set(EXTIT_SOURCE_FILES
-		${EXTIT_SOURCE_FILES} src/container/container_win32.c)
+		${EXTIT_SOURCE_FILES}
+		src/container/win32/container_defaults.c
+		src/container/win32/module_defaults.c
+		src/container/win32/module_getFunction.c
+		src/container/win32/module_getSymbol.c
+		src/container/win32/module_load.c
+		src/container/win32/module_release.c
+		src/container/win32/module_scan.c)
 elseif(EXTIT_LIB_LOADER STREQUAL "dylib")
 	set(EXTIT_SOURCE_FILES
 		${EXTIT_SOURCE_FILES} src/container/container_dylib.c)
@@ -183,6 +219,7 @@ endif()
 
 if(${CMAKE_CXX_COMPILER_ID} MATCHES "GNU" OR ${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -pedantic")
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror")
 elseif(MSVC)
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W4 /wd4054 /wd4100")
 	add_definitions("-D_CRT_SECURE_NO_WARNINGS")
