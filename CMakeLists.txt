@@ -35,34 +35,18 @@ set(EXTIT_COMPAT FALSE CACHE BOOL "Enable Backward Compatibility")
 include_directories(BEFORE src/include)
 
 
-set(IV_HEADER_FILES 
-	src/include/iv/base.h
-	src/include/iv/repository.h
-	src/include/iv/util.h)
-
+# ExtIt core
 set(EXTIT_HEADER_FILES 
 	src/include/extit/base.h
-	src/include/extit/container.h
 	src/include/extit/platform.h
-	src/include/extit/plugin_spi.h
-	src/include/extit/types.h
-	src/include/extit/util.h)
+	src/include/extit/types.h)
 
-set(EXTIT_IF_HEADER_FILES 
-	src/include/extit/if/disposable.h
-	src/include/extit/if/disposable_impl.h
-	src/include/extit/if/messaging.h
-	src/include/extit/if/messaging_impl.h
-	src/include/extit/if/refcount.h
-	src/include/extit/if/refcount_impl.h
-	src/include/extit/if/resolvable.h
-	src/include/extit/if/resolvable_impl.h)
 
-set(IV_SOURCE_FILES src/iv/util.c)
+# ExtIt container (server side)
+set(EXTIT_CONTAINER_HEADER_FILES 
+	src/include/extit/container.h)
 
-set(IV_REPOSITORY_SOURCE_FILES src/iv/repository.c)
-
-set(EXTIT_SOURCE_FILES
+set(EXTIT_CONTAINER_SOURCE_FILES
 	src/container/container_defaults.c
 	src/container/module_bind.c
 	src/container/module_createPlugin.c
@@ -85,8 +69,19 @@ set(EXTIT_SOURCE_FILES
 	src/container/plugin_ping.c
 	src/container/plugin_queryInterface.c
 	src/container/plugin_setFlags.c
-	src/container/version.c
-	src/util/refcount.c)
+	src/container/version.c)
+
+
+# ExtIt standard interfaces (client side)
+set(EXTIT_IF_HEADER_FILES 
+	src/include/extit/if/disposable.h
+	src/include/extit/if/disposable_impl.h
+	src/include/extit/if/messaging.h
+	src/include/extit/if/messaging_impl.h
+	src/include/extit/if/refcount.h
+	src/include/extit/if/refcount_impl.h
+	src/include/extit/if/resolvable.h
+	src/include/extit/if/resolvable_impl.h)
 
 set(EXTIT_IF_SOURCE_FILES
 	src/if/disposable.c
@@ -94,20 +89,60 @@ set(EXTIT_IF_SOURCE_FILES
 	src/if/refcount.c
 	src/if/resolvable.c)
 
+
 if(EXTIT_COMPAT)
 	set(EXTIT_HEADER_FILES
-		${EXTIT_HEADER_FILES} src/include/extit/ir.h)
+		${EXTIT_HEADER_FILES}
+		src/include/extit/ir.h)
 
-	set(EXTIT_IR_SOURCE_FILES src/ir/ir.c)
+	set(EXTIT_IR_SOURCE_FILES
+		src/ir/ir.c)
 endif()
+
+
+# ExtIt plugin (client side)
+set(EXTIT_PLUGIN_HEADER_FILES 
+	src/include/extit/plugin_spi.h)
+
+##+set(EXTIT_PLUGIN_SOURCE_FILES
+##+	src/extit_plugin/xxxxx.c)
+
+
+# ExtIt utilities
+set(EXTIT_UTIL_HEADER_FILES 
+	src/include/extit/util.h)
+
+set(EXTIT_UTIL_SOURCE_FILES
+	src/util/refcount.c)
+
+
+# IV core
+set(IV_HEADER_FILES 
+	src/include/iv/base.h)
+
+
+# IV repository
+set(IV_REPOSITORY_HEADER_FILES 
+	src/include/iv/repository.h)
+
+set(IV_REPOSITORY_SOURCE_FILES
+	src/iv/repository.c)
+
+
+# IV utilities
+set(IV_UTIL_HEADER_FILES 
+	src/include/iv/util.h)
+
+set(IV_UTIL_SOURCE_FILES
+	src/iv/util.c)
 
 
 #
 # Library Loader
 #
 if(EXTIT_LIB_LOADER STREQUAL "dl")
-	set(EXTIT_SOURCE_FILES
-		${EXTIT_SOURCE_FILES}
+	set(EXTIT_CONTAINER_SOURCE_FILES
+		${EXTIT_CONTAINER_SOURCE_FILES}
 		src/container/dl/container_defaults.c
 		src/container/dl/module_defaults.c
 		src/container/dl/module_getFunction.c
@@ -116,8 +151,8 @@ if(EXTIT_LIB_LOADER STREQUAL "dl")
 		src/container/dl/module_release.c
 		src/container/dl/module_scan.c)
 elseif(EXTIT_LIB_LOADER STREQUAL "win32")
-	set(EXTIT_SOURCE_FILES
-		${EXTIT_SOURCE_FILES}
+	set(EXTIT_CONTAINER_SOURCE_FILES
+		${EXTIT_CONTAINER_SOURCE_FILES}
 		src/container/win32/container_defaults.c
 		src/container/win32/module_defaults.c
 		src/container/win32/module_getFunction.c
@@ -125,9 +160,16 @@ elseif(EXTIT_LIB_LOADER STREQUAL "win32")
 		src/container/win32/module_load.c
 		src/container/win32/module_release.c
 		src/container/win32/module_scan.c)
-elseif(EXTIT_LIB_LOADER STREQUAL "dylib")
-	set(EXTIT_SOURCE_FILES
-		${EXTIT_SOURCE_FILES} src/container/container_dylib.c)
+##+elseif(EXTIT_LIB_LOADER STREQUAL "dylib")
+##+	set(EXTIT_CONTAINER_SOURCE_FILES
+##+		${EXTIT_CONTAINER_SOURCE_FILES}
+##+		src/container/dylib/container_defaults.c
+##+		src/container/dylib/module_defaults.c
+##+		src/container/dylib/module_getFunction.c
+##+		src/container/dylib/module_getSymbol.c
+##+		src/container/dylib/module_load.c
+##+		src/container/dylib/module_release.c
+##+		src/container/dylib/module_scan.c)
 else()
 	message(FATAL_ERROR "Unsupported library loader: ${EXTIT_LIB_LOADER}")
 endif()
@@ -137,13 +179,9 @@ endif()
 # C++ Support
 #
 if(EXTIT_WITH_CXX)
-	set(EXTIT_SOURCE_FILES
-		${EXTIT_SOURCE_FILES} src/container/container_cxx.cc)
-
-	if(EXTIT_COMPAT)
-		set(EXTIT_IR_SOURCE_FILES
-			${EXTIT_IR_SOURCE_FILES} src/ir/ir_cxx.cc)
-	endif()
+##+	set(EXTIT_CONTAINER_SOURCE_FILES
+##+		${EXTIT_CONTAINER_SOURCE_FILES}
+##+		src/container/container_cxx.cc)
 endif()
 
 
@@ -172,41 +210,123 @@ if(EXTIT_COMPAT)
 endif()
 
 
-add_library(iv
-	${IV_SOURCE_FILES}
-	${IV_HEADER_FILES})
+#
+# [lib]extit_container
+#
+add_library(
+	extit_container
+		${EXTIT_CONTAINER_SOURCE_FILES}
+		${EXTIT_HEADER_FILES}
+		${EXTIT_CONTAINER_HEADER_FILES}
+		${EXTIT_UTIL_HEADER_FILES}
+		${IV_HEADER_FILES}
+		${IV_UTIL_HEADER_FILES})
 
 set_target_properties(
-	iv PROPERTIES
+	extit_container PROPERTIES
 		POSITION_INDEPENDENT_CODE ON)
 
-add_library(iv_repository
-	${IV_REPOSITORY_SOURCE_FILES}
-	${IV_HEADER_FILES})
-
-add_library(extit
-	${EXTIT_SOURCE_FILES}
-	${IV_HEADER_FILES}
-	${EXTIT_HEADER_FILES})
-
-add_library(extit_if
-	${EXTIT_IF_SOURCE_FILES}
-	${IV_HEADER_FILES}
-	${EXTIT_HEADER_FILES}
-	${EXTIT_IF_HEADER_FILES})
+target_link_libraries(
+	extit_container
+		extit_util)
 
 if(EXTIT_PARANOID)
-	target_link_libraries(extit_if iv)
+	target_link_libraries(
+		extit_container
+			iv_util)
 endif()
 
-if(EXTIT_COMPAT)
-	add_library(extit_ir
-		${EXTIT_IR_SOURCE_FILES}
+
+#
+# [lib]extit_if
+#
+add_library(
+	extit_if
+		${EXTIT_IF_SOURCE_FILES}
+		${EXTIT_HEADER_FILES}
+		${EXTIT_IF_HEADER_FILES}
+		${EXTIT_UTIL_HEADER_FILES}
 		${IV_HEADER_FILES}
-		${EXTIT_HEADER_FILES})
+		${IV_UTIL_HEADER_FILES})
 
-	target_link_libraries(extit_ir iv_repository)
+set_target_properties(
+	extit_if PROPERTIES
+		POSITION_INDEPENDENT_CODE ON)
+
+target_link_libraries(
+	extit_if
+		extit_util)
+
+if(EXTIT_PARANOID)
+	target_link_libraries(
+		extit_if
+			iv_util)
 endif()
+
+
+#
+# [lib]extit_ir
+#
+if(EXTIT_COMPAT)
+	add_library(
+		extit_ir
+			${EXTIT_IR_SOURCE_FILES}
+			${EXTIT_HEADER_FILES}
+			${EXTIT_REPOSITORY_HEADER_FILES}
+			${EXTIT_UTIL_HEADER_FILES}
+			${IV_HEADER_FILES})
+
+	set_target_properties(
+		extit_ir PROPERTIES
+			POSITION_INDEPENDENT_CODE ON)
+
+	target_link_libraries(
+		extit_ir
+			iv_repository)
+endif()
+
+
+#
+# [lib]extit_util
+#
+add_library(
+	extit_util
+		${EXTIT_UTIL_SOURCE_FILES}
+		${IV_HEADER_FILES}
+		${EXTIT_HEADER_FILES}
+		${EXTIT_UTIL_HEADER_FILES})
+
+set_target_properties(
+	extit_util PROPERTIES
+		POSITION_INDEPENDENT_CODE ON)
+
+
+#
+# [lib]iv_repository
+#
+add_library(
+	iv_repository
+		${IV_REPOSITORY_SOURCE_FILES}
+		${IV_HEADER_FILES}
+		${IV_REPOSITORY_HEADER_FILES})
+
+set_target_properties(
+	iv_repository PROPERTIES
+		POSITION_INDEPENDENT_CODE ON)
+
+
+#
+# [lib]iv_util
+#
+add_library(
+	iv_util
+		${IV_UTIL_SOURCE_FILES}
+		${IV_HEADER_FILES}
+		${IV_UTIL_HEADER_FILES})
+
+set_target_properties(
+	iv_util PROPERTIES
+		POSITION_INDEPENDENT_CODE ON)
 
 
 #
@@ -214,7 +334,7 @@ endif()
 #
 if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
 	add_definitions("-D_GNU_SOURCE")
-	target_link_libraries(extit dl)
+	target_link_libraries(extit_container dl)
 endif()
 
 if(${CMAKE_CXX_COMPILER_ID} MATCHES "GNU" OR ${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
@@ -243,12 +363,8 @@ endif(NOT DEFINED LIBNAME_POSTFIX)
 
 if(DEFINED LIBNAME_POSTFIX)
 	set_target_properties(
-		iv_repository PROPERTIES
-			OUTPUT_NAME "iv_repository${LIBNAME_POSTFIX}")
-
-	set_target_properties(
-		extit PROPERTIES
-			OUTPUT_NAME "extit${LIBNAME_POSTFIX}")
+		extit_container PROPERTIES
+			OUTPUT_NAME "extit_container${LIBNAME_POSTFIX}")
 
 	set_target_properties(
 		extit_if PROPERTIES
@@ -259,6 +375,18 @@ if(DEFINED LIBNAME_POSTFIX)
 			extit_ir PROPERTIES
 				OUTPUT_NAME "extit_ir${LIBNAME_POSTFIX}")
 	endif()
+
+	set_target_properties(
+		extif_util PROPERTIES
+			OUTPUT_NAME "extif_util${LIBNAME_POSTFIX}")
+
+	set_target_properties(
+		iv_repository PROPERTIES
+			OUTPUT_NAME "iv_repository${LIBNAME_POSTFIX}")
+
+	set_target_properties(
+		iv_util PROPERTIES
+			OUTPUT_NAME "iv_util${LIBNAME_POSTFIX}")
 endif(DEFINED LIBNAME_POSTFIX)
 
 
@@ -267,9 +395,11 @@ endif(DEFINED LIBNAME_POSTFIX)
 #
 install(
 	TARGETS
-		iv_repository
-		extit
+		extit_container
 		extit_if
+		extit_util
+		iv_repository
+		iv_util
 	DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
 
 if(EXTIT_COMPAT)
@@ -280,12 +410,20 @@ if(EXTIT_COMPAT)
 endif()
 
 install(
-	FILES ${IV_HEADER_FILES}
-	DESTINATION ${CMAKE_INSTALL_PREFIX}/include/iv)
+	FILES
+		${EXTIT_HEADER_FILES}
+		${EXTIT_CONTAINER_HEADER_FILES}
+		${EXTIT_IF_HEADER_FILES}
+		${EXTIT_PLUGIN_HEADER_FILES}
+		${EXTIT_REPOSITORY_HEADER_FILES}
+		${EXTIT_UTIL_HEADER_FILES}
+	DESTINATION ${CMAKE_INSTALL_PREFIX}/include/extit)
 
 install(
-	FILES ${EXTIT_HEADER_FILES}
-	DESTINATION ${CMAKE_INSTALL_PREFIX}/include/extit)
+	FILES
+		${IV_HEADER_FILES}
+		${IV_UTIL_HEADER_FILES}
+	DESTINATION ${CMAKE_INSTALL_PREFIX}/include/iv)
 
 
 #
@@ -303,9 +441,15 @@ if(EXTIT_COMPILE_SAMPLES)
 			sample/if_refcount/provider.h
 			sample/if_refcount/worklist.c
 			sample/if_refcount/worklist.h
-			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
+			${EXTIT_HEADER_FILES}
+			${EXTIT_IF_HEADER_FILES}
+			${EXTIT_UTIL_HEADER_FILES}
+			${IV_HEADER_FILES}
+			${IV_UTIL_HEADER_FILES})
 
-	target_link_libraries(sample_if_refcount extit_if extit)
+	target_link_libraries(
+		sample_if_refcount
+			extit_if)
 
 
 	#
@@ -314,9 +458,13 @@ if(EXTIT_COMPILE_SAMPLES)
 	add_executable(
 		sample_iv_repository
 			sample/iv_repository/repository.c
-			${IV_HEADER_FILES})
+			${IV_HEADER_FILES}
+			${IV_REPOSITORY_HEADER_FILES}
+			${IV_UTIL_HEADER_FILES})
 
-	target_link_libraries(sample_iv_repository iv_repository)
+	target_link_libraries(
+		sample_iv_repository
+			iv_repository)
 
 
 	#
@@ -326,50 +474,77 @@ if(EXTIT_COMPILE_SAMPLES)
 		sample_multiver_server_1_0
 			sample/multiver/persistence_impl.c
 			sample/multiver/multiver_server.c
-			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
+			${EXTIT_HEADER_FILES}
+			${EXTIT_CONTAINER_HEADER_FILES}
+			${IV_HEADER_FILES}
+			${IV_REPOSITORY_HEADER_FILES}
+			${IV_UTIL_HEADER_FILES})
 
 	set_target_properties(
 		sample_multiver_server_1_0 PROPERTIES
 			COMPILE_DEFINITIONS
 				"PERSISTENCE_INTERFACE_TARGET=IV_VERSION(1,0)")
 
-	target_link_libraries(sample_multiver_server_1_0 extit iv_repository)
+	target_link_libraries(
+		sample_multiver_server_1_0
+			extit_container
+			iv_repository)
 
 
 	add_executable(
 		sample_multiver_server_1_1
 			sample/multiver/persistence_impl.c
 			sample/multiver/multiver_server.c
-			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
+			${EXTIT_HEADER_FILES}
+			${EXTIT_CONTAINER_HEADER_FILES}
+			${IV_HEADER_FILES}
+			${IV_REPOSITORY_HEADER_FILES}
+			${IV_UTIL_HEADER_FILES})
 
 	set_target_properties(
 		sample_multiver_server_1_1 PROPERTIES
 			COMPILE_DEFINITIONS
 				"PERSISTENCE_INTERFACE_TARGET=IV_VERSION(1,1)")
 
-	target_link_libraries(sample_multiver_server_1_1 extit iv_repository)
+	target_link_libraries(
+		sample_multiver_server_1_1
+			extit_container
+			iv_repository)
 
 
 	add_executable(
 		sample_multiver_server_1_2
 			sample/multiver/persistence_impl.c
 			sample/multiver/multiver_server.c
-			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
+			${EXTIT_HEADER_FILES}
+			${EXTIT_CONTAINER_HEADER_FILES}
+			${IV_HEADER_FILES}
+			${IV_REPOSITORY_HEADER_FILES}
+			${IV_UTIL_HEADER_FILES})
 
 	set_target_properties(
 		sample_multiver_server_1_2 PROPERTIES
 			COMPILE_DEFINITIONS
 				"PERSISTENCE_INTERFACE_TARGET=IV_VERSION(1,2)")
 
-	target_link_libraries(sample_multiver_server_1_2 extit iv_repository)
+	target_link_libraries(
+		sample_multiver_server_1_2
+			extit_container
+			iv_repository)
 
 
 	add_library(
 		sample_multiver_plugin_1_0 SHARED
 			sample/multiver/multiver_plugin.c
-			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
+			${EXTIT_HEADER_FILES}
+			${EXTIT_CONTAINER_HEADER_FILES}
+			${EXTIT_PLUGIN_HEADER_FILES}
+			${IV_HEADER_FILES}
+			${IV_UTIL_HEADER_FILES})
 
-	target_link_libraries(sample_multiver_plugin_1_0 iv)
+	target_link_libraries(
+		sample_multiver_plugin_1_0
+			iv_util)
 
 	set_target_properties(
 		sample_multiver_plugin_1_0 PROPERTIES
@@ -377,13 +552,18 @@ if(EXTIT_COMPILE_SAMPLES)
 				"PERSISTENCE_INTERFACE_TARGET=IV_VERSION(1,0)")
 
 
-
 	add_library(
 		sample_multiver_plugin_1_1 SHARED
 			sample/multiver/multiver_plugin.c
-			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
+			${EXTIT_HEADER_FILES}
+			${EXTIT_CONTAINER_HEADER_FILES}
+			${EXTIT_PLUGIN_HEADER_FILES}
+			${IV_HEADER_FILES}
+			${IV_UTIL_HEADER_FILES})
 
-	target_link_libraries(sample_multiver_plugin_1_1 iv)
+	target_link_libraries(
+		sample_multiver_plugin_1_1
+			iv_util)
 
 	set_target_properties(
 		sample_multiver_plugin_1_1 PROPERTIES
@@ -391,13 +571,18 @@ if(EXTIT_COMPILE_SAMPLES)
 				"PERSISTENCE_INTERFACE_TARGET=IV_VERSION(1,1)")
 
 
-
 	add_library(
 		sample_multiver_plugin_1_2 SHARED
 			sample/multiver/multiver_plugin.c
-			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
+			${EXTIT_HEADER_FILES}
+			${EXTIT_CONTAINER_HEADER_FILES}
+			${EXTIT_PLUGIN_HEADER_FILES}
+			${IV_HEADER_FILES}
+			${IV_UTIL_HEADER_FILES})
 
-	target_link_libraries(sample_multiver_plugin_1_2 iv)
+	target_link_libraries(
+		sample_multiver_plugin_1_2
+			iv_util)
 
 	set_target_properties(
 		sample_multiver_plugin_1_2 PROPERTIES
@@ -411,17 +596,28 @@ if(EXTIT_COMPILE_SAMPLES)
 	add_executable(
 		sample_scan_server
 			sample/scan/recipe_server.c
-			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
+			${EXTIT_HEADER_FILES}
+			${EXTIT_CONTAINER_HEADER_FILES}
+			${IV_HEADER_FILES}
+			${IV_UTIL_HEADER_FILES})
 
-	target_link_libraries(sample_scan_server extit)
+	target_link_libraries(
+		sample_scan_server
+			extit_container)
 
 
 	add_library(
 		sample_scan_plugin_pie SHARED
 			sample/scan/recipe_pie.c
-			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
+			${EXTIT_HEADER_FILES}
+			${EXTIT_CONTAINER_HEADER_FILES}
+			${EXTIT_PLUGIN_HEADER_FILES}
+			${IV_HEADER_FILES}
+			${IV_UTIL_HEADER_FILES})
 
-	target_link_libraries(sample_scan_plugin_pie iv)
+	target_link_libraries(
+		sample_scan_plugin_pie
+			iv_util)
 
 	set_target_properties(
 		sample_scan_plugin_pie PROPERTIES
@@ -432,9 +628,15 @@ if(EXTIT_COMPILE_SAMPLES)
 	add_library(
 		sample_scan_plugin_tea SHARED
 			sample/scan/recipe_tea.c
-			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
+			${EXTIT_HEADER_FILES}
+			${EXTIT_CONTAINER_HEADER_FILES}
+			${EXTIT_PLUGIN_HEADER_FILES}
+			${IV_HEADER_FILES}
+			${IV_UTIL_HEADER_FILES})
 
-	target_link_libraries(sample_scan_plugin_tea iv)
+	target_link_libraries(
+		sample_scan_plugin_tea
+			iv_util)
 
 	set_target_properties(
 		sample_scan_plugin_tea PROPERTIES
@@ -445,9 +647,15 @@ if(EXTIT_COMPILE_SAMPLES)
 	add_library(
 		sample_scan_plugin_tacos SHARED
 			sample/scan/recipe_tacos.c
-			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
+			${EXTIT_HEADER_FILES}
+			${EXTIT_CONTAINER_HEADER_FILES}
+			${EXTIT_PLUGIN_HEADER_FILES}
+			${IV_HEADER_FILES}
+			${IV_UTIL_HEADER_FILES})
 
-	target_link_libraries(sample_scan_plugin_tacos iv)
+	target_link_libraries(
+		sample_scan_plugin_tacos
+			iv_util)
 
 	set_target_properties(
 		sample_scan_plugin_tacos PROPERTIES
@@ -461,16 +669,29 @@ if(EXTIT_COMPILE_SAMPLES)
 	add_executable(
 		sample_simple_server
 			sample/simple/simple_server.c
-			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
+			${EXTIT_HEADER_FILES}
+			${EXTIT_CONTAINER_HEADER_FILES}
+			${IV_HEADER_FILES}
+			${IV_UTIL_HEADER_FILES})
 
-	target_link_libraries(sample_simple_server extit)
+	target_link_libraries(
+		sample_simple_server
+			extit_container)
+
 
 	add_library(
 		sample_simple_plugin SHARED
 			sample/simple/simple_plugin.c
-			${IV_HEADER_FILES} ${EXTIT_HEADER_FILES})
+			${EXTIT_HEADER_FILES}
+			${EXTIT_CONTAINER_HEADER_FILES}
+			${EXTIT_PLUGIN_HEADER_FILES}
+			${IV_HEADER_FILES}
+			${IV_UTIL_HEADER_FILES})
 
-	target_link_libraries(sample_simple_plugin iv)
+	target_link_libraries(
+		sample_simple_plugin
+##+			extit_plugin
+			iv_util)
 endif(EXTIT_COMPILE_SAMPLES)
 
 
@@ -488,8 +709,11 @@ if(EXTIT_COMPILE_TESTS)
 	add_executable(
 		test_iv_matches
 			tests/iv_matches/test_iv_matches.c
-			${IV_HEADER_FILES})
+			${IV_HEADER_FILES}
+			${IV_UTIL_HEADER_FILES})
 
-	target_link_libraries(test_iv_matches iv)
+	target_link_libraries(
+		test_iv_matches
+			iv_util)
 endif(EXTIT_COMPILE_TESTS)
 
