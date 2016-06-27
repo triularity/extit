@@ -11,6 +11,7 @@
 #define	__extit__plugin_spi_h
 
 #include <extit/base.h>
+#include <extit/types.h>
 #include <extit/container.h>
 
 #ifdef	__cplusplus
@@ -127,7 +128,7 @@ typedef extit_status_t	(EXTIT_DECL *extit_spi_handler_t)
  */
 typedef struct _extit_spi_descriptor_base
 {
-	unsigned int		magic;		/* EXTIT_SPI_MAGIC */
+	uint32_t		magic;		/* EXTIT_SPI_MAGIC */
 	iv_version_t		extit_version;	/* EXTIT_API_VERSION */
 } extit_spi_descriptor_base_t;
 
@@ -136,10 +137,13 @@ typedef struct _extit_spi_descriptor_base
  */
 typedef struct _extit_spi_descriptor_1_0
 {
-	unsigned int		magic;		/* EXTIT_SPI_MAGIC */
+	/* base */
+	uint32_t		magic;		/* EXTIT_SPI_MAGIC */
 	iv_version_t		extit_version;	/* EXTIT_API_VERSION */
+
+	/* 1.0 */
 	const char *		id;		/* Unique ID */
-	unsigned int		id_version;	/* Unique ID Relative Version */
+	uint32_t		id_version;	/* Unique ID Relative Version */
 	const char *		name;
 	const char *		version;
 	extit_spi_handler_t	handler;

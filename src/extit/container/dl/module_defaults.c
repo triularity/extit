@@ -16,7 +16,7 @@
 
 
 EXTIT_EXPORT
-unsigned int
+extit_bool_t
 EXTIT_DECL
 extit_module_scan_fnfilter_default
 (

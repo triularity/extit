@@ -10,9 +10,9 @@
 #ifndef	__container_impl_h
 #define	__container_impl_h
 
+#include <iv/base.h>
 #include <extit/container.h>
 #include <extit/plugin_spi.h>
-#include <iv/base.h>
 
 #ifdef	_WIN32
 #include <windows.h>

@@ -10,6 +10,8 @@
 #ifndef	__iv__base_h
 #define	__iv__base_h
 
+#include <stdint.h>
+
 #ifdef	__cplusplus
 extern "C" {
 #endif
@@ -26,7 +28,7 @@ extern "C" {
 /*
  * Interface Version
  */
-typedef	unsigned int		iv_version_t;
+typedef	uint32_t		iv_version_t;
 
 /*
  * IV boolean

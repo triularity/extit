@@ -115,12 +115,12 @@ typedef	extit_status_t	(EXTIT_DECL *extit_module_scan_callback_t)(
 				extit_module_t *module,
 				void *client_data);
 
-typedef	unsigned int	(EXTIT_DECL *extit_module_scan_fnfilter_t)(
+typedef	extit_bool_t	(EXTIT_DECL *extit_module_scan_fnfilter_t)(
 				const char *basename,
 				size_t length); 
 
 #ifdef  EXTIT_WCHAR
-typedef	unsigned int	(EXTIT_DECL *extit_module_scan_fnfilter_wc_t)(
+typedef	extit_bool_t	(EXTIT_DECL *extit_module_scan_fnfilter_wc_t)(
 				const wchar_t *basename,
 				size_t length); 
 #endif	/* EXTIT_WCHAR */
@@ -206,7 +206,7 @@ const char *		EXTIT_DECL
 				extit_module_t *module);
 
 EXTIT_EXPORT
-unsigned int		EXTIT_DECL
+uint32_t		EXTIT_DECL
 			extit_module_getIdVersion(
 				extit_module_t *module);
 
@@ -260,14 +260,14 @@ extit_status_t		EXTIT_DECL
 #endif  /* EXTIT_WCHAR */
 
 EXTIT_EXPORT
-unsigned int		EXTIT_DECL
+extit_bool_t		EXTIT_DECL
 			extit_module_scan_fnfilter_default(
 				const char *libname,
 				size_t length); 
 
 #ifdef  EXTIT_WCHAR
 EXTIT_EXPORT
-unsigned int		EXTIT_DECL
+extit_bool_t		EXTIT_DECL
 			extit_module_scan_fnfilter_wc_default(
 				const wchar_t *libname,
 				size_t length); 
