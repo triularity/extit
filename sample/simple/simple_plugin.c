@@ -7,6 +7,7 @@
 #include <iv/base.h>
 #include <iv/util.h>
 #include <extit/base.h>
+#include <extit/plugin.h>
 #include <extit/plugin_spi.h>
 
 
@@ -38,23 +39,23 @@ plugin_handler
 			return EXTIT_STATUS_OK;
 
 		case EXTIT_SPI_CMD_CREATE:
-			container->ops->log(container, "Creating plugin\n");
+			extit_container_log(container, "Creating plugin\n");
 			return EXTIT_STATUS_OK;
 
 		case EXTIT_SPI_CMD_ACTIVATE:
-			container->ops->log(container, "Activating plugin\n");
+			extit_container_log(container, "Activating plugin\n");
 			return EXTIT_STATUS_OK;
 
 		case EXTIT_SPI_CMD_DEACTIVATE:
-			container->ops->log(container, "Deactivating plugin\n");
+			extit_container_log(container, "Deactivating plugin\n");
 			return EXTIT_STATUS_OK;
 
 		case EXTIT_SPI_CMD_DESTROY:
-			container->ops->log(container, "Destroying plugin\n");
+			extit_container_log(container, "Destroying plugin\n");
 			return EXTIT_STATUS_OK;
 
 		case EXTIT_SPI_CMD_PING:
-			container->ops->log(container, "Pong\n");
+			extit_container_log(container, "Pong\n");
 			return EXTIT_STATUS_OK;
 
 		default:

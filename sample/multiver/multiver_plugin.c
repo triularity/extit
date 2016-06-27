@@ -9,6 +9,7 @@
 #include <iv/base.h>
 #include <iv/util.h>
 #include <extit/base.h>
+#include <extit/plugin.h>
 #include <extit/plugin_spi.h>
 
 #include "persistence.h"
@@ -41,7 +42,7 @@ plugin_handler
 			/*
 			 * Quick check for dependencies
 			 */
-			version = container->ops->query_interface(
+			version = extit_container_query_interface(
 				container, 
 				PERSISTENCE_INTERFACE_ID,
 				PERSISTENCE_INTERFACE_TARGET);

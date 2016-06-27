@@ -102,10 +102,15 @@ endif()
 
 # ExtIt plugin (client side)
 set(EXTIT_PLUGIN_HEADER_FILES 
+	src/include/extit/plugin.h
 	src/include/extit/plugin_spi.h)
 
-##+set(EXTIT_PLUGIN_SOURCE_FILES
-##+	src/extit/extit_plugin/xxxxx.c)
+set(EXTIT_PLUGIN_SOURCE_FILES
+	src/extit/plugin/container_get_function.c
+	src/extit/plugin/container_get_interface.c
+	src/extit/plugin/container_get_symbol.c
+	src/extit/plugin/container_log.c
+	src/extit/plugin/container_query_interface.c)
 
 
 # ExtIt utilities
@@ -284,6 +289,20 @@ if(EXTIT_COMPAT)
 		extit_ir
 			iv_repository)
 endif()
+
+
+#
+# [lib]extit_plugin
+#
+add_library(
+	extit_plugin
+		${EXTIT_PLUGIN_SOURCE_FILES}
+		${IV_HEADER_FILES}
+		${EXTIT_HEADER_FILES})
+
+set_target_properties(
+	extit_plugin PROPERTIES
+		POSITION_INDEPENDENT_CODE ON)
 
 
 #
@@ -544,6 +563,7 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	target_link_libraries(
 		sample_multiver_plugin_1_0
+			extit_plugin
 			iv_util)
 
 	set_target_properties(
@@ -563,6 +583,7 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	target_link_libraries(
 		sample_multiver_plugin_1_1
+			extit_plugin
 			iv_util)
 
 	set_target_properties(
@@ -582,6 +603,7 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	target_link_libraries(
 		sample_multiver_plugin_1_2
+			extit_plugin
 			iv_util)
 
 	set_target_properties(
@@ -690,7 +712,7 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	target_link_libraries(
 		sample_simple_plugin
-##+			extit_plugin
+			extit_plugin
 			iv_util)
 endif(EXTIT_COMPILE_SAMPLES)
 
