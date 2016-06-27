@@ -12,6 +12,7 @@
 
 #include <iv/base.h>
 #include <extit/base.h>
+#include <extit/util.h>
 #include <extit/plugin_spi.h>
 #include <extit/container.h>
 
@@ -153,7 +154,7 @@ extit_module_bind
 		return NULL;
 	}
 
-	module->refcount = 0;
+	module->refcount = EXTIT_REFCOUNT_NONE;
 	module->flags = flags;
 	module->api_version = api_version;
 	module->container = container;

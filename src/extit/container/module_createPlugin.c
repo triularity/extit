@@ -12,6 +12,7 @@
 
 #include <iv/base.h>
 #include <extit/base.h>
+#include <extit/util.h>
 #include <extit/plugin_spi.h>
 #include <extit/container.h>
 
@@ -42,8 +43,7 @@ extit_module_createPlugin
 
 	descriptor = (extit_spi_descriptor_1_0_t *) module->descriptor;
 
-#ifdef	EXTIT_PARANOID
-	if(module->refcount >= 0xF0000000)
+	if(extit_refcount_add(&module->refcount) != EXTIT_STATUS_OK)
 	{
 		fprintf(stderr,
 			"[extit:module] Excessive number of instances for plugin %s:%u.",
@@ -52,7 +52,6 @@ extit_module_createPlugin
 
 		return NULL;
 	}
-#endif
 
 	if((plugin = malloc(sizeof(extit_plugin_t))) == NULL)
 	{
@@ -64,6 +63,7 @@ extit_module_createPlugin
 				descriptor->id_version);
 		}
 
+		extit_refcount_release(&module->refcount);
 		return NULL;
 	}
 
@@ -89,12 +89,11 @@ extit_module_createPlugin
 				status);
 		}
 
+		extit_refcount_release(&module->refcount);
 		return NULL;
 	}
 
 	plugin->spi_ctx = params.spi_ctx;
-
-	module->refcount++;
 	plugin->module = module;
 	plugin->state = 0;
 

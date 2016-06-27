@@ -11,6 +11,7 @@
 #define	__container_impl_h
 
 #include <iv/base.h>
+#include <extit/util.h>
 #include <extit/container.h>
 #include <extit/plugin_spi.h>
 
@@ -24,7 +25,7 @@ extern "C" {
 
 struct _extit_module
 {
-	unsigned int				refcount;
+	extit_refcount_t			refcount;
 	unsigned int				flags;
 	iv_version_t				api_version;
 	const extit_container_t *		container;

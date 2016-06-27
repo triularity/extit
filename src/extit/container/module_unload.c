@@ -10,6 +10,7 @@
 #include <stdio.h>
 
 #include <extit/base.h>
+#include <extit/util.h>
 #include <extit/plugin_spi.h>
 #include <extit/container.h>
 
@@ -40,7 +41,7 @@ _extit_module_unload
 	}
 #endif
 
-	if(module->refcount != 0)
+	if(module->refcount != EXTIT_REFCOUNT_NONE)
 	{
 #ifdef	EXTIT_DEBUG
 		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)

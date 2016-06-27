@@ -12,6 +12,7 @@
 
 #include <iv/base.h>
 #include <extit/base.h>
+#include <extit/util.h>
 #include <extit/plugin_spi.h>
 #include <extit/container.h>
 
@@ -44,7 +45,7 @@ extit_plugin_destroy
 	descriptor = (extit_spi_descriptor_1_0_t *) module->descriptor;
 
 #ifdef	EXTIT_PARANOID
-	if(module->refcount == 0)
+	if(module->refcount == EXTIT_REFCOUNT_NONE)
 	{
 		fprintf(stderr,
 			"[extit:plugin] Attempting to destroy an instance for plugin %s:%u, which has no instances.",
@@ -89,7 +90,7 @@ extit_plugin_destroy
 
 	if(status == EXTIT_STATUS_OK)
 	{
-		plugin->module->refcount--;
+		extit_refcount_release(&plugin->module->refcount);
 		free(plugin);
 	}
 
