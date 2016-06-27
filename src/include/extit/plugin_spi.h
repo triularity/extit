@@ -167,9 +167,6 @@ typedef struct _extit_spi_descriptor_1_0
 #define	extit_spi_param_get_interface_t \
 				extit_spi_param_get_interface_1_0_t
 
-#define	_extit_spi_param_query_interface \
-				_extit_spi_param_query_interface_1_0
-
 #define	extit_spi_param_query_interface_t \
 				extit_spi_param_query_interface_1_0_t
 
