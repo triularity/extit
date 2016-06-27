@@ -10,8 +10,9 @@
 #ifndef	__extit__util_h
 #define	__extit__util_h
 
+#include <stdint.h>
+
 #include <extit/base.h>
-#include <extit/types.h>
 
 #ifdef	__cplusplus
 extern "C" {

@@ -10,8 +10,9 @@
 #ifndef	__extit__plugin_spi_h
 #define	__extit__plugin_spi_h
 
+#include <stdint.h>
+
 #include <extit/base.h>
-#include <extit/types.h>
 #include <extit/container.h>
 
 #ifdef	__cplusplus

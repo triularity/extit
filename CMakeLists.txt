@@ -38,8 +38,7 @@ include_directories(BEFORE src/include)
 # ExtIt core
 set(EXTIT_HEADER_FILES 
 	src/include/extit/base.h
-	src/include/extit/platform.h
-	src/include/extit/types.h)
+	src/include/extit/platform.h)
 
 
 # ExtIt container (server side)

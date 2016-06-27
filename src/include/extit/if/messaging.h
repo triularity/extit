@@ -11,10 +11,10 @@
 #define	__extit__if__messaging_h
 
 #include <stdlib.h>
+#include <stdint.h>
 
 #include <iv/base.h>
 #include <extit/base.h>
-#include <extit/types.h>
 
 #ifdef	__cplusplus
 extern "C" {
