@@ -47,29 +47,29 @@ set(EXTIT_CONTAINER_HEADER_FILES
 	src/include/extit/container.h)
 
 set(EXTIT_CONTAINER_SOURCE_FILES
-	src/container/container_defaults.c
-	src/container/module_bind.c
-	src/container/module_createPlugin.c
-	src/container/module_getAPIVersion.c
-	src/container/module_getEffectiveAPIVersion.c
-	src/container/module_getFlags.c
-	src/container/module_getId.c
-	src/container/module_getIdVersion.c
-	src/container/module_getName.c
-	src/container/module_getVersion.c
-	src/container/module_unload.c
-	src/container/module_setFlags.c
-	src/container/plugin_activate.c
-	src/container/plugin_deactivate.c
-	src/container/plugin_destroy.c
-	src/container/plugin_getContext.c
-	src/container/plugin_getFlags.c
-	src/container/plugin_getInterface.c
-	src/container/plugin_getModule.c
-	src/container/plugin_ping.c
-	src/container/plugin_queryInterface.c
-	src/container/plugin_setFlags.c
-	src/container/version.c)
+	src/extit/container/container_defaults.c
+	src/extit/container/module_bind.c
+	src/extit/container/module_createPlugin.c
+	src/extit/container/module_getAPIVersion.c
+	src/extit/container/module_getEffectiveAPIVersion.c
+	src/extit/container/module_getFlags.c
+	src/extit/container/module_getId.c
+	src/extit/container/module_getIdVersion.c
+	src/extit/container/module_getName.c
+	src/extit/container/module_getVersion.c
+	src/extit/container/module_unload.c
+	src/extit/container/module_setFlags.c
+	src/extit/container/plugin_activate.c
+	src/extit/container/plugin_deactivate.c
+	src/extit/container/plugin_destroy.c
+	src/extit/container/plugin_getContext.c
+	src/extit/container/plugin_getFlags.c
+	src/extit/container/plugin_getInterface.c
+	src/extit/container/plugin_getModule.c
+	src/extit/container/plugin_ping.c
+	src/extit/container/plugin_queryInterface.c
+	src/extit/container/plugin_setFlags.c
+	src/extit/container/version.c)
 
 
 # ExtIt standard interfaces (client side)
@@ -84,10 +84,10 @@ set(EXTIT_IF_HEADER_FILES
 	src/include/extit/if/resolvable_impl.h)
 
 set(EXTIT_IF_SOURCE_FILES
-	src/if/disposable.c
-	src/if/messaging.c
-	src/if/refcount.c
-	src/if/resolvable.c)
+	src/extit/if/disposable.c
+	src/extit/if/messaging.c
+	src/extit/if/refcount.c
+	src/extit/if/resolvable.c)
 
 
 if(EXTIT_COMPAT)
@@ -96,7 +96,7 @@ if(EXTIT_COMPAT)
 		src/include/extit/ir.h)
 
 	set(EXTIT_IR_SOURCE_FILES
-		src/ir/ir.c)
+		src/extit/ir/ir.c)
 endif()
 
 
@@ -105,7 +105,7 @@ set(EXTIT_PLUGIN_HEADER_FILES
 	src/include/extit/plugin_spi.h)
 
 ##+set(EXTIT_PLUGIN_SOURCE_FILES
-##+	src/extit_plugin/xxxxx.c)
+##+	src/extit/extit_plugin/xxxxx.c)
 
 
 # ExtIt utilities
@@ -113,7 +113,7 @@ set(EXTIT_UTIL_HEADER_FILES
 	src/include/extit/util.h)
 
 set(EXTIT_UTIL_SOURCE_FILES
-	src/util/refcount.c)
+	src/extit/util/refcount.c)
 
 
 # IV core
@@ -143,33 +143,33 @@ set(IV_UTIL_SOURCE_FILES
 if(EXTIT_LIB_LOADER STREQUAL "dl")
 	set(EXTIT_CONTAINER_SOURCE_FILES
 		${EXTIT_CONTAINER_SOURCE_FILES}
-		src/container/dl/container_defaults.c
-		src/container/dl/module_defaults.c
-		src/container/dl/module_getFunction.c
-		src/container/dl/module_getSymbol.c
-		src/container/dl/module_load.c
-		src/container/dl/module_release.c
-		src/container/dl/module_scan.c)
+		src/extit/container/dl/container_defaults.c
+		src/extit/container/dl/module_defaults.c
+		src/extit/container/dl/module_getFunction.c
+		src/extit/container/dl/module_getSymbol.c
+		src/extit/container/dl/module_load.c
+		src/extit/container/dl/module_release.c
+		src/extit/container/dl/module_scan.c)
 elseif(EXTIT_LIB_LOADER STREQUAL "win32")
 	set(EXTIT_CONTAINER_SOURCE_FILES
 		${EXTIT_CONTAINER_SOURCE_FILES}
-		src/container/win32/container_defaults.c
-		src/container/win32/module_defaults.c
-		src/container/win32/module_getFunction.c
-		src/container/win32/module_getSymbol.c
-		src/container/win32/module_load.c
-		src/container/win32/module_release.c
-		src/container/win32/module_scan.c)
+		src/extit/container/win32/container_defaults.c
+		src/extit/container/win32/module_defaults.c
+		src/extit/container/win32/module_getFunction.c
+		src/extit/container/win32/module_getSymbol.c
+		src/extit/container/win32/module_load.c
+		src/extit/container/win32/module_release.c
+		src/extit/container/win32/module_scan.c)
 ##+elseif(EXTIT_LIB_LOADER STREQUAL "dylib")
 ##+	set(EXTIT_CONTAINER_SOURCE_FILES
 ##+		${EXTIT_CONTAINER_SOURCE_FILES}
-##+		src/container/dylib/container_defaults.c
-##+		src/container/dylib/module_defaults.c
-##+		src/container/dylib/module_getFunction.c
-##+		src/container/dylib/module_getSymbol.c
-##+		src/container/dylib/module_load.c
-##+		src/container/dylib/module_release.c
-##+		src/container/dylib/module_scan.c)
+##+		src/extit/container/dylib/container_defaults.c
+##+		src/extit/container/dylib/module_defaults.c
+##+		src/extit/container/dylib/module_getFunction.c
+##+		src/extit/container/dylib/module_getSymbol.c
+##+		src/extit/container/dylib/module_load.c
+##+		src/extit/container/dylib/module_release.c
+##+		src/extit/container/dylib/module_scan.c)
 else()
 	message(FATAL_ERROR "Unsupported library loader: ${EXTIT_LIB_LOADER}")
 endif()
@@ -181,7 +181,7 @@ endif()
 if(EXTIT_WITH_CXX)
 ##+	set(EXTIT_CONTAINER_SOURCE_FILES
 ##+		${EXTIT_CONTAINER_SOURCE_FILES}
-##+		src/container/container_cxx.cc)
+##+		src/extit/container/container_cxx.cc)
 endif()
 
 
