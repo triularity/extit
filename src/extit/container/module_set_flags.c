@@ -1,5 +1,5 @@
 /*
- * @(#) container/plugin_getContext.c
+ * @(#) container/module_set_flags.c
  *
  * Platform neutral container library implementation.
  *
@@ -14,12 +14,13 @@
 
 
 EXTIT_EXPORT
-void *
+void
 EXTIT_DECL
-extit_plugin_getContext
+extit_module_set_flags
 (
-	extit_plugin_t *plugin
+	extit_module_t *module,
+	unsigned int flags
 )
 {
-	return plugin->spi_ctx;
+	module->flags = flags;
 }

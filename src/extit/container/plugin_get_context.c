@@ -1,5 +1,5 @@
 /*
- * @(#) container/module_getAPIVersion.c
+ * @(#) container/plugin_get_context.c
  *
  * Platform neutral container library implementation.
  *
@@ -7,7 +7,6 @@
  * http://www.triularity.org/
  */
 
-#include <iv/base.h>
 #include <extit/base.h>
 #include <extit/container.h>
 
@@ -15,12 +14,12 @@
 
 
 EXTIT_EXPORT
-iv_version_t
+void *
 EXTIT_DECL
-extit_module_getAPIVersion
+extit_plugin_get_context
 (
-	extit_module_t *module
+	extit_plugin_t *plugin
 )
 {
-	return module->descriptor->extit_version;
+	return plugin->spi_ctx;
 }

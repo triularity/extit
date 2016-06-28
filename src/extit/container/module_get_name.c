@@ -1,5 +1,5 @@
 /*
- * @(#) container/plugin_getModule.c
+ * @(#) container/module_get_name.c
  *
  * Platform neutral container library implementation.
  *
@@ -7,6 +7,7 @@
  * http://www.triularity.org/
  */
 
+#include <iv/base.h>
 #include <extit/base.h>
 #include <extit/container.h>
 
@@ -14,12 +15,17 @@
 
 
 EXTIT_EXPORT
-extit_module_t *
+const char *
 EXTIT_DECL
-extit_plugin_getModule
+extit_module_get_name
 (
-	extit_plugin_t *plugin
+	extit_module_t *module
 )
 {
-	return plugin->module;
+#ifdef	EXTIT_PARANOID
+	if(IV_VERSION_MAJOR(module->api_version) != 1)
+		return NULL;
+#endif
+
+	return ((extit_spi_descriptor_1_0_t *) module->descriptor)->name;
 }

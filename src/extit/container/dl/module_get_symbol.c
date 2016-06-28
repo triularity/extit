@@ -1,5 +1,5 @@
 /*
- * @(#) container/dl/module_getFunction.c
+ * @(#) container/dl/module_get_symbol.c
  *
  * [lib]dl specific implementations of container library.
  *
@@ -10,30 +10,19 @@
 #include <dlfcn.h>
 
 #include <extit/base.h>
-#include <extit/plugin_spi.h>
 #include <extit/container.h>
 
 #include "../container_impl.h"
 
 
 EXTIT_EXPORT
-extit_func_t
+void *
 EXTIT_DECL
-extit_module_getFunction
+extit_module_get_symbol
 (
 	extit_module_t *module,
 	const char *name
 )
 {
-#ifdef	EXTIT_HAVE_DLFUNC
-	return dlfunc(module->handle, name);
-#else
-	{
-		extit_func_t	fptr;
-
-
-		*((void **) &fptr) = dlsym(module->handle, name);
-		return fptr;
-	}
-#endif	/* EXTIT_HAVE_DLFUNC */
+	return dlsym(module->handle, name);
 }

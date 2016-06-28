@@ -1,5 +1,5 @@
 /*
- * @(#) container/module_createPlugin.c
+ * @(#) container/module_create_plugin.c
  *
  * Platform neutral container library implementation.
  *
@@ -22,7 +22,7 @@
 EXTIT_EXPORT
 extit_plugin_t *
 EXTIT_DECL
-extit_module_createPlugin
+extit_module_create_plugin
 (
 	extit_module_t *module
 )

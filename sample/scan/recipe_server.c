@@ -168,7 +168,7 @@ prepare_recipe(extit_module_t *module)
 	recipe_t *		recipe;
 
 
-	plugin = extit_module_createPlugin(module);
+	plugin = extit_module_create_plugin(module);
 
 	if(plugin == NULL)
 	{
@@ -176,7 +176,7 @@ prepare_recipe(extit_module_t *module)
 		return;
 	}
 
-	recipe = (recipe_t *) extit_plugin_getInterface(
+	recipe = (recipe_t *) extit_plugin_get_interface(
 		plugin, RECIPE_INTERFACE_ID, RECIPE_INTERFACE_VERSION);
 
 	if(recipe != NULL)
@@ -190,8 +190,8 @@ prepare_recipe(extit_module_t *module)
 			RECIPE_INTERFACE_ID,
 			IV_VERSION_MAJOR(RECIPE_INTERFACE_VERSION),
 			IV_VERSION_MINOR(RECIPE_INTERFACE_VERSION),
-			extit_module_getName(module),
-			extit_module_getVersion(module));
+			extit_module_get_name(module),
+			extit_module_get_version(module));
 	}
 
 	extit_plugin_destroy(plugin);

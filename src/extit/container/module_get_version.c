@@ -1,5 +1,5 @@
 /*
- * @(#) container/module_getName.c
+ * @(#) container/module_get_version.c
  *
  * Platform neutral container library implementation.
  *
@@ -17,7 +17,7 @@
 EXTIT_EXPORT
 const char *
 EXTIT_DECL
-extit_module_getName
+extit_module_get_version
 (
 	extit_module_t *module
 )
@@ -27,5 +27,5 @@ extit_module_getName
 		return NULL;
 #endif
 
-	return ((extit_spi_descriptor_1_0_t *) module->descriptor)->name;
+	return ((extit_spi_descriptor_1_0_t *) module->descriptor)->version;
 }

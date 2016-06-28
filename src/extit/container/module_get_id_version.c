@@ -1,5 +1,5 @@
 /*
- * @(#) container/module_getEffectiveAPIVersion.c
+ * @(#) container/module_get_id_version.c
  *
  * Platform neutral container library implementation.
  *
@@ -15,12 +15,17 @@
 
 
 EXTIT_EXPORT
-iv_version_t
+unsigned int
 EXTIT_DECL
-extit_module_getEffectiveAPIVersion
+extit_module_get_id_version
 (
 	extit_module_t *module
 )
 {
-	return module->api_version;
+#ifdef	EXTIT_PARANOID
+	if(IV_VERSION_MAJOR(module->api_version) != 1)
+		return 0;
+#endif
+
+	return ((extit_spi_descriptor_1_0_t *) module->descriptor)->id_version;
 }

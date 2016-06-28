@@ -102,21 +102,21 @@ main(int argc, char **argv)
 	{
 		fprintf(stderr,
 			"*** Module ID: %s\n",
-			extit_module_getId(module));
+			extit_module_get_id(module));
 
 		fprintf(stderr,
 			"*** Module ID Version: 0x%08x\n",
-			extit_module_getIdVersion(module));
+			extit_module_get_id_version(module));
 
 		fprintf(stderr,
 			"*** Module Name: %s\n",
-			extit_module_getName(module));
+			extit_module_get_name(module));
 
 		fprintf(stderr,
 			"*** Module Version: %s\n",
-			extit_module_getVersion(module));
+			extit_module_get_version(module));
 
-		plugin = extit_module_createPlugin(module);
+		plugin = extit_module_create_plugin(module);
 
 		if(plugin != NULL)
 		{

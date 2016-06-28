@@ -48,26 +48,26 @@ set(EXTIT_CONTAINER_HEADER_FILES
 set(EXTIT_CONTAINER_SOURCE_FILES
 	src/extit/container/container_defaults.c
 	src/extit/container/module_bind.c
-	src/extit/container/module_createPlugin.c
-	src/extit/container/module_getAPIVersion.c
-	src/extit/container/module_getEffectiveAPIVersion.c
-	src/extit/container/module_getFlags.c
-	src/extit/container/module_getId.c
-	src/extit/container/module_getIdVersion.c
-	src/extit/container/module_getName.c
-	src/extit/container/module_getVersion.c
+	src/extit/container/module_create_plugin.c
+	src/extit/container/module_get_api_version.c
+	src/extit/container/module_get_effective_api_version.c
+	src/extit/container/module_get_flags.c
+	src/extit/container/module_get_id.c
+	src/extit/container/module_get_id_version.c
+	src/extit/container/module_get_name.c
+	src/extit/container/module_get_version.c
+	src/extit/container/module_set_flags.c
 	src/extit/container/module_unload.c
-	src/extit/container/module_setFlags.c
 	src/extit/container/plugin_activate.c
 	src/extit/container/plugin_deactivate.c
 	src/extit/container/plugin_destroy.c
-	src/extit/container/plugin_getContext.c
-	src/extit/container/plugin_getFlags.c
-	src/extit/container/plugin_getInterface.c
-	src/extit/container/plugin_getModule.c
+	src/extit/container/plugin_get_context.c
+	src/extit/container/plugin_get_flags.c
+	src/extit/container/plugin_get_interface.c
+	src/extit/container/plugin_get_module.c
 	src/extit/container/plugin_ping.c
-	src/extit/container/plugin_queryInterface.c
-	src/extit/container/plugin_setFlags.c
+	src/extit/container/plugin_query_interface.c
+	src/extit/container/plugin_set_flags.c
 	src/extit/container/version.c)
 
 
@@ -149,8 +149,8 @@ if(EXTIT_LIB_LOADER STREQUAL "dl")
 		${EXTIT_CONTAINER_SOURCE_FILES}
 		src/extit/container/dl/container_defaults.c
 		src/extit/container/dl/module_defaults.c
-		src/extit/container/dl/module_getFunction.c
-		src/extit/container/dl/module_getSymbol.c
+		src/extit/container/dl/module_get_function.c
+		src/extit/container/dl/module_get_symbol.c
 		src/extit/container/dl/module_load.c
 		src/extit/container/dl/module_release.c
 		src/extit/container/dl/module_scan.c)
@@ -159,8 +159,8 @@ elseif(EXTIT_LIB_LOADER STREQUAL "win32")
 		${EXTIT_CONTAINER_SOURCE_FILES}
 		src/extit/container/win32/container_defaults.c
 		src/extit/container/win32/module_defaults.c
-		src/extit/container/win32/module_getFunction.c
-		src/extit/container/win32/module_getSymbol.c
+		src/extit/container/win32/module_get_function.c
+		src/extit/container/win32/module_get_symbol.c
 		src/extit/container/win32/module_load.c
 		src/extit/container/win32/module_release.c
 		src/extit/container/win32/module_scan.c)
@@ -169,8 +169,8 @@ elseif(EXTIT_LIB_LOADER STREQUAL "win32")
 ##+		${EXTIT_CONTAINER_SOURCE_FILES}
 ##+		src/extit/container/dylib/container_defaults.c
 ##+		src/extit/container/dylib/module_defaults.c
-##+		src/extit/container/dylib/module_getFunction.c
-##+		src/extit/container/dylib/module_getSymbol.c
+##+		src/extit/container/dylib/module_get_function.c
+##+		src/extit/container/dylib/module_get_symbol.c
 ##+		src/extit/container/dylib/module_load.c
 ##+		src/extit/container/dylib/module_release.c
 ##+		src/extit/container/dylib/module_scan.c)
@@ -222,6 +222,7 @@ add_library(
 		${EXTIT_CONTAINER_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
 		${EXTIT_CONTAINER_HEADER_FILES}
+		${EXTIT_PLUGIN_HEADER_FILES}
 		${EXTIT_UTIL_HEADER_FILES}
 		${IV_HEADER_FILES}
 		${IV_UTIL_HEADER_FILES})

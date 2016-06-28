@@ -1,5 +1,5 @@
 /*
- * @(#) container/plugin_queryInterface.c
+ * @(#) container/plugin_query_interface.c
  *
  * Platform neutral container library implementation.
  *
@@ -20,7 +20,7 @@
 EXTIT_EXPORT
 iv_version_t
 EXTIT_DECL
-extit_plugin_queryInterface
+extit_plugin_query_interface
 (
 	extit_plugin_t *plugin,
 	const char *id,

@@ -37,7 +37,7 @@ _extit_module_unload
 	{
 		fprintf(stderr,
 			"[extit:module] Unloading module, ID: %s.\n",
-			extit_module_getId(module));
+			extit_module_get_id(module));
 	}
 #endif
 

@@ -1,5 +1,5 @@
 /*
- * @(#) container/win32/module_getSymbol.c
+ * @(#) container/win32/module_get_symbol.c
  *
  * Windows specific implementations of container library.
  *
@@ -18,7 +18,7 @@
 EXTIT_EXPORT
 void *
 EXTIT_DECL
-extit_module_getSymbol
+extit_module_get_symbol
 (
 	extit_module_t *module,
 	const char *name

@@ -1,9 +1,9 @@
 /*
  * @(#) extit/container.h
  *
- * Container API.
+ * Container Interface.
  *
- * Copyright (c) 2014, 2015, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2014-2016, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -39,7 +39,7 @@ typedef void		(EXTIT_DECL *extit_func_t)();
 #if	EXTIT_API_TARGET == EXTIT_API_VERSION_1_0
 #define	extit_container_t	extit_container_1_0_t
 #else
-#error	Unsupported API target
+#error	Unsupported EXTIT_API_TARGET
 #endif
 
 
@@ -102,7 +102,7 @@ typedef struct _extit_container_ops_1_0
 
 struct _extit_container_1_0
 {
-	iv_version_t			version;/* EXTIT_API_VERSION */
+	iv_version_t			version;	/* EXTIT_API_VERSION */
 	extit_container_ops_1_0_t *	ops;
 };
 
@@ -159,7 +159,7 @@ iv_version_t		EXTIT_DECL
 
 EXTIT_EXPORT
 iv_version_t		EXTIT_DECL
-			extit_getVersion(void);
+			extit_get_version(void);
 
 
 EXTIT_EXPORT
@@ -171,54 +171,54 @@ extit_module_t *	EXTIT_DECL
 
 EXTIT_EXPORT
 extit_plugin_t *	EXTIT_DECL
-			extit_module_createPlugin(
+			extit_module_create_plugin(
 				extit_module_t *module);
 
 EXTIT_EXPORT
 iv_version_t		EXTIT_DECL
-			extit_module_getAPIVersion(
+			extit_module_get_api_version(
 				extit_module_t *module);
 
 EXTIT_EXPORT
 iv_version_t		EXTIT_DECL
-			extit_module_getEffectiveAPIVersion(
+			extit_module_get_effective_api_version(
 				extit_module_t *module);
 
 EXTIT_EXPORT
 unsigned int		EXTIT_DECL
-			extit_module_getFlags(
+			extit_module_get_flags(
 				extit_module_t *module);
 
 EXTIT_EXPORT
 extit_func_t		EXTIT_DECL
-			extit_module_getFunction(
+			extit_module_get_function(
 				extit_module_t *module,
 				const char *name);
 
 EXTIT_EXPORT
 const char *		EXTIT_DECL
-			extit_module_getName(
+			extit_module_get_name(
 				extit_module_t *module);
 
 EXTIT_EXPORT
 const char *		EXTIT_DECL
-			extit_module_getId(
+			extit_module_get_id(
 				extit_module_t *module);
 
 EXTIT_EXPORT
 uint32_t		EXTIT_DECL
-			extit_module_getIdVersion(
+			extit_module_get_id_version(
 				extit_module_t *module);
 
 EXTIT_EXPORT
 void *			EXTIT_DECL
-			extit_module_getSymbol(
+			extit_module_get_symbol(
 				extit_module_t *module,
 				const char *name);
 
 EXTIT_EXPORT
 const char *		EXTIT_DECL
-			extit_module_getVersion(
+			extit_module_get_version(
 				extit_module_t *module);
 
 EXTIT_EXPORT
@@ -275,7 +275,7 @@ extit_bool_t		EXTIT_DECL
 
 EXTIT_EXPORT
 void			EXTIT_DECL
-			extit_module_setFlags(
+			extit_module_set_flags(
 				extit_module_t *module,
 				unsigned int flags);
 
@@ -302,24 +302,24 @@ extit_status_t		EXTIT_DECL
 
 EXTIT_EXPORT
 void *			EXTIT_DECL
-			extit_plugin_getContext(
+			extit_plugin_get_context(
 				extit_plugin_t *plugin);
 
 EXTIT_EXPORT
 unsigned int		EXTIT_DECL
-			extit_plugin_getFlags(
+			extit_plugin_get_flags(
 				extit_plugin_t *plugin);
 
 EXTIT_EXPORT
 void *			EXTIT_DECL
-			extit_plugin_getInterface(
+			extit_plugin_get_interface(
 				extit_plugin_t *plugin,
 				const char *id,
 				iv_version_t version);
 
 EXTIT_EXPORT
 extit_module_t *	EXTIT_DECL
-			extit_plugin_getModule(
+			extit_plugin_get_module(
 				extit_plugin_t *plugin);
 
 EXTIT_EXPORT
@@ -329,14 +329,14 @@ extit_status_t		EXTIT_DECL
 
 EXTIT_EXPORT
 iv_version_t		EXTIT_DECL
-			extit_plugin_queryInterface(
+			extit_plugin_query_interface(
 				extit_plugin_t *plugin,
 				const char *id,
 				iv_version_t base_version);
 
 EXTIT_EXPORT
 void			EXTIT_DECL
-			extit_plugin_setFlags(
+			extit_plugin_set_flags(
 				extit_plugin_t *plugin,
 				unsigned int flags);
 

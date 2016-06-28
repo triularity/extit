@@ -1,13 +1,13 @@
 /*
- * @(#) container/dl/module_getSymbol.c
+ * @(#) container/win32/module_get_function.c
  *
- * [lib]dl specific implementations of container library.
+ * Windows specific implementations of container library.
  *
  * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
-#include <dlfcn.h>
+#include <windows.h>
 
 #include <extit/base.h>
 #include <extit/container.h>
@@ -16,13 +16,13 @@
 
 
 EXTIT_EXPORT
-void *
+extit_func_t
 EXTIT_DECL
-extit_module_getSymbol
+extit_module_get_function
 (
 	extit_module_t *module,
 	const char *name
 )
 {
-	return dlsym(module->handle, name);
+	return GetProcAddress(module->handle, name);
 }

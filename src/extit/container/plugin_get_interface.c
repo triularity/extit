@@ -1,5 +1,5 @@
 /*
- * @(#) container/plugin_getInterface.c
+ * @(#) container/plugin_get_interface.c
  *
  * Platform neutral container library implementation.
  *
@@ -20,7 +20,7 @@
 EXTIT_EXPORT
 void *
 EXTIT_DECL
-extit_plugin_getInterface
+extit_plugin_get_interface
 (
 	extit_plugin_t *plugin,
 	const char *id,

@@ -1,5 +1,5 @@
 /*
- * @(#) container/plugin_getFlags.c
+ * @(#) container/plugin_set_flags.c
  *
  * Platform neutral container library implementation.
  *
@@ -14,12 +14,13 @@
 
 
 EXTIT_EXPORT
-unsigned int
+void
 EXTIT_DECL
-extit_plugin_getFlags
+extit_plugin_set_flags
 (
-	extit_plugin_t *plugin
+	extit_plugin_t *plugin,
+	unsigned int flags
 )
 {
-	return plugin->flags;
+	plugin->flags = flags;
 }
