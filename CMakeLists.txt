@@ -89,16 +89,6 @@ set(EXTIT_IF_SOURCE_FILES
 	src/extit/if/resolvable.c)
 
 
-if(EXTIT_COMPAT)
-	set(EXTIT_HEADER_FILES
-		${EXTIT_HEADER_FILES}
-		src/include/extit/ir.h)
-
-	set(EXTIT_IR_SOURCE_FILES
-		src/extit/ir/ir.c)
-endif()
-
-
 # ExtIt plugin (client side)
 set(EXTIT_PLUGIN_HEADER_FILES 
 	src/include/extit/plugin.h
@@ -270,28 +260,6 @@ endif()
 
 
 #
-# [lib]extit_ir
-#
-if(EXTIT_COMPAT)
-	add_library(
-		extit_ir
-			${EXTIT_IR_SOURCE_FILES}
-			${EXTIT_HEADER_FILES}
-			${EXTIT_REPOSITORY_HEADER_FILES}
-			${EXTIT_UTIL_HEADER_FILES}
-			${IV_HEADER_FILES})
-
-	set_target_properties(
-		extit_ir PROPERTIES
-			POSITION_INDEPENDENT_CODE ON)
-
-	target_link_libraries(
-		extit_ir
-			iv_repository)
-endif()
-
-
-#
 # [lib]extit_plugin
 #
 add_library(
@@ -389,12 +357,6 @@ if(DEFINED LIBNAME_POSTFIX)
 		extit_if PROPERTIES
 			OUTPUT_NAME "extit_if${LIBNAME_POSTFIX}")
 
-	if(EXTIT_COMPAT)
-		set_target_properties(
-			extit_ir PROPERTIES
-				OUTPUT_NAME "extit_ir${LIBNAME_POSTFIX}")
-	endif()
-
 	set_target_properties(
 		extif_util PROPERTIES
 			OUTPUT_NAME "extif_util${LIBNAME_POSTFIX}")
@@ -420,13 +382,6 @@ install(
 		iv_repository
 		iv_util
 	DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
-
-if(EXTIT_COMPAT)
-	install(
-		TARGETS
-			extit_ir
-		DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
-endif()
 
 install(
 	FILES
