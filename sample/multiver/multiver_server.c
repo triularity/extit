@@ -77,7 +77,7 @@ main(int argc, char **argv)
 		return 2;
 	}
 
-	iv_repository_setFlags(ir, EXTIT_FLAG_LOG_DEBUG);
+	iv_repository_set_flags(ir, EXTIT_FLAG_LOG_DEBUG);
 
 	if(iv_repository_set(ir, PERSISTENCE_INTERFACE_ID,
 	 PERSISTENCE_INTERFACE_TARGET, &persistence_interface, NULL)

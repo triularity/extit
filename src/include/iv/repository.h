@@ -71,11 +71,11 @@ void *			IV_DECL
 
 IV_EXPORT
 unsigned int		IV_DECL
-			iv_repository_getDefaultFlags(void);
+			iv_repository_get_default_flags(void);
 
 IV_EXPORT
 unsigned int		IV_DECL
-			iv_repository_getFlags(
+			iv_repository_get_flags(
 				const iv_repository_t *ir);
 
 IV_EXPORT
@@ -104,12 +104,12 @@ iv_repository_status_t	IV_DECL
 
 IV_EXPORT
 void			IV_DECL
-			iv_repository_setDefaultFlags(
+			iv_repository_set_default_flags(
 				unsigned int flags);
 
 IV_EXPORT
 void			IV_DECL
-			iv_repository_setFlags(
+			iv_repository_set_flags(
 				iv_repository_t *ir,
 				unsigned int flags);
 

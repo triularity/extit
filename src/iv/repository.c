@@ -20,7 +20,7 @@
 #define	DELETES_PER_CLEANUP	5
 
 
-static unsigned int		_iv_repository_defaultFlags = \
+static unsigned int		_iv_repository_default_flags = \
 					IV_REPOSITORY_FLAG_LOG_NORMAL;
 
 
@@ -611,7 +611,7 @@ iv_repository_create()
 	iv_repository_t *	ivr;
 
 
-	flags = _iv_repository_defaultFlags;
+	flags = _iv_repository_default_flags;
 
 	if((ivr = calloc(1, sizeof(iv_repository_t))) != NULL)
 	{
@@ -699,16 +699,16 @@ iv_repository_get(const iv_repository_t *ivr, const char *id, iv_version_t versi
 IV_EXPORT
 unsigned int
 IV_DECL
-iv_repository_getDefaultFlags()
+iv_repository_get_default_flags()
 {
-	return _iv_repository_defaultFlags;
+	return _iv_repository_default_flags;
 }
 
 
 IV_EXPORT
 unsigned int
 IV_DECL
-iv_repository_getFlags(const iv_repository_t *ivr)
+iv_repository_get_flags(const iv_repository_t *ivr)
 {
 	return ivr->flags;
 }
@@ -881,16 +881,16 @@ iv_repository_set(iv_repository_t *ivr, const char *id, iv_version_t version, vo
 IV_EXPORT
 void
 IV_DECL
-iv_repository_setDefaultFlags(unsigned int flags)
+iv_repository_set_default_flags(unsigned int flags)
 {
-	_iv_repository_defaultFlags = flags;
+	_iv_repository_default_flags = flags;
 }
 
 
 IV_EXPORT
 void
 IV_DECL
-iv_repository_setFlags(iv_repository_t *ivr, unsigned int flags)
+iv_repository_set_flags(iv_repository_t *ivr, unsigned int flags)
 {
 	ivr->flags = flags;
 }

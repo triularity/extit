@@ -77,7 +77,7 @@ main(int argc, char **argv)
 	general_iface_t *	gi;
 
 
-	iv_repository_setDefaultFlags(IV_REPOSITORY_FLAG_LOG_DEBUG);
+	iv_repository_set_default_flags(IV_REPOSITORY_FLAG_LOG_DEBUG);
 
 	ir = iv_repository_create();
 
