@@ -72,42 +72,53 @@ set(EXTIT_CONTAINER_SOURCE_FILES
 
 
 # ExtIt standard interfaces (client side)
-set(EXTIT_IF_HEADER_FILES 
-	src/include/extit/if/disposable.h
-	src/include/extit/if/disposable_impl.h
-	src/include/extit/if/messaging.h
-	src/include/extit/if/messaging_impl.h
-	src/include/extit/if/refcount.h
-	src/include/extit/if/refcount_impl.h
-	src/include/extit/if/resolvable.h
-	src/include/extit/if/resolvable_impl.h)
-
-set(EXTIT_IF_SOURCE_FILES
-	src/extit/if/disposable.c
-	src/extit/if/messaging.c
-	src/extit/if/refcount.c
-	src/extit/if/resolvable.c)
-
 set(EXTIT_IF_ALLOCATOR_HEADER_FILES 
 	src/include/extit/if/allocator.h
-	src/include/extit/if/allocator_impl.h
-)
+	src/include/extit/if/allocator_impl.h)
 
 set(EXTIT_IF_ALLOCATOR_SOURCE_FILES
 	src/extit/if/allocator/alloc.c
 	src/extit/if/allocator/dup.c
 	src/extit/if/allocator/free.c
 	src/extit/if/allocator/realloc.c
-	src/extit/if/allocator/zalloc.c
+	src/extit/if/allocator/zalloc.c)
+
+set(EXTIT_IF_DISPOSABLE_HEADER_FILES 
+	src/include/extit/if/disposable.h
+	src/include/extit/if/disposable_impl.h)
+
+set(EXTIT_IF_DISPOSABLE_SOURCE_FILES
+	src/extit/if/disposable.c
 )
 
+set(EXTIT_IF_MESSAGING_HEADER_FILES 
+	src/include/extit/if/messaging.h
+	src/include/extit/if/messaging_impl.h)
+
+set(EXTIT_IF_MESSAGING_SOURCE_FILES
+	src/extit/if/messaging.c)
+
+set(EXTIT_IF_REFCOUNT_HEADER_FILES 
+	src/include/extit/if/refcount.h
+	src/include/extit/if/refcount_impl.h)
+
+set(EXTIT_IF_REFCOUNT_SOURCE_FILES
+	src/extit/if/refcount.c)
+
+set(EXTIT_IF_RESOLVABLE_HEADER_FILES 
+	src/include/extit/if/resolvable.h
+	src/include/extit/if/resolvable_impl.h)
+
+set(EXTIT_IF_RESOLVABLE_SOURCE_FILES
+	src/extit/if/resolvable.c)
+
+
+# ExtIt standard interface implementations
 set(EXTIT_IF_ALLOCATOR_STDIMPL_HEADER_FILES
-	src/include/extit/if/allocator_stdimpl.h
-)
+	src/include/extit/if/allocator_stdimpl.h)
 
 set(EXTIT_IF_ALLOCATOR_STDIMPL_SOURCE_FILES
-	src/extit/if/allocator/stdimpl.c
-)
+	src/extit/if/allocator/stdimpl.c)
 
 
 # ExtIt plugin (client side)
@@ -254,33 +265,6 @@ endif()
 
 
 #
-# [lib]extit_if
-#
-add_library(
-	extit_if
-		${EXTIT_IF_SOURCE_FILES}
-		${EXTIT_HEADER_FILES}
-		${EXTIT_IF_HEADER_FILES}
-		${EXTIT_UTIL_HEADER_FILES}
-		${IV_HEADER_FILES}
-		${IV_UTIL_HEADER_FILES})
-
-set_target_properties(
-	extit_if PROPERTIES
-		POSITION_INDEPENDENT_CODE ON)
-
-target_link_libraries(
-	extit_if
-		extit_util)
-
-if(EXTIT_PARANOID)
-	target_link_libraries(
-		extit_if
-			iv_util)
-endif()
-
-
-#
 # [lib]extit_if_allocator
 #
 add_library(
@@ -316,6 +300,99 @@ add_library(
 set_target_properties(
 	extit_if_allocator_stdimpl PROPERTIES
 		POSITION_INDEPENDENT_CODE ON)
+
+
+#
+# [lib]extit_if_disposable
+#
+add_library(
+	extit_if_disposable
+		${EXTIT_IF_DISPOSABLE_SOURCE_FILES}
+		${EXTIT_HEADER_FILES}
+		${EXTIT_IF_DISPOSABLE_HEADER_FILES}
+		${IV_HEADER_FILES}
+		${IV_UTIL_HEADER_FILES})
+
+set_target_properties(
+	extit_if_disposable PROPERTIES
+		POSITION_INDEPENDENT_CODE ON)
+
+if(EXTIT_PARANOID)
+	target_link_libraries(
+		extit_if_disposable
+			iv_util)
+endif()
+
+
+#
+# [lib]extit_if_messaging
+#
+add_library(
+	extit_if_messaging
+		${EXTIT_IF_MESSAGING_SOURCE_FILES}
+		${EXTIT_HEADER_FILES}
+		${EXTIT_IF_MESSAGING_HEADER_FILES}
+		${IV_HEADER_FILES}
+		${IV_UTIL_HEADER_FILES})
+
+set_target_properties(
+	extit_if_messaging PROPERTIES
+		POSITION_INDEPENDENT_CODE ON)
+
+if(EXTIT_PARANOID)
+	target_link_libraries(
+		extit_if_messaging
+			iv_util)
+endif()
+
+
+#
+# [lib]extit_if_refcount
+#
+add_library(
+	extit_if_refcount
+		${EXTIT_IF_REFCOUNT_SOURCE_FILES}
+		${EXTIT_HEADER_FILES}
+		${EXTIT_IF_REFCOUNT_HEADER_FILES}
+		${EXTIT_UTIL_HEADER_FILES}
+		${IV_HEADER_FILES}
+		${IV_UTIL_HEADER_FILES})
+
+set_target_properties(
+	extit_if_refcount PROPERTIES
+		POSITION_INDEPENDENT_CODE ON)
+
+target_link_libraries(
+	extit_if_refcount
+		extit_util)
+
+if(EXTIT_PARANOID)
+	target_link_libraries(
+		extit_if_refcount
+			iv_util)
+endif()
+
+
+#
+# [lib]extit_if_resolvable
+#
+add_library(
+	extit_if_resolvable
+		${EXTIT_IF_RESOLVABLE_SOURCE_FILES}
+		${EXTIT_HEADER_FILES}
+		${EXTIT_IF_RESOLVABLE_HEADER_FILES}
+		${IV_HEADER_FILES}
+		${IV_UTIL_HEADER_FILES})
+
+set_target_properties(
+	extit_if_resolvable PROPERTIES
+		POSITION_INDEPENDENT_CODE ON)
+
+if(EXTIT_PARANOID)
+	target_link_libraries(
+		extit_if_resolvable
+			iv_util)
+endif()
 
 
 #
@@ -413,8 +490,28 @@ if(DEFINED LIBNAME_POSTFIX)
 			OUTPUT_NAME "extit_container${LIBNAME_POSTFIX}")
 
 	set_target_properties(
-		extit_if PROPERTIES
-			OUTPUT_NAME "extit_if${LIBNAME_POSTFIX}")
+		extit_if_allocator PROPERTIES
+			OUTPUT_NAME "extit_if_allocator${LIBNAME_POSTFIX}")
+
+	set_target_properties(
+		extit_if_allocator_stdimpl PROPERTIES
+			OUTPUT_NAME "extit_if_allocator_stdimpl${LIBNAME_POSTFIX}")
+
+	set_target_properties(
+		extit_if_disposable PROPERTIES
+			OUTPUT_NAME "extit_if_disposable${LIBNAME_POSTFIX}")
+
+	set_target_properties(
+		extit_if_messaging PROPERTIES
+			OUTPUT_NAME "extit_if_messaging${LIBNAME_POSTFIX}")
+
+	set_target_properties(
+		extit_if_refcount PROPERTIES
+			OUTPUT_NAME "extit_if_refcount${LIBNAME_POSTFIX}")
+
+	set_target_properties(
+		extit_if_resolvable PROPERTIES
+			OUTPUT_NAME "extit_if_resolvable${LIBNAME_POSTFIX}")
 
 	set_target_properties(
 		extif_util PROPERTIES
@@ -436,7 +533,12 @@ endif(DEFINED LIBNAME_POSTFIX)
 install(
 	TARGETS
 		extit_container
-		extit_if
+		extit_if_allocator
+		extit_if_allocator_stdimpl
+		extit_if_disposable
+		extit_if_messaging
+		extit_if_refcount
+		extit_if_resolvable
 		extit_util
 		iv_repository
 		iv_util
@@ -453,9 +555,12 @@ install(
 
 install(
 	FILES
-		${EXTIT_IF_HEADER_FILES}
 		${EXTIT_IF_ALLOCATOR_HEADER_FILES}
 		${EXTIT_IF_ALLOCATOR_STDIMPL_HEADER_FILES}
+		${EXTIT_IF_DISPOSABLE_HEADER_FILES}
+		${EXTIT_IF_MESSAGING_HEADER_FILES}
+		${EXTIT_IF_REFCOUNT_HEADER_FILES}
+		${EXTIT_IF_RESOLVABLE_HEADER_FILES}
 	DESTINATION ${CMAKE_INSTALL_PREFIX}/include/extit/if)
 
 install(
@@ -488,7 +593,7 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	target_link_libraries(
 		sample_if_refcount
-			extit_if)
+			extit_if_refcount)
 
 
 	#
