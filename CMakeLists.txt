@@ -96,21 +96,34 @@ set(EXTIT_IF_MESSAGING_HEADER_FILES
 	src/include/extit/if/messaging_impl.h)
 
 set(EXTIT_IF_MESSAGING_SOURCE_FILES
-	src/extit/if/messaging.c)
+	src/extit/if/messaging/add_listener.c
+	src/extit/if/messaging/bind.c
+	src/extit/if/messaging/bound_add_listener.c
+	src/extit/if/messaging/bound_has_listener.c
+	src/extit/if/messaging/bound_remove_listener.c
+	src/extit/if/messaging/bound_send.c
+	src/extit/if/messaging/has_listener.c
+	src/extit/if/messaging/remove_listener.c
+	src/extit/if/messaging/remove_listener_by_id.c
+	src/extit/if/messaging/send.c
+	src/extit/if/messaging/unbind.c)
 
 set(EXTIT_IF_REFCOUNT_HEADER_FILES 
 	src/include/extit/if/refcount.h
 	src/include/extit/if/refcount_impl.h)
 
 set(EXTIT_IF_REFCOUNT_SOURCE_FILES
-	src/extit/if/refcount.c)
+	src/extit/if/refcount/add.c
+	src/extit/if/refcount/get.c
+	src/extit/if/refcount/release.c)
 
 set(EXTIT_IF_RESOLVABLE_HEADER_FILES 
 	src/include/extit/if/resolvable.h
 	src/include/extit/if/resolvable_impl.h)
 
 set(EXTIT_IF_RESOLVABLE_SOURCE_FILES
-	src/extit/if/resolvable.c)
+	src/extit/if/resolvable/get_interface.c
+	src/extit/if/resolvable/query_interface.c)
 
 
 # ExtIt standard interface implementations
