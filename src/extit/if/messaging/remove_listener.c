@@ -20,7 +20,7 @@
 EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
-extit_if_messaging_removeListener
+extit_if_messaging_remove_listener
 (
 	extit_if_messaging_t *messaging,
 	const char *mid,

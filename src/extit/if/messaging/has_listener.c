@@ -20,7 +20,7 @@
 EXTIT_EXPORT
 extit_bool_t
 EXTIT_DECL
-extit_if_messaging_hasListener
+extit_if_messaging_has_listener
 (
 	extit_if_messaging_t *messaging,
 	const char *mid,

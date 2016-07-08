@@ -76,7 +76,7 @@ typedef uint32_t			extit_if_messaging_listener_id_t;
 EXTIT_EXPORT
 extit_if_messaging_listener_id_t
 			EXTIT_DECL
-			extit_if_messaging_addListener(
+			extit_if_messaging_add_listener(
 				extit_if_messaging_t *messaging,
 				const char *mid,
 				const char *iid,
@@ -96,7 +96,7 @@ extit_if_messaging_bound_t
 EXTIT_EXPORT
 extit_if_messaging_listener_id_t
 			EXTIT_DECL
-			extit_if_messaging_boundAddListener(
+			extit_if_messaging_bound_add_liistener(
 				extit_if_messaging_t *messaging,
 				extit_if_messaging_bound_t bound,
 				extit_if_messaging_listener_t callback,
@@ -104,13 +104,13 @@ extit_if_messaging_listener_id_t
 
 EXTIT_EXPORT
 extit_bool_t		EXTIT_DECL
-			extit_if_messaging_boundHasListener(
+			extit_if_messaging_bound_has_listener(
 				extit_if_messaging_t *messaging,
 				extit_if_messaging_bound_t bound);
 
 EXTIT_EXPORT
 extit_status_t		EXTIT_DECL
-			extit_if_messaging_boundRemoveListener(
+			extit_if_messaging_bound_remove_listener(
 				extit_if_messaging_t *messaging,
 				extit_if_messaging_bound_t bound,
 				extit_if_messaging_listener_t callback,
@@ -118,14 +118,14 @@ extit_status_t		EXTIT_DECL
 
 EXTIT_EXPORT
 extit_status_t		EXTIT_DECL
-			extit_if_messaging_boundSend(
+			extit_if_messaging_bound_send(
 				extit_if_messaging_t *messaging,
 				extit_if_messaging_bound_t bound,
 				void *data);
 
 EXTIT_EXPORT
 extit_bool_t		EXTIT_DECL
-			extit_if_messaging_hasListener(
+			extit_if_messaging_has_listener(
 				extit_if_messaging_t *messaging,
 				const char *mid,
 				const char *iid,
@@ -133,7 +133,7 @@ extit_bool_t		EXTIT_DECL
 
 EXTIT_EXPORT
 extit_status_t		EXTIT_DECL
-			extit_if_messaging_removeListener(
+			extit_if_messaging_remove_listener(
 				extit_if_messaging_t *messaging,
 				const char *mid,
 				const char *iid,
@@ -143,7 +143,7 @@ extit_status_t		EXTIT_DECL
 
 EXTIT_EXPORT
 extit_status_t		EXTIT_DECL
-			extit_if_messaging_removeListenerById(
+			extit_if_messaging_remove_listener_by_id(
 				extit_if_messaging_t *messaging,
 				extit_if_messaging_listener_id_t id);
 

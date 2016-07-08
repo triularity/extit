@@ -20,7 +20,7 @@
 EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
-extit_if_messaging_removeListenerById
+extit_if_messaging_remove_listener_by_id
 (
 	extit_if_messaging_t *messaging,
 	extit_if_messaging_listener_id_t id

@@ -20,7 +20,7 @@
 EXTIT_EXPORT
 extit_if_messaging_listener_id_t
 EXTIT_DECL
-extit_if_messaging_boundAddListener
+extit_if_messaging_bound_add_listener
 (
 	extit_if_messaging_t *messaging,
 	extit_if_messaging_bound_t bound,
