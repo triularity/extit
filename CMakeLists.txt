@@ -88,6 +88,27 @@ set(EXTIT_IF_SOURCE_FILES
 	src/extit/if/refcount.c
 	src/extit/if/resolvable.c)
 
+set(EXTIT_IF_ALLOCATOR_HEADER_FILES 
+	src/include/extit/if/allocator.h
+	src/include/extit/if/allocator_impl.h
+)
+
+set(EXTIT_IF_ALLOCATOR_SOURCE_FILES
+	src/extit/if/allocator/alloc.c
+	src/extit/if/allocator/dup.c
+	src/extit/if/allocator/free.c
+	src/extit/if/allocator/realloc.c
+	src/extit/if/allocator/zalloc.c
+)
+
+set(EXTIT_IF_ALLOCATOR_STDIMPL_HEADER_FILES
+	src/include/extit/if/allocator_stdimpl.h
+)
+
+set(EXTIT_IF_ALLOCATOR_STDIMPL_SOURCE_FILES
+	src/extit/if/allocator/stdimpl.c
+)
+
 
 # ExtIt plugin (client side)
 set(EXTIT_PLUGIN_HEADER_FILES 
@@ -260,6 +281,44 @@ endif()
 
 
 #
+# [lib]extit_if_allocator
+#
+add_library(
+	extit_if_allocator
+		${EXTIT_IF_ALLOCATOR_SOURCE_FILES}
+		${EXTIT_HEADER_FILES}
+		${EXTIT_IF_ALLOCATOR_HEADER_FILES}
+		${IV_HEADER_FILES}
+		${IV_UTIL_HEADER_FILES})
+
+set_target_properties(
+	extit_if_allocator PROPERTIES
+		POSITION_INDEPENDENT_CODE ON)
+
+if(EXTIT_PARANOID)
+	target_link_libraries(
+		extit_if_allocator
+			iv_util)
+endif()
+
+
+#
+# [lib]extit_if_allocator_stdimpl
+#
+add_library(
+	extit_if_allocator_stdimpl
+		${EXTIT_IF_ALLOCATOR_STDIMPL_SOURCE_FILES}
+		${EXTIT_HEADER_FILES}
+		${EXTIT_IF_ALLOCATOR_HEADER_FILES}
+		${EXTIT_IF_ALLOCATOR_STDIMPL_HEADER_FILES}
+		${IV_HEADER_FILES})
+
+set_target_properties(
+	extit_if_allocator_stdimpl PROPERTIES
+		POSITION_INDEPENDENT_CODE ON)
+
+
+#
 # [lib]extit_plugin
 #
 add_library(
@@ -387,11 +446,17 @@ install(
 	FILES
 		${EXTIT_HEADER_FILES}
 		${EXTIT_CONTAINER_HEADER_FILES}
-		${EXTIT_IF_HEADER_FILES}
 		${EXTIT_PLUGIN_HEADER_FILES}
 		${EXTIT_REPOSITORY_HEADER_FILES}
 		${EXTIT_UTIL_HEADER_FILES}
 	DESTINATION ${CMAKE_INSTALL_PREFIX}/include/extit)
+
+install(
+	FILES
+		${EXTIT_IF_HEADER_FILES}
+		${EXTIT_IF_ALLOCATOR_HEADER_FILES}
+		${EXTIT_IF_ALLOCATOR_STDIMPL_HEADER_FILES}
+	DESTINATION ${CMAKE_INSTALL_PREFIX}/include/extit/if)
 
 install(
 	FILES
