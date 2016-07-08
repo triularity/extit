@@ -68,7 +68,7 @@ hashstring(const char *str);
 
 static
 version_list_t *
-vlist_create();
+vlist_create(void);
 
 static
 void
@@ -119,7 +119,7 @@ hashstring(const char *str)
 
 static
 version_list_t *
-vlist_create()
+vlist_create(void)
 {
 	return calloc(1, sizeof(version_list_t));
 }
@@ -322,7 +322,7 @@ vlist_set(version_list_t **vlistp, iv_version_t version, void *value, void **old
 
 static
 hash_bucket_t *
-bucket_create()
+bucket_create(void)
 {
 	return calloc(1, sizeof(hash_bucket_t));
 }
@@ -605,7 +605,7 @@ iv_repository_cleanup(iv_repository_t *ivr)
 IV_EXPORT
 iv_repository_t *
 IV_DECL
-iv_repository_create()
+iv_repository_create(void)
 {
 	unsigned int		flags;
 	iv_repository_t *	ivr;
@@ -699,7 +699,7 @@ iv_repository_get(const iv_repository_t *ivr, const char *id, iv_version_t versi
 IV_EXPORT
 unsigned int
 IV_DECL
-iv_repository_get_default_flags()
+iv_repository_get_default_flags(void)
 {
 	return _iv_repository_default_flags;
 }

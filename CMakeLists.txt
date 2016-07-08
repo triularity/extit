@@ -473,11 +473,20 @@ if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
 	target_link_libraries(extit_container dl)
 endif()
 
+if(${CMAKE_SYSTEM_NAME} MATCHES "BSD")
+	add_definitions("-DEXTIT_HAVE_DLFUNC_T")
+endif()
+
 if(${CMAKE_CXX_COMPILER_ID} MATCHES "GNU" OR ${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -pedantic")
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wmissing-prototypes -Wstrict-prototypes")
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror")
 elseif(MSVC)
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W4 /wd4054 /wd4100")
+
+	# Get rid of annoying D9025 warning for /W3 /W4
+	string(REPLACE "/W3 " "" CMAKE_C_FLAGS ${CMAKE_C_FLAGS})
+
 	add_definitions("-D_CRT_SECURE_NO_WARNINGS")
 endif()
 

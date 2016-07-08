@@ -23,7 +23,7 @@ struct worklist
 };
 
 
-struct worklist *	worklist_create();
+struct worklist *	worklist_create(void);
 
 void			worklist_add(struct worklist *list, myobj_t *obj);
 

@@ -10,6 +10,6 @@
 #include "myobj.h"
 
 
-myobj_t *			provider_get_next();
+myobj_t *			provider_get_next(void);
 
 #endif	/* !__provider_h */

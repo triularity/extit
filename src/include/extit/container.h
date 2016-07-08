@@ -18,6 +18,8 @@
 
 #ifdef	_WIN32
 #include <windows.h>
+#else
+#include <dlfcn.h>
 #endif
 
 #include <extit/base.h>
@@ -28,8 +30,10 @@ extern "C" {
 
 #ifdef	_WIN32
 typedef FARPROC		extit_func_t;
+#elif	EXTIT_HAVE_DLFUNC_T
+typedef dlfunc_t	extit_func_t;
 #else
-typedef void		(EXTIT_DECL *extit_func_t)();
+typedef void *		extit_func_t;
 #endif
 
 
