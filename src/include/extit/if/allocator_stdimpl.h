@@ -18,6 +18,10 @@ extern "C" {
 
 extern extit_if_allocator_1_0_t		extit_if_allocator_stdimpl_1_0;
 
+#if	EXTIT_IF_ALLOCATOR_ABI == EXTIT_IF_ALLOCATOR_ABI_1_0
+#define	extit_if_allocator_stdimpl	extit_if_allocator_stdimpl_1_0
+#endif
+
 #ifdef	__cplusplus
 }
 #endif

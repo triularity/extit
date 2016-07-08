@@ -8,6 +8,7 @@
  */
 
 #include <extit/base.h>
+#include <extit/if/disposable.h>
 #include <extit/if/disposable_impl.h>
 
 #ifdef	EXTIT_PARANOID
@@ -24,7 +25,7 @@ extit_if_disposable_free
 )
 {
 #ifdef	EXTIT_PARANOID
-	if(!iv_matches(disposable->version, EXTIT_IF_DISPOSABLE_VERSION_1_0))
+	if(!iv_matches(disposable->version, EXTIT_IF_DISPOSABLE_ABI_1_0))
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 

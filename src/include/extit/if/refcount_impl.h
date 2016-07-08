@@ -20,15 +20,16 @@ extern "C" {
 
 typedef struct _extit_if_refcount_ops_1_0
 {
-	extit_status_t		(EXTIT_DECL *add)(
+	extit_status_t		(EXTIT_DECL *op_add)(
 					extit_if_refcount_t *refcount);
 
-	extit_refcount_t	(EXTIT_DECL *get)(
+	extit_refcount_t	(EXTIT_DECL *op_get)(
 					extit_if_refcount_t *refcount);
 
-	extit_status_t		(EXTIT_DECL *release)(
+	extit_status_t		(EXTIT_DECL *op_release)(
 					extit_if_refcount_t *refcount);
 } extit_if_refcount_ops_1_0_t;
+
 
 struct _extit_if_refcount_1_0
 {
@@ -38,13 +39,13 @@ struct _extit_if_refcount_1_0
 
 
 #define	EXTIT_IF_REFCOUNT_ADD(refcount)	\
-			((refcount)->ops->add(refcount))
+			((refcount)->ops->op_add(refcount))
 
 #define	EXTIT_IF_REFCOUNT_GET(refcount)	\
-			((refcount)->ops->get(refcount))
+			((refcount)->ops->op_get(refcount))
 
 #define	EXTIT_IF_REFCOUNT_RELEASE(refcount)	\
-			((refcount)->ops->release(refcount))
+			((refcount)->ops->op_release(refcount))
 
 #ifdef	__cplusplus
 }

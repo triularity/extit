@@ -9,6 +9,7 @@
 
 #include <iv/base.h>
 #include <extit/base.h>
+#include <extit/if/messaging.h>
 #include <extit/if/messaging_impl.h>
 
 #ifdef	EXTIT_PARANOID
@@ -29,7 +30,7 @@ extit_if_messaging_send
 )
 {
 #ifdef	EXTIT_PARANOID
-	if(!iv_matches(messaging->version, EXTIT_IF_MESSAGING_VERSION_1_0))
+	if(!iv_matches(messaging->version, EXTIT_IF_MESSAGING_ABI_1_0))
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 

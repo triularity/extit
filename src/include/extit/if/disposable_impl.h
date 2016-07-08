@@ -19,9 +19,10 @@ extern "C" {
 
 typedef struct _extit_if_disposable_1_0_ops
 {
-	extit_status_t		(EXTIT_DECL *free)(
+	extit_status_t		(EXTIT_DECL *op_free)(
 					extit_if_disposable_t *disposable);
 } extit_if_disposable_ops_1_0_t;
+
 
 struct _extit_if_disposable_1_0
 {
@@ -31,7 +32,7 @@ struct _extit_if_disposable_1_0
 
 
 #define	EXTIT_IF_DISPOSABLE_FREE(disposable)	\
-			((disposable)->ops->free(disposable))
+			((disposable)->ops->op_free(disposable))
 
 #ifdef	__cplusplus
 }

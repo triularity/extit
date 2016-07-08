@@ -25,18 +25,18 @@ extern "C" {
 /*
  * Resolvable (v1.0)
  */
-#define EXTIT_IF_RESOLVABLE_VERSION_1_0	IV_VERSION(1,0)
+#define EXTIT_IF_RESOLVABLE_ABI_1_0	IV_VERSION(1,0)
 typedef struct _extit_if_resolvable_1_0	extit_if_resolvable_1_0_t;
 
 
-#ifndef	EXTIT_IF_RESOLVABLE_VERSION
-#define	EXTIT_IF_RESOLVABLE_VERSION	EXTIT_IF_RESOLVABLE_VERSION_1_0
+#ifndef	EXTIT_IF_RESOLVABLE_ABI
+#define	EXTIT_IF_RESOLVABLE_ABI		EXTIT_IF_RESOLVABLE_ABI_1_0
 #endif
 
-#if	EXTIT_IF_RESOLVABLE_VERSION == EXTIT_IF_RESOLVABLE_VERSION_1_0
+#if	EXTIT_IF_RESOLVABLE_ABI == EXTIT_IF_RESOLVABLE_ABI_1_0
 #define	extit_if_resolvable_t		extit_if_resolvable_1_0_t
 #else
-#error	Unsupported EXTIT_IF_RESOLVABLE_VERSION
+#error	Unsupported EXTIT_IF_RESOLVABLE_ABI
 #endif
 
 

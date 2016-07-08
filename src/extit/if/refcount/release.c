@@ -8,6 +8,7 @@
  */
 
 #include <extit/base.h>
+#include <extit/if/refcount.h>
 #include <extit/if/refcount_impl.h>
 
 #ifdef	EXTIT_PARANOID
@@ -24,7 +25,7 @@ extit_if_refcount_release
 )
 {
 #ifdef	EXTIT_PARANOID
-	if(!iv_matches(refcount->version, EXTIT_IF_REFCOUNT_VERSION_1_0))
+	if(!iv_matches(refcount->version, EXTIT_IF_REFCOUNT_ABI_1_0))
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 

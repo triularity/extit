@@ -19,12 +19,12 @@ extern "C" {
 
 typedef struct _extit_if_resolvable_ops_1_0
 {
-	void *			(EXTIT_DECL *get_interface)(
+	void *			(EXTIT_DECL *op_get_interface)(
 					extit_if_resolvable_t *resolvable,
 					const char *id,
 					iv_version_t version);
 
-	iv_version_t		(EXTIT_DECL *query_interface)(
+	iv_version_t		(EXTIT_DECL *op_query_interface)(
 					extit_if_resolvable_t *resolvable,
 					const char *id,
 					iv_version_t base_version);
@@ -42,9 +42,9 @@ struct _extit_if_resolvable_1_0
 #endif
 
 #define	EXTIT_IF_RESOLVABLE_GET_INTERFACE(resolvable, id, version)	\
-			((resolvable)->ops->get_interface((resolvable), (id), (version)))
+			((resolvable)->ops->op_get_interface((resolvable), (id), (version)))
 
 #define	EXTIT_IF_RESOLVABLE_QUERY_INTERFACE(resolvable, id, base_version)	\
-			((resolvable)->ops->query_interface((resolvable), (id), (base_version)))
+			((resolvable)->ops->op_query_interface((resolvable), (id), (base_version)))
 
 #endif	/* !__extit__if__resolvable_impl_h */

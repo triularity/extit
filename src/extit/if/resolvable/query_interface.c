@@ -11,6 +11,7 @@
 
 #include <iv/base.h>
 #include <extit/base.h>
+#include <extit/if/resolvable.h>
 #include <extit/if/resolvable_impl.h>
 
 #ifdef	EXTIT_PARANOID
@@ -29,7 +30,7 @@ extit_if_resolvable_query_interface
 )
 {
 #ifdef	EXTIT_PARANOID
-	if(!iv_matches(resolvable->version, EXTIT_IF_RESOLVABLE_VERSION_1_0))
+	if(!iv_matches(resolvable->version, EXTIT_IF_RESOLVABLE_ABI_1_0))
 		return IV_VERSION_NONE;
 #endif
 

@@ -26,19 +26,19 @@ extern "C" {
 /*
  * Reference Count (v1.0)
  */
-#define EXTIT_IF_REFCOUNT_VERSION_1_0	IV_VERSION(1,0)
+#define EXTIT_IF_REFCOUNT_ABI_1_0	IV_VERSION(1,0)
 
 typedef struct _extit_if_refcount_1_0	extit_if_refcount_1_0_t;
 
 
-#ifndef	EXTIT_IF_REFCOUNT_VERSION
-#define	EXTIT_IF_REFCOUNT_VERSION	EXTIT_IF_REFCOUNT_VERSION_1_0
+#ifndef	EXTIT_IF_REFCOUNT_ABI
+#define	EXTIT_IF_REFCOUNT_ABI		EXTIT_IF_REFCOUNT_ABI_1_0
 #endif
 
-#if	EXTIT_IF_REFCOUNT_VERSION == EXTIT_IF_REFCOUNT_VERSION_1_0
+#if	EXTIT_IF_REFCOUNT_ABI == EXTIT_IF_REFCOUNT_ABI_1_0
 #define	extit_if_refcount_t		extit_if_refcount_1_0_t
 #else
-#error	Unsupported EXTIT_IF_REFCOUNT_VERSION
+#error	Unsupported EXTIT_IF_REFCOUNT_ABI
 #endif
 
 

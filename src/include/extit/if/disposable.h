@@ -25,19 +25,19 @@ extern "C" {
 /*
  * Disposable (v1.0)
  */
-#define EXTIT_IF_DISPOSABLE_VERSION_1_0	IV_VERSION(1,0)
+#define EXTIT_IF_DISPOSABLE_ABI_1_0	IV_VERSION(1,0)
 
 typedef struct _extit_if_disposable_1_0	extit_if_disposable_1_0_t;
 
 
-#ifndef	EXTIT_IF_DISPOSABLE_VERSION
-#define	EXTIT_IF_DISPOSABLE_VERSION	EXTIT_IF_DISPOSABLE_VERSION_1_0
+#ifndef	EXTIT_IF_DISPOSABLE_ABI
+#define	EXTIT_IF_DISPOSABLE_ABI		EXTIT_IF_DISPOSABLE_ABI_1_0
 #endif
 
-#if	EXTIT_IF_DISPOSABLE_VERSION == EXTIT_IF_DISPOSABLE_VERSION_1_0
+#if	EXTIT_IF_DISPOSABLE_ABI == EXTIT_IF_DISPOSABLE_ABI_1_0
 #define	extit_if_disposable_t		extit_if_disposable_1_0_t
 #else
-#error	Unsupported EXTIT_IF_DISPOSABLE_VERSION
+#error	Unsupported EXTIT_IF_DISPOSABLE_ABI
 #endif
 
 
