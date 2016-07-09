@@ -56,14 +56,14 @@ _extit_module_unload
 	}
 
 #ifdef	EXTIT_PARANOID
-	if(IV_VERSION_MAJOR(module->api_version) != 1)
+	if(IV_VERSION_MAJOR(module->abi_version) != 1)
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
 	descriptor = (extit_spi_descriptor_1_0_t *) module->descriptor;
 
 	status = descriptor->handler(
-			module->api_version,
+			module->abi_version,
 			module->container,
 			EXTIT_SPI_CMD_UNLOAD,
 			NULL,

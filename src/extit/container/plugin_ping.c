@@ -36,7 +36,7 @@ extit_plugin_ping
 	module = plugin->module;
 
 #ifdef	EXTIT_PARANOID
-	if(IV_VERSION_MAJOR(module->api_version) != 1)
+	if(IV_VERSION_MAJOR(module->abi_version) != 1)
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
@@ -45,7 +45,7 @@ extit_plugin_ping
 	params.spi_ctx = plugin->spi_ctx;
 
 	status = descriptor->handler(
-			module->api_version,
+			module->abi_version,
 			module->container,
 			EXTIT_SPI_CMD_PING,
 			&params,

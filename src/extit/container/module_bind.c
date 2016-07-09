@@ -36,7 +36,7 @@ extit_module_bind
 {
 	const extit_spi_descriptor_base_t *	descriptor_base;
 	const extit_spi_descriptor_1_0_t *	descriptor_1_0;
-	iv_version_t				api_version;
+	iv_version_t				abi_version;
 	extit_status_t				status;
 	extit_module_t *			module;
 
@@ -76,18 +76,18 @@ extit_module_bind
 	if(IV_VERSION_MAJOR(descriptor_base->extit_version) != 1)
 		return NULL;
 
-	api_version =
+	abi_version =
 		MIN(container->version,
 			MIN(descriptor_base->extit_version,
-				EXTIT_API_VERSION));
+				EXTIT_ABI_VERSION));
 
 #ifdef	EXTIT_DEBUG
 	if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_TRACE)
 	{
 		fprintf(stderr,
-			"[extit:module] Using API v%u.%u.\n",
-			IV_VERSION_MAJOR(api_version),
-			IV_VERSION_MINOR(api_version));
+			"[extit:module] Using ABI v%u.%u.\n",
+			IV_VERSION_MAJOR(abi_version),
+			IV_VERSION_MINOR(abi_version));
 	}
 #endif	/* EXTIT_DEBUG */
 
@@ -109,7 +109,7 @@ extit_module_bind
 #endif	/* EXTIT_DEBUG */
 
 	status = descriptor_1_0->handler(
-			api_version,
+			abi_version,
 			container,
 			EXTIT_SPI_CMD_PROBE,
 			NULL,
@@ -156,7 +156,7 @@ extit_module_bind
 
 	module->refcount = EXTIT_REFCOUNT_NONE;
 	module->flags = flags;
-	module->api_version = api_version;
+	module->abi_version = abi_version;
 	module->container = container;
 	module->descriptor = descriptor_base;
 

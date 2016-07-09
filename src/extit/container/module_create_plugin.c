@@ -37,7 +37,7 @@ extit_module_create_plugin
 	flags = module->flags;
 
 #ifdef	EXTIT_PARANOID
-	if(IV_VERSION_MAJOR(module->api_version) != 1)
+	if(IV_VERSION_MAJOR(module->abi_version) != 1)
 		return NULL;
 #endif
 
@@ -70,7 +70,7 @@ extit_module_create_plugin
 	params.spi_ctx = NULL;
 
 	status = descriptor->handler(
-			module->api_version,
+			module->abi_version,
 			module->container,
 			EXTIT_SPI_CMD_CREATE,
 			&params,

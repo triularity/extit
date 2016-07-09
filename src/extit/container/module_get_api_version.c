@@ -1,5 +1,5 @@
 /*
- * @(#) container/module_get_api_version.c
+ * @(#) container/module_get_abi_version.c
  *
  * Platform neutral container library implementation.
  *
@@ -17,7 +17,7 @@
 EXTIT_EXPORT
 iv_version_t
 EXTIT_DECL
-extit_module_get_api_version
+extit_module_get_abi_version
 (
 	extit_module_t *module
 )

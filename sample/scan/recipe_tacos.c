@@ -48,7 +48,7 @@ extit_status_t
 EXTIT_DECL
 plugin_handler
 (
-	iv_version_t api_version,
+	iv_version_t abi_version,
 	const extit_container_t *container,
 	unsigned int cmd,
 	void *param,
@@ -68,11 +68,11 @@ plugin_handler
 			/*
 			 * We only need to support v1.0 for what we do
 			 */
-			if(!iv_matches(api_version, EXTIT_API_VERSION_1_0))
+			if(!iv_matches(abi_version, EXTIT_ABI_VERSION_1_0))
 				return EXTIT_STATUS_UNSUPPORTED;
 
 			/*
-			 * No need to check api_version for other commands
+			 * No need to check abi_version for other commands
 			 * since they will only be called if v1.0+ after this
 			 */
 			return EXTIT_STATUS_OK;

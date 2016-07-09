@@ -91,7 +91,7 @@ main(int argc, char **argv)
 		return 2;
 	}
 
-	container_impl.container.version = EXTIT_API_VERSION_1_0;
+	container_impl.container.version = EXTIT_ABI_VERSION_1_0;
 	container_impl.container.ops = &my_container_ops;
 	container_impl.ir = ir;
 

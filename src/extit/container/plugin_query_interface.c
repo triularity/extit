@@ -38,7 +38,7 @@ extit_plugin_query_interface
 	module = plugin->module;
 
 #ifdef	EXTIT_PARANOID
-	if(IV_VERSION_MAJOR(module->api_version) != 1)
+	if(IV_VERSION_MAJOR(module->abi_version) != 1)
 		return IV_VERSION_NONE;
 #endif
 
@@ -53,7 +53,7 @@ extit_plugin_query_interface
 #endif
 
 	status = descriptor->handler(
-			module->api_version,
+			module->abi_version,
 			module->container,
 			EXTIT_SPI_CMD_QUERY_INTERFACE,
 			&params,

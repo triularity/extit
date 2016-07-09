@@ -23,7 +23,7 @@ extit_container_ops_1_0_t	my_container_ops =
 static
 extit_container_t		my_container =
 {
-	EXTIT_API_VERSION_1_0,				/* version */
+	EXTIT_ABI_VERSION_1_0,				/* version */
 	&my_container_ops				/* ops */
 };
 
@@ -49,17 +49,17 @@ main(int argc, char **argv)
 	if(module != NULL)
 	{
 		fprintf(stderr,
-			"*** Module API: %u.%u\n",
-			IV_VERSION_MAJOR(extit_module_get_api_version(module)),
-			IV_VERSION_MINOR(extit_module_get_api_version(module)));
+			"*** Module ABI: %u.%u\n",
+			IV_VERSION_MAJOR(extit_module_get_abi_version(module)),
+			IV_VERSION_MINOR(extit_module_get_abi_version(module)));
 
 		fprintf(stderr,
-			"*** Module Effective API: %u.%u\n",
+			"*** Module Effective ABI: %u.%u\n",
 			IV_VERSION_MAJOR(
-				extit_module_get_effective_api_version(
+				extit_module_get_effective_abi_version(
 					module)),
 			IV_VERSION_MINOR(
-				extit_module_get_effective_api_version(
+				extit_module_get_effective_abi_version(
 					module)));
 
 		fprintf(stderr,

@@ -27,7 +27,7 @@ struct _extit_module
 {
 	extit_refcount_t			refcount;
 	unsigned int				flags;
-	iv_version_t				api_version;
+	iv_version_t				abi_version;
 	const extit_container_t *		container;
 	const extit_spi_descriptor_base_t *	descriptor;
 

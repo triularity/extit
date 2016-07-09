@@ -23,7 +23,7 @@ extit_module_get_id_version
 )
 {
 #ifdef	EXTIT_PARANOID
-	if(IV_VERSION_MAJOR(module->api_version) != 1)
+	if(IV_VERSION_MAJOR(module->abi_version) != 1)
 		return 0;
 #endif
 

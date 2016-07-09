@@ -22,7 +22,7 @@
 
 
 #ifdef	EXTIT_COMPAT
-typedef	iv_version_t		extit_iv_t;
+typedef	iv_version_t			extit_iv_t;
 
 #define	EXTIT_IV(major, minor)		IV_VERSION((major), (minor))
 #define	EXTIT_IV_MAJOR(v)		IV_VERSION_MAJOR(v)
@@ -32,13 +32,13 @@ typedef	iv_version_t		extit_iv_t;
 
 
 /*
- * ExtIt API Version (v1.0)
+ * ExtIt ABI Version (v1.0)
  */
-#define	EXTIT_API_VERSION_MAJOR	1
-#define	EXTIT_API_VERSION_MINOR	0
-#define	EXTIT_API_VERSION		IV_VERSION(EXTIT_API_VERSION_MAJOR, EXTIT_API_VERSION_MINOR)
+#define	EXTIT_ABI_VERSION_MAJOR	1
+#define	EXTIT_ABI_VERSION_MINOR	0
+#define	EXTIT_ABI_VERSION		IV_VERSION(EXTIT_ABI_VERSION_MAJOR, EXTIT_ABI_VERSION_MINOR)
 
-#define	EXTIT_API_VERSION_1_0		IV_VERSION(1,0)
+#define	EXTIT_ABI_VERSION_1_0		IV_VERSION(1,0)
 
 
 /*
@@ -54,8 +54,8 @@ typedef	enum _extit_bool
 /*
  * Default Target Version
  */
-#ifndef	EXTIT_API_TARGET
-#define	EXTIT_API_TARGET		EXTIT_API_VERSION
+#ifndef	EXTIT_ABI_TARGET
+#define	EXTIT_ABI_TARGET		EXTIT_ABI_VERSION
 #endif
 
 
@@ -82,6 +82,7 @@ typedef enum _extit_status
 	EXTIT_STATUS_BUSY		= 5,	/* In use */
 	EXTIT_STATUS_NOTIMPLEMENTED	= 6,	/* Function not implemented */
 	EXTIT_STATUS_NOTFOUND		= 7,	/* Result not found */
+	EXTIT_STATUS_NOPREREQ		= 8,	/* Pre-requirement missing */
 
 	EXTIT_STATUS_CUSTOM_BASE	= 0x8000
 } extit_status_t;

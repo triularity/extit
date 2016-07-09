@@ -40,10 +40,10 @@ typedef void *		extit_func_t;
 /*
  * Aliases for API target
  */
-#if	EXTIT_API_TARGET == EXTIT_API_VERSION_1_0
+#if	EXTIT_ABI_TARGET == EXTIT_ABI_VERSION_1_0
 #define	extit_container_t	extit_container_1_0_t
 #else
-#error	Unsupported EXTIT_API_TARGET
+#error	Unsupported EXTIT_ABI_TARGET
 #endif
 
 
@@ -54,7 +54,7 @@ typedef struct _extit_container_base	extit_container_base_t;
 
 struct _extit_container_base
 {
-	iv_version_t	version;		/* EXTIT_API_VERSION */
+	iv_version_t	version;		/* EXTIT_ABI_VERSION */
 };
 
 
@@ -106,7 +106,7 @@ typedef struct _extit_container_ops_1_0
 
 struct _extit_container_1_0
 {
-	iv_version_t			version;	/* EXTIT_API_VERSION */
+	iv_version_t			version;	/* EXTIT_ABI_VERSION */
 	extit_container_ops_1_0_t *	ops;
 };
 
@@ -180,12 +180,12 @@ extit_plugin_t *	EXTIT_DECL
 
 EXTIT_EXPORT
 iv_version_t		EXTIT_DECL
-			extit_module_get_api_version(
+			extit_module_get_abi_version(
 				extit_module_t *module);
 
 EXTIT_EXPORT
 iv_version_t		EXTIT_DECL
-			extit_module_get_effective_api_version(
+			extit_module_get_effective_abi_version(
 				extit_module_t *module);
 
 EXTIT_EXPORT
