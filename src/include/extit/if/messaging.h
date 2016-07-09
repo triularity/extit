@@ -29,7 +29,6 @@ extern "C" {
  * Messaging (v1.0)
  */
 #define EXTIT_IF_MESSAGING_ABI_1_0	IV_VERSION(1,0)
-
 typedef struct _extit_if_messaging_1_0	extit_if_messaging_1_0_t;
 
 /*
@@ -59,14 +58,16 @@ typedef uint32_t			extit_if_messaging_listener_id_t;
 /*
  * ABI Version
  */
-#ifndef	EXTIT_IF_MESSAGING_ABI
 #define	EXTIT_IF_MESSAGING_ABI		EXTIT_IF_MESSAGING_ABI_1_0
+
+#ifndef	EXTIT_IF_MESSAGING_ABI_TARGET
+#define	EXTIT_IF_MESSAGING_ABI_TARGET	EXTIT_IF_MESSAGING_ABI
 #endif
 
-#if	EXTIT_IF_MESSAGING_ABI == EXTIT_IF_MESSAGING_ABI_1_0
+#if	EXTIT_IF_MESSAGING_ABI_TARGET == EXTIT_IF_MESSAGING_ABI_1_0
 #define	extit_if_messaging_t		extit_if_messaging_1_0_t
 #else
-#error	Unsupported EXTIT_IF_MESSAGING_ABI
+#error	Unsupported EXTIT_IF_MESSAGING_ABI_TARGET version
 #endif
 
 

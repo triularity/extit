@@ -29,14 +29,19 @@ extern "C" {
 typedef struct _extit_if_resolvable_1_0	extit_if_resolvable_1_0_t;
 
 
-#ifndef	EXTIT_IF_RESOLVABLE_ABI
+/*
+ * ABI Version
+ */
 #define	EXTIT_IF_RESOLVABLE_ABI		EXTIT_IF_RESOLVABLE_ABI_1_0
+
+#ifndef	EXTIT_IF_RESOLVABLE_ABI_TARGET
+#define	EXTIT_IF_RESOLVABLE_ABI_TARGET	EXTIT_IF_RESOLVABLE_ABI
 #endif
 
-#if	EXTIT_IF_RESOLVABLE_ABI == EXTIT_IF_RESOLVABLE_ABI_1_0
+#if	EXTIT_IF_RESOLVABLE_ABI_TARGET == EXTIT_IF_RESOLVABLE_ABI_1_0
 #define	extit_if_resolvable_t		extit_if_resolvable_1_0_t
 #else
-#error	Unsupported EXTIT_IF_RESOLVABLE_ABI
+#error	Unsupported EXTIT_IF_RESOLVABLE_ABI_TARGET version
 #endif
 
 
