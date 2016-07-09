@@ -49,8 +49,8 @@ set(EXTIT_CONTAINER_SOURCE_FILES
 	src/extit/container/container_defaults.c
 	src/extit/container/module_bind.c
 	src/extit/container/module_create_plugin.c
-	src/extit/container/module_get_api_version.c
-	src/extit/container/module_get_effective_api_version.c
+	src/extit/container/module_get_abi_version.c
+	src/extit/container/module_get_effective_abi_version.c
 	src/extit/container/module_get_flags.c
 	src/extit/container/module_get_id.c
 	src/extit/container/module_get_id_version.c
