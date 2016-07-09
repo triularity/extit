@@ -597,6 +597,44 @@ install(
 #
 if(EXTIT_COMPILE_SAMPLES)
 	#
+	# Allocator Interface Plugin
+	#
+	add_library(
+		sample_if_allocator_plugin SHARED
+			sample/if_allocator/plugin.c
+			${EXTIT_HEADER_FILES}
+			${EXTIT_ALLOCATOR_HEADER_FILES}
+			${EXTIT_CONTAINER_HEADER_FILES}
+			${EXTIT_PLUGIN_HEADER_FILES}
+			${IV_HEADER_FILES}
+			${IV_UTIL_HEADER_FILES})
+
+	target_link_libraries(
+		sample_if_allocator_plugin
+			extit_if_allocator
+			extit_plugin
+			iv_util)
+
+
+	#
+	# Allocator Interface Server
+	#
+	add_executable(
+		sample_if_allocator_server
+			sample/if_allocator/server.c
+			${EXTIT_HEADER_FILES}
+			${EXTIT_ALLOCATOR_HEADER_FILES}
+			${EXTIT_CONTAINER_HEADER_FILES}
+			${IV_HEADER_FILES}
+			${IV_UTIL_HEADER_FILES})
+
+	target_link_libraries(
+		sample_if_allocator_server
+			extit_if_allocator_stdimpl
+			extit_container)
+
+
+	#
 	# Refcount Interface
 	#
 	add_executable(
