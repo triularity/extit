@@ -21,16 +21,6 @@
 #define	EXTIT_LIB_VERSION		((EXTIT_LIB_VERSION_MAJOR << 16)|(EXTIT_LIB_VERSION_MINOR<<8)|EXTIT_LIB_VERSION_PATCH)
 
 
-#ifdef	EXTIT_COMPAT
-typedef	iv_version_t			extit_iv_t;
-
-#define	EXTIT_IV(major, minor)		IV_VERSION((major), (minor))
-#define	EXTIT_IV_MAJOR(v)		IV_VERSION_MAJOR(v)
-#define	EXTIT_IV_MINOR(v)		IV_VERSION_MINOR(v)
-#define	EXTIT_IV_NONE			IV_VERSION_NONE
-#endif	/* EXTIT_COMPAT */
-
-
 /*
  * ExtIt ABI Version (v1.0)
  */
