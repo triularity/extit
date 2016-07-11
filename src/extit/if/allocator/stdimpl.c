@@ -135,6 +135,7 @@ extit_if_allocator_ops_1_0_t	allocator_ops =
 };
 
 
+EXTIT_IF_ALLOCATOR_STDIMPL_LIBAPI
 extit_if_allocator_1_0_t	extit_if_allocator_stdimpl_1_0 =
 {
 	EXTIT_IF_ALLOCATOR_ABI_1_0,	/* version */

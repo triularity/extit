@@ -36,7 +36,7 @@ typedef	uint32_t		iv_version_t;
 typedef	enum _iv_bool
 {
 	IV_FALSE = 0,
-	IV_TRUE = 1
+	IV_TRUE = !0
 } iv_bool_t;
 
 
@@ -66,13 +66,11 @@ typedef	enum _iv_bool
  * DLL Export Modifier
  */
 #ifdef	_WIN32
-#ifdef	IV_DLL_BUILD
-#define	IV_EXPORT		__declspec(dllimport)
-#else
 #define	IV_EXPORT		__declspec(dllexport)
-#endif
+#define	IV_IMPORT		/* __declspec(dllimport) */
 #else
-#define	IV_EXPORT
+#define	IV_EXPORT		/* */
+#define	IV_IMPORT		/* */
 #endif
 
 

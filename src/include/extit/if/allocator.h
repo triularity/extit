@@ -17,6 +17,13 @@
 extern "C" {
 #endif
 
+#ifdef	extit_if_allocator_EXPORTS
+#define	EXTIT_IF_ALLOCATOR_LIBAPI	EXTIT_EXPORT
+#else
+#define	EXTIT_IF_ALLOCATOR_LIBAPI	EXTIT_IMPORT
+#endif
+
+
 /*
  * Allocator Interface ID
  */
@@ -48,32 +55,32 @@ typedef struct _extit_if_allocator_1_0	extit_if_allocator_1_0_t;
 /*
  * Public API (v1.0)
  */
-EXTIT_EXPORT
+EXTIT_IF_ALLOCATOR_LIBAPI
 void *			EXTIT_DECL
 			extit_if_allocator_alloc(
 				extit_if_allocator_t *allocator,
 				size_t size);
 
-EXTIT_EXPORT
+EXTIT_IF_ALLOCATOR_LIBAPI
 void			EXTIT_DECL
 			extit_if_allocator_free(
 				extit_if_allocator_t *allocator,
 				void *ptr);
 
-EXTIT_EXPORT
+EXTIT_IF_ALLOCATOR_LIBAPI
 void *			EXTIT_DECL
 			extit_if_allocator_realloc(
 				extit_if_allocator_t *allocator,
 				void *ptr,
 				size_t size);
 
-EXTIT_EXPORT
+EXTIT_IF_ALLOCATOR_LIBAPI
 void *			EXTIT_DECL
 			extit_if_allocator_zalloc(
 				extit_if_allocator_t *allocator,
 				size_t size);
 
-EXTIT_EXPORT
+EXTIT_IF_ALLOCATOR_LIBAPI
 void *			EXTIT_DECL
 			extit_if_allocator_dup(
 				extit_if_allocator_t *allocator,

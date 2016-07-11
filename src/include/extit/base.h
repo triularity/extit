@@ -47,7 +47,7 @@ typedef	iv_version_t			extit_iv_t;
 typedef	enum _extit_bool
 {
 	EXTIT_FALSE = 0,
-	EXTIT_TRUE = 1
+	EXTIT_TRUE = !0
 } extit_bool_t;
 
 
@@ -92,13 +92,13 @@ typedef enum _extit_status
  * DLL Export Modifier
  */
 #ifdef	_WIN32
-#ifdef	EXTIT_DLL_BUILD
-#define	EXTIT_EXPORT		__declspec(dllimport)
-#else
 #define	EXTIT_EXPORT		__declspec(dllexport)
-#endif
+#define	EXTIT_IMPORT		__declspec(dllimport)
+#define	EXTIT_IMPORT_STATIC	/* __declspec(dllimport) */
 #else
-#define	EXTIT_EXPORT
+#define	EXTIT_EXPORT		/* */
+#define	EXTIT_IMPORT		/* */
+#define	EXTIT_IMPORT_STATIC	/* */
 #endif
 
 

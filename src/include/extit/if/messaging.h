@@ -20,6 +20,13 @@
 extern "C" {
 #endif
 
+#ifdef	extit_if_messaging_EXPORTS
+#define	EXTIT_IF_MESSAGINE_LIBAPI	EXTIT_EXPORT
+#else
+#define	EXTIT_IF_MESSAGINE_LIBAPI	EXTIT_IMPORT
+#endif
+
+
 /*
  * Messaging Interface ID
  */
@@ -74,7 +81,7 @@ typedef uint32_t			extit_if_messaging_listener_id_t;
 /*
  * Public API (v1.0)
  */
-EXTIT_EXPORT
+EXTIT_IF_MESSAGINE_LIBAPI
 extit_if_messaging_listener_id_t
 			EXTIT_DECL
 			extit_if_messaging_add_listener(
@@ -85,7 +92,7 @@ extit_if_messaging_listener_id_t
 				extit_if_messaging_listener_t callback,
 				void *client_data);
 
-EXTIT_EXPORT
+EXTIT_IF_MESSAGINE_LIBAPI
 extit_if_messaging_bound_t
 			EXTIT_DECL
 			extit_if_messaging_bind(
@@ -94,7 +101,7 @@ extit_if_messaging_bound_t
 				const char *iid,
 				iv_version_t version);
 
-EXTIT_EXPORT
+EXTIT_IF_MESSAGINE_LIBAPI
 extit_if_messaging_listener_id_t
 			EXTIT_DECL
 			extit_if_messaging_bound_add_listener(
@@ -103,13 +110,13 @@ extit_if_messaging_listener_id_t
 				extit_if_messaging_listener_t callback,
 				void *client_data);
 
-EXTIT_EXPORT
+EXTIT_IF_MESSAGINE_LIBAPI
 extit_bool_t		EXTIT_DECL
 			extit_if_messaging_bound_has_listener(
 				extit_if_messaging_t *messaging,
 				extit_if_messaging_bound_t bound);
 
-EXTIT_EXPORT
+EXTIT_IF_MESSAGINE_LIBAPI
 extit_status_t		EXTIT_DECL
 			extit_if_messaging_bound_remove_listener(
 				extit_if_messaging_t *messaging,
@@ -117,14 +124,14 @@ extit_status_t		EXTIT_DECL
 				extit_if_messaging_listener_t callback,
 				void *client_data);
 
-EXTIT_EXPORT
+EXTIT_IF_MESSAGINE_LIBAPI
 extit_status_t		EXTIT_DECL
 			extit_if_messaging_bound_send(
 				extit_if_messaging_t *messaging,
 				extit_if_messaging_bound_t bound,
 				void *data);
 
-EXTIT_EXPORT
+EXTIT_IF_MESSAGINE_LIBAPI
 extit_bool_t		EXTIT_DECL
 			extit_if_messaging_has_listener(
 				extit_if_messaging_t *messaging,
@@ -132,7 +139,7 @@ extit_bool_t		EXTIT_DECL
 				const char *iid,
 				iv_version_t version);
 
-EXTIT_EXPORT
+EXTIT_IF_MESSAGINE_LIBAPI
 extit_status_t		EXTIT_DECL
 			extit_if_messaging_remove_listener(
 				extit_if_messaging_t *messaging,
@@ -142,13 +149,13 @@ extit_status_t		EXTIT_DECL
 				extit_if_messaging_listener_t callback,
 				void *client_data);
 
-EXTIT_EXPORT
+EXTIT_IF_MESSAGINE_LIBAPI
 extit_status_t		EXTIT_DECL
 			extit_if_messaging_remove_listener_by_id(
 				extit_if_messaging_t *messaging,
 				extit_if_messaging_listener_id_t id);
 
-EXTIT_EXPORT
+EXTIT_IF_MESSAGINE_LIBAPI
 extit_status_t		EXTIT_DECL
 			extit_if_messaging_send(
 				extit_if_messaging_t *messaging,
@@ -157,7 +164,7 @@ extit_status_t		EXTIT_DECL
 				iv_version_t version,
 				void *data);
 
-EXTIT_EXPORT
+EXTIT_IF_MESSAGINE_LIBAPI
 extit_status_t		EXTIT_DECL
 			extit_if_messaging_unbind(
 				extit_if_messaging_t *messaging,

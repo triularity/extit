@@ -17,6 +17,13 @@
 extern "C" {
 #endif
 
+#ifdef	extit_if_resolvable_EXPORTS
+#define	EXTIT_IF_RESOLVABLE_LIBAPI	EXTIT_EXPORT
+#else
+#define	EXTIT_IF_RESOLVABLE_LIBAPI	EXTIT_IMPORT
+#endif
+
+
 /*
  * Resolvable Interface ID
  */
@@ -48,14 +55,14 @@ typedef struct _extit_if_resolvable_1_0	extit_if_resolvable_1_0_t;
 /*
  * Public API (v1.0)
  */
-EXTIT_EXPORT
+EXTIT_IF_RESOLVABLE_LIBAPI
 void *			EXTIT_DECL
 			extit_if_resolvable_get_interface(
 				extit_if_resolvable_t *resolvable,
 				const char *id,
 				iv_version_t version);
 
-EXTIT_EXPORT
+EXTIT_IF_RESOLVABLE_LIBAPI
 iv_version_t		EXTIT_DECL
 			extit_if_resolvable_query_interface(
 				extit_if_resolvable_t *resolvable,

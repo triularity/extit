@@ -18,32 +18,39 @@
 extern "C" {
 #endif
 
-EXTIT_EXPORT
+#ifdef	extit_plugin_EXPORTS
+#define	EXTIT_PLUGIN_LIBAPI	EXTIT_EXPORT
+#else
+#define	EXTIT_PLUGIN_LIBAPI	EXTIT_IMPORT
+#endif
+
+
+EXTIT_PLUGIN_LIBAPI
 extit_func_t		EXTIT_DECL
 			extit_container_get_function(
 				const extit_container_t *container,
 				const char *name);
 
-EXTIT_EXPORT
+EXTIT_PLUGIN_LIBAPI
 void *			EXTIT_DECL
 			extit_container_get_interface(
 				const extit_container_t *container,
 				const char *name,
 				iv_version_t version);
 
-EXTIT_EXPORT
+EXTIT_PLUGIN_LIBAPI
 void *			EXTIT_DECL
 			extit_container_get_symbol(
 				const extit_container_t *container,
 				const char *name);
 
-EXTIT_EXPORT
+EXTIT_PLUGIN_LIBAPI
 void			EXTIT_DECL
 			extit_container_log(
 				const extit_container_t *container,
 				const char *message);
 
-EXTIT_EXPORT
+EXTIT_PLUGIN_LIBAPI
 iv_version_t		EXTIT_DECL
 			extit_container_query_interface(
 				const extit_container_t *container,

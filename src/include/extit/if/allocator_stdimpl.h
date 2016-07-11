@@ -16,7 +16,16 @@
 extern "C" {
 #endif
 
-extern extit_if_allocator_1_0_t		extit_if_allocator_stdimpl_1_0;
+#ifdef	extit_if_allocator_stdimpl_EXPORTS
+#define	EXTIT_IF_ALLOCATOR_STDIMPL_LIBAPI	EXTIT_EXPORT
+#else
+#define	EXTIT_IF_ALLOCATOR_STDIMPL_LIBAPI	EXTIT_IMPORT
+#endif
+
+
+EXTIT_IF_ALLOCATOR_STDIMPL_LIBAPI
+extern	extit_if_allocator_1_0_t		extit_if_allocator_stdimpl_1_0;
+
 
 #if	EXTIT_IF_ALLOCATOR_ABI_TARGET == EXTIT_IF_ALLOCATOR_ABI_1_0
 #define	extit_if_allocator_stdimpl	extit_if_allocator_stdimpl_1_0

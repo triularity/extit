@@ -17,6 +17,13 @@
 extern "C" {
 #endif
 
+#ifdef	extit_if_disposable_EXPORTS
+#define	EXTIT_IF_DISPOSABLE_LIBAPI	EXTIT_EXPORT
+#else
+#define	EXTIT_IF_DISPOSABLE_LIBAPI	EXTIT_IMPORT
+#endif
+
+
 /*
  * Disposable Interface ID
  */
@@ -48,7 +55,7 @@ typedef struct _extit_if_disposable_1_0	extit_if_disposable_1_0_t;
 /*
  * Public API (v1.0)
  */
-EXTIT_EXPORT
+EXTIT_IF_DISPOSABLE_LIBAPI
 extit_status_t		EXTIT_DECL
 			extit_if_disposable_free(
 				extit_if_disposable_t *iface);

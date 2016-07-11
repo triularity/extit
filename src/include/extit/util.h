@@ -18,18 +18,25 @@
 extern "C" {
 #endif
 
+#ifdef	extit_util_EXPORTS
+#define	EXTIT_UTIL_LIBAPI	EXTIT_EXPORT
+#else
+#define	EXTIT_UTIL_LIBAPI	EXTIT_IMPORT
+#endif
+
+
 #define	EXTIT_REFCOUNT_NONE	0
 #define	EXTIT_REFCOUNT_MAX	0xFFFFFFFF
 
 typedef uint32_t		extit_refcount_t;
 
 
-EXTIT_EXPORT
+EXTIT_UTIL_LIBAPI
 extit_status_t		EXTIT_DECL
 			extit_refcount_add(
 				extit_refcount_t *refcount);
 
-EXTIT_EXPORT
+EXTIT_UTIL_LIBAPI
 extit_status_t		EXTIT_DECL
 			extit_refcount_release(
 				extit_refcount_t *refcount);

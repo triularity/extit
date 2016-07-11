@@ -18,6 +18,13 @@
 extern "C" {
 #endif
 
+#ifdef	extit_if_refcount_EXPORTS
+#define	EXTIT_IF_REFCOUNT_LIBAPI	EXTIT_EXPORT
+#else
+#define	EXTIT_IF_REFCOUNT_LIBAPI	EXTIT_IMPORT
+#endif
+
+
 /*
  * Reference Count Interface ID
  */
@@ -49,17 +56,17 @@ typedef struct _extit_if_refcount_1_0	extit_if_refcount_1_0_t;
 /*
  * Public API (v1.0)
  */
-EXTIT_EXPORT
+EXTIT_IF_REFCOUNT_LIBAPI
 extit_status_t		EXTIT_DECL
 			extit_if_refcount_add(
 				extit_if_refcount_t *refcount);
 
-EXTIT_EXPORT
+EXTIT_IF_REFCOUNT_LIBAPI
 extit_refcount_t	EXTIT_DECL
 			extit_if_refcount_get(
 				extit_if_refcount_t *refcount);
 
-EXTIT_EXPORT
+EXTIT_IF_REFCOUNT_LIBAPI
 extit_status_t		EXTIT_DECL
 			extit_if_refcount_release(
 				extit_if_refcount_t *refcount);

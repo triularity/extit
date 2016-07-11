@@ -1,7 +1,7 @@
 /*
  * @(#) extit/container.h
  *
- * Container Interface.
+ * ExtIt container Interface.
  *
  * Copyright (c) 2014-2016, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
@@ -27,6 +27,15 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif
+
+#ifdef	extit_container_EXPORTS
+#define	EXTIT_CONTAINER_LIBAPI	EXTIT_EXPORT
+#define	EXTIT_CONTAINER_LIBXAPI	EXTIT_EXPORT
+#else
+#define	EXTIT_CONTAINER_LIBAPI	EXTIT_IMPORT
+#define	EXTIT_CONTAINER_LIBXAPI	EXTIT_IMPORT_STATIC
+#endif
+
 
 #ifdef	_WIN32
 typedef FARPROC		extit_func_t;
@@ -129,103 +138,103 @@ typedef	extit_bool_t	(EXTIT_DECL *extit_module_scan_fnfilter_wc_t)(
 				size_t length); 
 #endif	/* EXTIT_WCHAR */
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBXAPI
 extit_func_t		EXTIT_DECL
 			extit_container_get_function_default(
 				const extit_container_t *container,
 				const char *name);
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBXAPI
 void *			EXTIT_DECL
 			extit_container_get_interface_default(
 				const extit_container_t *container,
 				const char *name,
 				iv_version_t version);
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBXAPI
 void *			EXTIT_DECL
 			extit_container_get_symbol_default(
 				const extit_container_t *container,
 				const char *name);
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBXAPI
 void			EXTIT_DECL
 			extit_container_log_default(
 				const extit_container_t *container,
 				const char *message);
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBXAPI
 iv_version_t		EXTIT_DECL
 			extit_container_query_interface_default(
 				const extit_container_t *container,
 				const char *name,
 				iv_version_t base_version);
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBAPI
 iv_version_t		EXTIT_DECL
 			extit_get_version(void);
 
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBAPI
 extit_module_t *	EXTIT_DECL
 			extit_module_bind(
 				const extit_container_t *container,
 				const void *descriptor,
 				unsigned int flags);
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBAPI
 extit_plugin_t *	EXTIT_DECL
 			extit_module_create_plugin(
 				extit_module_t *module);
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBAPI
 iv_version_t		EXTIT_DECL
 			extit_module_get_abi_version(
 				extit_module_t *module);
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBAPI
 iv_version_t		EXTIT_DECL
 			extit_module_get_effective_abi_version(
 				extit_module_t *module);
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBAPI
 unsigned int		EXTIT_DECL
 			extit_module_get_flags(
 				extit_module_t *module);
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBAPI
 extit_func_t		EXTIT_DECL
 			extit_module_get_function(
 				extit_module_t *module,
 				const char *name);
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBAPI
 const char *		EXTIT_DECL
 			extit_module_get_name(
 				extit_module_t *module);
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBAPI
 const char *		EXTIT_DECL
 			extit_module_get_id(
 				extit_module_t *module);
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBAPI
 uint32_t		EXTIT_DECL
 			extit_module_get_id_version(
 				extit_module_t *module);
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBAPI
 void *			EXTIT_DECL
 			extit_module_get_symbol(
 				extit_module_t *module,
 				const char *name);
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBAPI
 const char *		EXTIT_DECL
 			extit_module_get_version(
 				extit_module_t *module);
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBAPI
 extit_module_t *	EXTIT_DECL
 			extit_module_load(
 				const extit_container_t *container,
@@ -233,7 +242,7 @@ extit_module_t *	EXTIT_DECL
 				unsigned int flags);
 
 #ifdef  EXTIT_WCHAR
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBAPI
 extit_module_t *	EXTIT_DECL
 			extit_module_load_wc(
 				const extit_container_t *container,
@@ -241,7 +250,7 @@ extit_module_t *	EXTIT_DECL
 				unsigned int flags);
 #endif  /* EXTIT_WCHAR */
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBAPI
 extit_status_t		EXTIT_DECL
 			extit_module_scan(
 				const extit_container_t *container,
@@ -252,7 +261,7 @@ extit_status_t		EXTIT_DECL
 				unsigned int flags);
 
 #ifdef  EXTIT_WCHAR
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBAPI
 extit_status_t		EXTIT_DECL
 			extit_module_scan_wc(
 				const extit_container_t *container,
@@ -263,82 +272,82 @@ extit_status_t		EXTIT_DECL
 				unsigned int flags);
 #endif  /* EXTIT_WCHAR */
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBXAPI
 extit_bool_t		EXTIT_DECL
 			extit_module_scan_fnfilter_default(
 				const char *libname,
 				size_t length); 
 
 #ifdef  EXTIT_WCHAR
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBXAPI
 extit_bool_t		EXTIT_DECL
 			extit_module_scan_fnfilter_wc_default(
 				const wchar_t *libname,
 				size_t length); 
 #endif  /* EXTIT_WCHAR */
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBAPI
 void			EXTIT_DECL
 			extit_module_set_flags(
 				extit_module_t *module,
 				unsigned int flags);
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBAPI
 extit_status_t		EXTIT_DECL
 			extit_module_release(
 				extit_module_t *module);
 
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBAPI
 extit_status_t		EXTIT_DECL
 			extit_plugin_activate(
 				extit_plugin_t *plugin);
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBAPI
 extit_status_t		EXTIT_DECL
 			extit_plugin_deactivate(
 				extit_plugin_t *plugin);
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBAPI
 extit_status_t		EXTIT_DECL
 			extit_plugin_destroy(
 				extit_plugin_t *plugin);
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBAPI
 void *			EXTIT_DECL
 			extit_plugin_get_context(
 				extit_plugin_t *plugin);
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBAPI
 unsigned int		EXTIT_DECL
 			extit_plugin_get_flags(
 				extit_plugin_t *plugin);
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBAPI
 void *			EXTIT_DECL
 			extit_plugin_get_interface(
 				extit_plugin_t *plugin,
 				const char *id,
 				iv_version_t version);
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBAPI
 extit_module_t *	EXTIT_DECL
 			extit_plugin_get_module(
 				extit_plugin_t *plugin);
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBAPI
 extit_status_t		EXTIT_DECL
 			extit_plugin_ping(
 				extit_plugin_t *plugin);
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBAPI
 iv_version_t		EXTIT_DECL
 			extit_plugin_query_interface(
 				extit_plugin_t *plugin,
 				const char *id,
 				iv_version_t base_version);
 
-EXTIT_EXPORT
+EXTIT_CONTAINER_LIBAPI
 void			EXTIT_DECL
 			extit_plugin_set_flags(
 				extit_plugin_t *plugin,
