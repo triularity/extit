@@ -67,7 +67,7 @@ typedef	enum _iv_bool
  */
 #ifdef	_WIN32
 #define	IV_EXPORT		__declspec(dllexport)
-#define	IV_IMPORT		/* __declspec(dllimport) */
+#define	IV_IMPORT		__declspec(dllimport)
 #else
 #define	IV_EXPORT		/* */
 #define	IV_IMPORT		/* */

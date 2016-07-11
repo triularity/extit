@@ -16,7 +16,14 @@
 extern "C" {
 #endif
 
-IV_EXPORT
+#ifdef	iv_util_EXPORTS
+#define	IV_UTIL_LIBAPI		IV_EXPORT
+#else
+#define	IV_UTIL_LIBAPI		IV_IMPORT
+#endif
+
+
+IV_UTIL_LIBAPI
 iv_bool_t		IV_DECL
 			iv_matches(
 				iv_version_t version,
