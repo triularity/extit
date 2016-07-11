@@ -44,7 +44,7 @@ extit_container_t		my_container =
 };
 
 
-unsigned int
+extit_bool_t
 EXTIT_DECL
 recipe_fnfilter(const char *basename, size_t length);
 
@@ -119,7 +119,7 @@ main(int argc, char **argv)
 }
 
 
-unsigned int
+extit_bool_t
 EXTIT_DECL
 recipe_fnfilter
 (

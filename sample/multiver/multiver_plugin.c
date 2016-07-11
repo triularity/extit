@@ -22,7 +22,7 @@ plugin_handler
 (
 	iv_version_t abi_version,
 	const extit_container_t *container,
-	unsigned int cmd,
+	extit_spi_command_t cmd,
 	void *param,
 	unsigned int flags
 )
