@@ -7,7 +7,7 @@
 #include <stdlib.h>
 
 #include <extit/util.h>
-#include <extit/if/refcount_impl.h>
+#include <if/refcount_impl.h>
 
 #include "myobj.h"
 #include "provider.h"
@@ -20,7 +20,7 @@ struct myobj_internal;
 
 struct if_refcount_internal
 {
-	extit_if_refcount_t		pub;		/* The public object */
+	if_refcount_t			pub;		/* The public object */
 	struct myobj_internal *		myobj;
 };
 
@@ -33,7 +33,7 @@ struct myobj_internal
 
 
 static
-extit_if_refcount_t *
+if_refcount_t *
 myobj__get_if_refcount(myobj_t *obj)
 {
 	struct myobj_internal *	obji;
@@ -47,7 +47,7 @@ myobj__get_if_refcount(myobj_t *obj)
 
 static
 extit_status_t
-myobj__refcount__ops_add(extit_if_refcount_t *refcount)
+myobj__refcount__ops_add(if_refcount_t *refcount)
 {
 	struct myobj_internal *	obji;
 
@@ -60,7 +60,7 @@ myobj__refcount__ops_add(extit_if_refcount_t *refcount)
 
 static
 extit_refcount_t
-myobj__refcount__ops_get(extit_if_refcount_t *refcount)
+myobj__refcount__ops_get(if_refcount_t *refcount)
 {
 	struct myobj_internal *	obji;
 
@@ -73,7 +73,7 @@ myobj__refcount__ops_get(extit_if_refcount_t *refcount)
 
 static
 extit_status_t
-myobj__refcount__ops_release(extit_if_refcount_t *refcount)
+myobj__refcount__ops_release(if_refcount_t *refcount)
 {
 	struct myobj_internal *	obji;
 
@@ -85,7 +85,7 @@ myobj__refcount__ops_release(extit_if_refcount_t *refcount)
 
 
 static
-extit_if_refcount_ops_1_0_t	myobj__refcount__ops =
+if_refcount_ops_1_0_t	myobj__refcount__ops =
 {
 	myobj__refcount__ops_add,		/* add */
 	myobj__refcount__ops_get,		/* get */
@@ -107,7 +107,7 @@ alloc_myobj(myobj_type_t type)
 
 		obji->refcount = EXTIT_REFCOUNT_NONE;
 
-		obji->if_refcount.pub.version = EXTIT_IF_REFCOUNT_ABI_1_0;
+		obji->if_refcount.pub.version = IF_REFCOUNT_ABI_1_0;
 		obji->if_refcount.pub.ops = &myobj__refcount__ops;
 
 		obji->if_refcount.myobj = obji;

@@ -24,7 +24,7 @@ endif()
 set(EXTIT_PARANOID TRUE CACHE BOOL "Enable Paranoid Code Checks")
 set(EXTIT_DEBUG TRUE CACHE BOOL "Enable Runtime Debugging")
 set(EXTIT_WARNFREE FALSE CACHE BOOL "Enable Error on Compile Warnings")
-set(EXTIT_WITH_CXX FALSE CACHE BOOL "Enable C++ Wrappers")
+##+set(EXTIT_WITH_CXX FALSE CACHE BOOL "Enable C++ Wrappers")
 set(EXTIT_COMPILE_SAMPLES FALSE CACHE BOOL "Compile Sample Programs")
 set(EXTIT_COMPILE_TESTS FALSE CACHE BOOL "Compile Unit Tests")
 set(EXTIT_LIB_LOADER ${DEFAULT_LIB_LOADER} CACHE STRING "Library Loader (dl|win32|dylib)")
@@ -72,148 +72,6 @@ set(EXTIT_CONTAINER_SOURCE_FILES
 	src/extit/container/version.c)
 
 
-# ExtIt standard interfaces (client side)
-set(EXTIT_IF_ALLOCATOR_HEADER_FILES 
-	src/include/extit/if/allocator.h
-	src/include/extit/if/allocator_impl.h)
-
-set(EXTIT_IF_ALLOCATOR_SOURCE_FILES
-	src/extit/if_allocator/alloc.c
-	src/extit/if_allocator/dup.c
-	src/extit/if_allocator/free.c
-	src/extit/if_allocator/realloc.c
-	src/extit/if_allocator/zalloc.c)
-
-set(EXTIT_IF_CONFIGURABLE_HEADER_FILES 
-	src/include/extit/if/configurable.h
-	src/include/extit/if/configurable_impl.h)
-
-set(EXTIT_IF_CONFIGURABLE_SOURCE_FILES
-	src/extit/if_configurable/find_property.c
-	src/extit/if_configurable/get_bool.c
-	src/extit/if_configurable/get_custom.c
-	src/extit/if_configurable/get_descriptor.c
-	src/extit/if_configurable/get_double.c
-	src/extit/if_configurable/get_enum32.c
-	src/extit/if_configurable/get_float.c
-	src/extit/if_configurable/get_int8.c
-	src/extit/if_configurable/get_int16.c
-	src/extit/if_configurable/get_int32.c
-	src/extit/if_configurable/get_int64.c
-	src/extit/if_configurable/get_uint8.c
-	src/extit/if_configurable/get_uint16.c
-	src/extit/if_configurable/get_uint32.c
-	src/extit/if_configurable/get_uint64.c
-	src/extit/if_configurable/get_utf8.c
-	src/extit/if_configurable/reset.c
-	src/extit/if_configurable/set_bool.c
-	src/extit/if_configurable/set_custom.c
-	src/extit/if_configurable/set_double.c
-	src/extit/if_configurable/set_enum32.c
-	src/extit/if_configurable/set_float.c
-	src/extit/if_configurable/set_int8.c
-	src/extit/if_configurable/set_int16.c
-	src/extit/if_configurable/set_int32.c
-	src/extit/if_configurable/set_int64.c
-	src/extit/if_configurable/set_uint8.c
-	src/extit/if_configurable/set_uint16.c
-	src/extit/if_configurable/set_uint32.c
-	src/extit/if_configurable/set_uint64.c
-	src/extit/if_configurable/set_utf8.c)
-
-set(EXTIT_IF_CONFIGURABLE_UTIL_HEADER_FILES 
-	src/include/extit/if/configurable_util.h)
-
-set(EXTIT_IF_CONFIGURABLE_UTIL_SOURCE_FILES
-	src/extit/if_configurable_util/enum32_find_by_id.c
-	src/extit/if_configurable_util/enum32_find_by_value.c)
-
-set(EXTIT_IF_DISPOSABLE_HEADER_FILES 
-	src/include/extit/if/disposable.h
-	src/include/extit/if/disposable_impl.h)
-
-set(EXTIT_IF_DISPOSABLE_SOURCE_FILES
-	src/extit/if_disposable/free.c)
-
-set(EXTIT_IF_MESSAGING_HEADER_FILES 
-	src/include/extit/if/messaging.h
-	src/include/extit/if/messaging_impl.h)
-
-set(EXTIT_IF_MESSAGING_SOURCE_FILES
-	src/extit/if_messaging/add_listener.c
-	src/extit/if_messaging/bind.c
-	src/extit/if_messaging/bound_add_listener.c
-	src/extit/if_messaging/bound_has_listener.c
-	src/extit/if_messaging/bound_remove_listener.c
-	src/extit/if_messaging/bound_send.c
-	src/extit/if_messaging/has_listener.c
-	src/extit/if_messaging/remove_listener.c
-	src/extit/if_messaging/remove_listener_by_id.c
-	src/extit/if_messaging/send.c
-	src/extit/if_messaging/unbind.c)
-
-set(EXTIT_IF_REFCOUNT_HEADER_FILES 
-	src/include/extit/if/refcount.h
-	src/include/extit/if/refcount_impl.h)
-
-set(EXTIT_IF_REFCOUNT_SOURCE_FILES
-	src/extit/if_refcount/add.c
-	src/extit/if_refcount/get.c
-	src/extit/if_refcount/release.c)
-
-set(EXTIT_IF_RESOLVABLE_HEADER_FILES 
-	src/include/extit/if/resolvable.h
-	src/include/extit/if/resolvable_impl.h)
-
-set(EXTIT_IF_RESOLVABLE_SOURCE_FILES
-	src/extit/if_resolvable/get_interface.c
-	src/extit/if_resolvable/query_interface.c)
-
-
-# ExtIt standard interface implementations
-set(EXTIT_IF_ALLOCATOR_STDIMPL_HEADER_FILES
-	src/include/extit/if/allocator_stdimpl.h)
-
-set(EXTIT_IF_ALLOCATOR_STDIMPL_SOURCE_FILES
-	src/extit/if_allocator_stdimpl/stdimpl.c)
-
-set(EXTIT_IF_CONFIGURABLE_STDIMPL_HEADER_FILES 
-	src/include/extit/if/configurable_stdimpl.h)
-
-set(EXTIT_IF_CONFIGURABLE_STDIMPL_SOURCE_FILES
-	src/extit/if_configurable_stdimpl/find_property.c
-	src/extit/if_configurable_stdimpl/get_bool.c
-	src/extit/if_configurable_stdimpl/get_custom.c
-	src/extit/if_configurable_stdimpl/get_double.c
-	src/extit/if_configurable_stdimpl/get_enum32.c
-	src/extit/if_configurable_stdimpl/get_float.c
-	src/extit/if_configurable_stdimpl/get_int8.c
-	src/extit/if_configurable_stdimpl/get_int16.c
-	src/extit/if_configurable_stdimpl/get_int32.c
-	src/extit/if_configurable_stdimpl/get_int64.c
-	src/extit/if_configurable_stdimpl/get_uint8.c
-	src/extit/if_configurable_stdimpl/get_uint16.c
-	src/extit/if_configurable_stdimpl/get_uint32.c
-	src/extit/if_configurable_stdimpl/get_uint64.c
-	src/extit/if_configurable_stdimpl/get_utf8.c
-	src/extit/if_configurable_stdimpl/ops.c
-	src/extit/if_configurable_stdimpl/reset.c
-	src/extit/if_configurable_stdimpl/set_bool.c
-	src/extit/if_configurable_stdimpl/set_custom.c
-	src/extit/if_configurable_stdimpl/set_double.c
-	src/extit/if_configurable_stdimpl/set_enum32.c
-	src/extit/if_configurable_stdimpl/set_float.c
-	src/extit/if_configurable_stdimpl/set_int8.c
-	src/extit/if_configurable_stdimpl/set_int16.c
-	src/extit/if_configurable_stdimpl/set_int32.c
-	src/extit/if_configurable_stdimpl/set_int64.c
-	src/extit/if_configurable_stdimpl/set_uint8.c
-	src/extit/if_configurable_stdimpl/set_uint16.c
-	src/extit/if_configurable_stdimpl/set_uint32.c
-	src/extit/if_configurable_stdimpl/set_uint64.c
-	src/extit/if_configurable_stdimpl/set_utf8.c)
-
-
 # ExtIt plugin (client side)
 set(EXTIT_PLUGIN_HEADER_FILES 
 	src/include/extit/plugin.h
@@ -233,6 +91,148 @@ set(EXTIT_UTIL_HEADER_FILES
 
 set(EXTIT_UTIL_SOURCE_FILES
 	src/extit/util/refcount.c)
+
+
+# Standard interfaces (client side)
+set(IF_ALLOCATOR_HEADER_FILES 
+	src/include/if/allocator.h
+	src/include/if/allocator_impl.h)
+
+set(IF_ALLOCATOR_SOURCE_FILES
+	src/if/allocator/alloc.c
+	src/if/allocator/dup.c
+	src/if/allocator/free.c
+	src/if/allocator/realloc.c
+	src/if/allocator/zalloc.c)
+
+set(IF_CONFIGURABLE_HEADER_FILES 
+	src/include/if/configurable.h
+	src/include/if/configurable_impl.h)
+
+set(IF_CONFIGURABLE_SOURCE_FILES
+	src/if/configurable/find_property.c
+	src/if/configurable/get_bool.c
+	src/if/configurable/get_custom.c
+	src/if/configurable/get_descriptor.c
+	src/if/configurable/get_double.c
+	src/if/configurable/get_enum32.c
+	src/if/configurable/get_float.c
+	src/if/configurable/get_int8.c
+	src/if/configurable/get_int16.c
+	src/if/configurable/get_int32.c
+	src/if/configurable/get_int64.c
+	src/if/configurable/get_uint8.c
+	src/if/configurable/get_uint16.c
+	src/if/configurable/get_uint32.c
+	src/if/configurable/get_uint64.c
+	src/if/configurable/get_utf8.c
+	src/if/configurable/reset.c
+	src/if/configurable/set_bool.c
+	src/if/configurable/set_custom.c
+	src/if/configurable/set_double.c
+	src/if/configurable/set_enum32.c
+	src/if/configurable/set_float.c
+	src/if/configurable/set_int8.c
+	src/if/configurable/set_int16.c
+	src/if/configurable/set_int32.c
+	src/if/configurable/set_int64.c
+	src/if/configurable/set_uint8.c
+	src/if/configurable/set_uint16.c
+	src/if/configurable/set_uint32.c
+	src/if/configurable/set_uint64.c
+	src/if/configurable/set_utf8.c)
+
+set(IF_CONFIGURABLE_UTIL_HEADER_FILES 
+	src/include/if/configurable_util.h)
+
+set(IF_CONFIGURABLE_UTIL_SOURCE_FILES
+	src/if/configurable_util/enum32_find_by_id.c
+	src/if/configurable_util/enum32_find_by_value.c)
+
+set(IF_DISPOSABLE_HEADER_FILES 
+	src/include/if/disposable.h
+	src/include/if/disposable_impl.h)
+
+set(IF_DISPOSABLE_SOURCE_FILES
+	src/if/disposable/free.c)
+
+set(IF_MESSAGING_HEADER_FILES 
+	src/include/if/messaging.h
+	src/include/if/messaging_impl.h)
+
+set(IF_MESSAGING_SOURCE_FILES
+	src/if/messaging/add_listener.c
+	src/if/messaging/bind.c
+	src/if/messaging/bound_add_listener.c
+	src/if/messaging/bound_has_listener.c
+	src/if/messaging/bound_remove_listener.c
+	src/if/messaging/bound_send.c
+	src/if/messaging/has_listener.c
+	src/if/messaging/remove_listener.c
+	src/if/messaging/remove_listener_by_id.c
+	src/if/messaging/send.c
+	src/if/messaging/unbind.c)
+
+set(IF_REFCOUNT_HEADER_FILES 
+	src/include/if/refcount.h
+	src/include/if/refcount_impl.h)
+
+set(IF_REFCOUNT_SOURCE_FILES
+	src/if/refcount/add.c
+	src/if/refcount/get.c
+	src/if/refcount/release.c)
+
+set(IF_RESOLVABLE_HEADER_FILES 
+	src/include/if/resolvable.h
+	src/include/if/resolvable_impl.h)
+
+set(IF_RESOLVABLE_SOURCE_FILES
+	src/if/resolvable/get_interface.c
+	src/if/resolvable/query_interface.c)
+
+
+# Standard interface implementations
+set(IF_ALLOCATOR_STDIMPL_HEADER_FILES
+	src/include/if/allocator_stdimpl.h)
+
+set(IF_ALLOCATOR_STDIMPL_SOURCE_FILES
+	src/if/allocator_stdimpl/stdimpl.c)
+
+set(IF_CONFIGURABLE_STDIMPL_HEADER_FILES 
+	src/include/if/configurable_stdimpl.h)
+
+set(IF_CONFIGURABLE_STDIMPL_SOURCE_FILES
+	src/if/configurable_stdimpl/find_property.c
+	src/if/configurable_stdimpl/get_bool.c
+	src/if/configurable_stdimpl/get_custom.c
+	src/if/configurable_stdimpl/get_double.c
+	src/if/configurable_stdimpl/get_enum32.c
+	src/if/configurable_stdimpl/get_float.c
+	src/if/configurable_stdimpl/get_int8.c
+	src/if/configurable_stdimpl/get_int16.c
+	src/if/configurable_stdimpl/get_int32.c
+	src/if/configurable_stdimpl/get_int64.c
+	src/if/configurable_stdimpl/get_uint8.c
+	src/if/configurable_stdimpl/get_uint16.c
+	src/if/configurable_stdimpl/get_uint32.c
+	src/if/configurable_stdimpl/get_uint64.c
+	src/if/configurable_stdimpl/get_utf8.c
+	src/if/configurable_stdimpl/ops.c
+	src/if/configurable_stdimpl/reset.c
+	src/if/configurable_stdimpl/set_bool.c
+	src/if/configurable_stdimpl/set_custom.c
+	src/if/configurable_stdimpl/set_double.c
+	src/if/configurable_stdimpl/set_enum32.c
+	src/if/configurable_stdimpl/set_float.c
+	src/if/configurable_stdimpl/set_int8.c
+	src/if/configurable_stdimpl/set_int16.c
+	src/if/configurable_stdimpl/set_int32.c
+	src/if/configurable_stdimpl/set_int64.c
+	src/if/configurable_stdimpl/set_uint8.c
+	src/if/configurable_stdimpl/set_uint16.c
+	src/if/configurable_stdimpl/set_uint32.c
+	src/if/configurable_stdimpl/set_uint64.c
+	src/if/configurable_stdimpl/set_utf8.c)
 
 
 # IV core
@@ -358,202 +358,6 @@ endif()
 
 
 #
-# [lib]extit_if_allocator
-#
-add_library(
-	extit_if_allocator
-		${EXTIT_IF_ALLOCATOR_SOURCE_FILES}
-		${EXTIT_HEADER_FILES}
-		${EXTIT_IF_ALLOCATOR_HEADER_FILES}
-		${IV_HEADER_FILES}
-		${IV_UTIL_HEADER_FILES})
-
-set_target_properties(
-	extit_if_allocator PROPERTIES
-		POSITION_INDEPENDENT_CODE ON)
-
-if(EXTIT_PARANOID)
-	target_link_libraries(
-		extit_if_allocator
-			iv_util)
-endif()
-
-
-#
-# [lib]extit_if_allocator_stdimpl
-#
-add_library(
-	extit_if_allocator_stdimpl
-		${EXTIT_IF_ALLOCATOR_STDIMPL_SOURCE_FILES}
-		${EXTIT_HEADER_FILES}
-		${EXTIT_IF_ALLOCATOR_HEADER_FILES}
-		${EXTIT_IF_ALLOCATOR_STDIMPL_HEADER_FILES}
-		${IV_HEADER_FILES})
-
-set_target_properties(
-	extit_if_allocator_stdimpl PROPERTIES
-		POSITION_INDEPENDENT_CODE ON)
-
-
-#
-# [lib]extit_if_configurable
-#
-add_library(
-	extit_if_configurable
-		${EXTIT_IF_CONFIGURABLE_SOURCE_FILES}
-		${EXTIT_HEADER_FILES}
-		${EXTIT_IF_CONFIGURABLE_HEADER_FILES}
-		${IV_HEADER_FILES}
-		${IV_UTIL_HEADER_FILES})
-
-set_target_properties(
-	extit_if_configurable PROPERTIES
-		POSITION_INDEPENDENT_CODE ON)
-
-if(EXTIT_PARANOID)
-	target_link_libraries(
-		extit_if_configurable
-			iv_util)
-endif()
-
-
-#
-# [lib]extit_if_configurable_stdimpl
-#
-add_library(
-	extit_if_configurable_stdimpl
-		${EXTIT_IF_CONFIGURABLE_STDIMPL_SOURCE_FILES}
-		${EXTIT_HEADER_FILES}
-		${EXTIT_IF_CONFIGURABLE_HEADER_FILES}
-		${EXTIT_IF_CONFIGURABLE_STDIMPL_HEADER_FILES}
-		${IV_HEADER_FILES})
-
-set_target_properties(
-	extit_if_configurable_stdimpl PROPERTIES
-		POSITION_INDEPENDENT_CODE ON)
-
-target_link_libraries(
-	extit_if_configurable_stdimpl
-		extit_if_configurable_util)
-
-if(EXTIT_PARANOID)
-	target_link_libraries(
-		extit_if_configurable_stdimpl
-			iv_util)
-endif()
-
-
-#
-# [lib]extit_if_configurable_util
-#
-add_library(
-	extit_if_configurable_util
-		${EXTIT_IF_CONFIGURABLE_UTIL_SOURCE_FILES}
-		${EXTIT_HEADER_FILES}
-		${EXTIT_IF_CONFIGURABLE_HEADER_FILES}
-		${EXTIT_IF_CONFIGURABLE_UTIL_HEADER_FILES}
-		${IV_HEADER_FILES}
-		${IV_UTIL_HEADER_FILES})
-
-set_target_properties(
-	extit_if_configurable_util PROPERTIES
-		POSITION_INDEPENDENT_CODE ON)
-
-
-#
-# [lib]extit_if_disposable
-#
-add_library(
-	extit_if_disposable
-		${EXTIT_IF_DISPOSABLE_SOURCE_FILES}
-		${EXTIT_HEADER_FILES}
-		${EXTIT_IF_DISPOSABLE_HEADER_FILES}
-		${IV_HEADER_FILES}
-		${IV_UTIL_HEADER_FILES})
-
-set_target_properties(
-	extit_if_disposable PROPERTIES
-		POSITION_INDEPENDENT_CODE ON)
-
-if(EXTIT_PARANOID)
-	target_link_libraries(
-		extit_if_disposable
-			iv_util)
-endif()
-
-
-#
-# [lib]extit_if_messaging
-#
-add_library(
-	extit_if_messaging
-		${EXTIT_IF_MESSAGING_SOURCE_FILES}
-		${EXTIT_HEADER_FILES}
-		${EXTIT_IF_MESSAGING_HEADER_FILES}
-		${IV_HEADER_FILES}
-		${IV_UTIL_HEADER_FILES})
-
-set_target_properties(
-	extit_if_messaging PROPERTIES
-		POSITION_INDEPENDENT_CODE ON)
-
-if(EXTIT_PARANOID)
-	target_link_libraries(
-		extit_if_messaging
-			iv_util)
-endif()
-
-
-#
-# [lib]extit_if_refcount
-#
-add_library(
-	extit_if_refcount
-		${EXTIT_IF_REFCOUNT_SOURCE_FILES}
-		${EXTIT_HEADER_FILES}
-		${EXTIT_IF_REFCOUNT_HEADER_FILES}
-		${EXTIT_UTIL_HEADER_FILES}
-		${IV_HEADER_FILES}
-		${IV_UTIL_HEADER_FILES})
-
-set_target_properties(
-	extit_if_refcount PROPERTIES
-		POSITION_INDEPENDENT_CODE ON)
-
-target_link_libraries(
-	extit_if_refcount
-		extit_util)
-
-if(EXTIT_PARANOID)
-	target_link_libraries(
-		extit_if_refcount
-			iv_util)
-endif()
-
-
-#
-# [lib]extit_if_resolvable
-#
-add_library(
-	extit_if_resolvable
-		${EXTIT_IF_RESOLVABLE_SOURCE_FILES}
-		${EXTIT_HEADER_FILES}
-		${EXTIT_IF_RESOLVABLE_HEADER_FILES}
-		${IV_HEADER_FILES}
-		${IV_UTIL_HEADER_FILES})
-
-set_target_properties(
-	extit_if_resolvable PROPERTIES
-		POSITION_INDEPENDENT_CODE ON)
-
-if(EXTIT_PARANOID)
-	target_link_libraries(
-		extit_if_resolvable
-			iv_util)
-endif()
-
-
-#
 # [lib]extit_plugin
 #
 add_library(
@@ -580,6 +384,202 @@ add_library(
 set_target_properties(
 	extit_util PROPERTIES
 		POSITION_INDEPENDENT_CODE ON)
+
+
+#
+# [lib]if_allocator
+#
+add_library(
+	if_allocator
+		${IF_ALLOCATOR_SOURCE_FILES}
+		${EXTIT_HEADER_FILES}
+		${IF_ALLOCATOR_HEADER_FILES}
+		${IV_HEADER_FILES}
+		${IV_UTIL_HEADER_FILES})
+
+set_target_properties(
+	if_allocator PROPERTIES
+		POSITION_INDEPENDENT_CODE ON)
+
+if(EXTIT_PARANOID)
+	target_link_libraries(
+		if_allocator
+			iv_util)
+endif()
+
+
+#
+# [lib]if_allocator_stdimpl
+#
+add_library(
+	if_allocator_stdimpl
+		${IF_ALLOCATOR_STDIMPL_SOURCE_FILES}
+		${EXTIT_HEADER_FILES}
+		${IF_ALLOCATOR_HEADER_FILES}
+		${IF_ALLOCATOR_STDIMPL_HEADER_FILES}
+		${IV_HEADER_FILES})
+
+set_target_properties(
+	if_allocator_stdimpl PROPERTIES
+		POSITION_INDEPENDENT_CODE ON)
+
+
+#
+# [lib]if_configurable
+#
+add_library(
+	if_configurable
+		${IF_CONFIGURABLE_SOURCE_FILES}
+		${EXTIT_HEADER_FILES}
+		${IF_CONFIGURABLE_HEADER_FILES}
+		${IV_HEADER_FILES}
+		${IV_UTIL_HEADER_FILES})
+
+set_target_properties(
+	if_configurable PROPERTIES
+		POSITION_INDEPENDENT_CODE ON)
+
+if(EXTIT_PARANOID)
+	target_link_libraries(
+		if_configurable
+			iv_util)
+endif()
+
+
+#
+# [lib]if_configurable_stdimpl
+#
+add_library(
+	if_configurable_stdimpl
+		${IF_CONFIGURABLE_STDIMPL_SOURCE_FILES}
+		${EXTIT_HEADER_FILES}
+		${IF_CONFIGURABLE_HEADER_FILES}
+		${IF_CONFIGURABLE_STDIMPL_HEADER_FILES}
+		${IV_HEADER_FILES})
+
+set_target_properties(
+	if_configurable_stdimpl PROPERTIES
+		POSITION_INDEPENDENT_CODE ON)
+
+target_link_libraries(
+	if_configurable_stdimpl
+		if_configurable_util)
+
+if(EXTIT_PARANOID)
+	target_link_libraries(
+		if_configurable_stdimpl
+			iv_util)
+endif()
+
+
+#
+# [lib]if_configurable_util
+#
+add_library(
+	if_configurable_util
+		${IF_CONFIGURABLE_UTIL_SOURCE_FILES}
+		${EXTIT_HEADER_FILES}
+		${IF_CONFIGURABLE_HEADER_FILES}
+		${IF_CONFIGURABLE_UTIL_HEADER_FILES}
+		${IV_HEADER_FILES}
+		${IV_UTIL_HEADER_FILES})
+
+set_target_properties(
+	if_configurable_util PROPERTIES
+		POSITION_INDEPENDENT_CODE ON)
+
+
+#
+# [lib]if_disposable
+#
+add_library(
+	if_disposable
+		${IF_DISPOSABLE_SOURCE_FILES}
+		${EXTIT_HEADER_FILES}
+		${IF_DISPOSABLE_HEADER_FILES}
+		${IV_HEADER_FILES}
+		${IV_UTIL_HEADER_FILES})
+
+set_target_properties(
+	if_disposable PROPERTIES
+		POSITION_INDEPENDENT_CODE ON)
+
+if(EXTIT_PARANOID)
+	target_link_libraries(
+		if_disposable
+			iv_util)
+endif()
+
+
+#
+# [lib]if_messaging
+#
+add_library(
+	if_messaging
+		${IF_MESSAGING_SOURCE_FILES}
+		${EXTIT_HEADER_FILES}
+		${IF_MESSAGING_HEADER_FILES}
+		${IV_HEADER_FILES}
+		${IV_UTIL_HEADER_FILES})
+
+set_target_properties(
+	if_messaging PROPERTIES
+		POSITION_INDEPENDENT_CODE ON)
+
+if(EXTIT_PARANOID)
+	target_link_libraries(
+		if_messaging
+			iv_util)
+endif()
+
+
+#
+# [lib]if_refcount
+#
+add_library(
+	if_refcount
+		${IF_REFCOUNT_SOURCE_FILES}
+		${EXTIT_HEADER_FILES}
+		${IF_REFCOUNT_HEADER_FILES}
+		${EXTIT_UTIL_HEADER_FILES}
+		${IV_HEADER_FILES}
+		${IV_UTIL_HEADER_FILES})
+
+set_target_properties(
+	if_refcount PROPERTIES
+		POSITION_INDEPENDENT_CODE ON)
+
+target_link_libraries(
+	if_refcount
+		extit_util)
+
+if(EXTIT_PARANOID)
+	target_link_libraries(
+		if_refcount
+			iv_util)
+endif()
+
+
+#
+# [lib]if_resolvable
+#
+add_library(
+	if_resolvable
+		${IF_RESOLVABLE_SOURCE_FILES}
+		${EXTIT_HEADER_FILES}
+		${IF_RESOLVABLE_HEADER_FILES}
+		${IV_HEADER_FILES}
+		${IV_UTIL_HEADER_FILES})
+
+set_target_properties(
+	if_resolvable PROPERTIES
+		POSITION_INDEPENDENT_CODE ON)
+
+if(EXTIT_PARANOID)
+	target_link_libraries(
+		if_resolvable
+			iv_util)
+endif()
 
 
 #
@@ -664,28 +664,28 @@ if(DEFINED LIBNAME_POSTFIX)
 			OUTPUT_NAME "extit_container${LIBNAME_POSTFIX}")
 
 	set_target_properties(
-		extit_if_allocator PROPERTIES
-			OUTPUT_NAME "extit_if_allocator${LIBNAME_POSTFIX}")
+		if_allocator PROPERTIES
+			OUTPUT_NAME "if_allocator${LIBNAME_POSTFIX}")
 
 	set_target_properties(
-		extit_if_allocator_stdimpl PROPERTIES
-			OUTPUT_NAME "extit_if_allocator_stdimpl${LIBNAME_POSTFIX}")
+		if_allocator_stdimpl PROPERTIES
+			OUTPUT_NAME "if_allocator_stdimpl${LIBNAME_POSTFIX}")
 
 	set_target_properties(
-		extit_if_disposable PROPERTIES
-			OUTPUT_NAME "extit_if_disposable${LIBNAME_POSTFIX}")
+		if_disposable PROPERTIES
+			OUTPUT_NAME "if_disposable${LIBNAME_POSTFIX}")
 
 	set_target_properties(
-		extit_if_messaging PROPERTIES
-			OUTPUT_NAME "extit_if_messaging${LIBNAME_POSTFIX}")
+		if_messaging PROPERTIES
+			OUTPUT_NAME "if_messaging${LIBNAME_POSTFIX}")
 
 	set_target_properties(
-		extit_if_refcount PROPERTIES
-			OUTPUT_NAME "extit_if_refcount${LIBNAME_POSTFIX}")
+		if_refcount PROPERTIES
+			OUTPUT_NAME "if_refcount${LIBNAME_POSTFIX}")
 
 	set_target_properties(
-		extit_if_resolvable PROPERTIES
-			OUTPUT_NAME "extit_if_resolvable${LIBNAME_POSTFIX}")
+		if_resolvable PROPERTIES
+			OUTPUT_NAME "if_resolvable${LIBNAME_POSTFIX}")
 
 	set_target_properties(
 		extif_util PROPERTIES
@@ -707,15 +707,15 @@ endif(DEFINED LIBNAME_POSTFIX)
 install(
 	TARGETS
 		extit_container
-		extit_if_allocator
-		extit_if_allocator_stdimpl
-		extit_if_configurable
-		extit_if_configurable_stdimpl
-		extit_if_configurable_util
-		extit_if_disposable
-		extit_if_messaging
-		extit_if_refcount
-		extit_if_resolvable
+		if_allocator
+		if_allocator_stdimpl
+		if_configurable
+		if_configurable_stdimpl
+		if_configurable_util
+		if_disposable
+		if_messaging
+		if_refcount
+		if_resolvable
 		extit_util
 		iv_repository
 		iv_util
@@ -732,16 +732,16 @@ install(
 
 install(
 	FILES
-		${EXTIT_IF_ALLOCATOR_HEADER_FILES}
-		${EXTIT_IF_ALLOCATOR_STDIMPL_HEADER_FILES}
-		${EXTIT_IF_CONFIGURABLE_HEADER_FILES}
-		${EXTIT_IF_CONFIGURABLE_STDIMPL_HEADER_FILES}
-		${EXTIT_IF_CONFIGURABLE_UTIL_HEADER_FILES}
-		${EXTIT_IF_DISPOSABLE_HEADER_FILES}
-		${EXTIT_IF_MESSAGING_HEADER_FILES}
-		${EXTIT_IF_REFCOUNT_HEADER_FILES}
-		${EXTIT_IF_RESOLVABLE_HEADER_FILES}
-	DESTINATION ${CMAKE_INSTALL_PREFIX}/include/extit/if)
+		${IF_ALLOCATOR_HEADER_FILES}
+		${IF_ALLOCATOR_STDIMPL_HEADER_FILES}
+		${IF_CONFIGURABLE_HEADER_FILES}
+		${IF_CONFIGURABLE_STDIMPL_HEADER_FILES}
+		${IF_CONFIGURABLE_UTIL_HEADER_FILES}
+		${IF_DISPOSABLE_HEADER_FILES}
+		${IF_MESSAGING_HEADER_FILES}
+		${IF_REFCOUNT_HEADER_FILES}
+		${IF_RESOLVABLE_HEADER_FILES}
+	DESTINATION ${CMAKE_INSTALL_PREFIX}/include/if)
 
 install(
 	FILES
@@ -769,7 +769,7 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	target_link_libraries(
 		sample_if_allocator_plugin
-			extit_if_allocator
+			if_allocator
 			extit_plugin
 			iv_util)
 
@@ -788,7 +788,7 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	target_link_libraries(
 		sample_if_allocator_server
-			extit_if_allocator_stdimpl
+			if_allocator_stdimpl
 			extit_container)
 
 
@@ -801,16 +801,16 @@ if(EXTIT_COMPILE_SAMPLES)
 			sample/if_configurable/scan_service.c
 			sample/if_configurable/scan_service.h
 			${EXTIT_HEADER_FILES}
-			${EXTIT_IF_CONFIGURABLE_HEADER_FILES}
-			${EXTIT_IF_CONFIGURABLE_STDIMPL_HEADER_FILES}
-			${EXTIT_IF_CONFIGURABLE_UTIL_HEADER_FILES}
+			${IF_CONFIGURABLE_HEADER_FILES}
+			${IF_CONFIGURABLE_STDIMPL_HEADER_FILES}
+			${IF_CONFIGURABLE_UTIL_HEADER_FILES}
 			${IV_HEADER_FILES})
 
 	target_link_libraries(
 		sample_if_configurable
-			extit_if_configurable
-			extit_if_configurable_stdimpl
-			extit_if_configurable_util)
+			if_configurable
+			if_configurable_stdimpl
+			if_configurable_util)
 
 
 	#
@@ -825,14 +825,14 @@ if(EXTIT_COMPILE_SAMPLES)
 			sample/if_refcount/worklist.c
 			sample/if_refcount/worklist.h
 			${EXTIT_HEADER_FILES}
-			${EXTIT_IF_HEADER_FILES}
+			${IF_HEADER_FILES}
 			${EXTIT_UTIL_HEADER_FILES}
 			${IV_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
 
 	target_link_libraries(
 		sample_if_refcount
-			extit_if_refcount)
+			if_refcount)
 
 
 	#

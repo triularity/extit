@@ -30,7 +30,7 @@ void
 worklist_add(struct worklist *list, myobj_t *obj)
 {
 	struct worklist_node *	node;
-	extit_if_refcount_t *	if_rc;
+	if_refcount_t *		if_rc;
 
 
 	/* We only handle Foo types */
@@ -50,7 +50,7 @@ worklist_add(struct worklist *list, myobj_t *obj)
 		/*
 		 * Keep a reference
 		 */
-		if(extit_if_refcount_add(if_rc) == EXTIT_STATUS_OK)
+		if(if_refcount_add(if_rc) == EXTIT_STATUS_OK)
 		{
 			*list->next_p = node;
 			list->next_p = &node->next;
@@ -66,7 +66,7 @@ worklist_add(struct worklist *list, myobj_t *obj)
 void
 worklist_execute(struct worklist *list)
 {
-	extit_if_refcount_t *	if_rc;
+	if_refcount_t *		if_rc;
 	struct worklist_node *	node;
 	struct worklist_node *	next_node;
 	myobj_t *		obj;
@@ -89,7 +89,7 @@ worklist_execute(struct worklist *list)
 		/*
 		 * Release it
 		 */
-		if(extit_if_refcount_release(if_rc) != EXTIT_STATUS_OK)
+		if(if_refcount_release(if_rc) != EXTIT_STATUS_OK)
 		{
 			/* Log or handle the error ... */
 		}

@@ -7,7 +7,7 @@
 #ifndef	__scan_service_h
 #define	__scan_service_h
 
-#include <extit/if/configurable.h>
+#include <if/configurable.h>
 
 typedef enum scan_mode
 {
@@ -22,7 +22,7 @@ typedef struct _scan_service		scan_service_t;
 
 scan_service_t *			scan_service_create(void);
 
-extit_if_configurable_t *		scan_service_get_configurable(
+if_configurable_t *		scan_service_get_configurable(
 						scan_service_t *service);
 
 #endif	/* !__scan_service_h */

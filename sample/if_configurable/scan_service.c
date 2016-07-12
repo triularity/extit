@@ -9,9 +9,9 @@
 #include <stddef.h>
 
 #include <iv/base.h>
-#include <extit/if/configurable.h>
-#include <extit/if/configurable_impl.h>
-#include <extit/if/configurable_stdimpl.h>
+#include <if/configurable.h>
+#include <if/configurable_impl.h>
+#include <if/configurable_stdimpl.h>
 
 #include "scan_service.h"
 
@@ -28,13 +28,13 @@ typedef struct _scan_service_settings
 
 struct _scan_service
 {
-	extit_if_configurable_t		configurable;
+	if_configurable_t		configurable;
 	scan_service_settings_t		settings;
 };
 
 
 static
-extit_if_configurable_enum32_t		conf_prop_mode_choices[3] =
+if_configurable_enum32_t	conf_prop_mode_choices[3] =
 {
 	{
 		"bw",
@@ -59,17 +59,17 @@ extit_if_configurable_enum32_t		conf_prop_mode_choices[3] =
 
 static
 extit_status_t
-conf_mode_setter(void *base, extit_if_configurable_propref_t *prop, void *valuep);
+conf_mode_setter(void *base, if_configurable_propref_t *prop, void *valuep);
 
 
 static
-extit_if_configurable_propref_t		conf_prop_mode =
+if_configurable_propref_t	conf_prop_mode =
 {
 	{
 		"mode",
 		"Mode",
 		"The format to scan in",
-		EXTIT_IF_CONFIGURABLE_TYPE_ENUM32,
+		IF_CONFIGURABLE_TYPE_ENUM32,
 
 		.spec.type_enum32.choices = conf_prop_mode_choices,
 		.spec.type_enum32.choice_count = 3,
@@ -82,13 +82,13 @@ extit_if_configurable_propref_t		conf_prop_mode =
 
 
 static
-extit_if_configurable_propref_t		conf_prop_x =
+if_configurable_propref_t	conf_prop_x =
 {
 	{
 		"start_x",
 		"Starting column",
 		"The left starting position of the scan",
-		EXTIT_IF_CONFIGURABLE_TYPE_UINT32,
+		IF_CONFIGURABLE_TYPE_UINT32,
 
 		.spec.type_uint32.min_value = 0,
 		.spec.type_uint32.max_value = (8 * 300) - 1,
@@ -101,13 +101,13 @@ extit_if_configurable_propref_t		conf_prop_x =
 
 
 static
-extit_if_configurable_propref_t		conf_prop_y =
+if_configurable_propref_t	conf_prop_y =
 {
 	{
 		"start_y",
 		"Starting row",
 		"The top starting position of the scan",
-		EXTIT_IF_CONFIGURABLE_TYPE_UINT32,
+		IF_CONFIGURABLE_TYPE_UINT32,
 
 		.spec.type_uint32.min_value = 0,
 		.spec.type_uint32.max_value = (14 * 300) - 1,
@@ -120,13 +120,13 @@ extit_if_configurable_propref_t		conf_prop_y =
 
 
 static
-extit_if_configurable_propref_t		conf_prop_width =
+if_configurable_propref_t	conf_prop_width =
 {
 	{
 		"width",
 		"Scan width",
 		"The width of the scan area",
-		EXTIT_IF_CONFIGURABLE_TYPE_UINT32,
+		IF_CONFIGURABLE_TYPE_UINT32,
 
 		.spec.type_uint32.min_value = 1,
 		.spec.type_uint32.max_value = 8 * 300,
@@ -139,13 +139,13 @@ extit_if_configurable_propref_t		conf_prop_width =
 
 
 static
-extit_if_configurable_propref_t		conf_prop_height =
+if_configurable_propref_t	conf_prop_height =
 {
 	{
 		"height",
 		"Scan height",
 		"The height of the scan area",
-		EXTIT_IF_CONFIGURABLE_TYPE_UINT32,
+		IF_CONFIGURABLE_TYPE_UINT32,
 
 		.spec.type_uint32.min_value = 1,
 		.spec.type_uint32.max_value = 14 * 300,
@@ -159,7 +159,7 @@ extit_if_configurable_propref_t		conf_prop_height =
 
 static
 const
-extit_if_configurable_propdef_t *	conf_props[5] =
+if_configurable_propdef_t *	conf_props[5] =
 {
 	&conf_prop_mode.definition,
 	&conf_prop_x.definition,
@@ -170,7 +170,7 @@ extit_if_configurable_propdef_t *	conf_props[5] =
 
 
 static
-extit_if_configurable_descriptor_t	conf_descriptor =
+if_configurable_descriptor_t	conf_descriptor =
 {
 	conf_props,
 	5
@@ -181,7 +181,7 @@ static
 extit_status_t
 conf_mode_setter(
 	void *base,
-	extit_if_configurable_propref_t *prop,
+	if_configurable_propref_t *prop,
 	void *valuep
 )
 {
@@ -209,8 +209,8 @@ scan_service_create(void)
 	/* XXX - Do NULL check in real thing! */
 	service = malloc(sizeof(scan_service_t));
 
-	service->configurable.version = EXTIT_IF_CONFIGURABLE_ABI_TARGET;
-	service->configurable.ops = &extit_if_configurable_stdimpl_ops;
+	service->configurable.version = IF_CONFIGURABLE_ABI_TARGET;
+	service->configurable.ops = &if_configurable_stdimpl_ops;
 	service->configurable.descriptor = &conf_descriptor;
 
 	service->settings.mode = SCAN_MODE_COLOR;
@@ -223,7 +223,7 @@ scan_service_create(void)
 }
 
 
-extit_if_configurable_t *
+if_configurable_t *
 scan_service_get_configurable(scan_service_t *service)
 {
 	return &service->configurable;

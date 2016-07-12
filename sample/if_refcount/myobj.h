@@ -7,7 +7,7 @@
 #ifndef	__myobj_h
 #define	__myobj_h
 
-#include <extit/if/refcount.h>
+#include <if/refcount.h>
 
 
 typedef enum myobj_type
@@ -23,7 +23,7 @@ typedef struct myobj		myobj_t;
 struct myobj
 {
 	myobj_type_t		type;
-	extit_if_refcount_t *	(*get_if_refcount)(myobj_t *obj);
+	if_refcount_t *		(*get_if_refcount)(myobj_t *obj);
 };
 
 #endif	/* !__myobj_h */

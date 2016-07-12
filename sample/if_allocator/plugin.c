@@ -9,12 +9,12 @@
 #include <extit/base.h>
 #include <extit/plugin.h>
 #include <extit/plugin_spi.h>
-#include <extit/if/allocator.h>
+#include <if/allocator.h>
 
 
 typedef struct _myplugin
 {
-	extit_if_allocator_t *	allocator;
+	if_allocator_t *	allocator;
 	char *			buffer;
 } myplugin_t;
 
@@ -31,7 +31,7 @@ plugin_handler
 	unsigned int flags
 )
 {
-	extit_if_allocator_t *		allocator;
+	if_allocator_t *		allocator;
 	myplugin_t *			myplugin;
 	extit_spi_param_create_t *	param_create;
 	extit_spi_param_destroy_t *	param_destroy;
@@ -51,8 +51,8 @@ plugin_handler
 			 */
 			if(extit_container_query_interface(
 			 container,
-			 EXTIT_IF_ALLOCATOR_IID,
-			 EXTIT_IF_ALLOCATOR_ABI_1_0)
+			 IF_ALLOCATOR_IID,
+			 IF_ALLOCATOR_ABI_1_0)
 			  == IV_VERSION_NONE)
 			{
 				extit_container_log(
@@ -78,13 +78,13 @@ plugin_handler
 			 */
 			allocator = extit_container_get_interface(
 				container,
-				EXTIT_IF_ALLOCATOR_IID,
-				EXTIT_IF_ALLOCATOR_ABI_1_0);
+				IF_ALLOCATOR_IID,
+				IF_ALLOCATOR_ABI_1_0);
 
 			/*
 			 * Use allocator to create plugin
 			 */
-			myplugin = extit_if_allocator_alloc(
+			myplugin = if_allocator_alloc(
 				allocator, sizeof(myplugin_t));
 
 			myplugin->allocator = allocator;
@@ -92,12 +92,12 @@ plugin_handler
 			/*
 			 * And some data buffer
 			 */
-			myplugin->buffer = extit_if_allocator_alloc(
+			myplugin->buffer = if_allocator_alloc(
 				allocator, 1000);
 
 			if(myplugin->buffer == NULL)
 			{
-				extit_if_allocator_free(allocator, myplugin);
+				if_allocator_free(allocator, myplugin);
 				return EXTIT_STATUS_NOMEM;
 			}
 
@@ -113,8 +113,8 @@ plugin_handler
 			myplugin = (myplugin_t *) param_destroy->spi_ctx;
 			allocator = myplugin->allocator;
 
-			extit_if_allocator_free(allocator, myplugin->buffer);
-			extit_if_allocator_free(allocator, myplugin);
+			if_allocator_free(allocator, myplugin->buffer);
+			if_allocator_free(allocator, myplugin);
 
 			return EXTIT_STATUS_OK;
 

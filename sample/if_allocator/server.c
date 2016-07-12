@@ -9,8 +9,8 @@
 
 #include <iv/base.h>
 #include <extit/container.h>
-#include <extit/if/allocator.h>
-#include <extit/if/allocator_stdimpl.h>
+#include <if/allocator.h>
+#include <if/allocator_stdimpl.h>
 
 
 static
@@ -23,10 +23,10 @@ my_get_interface
 	iv_version_t version
 )
 {
-	if((strcmp(id, EXTIT_IF_ALLOCATOR_IID) == 0)
-	 && (version == EXTIT_IF_ALLOCATOR_ABI_1_0))
+	if((strcmp(id, IF_ALLOCATOR_IID) == 0)
+	 && (version == IF_ALLOCATOR_ABI_1_0))
 	{
-		return &extit_if_allocator_stdimpl_1_0;
+		return &if_allocator_stdimpl_1_0;
 	}
 
 	return NULL;
@@ -43,10 +43,10 @@ my_query_interface
 	iv_version_t base_version
 )
 {
-	if((strcmp(id, EXTIT_IF_ALLOCATOR_IID) == 0)
-	 && (base_version == EXTIT_IF_ALLOCATOR_ABI_1_0))
+	if((strcmp(id, IF_ALLOCATOR_IID) == 0)
+	 && (base_version == IF_ALLOCATOR_ABI_1_0))
 	{
-		return EXTIT_IF_ALLOCATOR_ABI_1_0;
+		return IF_ALLOCATOR_ABI_1_0;
 	}
 
 	return IV_VERSION_NONE;
