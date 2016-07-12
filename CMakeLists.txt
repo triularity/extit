@@ -196,6 +196,7 @@ set(EXTIT_IF_CONFIGURABLE_STDIMPL_SOURCE_FILES
 	src/extit/if_configurable_stdimpl/get_uint32.c
 	src/extit/if_configurable_stdimpl/get_uint64.c
 	src/extit/if_configurable_stdimpl/get_utf8.c
+	src/extit/if_configurable_stdimpl/ops.c
 	src/extit/if_configurable_stdimpl/reset.c
 	src/extit/if_configurable_stdimpl/set_bool.c
 	src/extit/if_configurable_stdimpl/set_custom.c
@@ -789,6 +790,27 @@ if(EXTIT_COMPILE_SAMPLES)
 		sample_if_allocator_server
 			extit_if_allocator_stdimpl
 			extit_container)
+
+
+	#
+	# Configurable Interface
+	#
+	add_executable(
+		sample_if_configurable
+			sample/if_configurable/client.c
+			sample/if_configurable/scan_service.c
+			sample/if_configurable/scan_service.h
+			${EXTIT_HEADER_FILES}
+			${EXTIT_IF_CONFIGURABLE_HEADER_FILES}
+			${EXTIT_IF_CONFIGURABLE_STDIMPL_HEADER_FILES}
+			${EXTIT_IF_CONFIGURABLE_UTIL_HEADER_FILES}
+			${IV_HEADER_FILES})
+
+	target_link_libraries(
+		sample_if_configurable
+			extit_if_configurable
+			extit_if_configurable_stdimpl
+			extit_if_configurable_util)
 
 
 	#

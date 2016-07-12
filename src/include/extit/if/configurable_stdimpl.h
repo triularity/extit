@@ -32,13 +32,25 @@ extern "C" {
 struct extit_if_configurable_propref
 {
 	extit_if_configurable_propdef_t	definition;
-	size_t				offset;
+	int				offset;
 
 	extit_status_t		(*setter)(
 					void *base,
 					extit_if_configurable_propref_t *prop,
 					void *valuep);
 };
+
+
+EXTIT_IF_CONFIGURABLE_STDIMPL_LIBAPI
+extern extit_if_configurable_ops_1_0_t	extit_if_configurable_stdimpl_ops_1_0;
+
+
+#if	EXTIT_IF_CONFIGURABLE_ABI_TARGET == EXTIT_IF_CONFIGURABLE_ABI_1_0
+#define	extit_if_configurable_stdimpl_ops	\
+					extit_if_configurable_stdimpl_ops_1_0
+#else
+#error	Unsupported EXTIT_IF_CONFIGURABLE_ABI_TARGET version
+#endif
 
 
 EXTIT_IF_CONFIGURABLE_STDIMPL_LIBXAPI
