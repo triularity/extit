@@ -23,6 +23,7 @@ endif()
 
 set(EXTIT_PARANOID TRUE CACHE BOOL "Enable Paranoid Code Checks")
 set(EXTIT_DEBUG TRUE CACHE BOOL "Enable Runtime Debugging")
+set(EXTIT_WARNFREE FALSE CACHE BOOL "Enable Error on Compile Warnings")
 set(EXTIT_WITH_CXX FALSE CACHE BOOL "Enable C++ Wrappers")
 set(EXTIT_COMPILE_SAMPLES FALSE CACHE BOOL "Compile Sample Programs")
 set(EXTIT_COMPILE_TESTS FALSE CACHE BOOL "Compile Unit Tests")
@@ -83,13 +84,56 @@ set(EXTIT_IF_ALLOCATOR_SOURCE_FILES
 	src/extit/if/allocator/realloc.c
 	src/extit/if/allocator/zalloc.c)
 
+set(EXTIT_IF_CONFIGURABLE_HEADER_FILES 
+	src/include/extit/if/configurable.h
+	src/include/extit/if/configurable_impl.h)
+
+set(EXTIT_IF_CONFIGURABLE_SOURCE_FILES
+	src/extit/if_configurable/find_property.c
+	src/extit/if_configurable/get_bool.c
+	src/extit/if_configurable/get_custom.c
+	src/extit/if_configurable/get_descriptor.c
+	src/extit/if_configurable/get_double.c
+	src/extit/if_configurable/get_enum32.c
+	src/extit/if_configurable/get_float.c
+	src/extit/if_configurable/get_int8.c
+	src/extit/if_configurable/get_int16.c
+	src/extit/if_configurable/get_int32.c
+	src/extit/if_configurable/get_int64.c
+	src/extit/if_configurable/get_uint8.c
+	src/extit/if_configurable/get_uint16.c
+	src/extit/if_configurable/get_uint32.c
+	src/extit/if_configurable/get_uint64.c
+	src/extit/if_configurable/get_utf8.c
+	src/extit/if_configurable/reset.c
+	src/extit/if_configurable/set_bool.c
+	src/extit/if_configurable/set_custom.c
+	src/extit/if_configurable/set_double.c
+	src/extit/if_configurable/set_enum32.c
+	src/extit/if_configurable/set_float.c
+	src/extit/if_configurable/set_int8.c
+	src/extit/if_configurable/set_int16.c
+	src/extit/if_configurable/set_int32.c
+	src/extit/if_configurable/set_int64.c
+	src/extit/if_configurable/set_uint8.c
+	src/extit/if_configurable/set_uint16.c
+	src/extit/if_configurable/set_uint32.c
+	src/extit/if_configurable/set_uint64.c
+	src/extit/if_configurable/set_utf8.c)
+
+set(EXTIT_IF_CONFIGURABLE_UTIL_HEADER_FILES 
+	src/include/extit/if/configurable_util.h)
+
+set(EXTIT_IF_CONFIGURABLE_UTIL_SOURCE_FILES
+	src/extit/if_configurable_util/enum32_find_by_id.c
+	src/extit/if_configurable_util/enum32_find_by_value.c)
+
 set(EXTIT_IF_DISPOSABLE_HEADER_FILES 
 	src/include/extit/if/disposable.h
 	src/include/extit/if/disposable_impl.h)
 
 set(EXTIT_IF_DISPOSABLE_SOURCE_FILES
-	src/extit/if/disposable.c
-)
+	src/extit/if/disposable.c)
 
 set(EXTIT_IF_MESSAGING_HEADER_FILES 
 	src/include/extit/if/messaging.h
@@ -132,6 +176,41 @@ set(EXTIT_IF_ALLOCATOR_STDIMPL_HEADER_FILES
 
 set(EXTIT_IF_ALLOCATOR_STDIMPL_SOURCE_FILES
 	src/extit/if/allocator/stdimpl.c)
+
+set(EXTIT_IF_CONFIGURABLE_STDIMPL_HEADER_FILES 
+	src/include/extit/if/configurable_stdimpl.h)
+
+set(EXTIT_IF_CONFIGURABLE_STDIMPL_SOURCE_FILES
+	src/extit/if_configurable_stdimpl/find_property.c
+	src/extit/if_configurable_stdimpl/get_bool.c
+	src/extit/if_configurable_stdimpl/get_custom.c
+	src/extit/if_configurable_stdimpl/get_double.c
+	src/extit/if_configurable_stdimpl/get_enum32.c
+	src/extit/if_configurable_stdimpl/get_float.c
+	src/extit/if_configurable_stdimpl/get_int8.c
+	src/extit/if_configurable_stdimpl/get_int16.c
+	src/extit/if_configurable_stdimpl/get_int32.c
+	src/extit/if_configurable_stdimpl/get_int64.c
+	src/extit/if_configurable_stdimpl/get_uint8.c
+	src/extit/if_configurable_stdimpl/get_uint16.c
+	src/extit/if_configurable_stdimpl/get_uint32.c
+	src/extit/if_configurable_stdimpl/get_uint64.c
+	src/extit/if_configurable_stdimpl/get_utf8.c
+	src/extit/if_configurable_stdimpl/reset.c
+	src/extit/if_configurable_stdimpl/set_bool.c
+	src/extit/if_configurable_stdimpl/set_custom.c
+	src/extit/if_configurable_stdimpl/set_double.c
+	src/extit/if_configurable_stdimpl/set_enum32.c
+	src/extit/if_configurable_stdimpl/set_float.c
+	src/extit/if_configurable_stdimpl/set_int8.c
+	src/extit/if_configurable_stdimpl/set_int16.c
+	src/extit/if_configurable_stdimpl/set_int32.c
+	src/extit/if_configurable_stdimpl/set_int64.c
+	src/extit/if_configurable_stdimpl/set_uint8.c
+	src/extit/if_configurable_stdimpl/set_uint16.c
+	src/extit/if_configurable_stdimpl/set_uint32.c
+	src/extit/if_configurable_stdimpl/set_uint64.c
+	src/extit/if_configurable_stdimpl/set_utf8.c)
 
 
 # ExtIt plugin (client side)
@@ -316,6 +395,71 @@ set_target_properties(
 
 
 #
+# [lib]extit_if_configurable
+#
+add_library(
+	extit_if_configurable
+		${EXTIT_IF_CONFIGURABLE_SOURCE_FILES}
+		${EXTIT_HEADER_FILES}
+		${EXTIT_IF_CONFIGURABLE_HEADER_FILES}
+		${IV_HEADER_FILES}
+		${IV_UTIL_HEADER_FILES})
+
+set_target_properties(
+	extit_if_configurable PROPERTIES
+		POSITION_INDEPENDENT_CODE ON)
+
+if(EXTIT_PARANOID)
+	target_link_libraries(
+		extit_if_configurable
+			iv_util)
+endif()
+
+
+#
+# [lib]extit_if_configurable_stdimpl
+#
+add_library(
+	extit_if_configurable_stdimpl
+		${EXTIT_IF_CONFIGURABLE_STDIMPL_SOURCE_FILES}
+		${EXTIT_HEADER_FILES}
+		${EXTIT_IF_CONFIGURABLE_HEADER_FILES}
+		${EXTIT_IF_CONFIGURABLE_STDIMPL_HEADER_FILES}
+		${IV_HEADER_FILES})
+
+set_target_properties(
+	extit_if_configurable_stdimpl PROPERTIES
+		POSITION_INDEPENDENT_CODE ON)
+
+target_link_libraries(
+	extit_if_configurable_stdimpl
+		extit_if_configurable_util)
+
+if(EXTIT_PARANOID)
+	target_link_libraries(
+		extit_if_configurable_stdimpl
+			iv_util)
+endif()
+
+
+#
+# [lib]extit_if_configurable_util
+#
+add_library(
+	extit_if_configurable_util
+		${EXTIT_IF_CONFIGURABLE_UTIL_SOURCE_FILES}
+		${EXTIT_HEADER_FILES}
+		${EXTIT_IF_CONFIGURABLE_HEADER_FILES}
+		${EXTIT_IF_CONFIGURABLE_UTIL_HEADER_FILES}
+		${IV_HEADER_FILES}
+		${IV_UTIL_HEADER_FILES})
+
+set_target_properties(
+	extit_if_configurable_util PROPERTIES
+		POSITION_INDEPENDENT_CODE ON)
+
+
+#
 # [lib]extit_if_disposable
 #
 add_library(
@@ -480,12 +624,19 @@ endif()
 if(${CMAKE_CXX_COMPILER_ID} MATCHES "GNU" OR ${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -pedantic")
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wmissing-prototypes -Wstrict-prototypes")
-	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror")
+
+	if(EXTIT_WARNFREE)
+		set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror")
+	endif()
 elseif(MSVC)
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W4 /wd4054 /wd4100")
 
 	# Get rid of annoying D9025 warning for /W3 /W4
 	string(REPLACE "/W3 " "" CMAKE_C_FLAGS ${CMAKE_C_FLAGS})
+
+	if(EXTIT_WARNFREE)
+		set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /WX")
+	endif()
 
 	add_definitions("-D_CRT_SECURE_NO_WARNINGS")
 endif()
@@ -557,6 +708,9 @@ install(
 		extit_container
 		extit_if_allocator
 		extit_if_allocator_stdimpl
+		extit_if_configurable
+		extit_if_configurable_stdimpl
+		extit_if_configurable_util
 		extit_if_disposable
 		extit_if_messaging
 		extit_if_refcount
@@ -579,6 +733,9 @@ install(
 	FILES
 		${EXTIT_IF_ALLOCATOR_HEADER_FILES}
 		${EXTIT_IF_ALLOCATOR_STDIMPL_HEADER_FILES}
+		${EXTIT_IF_CONFIGURABLE_HEADER_FILES}
+		${EXTIT_IF_CONFIGURABLE_STDIMPL_HEADER_FILES}
+		${EXTIT_IF_CONFIGURABLE_UTIL_HEADER_FILES}
 		${EXTIT_IF_DISPOSABLE_HEADER_FILES}
 		${EXTIT_IF_MESSAGING_HEADER_FILES}
 		${EXTIT_IF_REFCOUNT_HEADER_FILES}
