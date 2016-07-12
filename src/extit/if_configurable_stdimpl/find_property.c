@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/configurable_stdimpl/find_property.c
+ * @(#) extit/if_configurable_stdimpl/find_property.c
  *
  * Configurable Interface standard implementation.
  *

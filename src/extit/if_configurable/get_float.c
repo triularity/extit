@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/configurable/get_float.c
+ * @(#) extit/if_configurable/get_float.c
  *
  * Configurable Interface client API wrappers.
  *

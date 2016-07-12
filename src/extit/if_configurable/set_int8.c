@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/configurable/set_int8.c
+ * @(#) extit/if_configurable/set_int8.c
  *
  * Configurable Interface client API wrappers.
  *

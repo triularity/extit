@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/configurable/reset.c
+ * @(#) extit/if_configurable/reset.c
  *
  * Configurable Interface client API wrappers.
  *

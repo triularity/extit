@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/configurable/get_double.c
+ * @(#) extit/if_configurable/get_double.c
  *
  * Configurable Interface client API wrappers.
  *

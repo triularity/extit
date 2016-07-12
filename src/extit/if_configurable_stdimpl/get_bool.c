@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/configurable_stdimpl/get_bool.c
+ * @(#) extit/if_configurable_stdimpl/get_bool.c
  *
  * Configurable Interface standard implementation.
  *

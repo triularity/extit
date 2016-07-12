@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/configurable/get_bool.c
+ * @(#) extit/if_configurable/get_bool.c
  *
  * Configurable Interface client API wrappers.
  *

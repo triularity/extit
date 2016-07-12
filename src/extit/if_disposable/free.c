@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/disposable.c
+ * @(#) extit/if_disposable/free.c
  *
  * Disposable Interface client API wrappers.
  *

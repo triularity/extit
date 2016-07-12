@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/configurable_stdimpl/get_utf8.c
+ * @(#) extit/if_configurable_stdimpl/get_utf8.c
  *
  * Configurable Interface standard implementation.
  *

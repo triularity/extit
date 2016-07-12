@@ -78,11 +78,11 @@ set(EXTIT_IF_ALLOCATOR_HEADER_FILES
 	src/include/extit/if/allocator_impl.h)
 
 set(EXTIT_IF_ALLOCATOR_SOURCE_FILES
-	src/extit/if/allocator/alloc.c
-	src/extit/if/allocator/dup.c
-	src/extit/if/allocator/free.c
-	src/extit/if/allocator/realloc.c
-	src/extit/if/allocator/zalloc.c)
+	src/extit/if_allocator/alloc.c
+	src/extit/if_allocator/dup.c
+	src/extit/if_allocator/free.c
+	src/extit/if_allocator/realloc.c
+	src/extit/if_allocator/zalloc.c)
 
 set(EXTIT_IF_CONFIGURABLE_HEADER_FILES 
 	src/include/extit/if/configurable.h
@@ -133,41 +133,41 @@ set(EXTIT_IF_DISPOSABLE_HEADER_FILES
 	src/include/extit/if/disposable_impl.h)
 
 set(EXTIT_IF_DISPOSABLE_SOURCE_FILES
-	src/extit/if/disposable.c)
+	src/extit/if_disposable/free.c)
 
 set(EXTIT_IF_MESSAGING_HEADER_FILES 
 	src/include/extit/if/messaging.h
 	src/include/extit/if/messaging_impl.h)
 
 set(EXTIT_IF_MESSAGING_SOURCE_FILES
-	src/extit/if/messaging/add_listener.c
-	src/extit/if/messaging/bind.c
-	src/extit/if/messaging/bound_add_listener.c
-	src/extit/if/messaging/bound_has_listener.c
-	src/extit/if/messaging/bound_remove_listener.c
-	src/extit/if/messaging/bound_send.c
-	src/extit/if/messaging/has_listener.c
-	src/extit/if/messaging/remove_listener.c
-	src/extit/if/messaging/remove_listener_by_id.c
-	src/extit/if/messaging/send.c
-	src/extit/if/messaging/unbind.c)
+	src/extit/if_messaging/add_listener.c
+	src/extit/if_messaging/bind.c
+	src/extit/if_messaging/bound_add_listener.c
+	src/extit/if_messaging/bound_has_listener.c
+	src/extit/if_messaging/bound_remove_listener.c
+	src/extit/if_messaging/bound_send.c
+	src/extit/if_messaging/has_listener.c
+	src/extit/if_messaging/remove_listener.c
+	src/extit/if_messaging/remove_listener_by_id.c
+	src/extit/if_messaging/send.c
+	src/extit/if_messaging/unbind.c)
 
 set(EXTIT_IF_REFCOUNT_HEADER_FILES 
 	src/include/extit/if/refcount.h
 	src/include/extit/if/refcount_impl.h)
 
 set(EXTIT_IF_REFCOUNT_SOURCE_FILES
-	src/extit/if/refcount/add.c
-	src/extit/if/refcount/get.c
-	src/extit/if/refcount/release.c)
+	src/extit/if_refcount/add.c
+	src/extit/if_refcount/get.c
+	src/extit/if_refcount/release.c)
 
 set(EXTIT_IF_RESOLVABLE_HEADER_FILES 
 	src/include/extit/if/resolvable.h
 	src/include/extit/if/resolvable_impl.h)
 
 set(EXTIT_IF_RESOLVABLE_SOURCE_FILES
-	src/extit/if/resolvable/get_interface.c
-	src/extit/if/resolvable/query_interface.c)
+	src/extit/if_resolvable/get_interface.c
+	src/extit/if_resolvable/query_interface.c)
 
 
 # ExtIt standard interface implementations
@@ -175,7 +175,7 @@ set(EXTIT_IF_ALLOCATOR_STDIMPL_HEADER_FILES
 	src/include/extit/if/allocator_stdimpl.h)
 
 set(EXTIT_IF_ALLOCATOR_STDIMPL_SOURCE_FILES
-	src/extit/if/allocator/stdimpl.c)
+	src/extit/if_allocator_stdimpl/stdimpl.c)
 
 set(EXTIT_IF_CONFIGURABLE_STDIMPL_HEADER_FILES 
 	src/include/extit/if/configurable_stdimpl.h)

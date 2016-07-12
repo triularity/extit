@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/allocator/dup.c
+ * @(#) extit/if_allocator/zalloc.c
  *
  * Allocator Interface client API wrappers.
  *
@@ -20,10 +20,9 @@
 EXTIT_EXPORT
 void *
 EXTIT_DECL
-extit_if_allocator_dup
+extit_if_allocator_zalloc
 (
 	extit_if_allocator_t *allocator,
-	void *ptr,
 	size_t size
 )
 {
@@ -32,5 +31,5 @@ extit_if_allocator_dup
 		return NULL;
 #endif
 
-	return EXTIT_IF_ALLOCATOR_DUP(allocator, ptr, size);
+	return EXTIT_IF_ALLOCATOR_ZALLOC(allocator, size);
 }

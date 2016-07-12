@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/configurable_stdimpl/reset.c
+ * @(#) extit/if_configurable_stdimpl/reset.c
  *
  * Configurable Interface standard implementation.
  *

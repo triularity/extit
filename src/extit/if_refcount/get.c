@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/refcount/release.c
+ * @(#) extit/if_refcount/get.c
  *
  * Reference Count Interface client API wrappers.
  *
@@ -17,17 +17,17 @@
 
 
 EXTIT_EXPORT
-extit_status_t
+extit_refcount_t
 EXTIT_DECL
-extit_if_refcount_release
+extit_if_refcount_get
 (
 	extit_if_refcount_t *refcount
 )
 {
 #ifdef	EXTIT_PARANOID
 	if(!iv_matches(refcount->version, EXTIT_IF_REFCOUNT_ABI_1_0))
-		return EXTIT_STATUS_UNSUPPORTED;
+		return EXTIT_REFCOUNT_NONE;
 #endif
 
-	return EXTIT_IF_REFCOUNT_RELEASE(refcount);
+	return EXTIT_IF_REFCOUNT_GET(refcount);
 }

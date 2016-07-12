@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/configurable/set_uint32.c
+ * @(#) extit/if_configurable/set_uint32.c
  *
  * Configurable Interface client API wrappers.
  *

@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/configurable/get_descriptor.c
+ * @(#) extit/if_configurable/get_descriptor.c
  *
  * Configurable Interface client API wrappers.
  *

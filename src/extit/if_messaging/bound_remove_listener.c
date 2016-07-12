@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/messaging/bound_has_listener.c
+ * @(#) extit/if_messaging/bound_remove_listener.c
  *
  * Messaging Interface client API wrappers.
  *
@@ -18,18 +18,21 @@
 
 
 EXTIT_EXPORT
-extit_bool_t
+extit_status_t
 EXTIT_DECL
-extit_if_messaging_bound_has_listener
+extit_if_messaging_bound_remove_listener
 (
 	extit_if_messaging_t *messaging,
-	extit_if_messaging_bound_t bound
+	extit_if_messaging_bound_t bound,
+	extit_if_messaging_listener_t callback,
+	void *client_data
 )
 {
 #ifdef	EXTIT_PARANOID
 	if(!iv_matches(messaging->version, EXTIT_IF_MESSAGING_ABI_1_0))
-		return EXTIT_FALSE;
+		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return EXTIT_IF_MESSAGING_BOUND_HAS_LISTENER(messaging, bound);
+	return EXTIT_IF_MESSAGING_BOUND_REMOVE_LISTENER(
+		messaging, bound, callback, client_data);
 }

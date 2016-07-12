@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/messaging/send.c
+ * @(#) extit/if_messaging/remove_listener_by_id.c
  *
  * Messaging Interface client API wrappers.
  *
@@ -20,13 +20,10 @@
 EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
-extit_if_messaging_send
+extit_if_messaging_remove_listener_by_id
 (
 	extit_if_messaging_t *messaging,
-	const char *mid,
-	const char *iid,
-	iv_version_t version,
-	void *data
+	extit_if_messaging_listener_id_t id
 )
 {
 #ifdef	EXTIT_PARANOID
@@ -34,5 +31,5 @@ extit_if_messaging_send
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return EXTIT_IF_MESSAGING_SEND(messaging, mid, iid, version, data);
+	return EXTIT_IF_MESSAGING_REMOVE_LISTENER_BY_ID(messaging, id);
 }

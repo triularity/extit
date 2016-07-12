@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/allocator/zalloc.c
+ * @(#) extit/if_allocator/alloc.c
  *
  * Allocator Interface client API wrappers.
  *
@@ -20,7 +20,7 @@
 EXTIT_EXPORT
 void *
 EXTIT_DECL
-extit_if_allocator_zalloc
+extit_if_allocator_alloc
 (
 	extit_if_allocator_t *allocator,
 	size_t size
@@ -31,5 +31,5 @@ extit_if_allocator_zalloc
 		return NULL;
 #endif
 
-	return EXTIT_IF_ALLOCATOR_ZALLOC(allocator, size);
+	return EXTIT_IF_ALLOCATOR_ALLOC(allocator, size);
 }

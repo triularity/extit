@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/configurable_stdimpl/get_uint64.c
+ * @(#) extit/if_configurable_stdimpl/get_uint64.c
  *
  * Configurable Interface standard implementation.
  *

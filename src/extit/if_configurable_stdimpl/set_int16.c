@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/configurable_stdimpl/set_int16.c
+ * @(#) extit/if_configurable_stdimpl/set_int16.c
  *
  * Configurable Interface standard implementation.
  *

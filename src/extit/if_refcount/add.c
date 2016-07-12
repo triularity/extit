@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/refcount/add.c
+ * @(#) extit/if_refcount/add.c
  *
  * Reference Count Interface client API wrappers.
  *

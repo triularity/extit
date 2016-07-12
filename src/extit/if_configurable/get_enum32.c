@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/configurable/get_enum32.c
+ * @(#) extit/if_configurable/get_enum32.c
  *
  * Configurable Interface client API wrappers.
  *

@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/configurable/find_property.c
+ * @(#) extit/if_configurable/find_property.c
  *
  * Configurable Interface client API wrappers.
  *

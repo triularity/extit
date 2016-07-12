@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/allocator/stdimpl.c
+ * @(#) extit/if_allocator/stdimpl.c
  *
  * A standard system implemtation for an Allocator Interface.
  *

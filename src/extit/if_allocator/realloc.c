@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/allocator/alloc.c
+ * @(#) extit/if_allocator/realloc.c
  *
  * Allocator Interface client API wrappers.
  *
@@ -20,9 +20,10 @@
 EXTIT_EXPORT
 void *
 EXTIT_DECL
-extit_if_allocator_alloc
+extit_if_allocator_realloc
 (
 	extit_if_allocator_t *allocator,
+	void *ptr,
 	size_t size
 )
 {
@@ -31,5 +32,5 @@ extit_if_allocator_alloc
 		return NULL;
 #endif
 
-	return EXTIT_IF_ALLOCATOR_ALLOC(allocator, size);
+	return EXTIT_IF_ALLOCATOR_REALLOC(allocator, ptr, size);
 }

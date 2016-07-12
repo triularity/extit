@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/resolvable/get_interface.c
+ * @(#) extit/if_resolvable/get_interface.c
  *
  * Resolvable Interface client API wrappers.
  *

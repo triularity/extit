@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/configurable_stdimpl/set_custom.c
+ * @(#) extit/if_configurable_stdimpl/set_custom.c
  *
  * Configurable Interface standard implementation.
  *

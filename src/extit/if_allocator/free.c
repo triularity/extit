@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/allocator/free.c
+ * @(#) extit/if_allocator/free.c
  *
  * Allocator Interface client API wrappers.
  *

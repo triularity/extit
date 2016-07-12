@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/configurable/get_utf8.c
+ * @(#) extit/if_configurable/get_utf8.c
  *
  * Configurable Interface client API wrappers.
  *

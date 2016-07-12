@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/configurable_util/get_enum32_id.c
+ * @(#) extit/if_configurable_util/get_enum32_id.c
  *
  * Configurable Interface utilities.
  *

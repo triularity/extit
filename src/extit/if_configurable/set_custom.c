@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/configurable/set_custom.c
+ * @(#) extit/if_configurable/set_custom.c
  *
  * Configurable Interface client API wrappers.
  *

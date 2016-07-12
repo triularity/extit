@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/configurable_stdimpl/set_float.c
+ * @(#) extit/if_configurable_stdimpl/set_float.c
  *
  * Configurable Interface standard implementation.
  *

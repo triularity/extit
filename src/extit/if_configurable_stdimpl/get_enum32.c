@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/configurable_stdimpl/get_enum32.c
+ * @(#) extit/if_configurable_stdimpl/get_enum32.c
  *
  * Configurable Interface standard implementation.
  *

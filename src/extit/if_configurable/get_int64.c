@@ -1,5 +1,5 @@
 /*
- * @(#) extit/if/configurable/get_int64.c
+ * @(#) extit/if_configurable/get_int64.c
  *
  * Configurable Interface client API wrappers.
  *
