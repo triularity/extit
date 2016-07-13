@@ -278,7 +278,9 @@ elseif(EXTIT_LIB_LOADER STREQUAL "win32")
 		src/extit/container/win32/module_get_symbol.c
 		src/extit/container/win32/module_load.c
 		src/extit/container/win32/module_release.c
-		src/extit/container/win32/module_scan.c)
+		src/extit/container/win32/module_scan.c
+		src/extit/container/win32/ptr_util.c
+		src/extit/container/win32/ptr_util.h)
 ##+elseif(EXTIT_LIB_LOADER STREQUAL "dylib")
 ##+	set(EXTIT_CONTAINER_SOURCE_FILES
 ##+		${EXTIT_CONTAINER_SOURCE_FILES}
@@ -623,6 +625,7 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "BSD")
 endif()
 
 if(${CMAKE_CXX_COMPILER_ID} MATCHES "GNU" OR ${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99")
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -pedantic")
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wmissing-prototypes -Wstrict-prototypes")
 

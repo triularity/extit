@@ -20,6 +20,7 @@
 #include <extit/container.h>
 
 #include "../container_impl.h"
+#include "ptr_util.h"
 
 
 EXTIT_EXPORT
@@ -33,7 +34,7 @@ extit_module_load
 )
 {
 	HMODULE			handle;
-	const void *		descriptor;
+	FARPROC			descriptor;
 	extit_module_t *	module;
 
 
@@ -71,7 +72,7 @@ extit_module_load
 			fprintf(stderr,
 			 "[extit:module] Error loading '%s': Error #%u.\n",
 				path,
-				GetLastError());
+				(unsigned int) GetLastError());
 		}
 #endif	/* EXTIT_DEBUG */
 
@@ -81,8 +82,8 @@ extit_module_load
 	/*
 	 * Find the plugin descriptor
 	 */
-	if((descriptor = (void *)
-	 GetProcAddress(handle, EXTIT_SPI_DESCRIPTOR_SYMBOL)) == NULL)
+	if((descriptor = GetProcAddress(handle, EXTIT_SPI_DESCRIPTOR_SYMBOL))
+	 == NULL)
 	{
 #ifdef	EXTIT_DEBUG
 		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
@@ -99,7 +100,8 @@ extit_module_load
 	/*
 	 * Create the module from a descriptor
 	 */
-	module = extit_module_bind(container, descriptor, flags);
+	module = extit_module_bind(
+		container, FUNCPTR_TO_VOIDPTR(descriptor), flags);
 
 	if(module == NULL)
 	{
@@ -125,7 +127,7 @@ extit_module_load_wc
 )
 {
 	HMODULE			handle;
-	const void *		descriptor;
+	FARPROC			descriptor;
 	extit_module_t *	module;
 
 
@@ -163,7 +165,7 @@ extit_module_load_wc
 			fprintf(stderr,
 			 "[extit:module] Error loading '%ls': Error #%u.\n",
 				path,
-				GetLastError());
+				(unsigned int) GetLastError());
 		}
 #endif	/* EXTIT_DEBUG */
 
@@ -173,8 +175,8 @@ extit_module_load_wc
 	/*
 	 * Find the plugin descriptor
 	 */
-	if((descriptor = (extit_spi_descriptor_base_t *)
-	 GetProcAddress(handle, EXTIT_SPI_DESCRIPTOR_SYMBOL)) == NULL)
+	if((descriptor = GetProcAddress(handle, EXTIT_SPI_DESCRIPTOR_SYMBOL))
+	 == NULL)
 	{
 #ifdef	EXTIT_DEBUG
 		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
@@ -191,7 +193,8 @@ extit_module_load_wc
 	/*
 	 * Create the module from a descriptor
 	 */
-	module = extit_module_bind(container, descriptor, flags);
+	module = extit_module_bind(
+		container, FUNCPTR_TO_VOIDPTR(descriptor), flags);
 
 	if(module == NULL)
 	{
