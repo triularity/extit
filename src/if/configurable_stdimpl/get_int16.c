@@ -32,7 +32,8 @@ if_configurable_get_int16_stdimpl
                 return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return if_configurable_get_int16_stdimpl_base(conf, prop, valuep);
+	return if_configurable_get_int16_stdimpl_base(
+		conf, conf, prop, valuep);
 }
 
 
@@ -41,6 +42,7 @@ extit_status_t
 EXTIT_DECL
 if_configurable_get_int16_stdimpl_base
 (
+	if_configurable_t *conf,
 	void *base,
 	if_configurable_propref_t *prop,
 	int16_t *valuep

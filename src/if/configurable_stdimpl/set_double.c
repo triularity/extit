@@ -34,7 +34,8 @@ if_configurable_set_double_stdimpl
                 return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return if_configurable_set_double_stdimpl_base(conf, prop, value);
+	return if_configurable_set_double_stdimpl_base(
+		conf, conf, prop, value);
 }
 
 
@@ -43,6 +44,7 @@ extit_status_t
 EXTIT_DECL
 if_configurable_set_double_stdimpl_base
 (
+	if_configurable_t *conf,
 	void *base,
 	if_configurable_propref_t *prop,
 	double value
@@ -50,9 +52,6 @@ if_configurable_set_double_stdimpl_base
 {
 	if_configurable_propspec_double_t *	spec_double;
 
-
-	if(prop->setter != NULL)
-		return prop->setter(base, prop, &value);
 
 	base = ((char *) base) + prop->offset;
 
@@ -73,6 +72,9 @@ if_configurable_set_double_stdimpl_base
 		default:
 			return IF_CONFIGURABLE_STATUS_MISMATCH;
 	}
+
+	if(prop->update_notifier != NULL)
+		prop->update_notifier(conf, prop);
 
 	return EXTIT_STATUS_OK;
 }

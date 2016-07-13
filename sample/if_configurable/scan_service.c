@@ -12,6 +12,7 @@
 #include <if/configurable.h>
 #include <if/configurable_impl.h>
 #include <if/configurable_stdimpl.h>
+#include <if/configurable_util.h>
 
 #include "scan_service.h"
 
@@ -58,8 +59,8 @@ if_configurable_enum32_t	conf_prop_mode_choices[3] =
 
 
 static
-extit_status_t
-conf_mode_setter(void *base, if_configurable_propref_t *prop, void *valuep);
+void
+conf_mode_notifier(if_configurable_t *conf, if_configurable_propref_t *prop);
 
 
 static
@@ -77,7 +78,7 @@ if_configurable_propref_t	conf_prop_mode =
 	},
 	offsetof(scan_service_t, settings)
 		+ offsetof(scan_service_settings_t, mode),
-	conf_mode_setter
+	conf_mode_notifier
 };
 
 
@@ -178,25 +179,29 @@ if_configurable_descriptor_t	conf_descriptor =
 
 
 static
-extit_status_t
-conf_mode_setter(
-	void *base,
-	if_configurable_propref_t *prop,
-	void *valuep
+void
+conf_mode_notifier
+(
+	if_configurable_t *conf,
+	if_configurable_propref_t *prop
 )
 {
-	scan_service_t *	service;
-	uint32_t		mode;
+	scan_service_t *			service;
+	const if_configurable_enum32_t *	enum32;
 
 
-	service = (scan_service_t *) base;
-	mode = *((uint32_t *) valuep);
+	service = (scan_service_t *) conf;
 
-	service->settings.mode = mode;
+	enum32 = if_configurable_enum32_find_by_value(
+		prop->definition.spec.type_enum32.choices,
+		prop->definition.spec.type_enum32.choice_count,
+		service->settings.mode);
 
-	printf("Reallocation resources for mode %d..\n", mode);
-
-	return EXTIT_STATUS_OK;
+	if(enum32 != NULL)
+	{
+		printf("Reallocation resources for mode %s...\n",
+			enum32->name);
+	}
 }
 
 

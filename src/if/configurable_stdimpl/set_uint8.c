@@ -34,7 +34,7 @@ if_configurable_set_uint8_stdimpl
                 return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return if_configurable_set_uint8_stdimpl_base(conf, prop, value);
+	return if_configurable_set_uint8_stdimpl_base(conf, conf, prop, value);
 }
 
 
@@ -43,6 +43,7 @@ extit_status_t
 EXTIT_DECL
 if_configurable_set_uint8_stdimpl_base
 (
+	if_configurable_t *conf,
 	void *base,
 	if_configurable_propref_t *prop,
 	uint8_t value
@@ -53,9 +54,6 @@ if_configurable_set_uint8_stdimpl_base
 	if_configurable_propspec_uint32_t *	spec_uint32;
 	if_configurable_propspec_uint64_t *	spec_uint64;
 
-
-	if(prop->setter != NULL)
-		return prop->setter(base, prop, &value);
 
 	base = ((char *) base) + prop->offset;
 
@@ -112,6 +110,9 @@ if_configurable_set_uint8_stdimpl_base
 		default:
 			return IF_CONFIGURABLE_STATUS_MISMATCH;
 	}
+
+	if(prop->update_notifier != NULL)
+		prop->update_notifier(conf, prop);
 
 	return EXTIT_STATUS_OK;
 }
