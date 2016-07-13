@@ -814,6 +814,26 @@ if(EXTIT_COMPILE_SAMPLES)
 
 
 	#
+	# Disposable Interface
+	#
+	add_executable(
+		sample_if_disposable
+			sample/if_disposable/client.c
+			sample/if_disposable/item.c
+			sample/if_disposable/item.h
+			sample/if_disposable/itemsource.c
+			sample/if_disposable/itemsource.h
+			${EXTIT_HEADER_FILES}
+			${IF_DISPOSABLE_HEADER_FILES}
+			${IF_DISPOSABLE_IMPL_HEADER_FILES}
+			${IV_HEADER_FILES})
+
+	target_link_libraries(
+		sample_if_disposable
+			if_disposable)
+
+
+	#
 	# Refcount Interface
 	#
 	add_executable(

@@ -1,0 +1,85 @@
+/*
+ * @(#) if_disposable/item.c
+ *
+ * This file is in the Public Domain.
+ */
+
+#include <stdio.h>
+#include <stddef.h>
+#include <stdlib.h>
+
+#include <extit/base.h>
+#include <if/disposable.h>
+#include <if/disposable_impl.h>
+
+#include "item.h"
+
+
+struct _item
+{
+	void			(*wfunc)(void);
+	if_disposable_t		disposable;
+};
+
+
+static
+extit_status_t
+EXTIT_DECL
+item_disposable_free
+(
+	if_disposable_t *disposable
+)
+{
+	item_t *	item;
+
+
+	printf("Freeing item...\n");
+
+	item = (item_t *)
+		(((char *) disposable) - offsetof(item_t, disposable));
+
+	free(item);
+
+	return EXTIT_STATUS_OK;
+}
+
+
+static
+if_disposable_ops_1_0_t		item_disposable_ops =
+{
+	item_disposable_free		/* op_free */
+};
+
+
+
+item_t *
+item_create(void (*wfunc)(void))
+{
+	item_t *	item;
+
+
+	/* XXX - Check for NULL in real thing! */
+	item = malloc(sizeof(item_t));
+
+	item->wfunc = wfunc;
+
+	item->disposable.version = IF_DISPOSABLE_ABI_1_0;
+	item->disposable.ops = &item_disposable_ops;
+
+	return item;
+}
+
+
+void
+item_dosomething(item_t *item)
+{
+	(item->wfunc)();
+}
+
+
+if_disposable_t *
+item_get_disposable(item_t *item)
+{
+	return &item->disposable;
+}
+
