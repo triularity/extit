@@ -12,7 +12,6 @@
 #include <windows.h>
 
 #include <extit/base.h>
-//-#include <extit/plugin_spi.h>
 #include <extit/container.h>
 
 #include "../container_impl.h"
@@ -43,7 +42,7 @@ extit_module_release
 		{
 			fprintf(stderr,
 		"[extit:module] Error unloading library: Error #%u.\n",
-				GetLastError());
+				(unsigned int) GetLastError());
 		}
 	}
 

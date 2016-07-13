@@ -625,7 +625,7 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "BSD")
 endif()
 
 if(${CMAKE_CXX_COMPILER_ID} MATCHES "GNU" OR ${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
-	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99")
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99")
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -pedantic")
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wmissing-prototypes -Wstrict-prototypes")
 

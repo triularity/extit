@@ -107,7 +107,7 @@ extit_module_scan
 			fprintf(stderr,
 		"[extit:module] Error opening directory '%s': Error #%u.\n",
 				directory,
-				GetLastError());
+				(unsigned int) GetLastError());
 		}
 #endif	/* EXTIT_DEBUG */
 
@@ -185,7 +185,7 @@ extit_module_scan
 		{
 			fprintf(stderr,
 		"[extit:module] Error reading directory: Error #%u.\n",
-				err);
+				(unsigned int) err);
 		}
 #endif	/* EXTIT_DEBUG */
 
@@ -276,7 +276,7 @@ extit_module_scan_wc
 			fprintf(stderr,
 		"[extit:module] Error opening directory '%ls': Error #%u.\n",
 				directory,
-				GetLastError());
+				(unsigned int) GetLastError());
 		}
 #endif	/* EXTIT_DEBUG */
 
@@ -289,7 +289,7 @@ extit_module_scan_wc
 		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_TRACE)
 		{
 			fprintf(stderr,
-				"[extit:module] Scan candidate: '%s'.\n",
+				"[extit:module] Scan candidate: '%ls'.\n",
 				ffd.cFileName);
 		}
 #endif	/* EXTIT_DEBUG */
@@ -300,7 +300,7 @@ extit_module_scan_wc
 			if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_TRACE)
 			{
 				fprintf(stderr,
-				 "[extit:module] Skipping non-normal file: '%s'.\n",
+				 "[extit:module] Skipping non-normal file: '%ls'.\n",
 					ffd.cFileName);
 			}
 #endif	/* EXTIT_DEBUG */
@@ -325,7 +325,7 @@ extit_module_scan_wc
 				 >= EXTIT_FLAG_LOG_DEBUG)
 				{
 					fprintf(stderr,
-				"[extit:module] Scan rejected '%s'.\n",
+				"[extit:module] Scan rejected '%ls'.\n",
 						ffd.cFileName);
 				}
 #endif	/* EXTIT_DEBUG */
@@ -339,7 +339,7 @@ extit_module_scan_wc
 				 >= EXTIT_FLAG_LOG_TRACE)
 				{
 					fprintf(stderr,
-				"[extit:module] Scan accepted '%s'.\n",
+				"[extit:module] Scan accepted '%ls'.\n",
 						ffd.cFileName);
 				}
 #endif	/* EXTIT_DEBUG */
@@ -354,7 +354,7 @@ extit_module_scan_wc
 		{
 			fprintf(stderr,
 		"[extit:module] Error reading directory: Error #%u.\n",
-				err);
+				(unsigned int) err);
 		}
 #endif	/* EXTIT_DEBUG */
 
