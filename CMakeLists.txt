@@ -1083,13 +1083,28 @@ endif(EXTIT_COMPILE_SAMPLES)
 
 if(EXTIT_COMPILE_TESTS)
 	add_executable(
+		test_extit_bool_t
+			tests/extit_bool_t/test_bool.c
+			${EXTIT_HEADER_FILES})
+
+	add_executable(
+		test_extit_refcount
+			tests/extit_refcount/test_refcount.c
+			${EXTIT_HEADER_FILES}
+			${EXTIT_UTIL_HEADER_FILES})
+
+	target_link_libraries(
+		test_extit_refcount
+			extit_util)
+
+	add_executable(
 		test_iv_version
 			tests/iv_version/test_iv_version.c
 			${IV_HEADER_FILES})
 
 	add_executable(
-		test_iv_bool
-			tests/iv_bool/test_iv_bool.c
+		test_iv_bool_t
+			tests/iv_bool_t/test_iv_bool.c
 			${IV_HEADER_FILES})
 
 	add_executable(

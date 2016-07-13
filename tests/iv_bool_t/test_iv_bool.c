@@ -2,6 +2,7 @@
  * @(#) test_iv_bool.c
  *
  * Unit test for iv_bool_t.
+ * This file is in the Public Domain.
  */
 
 #include <stdio.h>
@@ -36,7 +37,7 @@ main(int argc, char **argv)
 
 
 	if(rc == 0)
-		fprintf(stderr, "Tests PASSED - iv_bool\n");
+		fprintf(stderr, "Tests PASSED - iv_bool_t\n");
 
 	return rc;
 }

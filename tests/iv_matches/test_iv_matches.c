@@ -2,6 +2,7 @@
  * @(#) test_iv_matches.c
  *
  * Unit test for iv_matches().
+ * This file is in the Public Domain.
  */
 
 #include <stdio.h>

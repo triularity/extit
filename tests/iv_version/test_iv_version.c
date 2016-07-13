@@ -2,6 +2,7 @@
  * @(#) test_iv_version.c
  *
  * Unit test for IV_VERSION(), IV_VERSION_MAJOR(), and IV_VERSION_MINOR().
+ * This file is in the Public Domain.
  */
 
 #include <stdio.h>
