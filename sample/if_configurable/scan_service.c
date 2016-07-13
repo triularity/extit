@@ -17,20 +17,16 @@
 #include "scan_service.h"
 
 
-typedef struct _scan_service_settings
-{
-	scan_mode_t	mode;
-	uint32_t	start_x;
-	uint32_t	start_y;
-	uint32_t	width;
-	uint32_t	height;
-} scan_service_settings_t;
-
-
 struct _scan_service
 {
-	if_configurable_t		configurable;
-	scan_service_settings_t		settings;
+	char *			somebuffer;
+	unsigned int		hw_version;
+	if_configurable_t	configurable;
+	scan_mode_t		mode;
+	uint32_t		start_x;
+	uint32_t		start_y;
+	uint32_t		width;
+	uint32_t		height;
 };
 
 
@@ -76,8 +72,8 @@ if_configurable_propref_t	conf_prop_mode =
 		.spec.type_enum32.choice_count = 3,
 		.spec.type_enum32.def_value = SCAN_MODE_COLOR
 	},
-	offsetof(scan_service_t, settings)
-		+ offsetof(scan_service_settings_t, mode),
+	offsetof(scan_service_t, mode)
+		- offsetof(scan_service_t, configurable),
 	conf_mode_notifier
 };
 
@@ -95,8 +91,8 @@ if_configurable_propref_t	conf_prop_x =
 		.spec.type_uint32.max_value = (8 * 300) - 1,
 		.spec.type_uint32.def_value = 0
 	},
-	offsetof(scan_service_t, settings)
-		+ offsetof(scan_service_settings_t, start_x),
+	offsetof(scan_service_t, start_x)
+		- offsetof(scan_service_t, configurable),
 	NULL
 };
 
@@ -114,8 +110,8 @@ if_configurable_propref_t	conf_prop_y =
 		.spec.type_uint32.max_value = (14 * 300) - 1,
 		.spec.type_uint32.def_value = 0
 	},
-	offsetof(scan_service_t, settings)
-		+ offsetof(scan_service_settings_t, start_y),
+	offsetof(scan_service_t, start_y)
+		- offsetof(scan_service_t, configurable),
 	NULL
 };
 
@@ -133,8 +129,8 @@ if_configurable_propref_t	conf_prop_width =
 		.spec.type_uint32.max_value = 8 * 300,
 		.spec.type_uint32.def_value = 8 * 300
 	},
-	offsetof(scan_service_t, settings)
-		+ offsetof(scan_service_settings_t, width),
+	offsetof(scan_service_t, width)
+		- offsetof(scan_service_t, configurable),
 	NULL
 };
 
@@ -152,8 +148,8 @@ if_configurable_propref_t	conf_prop_height =
 		.spec.type_uint32.max_value = 14 * 300,
 		.spec.type_uint32.def_value = 14 * 300
 	},
-	offsetof(scan_service_t, settings)
-		+ offsetof(scan_service_settings_t, height),
+	offsetof(scan_service_t, height)
+		- offsetof(scan_service_t, configurable),
 	NULL
 };
 
@@ -190,12 +186,13 @@ conf_mode_notifier
 	const if_configurable_enum32_t *	enum32;
 
 
-	service = (scan_service_t *) conf;
+	service = (scan_service_t *)
+		(((char *) conf) - offsetof(scan_service_t, configurable));
 
 	enum32 = if_configurable_enum32_find_by_value(
 		prop->definition.spec.type_enum32.choices,
 		prop->definition.spec.type_enum32.choice_count,
-		service->settings.mode);
+		service->mode);
 
 	if(enum32 != NULL)
 	{
@@ -218,11 +215,11 @@ scan_service_create(void)
 	service->configurable.ops = &if_configurable_stdimpl_ops;
 	service->configurable.descriptor = &conf_descriptor;
 
-	service->settings.mode = SCAN_MODE_COLOR;
-	service->settings.start_x = 0;
-	service->settings.start_y = 0;
-	service->settings.width = 8 * 300;
-	service->settings.height = 10 * 300;
+	service->mode = SCAN_MODE_COLOR;
+	service->start_x = 0;
+	service->start_y = 0;
+	service->width = 8 * 300;
+	service->height = 10 * 300;
 
 	return service;
 }
