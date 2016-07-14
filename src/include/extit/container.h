@@ -252,6 +252,11 @@ extit_module_t *	EXTIT_DECL
 
 EXTIT_CONTAINER_LIBAPI
 extit_status_t		EXTIT_DECL
+			extit_module_release(
+				extit_module_t *module);
+
+EXTIT_CONTAINER_LIBAPI
+extit_status_t		EXTIT_DECL
 			extit_module_scan(
 				const extit_container_t *container,
 				const char *directory,
@@ -291,12 +296,6 @@ void			EXTIT_DECL
 			extit_module_set_flags(
 				extit_module_t *module,
 				unsigned int flags);
-
-EXTIT_CONTAINER_LIBAPI
-extit_status_t		EXTIT_DECL
-			extit_module_release(
-				extit_module_t *module);
-
 
 EXTIT_CONTAINER_LIBAPI
 extit_status_t		EXTIT_DECL
