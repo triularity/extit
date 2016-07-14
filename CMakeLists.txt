@@ -848,7 +848,7 @@ if(EXTIT_COMPILE_SAMPLES)
 			sample/if_refcount/worklist.c
 			sample/if_refcount/worklist.h
 			${EXTIT_HEADER_FILES}
-			${IF_HEADER_FILES}
+			${IF_REFCOUNT_HEADER_FILES}
 			${EXTIT_UTIL_HEADER_FILES}
 			${IV_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
@@ -856,6 +856,38 @@ if(EXTIT_COMPILE_SAMPLES)
 	target_link_libraries(
 		sample_if_refcount
 			if_refcount)
+
+
+	#
+	# Resolvable Interface
+	#
+	add_executable(
+		sample_if_resolvable
+			sample/if_resolvable/client.c
+			sample/if_resolvable/myobj.c
+			sample/if_resolvable/myobj.h
+			sample/if_resolvable/myobj_client.c
+			sample/if_resolvable/myobj_priv.h
+			${EXTIT_HEADER_FILES}
+			${IF_REFCOUNT_HEADER_FILES}
+			${IF_REFCOUNT_IMPL_HEADER_FILES}
+			${IF_CONFIGURABLE_HEADER_FILES}
+			${IF_CONFIGURABLE_IMPL_HEADER_FILES}
+			${IF_CONFIGURABLE_STDIMPL_HEADER_FILES}
+			${IF_RESOLVABLE_HEADER_FILES}
+			${IF_RESOLVABLE_IMPL_HEADER_FILES}
+			${EXTIT_UTIL_HEADER_FILES}
+			${IV_HEADER_FILES}
+			${IV_UTIL_HEADER_FILES})
+
+	target_link_libraries(
+		sample_if_resolvable
+			extit_util
+			if_refcount
+			if_resolvable
+			if_configurable
+			if_configurable_stdimpl
+			iv_util)
 
 
 	#
