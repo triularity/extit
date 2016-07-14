@@ -5,6 +5,7 @@
  */
 
 #include <stdlib.h>
+#include <stdio.h>
 
 #include <iv/base.h>
 #include <if/refcount.h>
@@ -33,6 +34,8 @@ main(int argc, char **argv)
 		 */
 		if_rc = obj->get_if_refcount(obj);
 
+		printf("Done with our ref\n");
+
 		/*
 		 * Release our reference
 		 * The worklist may or may not have a reference
@@ -42,6 +45,8 @@ main(int argc, char **argv)
 			/* Log or handle the error ... */
 		}
 	}
+
+	printf("Time to execute\n");
 
 	worklist_execute(list);
 

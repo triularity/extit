@@ -5,7 +5,9 @@
  */
 
 #include <stdlib.h>
+#include <stdio.h>
 
+#include <extit/base.h>
 #include <extit/util.h>
 #include <if/refcount_impl.h>
 
@@ -76,11 +78,23 @@ extit_status_t
 myobj__refcount__ops_release(if_refcount_t *refcount)
 {
 	struct myobj_internal *	obji;
+	extit_status_t		status;
 
 
 	obji = ((struct if_refcount_internal *) refcount)->myobj;
 
-	return extit_refcount_release(&obji->refcount);
+	status = extit_refcount_release(&obji->refcount);
+
+	/*
+	 * If it wasn't busy, free the object
+	 */
+	if(status == EXTIT_STATUS_OK)
+	{
+		printf("freeing object\n");
+		free(obji);
+	}
+
+	return status;
 }
 
 
