@@ -22,7 +22,7 @@ EXTIT_DECL
 if_messaging_bound_send
 (
 	if_messaging_t *messaging,
-	if_messaging_bound_t bound,
+	if_messaging_bound_t *bound,
 	void *data
 )
 {

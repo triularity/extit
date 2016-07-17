@@ -41,9 +41,9 @@ typedef struct _if_messaging_1_0	if_messaging_1_0_t;
 /*
  * A bound interface message
  */
-typedef struct _if_messaging_bound *	if_messaging_bound_t;
+typedef struct _if_messaging_bound 	if_messaging_bound_t;
 
-#define	IF_MESSAGING_BOUND_NONE		((if_messaging_bound_t) NULL)
+#define	IF_MESSAGING_BOUND_NONE		((if_messaging_bound_t *) NULL)
 
 /*
  * Message listener callback
@@ -92,7 +92,7 @@ if_messaging_listener_id_t
 				void *client_data);
 
 IF_MESSAGINE_LIBAPI
-if_messaging_bound_t
+if_messaging_bound_t *
 			EXTIT_DECL
 			if_messaging_bind(
 				if_messaging_t *messaging,
@@ -105,7 +105,7 @@ if_messaging_listener_id_t
 			EXTIT_DECL
 			if_messaging_bound_add_listener(
 				if_messaging_t *messaging,
-				if_messaging_bound_t bound,
+				if_messaging_bound_t *bound,
 				if_messaging_listener_t callback,
 				void *client_data);
 
@@ -113,13 +113,13 @@ IF_MESSAGINE_LIBAPI
 extit_bool_t		EXTIT_DECL
 			if_messaging_bound_has_listener(
 				if_messaging_t *messaging,
-				if_messaging_bound_t bound);
+				if_messaging_bound_t *bound);
 
 IF_MESSAGINE_LIBAPI
 extit_status_t		EXTIT_DECL
 			if_messaging_bound_remove_listener(
 				if_messaging_t *messaging,
-				if_messaging_bound_t bound,
+				if_messaging_bound_t *bound,
 				if_messaging_listener_t callback,
 				void *client_data);
 
@@ -127,7 +127,7 @@ IF_MESSAGINE_LIBAPI
 extit_status_t		EXTIT_DECL
 			if_messaging_bound_send(
 				if_messaging_t *messaging,
-				if_messaging_bound_t bound,
+				if_messaging_bound_t *bound,
 				void *data);
 
 IF_MESSAGINE_LIBAPI
@@ -167,7 +167,7 @@ IF_MESSAGINE_LIBAPI
 extit_status_t		EXTIT_DECL
 			if_messaging_unbind(
 				if_messaging_t *messaging,
-				if_messaging_bound_t bound);
+				if_messaging_bound_t *bound);
 
 #ifdef	__cplusplus
 }

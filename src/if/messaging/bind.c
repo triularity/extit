@@ -18,7 +18,7 @@
 
 
 EXTIT_EXPORT
-if_messaging_bound_t
+if_messaging_bound_t *
 EXTIT_DECL
 if_messaging_bind
 (

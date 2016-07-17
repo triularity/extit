@@ -23,7 +23,7 @@ EXTIT_DECL
 if_messaging_bound_remove_listener
 (
 	if_messaging_t *messaging,
-	if_messaging_bound_t bound,
+	if_messaging_bound_t *bound,
 	if_messaging_listener_t callback,
 	void *client_data
 )
