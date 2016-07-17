@@ -253,6 +253,7 @@ set(IV_UTIL_HEADER_FILES
 	src/include/iv/util.h)
 
 set(IV_UTIL_SOURCE_FILES
+	src/iv/util/keymap.c
 	src/iv/util.c)
 
 
