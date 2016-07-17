@@ -371,7 +371,7 @@ iv_keymap_cleanup
 	void (*value_cleaner)(void **valueptr)
 )
 {
-	int		i;
+	size_t		i;
 
 
 	for(i = 0; i < keymap->hashsize; i++)
@@ -387,7 +387,7 @@ iv_keymap_destroy
 	iv_keymap_t *keymap
 )
 {
-	int		i;
+	size_t		i;
 	bucket_t *	bucket;
 
 
