@@ -234,6 +234,28 @@ set(IF_CONFIGURABLE_STDIMPL_SOURCE_FILES
 	src/if/configurable_stdimpl/set_uint64.c
 	src/if/configurable_stdimpl/set_utf8.c)
 
+set(IF_MESSAGING_STDIMPL_HEADER_FILES
+	src/include/if/messaging_stdimpl.h)
+
+set(IF_MESSAGING_STDIMPL_SOURCE_FILES
+	src/if/messaging_stdimpl/add_listener.c
+	src/if/messaging_stdimpl/bind.c
+	src/if/messaging_stdimpl/bound.c
+	src/if/messaging_stdimpl/bound_add_listener.c
+	src/if/messaging_stdimpl/bound_has_listener.c
+	src/if/messaging_stdimpl/bound_remove_listener.c
+	src/if/messaging_stdimpl/bound_send.c
+	src/if/messaging_stdimpl/cleanup.c
+	src/if/messaging_stdimpl/create.c
+	src/if/messaging_stdimpl/destroy.c
+	src/if/messaging_stdimpl/has_listener.c
+	src/if/messaging_stdimpl/keybuf.c
+	src/if/messaging_stdimpl/ops.c
+	src/if/messaging_stdimpl/remove_listener.c
+	src/if/messaging_stdimpl/remove_listener_by_id.c
+	src/if/messaging_stdimpl/send.c
+	src/if/messaging_stdimpl/unbind.c)
+
 
 # IV core
 set(IV_HEADER_FILES 
@@ -537,6 +559,27 @@ endif()
 
 
 #
+# [lib]if_messaging_stdimpl
+#
+add_library(
+	if_messaging_stdimpl
+		${IF_MESSAGING_STDIMPL_SOURCE_FILES}
+		${EXTIT_HEADER_FILES}
+		${IF_MESSAGING_HEADER_FILES}
+		${IF_MESSAGING_STDIMPL_HEADER_FILES}
+		${IV_HEADER_FILES})
+
+set_target_properties(
+	if_messaging_stdimpl PROPERTIES
+		POSITION_INDEPENDENT_CODE ON)
+
+	target_link_libraries(
+		if_messaging_stdimpl
+			iv_util
+			extit_util)
+
+
+#
 # [lib]if_refcount
 #
 add_library(
@@ -684,6 +727,10 @@ if(DEFINED LIBNAME_POSTFIX)
 			OUTPUT_NAME "if_messaging${LIBNAME_POSTFIX}")
 
 	set_target_properties(
+		if_messaging_stdimpl PROPERTIES
+			OUTPUT_NAME "if_messaging_stdimpl${LIBNAME_POSTFIX}")
+
+	set_target_properties(
 		if_refcount PROPERTIES
 			OUTPUT_NAME "if_refcount${LIBNAME_POSTFIX}")
 
@@ -718,6 +765,7 @@ install(
 		if_configurable_util
 		if_disposable
 		if_messaging
+		if_messaging_stdimpl
 		if_refcount
 		if_resolvable
 		extit_util
@@ -743,6 +791,7 @@ install(
 		${IF_CONFIGURABLE_UTIL_HEADER_FILES}
 		${IF_DISPOSABLE_HEADER_FILES}
 		${IF_MESSAGING_HEADER_FILES}
+		${IF_MESSAGING_STDIMPL_HEADER_FILES}
 		${IF_REFCOUNT_HEADER_FILES}
 		${IF_RESOLVABLE_HEADER_FILES}
 	DESTINATION ${CMAKE_INSTALL_PREFIX}/include/if)
