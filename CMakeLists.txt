@@ -254,7 +254,7 @@ set(IV_UTIL_HEADER_FILES
 
 set(IV_UTIL_SOURCE_FILES
 	src/iv/util/keymap.c
-	src/iv/util.c)
+	src/iv/util/matches.c)
 
 
 #

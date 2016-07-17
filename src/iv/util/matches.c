@@ -1,7 +1,5 @@
 /*
- * @(#) extit/src/iv/util.c
- *
- * Interface Versioning utilities.
+ * @(#) extit/src/iv/util/matches.c
  *
  * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
@@ -26,16 +24,9 @@ iv_matches
 	version_major = IV_VERSION_MAJOR(version);
 
 	if(version_major == 0)
-	{
-		return (version == req_version) ? IV_TRUE : IV_FALSE;
-	}
+		return (version == req_version);
 	else if(version_major == IV_VERSION_MAJOR(req_version))
-	{
-		return (version >= req_version) ? IV_TRUE : IV_FALSE;
-	}
+		return (version >= req_version);
 	else
-	{
 		return IV_FALSE;
-	}
 }
-
