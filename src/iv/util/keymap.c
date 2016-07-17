@@ -239,7 +239,7 @@ bucket_destroy
 
 			free(entry->key);
 
-			if(entry->value != NULL)
+			if((entry->value != NULL) && (free_func != NULL))
 				free_func(entry->value);
 		}
 
