@@ -20,7 +20,8 @@ if_messaging_stdimpl_keybuf_init
 )
 {
 	keybuf->buf = keybuf->def_buffer;
-	keybuf->len = sizeof(keybuf->def_buffer);
+	keybuf->len = 0;
+	keybuf->capacity = sizeof(keybuf->def_buffer);
 }
 
 
