@@ -328,7 +328,7 @@ iv_keymap_create
 	if((keymap = calloc(
 	 1, sizeof(iv_keymap_t) + (sizeof(bucket_t *) * hashsize))) != NULL)
 	{
-		keymap->buckets = (bucket_t **) &keymap;
+		keymap->buckets = (bucket_t **) &keymap[1];
 		keymap->hashsize = hashsize;
 		keymap->free_func = free_func;
 	}
