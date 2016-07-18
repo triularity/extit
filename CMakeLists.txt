@@ -887,6 +887,24 @@ if(EXTIT_COMPILE_SAMPLES)
 
 
 	#
+	# Messaging Interface (alarm)
+	#
+	add_executable(
+		sample_if_messaging_alarm
+			sample/if_messaging/alarm.h
+			sample/if_messaging/demo.c
+			${EXTIT_HEADER_FILES}
+			${EXTIT_MESSAGING_HEADER_FILES}
+			${EXTIT_MESSAGING_STDIMPL_HEADER_FILES}
+			${IV_HEADER_FILES})
+
+	target_link_libraries(
+		sample_if_messaging_alarm
+			if_messaging
+			if_messaging_stdimpl)
+
+
+	#
 	# Refcount Interface
 	#
 	add_executable(
