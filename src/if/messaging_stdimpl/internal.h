@@ -51,6 +51,7 @@ typedef struct _keybuf
 {
 	unsigned char *			buf;
 	size_t				len;
+	size_t				capacity;
 	unsigned char			def_buffer[256];
 } keybuf_t;
 

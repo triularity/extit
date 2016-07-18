@@ -52,7 +52,7 @@ if_messaging_stdimpl_keybuf_setids(
 
 	keylen = mid_len + iid_len + 2;
 
-	if(keybuf->len <= keylen)
+	if(keybuf->capacity <= keylen)
 	{
 		if(keybuf->buf != keybuf->def_buffer)
 			free(keybuf->buf);
@@ -64,7 +64,7 @@ if_messaging_stdimpl_keybuf_setids(
 				return EXTIT_STATUS_NOMEM;
 
 			keybuf->buf = keybuf->def_buffer;
-			keybuf->len = sizeof(keybuf->def_buffer);
+			keybuf->capacity = sizeof(keybuf->def_buffer);
 		}
 	}
 
@@ -72,6 +72,8 @@ if_messaging_stdimpl_keybuf_setids(
 	keybuf->buf[mid_len] = '\0';
 	memcpy(&keybuf->buf[mid_len+1], iid, iid_len);
 	keybuf->buf[keylen-1] = '\0';
+
+	keybuf->len = keylen;
 
 	return EXTIT_STATUS_OK;
 }
