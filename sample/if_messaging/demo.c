@@ -7,7 +7,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+
+#ifdef	_WIN32
+#include <windows.h>
+
+#define	sleep(x)	Sleep((x) * 1000)
+#else
 #include <unistd.h>
+#endif
 
 #include <iv/base.h>
 #include <if/messaging.h>
