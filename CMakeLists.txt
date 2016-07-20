@@ -1231,6 +1231,16 @@ if(EXTIT_COMPILE_TESTS)
 			${IV_HEADER_FILES})
 
 	add_executable(
+		test_iv_keymap
+			tests/iv_keymap/test_keymap.c
+			${IV_HEADER_FILES}
+			${IV_UTIL_HEADER_FILES})
+
+	target_link_libraries(
+		test_iv_keymap
+			iv_util)
+
+	add_executable(
 		test_iv_matches
 			tests/iv_matches/test_iv_matches.c
 			${IV_HEADER_FILES}
