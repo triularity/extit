@@ -8,6 +8,10 @@ Supported OS's:
 		MinGW 32-bit
 	FreeBSD  (tested on 10.x, 64-bit)
 		clang 3.4 64-bit
+	NetBSD (tested on 6.1.5, 64-bit)
+		gcc 4.5 64-bit
+	OpenBSD (tested on 5.7, 64-bit)
+		gcc 4.2 64-bit
 	Linux  (tested on CentOS 7, 64-bit)
 		gcc 4.8 64-bit
 
