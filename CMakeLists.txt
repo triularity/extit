@@ -93,6 +93,7 @@ set(EXTIT_PMODULE_SOURCE_FILES
 	src/extit/pmodule/plugin_ping.c
 	src/extit/pmodule/plugin_query_interface.c
 	src/extit/pmodule/plugin_set_flags.c
+	src/extit/pmodule/pmodule_internal.h
 	src/extit/pmodule/version.c)
 
 

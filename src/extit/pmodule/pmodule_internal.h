@@ -1,14 +1,14 @@
 /*
- * @(#) container_impl.h
+ * @(#) pmodule_internal.h
  *
- * Container API implementation.
+ * Plugin module internals.
  *
  * Copyright (c) 2014-2016, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
-#ifndef	__container_impl_h
-#define	__container_impl_h
+#ifndef	__pmodule_internal_h
+#define	__pmodule_internal_h
 
 #include <iv/base.h>
 #include <extit/util.h>
@@ -60,4 +60,4 @@ extit_status_t		EXTIT_DECL
 }
 #endif
 
-#endif	/* !__container_impl_h */
+#endif	/* !__pmodule_internal_h */

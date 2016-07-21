@@ -11,7 +11,7 @@
 #include <extit/base.h>
 #include <extit/pmodule.h>
 
-#include "container_impl.h"
+#include "pmodule_internal.h"
 
 
 EXTIT_EXPORT

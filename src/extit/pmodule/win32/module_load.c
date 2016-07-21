@@ -21,7 +21,7 @@
 #include <extit/container_impl.h>
 #include <extit/pmodule.h>
 
-#include "../container_impl.h"
+#include "../pmodule_internal.h"
 
 #ifdef  __GNUC__
 #define	FUNCPTR_TO_VOIDPTR(x)	(*((void **) &x))
