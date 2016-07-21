@@ -1,5 +1,5 @@
 /*
- * @(#) container/container_log.c
+ * @(#) container/get_function.c
  *
  * Container API wrappers.
  *
@@ -14,18 +14,18 @@
 
 
 EXTIT_EXPORT
-void
+extit_func_t
 EXTIT_DECL
-extit_container_log
+extit_container_get_function
 (
 	const extit_container_t *container,
-	const char *message
+	const char *name
 )
 {
 #ifdef	EXTIT_PARANOID
 	if(IV_VERSION_MAJOR(container->version) != 1)
-		return;
+		return NULL;
 #endif
 
-	container->ops->log(container, message);
+	return container->ops->get_function(container, name);
 }

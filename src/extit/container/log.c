@@ -1,5 +1,5 @@
 /*
- * @(#) container/container_get_interface.c
+ * @(#) container/log.c
  *
  * Container API wrappers.
  *
@@ -14,19 +14,18 @@
 
 
 EXTIT_EXPORT
-void *
+void
 EXTIT_DECL
-extit_container_get_interface
+extit_container_log
 (
 	const extit_container_t *container,
-	const char *name,
-	iv_version_t version
+	const char *message
 )
 {
 #ifdef	EXTIT_PARANOID
 	if(IV_VERSION_MAJOR(container->version) != 1)
-		return NULL;
+		return;
 #endif
 
-	return container->ops->get_interface(container, name, version);
+	container->ops->log(container, message);
 }

@@ -48,11 +48,11 @@ set(EXTIT_CONTAINER_HEADER_FILES
 	src/include/extit/container_impl.h)
 
 set(EXTIT_CONTAINER_SOURCE_FILES
-	src/extit/container/container_get_function.c
-	src/extit/container/container_get_interface.c
-	src/extit/container/container_get_symbol.c
-	src/extit/container/container_log.c
-	src/extit/container/container_query_interface.c)
+	src/extit/container/get_function.c
+	src/extit/container/get_interface.c
+	src/extit/container/get_symbol.c
+	src/extit/container/log.c
+	src/extit/container/query_interface.c)
 
 
 # ExtIt plugin module (server side)

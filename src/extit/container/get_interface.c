@@ -1,5 +1,5 @@
 /*
- * @(#) container/container_get_symbol.c
+ * @(#) container/get_interface.c
  *
  * Container API wrappers.
  *
@@ -16,10 +16,11 @@
 EXTIT_EXPORT
 void *
 EXTIT_DECL
-extit_container_get_symbol
+extit_container_get_interface
 (
 	const extit_container_t *container,
-	const char *name
+	const char *name,
+	iv_version_t version
 )
 {
 #ifdef	EXTIT_PARANOID
@@ -27,5 +28,5 @@ extit_container_get_symbol
 		return NULL;
 #endif
 
-	return container->ops->get_symbol(container, name);
+	return container->ops->get_interface(container, name, version);
 }
