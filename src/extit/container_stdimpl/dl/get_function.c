@@ -1,8 +1,7 @@
 /*
- * @(#) container_stdimpl/dl/container_defaults.c
+ * @(#) container_stdimpl/dl/get_function.c
  *
- * [lib]dl specific implementations of container library.
- * Default extit_container_*() function implementations.
+ * Standard container/get_function() implementations.
  *
  * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
@@ -18,7 +17,7 @@
 EXTIT_EXPORT
 extit_func_t
 EXTIT_DECL
-extit_container_get_function_default
+extit_container_get_function_stdimpl
 (
 	const extit_container_t *container,
 	const char *name
@@ -35,17 +34,4 @@ extit_container_get_function_default
 		return fptr;
 	}
 #endif	/* EXTIT_HAVE_DLFUNC */
-}
-
-
-EXTIT_EXPORT
-void *
-EXTIT_DECL
-extit_container_get_symbol_default
-(
-	const extit_container_t *container,
-	const char *name
-)
-{
-	return dlsym(RTLD_DEFAULT, name);
 }

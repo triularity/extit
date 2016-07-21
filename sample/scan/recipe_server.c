@@ -28,25 +28,6 @@ struct _module_list
 };
 
 
-static
-extit_container_ops_1_0_t	my_container_ops =
-{
-	extit_container_get_symbol_default,		/* get_symbol */
-	extit_container_get_function_default,		/* get_function */
-	extit_container_get_interface_default,		/* get_interface */
-	extit_container_query_interface_default,	/* query_interface */
-	extit_container_log_default			/* log */
-};
-
-
-static
-extit_container_t		my_container =
-{
-	EXTIT_ABI_VERSION_1_0,				/* version */
-	&my_container_ops				/* ops */
-};
-
-
 extit_bool_t
 EXTIT_DECL
 recipe_fnfilter(const char *basename, size_t length);
@@ -62,6 +43,7 @@ prepare_recipe(extit_module_t *module);
 int
 main(int argc, char **argv)
 {
+	extit_container_t	my_container;
 	module_link_t *		modules;
 	module_link_t *		link;
 	extit_status_t		status;
@@ -74,6 +56,9 @@ main(int argc, char **argv)
 	}
 
 	modules = NULL;
+
+	my_container.version = EXTIT_ABI_VERSION_1_0;
+	my_container.ops = &extit_container_stdimpl_ops_1_0;
 
 	status = extit_module_scan(
 			&my_container,

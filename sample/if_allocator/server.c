@@ -59,11 +59,11 @@ my_query_interface
 static
 extit_container_ops_1_0_t	my_container_ops =
 {
-	extit_container_get_symbol_default,		/* get_symbol */
-	extit_container_get_function_default,		/* get_function */
+	extit_container_get_symbol_stdimpl,		/* get_symbol */
+	extit_container_get_function_stdimpl,		/* get_function */
 	my_get_interface,				/* get_interface */
 	my_query_interface,				/* query_interface */
-	extit_container_log_default			/* log */
+	extit_container_log_stdimpl			/* log */
 };
 
 static

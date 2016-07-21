@@ -13,27 +13,10 @@
 #include <extit/pmodule.h>
 
 
-static
-extit_container_ops_1_0_t	my_container_ops =
-{
-	extit_container_get_symbol_default,		/* get_symbol */
-	extit_container_get_function_default,		/* get_function */
-	extit_container_get_interface_default,		/* get_interface */
-	extit_container_query_interface_default,	/* query_interface */
-	extit_container_log_default			/* log */
-};
-
-static
-extit_container_t		my_container =
-{
-	EXTIT_ABI_VERSION_1_0,				/* version */
-	&my_container_ops				/* ops */
-};
-
-
 int
 main(int argc, char **argv)
 {
+	extit_container_t	my_container;
 	extit_module_t *	module;
 	extit_plugin_t *	plugin;
 
@@ -43,6 +26,9 @@ main(int argc, char **argv)
 		fprintf(stderr, "Usage: simple_server <plugin-path>\n");
 		return 1;
 	}
+
+	my_container.version = EXTIT_ABI_VERSION_1_0;
+	my_container.ops = &extit_container_stdimpl_ops_1_0;
 
 	module = extit_module_load(
 			&my_container,

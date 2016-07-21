@@ -60,7 +60,10 @@ set(EXTIT_CONTAINER_STDIMPL_HEADER_FILES
 	src/include/extit/container_stdimpl.h)
 
 set(EXTIT_CONTAINER_STDIMPL_SOURCE_FILES
-	src/extit/container_stdimpl/container_defaults.c)
+	src/extit/container_stdimpl/get_interface.c
+	src/extit/container_stdimpl/log.c
+	src/extit/container_stdimpl/ops.c
+	src/extit/container_stdimpl/query_interface.c)
 
 
 # ExtIt plugin module (server side)
@@ -293,7 +296,8 @@ set(IV_UTIL_SOURCE_FILES
 if(EXTIT_LIB_LOADER STREQUAL "dl")
 	set(EXTIT_CONTAINER_STDIMPL_SOURCE_FILES
 		${EXTIT_CONTAINER_STDIMPL_SOURCE_FILES}
-		src/extit/container_stdimpl/dl/container_defaults.c)
+		src/extit/container_stdimpl/dl/get_function.c
+		src/extit/container_stdimpl/dl/get_symbol.c)
 
 	set(EXTIT_PMODULE_SOURCE_FILES
 		${EXTIT_PMODULE_SOURCE_FILES}
@@ -306,7 +310,8 @@ if(EXTIT_LIB_LOADER STREQUAL "dl")
 elseif(EXTIT_LIB_LOADER STREQUAL "win32")
 	set(EXTIT_CONTAINER_STDIMPL_SOURCE_FILES
 		${EXTIT_CONTAINER_STDIMPL_SOURCE_FILES}
-		src/extit/container_stdimpl/win32/container_defaults.c)
+		src/extit/container_stdimpl/win32/get_function.c
+		src/extit/container_stdimpl/win32/get_symbol.c)
 
 	set(EXTIT_PMODULE_SOURCE_FILES
 		${EXTIT_PMODULE_SOURCE_FILES}
@@ -321,7 +326,8 @@ elseif(EXTIT_LIB_LOADER STREQUAL "win32")
 ##+elseif(EXTIT_LIB_LOADER STREQUAL "dylib")
 ##+	set(EXTIT_CONTAINER_STDIMPL_SOURCE_FILES
 ##+		${EXTIT_CONTAINER_STDIMPL_SOURCE_FILES}
-##+		src/extit/container_stdimpl/dylib/container_defaults.c)
+##+		src/extit/container_stdimpl/sylib/get_function.c
+##+		src/extit/container_stdimpl/sylib/get_symbol.c)
 ##+
 ##+	set(EXTIT_PMODULE_SOURCE_FILES
 ##+		${EXTIT_PMODULE_SOURCE_FILES}

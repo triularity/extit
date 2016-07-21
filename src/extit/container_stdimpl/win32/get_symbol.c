@@ -1,7 +1,7 @@
 /*
- * @(#) container_stdimpl/win32/container_defaults.c
+ * @(#) container_stdimpl/win32/get_symbol.c
  *
- * Default extit_container_*() function implementations for win32.
+ * Standard container/get_symbol() implementation.
  *
  * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
@@ -15,22 +15,9 @@
 
 
 EXTIT_EXPORT
-extit_func_t
-EXTIT_DECL
-extit_container_get_function_default
-(
-	const extit_container_t *container,
-	const char *name
-)
-{
-	return GetProcAddress(GetModuleHandle(NULL), name);
-}
-
-
-EXTIT_EXPORT
 void *
 EXTIT_DECL
-extit_container_get_symbol_default
+extit_container_get_symbol_stdimpl
 (
 	const extit_container_t *container,
 	const char *name
