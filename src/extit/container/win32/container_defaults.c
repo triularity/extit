@@ -12,6 +12,7 @@
 
 #include <extit/base.h>
 #include <extit/container.h>
+#include <extit/pmodule.h>
 
 #include "ptr_util.h"
 

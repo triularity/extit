@@ -7,7 +7,7 @@
 #include <iv/base.h>
 #include <iv/util.h>
 #include <extit/base.h>
-#include <extit/plugin.h>
+#include <extit/container.h>
 #include <extit/plugin_spi.h>
 #include <if/allocator.h>
 

@@ -42,12 +42,25 @@ set(EXTIT_HEADER_FILES
 	src/include/extit/platform.h)
 
 
-# ExtIt container (server side)
+# ExtIt container (client side)
 set(EXTIT_CONTAINER_HEADER_FILES 
 	src/include/extit/container.h
 	src/include/extit/container_impl.h)
 
 set(EXTIT_CONTAINER_SOURCE_FILES
+	src/extit/plugin/container_get_function.c
+	src/extit/plugin/container_get_interface.c
+	src/extit/plugin/container_get_symbol.c
+	src/extit/plugin/container_log.c
+	src/extit/plugin/container_query_interface.c)
+
+
+# ExtIt plugin module (server side)
+set(EXTIT_PMODULE_HEADER_FILES 
+	src/include/extit/pmodule.h
+	src/include/extit/plugin_spi.h)
+
+set(EXTIT_PMODULE_SOURCE_FILES
 	src/extit/container/container_defaults.c
 	src/extit/container/module_bind.c
 	src/extit/container/module_create_plugin.c
@@ -71,19 +84,6 @@ set(EXTIT_CONTAINER_SOURCE_FILES
 	src/extit/container/plugin_query_interface.c
 	src/extit/container/plugin_set_flags.c
 	src/extit/container/version.c)
-
-
-# ExtIt plugin (client side)
-set(EXTIT_PLUGIN_HEADER_FILES 
-	src/include/extit/plugin.h
-	src/include/extit/plugin_spi.h)
-
-set(EXTIT_PLUGIN_SOURCE_FILES
-	src/extit/plugin/container_get_function.c
-	src/extit/plugin/container_get_interface.c
-	src/extit/plugin/container_get_symbol.c
-	src/extit/plugin/container_log.c
-	src/extit/plugin/container_query_interface.c)
 
 
 # ExtIt utilities
@@ -284,8 +284,8 @@ set(IV_UTIL_SOURCE_FILES
 # Library Loader
 #
 if(EXTIT_LIB_LOADER STREQUAL "dl")
-	set(EXTIT_CONTAINER_SOURCE_FILES
-		${EXTIT_CONTAINER_SOURCE_FILES}
+	set(EXTIT_PMODULE_SOURCE_FILES
+		${EXTIT_PMODULE_SOURCE_FILES}
 		src/extit/container/dl/container_defaults.c
 		src/extit/container/dl/module_defaults.c
 		src/extit/container/dl/module_get_function.c
@@ -294,8 +294,8 @@ if(EXTIT_LIB_LOADER STREQUAL "dl")
 		src/extit/container/dl/module_release.c
 		src/extit/container/dl/module_scan.c)
 elseif(EXTIT_LIB_LOADER STREQUAL "win32")
-	set(EXTIT_CONTAINER_SOURCE_FILES
-		${EXTIT_CONTAINER_SOURCE_FILES}
+	set(EXTIT_PMODULE_SOURCE_FILES
+		${EXTIT_PMODULE_SOURCE_FILES}
 		src/extit/container/win32/container_defaults.c
 		src/extit/container/win32/module_defaults.c
 		src/extit/container/win32/module_get_function.c
@@ -306,8 +306,8 @@ elseif(EXTIT_LIB_LOADER STREQUAL "win32")
 		src/extit/container/win32/ptr_util.c
 		src/extit/container/win32/ptr_util.h)
 ##+elseif(EXTIT_LIB_LOADER STREQUAL "dylib")
-##+	set(EXTIT_CONTAINER_SOURCE_FILES
-##+		${EXTIT_CONTAINER_SOURCE_FILES}
+##+	set(EXTIT_PMODULE_SOURCE_FILES
+##+		${EXTIT_PMODULE_SOURCE_FILES}
 ##+		src/extit/container/dylib/container_defaults.c
 ##+		src/extit/container/dylib/module_defaults.c
 ##+		src/extit/container/dylib/module_get_function.c
@@ -324,8 +324,8 @@ endif()
 # C++ Support
 #
 if(EXTIT_WITH_CXX)
-##+	set(EXTIT_CONTAINER_SOURCE_FILES
-##+		${EXTIT_CONTAINER_SOURCE_FILES}
+##+	set(EXTIT_PMODULE_SOURCE_FILES
+##+		${EXTIT_PMODULE_SOURCE_FILES}
 ##+		src/extit/container/container_cxx.cc)
 endif()
 
@@ -360,10 +360,10 @@ endif()
 #
 add_library(
 	extit_container
-		${EXTIT_CONTAINER_SOURCE_FILES}
+		${EXTIT_PMODULE_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
+		${EXTIT_PMODULE_HEADER_FILES}
 		${EXTIT_CONTAINER_HEADER_FILES}
-		${EXTIT_PLUGIN_HEADER_FILES}
 		${EXTIT_UTIL_HEADER_FILES}
 		${IV_HEADER_FILES}
 		${IV_UTIL_HEADER_FILES})
@@ -388,7 +388,7 @@ endif()
 #
 add_library(
 	extit_plugin
-		${EXTIT_PLUGIN_SOURCE_FILES}
+		${EXTIT_CONTAINER_SOURCE_FILES}
 		${IV_HEADER_FILES}
 		${EXTIT_HEADER_FILES})
 
@@ -778,7 +778,7 @@ install(
 	FILES
 		${EXTIT_HEADER_FILES}
 		${EXTIT_CONTAINER_HEADER_FILES}
-		${EXTIT_PLUGIN_HEADER_FILES}
+		${EXTIT_PMODULE_HEADER_FILES}
 		${EXTIT_REPOSITORY_HEADER_FILES}
 		${EXTIT_UTIL_HEADER_FILES}
 	DESTINATION ${CMAKE_INSTALL_PREFIX}/include/extit)
@@ -816,8 +816,8 @@ if(EXTIT_COMPILE_SAMPLES)
 			sample/if_allocator/plugin.c
 			${EXTIT_HEADER_FILES}
 			${EXTIT_ALLOCATOR_HEADER_FILES}
+			${EXTIT_PMODULE_HEADER_FILES}
 			${EXTIT_CONTAINER_HEADER_FILES}
-			${EXTIT_PLUGIN_HEADER_FILES}
 			${IV_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
 
@@ -836,7 +836,7 @@ if(EXTIT_COMPILE_SAMPLES)
 			sample/if_allocator/server.c
 			${EXTIT_HEADER_FILES}
 			${EXTIT_ALLOCATOR_HEADER_FILES}
-			${EXTIT_CONTAINER_HEADER_FILES}
+			${EXTIT_PMODULE_HEADER_FILES}
 			${IV_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
 
@@ -982,7 +982,7 @@ if(EXTIT_COMPILE_SAMPLES)
 			sample/multiver/persistence_impl.c
 			sample/multiver/multiver_server.c
 			${EXTIT_HEADER_FILES}
-			${EXTIT_CONTAINER_HEADER_FILES}
+			${EXTIT_PMODULE_HEADER_FILES}
 			${IV_HEADER_FILES}
 			${IV_REPOSITORY_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
@@ -1003,7 +1003,7 @@ if(EXTIT_COMPILE_SAMPLES)
 			sample/multiver/persistence_impl.c
 			sample/multiver/multiver_server.c
 			${EXTIT_HEADER_FILES}
-			${EXTIT_CONTAINER_HEADER_FILES}
+			${EXTIT_PMODULE_HEADER_FILES}
 			${IV_HEADER_FILES}
 			${IV_REPOSITORY_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
@@ -1024,7 +1024,7 @@ if(EXTIT_COMPILE_SAMPLES)
 			sample/multiver/persistence_impl.c
 			sample/multiver/multiver_server.c
 			${EXTIT_HEADER_FILES}
-			${EXTIT_CONTAINER_HEADER_FILES}
+			${EXTIT_PMODULE_HEADER_FILES}
 			${IV_HEADER_FILES}
 			${IV_REPOSITORY_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
@@ -1044,8 +1044,8 @@ if(EXTIT_COMPILE_SAMPLES)
 		sample_multiver_plugin_1_0 SHARED
 			sample/multiver/multiver_plugin.c
 			${EXTIT_HEADER_FILES}
+			${EXTIT_PMODULE_HEADER_FILES}
 			${EXTIT_CONTAINER_HEADER_FILES}
-			${EXTIT_PLUGIN_HEADER_FILES}
 			${IV_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
 
@@ -1064,8 +1064,8 @@ if(EXTIT_COMPILE_SAMPLES)
 		sample_multiver_plugin_1_1 SHARED
 			sample/multiver/multiver_plugin.c
 			${EXTIT_HEADER_FILES}
+			${EXTIT_PMODULE_HEADER_FILES}
 			${EXTIT_CONTAINER_HEADER_FILES}
-			${EXTIT_PLUGIN_HEADER_FILES}
 			${IV_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
 
@@ -1084,8 +1084,8 @@ if(EXTIT_COMPILE_SAMPLES)
 		sample_multiver_plugin_1_2 SHARED
 			sample/multiver/multiver_plugin.c
 			${EXTIT_HEADER_FILES}
+			${EXTIT_PMODULE_HEADER_FILES}
 			${EXTIT_CONTAINER_HEADER_FILES}
-			${EXTIT_PLUGIN_HEADER_FILES}
 			${IV_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
 
@@ -1107,7 +1107,7 @@ if(EXTIT_COMPILE_SAMPLES)
 		sample_scan_server
 			sample/scan/recipe_server.c
 			${EXTIT_HEADER_FILES}
-			${EXTIT_CONTAINER_HEADER_FILES}
+			${EXTIT_PMODULE_HEADER_FILES}
 			${IV_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
 
@@ -1120,8 +1120,8 @@ if(EXTIT_COMPILE_SAMPLES)
 		sample_scan_plugin_pie SHARED
 			sample/scan/recipe_pie.c
 			${EXTIT_HEADER_FILES}
+			${EXTIT_PMODULE_HEADER_FILES}
 			${EXTIT_CONTAINER_HEADER_FILES}
-			${EXTIT_PLUGIN_HEADER_FILES}
 			${IV_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
 
@@ -1139,8 +1139,8 @@ if(EXTIT_COMPILE_SAMPLES)
 		sample_scan_plugin_tea SHARED
 			sample/scan/recipe_tea.c
 			${EXTIT_HEADER_FILES}
+			${EXTIT_PMODULE_HEADER_FILES}
 			${EXTIT_CONTAINER_HEADER_FILES}
-			${EXTIT_PLUGIN_HEADER_FILES}
 			${IV_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
 
@@ -1158,8 +1158,8 @@ if(EXTIT_COMPILE_SAMPLES)
 		sample_scan_plugin_tacos SHARED
 			sample/scan/recipe_tacos.c
 			${EXTIT_HEADER_FILES}
+			${EXTIT_PMODULE_HEADER_FILES}
 			${EXTIT_CONTAINER_HEADER_FILES}
-			${EXTIT_PLUGIN_HEADER_FILES}
 			${IV_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
 
@@ -1180,7 +1180,7 @@ if(EXTIT_COMPILE_SAMPLES)
 		sample_simple_server
 			sample/simple/simple_server.c
 			${EXTIT_HEADER_FILES}
-			${EXTIT_CONTAINER_HEADER_FILES}
+			${EXTIT_PMODULE_HEADER_FILES}
 			${IV_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
 
@@ -1193,8 +1193,8 @@ if(EXTIT_COMPILE_SAMPLES)
 		sample_simple_plugin SHARED
 			sample/simple/simple_plugin.c
 			${EXTIT_HEADER_FILES}
+			${EXTIT_PMODULE_HEADER_FILES}
 			${EXTIT_CONTAINER_HEADER_FILES}
-			${EXTIT_PLUGIN_HEADER_FILES}
 			${IV_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
 

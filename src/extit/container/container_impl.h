@@ -13,6 +13,7 @@
 #include <iv/base.h>
 #include <extit/util.h>
 #include <extit/container.h>
+#include <extit/pmodule.h>
 #include <extit/plugin_spi.h>
 
 #ifdef	_WIN32

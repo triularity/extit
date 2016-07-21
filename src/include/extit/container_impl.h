@@ -20,6 +20,15 @@
 extern "C" {
 #endif
 
+#ifdef	extit_container_EXPORTS
+#define	LIBAPI		EXTIT_EXPORT
+#define	LIBXAPI		EXTIT_EXPORT
+#else
+#define	LIBAPI		EXTIT_IMPORT
+#define	LIBXAPI		EXTIT_IMPORT_STATIC
+#endif
+
+
 /*
  * Container operations (1.0)
  */
@@ -86,51 +95,54 @@ struct _extit_container_1_0
 };
 
 
-EXTIT_CONTAINER_LIBXAPI
+LIBXAPI
 extit_func_t		EXTIT_DECL
 			extit_container_get_function_default(
 				const extit_container_t *container,
 				const char *name);
 
-EXTIT_CONTAINER_LIBXAPI
+LIBXAPI
 void *			EXTIT_DECL
 			extit_container_get_interface_default(
 				const extit_container_t *container,
 				const char *name,
 				iv_version_t version);
 
-EXTIT_CONTAINER_LIBXAPI
+LIBXAPI
 void *			EXTIT_DECL
 			extit_container_get_symbol_default(
 				const extit_container_t *container,
 				const char *name);
 
-EXTIT_CONTAINER_LIBXAPI
+LIBXAPI
 void			EXTIT_DECL
 			extit_container_log_default(
 				const extit_container_t *container,
 				const char *message);
 
-EXTIT_CONTAINER_LIBXAPI
+LIBXAPI
 iv_version_t		EXTIT_DECL
 			extit_container_query_interface_default(
 				const extit_container_t *container,
 				const char *name,
 				iv_version_t base_version);
 
-EXTIT_CONTAINER_LIBXAPI
+LIBXAPI
 extit_bool_t		EXTIT_DECL
 			extit_module_scan_fnfilter_default(
 				const char *libname,
 				size_t length); 
 
 #ifdef  EXTIT_WCHAR
-EXTIT_CONTAINER_LIBXAPI
+LIBXAPI
 extit_bool_t		EXTIT_DECL
 			extit_module_scan_fnfilter_wc_default(
 				const wchar_t *libname,
 				size_t length); 
 #endif  /* EXTIT_WCHAR */
+
+#undef	LIBAPI
+#undef	LIBXAPI
 
 #ifdef	__cplusplus
 }

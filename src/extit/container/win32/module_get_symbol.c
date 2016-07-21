@@ -10,7 +10,7 @@
 #include <windows.h>
 
 #include <extit/base.h>
-#include <extit/container.h>
+#include <extit/pmodule.h>
 
 #include "../container_impl.h"
 #include "ptr_util.h"

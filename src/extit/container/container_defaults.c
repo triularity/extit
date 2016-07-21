@@ -12,7 +12,6 @@
 
 #include <iv/base.h>
 #include <extit/base.h>
-#include <extit/plugin_spi.h>
 #include <extit/container.h>
 #include <extit/container_impl.h>
 

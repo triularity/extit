@@ -11,6 +11,7 @@
 #include <extit/base.h>
 #include <extit/container.h>
 #include <extit/container_impl.h>
+#include <extit/pmodule.h>
 
 #include "persistence.h"
 #include "persistence_impl.h"
