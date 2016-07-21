@@ -20,7 +20,7 @@
 extern "C" {
 #endif
 
-#ifdef	extit_container_EXPORTS
+#ifdef	extit_pmodule_EXPORTS
 #define	LIBAPI		EXTIT_EXPORT
 #define	LIBXAPI		EXTIT_EXPORT
 #else
@@ -126,20 +126,6 @@ iv_version_t		EXTIT_DECL
 				const extit_container_t *container,
 				const char *name,
 				iv_version_t base_version);
-
-LIBXAPI
-extit_bool_t		EXTIT_DECL
-			extit_module_scan_fnfilter_default(
-				const char *libname,
-				size_t length); 
-
-#ifdef  EXTIT_WCHAR
-LIBXAPI
-extit_bool_t		EXTIT_DECL
-			extit_module_scan_fnfilter_wc_default(
-				const wchar_t *libname,
-				size_t length); 
-#endif  /* EXTIT_WCHAR */
 
 #undef	LIBAPI
 #undef	LIBXAPI

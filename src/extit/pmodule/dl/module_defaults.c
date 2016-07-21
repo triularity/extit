@@ -11,8 +11,6 @@
 #include <string.h>
 
 #include <extit/base.h>
-#include <extit/container.h>
-#include <extit/container_impl.h>
 #include <extit/pmodule.h>
 #include <extit/platform.h>
 

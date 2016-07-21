@@ -25,7 +25,7 @@
 extern "C" {
 #endif
 
-#ifdef	extit_plugin_EXPORTS
+#ifdef	extit_container_EXPORTS
 #define	LIBAPI	EXTIT_EXPORT
 #else
 #define	LIBAPI	EXTIT_IMPORT
