@@ -1,5 +1,5 @@
 /*
- * @(#) pmodule/container_defaults.c
+ * @(#) container_stdimpl/container_defaults.c
  *
  * Default extit_container_*() function implementations.
  *
@@ -13,7 +13,7 @@
 #include <iv/base.h>
 #include <extit/base.h>
 #include <extit/container.h>
-#include <extit/container_impl.h>
+#include <extit/container_stdimpl.h>
 
 
 EXTIT_EXPORT

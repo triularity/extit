@@ -1,8 +1,7 @@
 /*
- * @(#) pmodule/win32/container_defaults.c
+ * @(#) container_stdimpl/win32/container_defaults.c
  *
- * Windows specific implementations of container library.
- * Default extit_container_*() function implementations.
+ * Default extit_container_*() function implementations for win32.
  *
  * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
@@ -12,10 +11,7 @@
 
 #include <extit/base.h>
 #include <extit/container.h>
-#include <extit/container_impl.h>
-#include <extit/pmodule.h>
-
-#include "ptr_util.h"
+#include <extit/container_stdimpl.h>
 
 
 EXTIT_EXPORT
@@ -40,5 +36,14 @@ extit_container_get_symbol_default
 	const char *name
 )
 {
-	return FUNCPTR_TO_VOIDPTR(GetProcAddress(GetModuleHandle(NULL), name));
+	FARPROC	ptr;
+
+
+	ptr = GetProcAddress(GetModuleHandle(NULL), name);
+
+#ifdef	__GNUC__
+	return *((void **) &ptr);
+#else
+	return (void *) ptr;
+#endif
 }

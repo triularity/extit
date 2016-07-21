@@ -1,5 +1,5 @@
 /*
- * @(#) pmodule/dl/container_defaults.c
+ * @(#) container_stdimpl/dl/container_defaults.c
  *
  * [lib]dl specific implementations of container library.
  * Default extit_container_*() function implementations.
@@ -12,10 +12,7 @@
 
 #include <extit/base.h>
 #include <extit/container.h>
-#include <extit/container_impl.h>
-#include <extit/pmodule.h>
-
-#include "../container_impl.h"
+#include <extit/container_stdimpl.h>
 
 
 EXTIT_EXPORT

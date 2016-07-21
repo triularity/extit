@@ -55,13 +55,20 @@ set(EXTIT_CONTAINER_SOURCE_FILES
 	src/extit/container/query_interface.c)
 
 
+# ExtIt container standard implementation (server side)
+set(EXTIT_CONTAINER_STDIMPL_HEADER_FILES 
+	src/include/extit/container_stdimpl.h)
+
+set(EXTIT_CONTAINER_STDIMPL_SOURCE_FILES
+	src/extit/container_stdimpl/container_defaults.c)
+
+
 # ExtIt plugin module (server side)
 set(EXTIT_PMODULE_HEADER_FILES 
 	src/include/extit/pmodule.h
 	src/include/extit/plugin_spi.h)
 
 set(EXTIT_PMODULE_SOURCE_FILES
-	src/extit/pmodule/container_defaults.c
 	src/extit/pmodule/module_bind.c
 	src/extit/pmodule/module_create_plugin.c
 	src/extit/pmodule/module_get_abi_version.c
@@ -284,9 +291,12 @@ set(IV_UTIL_SOURCE_FILES
 # Library Loader
 #
 if(EXTIT_LIB_LOADER STREQUAL "dl")
+	set(EXTIT_CONTAINER_STDIMPL_SOURCE_FILES
+		${EXTIT_CONTAINER_STDIMPL_SOURCE_FILES}
+		src/extit/container_stdimpl/dl/container_defaults.c)
+
 	set(EXTIT_PMODULE_SOURCE_FILES
 		${EXTIT_PMODULE_SOURCE_FILES}
-		src/extit/pmodule/dl/container_defaults.c
 		src/extit/pmodule/dl/module_defaults.c
 		src/extit/pmodule/dl/module_get_function.c
 		src/extit/pmodule/dl/module_get_symbol.c
@@ -294,9 +304,12 @@ if(EXTIT_LIB_LOADER STREQUAL "dl")
 		src/extit/pmodule/dl/module_release.c
 		src/extit/pmodule/dl/module_scan.c)
 elseif(EXTIT_LIB_LOADER STREQUAL "win32")
+	set(EXTIT_CONTAINER_STDIMPL_SOURCE_FILES
+		${EXTIT_CONTAINER_STDIMPL_SOURCE_FILES}
+		src/extit/container_stdimpl/win32/container_defaults.c)
+
 	set(EXTIT_PMODULE_SOURCE_FILES
 		${EXTIT_PMODULE_SOURCE_FILES}
-		src/extit/pmodule/win32/container_defaults.c
 		src/extit/pmodule/win32/module_defaults.c
 		src/extit/pmodule/win32/module_get_function.c
 		src/extit/pmodule/win32/module_get_symbol.c
@@ -306,9 +319,12 @@ elseif(EXTIT_LIB_LOADER STREQUAL "win32")
 		src/extit/pmodule/win32/ptr_util.c
 		src/extit/pmodule/win32/ptr_util.h)
 ##+elseif(EXTIT_LIB_LOADER STREQUAL "dylib")
+##+	set(EXTIT_CONTAINER_STDIMPL_SOURCE_FILES
+##+		${EXTIT_CONTAINER_STDIMPL_SOURCE_FILES}
+##+		src/extit/container_stdimpl/dylib/container_defaults.c)
+##+
 ##+	set(EXTIT_PMODULE_SOURCE_FILES
 ##+		${EXTIT_PMODULE_SOURCE_FILES}
-##+		src/extit/pmodule/dylib/container_defaults.c
 ##+		src/extit/pmodule/dylib/module_defaults.c
 ##+		src/extit/pmodule/dylib/module_get_function.c
 ##+		src/extit/pmodule/dylib/module_get_symbol.c
@@ -394,6 +410,21 @@ add_library(
 
 set_target_properties(
 	extit_container PROPERTIES
+		POSITION_INDEPENDENT_CODE ON)
+
+
+#
+# [lib]extit_container_stdimpl
+#
+add_library(
+	extit_container_stdimpl
+		${EXTIT_CONTAINER_STDIMPL_SOURCE_FILES}
+		${EXTIT_CONTAINER_STDIMPL_HEADER_FILES}
+		${IV_HEADER_FILES}
+		${EXTIT_HEADER_FILES})
+
+set_target_properties(
+	extit_container_stdimpl PROPERTIES
 		POSITION_INDEPENDENT_CODE ON)
 
 
@@ -769,6 +800,9 @@ install(
 		if_messaging_stdimpl
 		if_refcount
 		if_resolvable
+		extit_container
+		extit_container_stdimpl
+		extit_pmodule
 		extit_util
 		iv_repository
 		iv_util
@@ -778,8 +812,8 @@ install(
 	FILES
 		${EXTIT_HEADER_FILES}
 		${EXTIT_CONTAINER_HEADER_FILES}
+		${EXTIT_CONTAINER_STDIMPL_HEADER_FILES}
 		${EXTIT_PMODULE_HEADER_FILES}
-		${EXTIT_REPOSITORY_HEADER_FILES}
 		${EXTIT_UTIL_HEADER_FILES}
 	DESTINATION ${CMAKE_INSTALL_PREFIX}/include/extit)
 
@@ -843,6 +877,7 @@ if(EXTIT_COMPILE_SAMPLES)
 	target_link_libraries(
 		sample_if_allocator_server
 			if_allocator_stdimpl
+			extit_container_stdimpl
 			extit_pmodule)
 
 
@@ -994,6 +1029,7 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	target_link_libraries(
 		sample_multiver_server_1_0
+			extit_container_stdimpl
 			extit_pmodule
 			iv_repository)
 
@@ -1015,6 +1051,7 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	target_link_libraries(
 		sample_multiver_server_1_1
+			extit_container_stdimpl
 			extit_pmodule
 			iv_repository)
 
@@ -1036,6 +1073,7 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	target_link_libraries(
 		sample_multiver_server_1_2
+			extit_container_stdimpl
 			extit_pmodule
 			iv_repository)
 
@@ -1113,6 +1151,7 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	target_link_libraries(
 		sample_scan_server
+			extit_container_stdimpl
 			extit_pmodule)
 
 
@@ -1186,6 +1225,7 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	target_link_libraries(
 		sample_simple_server
+			extit_container_stdimpl
 			extit_pmodule)
 
 
