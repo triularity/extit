@@ -12,12 +12,6 @@
 
 #include <stddef.h>
 
-#ifdef	_WIN32
-#include <windows.h>
-#else
-#include <dlfcn.h>
-#endif
-
 #include <iv/base.h>
 #include <extit/base.h>
 
@@ -26,18 +20,9 @@ extern "C" {
 #endif
 
 #ifdef	extit_container_EXPORTS
-#define	LIBAPI	EXTIT_EXPORT
+#define	LIBAPI		EXTIT_EXPORT
 #else
-#define	LIBAPI	EXTIT_IMPORT
-#endif
-
-
-#ifdef	_WIN32
-typedef FARPROC		extit_func_t;
-#elif	EXTIT_HAVE_DLFUNC_T
-typedef dlfunc_t	extit_func_t;
-#else
-typedef void *		extit_func_t;
+#define	LIBAPI		EXTIT_IMPORT
 #endif
 
 

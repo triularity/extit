@@ -10,6 +10,12 @@
 #ifndef	__extit__base_h
 #define	__extit__base_h
 
+#ifdef	_WIN32
+#include <windows.h>
+#else
+#include <dlfcn.h>
+#endif
+
 #include <iv/base.h>
 
 /*
@@ -39,6 +45,24 @@ typedef	enum _extit_bool
 	EXTIT_FALSE = 0,
 	EXTIT_TRUE = !0
 } extit_bool_t;
+
+
+/*
+ * ExtIt function pointer
+ */
+#ifndef	EXTIT_HAVE_DLFUNC_T
+#if	defined(__FreeBSD__)
+#define	EXTIT_HAVE_DLFUNC_T
+#endif
+#endif
+
+#ifdef	_WIN32
+typedef FARPROC		extit_func_t;
+#elif	defined(EXTIT_HAVE_DLFUNC_T)
+typedef dlfunc_t	extit_func_t;
+#else
+typedef void *		extit_func_t;
+#endif
 
 
 /*

@@ -17,7 +17,7 @@ else()
 	set(DEFAULT_LIB_LOADER "dl")
 endif()
 
-if(${CMAKE_SYSTEM_NAME} MATCHES "BSD$")
+if(${CMAKE_SYSTEM_NAME} STREQUAL "FreeBSD")
 	set(DEFAULT_HAVE_DLFUNC TRUE)
 endif()
 
@@ -699,10 +699,6 @@ set_target_properties(
 if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
 	add_definitions("-D_GNU_SOURCE")
 	target_link_libraries(extit_pmodule dl)
-endif()
-
-if(${CMAKE_SYSTEM_NAME} MATCHES "BSD")
-	add_definitions("-DEXTIT_HAVE_DLFUNC_T")
 endif()
 
 if(${CMAKE_CXX_COMPILER_ID} MATCHES "GNU" OR ${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
