@@ -61,29 +61,29 @@ set(EXTIT_PMODULE_HEADER_FILES
 	src/include/extit/plugin_spi.h)
 
 set(EXTIT_PMODULE_SOURCE_FILES
-	src/extit/container/container_defaults.c
-	src/extit/container/module_bind.c
-	src/extit/container/module_create_plugin.c
-	src/extit/container/module_get_abi_version.c
-	src/extit/container/module_get_effective_abi_version.c
-	src/extit/container/module_get_flags.c
-	src/extit/container/module_get_id.c
-	src/extit/container/module_get_id_version.c
-	src/extit/container/module_get_name.c
-	src/extit/container/module_get_version.c
-	src/extit/container/module_set_flags.c
-	src/extit/container/module_unload.c
-	src/extit/container/plugin_activate.c
-	src/extit/container/plugin_deactivate.c
-	src/extit/container/plugin_destroy.c
-	src/extit/container/plugin_get_context.c
-	src/extit/container/plugin_get_flags.c
-	src/extit/container/plugin_get_interface.c
-	src/extit/container/plugin_get_module.c
-	src/extit/container/plugin_ping.c
-	src/extit/container/plugin_query_interface.c
-	src/extit/container/plugin_set_flags.c
-	src/extit/container/version.c)
+	src/extit/pmodule/container_defaults.c
+	src/extit/pmodule/module_bind.c
+	src/extit/pmodule/module_create_plugin.c
+	src/extit/pmodule/module_get_abi_version.c
+	src/extit/pmodule/module_get_effective_abi_version.c
+	src/extit/pmodule/module_get_flags.c
+	src/extit/pmodule/module_get_id.c
+	src/extit/pmodule/module_get_id_version.c
+	src/extit/pmodule/module_get_name.c
+	src/extit/pmodule/module_get_version.c
+	src/extit/pmodule/module_set_flags.c
+	src/extit/pmodule/module_unload.c
+	src/extit/pmodule/plugin_activate.c
+	src/extit/pmodule/plugin_deactivate.c
+	src/extit/pmodule/plugin_destroy.c
+	src/extit/pmodule/plugin_get_context.c
+	src/extit/pmodule/plugin_get_flags.c
+	src/extit/pmodule/plugin_get_interface.c
+	src/extit/pmodule/plugin_get_module.c
+	src/extit/pmodule/plugin_ping.c
+	src/extit/pmodule/plugin_query_interface.c
+	src/extit/pmodule/plugin_set_flags.c
+	src/extit/pmodule/version.c)
 
 
 # ExtIt utilities
@@ -286,35 +286,35 @@ set(IV_UTIL_SOURCE_FILES
 if(EXTIT_LIB_LOADER STREQUAL "dl")
 	set(EXTIT_PMODULE_SOURCE_FILES
 		${EXTIT_PMODULE_SOURCE_FILES}
-		src/extit/container/dl/container_defaults.c
-		src/extit/container/dl/module_defaults.c
-		src/extit/container/dl/module_get_function.c
-		src/extit/container/dl/module_get_symbol.c
-		src/extit/container/dl/module_load.c
-		src/extit/container/dl/module_release.c
-		src/extit/container/dl/module_scan.c)
+		src/extit/pmodule/dl/container_defaults.c
+		src/extit/pmodule/dl/module_defaults.c
+		src/extit/pmodule/dl/module_get_function.c
+		src/extit/pmodule/dl/module_get_symbol.c
+		src/extit/pmodule/dl/module_load.c
+		src/extit/pmodule/dl/module_release.c
+		src/extit/pmodule/dl/module_scan.c)
 elseif(EXTIT_LIB_LOADER STREQUAL "win32")
 	set(EXTIT_PMODULE_SOURCE_FILES
 		${EXTIT_PMODULE_SOURCE_FILES}
-		src/extit/container/win32/container_defaults.c
-		src/extit/container/win32/module_defaults.c
-		src/extit/container/win32/module_get_function.c
-		src/extit/container/win32/module_get_symbol.c
-		src/extit/container/win32/module_load.c
-		src/extit/container/win32/module_release.c
-		src/extit/container/win32/module_scan.c
-		src/extit/container/win32/ptr_util.c
-		src/extit/container/win32/ptr_util.h)
+		src/extit/pmodule/win32/container_defaults.c
+		src/extit/pmodule/win32/module_defaults.c
+		src/extit/pmodule/win32/module_get_function.c
+		src/extit/pmodule/win32/module_get_symbol.c
+		src/extit/pmodule/win32/module_load.c
+		src/extit/pmodule/win32/module_release.c
+		src/extit/pmodule/win32/module_scan.c
+		src/extit/pmodule/win32/ptr_util.c
+		src/extit/pmodule/win32/ptr_util.h)
 ##+elseif(EXTIT_LIB_LOADER STREQUAL "dylib")
 ##+	set(EXTIT_PMODULE_SOURCE_FILES
 ##+		${EXTIT_PMODULE_SOURCE_FILES}
-##+		src/extit/container/dylib/container_defaults.c
-##+		src/extit/container/dylib/module_defaults.c
-##+		src/extit/container/dylib/module_get_function.c
-##+		src/extit/container/dylib/module_get_symbol.c
-##+		src/extit/container/dylib/module_load.c
-##+		src/extit/container/dylib/module_release.c
-##+		src/extit/container/dylib/module_scan.c)
+##+		src/extit/pmodule/dylib/container_defaults.c
+##+		src/extit/pmodule/dylib/module_defaults.c
+##+		src/extit/pmodule/dylib/module_get_function.c
+##+		src/extit/pmodule/dylib/module_get_symbol.c
+##+		src/extit/pmodule/dylib/module_load.c
+##+		src/extit/pmodule/dylib/module_release.c
+##+		src/extit/pmodule/dylib/module_scan.c)
 else()
 	message(FATAL_ERROR "Unsupported library loader: ${EXTIT_LIB_LOADER}")
 endif()
@@ -326,7 +326,7 @@ endif()
 if(EXTIT_WITH_CXX)
 ##+	set(EXTIT_PMODULE_SOURCE_FILES
 ##+		${EXTIT_PMODULE_SOURCE_FILES}
-##+		src/extit/container/container_cxx.cc)
+##+		src/extit/pmodule/container_cxx.cc)
 endif()
 
 
@@ -356,10 +356,10 @@ endif()
 
 
 #
-# [lib]extit_container
+# [lib]extit_pmodule
 #
 add_library(
-	extit_container
+	extit_pmodule
 		${EXTIT_PMODULE_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
 		${EXTIT_PMODULE_HEADER_FILES}
@@ -369,16 +369,16 @@ add_library(
 		${IV_UTIL_HEADER_FILES})
 
 set_target_properties(
-	extit_container PROPERTIES
+	extit_pmodule PROPERTIES
 		POSITION_INDEPENDENT_CODE ON)
 
 target_link_libraries(
-	extit_container
+	extit_pmodule
 		extit_util)
 
 if(EXTIT_PARANOID)
 	target_link_libraries(
-		extit_container
+		extit_pmodule
 			iv_util)
 endif()
 
@@ -662,7 +662,7 @@ set_target_properties(
 #
 if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
 	add_definitions("-D_GNU_SOURCE")
-	target_link_libraries(extit_container dl)
+	target_link_libraries(extit_pmodule dl)
 endif()
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "BSD")
@@ -708,8 +708,8 @@ endif(NOT DEFINED LIBNAME_POSTFIX)
 
 if(DEFINED LIBNAME_POSTFIX)
 	set_target_properties(
-		extit_container PROPERTIES
-			OUTPUT_NAME "extit_container${LIBNAME_POSTFIX}")
+		extit_pmodule PROPERTIES
+			OUTPUT_NAME "extit_pmodule${LIBNAME_POSTFIX}")
 
 	set_target_properties(
 		if_allocator PROPERTIES
@@ -758,7 +758,7 @@ endif(DEFINED LIBNAME_POSTFIX)
 #
 install(
 	TARGETS
-		extit_container
+		extit_pmodule
 		if_allocator
 		if_allocator_stdimpl
 		if_configurable
@@ -843,7 +843,7 @@ if(EXTIT_COMPILE_SAMPLES)
 	target_link_libraries(
 		sample_if_allocator_server
 			if_allocator_stdimpl
-			extit_container)
+			extit_pmodule)
 
 
 	#
@@ -994,7 +994,7 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	target_link_libraries(
 		sample_multiver_server_1_0
-			extit_container
+			extit_pmodule
 			iv_repository)
 
 
@@ -1015,7 +1015,7 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	target_link_libraries(
 		sample_multiver_server_1_1
-			extit_container
+			extit_pmodule
 			iv_repository)
 
 
@@ -1036,7 +1036,7 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	target_link_libraries(
 		sample_multiver_server_1_2
-			extit_container
+			extit_pmodule
 			iv_repository)
 
 
@@ -1113,7 +1113,7 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	target_link_libraries(
 		sample_scan_server
-			extit_container)
+			extit_pmodule)
 
 
 	add_library(
@@ -1186,7 +1186,7 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	target_link_libraries(
 		sample_simple_server
-			extit_container)
+			extit_pmodule)
 
 
 	add_library(
