@@ -1,7 +1,7 @@
 /*
- * @(#) plugin/container_get_symbol.c
+ * @(#) container/container_get_function.c
  *
- * Container API wrappers for plugin use.
+ * Container API wrappers.
  *
  * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
@@ -14,9 +14,9 @@
 
 
 EXTIT_EXPORT
-void *
+extit_func_t
 EXTIT_DECL
-extit_container_get_symbol
+extit_container_get_function
 (
 	const extit_container_t *container,
 	const char *name
@@ -27,5 +27,5 @@ extit_container_get_symbol
 		return NULL;
 #endif
 
-	return container->ops->get_symbol(container, name);
+	return container->ops->get_function(container, name);
 }

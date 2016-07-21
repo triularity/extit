@@ -1,7 +1,7 @@
 /*
- * @(#) plugin/container_log.c
+ * @(#) container/container_query_interface.c
  *
- * Container API wrappers for plugin use.
+ * Container API wrappers.
  *
  * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
@@ -14,18 +14,19 @@
 
 
 EXTIT_EXPORT
-void
+iv_version_t
 EXTIT_DECL
-extit_container_log
+extit_container_query_interface
 (
 	const extit_container_t *container,
-	const char *message
+	const char *name,
+	iv_version_t base_version
 )
 {
 #ifdef	EXTIT_PARANOID
 	if(IV_VERSION_MAJOR(container->version) != 1)
-		return;
+		return IV_VERSION_NONE;
 #endif
 
-	container->ops->log(container, message);
+	return container->ops->query_interface(container, name, base_version);
 }

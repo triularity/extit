@@ -48,11 +48,11 @@ set(EXTIT_CONTAINER_HEADER_FILES
 	src/include/extit/container_impl.h)
 
 set(EXTIT_CONTAINER_SOURCE_FILES
-	src/extit/plugin/container_get_function.c
-	src/extit/plugin/container_get_interface.c
-	src/extit/plugin/container_get_symbol.c
-	src/extit/plugin/container_log.c
-	src/extit/plugin/container_query_interface.c)
+	src/extit/container/container_get_function.c
+	src/extit/container/container_get_interface.c
+	src/extit/container/container_get_symbol.c
+	src/extit/container/container_log.c
+	src/extit/container/container_query_interface.c)
 
 
 # ExtIt plugin module (server side)
@@ -384,16 +384,16 @@ endif()
 
 
 #
-# [lib]extit_plugin
+# [lib]extit_container
 #
 add_library(
-	extit_plugin
+	extit_container
 		${EXTIT_CONTAINER_SOURCE_FILES}
 		${IV_HEADER_FILES}
 		${EXTIT_HEADER_FILES})
 
 set_target_properties(
-	extit_plugin PROPERTIES
+	extit_container PROPERTIES
 		POSITION_INDEPENDENT_CODE ON)
 
 
@@ -824,7 +824,7 @@ if(EXTIT_COMPILE_SAMPLES)
 	target_link_libraries(
 		sample_if_allocator_plugin
 			if_allocator
-			extit_plugin
+			extit_container
 			iv_util)
 
 
@@ -1051,7 +1051,7 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	target_link_libraries(
 		sample_multiver_plugin_1_0
-			extit_plugin
+			extit_container
 			iv_util)
 
 	set_target_properties(
@@ -1071,7 +1071,7 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	target_link_libraries(
 		sample_multiver_plugin_1_1
-			extit_plugin
+			extit_container
 			iv_util)
 
 	set_target_properties(
@@ -1091,7 +1091,7 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	target_link_libraries(
 		sample_multiver_plugin_1_2
-			extit_plugin
+			extit_container
 			iv_util)
 
 	set_target_properties(
@@ -1200,7 +1200,7 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	target_link_libraries(
 		sample_simple_plugin
-			extit_plugin
+			extit_container
 			iv_util)
 endif(EXTIT_COMPILE_SAMPLES)
 

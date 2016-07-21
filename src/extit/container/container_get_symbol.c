@@ -1,7 +1,7 @@
 /*
- * @(#) plugin/container_query_interface.c
+ * @(#) container/container_get_symbol.c
  *
- * Container API wrappers for plugin use.
+ * Container API wrappers.
  *
  * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
@@ -14,19 +14,18 @@
 
 
 EXTIT_EXPORT
-iv_version_t
+void *
 EXTIT_DECL
-extit_container_query_interface
+extit_container_get_symbol
 (
 	const extit_container_t *container,
-	const char *name,
-	iv_version_t base_version
+	const char *name
 )
 {
 #ifdef	EXTIT_PARANOID
 	if(IV_VERSION_MAJOR(container->version) != 1)
-		return IV_VERSION_NONE;
+		return NULL;
 #endif
 
-	return container->ops->query_interface(container, name, base_version);
+	return container->ops->get_symbol(container, name);
 }

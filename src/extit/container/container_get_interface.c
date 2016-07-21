@@ -1,7 +1,7 @@
 /*
- * @(#) plugin/container_get_interface.c
+ * @(#) container/container_get_interface.c
  *
- * Container API wrappers for plugin use.
+ * Container API wrappers.
  *
  * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
