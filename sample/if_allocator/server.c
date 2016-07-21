@@ -9,6 +9,7 @@
 
 #include <iv/base.h>
 #include <extit/container.h>
+#include <extit/container_impl.h>
 #include <if/allocator.h>
 #include <if/allocator_stdimpl.h>
 

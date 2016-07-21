@@ -44,7 +44,8 @@ set(EXTIT_HEADER_FILES
 
 # ExtIt container (server side)
 set(EXTIT_CONTAINER_HEADER_FILES 
-	src/include/extit/container.h)
+	src/include/extit/container.h
+	src/include/extit/container_impl.h)
 
 set(EXTIT_CONTAINER_SOURCE_FILES
 	src/extit/container/container_defaults.c

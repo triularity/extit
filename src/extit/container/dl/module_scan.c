@@ -17,6 +17,7 @@
 
 #include <extit/base.h>
 #include <extit/container.h>
+#include <extit/container_impl.h>
 
 #include "../container_impl.h"
 
