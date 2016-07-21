@@ -121,7 +121,8 @@ extit_module_scan(
 		}
 
 #ifdef	_DIRENT_HAVE_D_TYPE
-		if((entry->d_type != DT_REG) && (entry->d_type != DT_LNK))
+		if((entry->d_type != DT_REG) && (entry->d_type != DT_LNK)
+		 && (entry->d_type != DT_UNKNOWN))
 		{
 #ifdef	EXTIT_DEBUG
 			if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_TRACE)
