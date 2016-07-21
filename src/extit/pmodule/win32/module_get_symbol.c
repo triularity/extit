@@ -13,7 +13,6 @@
 #include <extit/pmodule.h>
 
 #include "../container_impl.h"
-#include "ptr_util.h"
 
 
 EXTIT_EXPORT
@@ -25,5 +24,14 @@ extit_module_get_symbol
 	const char *name
 )
 {
-	return FUNCPTR_TO_VOIDPTR(GetProcAddress(module->handle, name));
+	FARPROC	ptr;
+
+
+	ptr = GetProcAddress(module->handle, name);
+
+#ifdef  __GNUC__
+	return *((void **) &ptr);
+#else
+	return (void *) ptr;
+#endif
 }

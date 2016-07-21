@@ -22,7 +22,12 @@
 #include <extit/pmodule.h>
 
 #include "../container_impl.h"
-#include "ptr_util.h"
+
+#ifdef  __GNUC__
+#define	FUNCPTR_TO_VOIDPTR(x)	(*((void **) &x))
+#else
+#define	FUNCPTR_TO_VOIDPTR(x)	((void *) x)
+#endif
 
 
 EXTIT_EXPORT

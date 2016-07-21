@@ -320,9 +320,7 @@ elseif(EXTIT_LIB_LOADER STREQUAL "win32")
 		src/extit/pmodule/win32/module_get_symbol.c
 		src/extit/pmodule/win32/module_load.c
 		src/extit/pmodule/win32/module_release.c
-		src/extit/pmodule/win32/module_scan.c
-		src/extit/pmodule/win32/ptr_util.c
-		src/extit/pmodule/win32/ptr_util.h)
+		src/extit/pmodule/win32/module_scan.c)
 ##+elseif(EXTIT_LIB_LOADER STREQUAL "dylib")
 ##+	set(EXTIT_CONTAINER_STDIMPL_SOURCE_FILES
 ##+		${EXTIT_CONTAINER_STDIMPL_SOURCE_FILES}
