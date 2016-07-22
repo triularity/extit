@@ -17,5 +17,5 @@ iv_version_t
 EXTIT_DECL
 extit_get_version(void)
 {
-	return EXTIT_ABI_VERSION;
+	return EXTIT_ABI_TARGET;
 }

@@ -35,7 +35,7 @@ typedef struct _extit_container_1_0	extit_container_1_0_t;
 /*
  * ABI Version
  */
-#if	EXTIT_ABI_TARGET == EXTIT_ABI_VERSION_1_0
+#if	EXTIT_ABI_TARGET == EXTIT_ABI_1_0
 #define	extit_container_t		extit_container_1_0_t
 #else
 #error	Unsupported EXTIT_ABI_TARGET version

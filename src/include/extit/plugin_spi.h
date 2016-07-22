@@ -129,7 +129,7 @@ typedef extit_status_t	(EXTIT_DECL *extit_spi_handler_t)
 typedef struct _extit_spi_descriptor_base
 {
 	uint32_t		magic;		/* EXTIT_SPI_MAGIC */
-	iv_version_t		extit_version;	/* EXTIT_ABI_VERSION */
+	iv_version_t		extit_version;	/* EXTIT_ABI_x_x */
 } extit_spi_descriptor_base_t;
 
 /*
@@ -139,7 +139,7 @@ typedef struct _extit_spi_descriptor_1_0
 {
 	/* base */
 	uint32_t		magic;		/* EXTIT_SPI_MAGIC */
-	iv_version_t		extit_version;	/* EXTIT_ABI_VERSION */
+	iv_version_t		extit_version;	/* EXTIT_ABI_1_x */
 
 	/* 1.0 */
 	const char *		id;		/* Unique ID */
@@ -153,7 +153,7 @@ typedef struct _extit_spi_descriptor_1_0
 /*
  * Aliases for API target
  */
-#if	EXTIT_ABI_TARGET == EXTIT_ABI_VERSION_1_0
+#if	EXTIT_ABI_TARGET == EXTIT_ABI_1_0
 #define	extit_spi_param_create_t \
 				extit_spi_param_create_1_0_t
 
@@ -194,7 +194,7 @@ extern extit_spi_descriptor_t	_extit_SPI_DESCRIPTOR;
 		extit_spi_descriptor_t EXTIT_SPI_DESCRIPTOR_NAME = \
 		{ \
 			EXTIT_SPI_MAGIC, \
-			EXTIT_ABI_VERSION, \
+			EXTIT_ABI_TARGET, \
 			uuid, \
 			uuid_version, \
 			name, \

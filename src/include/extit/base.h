@@ -19,22 +19,18 @@
 #include <iv/base.h>
 
 /*
- * ExtIt Library Version (v0.4.1)
+ * ExtIt Library Version (v0.5.0)
  */
 #define	EXTIT_LIB_VERSION_MAJOR		0
-#define	EXTIT_LIB_VERSION_MINOR		4
-#define	EXTIT_LIB_VERSION_PATCH		1
+#define	EXTIT_LIB_VERSION_MINOR		5
+#define	EXTIT_LIB_VERSION_PATCH		0
 #define	EXTIT_LIB_VERSION		((EXTIT_LIB_VERSION_MAJOR << 16)|(EXTIT_LIB_VERSION_MINOR<<8)|EXTIT_LIB_VERSION_PATCH)
 
 
 /*
  * ExtIt ABI Version (v1.0)
  */
-#define	EXTIT_ABI_VERSION_MAJOR	1
-#define	EXTIT_ABI_VERSION_MINOR	0
-#define	EXTIT_ABI_VERSION		IV_VERSION(EXTIT_ABI_VERSION_MAJOR, EXTIT_ABI_VERSION_MINOR)
-
-#define	EXTIT_ABI_VERSION_1_0		IV_VERSION(1,0)
+#define	EXTIT_ABI_1_0		IV_VERSION(1,0)
 
 
 /*
@@ -66,10 +62,10 @@ typedef void *		extit_func_t;
 
 
 /*
- * Default Target Version
+ * ABI Version
  */
 #ifndef	EXTIT_ABI_TARGET
-#define	EXTIT_ABI_TARGET		EXTIT_ABI_VERSION
+#define	EXTIT_ABI_TARGET		EXTIT_ABI_1_0
 #endif
 
 

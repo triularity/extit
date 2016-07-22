@@ -68,7 +68,7 @@ plugin_handler
 			/*
 			 * We only need to support v1.0 for what we do
 			 */
-			if(!iv_matches(abi_version, EXTIT_ABI_VERSION_1_0))
+			if(!iv_matches(abi_version, EXTIT_ABI_1_0))
 				return EXTIT_STATUS_UNSUPPORTED;
 
 			/*

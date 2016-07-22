@@ -69,7 +69,7 @@ typedef struct _extit_container_ops_1_0
  */
 typedef struct _extit_container_base
 {
-	iv_version_t			version;	/* EXTIT_ABI_VERSION */
+	iv_version_t			version;	/* EXTIT_ABI_x_x */
 } extit_container_base_t;
 
 
@@ -79,7 +79,7 @@ typedef struct _extit_container_base
 struct _extit_container_1_0
 {
 	/* base */
-	iv_version_t			version;	/* EXTIT_ABI_VERSION */
+	iv_version_t			version;	/* EXTIT_ABI_1_0 */
 
 	/* 1.0 */
 	extit_container_ops_1_0_t *	ops;

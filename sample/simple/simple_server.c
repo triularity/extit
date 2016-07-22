@@ -27,7 +27,7 @@ main(int argc, char **argv)
 		return 1;
 	}
 
-	my_container.version = EXTIT_ABI_VERSION_1_0;
+	my_container.version = EXTIT_ABI_1_0;
 	my_container.ops = &extit_container_stdimpl_ops_1_0;
 
 	module = extit_module_load(

@@ -34,7 +34,7 @@ LIBAPI
 extern extit_container_ops_1_0_t	extit_container_stdimpl_ops_1_0;
 
 
-#if	EXTIT_ABI_TARGET == EXTIT_ABI_VERSION_1_0
+#if	EXTIT_ABI_TARGET == EXTIT_ABI_1_0
 #define	extit_container_stdimpl_ops	extit_container_stdimpl_ops_1_0
 #else
 #error	Unsupported EXTIT_ABI_TARGET version

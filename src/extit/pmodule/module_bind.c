@@ -81,7 +81,7 @@ extit_module_bind
 	abi_version =
 		MIN(container->version,
 			MIN(descriptor_base->extit_version,
-				EXTIT_ABI_VERSION));
+				EXTIT_ABI_TARGET));
 
 #ifdef	EXTIT_DEBUG
 	if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_TRACE)

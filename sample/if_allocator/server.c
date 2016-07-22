@@ -69,7 +69,7 @@ extit_container_ops_1_0_t	my_container_ops =
 static
 extit_container_t		my_container =
 {
-	EXTIT_ABI_VERSION_1_0,				/* version */
+	EXTIT_ABI_1_0,					/* version */
 	&my_container_ops				/* ops */
 };
 
