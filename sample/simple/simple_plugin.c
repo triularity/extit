@@ -42,20 +42,8 @@ plugin_handler
 			extit_container_log(container, "Creating plugin\n");
 			return EXTIT_STATUS_OK;
 
-		case EXTIT_SPI_CMD_ACTIVATE:
-			extit_container_log(container, "Activating plugin\n");
-			return EXTIT_STATUS_OK;
-
-		case EXTIT_SPI_CMD_DEACTIVATE:
-			extit_container_log(container, "Deactivating plugin\n");
-			return EXTIT_STATUS_OK;
-
 		case EXTIT_SPI_CMD_DESTROY:
 			extit_container_log(container, "Destroying plugin\n");
-			return EXTIT_STATUS_OK;
-
-		case EXTIT_SPI_CMD_PING:
-			extit_container_log(container, "Pong\n");
 			return EXTIT_STATUS_OK;
 
 		default:

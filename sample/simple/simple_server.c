@@ -71,22 +71,9 @@ main(int argc, char **argv)
 
 		if(plugin != NULL)
 		{
-			if(extit_plugin_activate(plugin) == EXTIT_STATUS_OK)
-			{
-				/* Do something with the plugin */
+			/* Do something with the plugin... */
 
-				extit_plugin_ping(plugin);
-
-
-				/* I guess we are done */
-
-				extit_plugin_deactivate(plugin);
-			}
-			else
-			{
-				fprintf(stderr, "Unable to activate plugin\n");
-			}
-
+			/* I guess we are done */
 			extit_plugin_destroy(plugin);
 		}
 		else

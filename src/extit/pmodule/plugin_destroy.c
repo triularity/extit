@@ -57,29 +57,6 @@ extit_plugin_destroy
 	}
 #endif	/* EXTIT_PARANOID */
 
-	if(plugin->state & EXTIT_INSTANCE_STATE_ACTIVE)
-	{
-		status = extit_plugin_deactivate(plugin);
-
-		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
-		{
-			fprintf(stderr,
-				"[extit:plugin] Implicitly deactivaing instance for plugin %s:%u on destroy.",
-				descriptor->id,
-				descriptor->id_version);
-		}
-
-		if(status != EXTIT_STATUS_OK)
-		{
-			fprintf(stderr,
-				"[extit:plugin] Unable to deactive instance for plugin %s:%u on destroy.",
-				descriptor->id,
-				descriptor->id_version);
-
-			return status;
-		}
-	}
-
 	params.spi_ctx = plugin->spi_ctx;
 
 	status = descriptor->handler(

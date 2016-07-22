@@ -83,14 +83,11 @@ set(EXTIT_PMODULE_SOURCE_FILES
 	src/extit/pmodule/module_get_version.c
 	src/extit/pmodule/module_set_flags.c
 	src/extit/pmodule/module_unload.c
-	src/extit/pmodule/plugin_activate.c
-	src/extit/pmodule/plugin_deactivate.c
 	src/extit/pmodule/plugin_destroy.c
 	src/extit/pmodule/plugin_get_context.c
 	src/extit/pmodule/plugin_get_flags.c
 	src/extit/pmodule/plugin_get_interface.c
 	src/extit/pmodule/plugin_get_module.c
-	src/extit/pmodule/plugin_ping.c
 	src/extit/pmodule/plugin_query_interface.c
 	src/extit/pmodule/plugin_set_flags.c
 	src/extit/pmodule/pmodule_internal.h

@@ -96,7 +96,6 @@ extit_module_create_plugin
 
 	plugin->spi_ctx = params.spi_ctx;
 	plugin->module = module;
-	plugin->state = 0;
 
 	return plugin;
 }

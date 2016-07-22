@@ -186,16 +186,6 @@ void			EXTIT_DECL
 
 LIBAPI
 extit_status_t		EXTIT_DECL
-			extit_plugin_activate(
-				extit_plugin_t *plugin);
-
-LIBAPI
-extit_status_t		EXTIT_DECL
-			extit_plugin_deactivate(
-				extit_plugin_t *plugin);
-
-LIBAPI
-extit_status_t		EXTIT_DECL
 			extit_plugin_destroy(
 				extit_plugin_t *plugin);
 
@@ -219,11 +209,6 @@ void *			EXTIT_DECL
 LIBAPI
 extit_module_t *	EXTIT_DECL
 			extit_plugin_get_module(
-				extit_plugin_t *plugin);
-
-LIBAPI
-extit_status_t		EXTIT_DECL
-			extit_plugin_ping(
 				extit_plugin_t *plugin);
 
 LIBAPI

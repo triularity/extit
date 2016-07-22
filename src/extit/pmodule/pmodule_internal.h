@@ -40,14 +40,11 @@ struct _extit_module
 };
 
 
-#define	EXTIT_INSTANCE_STATE_ACTIVE	0x00000001
-
 struct _extit_plugin
 {
 	extit_module_t *			module;
 	unsigned int				flags;
 	void *					spi_ctx;
-	unsigned int				state;
 };
 
 
