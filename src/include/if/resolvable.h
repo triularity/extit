@@ -18,9 +18,9 @@ extern "C" {
 #endif
 
 #ifdef	if_resolvable_EXPORTS
-#define	IF_RESOLVABLE_LIBAPI		EXTIT_EXPORT
+#define	LIBAPI		EXTIT_EXPORT
 #else
-#define	IF_RESOLVABLE_LIBAPI		EXTIT_IMPORT
+#define	LIBAPI		EXTIT_IMPORT
 #endif
 
 
@@ -39,10 +39,8 @@ typedef struct _if_resolvable_1_0	if_resolvable_1_0_t;
 /*
  * ABI Version
  */
-#define	IF_RESOLVABLE_ABI		IF_RESOLVABLE_ABI_1_0
-
 #ifndef	IF_RESOLVABLE_ABI_TARGET
-#define	IF_RESOLVABLE_ABI_TARGET	IF_RESOLVABLE_ABI
+#define	IF_RESOLVABLE_ABI_TARGET	IF_RESOLVABLE_ABI_1_0
 #endif
 
 #if	IF_RESOLVABLE_ABI_TARGET == IF_RESOLVABLE_ABI_1_0
@@ -55,19 +53,21 @@ typedef struct _if_resolvable_1_0	if_resolvable_1_0_t;
 /*
  * Public API (v1.0)
  */
-IF_RESOLVABLE_LIBAPI
+LIBAPI
 void *			EXTIT_DECL
 			if_resolvable_get_interface(
 				if_resolvable_t *resolvable,
 				const char *id,
 				iv_version_t version);
 
-IF_RESOLVABLE_LIBAPI
+LIBAPI
 iv_version_t		EXTIT_DECL
 			if_resolvable_query_interface(
 				if_resolvable_t *resolvable,
 				const char *id,
 				iv_version_t base_version);
+
+#undef	LIBAPI
 
 #ifdef	__cplusplus
 }

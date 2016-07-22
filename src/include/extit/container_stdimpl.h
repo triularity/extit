@@ -23,10 +23,10 @@ extern "C" {
 
 #ifdef	extit_container_stdimpl_EXPORTS
 #define	LIBAPI		EXTIT_EXPORT
-#define	LIBXAPI		EXTIT_EXPORT
+#define	LIBAPI_STATIC	EXTIT_EXPORT
 #else
 #define	LIBAPI		EXTIT_IMPORT
-#define	LIBXAPI		EXTIT_IMPORT_STATIC
+#define	LIBAPI_STATIC	EXTIT_IMPORT_STATIC
 #endif
 
 
@@ -41,32 +41,32 @@ extern extit_container_ops_1_0_t	extit_container_stdimpl_ops_1_0;
 #endif
 
 
-LIBXAPI
+LIBAPI_STATIC
 extit_func_t		EXTIT_DECL
 			extit_container_get_function_stdimpl(
 				const extit_container_t *container,
 				const char *name);
 
-LIBXAPI
+LIBAPI_STATIC
 void *			EXTIT_DECL
 			extit_container_get_interface_stdimpl(
 				const extit_container_t *container,
 				const char *name,
 				iv_version_t version);
 
-LIBXAPI
+LIBAPI_STATIC
 void *			EXTIT_DECL
 			extit_container_get_symbol_stdimpl(
 				const extit_container_t *container,
 				const char *name);
 
-LIBXAPI
+LIBAPI_STATIC
 void			EXTIT_DECL
 			extit_container_log_stdimpl(
 				const extit_container_t *container,
 				const char *message);
 
-LIBXAPI
+LIBAPI_STATIC
 iv_version_t		EXTIT_DECL
 			extit_container_query_interface_stdimpl(
 				const extit_container_t *container,
@@ -74,7 +74,7 @@ iv_version_t		EXTIT_DECL
 				iv_version_t base_version);
 
 #undef	LIBAPI
-#undef	LIBXAPI
+#undef	LIBAPI_STATIC
 
 #ifdef	__cplusplus
 }

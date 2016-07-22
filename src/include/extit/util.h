@@ -19,9 +19,9 @@ extern "C" {
 #endif
 
 #ifdef	extit_util_EXPORTS
-#define	EXTIT_UTIL_LIBAPI	EXTIT_EXPORT
+#define	LIBAPI		EXTIT_EXPORT
 #else
-#define	EXTIT_UTIL_LIBAPI	EXTIT_IMPORT
+#define	LIBAPI		EXTIT_IMPORT
 #endif
 
 
@@ -31,15 +31,17 @@ extern "C" {
 typedef uint32_t		extit_refcount_t;
 
 
-EXTIT_UTIL_LIBAPI
+LIBAPI
 extit_status_t		EXTIT_DECL
 			extit_refcount_add(
 				extit_refcount_t *refcount);
 
-EXTIT_UTIL_LIBAPI
+LIBAPI
 extit_status_t		EXTIT_DECL
 			extit_refcount_release(
 				extit_refcount_t *refcount);
+
+#undef	LIBAPI
 
 #ifdef	__cplusplus
 }

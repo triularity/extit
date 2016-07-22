@@ -21,9 +21,9 @@ extern "C" {
 #endif
 
 #ifdef	if_messaging_EXPORTS
-#define	IF_MESSAGINE_LIBAPI		EXTIT_EXPORT
+#define	LIBAPI		EXTIT_EXPORT
 #else
-#define	IF_MESSAGINE_LIBAPI		EXTIT_IMPORT
+#define	LIBAPI		EXTIT_IMPORT
 #endif
 
 
@@ -64,10 +64,8 @@ typedef uint32_t			if_messaging_listener_id_t;
 /*
  * ABI Version
  */
-#define	IF_MESSAGING_ABI		IF_MESSAGING_ABI_1_0
-
 #ifndef	IF_MESSAGING_ABI_TARGET
-#define	IF_MESSAGING_ABI_TARGET		IF_MESSAGING_ABI
+#define	IF_MESSAGING_ABI_TARGET		IF_MESSAGING_ABI_1_0
 #endif
 
 #if	IF_MESSAGING_ABI_TARGET == IF_MESSAGING_ABI_1_0
@@ -80,7 +78,7 @@ typedef uint32_t			if_messaging_listener_id_t;
 /*
  * Public API (v1.0)
  */
-IF_MESSAGINE_LIBAPI
+LIBAPI
 if_messaging_listener_id_t
 			EXTIT_DECL
 			if_messaging_add_listener(
@@ -91,7 +89,7 @@ if_messaging_listener_id_t
 				if_messaging_listener_t callback,
 				void *client_data);
 
-IF_MESSAGINE_LIBAPI
+LIBAPI
 if_messaging_bound_t *
 			EXTIT_DECL
 			if_messaging_bind(
@@ -100,7 +98,7 @@ if_messaging_bound_t *
 				const char *iid,
 				iv_version_t version);
 
-IF_MESSAGINE_LIBAPI
+LIBAPI
 if_messaging_listener_id_t
 			EXTIT_DECL
 			if_messaging_bound_add_listener(
@@ -109,13 +107,13 @@ if_messaging_listener_id_t
 				if_messaging_listener_t callback,
 				void *client_data);
 
-IF_MESSAGINE_LIBAPI
+LIBAPI
 extit_bool_t		EXTIT_DECL
 			if_messaging_bound_has_listener(
 				if_messaging_t *messaging,
 				if_messaging_bound_t *bound);
 
-IF_MESSAGINE_LIBAPI
+LIBAPI
 extit_status_t		EXTIT_DECL
 			if_messaging_bound_remove_listener(
 				if_messaging_t *messaging,
@@ -123,14 +121,14 @@ extit_status_t		EXTIT_DECL
 				if_messaging_listener_t callback,
 				void *client_data);
 
-IF_MESSAGINE_LIBAPI
+LIBAPI
 extit_status_t		EXTIT_DECL
 			if_messaging_bound_send(
 				if_messaging_t *messaging,
 				if_messaging_bound_t *bound,
 				void *data);
 
-IF_MESSAGINE_LIBAPI
+LIBAPI
 extit_bool_t		EXTIT_DECL
 			if_messaging_has_listener(
 				if_messaging_t *messaging,
@@ -138,7 +136,7 @@ extit_bool_t		EXTIT_DECL
 				const char *iid,
 				iv_version_t version);
 
-IF_MESSAGINE_LIBAPI
+LIBAPI
 extit_status_t		EXTIT_DECL
 			if_messaging_remove_listener(
 				if_messaging_t *messaging,
@@ -148,13 +146,13 @@ extit_status_t		EXTIT_DECL
 				if_messaging_listener_t callback,
 				void *client_data);
 
-IF_MESSAGINE_LIBAPI
+LIBAPI
 extit_status_t		EXTIT_DECL
 			if_messaging_remove_listener_by_id(
 				if_messaging_t *messaging,
 				if_messaging_listener_id_t id);
 
-IF_MESSAGINE_LIBAPI
+LIBAPI
 extit_status_t		EXTIT_DECL
 			if_messaging_send(
 				if_messaging_t *messaging,
@@ -163,11 +161,13 @@ extit_status_t		EXTIT_DECL
 				iv_version_t version,
 				void *data);
 
-IF_MESSAGINE_LIBAPI
+LIBAPI
 extit_status_t		EXTIT_DECL
 			if_messaging_unbind(
 				if_messaging_t *messaging,
 				if_messaging_bound_t *bound);
+
+#undef	LIBAPI
 
 #ifdef	__cplusplus
 }

@@ -18,9 +18,9 @@ extern "C" {
 #endif
 
 #ifdef	if_disposable_EXPORTS
-#define	IF_DISPOSABLE_LIBAPI		EXTIT_EXPORT
+#define	LIBAPI		EXTIT_EXPORT
 #else
-#define	IF_DISPOSABLE_LIBAPI		EXTIT_IMPORT
+#define	LIBAPI		EXTIT_IMPORT
 #endif
 
 
@@ -39,10 +39,8 @@ typedef struct _if_disposable_1_0	if_disposable_1_0_t;
 /*
  * ABI Version
  */
-#define	IF_DISPOSABLE_ABI		IF_DISPOSABLE_ABI_1_0
-
 #ifndef	IF_DISPOSABLE_ABI_TARGET
-#define	IF_DISPOSABLE_ABI_TARGET	IF_DISPOSABLE_ABI
+#define	IF_DISPOSABLE_ABI_TARGET	IF_DISPOSABLE_ABI_1_0
 #endif
 
 #if	IF_DISPOSABLE_ABI_TARGET == IF_DISPOSABLE_ABI_1_0
@@ -55,10 +53,12 @@ typedef struct _if_disposable_1_0	if_disposable_1_0_t;
 /*
  * Public API (v1.0)
  */
-IF_DISPOSABLE_LIBAPI
+LIBAPI
 extit_status_t		EXTIT_DECL
 			if_disposable_free(
 				if_disposable_t *disposable);
+
+#undef	LIBAPI
 
 #ifdef	__cplusplus
 }

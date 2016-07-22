@@ -21,11 +21,11 @@ extern "C" {
 #endif
 
 #ifdef	if_configurable_stdimpl_EXPORTS
-#define	IF_CONFIGURABLE_STDIMPL_LIBAPI	EXTIT_EXPORT
-#define	IF_CONFIGURABLE_STDIMPL_LIBXAPI	EXTIT_EXPORT
+#define	LIBAPI		EXTIT_EXPORT
+#define	LIBAPI_STATIC	EXTIT_EXPORT
 #else
-#define	IF_CONFIGURABLE_STDIMPL_LIBAPI	EXTIT_IMPORT
-#define	IF_CONFIGURABLE_STDIMPL_LIBXAPI	EXTIT_IMPORT_STATIC
+#define	LIBAPI		EXTIT_IMPORT
+#define	LIBAPI_STATIC	EXTIT_IMPORT_STATIC
 #endif
 
 
@@ -40,7 +40,7 @@ struct if_configurable_propref
 };
 
 
-IF_CONFIGURABLE_STDIMPL_LIBAPI
+LIBAPI
 extern if_configurable_ops_1_0_t	if_configurable_stdimpl_ops_1_0;
 
 
@@ -51,21 +51,21 @@ extern if_configurable_ops_1_0_t	if_configurable_stdimpl_ops_1_0;
 #endif
 
 
-IF_CONFIGURABLE_STDIMPL_LIBXAPI
+LIBAPI_STATIC
 if_configurable_propref_t *
 			EXTIT_DECL
 			if_configurable_find_property_stdimpl(
 					if_configurable_t *conf,
 					const char *id);
 
-IF_CONFIGURABLE_STDIMPL_LIBXAPI
+LIBAPI_STATIC
 if_configurable_propref_t *
 			EXTIT_DECL
 			if_configurable_find_property_stdimpl_sorted(
 					if_configurable_t *conf,
 					const char *id);
 
-IF_CONFIGURABLE_STDIMPL_LIBXAPI
+LIBAPI_STATIC
 extit_status_t
 			EXTIT_DECL
 			if_configurable_get_bool_stdimpl(
@@ -73,7 +73,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				extit_bool_t *valuep);
 
-IF_CONFIGURABLE_STDIMPL_LIBAPI
+LIBAPI
 extit_status_t
 			EXTIT_DECL
 			if_configurable_get_bool_stdimpl_base(
@@ -82,7 +82,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				extit_bool_t *valuep);
 
-IF_CONFIGURABLE_STDIMPL_LIBXAPI
+LIBAPI_STATIC
 extit_status_t
 			EXTIT_DECL
 			if_configurable_get_custom_stdimpl(
@@ -90,7 +90,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				void **valuep);
 
-IF_CONFIGURABLE_STDIMPL_LIBAPI
+LIBAPI
 extit_status_t
 			EXTIT_DECL
 			if_configurable_get_custom_stdimpl_base(
@@ -99,7 +99,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				void **valuep);
 
-IF_CONFIGURABLE_STDIMPL_LIBXAPI
+LIBAPI_STATIC
 extit_status_t
 			EXTIT_DECL
 			if_configurable_get_double_stdimpl(
@@ -107,7 +107,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				double *valuep);
 
-IF_CONFIGURABLE_STDIMPL_LIBAPI
+LIBAPI
 extit_status_t
 			EXTIT_DECL
 			if_configurable_get_double_stdimpl_base(
@@ -116,7 +116,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				double *valuep);
 
-IF_CONFIGURABLE_STDIMPL_LIBXAPI
+LIBAPI_STATIC
 extit_status_t
 			EXTIT_DECL
 			if_configurable_get_enum32_stdimpl(
@@ -124,7 +124,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				uint32_t *valuep);
 
-IF_CONFIGURABLE_STDIMPL_LIBAPI
+LIBAPI
 extit_status_t
 			EXTIT_DECL
 			if_configurable_get_enum32_stdimpl_base(
@@ -133,7 +133,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				uint32_t *valuep);
 
-IF_CONFIGURABLE_STDIMPL_LIBXAPI
+LIBAPI_STATIC
 extit_status_t
 			EXTIT_DECL
 			if_configurable_get_float_stdimpl(
@@ -141,7 +141,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				float *valuep);
 
-IF_CONFIGURABLE_STDIMPL_LIBAPI
+LIBAPI
 extit_status_t
 			EXTIT_DECL
 			if_configurable_get_float_stdimpl_base(
@@ -150,7 +150,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				float *valuep);
 
-IF_CONFIGURABLE_STDIMPL_LIBXAPI
+LIBAPI_STATIC
 extit_status_t
 			EXTIT_DECL
 			if_configurable_get_int8_stdimpl(
@@ -158,7 +158,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				int8_t *valuep);
 
-IF_CONFIGURABLE_STDIMPL_LIBAPI
+LIBAPI
 extit_status_t
 			EXTIT_DECL
 			if_configurable_get_int8_stdimpl_base(
@@ -167,7 +167,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				int8_t *valuep);
 
-IF_CONFIGURABLE_STDIMPL_LIBXAPI
+LIBAPI_STATIC
 extit_status_t
 			EXTIT_DECL
 			if_configurable_get_int16_stdimpl(
@@ -175,7 +175,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				int16_t *valuep);
 
-IF_CONFIGURABLE_STDIMPL_LIBAPI
+LIBAPI
 extit_status_t
 			EXTIT_DECL
 			if_configurable_get_int16_stdimpl_base(
@@ -184,7 +184,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				int16_t *valuep);
 
-IF_CONFIGURABLE_STDIMPL_LIBXAPI
+LIBAPI_STATIC
 extit_status_t
 			EXTIT_DECL
 			if_configurable_get_int32_stdimpl(
@@ -192,7 +192,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				int32_t *valuep);
 
-IF_CONFIGURABLE_STDIMPL_LIBAPI
+LIBAPI
 extit_status_t
 			EXTIT_DECL
 			if_configurable_get_int32_stdimpl_base(
@@ -201,7 +201,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				int32_t *valuep);
 
-IF_CONFIGURABLE_STDIMPL_LIBXAPI
+LIBAPI_STATIC
 extit_status_t
 			EXTIT_DECL
 			if_configurable_get_int64_stdimpl(
@@ -209,7 +209,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				int64_t *valuep);
 
-IF_CONFIGURABLE_STDIMPL_LIBAPI
+LIBAPI
 extit_status_t
 			EXTIT_DECL
 			if_configurable_get_int64_stdimpl_base(
@@ -218,7 +218,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				int64_t *valuep);
 
-IF_CONFIGURABLE_STDIMPL_LIBXAPI
+LIBAPI_STATIC
 extit_status_t
 			EXTIT_DECL
 			if_configurable_get_uint8_stdimpl(
@@ -226,7 +226,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				uint8_t *valuep);
 
-IF_CONFIGURABLE_STDIMPL_LIBAPI
+LIBAPI
 extit_status_t
 			EXTIT_DECL
 			if_configurable_get_uint8_stdimpl_base(
@@ -235,7 +235,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				uint8_t *valuep);
 
-IF_CONFIGURABLE_STDIMPL_LIBXAPI
+LIBAPI_STATIC
 extit_status_t
 			EXTIT_DECL
 			if_configurable_get_uint16_stdimpl(
@@ -243,7 +243,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				uint16_t *valuep);
 
-IF_CONFIGURABLE_STDIMPL_LIBAPI
+LIBAPI
 extit_status_t
 			EXTIT_DECL
 			if_configurable_get_uint16_stdimpl_base(
@@ -252,7 +252,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				uint16_t *valuep);
 
-IF_CONFIGURABLE_STDIMPL_LIBXAPI
+LIBAPI_STATIC
 extit_status_t
 			EXTIT_DECL
 			if_configurable_get_uint32_stdimpl(
@@ -260,7 +260,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				uint32_t *valuep);
 
-IF_CONFIGURABLE_STDIMPL_LIBAPI
+LIBAPI
 extit_status_t
 			EXTIT_DECL
 			if_configurable_get_uint32_stdimpl_base(
@@ -269,7 +269,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				uint32_t *valuep);
 
-IF_CONFIGURABLE_STDIMPL_LIBXAPI
+LIBAPI_STATIC
 extit_status_t
 			EXTIT_DECL
 			if_configurable_get_uint64_stdimpl(
@@ -277,7 +277,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				uint64_t *valuep);
 
-IF_CONFIGURABLE_STDIMPL_LIBAPI
+LIBAPI
 extit_status_t
 			EXTIT_DECL
 			if_configurable_get_uint64_stdimpl_base(
@@ -286,7 +286,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				uint64_t *valuep);
 
-IF_CONFIGURABLE_STDIMPL_LIBXAPI
+LIBAPI_STATIC
 extit_status_t
 			EXTIT_DECL
 			if_configurable_get_utf8_stdimpl(
@@ -294,7 +294,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				const char **valuep);
 
-IF_CONFIGURABLE_STDIMPL_LIBAPI
+LIBAPI
 extit_status_t
 			EXTIT_DECL
 			if_configurable_get_utf8_stdimpl_base(
@@ -303,13 +303,13 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				const char **valuep);
 
-IF_CONFIGURABLE_STDIMPL_LIBXAPI
+LIBAPI_STATIC
 extit_status_t
 			EXTIT_DECL
 			if_configurable_reset_stdimpl(
 				if_configurable_t *conf);
 
-IF_CONFIGURABLE_STDIMPL_LIBXAPI
+LIBAPI_STATIC
 extit_status_t
 			EXTIT_DECL
 			if_configurable_set_bool_stdimpl(
@@ -317,7 +317,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				extit_bool_t value);
 
-IF_CONFIGURABLE_STDIMPL_LIBAPI
+LIBAPI
 extit_status_t
 			EXTIT_DECL
 			if_configurable_set_bool_stdimpl_base(
@@ -326,7 +326,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				extit_bool_t value);
 
-IF_CONFIGURABLE_STDIMPL_LIBXAPI
+LIBAPI_STATIC
 extit_status_t
 			EXTIT_DECL
 			if_configurable_set_custom_stdimpl(
@@ -334,7 +334,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				void *value);
 
-IF_CONFIGURABLE_STDIMPL_LIBAPI
+LIBAPI
 extit_status_t
 			EXTIT_DECL
 			if_configurable_set_custom_stdimpl_base(
@@ -343,7 +343,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				void *value);
 
-IF_CONFIGURABLE_STDIMPL_LIBXAPI
+LIBAPI_STATIC
 extit_status_t
 			EXTIT_DECL
 			if_configurable_set_double_stdimpl(
@@ -351,7 +351,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				double value);
 
-IF_CONFIGURABLE_STDIMPL_LIBAPI
+LIBAPI
 extit_status_t
 			EXTIT_DECL
 			if_configurable_set_double_stdimpl_base(
@@ -360,7 +360,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				double value);
 
-IF_CONFIGURABLE_STDIMPL_LIBXAPI
+LIBAPI_STATIC
 extit_status_t
 			EXTIT_DECL
 			if_configurable_set_enum32_stdimpl(
@@ -368,7 +368,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				uint32_t value);
 
-IF_CONFIGURABLE_STDIMPL_LIBAPI
+LIBAPI
 extit_status_t
 			EXTIT_DECL
 			if_configurable_set_enum32_stdimpl_base(
@@ -377,7 +377,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				uint32_t value);
 
-IF_CONFIGURABLE_STDIMPL_LIBXAPI
+LIBAPI_STATIC
 extit_status_t
 			EXTIT_DECL
 			if_configurable_set_float_stdimpl(
@@ -385,7 +385,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				float value);
 
-IF_CONFIGURABLE_STDIMPL_LIBAPI
+LIBAPI
 extit_status_t
 			EXTIT_DECL
 			if_configurable_set_float_stdimpl_base(
@@ -394,7 +394,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				float value);
 
-IF_CONFIGURABLE_STDIMPL_LIBXAPI
+LIBAPI_STATIC
 extit_status_t
 			EXTIT_DECL
 			if_configurable_set_int8_stdimpl(
@@ -402,7 +402,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				int8_t value);
 
-IF_CONFIGURABLE_STDIMPL_LIBAPI
+LIBAPI
 extit_status_t
 			EXTIT_DECL
 			if_configurable_set_int8_stdimpl_base(
@@ -411,7 +411,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				int8_t value);
 
-IF_CONFIGURABLE_STDIMPL_LIBXAPI
+LIBAPI_STATIC
 extit_status_t
 			EXTIT_DECL
 			if_configurable_set_int16_stdimpl(
@@ -419,7 +419,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				int16_t value);
 
-IF_CONFIGURABLE_STDIMPL_LIBAPI
+LIBAPI
 extit_status_t
 			EXTIT_DECL
 			if_configurable_set_int16_stdimpl_base(
@@ -428,7 +428,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				int16_t value);
 
-IF_CONFIGURABLE_STDIMPL_LIBXAPI
+LIBAPI_STATIC
 extit_status_t
 			EXTIT_DECL
 			if_configurable_set_int32_stdimpl(
@@ -436,7 +436,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				int32_t value);
 
-IF_CONFIGURABLE_STDIMPL_LIBAPI
+LIBAPI
 extit_status_t
 			EXTIT_DECL
 			if_configurable_set_int32_stdimpl_base(
@@ -445,7 +445,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				int32_t value);
 
-IF_CONFIGURABLE_STDIMPL_LIBXAPI
+LIBAPI_STATIC
 extit_status_t
 			EXTIT_DECL
 			if_configurable_set_int64_stdimpl(
@@ -453,7 +453,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				int64_t value);
 
-IF_CONFIGURABLE_STDIMPL_LIBAPI
+LIBAPI
 extit_status_t
 			EXTIT_DECL
 			if_configurable_set_int64_stdimpl_base(
@@ -462,7 +462,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				int64_t value);
 
-IF_CONFIGURABLE_STDIMPL_LIBXAPI
+LIBAPI_STATIC
 extit_status_t
 			EXTIT_DECL
 			if_configurable_set_uint8_stdimpl(
@@ -470,7 +470,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				uint8_t value);
 
-IF_CONFIGURABLE_STDIMPL_LIBAPI
+LIBAPI
 extit_status_t
 			EXTIT_DECL
 			if_configurable_set_uint8_stdimpl_base(
@@ -479,7 +479,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				uint8_t value);
 
-IF_CONFIGURABLE_STDIMPL_LIBXAPI
+LIBAPI_STATIC
 extit_status_t
 			EXTIT_DECL
 			if_configurable_set_uint16_stdimpl(
@@ -487,7 +487,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				uint16_t value);
 
-IF_CONFIGURABLE_STDIMPL_LIBAPI
+LIBAPI
 extit_status_t
 			EXTIT_DECL
 			if_configurable_set_uint16_stdimpl_base(
@@ -496,7 +496,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				uint16_t value);
 
-IF_CONFIGURABLE_STDIMPL_LIBXAPI
+LIBAPI_STATIC
 extit_status_t
 			EXTIT_DECL
 			if_configurable_set_uint32_stdimpl(
@@ -504,7 +504,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				uint32_t value);
 
-IF_CONFIGURABLE_STDIMPL_LIBAPI
+LIBAPI
 extit_status_t
 			EXTIT_DECL
 			if_configurable_set_uint32_stdimpl_base(
@@ -513,7 +513,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				uint32_t value);
 
-IF_CONFIGURABLE_STDIMPL_LIBXAPI
+LIBAPI_STATIC
 extit_status_t
 			EXTIT_DECL
 			if_configurable_set_uint64_stdimpl(
@@ -521,7 +521,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				uint64_t value);
 
-IF_CONFIGURABLE_STDIMPL_LIBAPI
+LIBAPI
 extit_status_t
 			EXTIT_DECL
 			if_configurable_set_uint64_stdimpl_base(
@@ -530,7 +530,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				uint64_t value);
 
-IF_CONFIGURABLE_STDIMPL_LIBXAPI
+LIBAPI_STATIC
 extit_status_t
 			EXTIT_DECL
 			if_configurable_set_utf8_stdimpl(
@@ -538,7 +538,7 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				const char *value);
 
-IF_CONFIGURABLE_STDIMPL_LIBAPI
+LIBAPI
 extit_status_t
 			EXTIT_DECL
 			if_configurable_set_utf8_stdimpl_base(
@@ -546,6 +546,9 @@ extit_status_t
 				void *base,
 				if_configurable_propref_t *prop,
 				const char *value);
+
+#undef	LIBAPI
+#undef	LIBAPI_STATIC
 
 #ifdef	__cplusplus
 }

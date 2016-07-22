@@ -17,19 +17,21 @@ extern "C" {
 #endif
 
 #ifdef	if_allocator_stdimpl_EXPORTS
-#define	IF_ALLOCATOR_STDIMPL_LIBAPI	EXTIT_EXPORT
+#define	LIBAPI		EXTIT_EXPORT
 #else
-#define	IF_ALLOCATOR_STDIMPL_LIBAPI	EXTIT_IMPORT
+#define	LIBAPI		EXTIT_IMPORT
 #endif
 
 
-IF_ALLOCATOR_STDIMPL_LIBAPI
+LIBAPI
 extern	if_allocator_1_0_t		if_allocator_stdimpl_1_0;
 
 
 #if	IF_ALLOCATOR_ABI_TARGET == IF_ALLOCATOR_ABI_1_0
 #define	if_allocator_stdimpl		if_allocator_stdimpl_1_0
 #endif
+
+#undef	LIBAPI
 
 #ifdef	__cplusplus
 }

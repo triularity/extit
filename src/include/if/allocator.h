@@ -20,9 +20,9 @@ extern "C" {
 #endif
 
 #ifdef	if_allocator_EXPORTS
-#define	IF_ALLOCATOR_LIBAPI	EXTIT_EXPORT
+#define	LIBAPI		EXTIT_EXPORT
 #else
-#define	IF_ALLOCATOR_LIBAPI	EXTIT_IMPORT
+#define	LIBAPI		EXTIT_IMPORT
 #endif
 
 
@@ -41,10 +41,8 @@ typedef struct _if_allocator_1_0	if_allocator_1_0_t;
 /*
  * ABI Version
  */
-#define	IF_ALLOCATOR_ABI		IF_ALLOCATOR_ABI_1_0
-
 #ifndef	IF_ALLOCATOR_ABI_TARGET
-#define	IF_ALLOCATOR_ABI_TARGET		IF_ALLOCATOR_ABI
+#define	IF_ALLOCATOR_ABI_TARGET		IF_ALLOCATOR_ABI_1_0
 #endif
 
 #if	IF_ALLOCATOR_ABI_TARGET == IF_ALLOCATOR_ABI_1_0
@@ -57,37 +55,39 @@ typedef struct _if_allocator_1_0	if_allocator_1_0_t;
 /*
  * Public API (v1.0)
  */
-IF_ALLOCATOR_LIBAPI
+LIBAPI
 void *			EXTIT_DECL
 			if_allocator_alloc(
 				if_allocator_t *allocator,
 				size_t size);
 
-IF_ALLOCATOR_LIBAPI
+LIBAPI
 void			EXTIT_DECL
 			if_allocator_free(
 				if_allocator_t *allocator,
 				void *ptr);
 
-IF_ALLOCATOR_LIBAPI
+LIBAPI
 void *			EXTIT_DECL
 			if_allocator_realloc(
 				if_allocator_t *allocator,
 				void *ptr,
 				size_t size);
 
-IF_ALLOCATOR_LIBAPI
+LIBAPI
 void *			EXTIT_DECL
 			if_allocator_zalloc(
 				if_allocator_t *allocator,
 				size_t size);
 
-IF_ALLOCATOR_LIBAPI
+LIBAPI
 void *			EXTIT_DECL
 			if_allocator_dup(
 				if_allocator_t *allocator,
 				void *ptr,
 				size_t size);
+
+#undef	LIBAPI
 
 #ifdef	__cplusplus
 }

@@ -17,9 +17,9 @@ extern "C" {
 #endif
 
 #ifdef	iv_repository_EXPORTS
-#define	IV_REPOSITORY_LIBAPI	IV_EXPORT
+#define	LIBAPI		IV_EXPORT
 #else
-#define	IV_REPOSITORY_LIBAPI	IV_IMPORT
+#define	LIBAPI		IV_IMPORT
 #endif
 
 
@@ -55,44 +55,44 @@ typedef enum _iv_repository_status
 /*
  * Public API (v1.0)
  */
-IV_REPOSITORY_LIBAPI
+LIBAPI
 iv_repository_t *	IV_DECL
 			iv_repository_create(void);
 
-IV_REPOSITORY_LIBAPI
+LIBAPI
 void			IV_DECL
 			iv_repository_cleanup(
 				iv_repository_t *ir);
 
-IV_REPOSITORY_LIBAPI
+LIBAPI
 void			IV_DECL
 			iv_repository_destroy(
 				iv_repository_t *ir);
 
-IV_REPOSITORY_LIBAPI
+LIBAPI
 void *			IV_DECL
 			iv_repository_get(
 				const iv_repository_t *ir,
 				const char *id,
 				iv_version_t version);
 
-IV_REPOSITORY_LIBAPI
+LIBAPI
 unsigned int		IV_DECL
 			iv_repository_get_default_flags(void);
 
-IV_REPOSITORY_LIBAPI
+LIBAPI
 unsigned int		IV_DECL
 			iv_repository_get_flags(
 				const iv_repository_t *ir);
 
-IV_REPOSITORY_LIBAPI
+LIBAPI
 iv_version_t		IV_DECL
 			iv_repository_query(
 				const iv_repository_t *ir,
 				const char *id,
 				iv_version_t base_version);
 
-IV_REPOSITORY_LIBAPI
+LIBAPI
 iv_repository_status_t	IV_DECL
 			iv_repository_remove(
 				iv_repository_t *ir,
@@ -100,7 +100,7 @@ iv_repository_status_t	IV_DECL
 				iv_version_t version,
 				void **old_valuep);
 
-IV_REPOSITORY_LIBAPI
+LIBAPI
 iv_repository_status_t	IV_DECL
 			iv_repository_set(
 				iv_repository_t *ir,
@@ -109,16 +109,18 @@ iv_repository_status_t	IV_DECL
 				void *value,
 				void **old_valuep);
 
-IV_REPOSITORY_LIBAPI
+LIBAPI
 void			IV_DECL
 			iv_repository_set_default_flags(
 				unsigned int flags);
 
-IV_REPOSITORY_LIBAPI
+LIBAPI
 void			IV_DECL
 			iv_repository_set_flags(
 				iv_repository_t *ir,
 				unsigned int flags);
+
+#undef	LIBAPI
 
 #ifdef	__cplusplus
 }

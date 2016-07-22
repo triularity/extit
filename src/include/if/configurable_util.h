@@ -18,16 +18,16 @@ extern "C" {
 #endif
 
 #ifdef	if_configurable_util_EXPORTS
-#define	IF_CONFIGURABLE_UTIL_LIBAPI	EXTIT_EXPORT
+#define	LIBAPI		EXTIT_EXPORT
 #else
-#define	IF_CONFIGURABLE_UTIL_LIBAPI	EXTIT_IMPORT
+#define	LIBAPI		EXTIT_IMPORT
 #endif
 
 
 /*
  * Public API (v1.0)
  */
-IF_CONFIGURABLE_UTIL_LIBAPI
+LIBAPI
 const if_configurable_enum32_t *
 			EXTIT_DECL
 			if_configurable_enum32_find_by_id(
@@ -35,13 +35,15 @@ const if_configurable_enum32_t *
 				uint32_t count,
 				const char *id);
 
-IF_CONFIGURABLE_UTIL_LIBAPI
+LIBAPI
 const if_configurable_enum32_t *
 			EXTIT_DECL
 			if_configurable_enum32_find_by_value(
 				const if_configurable_enum32_t *choices,
 				uint32_t count,
 				uint32_t value);
+
+#undef	LIBAPI
 
 #ifdef	__cplusplus
 }
