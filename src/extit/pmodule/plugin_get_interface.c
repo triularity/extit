@@ -11,9 +11,9 @@
 
 #include <iv/base.h>
 #include <extit/base.h>
-#include <extit/plugin_spi.h>
 #include <extit/container.h>
 #include <extit/pmodule.h>
+#include <extit/pmodule_impl.h>
 
 #include "pmodule_internal.h"
 
@@ -28,11 +28,9 @@ extit_plugin_get_interface
 	iv_version_t version
 )
 {
-	unsigned int			flags;
-	extit_module_t *		module;
-	extit_spi_descriptor_1_0_t *	descriptor;
-	extit_spi_param_get_interface_t	params;
-	extit_status_t			status;
+	unsigned int				flags;
+	extit_module_t *			module;
+	extit_pmodule_descriptor_1_0_t *	descriptor;
 
 
 	flags = plugin->flags;
@@ -43,22 +41,11 @@ extit_plugin_get_interface
 		return NULL;
 #endif
 
-	descriptor = (extit_spi_descriptor_1_0_t *) module->descriptor;
+	descriptor = (extit_pmodule_descriptor_1_0_t *) module->descriptor;
 
-	params.spi_ctx = plugin->spi_ctx;
-	params.id = id;
-	params.version = version;
+	if(descriptor->ops->op_get_interface == NULL)
+		return NULL;
 
-#ifdef	EXTIT_PARANOID
-	params.interface_ptr = NULL;
-#endif
-
-	status = descriptor->handler(
-			module->abi_version,
-			module->container,
-			EXTIT_SPI_CMD_GET_INTERFACE,
-			&params,
-			flags);
-
-	return (status == EXTIT_STATUS_OK) ? params.interface_ptr : NULL;
+	return descriptor->ops->op_get_interface(
+		descriptor, module->container, plugin->ctx, id, version);
 }

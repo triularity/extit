@@ -9,8 +9,8 @@
 
 #include <iv/base.h>
 #include <extit/base.h>
-#include <extit/container.h>
 #include <extit/pmodule.h>
+#include <extit/pmodule_impl.h>
 
 #include "pmodule_internal.h"
 
@@ -28,5 +28,5 @@ extit_module_get_version
 		return NULL;
 #endif
 
-	return ((extit_spi_descriptor_1_0_t *) module->descriptor)->version;
+	return ((extit_pmodule_descriptor_1_0_t *) module->descriptor)->version;
 }

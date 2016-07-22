@@ -10,6 +10,7 @@
 #include <iv/base.h>
 #include <extit/base.h>
 #include <extit/pmodule.h>
+#include <extit/pmodule_impl.h>
 
 #include "pmodule_internal.h"
 
@@ -27,5 +28,5 @@ extit_module_get_id
 		return NULL;
 #endif
 
-	return ((extit_spi_descriptor_1_0_t *) module->descriptor)->id;
+	return ((extit_pmodule_descriptor_1_0_t *) module->descriptor)->id;
 }

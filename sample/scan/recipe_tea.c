@@ -11,7 +11,9 @@
 #include <iv/base.h>
 #include <iv/util.h>
 #include <extit/base.h>
-#include <extit/plugin_spi.h>
+#include <extit/container.h>
+#include <extit/container_impl.h>
+#include <extit/pmodule_impl.h>
 
 #include "recipe.h"
 
@@ -47,113 +49,114 @@ prepare_tea(recipe_t *recipe)
 static
 extit_status_t
 EXTIT_DECL
-plugin_handler
+plugin_create
 (
-	iv_version_t abi_version,
-	const extit_container_t *container,
-	extit_spi_command_t cmd,
-	void *param,
-	unsigned int flags
+	extit_pmodule_descriptor_1_0_t *descr,
+	extit_container_t *container,
+	void **ctx_ptr
 )
 {
-	recipe_impl_t *				ctx;
-	extit_spi_param_create_t *		param_create;
-	extit_spi_param_destroy_t *		param_destroy;
-	extit_spi_param_get_interface_t *	param_get_interface;
-	extit_spi_param_query_interface_t *	param_query_interface;
+	recipe_impl_t *	impl;
 
 
-	switch(cmd)
-	{
-		case EXTIT_SPI_CMD_PROBE:
-			/*
-			 * We only need to support v1.0 for what we do
-			 */
-			if(!iv_matches(abi_version, EXTIT_ABI_1_0))
-				return EXTIT_STATUS_UNSUPPORTED;
+	if((impl = malloc(sizeof(recipe_impl_t))) == NULL)
+		return EXTIT_STATUS_NOMEM;
 
-			/*
-			 * No need to check abi_version for other commands
-			 * since they will only be called if v1.0+ after this
-			 */
-			return EXTIT_STATUS_OK;
+	impl->recipe.name = "Tea";
+	impl->recipe.prep_time = 2;
+	impl->recipe.total_time = 10;
+	impl->recipe.prepare = prepare_tea;
+	impl->cup_ready = EXTIT_FALSE;
 
-		case EXTIT_SPI_CMD_CREATE:
-			param_create = (extit_spi_param_create_t *) param;
+	impl->stage = 0;
+	impl->time_passed = 0;
 
-			if((ctx = malloc(sizeof(recipe_impl_t))) == NULL)
-				return EXTIT_STATUS_NOMEM;
-
-			ctx->recipe.name = "Tea";
-			ctx->recipe.prep_time = 10;
-			ctx->recipe.total_time = 13;
-			ctx->recipe.prepare = prepare_tea;
-
-			ctx->stage = 0;
-			ctx->time_passed = 0;
-			ctx->cup_ready = EXTIT_FALSE;
-
-			param_create->spi_ctx = ctx;
-			return EXTIT_STATUS_OK;
-
-		case EXTIT_SPI_CMD_DESTROY:
-			param_destroy = (extit_spi_param_destroy_t *) param;
-
-			free(param_destroy->spi_ctx);
-			return EXTIT_STATUS_OK;
-
-		case EXTIT_SPI_CMD_GET_INTERFACE:
-			param_get_interface =
-				(extit_spi_param_get_interface_t *) param;
-
-			/*
-			 * Recipe is the only supported interface by this
-			 */
-			if(strcmp(RECIPE_INTERFACE_ID,
-			 param_get_interface->id) != 0)
-			{
-				return EXTIT_STATUS_NOTFOUND;
-			}
-
-			if(!iv_matches(RECIPE_INTERFACE_VERSION,
-			 param_get_interface->version))
-			{
-				return EXTIT_STATUS_NOTFOUND;
-			}
-
-			ctx = (recipe_impl_t *) param_get_interface->spi_ctx;
-			param_get_interface->interface_ptr = &ctx->recipe;
-
-			return EXTIT_STATUS_OK;
-
-		case EXTIT_SPI_CMD_QUERY_INTERFACE:
-			param_query_interface =
-				(extit_spi_param_query_interface_t *) param;
-
-			/*
-			 * Recipe is the only supported interface by this
-			 */
-			if(strcmp(RECIPE_INTERFACE_ID,
-			 param_query_interface->id) != 0)
-			{
-				return EXTIT_STATUS_NOTFOUND;
-			}
-
-			if(!iv_matches(RECIPE_INTERFACE_VERSION,
-			 param_query_interface->base_version))
-			{
-				return EXTIT_STATUS_NOTFOUND;
-			}
-
-			param_query_interface->version =
-				RECIPE_INTERFACE_VERSION;
-
-			return EXTIT_STATUS_OK;
-
-		default:
-			return EXTIT_STATUS_NOTIMPLEMENTED;
-	}
+	*ctx_ptr = impl;
+	return EXTIT_STATUS_OK;
 }
 
-EXTIT_DECLARE_SPI("{cfd28bad-232d-11e4-a457-406186e454c1}", IV_VERSION(1,0), "Tea Recipe", "1.0", plugin_handler)
 
+static
+extit_status_t
+EXTIT_DECL
+plugin_destroy
+(
+	extit_pmodule_descriptor_1_0_t *descr,
+	extit_container_t *container,
+	void *ctx
+)
+{
+	free(ctx);
+
+	return EXTIT_STATUS_OK;
+}
+
+
+static
+void *
+EXTIT_DECL
+plugin_get_interface
+(
+	extit_pmodule_descriptor_1_0_t *descr,
+	extit_container_t *container,
+	void *ctx,
+	const char *iid,
+	iv_version_t version
+)
+{
+	recipe_impl_t *	impl;
+
+
+	/*
+	 * Recipe is the only supported interface by this
+	 */
+	if((strcmp(RECIPE_INTERFACE_ID, iid) == 0)
+	 && iv_matches(RECIPE_INTERFACE_VERSION, version))
+	{
+		impl = (recipe_impl_t *) ctx;
+
+		return &impl->recipe;
+	}
+
+	return NULL;
+}
+
+
+static
+iv_version_t
+EXTIT_DECL
+plugin_query_interface
+(
+	extit_pmodule_descriptor_1_0_t *descr,
+	extit_container_t *container,
+	void *ctx,
+	const char *iid,
+	iv_version_t base_version
+)
+{
+	/*
+	 * Recipe is the only supported interface by this
+	 */
+	if((strcmp(RECIPE_INTERFACE_ID, iid) == 0)
+	 && iv_matches(RECIPE_INTERFACE_VERSION, base_version))
+	{
+		return RECIPE_INTERFACE_VERSION;
+	}
+
+	return IV_VERSION_NONE;
+}
+
+
+static
+extit_pmodule_ops_1_0_t		plugin_ops =
+{
+	NULL,				/* op_probe */
+	plugin_create,			/* op_create */
+	plugin_destroy,			/* op_destroy */
+	plugin_get_interface,		/* op_get_interface */
+	plugin_query_interface,		/* op_query_interface */
+	NULL				/* op_unload */
+};
+
+
+EXTIT_DECLARE_PMODULE("{cfd28bad-232d-11e4-a457-406186e454c1}", IV_VERSION(1,0), "Tea Recipe", "1.0", &plugin_ops)

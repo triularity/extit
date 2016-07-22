@@ -11,9 +11,9 @@
 
 #include <iv/base.h>
 #include <extit/base.h>
-#include <extit/plugin_spi.h>
 #include <extit/container.h>
 #include <extit/pmodule.h>
+#include <extit/pmodule_impl.h>
 
 #include "pmodule_internal.h"
 
@@ -30,9 +30,7 @@ extit_plugin_query_interface
 {
 	unsigned int				flags;
 	extit_module_t *			module;
-	extit_spi_descriptor_1_0_t *		descriptor;
-	extit_spi_param_query_interface_t	params;
-	extit_status_t				status;
+	extit_pmodule_descriptor_1_0_t *	descriptor;
 
 
 	flags = plugin->flags;
@@ -43,39 +41,15 @@ extit_plugin_query_interface
 		return IV_VERSION_NONE;
 #endif
 
-	descriptor = (extit_spi_descriptor_1_0_t *) module->descriptor;
+	descriptor = (extit_pmodule_descriptor_1_0_t *) module->descriptor;
 
-	params.spi_ctx = plugin->spi_ctx;
-	params.id = id;
-	params.base_version = base_version;
-
-#ifdef	EXTIT_PARANOID
-	params.version = IV_VERSION_NONE;
-#endif
-
-	status = descriptor->handler(
-			module->abi_version,
-			module->container,
-			EXTIT_SPI_CMD_QUERY_INTERFACE,
-			&params,
-			flags);
-
-	if(status != EXTIT_STATUS_OK)
-	{
-		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
-		{
-			fprintf(stderr,
-				"[extit:plugin] Error querying interface %s:%u.%u for plugin %s:%u, status = %u.",
-				id,
-				IV_VERSION_MAJOR(base_version),
-				IV_VERSION_MINOR(base_version),
-				descriptor->id,
-				descriptor->id_version,
-				status);
-		}
-
+	if(descriptor->ops->op_query_interface == NULL)
 		return IV_VERSION_NONE;
-	}
 
-	return params.version;
+	return descriptor->ops->op_query_interface(
+		descriptor,
+		module->container,
+		plugin->ctx,
+		id,
+		base_version);
 }

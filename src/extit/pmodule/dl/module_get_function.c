@@ -10,8 +10,6 @@
 #include <dlfcn.h>
 
 #include <extit/base.h>
-#include <extit/plugin_spi.h>
-#include <extit/container.h>
 #include <extit/pmodule.h>
 
 #include "../pmodule_internal.h"

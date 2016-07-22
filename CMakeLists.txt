@@ -69,7 +69,7 @@ set(EXTIT_CONTAINER_STDIMPL_SOURCE_FILES
 # ExtIt plugin module (server side)
 set(EXTIT_PMODULE_HEADER_FILES 
 	src/include/extit/pmodule.h
-	src/include/extit/plugin_spi.h)
+	src/include/extit/pmodule_impl.h)
 
 set(EXTIT_PMODULE_SOURCE_FILES
 	src/extit/pmodule/module_bind.c

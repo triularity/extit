@@ -13,9 +13,9 @@
 #include <iv/base.h>
 #include <extit/base.h>
 #include <extit/util.h>
-#include <extit/plugin_spi.h>
 #include <extit/container.h>
 #include <extit/pmodule.h>
+#include <extit/pmodule_impl.h>
 
 #include "pmodule_internal.h"
 
@@ -28,11 +28,10 @@ extit_module_create_plugin
 	extit_module_t *module
 )
 {
-	unsigned int			flags;
-	extit_plugin_t *		plugin;
-	extit_spi_descriptor_1_0_t *	descriptor;
-	extit_spi_param_create_t	params;
-	extit_status_t			status;
+	unsigned int				flags;
+	extit_plugin_t *			plugin;
+	extit_pmodule_descriptor_1_0_t *	descriptor;
+	extit_status_t				status;
 
 
 	flags = module->flags;
@@ -42,12 +41,12 @@ extit_module_create_plugin
 		return NULL;
 #endif
 
-	descriptor = (extit_spi_descriptor_1_0_t *) module->descriptor;
+	descriptor = (extit_pmodule_descriptor_1_0_t *) module->descriptor;
 
 	if(extit_refcount_add(&module->refcount) != EXTIT_STATUS_OK)
 	{
 		fprintf(stderr,
-			"[extit:module] Excessive number of instances for plugin %s:%u.",
+			"[extit:module] Excessive number of instances for plugin %s:%u.\n",
 			descriptor->id,
 			descriptor->id_version);
 
@@ -59,7 +58,7 @@ extit_module_create_plugin
 		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
 		{
 			fprintf(stderr,
-				"[extit:module] Allocation failed creating instance for plugin %s:%u.",
+				"[extit:module] Allocation failed creating instance for plugin %s:%u.\n",
 				descriptor->id,
 				descriptor->id_version);
 		}
@@ -68,33 +67,31 @@ extit_module_create_plugin
 		return NULL;
 	}
 
-	params.spi_ctx = NULL;
+	plugin->ctx = NULL;
 
-	status = descriptor->handler(
-			module->abi_version,
-			module->container,
-			EXTIT_SPI_CMD_CREATE,
-			&params,
-			flags);
-
-	if(status != EXTIT_STATUS_OK)
+	if(descriptor->ops->op_create != NULL)
 	{
-		free(plugin);
+		status = descriptor->ops->op_create(
+			descriptor, module->container, &plugin->ctx);
 
-		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
+		if(status != EXTIT_STATUS_OK)
 		{
-			fprintf(stderr,
-				"[extit:module] Unable to create instance for plugin %s:%u, status = %u.",
-				descriptor->id,
-				descriptor->id_version,
-				status);
-		}
+			free(plugin);
 
-		extit_refcount_release(&module->refcount);
-		return NULL;
+			if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
+			{
+				fprintf(stderr,
+					"[extit:module] Unable to create instance for plugin %s:%u, status = %u.\n",
+					descriptor->id,
+					descriptor->id_version,
+					status);
+			}
+
+			extit_refcount_release(&module->refcount);
+			return NULL;
+		}
 	}
 
-	plugin->spi_ctx = params.spi_ctx;
 	plugin->module = module;
 
 	return plugin;

@@ -11,9 +11,9 @@
 
 #include <extit/base.h>
 #include <extit/util.h>
-#include <extit/plugin_spi.h>
 #include <extit/container.h>
 #include <extit/pmodule.h>
+#include <extit/pmodule_impl.h>
 
 #include "pmodule_internal.h"
 
@@ -26,9 +26,9 @@ _extit_module_unload
 	extit_module_t *module
 )
 {
-	unsigned int			flags;
-	extit_spi_descriptor_1_0_t *	descriptor;
-	extit_status_t			status;
+	unsigned int				flags;
+	extit_pmodule_descriptor_1_0_t *	descriptor;
+	extit_status_t				status;
 
 
 	flags = module->flags;
@@ -61,14 +61,12 @@ _extit_module_unload
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	descriptor = (extit_spi_descriptor_1_0_t *) module->descriptor;
+	descriptor = (extit_pmodule_descriptor_1_0_t *) module->descriptor;
 
-	status = descriptor->handler(
-			module->abi_version,
-			module->container,
-			EXTIT_SPI_CMD_UNLOAD,
-			NULL,
-			flags);
+	if(descriptor->ops->op_unload == NULL)
+		return EXTIT_STATUS_OK;
+
+	status = descriptor->ops->op_unload(descriptor, module->container);
 
 	if(status == EXTIT_STATUS_NOTIMPLEMENTED)
 	{

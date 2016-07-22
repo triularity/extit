@@ -14,7 +14,6 @@
 #include <dlfcn.h>
 
 #include <extit/base.h>
-#include <extit/plugin_spi.h>
 #include <extit/container.h>
 #include <extit/container_impl.h>
 #include <extit/pmodule.h>
@@ -26,7 +25,7 @@ EXTIT_EXPORT
 extit_module_t *
 EXTIT_DECL
 extit_module_load(
-	const extit_container_t *container,
+	extit_container_t *container,
 	const char *path,
 	unsigned int flags
 )
@@ -80,7 +79,8 @@ extit_module_load(
 	/*
 	 * Find the plugin descriptor
 	 */
-	if((descriptor = dlsym(handle, EXTIT_SPI_DESCRIPTOR_SYMBOL)) == NULL)
+	if((descriptor = dlsym(handle, EXTIT_PMODULE_DESCRIPTOR_SYMBOL))
+	 == NULL)
 	{
 #ifdef	EXTIT_DEBUG
 		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)

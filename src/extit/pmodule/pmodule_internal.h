@@ -14,7 +14,7 @@
 #include <extit/util.h>
 #include <extit/container.h>
 #include <extit/pmodule.h>
-#include <extit/plugin_spi.h>
+#include <extit/pmodule_impl.h>
 
 #ifdef	_WIN32
 #include <windows.h>
@@ -29,8 +29,8 @@ struct _extit_module
 	extit_refcount_t			refcount;
 	unsigned int				flags;
 	iv_version_t				abi_version;
-	const extit_container_t *		container;
-	const extit_spi_descriptor_base_t *	descriptor;
+	extit_container_t *			container;
+	const extit_pmodule_descriptor_base_t *	descriptor;
 
 #ifdef	_WIN32
 	HMODULE					handle;
@@ -44,7 +44,7 @@ struct _extit_plugin
 {
 	extit_module_t *			module;
 	unsigned int				flags;
-	void *					spi_ctx;
+	void *					ctx;
 };
 
 

@@ -22,5 +22,5 @@ extit_plugin_get_context
 	extit_plugin_t *plugin
 )
 {
-	return plugin->spi_ctx;
+	return plugin->ctx;
 }

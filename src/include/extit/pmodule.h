@@ -65,7 +65,7 @@ iv_version_t		EXTIT_DECL
 LIBAPI
 extit_module_t *	EXTIT_DECL
 			extit_module_bind(
-				const extit_container_t *container,
+				extit_container_t *container,
 				const void *descriptor,
 				unsigned int flags);
 
@@ -124,7 +124,7 @@ const char *		EXTIT_DECL
 LIBAPI
 extit_module_t *	EXTIT_DECL
 			extit_module_load(
-				const extit_container_t *container,
+				extit_container_t *container,
 				const char *path,
 				unsigned int flags);
 
@@ -132,7 +132,7 @@ extit_module_t *	EXTIT_DECL
 LIBAPI
 extit_module_t *	EXTIT_DECL
 			extit_module_load_wc(
-				const extit_container_t *container,
+				extit_container_t *container,
 				const wchar_t *path,
 				unsigned int flags);
 #endif  /* EXTIT_WCHAR */
@@ -145,7 +145,7 @@ extit_status_t		EXTIT_DECL
 LIBAPI
 extit_status_t		EXTIT_DECL
 			extit_module_scan(
-				const extit_container_t *container,
+				extit_container_t *container,
 				const char *directory,
 				extit_module_scan_callback_t callback,
 				void *client_data,
@@ -156,7 +156,7 @@ extit_status_t		EXTIT_DECL
 LIBAPI
 extit_status_t		EXTIT_DECL
 			extit_module_scan_wc(
-				const extit_container_t *container,
+				extit_container_t *container,
 				const wchar_t *directory,
 				extit_module_scan_callback_t callback,
 				void *client_data,

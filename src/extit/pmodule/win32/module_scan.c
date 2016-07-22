@@ -38,7 +38,7 @@ extit_status_t
 EXTIT_DECL
 extit_module_scan
 (
-	const extit_container_t *container,
+	extit_container_t *container,
 	const char *directory,
 	extit_module_scan_callback_t callback,
 	void *client_data,
