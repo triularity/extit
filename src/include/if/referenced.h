@@ -12,7 +12,6 @@
 
 #include <iv/base.h>
 #include <extit/base.h>
-#include <extit/util.h>
 
 #ifdef	__cplusplus
 extern "C" {

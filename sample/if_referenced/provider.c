@@ -49,7 +49,7 @@ myobj__get_if_referenced(myobj_t *obj)
 
 static
 extit_status_t
-myobj__refcount__ops_add(if_referenced_t *refcount)
+myobj__referenced__add(if_referenced_t *refcount)
 {
 	struct myobj_internal *	obji;
 
@@ -62,7 +62,7 @@ myobj__refcount__ops_add(if_referenced_t *refcount)
 
 static
 extit_status_t
-myobj__refcount__ops_release(if_referenced_t *refcount)
+myobj__referenced__release(if_referenced_t *refcount)
 {
 	struct myobj_internal *	obji;
 	extit_status_t		status;
@@ -86,10 +86,10 @@ myobj__refcount__ops_release(if_referenced_t *refcount)
 
 
 static
-if_referenced_ops_1_0_t	myobj__refcount__ops =
+if_referenced_ops_1_0_t	myobj__referenced_ops =
 {
-	myobj__refcount__ops_add,		/* add */
-	myobj__refcount__ops_release		/* release */
+	myobj__referenced__add,			/* op_add */
+	myobj__referenced__release		/* op_release */
 };
 
 
@@ -108,7 +108,7 @@ alloc_myobj(myobj_type_t type)
 		obji->refcount = EXTIT_REFCOUNT_NONE;
 
 		obji->if_referenced.pub.version = IF_REFERENCED_ABI_1_0;
-		obji->if_referenced.pub.ops = &myobj__refcount__ops;
+		obji->if_referenced.pub.ops = &myobj__referenced_ops;
 
 		obji->if_referenced.myobj = obji;
 	}
