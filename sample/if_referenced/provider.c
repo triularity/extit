@@ -1,5 +1,5 @@
 /*
- * @(#) if_refcount/provider.c
+ * @(#) sample/if_referenced/provider.c
  *
  * This file is in the Public Domain.
  */
@@ -9,7 +9,7 @@
 
 #include <extit/base.h>
 #include <extit/util.h>
-#include <if/refcount_impl.h>
+#include <if/referenced_impl.h>
 
 #include "myobj.h"
 #include "provider.h"
@@ -20,9 +20,9 @@
 
 struct myobj_internal;
 
-struct if_refcount_internal
+struct if_referenced_internal
 {
-	if_refcount_t			pub;		/* The public object */
+	if_referenced_t			pub;		/* The public object */
 	struct myobj_internal *		myobj;
 };
 
@@ -30,58 +30,45 @@ struct myobj_internal
 {
 	myobj_t				pub;		/* The public object */
 	extit_refcount_t		refcount;
-	struct if_refcount_internal	if_refcount;
+	struct if_referenced_internal	if_referenced;
 };
 
 
 static
-if_refcount_t *
-myobj__get_if_refcount(myobj_t *obj)
+if_referenced_t *
+myobj__get_if_referenced(myobj_t *obj)
 {
 	struct myobj_internal *	obji;
 
 
 	obji = (struct myobj_internal *) obj;
 
-	return &obji->if_refcount.pub;
+	return &obji->if_referenced.pub;
 }
 
 
 static
 extit_status_t
-myobj__refcount__ops_add(if_refcount_t *refcount)
+myobj__refcount__ops_add(if_referenced_t *refcount)
 {
 	struct myobj_internal *	obji;
 
 
-	obji = ((struct if_refcount_internal *) refcount)->myobj;
+	obji = ((struct if_referenced_internal *) refcount)->myobj;
 
 	return extit_refcount_add(&obji->refcount);
 }
 
 
 static
-extit_refcount_t
-myobj__refcount__ops_get(if_refcount_t *refcount)
-{
-	struct myobj_internal *	obji;
-
-
-	obji = ((struct if_refcount_internal *) refcount)->myobj;
-
-	return obji->refcount;
-}
-
-
-static
 extit_status_t
-myobj__refcount__ops_release(if_refcount_t *refcount)
+myobj__refcount__ops_release(if_referenced_t *refcount)
 {
 	struct myobj_internal *	obji;
 	extit_status_t		status;
 
 
-	obji = ((struct if_refcount_internal *) refcount)->myobj;
+	obji = ((struct if_referenced_internal *) refcount)->myobj;
 
 	status = extit_refcount_release(&obji->refcount);
 
@@ -99,10 +86,9 @@ myobj__refcount__ops_release(if_refcount_t *refcount)
 
 
 static
-if_refcount_ops_1_0_t	myobj__refcount__ops =
+if_referenced_ops_1_0_t	myobj__refcount__ops =
 {
 	myobj__refcount__ops_add,		/* add */
-	myobj__refcount__ops_get,		/* get */
 	myobj__refcount__ops_release		/* release */
 };
 
@@ -117,14 +103,14 @@ alloc_myobj(myobj_type_t type)
 	if((obji = malloc(sizeof(struct myobj_internal))) != NULL)
 	{
 		obji->pub.type = type;
-		obji->pub.get_if_refcount = myobj__get_if_refcount;
+		obji->pub.get_if_referenced = myobj__get_if_referenced;
 
 		obji->refcount = EXTIT_REFCOUNT_NONE;
 
-		obji->if_refcount.pub.version = IF_REFCOUNT_ABI_1_0;
-		obji->if_refcount.pub.ops = &myobj__refcount__ops;
+		obji->if_referenced.pub.version = IF_REFERENCED_ABI_1_0;
+		obji->if_referenced.pub.ops = &myobj__refcount__ops;
 
-		obji->if_refcount.myobj = obji;
+		obji->if_referenced.myobj = obji;
 	}
 
 	return obji;

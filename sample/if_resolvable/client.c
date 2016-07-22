@@ -1,5 +1,5 @@
 /*
- * @(#) if_resolvable/client.c
+ * @(#) sample/if_resolvable/client.c
  *
  * This file is in the Public Domain.
  */
@@ -13,10 +13,10 @@
  * Select the interface targets we need (before those headers are included)
  */
 #define	IF_CONFIGURABLE_ABI_TARGET	IF_CONFIGURABLE_ABI_1_0
-#define	IF_REFCOUNT_ABI_TARGET		IF_REFCOUNT_ABI_1_0
+#define	IF_REFERENCED_ABI_TARGET	IF_REFERENCED_ABI_1_0
 
 #include <if/configurable.h>
-#include <if/refcount.h>
+#include <if/referenced.h>
 #include <if/resolvable.h>
 
 #include "myobj.h"
@@ -42,7 +42,7 @@ main(int argc, char **argv)
 	if_configurable_t *		configurable;
 	if_configurable_propref_t *	prop_enabled;
 	if_configurable_propref_t *	prop_message;
-	if_refcount_t *			refcount;
+	if_referenced_t *		referenced;
 	myobj_t *			obj;
 
 
@@ -143,16 +143,16 @@ main(int argc, char **argv)
 	 * Done with it
 	 * XXX - Do NULL check in real code!
 	 */
-	refcount = (if_refcount_t *) if_resolvable_get_interface(
+	referenced = (if_referenced_t *) if_resolvable_get_interface(
 		resolvable,
-		IF_REFCOUNT_IID,
-		IF_REFCOUNT_ABI_1_0);
+		IF_REFERENCED_IID,
+		IF_REFERENCED_ABI_1_0);
 
 	/*
 	 * !!! All interfaces/references derived from resolvable should be
 	 * considered invalid [to us] after this call (assuming it succeeds).
 	 */
-	if_refcount_release(refcount);
+	if_referenced_release(referenced);
 
 
 	return 0;

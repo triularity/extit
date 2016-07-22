@@ -1,5 +1,5 @@
 /*
- * @(#) if_refcount/provider.h
+ * @(#) sample/if_referenced/provider.h
  *
  * This file is in the Public Domain.
  */

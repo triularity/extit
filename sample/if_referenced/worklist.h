@@ -1,5 +1,5 @@
 /*
- * @(#) if_refcount/worklist.h
+ * @(#) sample/if_referenced/worklist.h
  *
  * This file is in the Public Domain.
  */

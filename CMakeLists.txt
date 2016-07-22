@@ -182,14 +182,13 @@ set(IF_MESSAGING_SOURCE_FILES
 	src/if/messaging/send.c
 	src/if/messaging/unbind.c)
 
-set(IF_REFCOUNT_HEADER_FILES 
-	src/include/if/refcount.h
-	src/include/if/refcount_impl.h)
+set(IF_REFERENCED_HEADER_FILES 
+	src/include/if/referenced.h
+	src/include/if/referenced_impl.h)
 
-set(IF_REFCOUNT_SOURCE_FILES
-	src/if/refcount/add.c
-	src/if/refcount/get.c
-	src/if/refcount/release.c)
+set(IF_REFERENCED_SOURCE_FILES
+	src/if/referenced/add.c
+	src/if/referenced/release.c)
 
 set(IF_RESOLVABLE_HEADER_FILES 
 	src/include/if/resolvable.h
@@ -614,28 +613,28 @@ set_target_properties(
 
 
 #
-# [lib]if_refcount
+# [lib]if_referenced
 #
 add_library(
-	if_refcount
-		${IF_REFCOUNT_SOURCE_FILES}
+	if_referenced
+		${IF_REFERENCED_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
-		${IF_REFCOUNT_HEADER_FILES}
+		${IF_REFERENCED_HEADER_FILES}
 		${EXTIT_UTIL_HEADER_FILES}
 		${IV_HEADER_FILES}
 		${IV_UTIL_HEADER_FILES})
 
 set_target_properties(
-	if_refcount PROPERTIES
+	if_referenced PROPERTIES
 		POSITION_INDEPENDENT_CODE ON)
 
 target_link_libraries(
-	if_refcount
+	if_referenced
 		extit_util)
 
 if(EXTIT_PARANOID)
 	target_link_libraries(
-		if_refcount
+		if_referenced
 			iv_util)
 endif()
 
@@ -761,8 +760,8 @@ if(DEFINED LIBNAME_POSTFIX)
 			OUTPUT_NAME "if_messaging_stdimpl${LIBNAME_POSTFIX}")
 
 	set_target_properties(
-		if_refcount PROPERTIES
-			OUTPUT_NAME "if_refcount${LIBNAME_POSTFIX}")
+		if_referenced PROPERTIES
+			OUTPUT_NAME "if_referenced${LIBNAME_POSTFIX}")
 
 	set_target_properties(
 		if_resolvable PROPERTIES
@@ -796,7 +795,7 @@ install(
 		if_disposable
 		if_messaging
 		if_messaging_stdimpl
-		if_refcount
+		if_referenced
 		if_resolvable
 		extit_container
 		extit_container_stdimpl
@@ -825,7 +824,7 @@ install(
 		${IF_DISPOSABLE_HEADER_FILES}
 		${IF_MESSAGING_HEADER_FILES}
 		${IF_MESSAGING_STDIMPL_HEADER_FILES}
-		${IF_REFCOUNT_HEADER_FILES}
+		${IF_REFERENCED_HEADER_FILES}
 		${IF_RESOLVABLE_HEADER_FILES}
 	DESTINATION ${CMAKE_INSTALL_PREFIX}/include/if)
 
@@ -942,22 +941,22 @@ if(EXTIT_COMPILE_SAMPLES)
 	# Refcount Interface
 	#
 	add_executable(
-		sample_if_refcount
-			sample/if_refcount/client.c
-			sample/if_refcount/myobj.h
-			sample/if_refcount/provider.c
-			sample/if_refcount/provider.h
-			sample/if_refcount/worklist.c
-			sample/if_refcount/worklist.h
+		sample_if_referenced
+			sample/if_referenced/client.c
+			sample/if_referenced/myobj.h
+			sample/if_referenced/provider.c
+			sample/if_referenced/provider.h
+			sample/if_referenced/worklist.c
+			sample/if_referenced/worklist.h
 			${EXTIT_HEADER_FILES}
-			${IF_REFCOUNT_HEADER_FILES}
+			${IF_REFERENCED_HEADER_FILES}
 			${EXTIT_UTIL_HEADER_FILES}
 			${IV_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
 
 	target_link_libraries(
-		sample_if_refcount
-			if_refcount)
+		sample_if_referenced
+			if_referenced)
 
 
 	#
@@ -971,8 +970,8 @@ if(EXTIT_COMPILE_SAMPLES)
 			sample/if_resolvable/myobj_client.c
 			sample/if_resolvable/myobj_priv.h
 			${EXTIT_HEADER_FILES}
-			${IF_REFCOUNT_HEADER_FILES}
-			${IF_REFCOUNT_IMPL_HEADER_FILES}
+			${IF_REFERENCED_HEADER_FILES}
+			${IF_REFERENCED_IMPL_HEADER_FILES}
 			${IF_CONFIGURABLE_HEADER_FILES}
 			${IF_CONFIGURABLE_IMPL_HEADER_FILES}
 			${IF_CONFIGURABLE_STDIMPL_HEADER_FILES}
@@ -985,7 +984,7 @@ if(EXTIT_COMPILE_SAMPLES)
 	target_link_libraries(
 		sample_if_resolvable
 			extit_util
-			if_refcount
+			if_referenced
 			if_resolvable
 			if_configurable
 			if_configurable_stdimpl

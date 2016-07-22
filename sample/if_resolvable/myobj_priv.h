@@ -1,5 +1,5 @@
 /*
- * @(#) if_resolvable/myobj_priv.h
+ * @(#) sample/if_resolvable/myobj_priv.h
  *
  * This file is in the Public Domain.
  */
@@ -10,7 +10,7 @@
 #include <extit/base.h>
 #include <extit/util.h>
 #include <if/configurable_impl.h>
-#include <if/refcount_impl.h>
+#include <if/referenced_impl.h>
 #include <if/resolvable_impl.h>
 
 #include "myobj.h"
@@ -26,7 +26,7 @@ struct _myobj
 
 	void			(EXTIT_DECL *op_send)(myobj_t *obj);
 
-	if_refcount_t		refcount;
+	if_referenced_t		referenced;
 	if_configurable_t	configurable;
 };
 

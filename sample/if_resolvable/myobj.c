@@ -1,5 +1,5 @@
 /*
- * @(#) if_resolvable/myobj.c
+ * @(#) sample/if_resolvable/myobj.c
  *
  * This file is in the Public Domain.
  */
@@ -16,8 +16,8 @@
 #include <if/configurable.h>
 #include <if/configurable_impl.h>
 #include <if/configurable_stdimpl.h>
-#include <if/refcount.h>
-#include <if/refcount_impl.h>
+#include <if/referenced.h>
+#include <if/referenced_impl.h>
 #include <if/resolvable.h>
 #include <if/resolvable_impl.h>
 
@@ -113,12 +113,12 @@ my_resolv_get_interface
 			- offsetof(myobj_t, resolvable);
 	}
 
-	if((strcmp(id, IF_REFCOUNT_IID) == 0)
-	 && iv_matches(IF_REFCOUNT_ABI_1_0, version))
+	if((strcmp(id, IF_REFERENCED_IID) == 0)
+	 && iv_matches(IF_REFERENCED_ABI_1_0, version))
 	{
 		return ((char *) resolvable)
 			- offsetof(myobj_t, resolvable)
-			+ offsetof(myobj_t, refcount);
+			+ offsetof(myobj_t, referenced);
 	}
 
 	if((strcmp(id, IF_CONFIGURABLE_IID) == 0)
@@ -127,14 +127,6 @@ my_resolv_get_interface
 		return ((char *) resolvable)
 			- offsetof(myobj_t, resolvable)
 			+ offsetof(myobj_t, configurable);
-	}
-
-	if((strcmp(id, IF_REFCOUNT_IID) == 0)
-	 && iv_matches(IF_REFCOUNT_ABI_1_0, version))
-	{
-		return ((char *) resolvable)
-			- offsetof(myobj_t, resolvable)
-			+ offsetof(myobj_t, refcount);
 	}
 
 	return NULL;
@@ -157,22 +149,16 @@ my_resolv_query_interface
 		return MYOBJ_ABI_1_0;
 	}
 
-	if((strcmp(id, IF_REFCOUNT_IID) == 0)
-	 && iv_matches(IF_REFCOUNT_ABI_1_0, base_version))
+	if((strcmp(id, IF_REFERENCED_IID) == 0)
+	 && iv_matches(IF_REFERENCED_ABI_1_0, base_version))
 	{
-		return IF_REFCOUNT_ABI_1_0;
+		return IF_REFERENCED_ABI_1_0;
 	}
 
 	if((strcmp(id, IF_CONFIGURABLE_IID) == 0)
 	 && iv_matches(IF_CONFIGURABLE_ABI_1_0, base_version))
 	{
 		return IF_CONFIGURABLE_ABI_1_0;
-	}
-
-	if((strcmp(id, IF_REFCOUNT_IID) == 0)
-	 && iv_matches(IF_REFCOUNT_ABI_1_0, base_version))
-	{
-		return IF_REFCOUNT_ABI_1_0;
 	}
 
 	return IV_VERSION_NONE;
@@ -188,47 +174,35 @@ if_resolvable_ops_1_0_t		my_resolv_ops =
 
 
 /**
- ** Refcount
+ ** Referenced
  **/
 
 static
 extit_status_t
 EXTIT_DECL
-my_refcount_add(if_refcount_t *refcount)
+my_referenced_add(if_referenced_t *referenced)
 {
 	myobj_t *	obj;
 
 
-	obj = (myobj_t *) (((char *) refcount) - offsetof(myobj_t, refcount));
+	obj = (myobj_t *)
+		(((char *) referenced) - offsetof(myobj_t, referenced));
 
 	return extit_refcount_add(&obj->numrefs);
 }
 
 
 static
-extit_refcount_t
-EXTIT_DECL
-my_refcount_get(if_refcount_t *refcount)
-{
-	myobj_t *	obj;
-
-
-	obj = (myobj_t *) (((char *) refcount) - offsetof(myobj_t, refcount));
-
-	return obj->numrefs;
-}
-
-
-static
 extit_status_t
 EXTIT_DECL
-my_refcount_release(if_refcount_t *refcount)
+my_referenced_release(if_referenced_t *referenced)
 {
 	myobj_t *	obj;
 	extit_status_t	status;
 
 
-	obj = (myobj_t *) (((char *) refcount) - offsetof(myobj_t, refcount));
+	obj = (myobj_t *)
+		(((char *) referenced) - offsetof(myobj_t, referenced));
 
 	status = extit_refcount_release(&obj->numrefs);
 
@@ -240,11 +214,10 @@ my_refcount_release(if_refcount_t *refcount)
 
 
 static
-if_refcount_ops_1_0_t		my_refcount_ops =
+if_referenced_ops_1_0_t		my_referenced_ops =
 {
-	my_refcount_add,		/* op_add */
-	my_refcount_get,		/* op_get */
-	my_refcount_release		/* op_release */
+	my_referenced_add,		/* op_add */
+	my_referenced_release		/* op_release */
 };
 
 
@@ -297,8 +270,8 @@ myobj_secret_create(void)
 	obj->configurable.ops = &if_configurable_stdimpl_ops_1_0;
 	obj->configurable.descriptor = &conf_descriptor;
 
-	obj->refcount.version = IF_REFCOUNT_ABI_1_0;
-	obj->refcount.ops = &my_refcount_ops;
+	obj->referenced.version = IF_REFERENCED_ABI_1_0;
+	obj->referenced.ops = &my_referenced_ops;
 
 	obj->numrefs = EXTIT_REFCOUNT_NONE;
 	obj->enabled = EXTIT_TRUE;

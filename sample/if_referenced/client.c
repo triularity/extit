@@ -1,5 +1,5 @@
 /*
- * @(#) if_refcount/client.c
+ * @(#) sample/if_referenced/client.c
  *
  * This file is in the Public Domain.
  */
@@ -8,7 +8,7 @@
 #include <stdio.h>
 
 #include <iv/base.h>
-#include <if/refcount.h>
+#include <if/referenced.h>
 
 #include "myobj.h"
 #include "worklist.h"
@@ -20,7 +20,7 @@ main(int argc, char **argv)
 {
 	struct worklist *	list;
 	myobj_t *		obj;
-	if_refcount_t *	if_rc;
+	if_referenced_t *	if_refed;
 
 
 	list = worklist_create();
@@ -32,7 +32,7 @@ main(int argc, char **argv)
 		/*
 		 * Ideally this would be done via the resolvable interface
 		 */
-		if_rc = obj->get_if_refcount(obj);
+		if_refed = obj->get_if_referenced(obj);
 
 		printf("Done with our ref\n");
 
@@ -40,7 +40,7 @@ main(int argc, char **argv)
 		 * Release our reference
 		 * The worklist may or may not have a reference
 		 */
-		if(if_refcount_release(if_rc) != EXTIT_STATUS_OK)
+		if(if_referenced_release(if_refed) != EXTIT_STATUS_OK)
 		{
 			/* Log or handle the error ... */
 		}
@@ -54,4 +54,3 @@ main(int argc, char **argv)
 
 	return 0;
 }
-
