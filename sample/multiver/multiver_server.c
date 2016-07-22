@@ -82,14 +82,14 @@ main(int argc, char **argv)
 
 	iv_repository_set_flags(ir, EXTIT_FLAG_LOG_DEBUG);
 
-	if(iv_repository_set(ir, PERSISTENCE_INTERFACE_ID,
-	 PERSISTENCE_INTERFACE_TARGET, &persistence_interface, NULL)
+	if(iv_repository_set(ir, PERSISTENCE_IID,
+	 PERSISTENCE_ABI_TARGET, &persistence_interface, NULL)
 	 != IV_REPOSITORY_STATUS_OK)
 	{
 		fprintf(stderr, "Unable to register interface %s@%u.%u\n",
-			PERSISTENCE_INTERFACE_ID,
-			IV_VERSION_MAJOR(PERSISTENCE_INTERFACE_TARGET),
-			IV_VERSION_MINOR(PERSISTENCE_INTERFACE_TARGET));
+			PERSISTENCE_IID,
+			IV_VERSION_MAJOR(PERSISTENCE_ABI_TARGET),
+			IV_VERSION_MINOR(PERSISTENCE_ABI_TARGET));
 
 		return 2;
 	}

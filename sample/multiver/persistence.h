@@ -16,16 +16,15 @@
 extern "C" {
 #endif
 
-#define	PERSISTENCE_INTERFACE_ID		"persistence"
-#define	PERSISTENCE_INTERFACE_VERSION		IV_VERSION(1,2)
+#define	PERSISTENCE_IID			"persistence"
 
-#define	PERSISTENCE_INTERFACE_VERSION_1_0	IV_VERSION(1,0)
-#define	PERSISTENCE_INTERFACE_VERSION_1_1	IV_VERSION(1,1)
-#define	PERSISTENCE_INTERFACE_VERSION_1_2	IV_VERSION(1,2)
+#define	PERSISTENCE_ABI_1_0		IV_VERSION(1,0)
+#define	PERSISTENCE_ABI_1_1		IV_VERSION(1,1)
+#define	PERSISTENCE_ABI_1_2		IV_VERSION(1,2)
 
 
-#ifndef	PERSISTENCE_INTERFACE_TARGET
-#define	PERSISTENCE_INTERFACE_TARGET		PERSISTENCE_INTERFACE_VERSION
+#ifndef	PERSISTENCE_ABI_TARGET
+#define	PERSISTENCE_ABI_TARGET		PERSISTENCE_ABI_1_2
 #endif
 
 typedef enum
@@ -58,7 +57,7 @@ typedef struct _persistence
 					char *data,
 					unsigned int maxlen);
 
-#if	PERSISTENCE_INTERFACE_TARGET >= PERSISTENCE_INTERFACE_VERSION_1_1
+#if	PERSISTENCE_ABI_TARGET >= PERSISTENCE_ABI_1_1
 	/* v1.1 */
 	persistence_status_t	(EXTIT_DECL *set_int)(
 					persistence_ctx_t ctx,
@@ -80,7 +79,7 @@ typedef struct _persistence
 					const char *name,
 					double defValue);
 
-#if	PERSISTENCE_INTERFACE_TARGET >= PERSISTENCE_INTERFACE_VERSION_1_2
+#if	PERSISTENCE_ABI_TARGET >= PERSISTENCE_ABI_1_2
 	/* v1.2 */
 	persistence_status_t	(EXTIT_DECL *set_binary)(
 					persistence_ctx_t ctx,
@@ -93,8 +92,8 @@ typedef struct _persistence
 					const char *name,
 					char *data,
 					unsigned int maxlen);
-#endif	/* PERSISTENCE_INTERFACE_TARGET >= PERSISTENCE_INTERFACE_VERSION_1_2 */
-#endif	/* PERSISTENCE_INTERFACE_TARGET >= PERSISTENCE_INTERFACE_VERSION_1_1 */
+#endif	/* PERSISTENCE_ABI_TARGET >= PERSISTENCE_ABI_1_2 */
+#endif	/* PERSISTENCE_ABI_TARGET >= PERSISTENCE_ABI_1_1 */
 } persistence_t;
 
 #ifdef	__cplusplus

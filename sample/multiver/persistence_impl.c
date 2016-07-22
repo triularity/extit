@@ -172,7 +172,7 @@ get_string(persistence_ctx_t ctx, const char *name, char *buf, unsigned int maxl
 }
 
 
-#if	PERSISTENCE_INTERFACE_TARGET >= PERSISTENCE_INTERFACE_VERSION_1_1
+#if	PERSISTENCE_ABI_TARGET >= PERSISTENCE_ABI_1_1
 static
 persistence_status_t
 EXTIT_DECL
@@ -249,7 +249,7 @@ get_double(persistence_ctx_t ctx, const char *name, double defValue)
 }
 
 
-#if	PERSISTENCE_INTERFACE_TARGET >= PERSISTENCE_INTERFACE_VERSION_1_2
+#if	PERSISTENCE_ABI_TARGET >= PERSISTENCE_ABI_1_2
 static
 persistence_status_t
 EXTIT_DECL
@@ -308,8 +308,8 @@ get_binary(persistence_ctx_t ctx, const char *name, char *buf, unsigned int maxl
 	return (int) len;
 }
 
-#endif	/* PERSISTENCE_INTERFACE_TARGET >= PERSISTENCE_INTERFACE_VERSION_1_2 */
-#endif	/* PERSISTENCE_INTERFACE_TARGET >= PERSISTENCE_INTERFACE_VERSION_1_1 */
+#endif	/* PERSISTENCE_ABI_TARGET >= PERSISTENCE_ABI_1_2 */
+#endif	/* PERSISTENCE_ABI_TARGET >= PERSISTENCE_ABI_1_1 */
 
 
 /*
@@ -323,17 +323,17 @@ struct _persistence persistence_interface =
 	close_ctx,
 	set_string,
 	get_string,
-#if	PERSISTENCE_INTERFACE_TARGET >= PERSISTENCE_INTERFACE_VERSION_1_1
+#if	PERSISTENCE_ABI_TARGET >= PERSISTENCE_ABI_1_1
 	/* v1.1 */
 	set_int,
 	set_double,
 	get_int,
 	get_double,
-#if	PERSISTENCE_INTERFACE_TARGET >= PERSISTENCE_INTERFACE_VERSION_1_2
+#if	PERSISTENCE_ABI_TARGET >= PERSISTENCE_ABI_1_2
 	/* v1.2 */
 	set_binary,
 	get_binary
-#endif	/* PERSISTENCE_INTERFACE_TARGET >= PERSISTENCE_INTERFACE_VERSION_1_2 */
-#endif	/* PERSISTENCE_INTERFACE_TARGET >= PERSISTENCE_INTERFACE_VERSION_1_1 */
+#endif	/* PERSISTENCE_ABI_TARGET >= PERSISTENCE_ABI_1_2 */
+#endif	/* PERSISTENCE_ABI_TARGET >= PERSISTENCE_ABI_1_1 */
 };
 
