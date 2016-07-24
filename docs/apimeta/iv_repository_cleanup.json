@@ -1,0 +1,48 @@
+{
+	summary:
+		'Release any internal memory that is no longer needed.',
+	includes:
+	[
+		'iv/repository.h'
+	],
+	synopsis:
+	[
+		{
+			type:	'function',
+			name:	'iv_repository_cleanup',
+			parameters:
+			[
+				{
+					type:	[ 'iv_repository_t', '*' ],
+					name:	'ivr',
+					description: 'The repository.'
+				}
+			]
+		}
+	],
+	description:
+	[
+		'After deleting an item from the repository, internal structures for common resources may still be allocated, but empty. This will force such memory to be release immediately.'
+	],
+	see:
+	[
+		{
+			type:	'function',
+			name:	'iv_repository_create',
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'iv_repository_remove',
+			parameters:
+			[
+				[ 'iv_repository_t', '*' ],
+				[ 'const', 'char', '*' ],
+				'iv_version_t',
+				[ 'void', '**' ]
+			],
+			section:	'3'
+		}
+	],
+	since:	'1.0'
+}

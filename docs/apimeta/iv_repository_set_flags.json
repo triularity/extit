@@ -1,0 +1,54 @@
+{
+	summary:	'Set the flags for a repository.',
+	includes:
+	[
+		'iv/repository.h'
+	],
+	synopsis:
+	[
+		{
+			type:	'function',
+			name:	'iv_repository_set_flags',
+			parameters:
+			[
+				{
+					type:	[ 'iv_repository_t', '*' ],
+					name:	'ivr',
+					description:	'The repository.'
+				},
+				{
+					type:	'unsigned int',
+					name:	'flags',
+					description:
+					[
+						'The flags (',
+						{
+							type:	'literal',
+							value:	'IV_REPOSITORY_FLAG_'
+						},
+						'*).'
+					]
+				}
+		
+			]
+		}
+	],
+	see:
+	[
+		{
+			type:	'function',
+			name:	'iv_repository_create',
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'iv_repository_get_flags',
+			parameters:
+			[
+				[ 'iv_repository_t', '*' ]
+			],
+			section:	'3'
+		}
+	],
+	since:	'1.0'
+}

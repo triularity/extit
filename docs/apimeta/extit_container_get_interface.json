@@ -1,0 +1,86 @@
+{
+	summary:
+		'Get an interface from a container interface.',
+	includes:
+	[
+		'extit/base.h',
+		'extit/container.h'
+	],
+	synopsis:
+	[
+		{
+			type:	'function',
+			name:	'extit_container_get_interface',
+			parameters:
+			[
+				{
+					type:	[ 'const', 'extit_container_t', '*' ],
+					name:	'container',
+					description: 'The container interface.'
+				},
+				{
+					type:	[ 'const', 'char', '*' ],
+					name:	'iid',
+					description: 'An interface ID.'
+				},
+				{
+					type:	[ 'iv_version_t' ],
+					name:	'version',
+					description: 'An interface version.'
+				}
+			],
+			returns:
+			{
+				type:	[ 'void', '*' ],
+				description:
+				[
+					'An interface pointer, or ',
+					{
+						type: 'constant',
+						value: 'NULL'
+					},
+					' if a matching interface wasn't found.'
+				]
+			}
+		}
+	],
+	description:
+	[
+		'Get an interface from a container interface.',
+	],
+	see:
+	[
+		{
+			type:	'function',
+			name:	'extit_container_get_function',
+			parameters:
+			[
+				[ 'const', 'extit_container_t', '*' ],
+				[ 'const', 'char', '*' ]
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'extit_container_query_interface',
+			parameters:
+			[
+				[ 'const', 'extit_container_t', '*' ],
+				[ 'const', 'char', '*' ],
+				'iv_version_t'
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'extit_container_get_symbol',
+			parameters:
+			[
+				[ 'const', 'extit_container_t', '*' ],
+				[ 'const', 'char', '*' ]
+			],
+			section:	'3'
+		}
+	],
+	since:	'1.0'
+}

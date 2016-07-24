@@ -1,0 +1,107 @@
+{
+	summary:	'Remove an entry from a repository.',
+	includes:
+	[
+		'iv/base.h',
+		'iv/repository.h'
+	],
+	synopsis:
+	[
+		{
+			type:	'function',
+			name:	'iv_repository_remove',
+			parameters:
+			[
+				{
+					type:	[ 'iv_repository_t', '*' ],
+					name:	'ivr',
+					description: 'The repository.'
+				},
+				{
+					type:	[ 'const', 'char', '*' ],
+					name:	'id',
+					description: 'An interface identifier.'
+				},
+				{
+					type:	'iv_version_t',
+					name:	'version',
+					description: 'An interface version.'
+				},
+				{
+					type:	[ 'void', '**' ],
+					name:	'old_valuep',
+					description:
+					[
+						'An optional pointer to store the previous value in, or ',
+						{
+							type:	'constant',
+							value:	'NULL'
+						},
+						' to ignore.'
+					]
+				}
+			],
+			returns:
+			{
+				type:	'iv_repository_status_t',
+				description:
+				[
+					'A status code ',
+					{
+						type:	'literal',
+						value:	'IV_REPOSITORY_STATUS_'
+					},
+					'*).'
+				]
+			}
+		}
+	],
+	description:
+	[
+		'Remove an interface entry from a respository, optionally returning the previously set value.'
+	],
+	see:
+	[
+		{
+			type:	'function',
+			name:	'iv_repository_create',
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'iv_repository_get',
+			parameters:
+			[
+				[ 'const', 'iv_repository_t', '*' ],
+				[ 'const', 'char', '*' ],
+				'iv_version_t'
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'iv_repository_query',
+			parameters:
+			[
+				[ 'iv_repository_t', '*' ],
+				[ 'const', 'char', '*' ],
+				'iv_version_t'
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'iv_repository_set',
+			parameters:
+			[
+				[ 'iv_repository_t', '*' ],
+				[ 'const', 'char', '*' ],
+				'iv_version_t',
+				[ 'void', '*' ],
+				[ 'void', '**' ]
+			],
+			section:	'3'
+		}
+	],
+	since:	'1.0'
+}
