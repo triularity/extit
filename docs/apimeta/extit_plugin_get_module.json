@@ -1,0 +1,97 @@
+{
+	summary:
+		'Get a plugin instance's parent module.',
+	includes:
+	[
+		'extit/base.h',
+		'extit/pmodule.h'
+	],
+	synopsis:
+	[
+		{
+			type:	'function',
+			name:	'extit_plugin_get_module',
+			parameters:
+			[
+				{
+					type:	[ 'extit_plugin_t', '*' ],
+					name:	'plugin',
+					description: 'The plugin.'
+				}
+			],
+			returns:
+			{
+				type:	[ 'extit_module_t', '*' ],
+				description:
+					'The plugin module.'
+			}
+		}
+	],
+	description:
+	[
+		'Get a plugin instance's parent module.'
+	],
+	see:
+	[
+		{
+			type:	'function',
+			name:	'extit_plugin_destroy',
+			parameters:
+			[
+				[ 'extit_plugin_t', '*' ]
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'extit_plugin_get_context',
+			parameters:
+			[
+				[ 'extit_plugin_t', '*' ]
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'extit_plugin_get_flags',
+			parameters:
+			[
+				[ 'extit_plugin_t', '*' ]
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'extit_plugin_get_interface',
+			parameters:
+			[
+				[ 'extit_plugin_t', '*' ],
+				[ 'const', 'char', '*' ],
+				'iv_version_t'
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'extit_plugin_query_interface',
+			parameters:
+			[
+				[ 'extit_plugin_t', '*' ],
+				[ 'const', 'char', '*' ],
+				'iv_version_t'
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'extit_plugin_set_flags',
+			parameters:
+			[
+				[ 'extit_plugin_t', '*' ],
+				'unsigned int'
+			],
+			section:	'3'
+		}
+	],
+	since:	'1.0'
+}

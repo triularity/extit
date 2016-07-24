@@ -1,23 +1,23 @@
 {
 	summary:
-		'Query an interface version from a container interface.',
+		'Query an interface version from a plugin instance.',
 	includes:
 	[
 		'iv/base.h',
 		'extit/base.h',
-		'extit/container.h'
+		'extit/pmodule.h'
 	],
 	synopsis:
 	[
 		{
 			type:	'function',
-			name:	'extit_container_query_interface',
+			name:	'extit_plugin_query_interface',
 			parameters:
 			[
 				{
-					type:	[ 'const', 'extit_container_t', '*' ],
-					name:	'container',
-					description: 'The container interface.'
+					type:	[ 'extit_plugin_t', '*' ],
+					name:	'plugin',
+					description: 'The plugin.'
 				},
 				{
 					type:	[ 'const', 'char', '*' ],
@@ -47,26 +47,43 @@
 	],
 	description:
 	[
-		'Query an interface version from a container interface.'
+		'Query an interface version from a plugin instance.'
 	],
 	see:
 	[
 		{
 			type:	'function',
-			name:	'extit_container_get_function',
+			name:	'extit_plugin_destroy',
 			parameters:
 			[
-				[ 'const', 'extit_container_t', '*' ],
-				[ 'const', 'char', '*' ]
+				[ 'extit_plugin_t', '*' ]
 			],
 			section:	'3'
 		},
 		{
 			type:	'function',
-			name:	'extit_container_get_interface',
+			name:	'extit_plugin_get_context',
 			parameters:
 			[
-				[ 'const', 'extit_container_t', '*' ],
+				[ 'extit_plugin_t', '*' ]
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'extit_plugin_get_flags',
+			parameters:
+			[
+				[ 'extit_plugin_t', '*' ]
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'extit_plugin_get_interface',
+			parameters:
+			[
+				[ 'extit_plugin_t', '*' ],
 				[ 'const', 'char', '*' ],
 				'iv_version_t'
 			],
@@ -74,11 +91,20 @@
 		},
 		{
 			type:	'function',
-			name:	'extit_container_get_symbol',
+			name:	'extit_plugin_get_module',
 			parameters:
 			[
-				[ 'const', 'extit_container_t', '*' ],
-				[ 'const', 'char', '*' ]
+				[ 'extit_plugin_t', '*' ]
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'extit_plugin_set_flags',
+			parameters:
+			[
+				[ 'extit_plugin_t', '*' ],
+				'unsigned int'
 			],
 			section:	'3'
 		}

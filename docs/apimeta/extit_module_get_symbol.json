@@ -1,0 +1,212 @@
+{
+	summary:
+		'Resolve a symbol address in a plugin module.',
+	includes:
+	[
+		'extit/base.h',
+		'extit/pmodule.h'
+	],
+	synopsis:
+	[
+		{
+			type:	'function',
+			name:	'extit_module_get_symbol',
+			parameters:
+			[
+				{
+					type:	[ 'extit_module_t', '*' ],
+					name:	'module',
+					description: 'The plugin module.'
+				},
+				{
+					type:	[ 'const', 'char', '*' ]
+					name:	'name',
+					description: 'The symbol name.'
+				}
+			],
+			returns:
+			{
+				type:	[ 'void', '*' ],
+				description:
+				[
+					'A address pointer, or ',
+					{
+						type: 'constant',
+						value: 'NULL'
+					},
+					' if the symbol wasn't found.'
+				]
+			}
+		}
+	],
+	description:
+	[
+		'Resolve a symbol address in a plugin module.'
+	],
+	see:
+	[
+		{
+			type:	'function',
+			name:	'extit_module_bind',
+			parameters:
+			[
+				[ 'extit_container_t', '*' ],
+				[ 'const', 'void', '*' ],
+				'unsigned int',
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'extit_module_create_plugin',
+			parameters:
+			[
+				[ 'extit_module_t', '*' ]
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'extit_module_get_abi_version',
+			parameters:
+			[
+				[ 'extit_module_t', '*' ]
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'extit_module_get_effective_abi_version',
+			parameters:
+			[
+				[ 'extit_module_t', '*' ]
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'extit_module_get_flags',
+			parameters:
+			[
+				[ 'extit_module_t', '*' ]
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'extit_module_get_function',
+			parameters:
+			[
+				[ 'extit_module_t', '*' ],
+				[ 'const', 'char', '*' ]
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'extit_module_get_id',
+			parameters:
+			[
+				[ 'extit_module_t', '*' ]
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'extit_module_get_id_version',
+			parameters:
+			[
+				[ 'extit_module_t', '*' ]
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'extit_module_get_name',
+			parameters:
+			[
+				[ 'extit_module_t', '*' ]
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'extit_module_get_version',
+			parameters:
+			[
+				[ 'extit_module_t', '*' ]
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'extit_module_load',
+			parameters:
+			[
+				[ 'extit_container_t', '*' ],
+				[ 'const', 'char', '*' ],
+				'unsigned int'
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'extit_module_load_wc',
+			parameters:
+			[
+				[ 'extit_container_t', '*' ],
+				[ 'const', 'wchar_t', '*' ],
+				[ 'unsigned int' ]
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'extit_module_release',
+			parameters:
+			[
+				[ 'extit_module_t', '*' ]
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'extit_module_scan',
+			parameters:
+			[
+				[ 'extit_container_t', '*' ],
+				[ 'const', 'char', '*' ],
+				'extit_module_scan_callback_t',
+				[ 'void', '*' ],
+				'extit_module_scan_fnfilter_t',
+				'unsigned int'
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'extit_module_scan_wc',
+			parameters:
+			[
+				[ 'extit_container_t', '*' ],
+				[ 'const', 'wchar_t', '*' ],
+				'extit_module_scan_callback_t',
+				[ 'void', '*' ],
+				'extit_module_scan_fnfilter_wc_t',
+				'unsigned int'
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'extit_module_set_flags',
+			parameters:
+			[
+				[ 'extit_module_t', '*' ],
+				'unsigned int'
+			],
+			section:	'3'
+		}
+	],
+	since:	'1.0'
+}

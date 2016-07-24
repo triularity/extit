@@ -1,0 +1,102 @@
+{
+	summary:
+		'Get a plugin instance's context value.',
+	includes:
+	[
+		'extit/base.h',
+		'extit/pmodule.h'
+	],
+	synopsis:
+	[
+		{
+			type:	'function',
+			name:	'extit_plugin_get_context',
+			parameters:
+			[
+				{
+					type:	[ 'extit_plugin_t', '*' ],
+					name:	'plugin',
+					description: 'The plugin.'
+				}
+			],
+			returns:
+			{
+				type:	[ 'void', '*' ],
+				description:
+					'The context value.'
+			}
+		}
+	],
+	description:
+	[
+		'Get a plugin instance's context value. The context value is what is returned by the module's ',
+		{
+			type:	'literal',
+			value:	'op_create'
+		},
+		' implementation function.'
+	],
+	see:
+	[
+		{
+			type:	'function',
+			name:	'extit_plugin_destroy',
+			parameters:
+			[
+				[ 'extit_plugin_t', '*' ]
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'extit_plugin_get_flags',
+			parameters:
+			[
+				[ 'extit_plugin_t', '*' ]
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'extit_plugin_get_interface',
+			parameters:
+			[
+				[ 'extit_plugin_t', '*' ],
+				[ 'const', 'char', '*' ],
+				'iv_version_t'
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'extit_plugin_get_module',
+			parameters:
+			[
+				[ 'extit_plugin_t', '*' ]
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'extit_plugin_query_interface',
+			parameters:
+			[
+				[ 'extit_plugin_t', '*' ],
+				[ 'const', 'char', '*' ],
+				'iv_version_t'
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
+			name:	'extit_plugin_set_flags',
+			parameters:
+			[
+				[ 'extit_plugin_t', '*' ],
+				'unsigned int'
+			],
+			section:	'3'
+		}
+	],
+	since:	'1.0'
+}
