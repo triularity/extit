@@ -3,6 +3,7 @@
 		'Create a module from a loadable library file.',
 	includes:
 	[
+		'wchar.h',
 		'extit/base.h',
 		'extit/pmodule.h'
 	],
@@ -50,11 +51,59 @@
 					' if the load failed.'
 				]
 			}
+		},
+		{
+			type:	'function',
+			name:	'extit_module_load_wc',
+			parameters:
+			[
+				{
+					type:	[ 'extit_container_t', '*' ],
+					name:	'container',
+					description: 'The container interface.'
+				},
+				{
+					type:	[ 'const', 'wchar_t', '*' ],
+					name:	'path',
+					description: 'The loadable library file path.'
+				},
+				{
+					type:	'unsigned int',
+					name:	'flags',
+					description:
+					[
+						'The module flags (',
+						{
+							type:	'literal',
+							value:	'EXTIT_FLAG_'
+						},
+						'*).'
+					]
+				}
+			],
+			returns:
+			{
+				type:	[ 'extit_module_t', '*' ],
+				description:
+				[
+					'A module pointer, or ',
+					{
+						type: 'constant',
+						value: 'NULL'
+					},
+					' if the load failed.'
+				]
+			}
 		}
 	],
 	description:
 	[
-		'Create a module from a loadable library file.'
+		'Create a module from a loadable library file. The ',
+		{
+			type:	'function',
+			name:	'extit_module_load_wc'
+		},
+		' function is only available on platforms that support wide character filenames.'
 	],
 	see:
 	[
@@ -158,17 +207,6 @@
 			parameters:
 			[
 				[ 'extit_module_t', '*' ]
-			],
-			section:	'3'
-		},
-		{
-			type:	'function',
-			name:	'extit_module_load_wc',
-			parameters:
-			[
-				[ 'extit_container_t', '*' ],
-				[ 'const', 'wchar_t', '*' ],
-				[ 'unsigned int' ]
 			],
 			section:	'3'
 		},
