@@ -28,21 +28,21 @@ typedef struct _extit_container_ops_1_0
 	/*
 	 * Get a raw named symbol
 	 */
-	void *			(EXTIT_DECL *get_symbol)(
+	void *			(EXTIT_DECL *op_get_symbol)(
 					const extit_container_t *container,
 					const char *name);
 
 	/*
 	 * Get a raw named function
 	 */
-	extit_func_t		(EXTIT_DECL *get_function)(
+	extit_func_t		(EXTIT_DECL *op_get_function)(
 					const extit_container_t *container,
 					const char *name);
 
 	/*
 	 * Get a named interface object by version
 	 */
-	void *			(EXTIT_DECL *get_interface)(
+	void *			(EXTIT_DECL *op_get_interface)(
 					const extit_container_t *container,
 					const char *name,
 					iv_version_t version);
@@ -50,7 +50,7 @@ typedef struct _extit_container_ops_1_0
 	/*
 	 * Query the supported version of an interface
 	 */
-	iv_version_t		(EXTIT_DECL *query_interface)(
+	iv_version_t		(EXTIT_DECL *op_query_interface)(
 					const extit_container_t *container,
 					const char *name,
 					iv_version_t base_version);
@@ -58,7 +58,7 @@ typedef struct _extit_container_ops_1_0
 	/*
 	 * Log a simple message
 	 */
-	void			(EXTIT_DECL *log)(
+	void			(EXTIT_DECL *op_log)(
 					const extit_container_t *container,
 					const char *message);
 } extit_container_ops_1_0_t;

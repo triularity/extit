@@ -19,7 +19,7 @@ EXTIT_DECL
 extit_container_get_interface
 (
 	const extit_container_t *container,
-	const char *name,
+	const char *iid,
 	iv_version_t version
 )
 {
@@ -28,5 +28,5 @@ extit_container_get_interface
 		return NULL;
 #endif
 
-	return container->ops->get_interface(container, name, version);
+	return container->ops->op_get_interface(container, iid, version);
 }

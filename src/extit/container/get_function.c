@@ -27,5 +27,5 @@ extit_container_get_function
 		return NULL;
 #endif
 
-	return container->ops->get_function(container, name);
+	return container->ops->op_get_function(container, name);
 }

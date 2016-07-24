@@ -27,5 +27,5 @@ extit_container_log
 		return;
 #endif
 
-	container->ops->log(container, message);
+	container->ops->op_log(container, message);
 }

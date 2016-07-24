@@ -19,7 +19,7 @@ EXTIT_DECL
 extit_container_query_interface
 (
 	const extit_container_t *container,
-	const char *name,
+	const char *iid,
 	iv_version_t base_version
 )
 {
@@ -28,5 +28,6 @@ extit_container_query_interface
 		return IV_VERSION_NONE;
 #endif
 
-	return container->ops->query_interface(container, name, base_version);
+	return container->ops->op_query_interface(
+		container, iid, base_version);
 }

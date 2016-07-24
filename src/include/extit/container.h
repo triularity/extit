@@ -52,7 +52,7 @@ LIBAPI
 void *			EXTIT_DECL
 			extit_container_get_interface(
 				const extit_container_t *container,
-				const char *name,
+				const char *iid,
 				iv_version_t version);
 
 LIBAPI
@@ -71,7 +71,7 @@ LIBAPI
 iv_version_t		EXTIT_DECL
 			extit_container_query_interface(
 				const extit_container_t *container,
-				const char *name,
+				const char *iid,
 				iv_version_t base_version);
 
 #undef	LIBAPI
