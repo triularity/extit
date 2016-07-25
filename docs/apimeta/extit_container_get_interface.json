@@ -7,6 +7,10 @@
 		'extit/base.h',
 		'extit/container.h'
 	],
+	libraries:
+	[
+		'extit_container'
+	],
 	synopsis:
 	[
 		{

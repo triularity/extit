@@ -1,8 +1,9 @@
 {
 	summary:
-		'Resolve a symbol pointer from a container interface.',
+		'A container interface.',
 	includes:
 	[
+		'iv/base.h',
 		'extit/base.h',
 		'extit/container.h'
 	],
@@ -13,39 +14,18 @@
 	synopsis:
 	[
 		{
-			type:	'function',
-			name:	'extit_container_get_symbol',
-			parameters:
-			[
-				{
-					type:	[ 'const', 'extit_container_t', '*' ],
-					name:	'container',
-					description: 'The container interface.'
-				},
-				{
-					type:	[ 'const', 'char', '*' ],
-					name:	'name',
-					description: 'A symbol name.'
-				}
-			],
-			returns:
-			{
-				type:	[ 'void', '*' ],
-				description:
-				[
-					'A symbol pointer, or ',
-					{
-						type: 'constant',
-						value: 'NULL'
-					},
-					' if the symbol wasn't found.'
-				]
-			}
+			type:	'macro',
+			name:	'EXTIT_ABI_TARGET',
+		},
+		{
+			type:	'struct',
+			name:	'_extit_container',
+			typedef:	'extit_container_t',
 		}
 	],
 	description:
 	[
-		'Resolve a function pointer from a container interface.'
+		'A container is a interface for providing server side resources to a plugin module.'
 	],
 	see:
 	[
@@ -72,6 +52,16 @@
 		},
 		{
 			type:	'function',
+			name:	'extit_container_get_symbol',
+			parameters:
+			[
+				[ 'const', 'extit_container_t', '*' ],
+				[ 'const', 'char', '*' ]
+			],
+			section:	'3'
+		},
+		{
+			type:	'function',
 			name:	'extit_container_query_interface',
 			parameters:
 			[
@@ -79,6 +69,11 @@
 				[ 'const', 'char', '*' ],
 				'iv_version_t'
 			],
+			section:	'3'
+		},
+		{
+			type:	'link',
+			name:	'extit_container-impl',
 			section:	'3'
 		}
 	],
