@@ -124,16 +124,102 @@
 					'*).'
 				]
 			}
+		},
+		{
+			type:	'function',
+			name:	'extit_module_scan_fnfilter_default',
+			parameters:
+			[
+				{
+					type:	[ 'const', 'char', '*' ],
+					name:	'libname',
+					description: 'The name of the library file.'
+				},
+				{
+					type:	'size_t',
+					name:	'length',
+					description: 'The length of the library filename.'
+				}
+			],
+			returns:
+			{
+				type:	'extit_bool_t',
+				description:
+				[
+					{
+						type:	'symbol',
+						value:	'EXTIT_TRUE'
+					},
+					' to accept the file, or ',
+					{
+						type:	'symbol',
+						value:	'EXTIT_FALSE'
+					},
+					' to reject it.'
+				]
+			],
+		},
+		{
+			type:	'function',
+			name:	'extit_module_scan_fnfilter_wc_default',
+			parameters:
+			[
+				{
+					type:	[ 'const', 'wchar_t', '*' ],
+					name:	'libname',
+					description: 'The name of the library file.'
+				},
+				{
+					type:	'size_t',
+					name:	'length',
+					description: 'The length of the library filename (in characters).'
+				}
+			],
+			returns:
+			{
+				type:	'extit_bool_t',
+				description:
+				[
+					{
+						type:	'symbol',
+						value:	'EXTIT_TRUE'
+					},
+					' to accept the file, or ',
+					{
+						type:	'symbol',
+						value:	'EXTIT_FALSE'
+					},
+					' to reject it.'
+				]
+			],
 		}
 	],
 	description:
 	[
-		'Scan a directory for plugin modules. For each valid module found and loaded, the callback will be called with it. The '
+		'Scan a directory for plugin modules.',
+		' For each valid module found and loaded, the callback will be called with it.',
+		' The '
 		{
 			type:	'function',
 			name:	'extit_module_scan_wc'
 		},
-		' function is only available on platforms that support wide character filenames.'
+		' and ',
+		{
+			type:	'function',
+			name:	'extit_module_scan_fnfilter_wc_default'
+		},
+		' functions are only available on platforms that support wide character filenames.',
+		' The functions ',
+		{
+			type:	'function',
+			name:	'extit_module_scan_fnfilter_default'
+		},
+		' and ',
+		{
+			type:	'function',
+			name:	'extit_module_scan_fnfilter_wc_default'
+		},
+		' are case-insensitive on Windows and OS X and case-sensitive for other platforms.'
 	],
 	see:
 	[
