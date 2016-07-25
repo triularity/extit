@@ -88,8 +88,8 @@ extit_module_load
 	/*
 	 * Find the plugin descriptor
 	 */
-	if((descriptor = GetProcAddress(handle, EXTIT_SPI_DESCRIPTOR_SYMBOL))
-	 == NULL)
+	if((descriptor = GetProcAddress(
+	 handle, EXTIT_PMODULE_DESCRIPTOR_SYMBOL)) == NULL)
 	{
 #ifdef	EXTIT_DEBUG
 		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
@@ -127,7 +127,7 @@ extit_module_t *
 EXTIT_DECL
 extit_module_load_wc
 (
-	const extit_container_t *container,
+	extit_container_t *container,
 	const wchar_t *path,
 	unsigned int flags
 )
@@ -181,8 +181,8 @@ extit_module_load_wc
 	/*
 	 * Find the plugin descriptor
 	 */
-	if((descriptor = GetProcAddress(handle, EXTIT_SPI_DESCRIPTOR_SYMBOL))
-	 == NULL)
+	if((descriptor = GetProcAddress(
+	 handle, EXTIT_PMODULE_DESCRIPTOR_SYMBOL)) == NULL)
 	{
 #ifdef	EXTIT_DEBUG
 		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)

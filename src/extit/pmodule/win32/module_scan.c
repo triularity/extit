@@ -207,7 +207,7 @@ extit_status_t
 EXTIT_DECL
 extit_module_scan_wc
 (
-	const extit_container_t *container,
+	extit_container_t *container,
 	const wchar_t *directory,
 	extit_module_scan_callback_t callback,
 	void *client_data,

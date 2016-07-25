@@ -8,7 +8,7 @@
  * http://www.triularity.org/
  */
 
-#include <string.h>
+#include <stddef.h>
 
 #ifdef	EXTIT_WCHAR
 #include <wchar.h>
