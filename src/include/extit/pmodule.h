@@ -97,17 +97,17 @@ extit_func_t		EXTIT_DECL
 
 LIBAPI
 const char *		EXTIT_DECL
-			extit_module_get_name(
-				extit_module_t *module);
-
-LIBAPI
-const char *		EXTIT_DECL
 			extit_module_get_id(
 				extit_module_t *module);
 
 LIBAPI
 uint32_t		EXTIT_DECL
 			extit_module_get_id_version(
+				extit_module_t *module);
+
+LIBAPI
+const char *		EXTIT_DECL
+			extit_module_get_name(
 				extit_module_t *module);
 
 LIBAPI
