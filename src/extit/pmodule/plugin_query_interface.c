@@ -28,12 +28,10 @@ extit_plugin_query_interface
 	iv_version_t base_version
 )
 {
-	unsigned int				flags;
 	extit_module_t *			module;
 	extit_pmodule_descriptor_1_0_t *	descriptor;
 
 
-	flags = plugin->flags;
 	module = plugin->module;
 
 #ifdef	EXTIT_PARANOID
