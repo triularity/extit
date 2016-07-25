@@ -8,11 +8,9 @@ cmake_minimum_required(VERSION 2.8)
 set(DEFAULT_WCHAR FALSE)
 set(DEFAULT_HAVE_DLFUNC FALSE)
 
-if(CMAKE_HOST_WIN32)
+if(WIN32)
 	set(DEFAULT_LIB_LOADER "win32")
 	set(DEFAULT_WCHAR TRUE)
-elseif(CMAKE_HOST_APPLE)
-	set(DEFAULT_LIB_LOADER "dylib")
 else()
 	set(DEFAULT_LIB_LOADER "dl")
 endif()
@@ -298,12 +296,21 @@ if(EXTIT_LIB_LOADER STREQUAL "dl")
 
 	set(EXTIT_PMODULE_SOURCE_FILES
 		${EXTIT_PMODULE_SOURCE_FILES}
-		src/extit/pmodule/dl/module_defaults.c
 		src/extit/pmodule/dl/module_get_function.c
 		src/extit/pmodule/dl/module_get_symbol.c
 		src/extit/pmodule/dl/module_load.c
 		src/extit/pmodule/dl/module_release.c
 		src/extit/pmodule/dl/module_scan.c)
+
+	if(APPLE)
+		set(EXTIT_PMODULE_SOURCE_FILES
+			${EXTIT_PMODULE_SOURCE_FILES}
+			src/extit/pmodule/dylib/module_defaults.c)
+	else()
+		set(EXTIT_PMODULE_SOURCE_FILES
+			${EXTIT_PMODULE_SOURCE_FILES}
+			src/extit/pmodule/dl/module_defaults.c)
+	endif()
 elseif(EXTIT_LIB_LOADER STREQUAL "win32")
 	set(EXTIT_CONTAINER_STDIMPL_SOURCE_FILES
 		${EXTIT_CONTAINER_STDIMPL_SOURCE_FILES}
@@ -318,20 +325,6 @@ elseif(EXTIT_LIB_LOADER STREQUAL "win32")
 		src/extit/pmodule/win32/module_load.c
 		src/extit/pmodule/win32/module_release.c
 		src/extit/pmodule/win32/module_scan.c)
-##+elseif(EXTIT_LIB_LOADER STREQUAL "dylib")
-##+	set(EXTIT_CONTAINER_STDIMPL_SOURCE_FILES
-##+		${EXTIT_CONTAINER_STDIMPL_SOURCE_FILES}
-##+		src/extit/container_stdimpl/sylib/get_function.c
-##+		src/extit/container_stdimpl/sylib/get_symbol.c)
-##+
-##+	set(EXTIT_PMODULE_SOURCE_FILES
-##+		${EXTIT_PMODULE_SOURCE_FILES}
-##+		src/extit/pmodule/dylib/module_defaults.c
-##+		src/extit/pmodule/dylib/module_get_function.c
-##+		src/extit/pmodule/dylib/module_get_symbol.c
-##+		src/extit/pmodule/dylib/module_load.c
-##+		src/extit/pmodule/dylib/module_release.c
-##+		src/extit/pmodule/dylib/module_scan.c)
 else()
 	message(FATAL_ERROR "Unsupported library loader: ${EXTIT_LIB_LOADER}")
 endif()

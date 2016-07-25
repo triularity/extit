@@ -1,7 +1,7 @@
 /*
- * @(#) pmodule/dl/module_defaults.c
+ * @(#) pmodule/dylib/module_defaults.c
  *
- * [lib]dl specific implementations of container library.
+ * [lib]dylib specific implementations of container library.
  * Default extit_module_*() function implementations.
  *
  * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
@@ -25,10 +25,10 @@ extit_module_scan_fnfilter_default
 )
 {
 	/*
-	 * Must have a ".so" extension
+	 * Must have a ".dylib" extension
 	 */
-	if(length < 4)
+	if(length < 7)
 		return 0;
 
-	return (EXTIT_FN_STRCMP(basename + length - 3, ".so") == 0);
+	return (EXTIT_FN_STRCMP(basename + length - 6, ".dylib") == 0);
 }
