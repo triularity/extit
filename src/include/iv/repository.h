@@ -27,16 +27,6 @@ typedef struct _iv_repository	iv_repository_t;
 
 
 /*
- * Flags (v1.0)
- */
-#define	IV_REPOSITORY_FLAG_LOG		0x00000003
-#define	IV_REPOSITORY_FLAG_LOG_MINIMAL	0x00000000
-#define	IV_REPOSITORY_FLAG_LOG_NORMAL	0x00000001
-#define	IV_REPOSITORY_FLAG_LOG_DEBUG	0x00000002
-#define	IV_REPOSITORY_FLAG_LOG_TRACE	0x00000003
-
-
-/*
  * Status Codes
  */
 typedef enum _iv_repository_status
@@ -62,63 +52,43 @@ iv_repository_t *	IV_DECL
 LIBAPI
 void			IV_DECL
 			iv_repository_cleanup(
-				iv_repository_t *ir);
+				iv_repository_t *repo);
 
 LIBAPI
 void			IV_DECL
 			iv_repository_destroy(
-				iv_repository_t *ir);
+				iv_repository_t *repo);
 
 LIBAPI
 void *			IV_DECL
 			iv_repository_get(
-				const iv_repository_t *ir,
-				const char *id,
+				const iv_repository_t *repo,
+				const char *iid,
 				iv_version_t version);
-
-LIBAPI
-unsigned int		IV_DECL
-			iv_repository_get_default_flags(void);
-
-LIBAPI
-unsigned int		IV_DECL
-			iv_repository_get_flags(
-				const iv_repository_t *ir);
 
 LIBAPI
 iv_version_t		IV_DECL
 			iv_repository_query(
-				const iv_repository_t *ir,
-				const char *id,
+				const iv_repository_t *repo,
+				const char *iid,
 				iv_version_t base_version);
 
 LIBAPI
 iv_repository_status_t	IV_DECL
 			iv_repository_remove(
-				iv_repository_t *ir,
-				const char *id,
+				iv_repository_t *repo,
+				const char *iid,
 				iv_version_t version,
 				void **old_valuep);
 
 LIBAPI
 iv_repository_status_t	IV_DECL
 			iv_repository_set(
-				iv_repository_t *ir,
-				const char *id,
+				iv_repository_t *repo,
+				const char *iid,
 				iv_version_t version,
 				void *value,
 				void **old_valuep);
-
-LIBAPI
-void			IV_DECL
-			iv_repository_set_default_flags(
-				unsigned int flags);
-
-LIBAPI
-void			IV_DECL
-			iv_repository_set_flags(
-				iv_repository_t *ir,
-				unsigned int flags);
 
 #undef	LIBAPI
 

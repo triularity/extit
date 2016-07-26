@@ -80,8 +80,6 @@ main(int argc, char **argv)
 		return 2;
 	}
 
-	iv_repository_set_flags(ir, EXTIT_FLAG_LOG_DEBUG);
-
 	if(iv_repository_set(ir, PERSISTENCE_IID,
 	 PERSISTENCE_ABI_TARGET, &persistence_interface, NULL)
 	 != IV_REPOSITORY_STATUS_OK)

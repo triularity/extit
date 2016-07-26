@@ -273,7 +273,13 @@ set(IV_REPOSITORY_HEADER_FILES
 	src/include/iv/repository.h)
 
 set(IV_REPOSITORY_SOURCE_FILES
-	src/iv/repository.c)
+	src/iv/repository/cleanup.c
+	src/iv/repository/create.c
+	src/iv/repository/destroy.c
+	src/iv/repository/get.c
+	src/iv/repository/query.c
+	src/iv/repository/remove.c
+	src/iv/repository/set.c)
 
 
 # IV utilities
@@ -666,6 +672,10 @@ add_library(
 set_target_properties(
 	iv_repository PROPERTIES
 		POSITION_INDEPENDENT_CODE ON)
+
+target_link_libraries(
+	iv_repository
+		iv_util)
 
 
 #
