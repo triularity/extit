@@ -25,7 +25,7 @@
 					description: 'An interface ID.'
 				},
 				{
-					type:	[ 'iv_version_t' ],
+					type:	'iv_version_t',
 					name:	'base_version',
 					description: 'An interface version.'
 				}

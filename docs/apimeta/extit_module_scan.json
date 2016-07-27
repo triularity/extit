@@ -25,7 +25,7 @@
 					description: 'The directory to scan.'
 				},
 				{
-					type:	[ 'extit_module_scan_callback_t' ],
+					type:	'extit_module_scan_callback_t',
 					name:	'callback',
 					description: 'The callback function.'
 				},
@@ -35,7 +35,7 @@
 					description: 'Data to pass to the callback.'
 				},
 				{
-					type:	[ 'extit_module_scan_fnfilter_t' ],
+					type:	'extit_module_scan_fnfilter_t',
 					name:	'fnfilter',
 					description: 'The filename filter callback function.'
 				},
@@ -55,7 +55,7 @@
 			],
 			returns:
 			{
-				type:	[ 'extit_status_t' ],
+				type:	'extit_status_t',
 				description:
 				[
 					'The operation status (',
@@ -83,7 +83,7 @@
 					description: 'The directory to scan.'
 				},
 				{
-					type:	[ 'extit_module_scan_callback_t' ],
+					type:	'extit_module_scan_callback_t',
 					name:	'callback',
 					description: 'The callback function.'
 				},
@@ -93,7 +93,7 @@
 					description: 'Data to pass to the callback.'
 				},
 				{
-					type:	[ 'extit_module_scan_fnfilter_t' ],
+					type:	'extit_module_scan_fnfilter_t',
 					name:	'fnfilter',
 					description: 'The filename filter callback function.'
 				},
@@ -113,7 +113,7 @@
 			],
 			returns:
 			{
-				type:	[ 'extit_status_t' ],
+				type:	'extit_status_t',
 				description:
 				[
 					'The operation status (',

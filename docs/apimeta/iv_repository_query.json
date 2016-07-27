@@ -31,7 +31,7 @@
 			],
 			returns:
 			{
-				type:	[ 'iv_version_t' ],
+				type:	'iv_version_t',
 				description:
 				[
 					'The highest available version, or ',
