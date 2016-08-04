@@ -111,14 +111,14 @@ struct _extit_pmodule_descriptor_1_0
 EXTIT_EXPORT
 extern extit_pmodule_descriptor_t	EXTIT_PMODULE_DESCRIPTOR_NAME;
 
-#define	EXTIT_DECLARE_PMODULE(uuid, uuid_version, name, version, ops) \
+#define	EXTIT_DECLARE_PMODULE(id, id_version, name, version, ops) \
 		EXTIT_EXPORT \
 		extit_pmodule_descriptor_t EXTIT_PMODULE_DESCRIPTOR_NAME = \
 		{ \
 			EXTIT_PMODULE_MAGIC, \
 			EXTIT_ABI_TARGET, \
-			uuid, \
-			uuid_version, \
+			id, \
+			id_version, \
 			name, \
 			version, \
 			ops \
