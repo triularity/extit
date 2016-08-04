@@ -17,7 +17,7 @@
 			members:
 			[
 				{
-					type:	'function-pointer',
+					type:	':function-pointer',
 					name:	'op_get_symbol',
 					parameters:
 					[
@@ -47,7 +47,7 @@
 					}
 				},
 				{
-					type:	'function-pointer',
+					type:	':function-pointer',
 					name:	'op_get_function',
 					parameters:
 					[
@@ -77,7 +77,7 @@
 					}
 				},
 				{
-					type:	'function-pointer',
+					type:	':function-pointer',
 					name:	'op_get_interface',
 					parameters:
 					[
@@ -112,7 +112,7 @@
 					}
 				},
 				{
-					type:	'function-pointer',
+					type:	':function-pointer',
 					name:	'op_query_interface',
 					parameters:
 					[
@@ -147,7 +147,7 @@
 					}
 				},
 				{
-					type:	'function-pointer',
+					type:	':function-pointer',
 					name:	'op_log',
 					parameters:
 					[
