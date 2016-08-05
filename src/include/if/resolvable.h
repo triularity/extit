@@ -44,7 +44,7 @@ typedef struct _if_resolvable_1_0	if_resolvable_1_0_t;
 #endif
 
 #if	IF_RESOLVABLE_ABI_TARGET == IF_RESOLVABLE_ABI_1_0
-#define	if_resolvable_t			if_resolvable_1_0_t
+typedef	if_resolvable_1_0_t		if_resolvable_t;
 #else
 #error	Unsupported IF_RESOLVABLE_ABI_TARGET version
 #endif

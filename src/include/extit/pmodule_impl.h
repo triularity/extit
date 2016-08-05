@@ -96,7 +96,7 @@ struct _extit_pmodule_descriptor_1_0
  * ABI Version
  */
 #if	EXTIT_ABI_TARGET == EXTIT_ABI_1_0
-#define	extit_pmodule_descriptor_t	extit_pmodule_descriptor_1_0_t
+typedef	extit_pmodule_descriptor_1_0_t	extit_pmodule_descriptor_t;
 #else
 #error	Unsupported EXTIT_ABI_TARGET version
 #endif

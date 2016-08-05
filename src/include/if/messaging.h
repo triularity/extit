@@ -69,7 +69,7 @@ typedef uint32_t			if_messaging_listener_id_t;
 #endif
 
 #if	IF_MESSAGING_ABI_TARGET == IF_MESSAGING_ABI_1_0
-#define	if_messaging_t			if_messaging_1_0_t
+typedef	if_messaging_1_0_t		if_messaging_t;
 #else
 #error	Unsupported IF_MESSAGING_ABI_TARGET version
 #endif

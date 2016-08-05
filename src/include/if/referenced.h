@@ -44,7 +44,7 @@ typedef struct _if_referenced_1_0	if_referenced_1_0_t;
 #endif
 
 #if	IF_REFERENCED_ABI_TARGET == IF_REFERENCED_ABI_1_0
-#define	if_referenced_t			if_referenced_1_0_t
+typedef	if_referenced_1_0_t		if_referenced_t;
 #else
 #error	Unsupported IF_REFERENCED_ABI_TARGET version
 #endif

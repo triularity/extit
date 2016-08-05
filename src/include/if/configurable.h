@@ -228,7 +228,7 @@ typedef struct if_configurable_propref	if_configurable_propref_t;
 #endif
 
 #if	IF_CONFIGURABLE_ABI_TARGET == IF_CONFIGURABLE_ABI_1_0
-#define	if_configurable_t		if_configurable_1_0_t
+typedef	if_configurable_1_0_t		if_configurable_t;
 #else
 #error	Unsupported IF_CONFIGURABLE_ABI_TARGET version
 #endif

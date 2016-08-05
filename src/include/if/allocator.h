@@ -46,7 +46,7 @@ typedef struct _if_allocator_1_0	if_allocator_1_0_t;
 #endif
 
 #if	IF_ALLOCATOR_ABI_TARGET == IF_ALLOCATOR_ABI_1_0
-#define	if_allocator_t			if_allocator_1_0_t
+typedef	if_allocator_1_0_t		if_allocator_t;
 #else
 #error	Unsupported IF_ALLOCATOR_ABI_TARGET version
 #endif

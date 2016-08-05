@@ -44,7 +44,7 @@ typedef struct _if_disposable_1_0	if_disposable_1_0_t;
 #endif
 
 #if	IF_DISPOSABLE_ABI_TARGET == IF_DISPOSABLE_ABI_1_0
-#define	if_disposable_t			if_disposable_1_0_t
+typedef	if_disposable_1_0_t		if_disposable_t;
 #else
 #error	Unsupported IF_DISPOSABLE_ABI_TARGET version
 #endif
