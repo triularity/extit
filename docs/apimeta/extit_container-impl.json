@@ -11,9 +11,13 @@
 	synopsis:
 	[
 		{
+			type:   'typedef',
+			name:   'extit_container_ops_1_0_t',
+			value:  [ 'struct', '_extit_container_ops_1_0' ]
+		},
+		{
 			type:	'struct',
 			name:	'_extit_container_ops_1_0',
-			typedef:	'extit_container_ops_1_0_t',
 			members:
 			[
 				{
@@ -166,9 +170,13 @@
 			]
 		},
 		{
+			type:   'typedef',
+			name:   'extit_container_base_t',
+			value:  [ 'struct', '_extit_container_base' ]
+		},
+		{
 			type:	'struct',
 			name:	'_extit_container_base',
-			typedef:	'extit_container_base_t',
 			members:
 			[
 				{
@@ -178,9 +186,13 @@
 			]
 		},
 		{
+			type:   'typedef',
+			name:   'extit_container_1_0_t',
+			value:  [ 'struct', '_extit_container_1_0' ]
+		},
+		{
 			type:	'struct',
 			name:	'_extit_container_1_0',
-			typedef:	'extit_container_1_0_t',
 			members:
 			[
 				{

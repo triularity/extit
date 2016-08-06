@@ -18,9 +18,9 @@
 			name:	'EXTIT_ABI_TARGET',
 		},
 		{
-			type:	'struct',
-			name:	'_extit_container',
-			typedef:	'extit_container_t',
+			type:   'typedef',
+			name:   'extit_container_t',
+			value:  [ 'struct', '_extit_container' ]
 		}
 	],
 	description:
