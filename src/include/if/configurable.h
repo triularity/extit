@@ -3,7 +3,7 @@
  *
  * Configurable Interface.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -32,7 +32,7 @@ extern "C" {
 /*
  * Configurable (v1.0)
  */
-#define IF_CONFIGURABLE_ABI_1_0	IV_VERSION(1,0)
+#define IF_CONFIGURABLE_ABI_1_0		IV_VERSION(1,0)
 
 typedef struct _if_configurable_1_0	if_configurable_1_0_t;
 
@@ -80,6 +80,8 @@ typedef struct _if_configurable_propspec_bool
 typedef struct _if_configurable_propspec_custom
 {
 	void *			def_value;
+	const char *		iid;
+	iv_version_t		version;
 } if_configurable_propspec_custom_t;
 
 
