@@ -3,7 +3,7 @@
  *
  * Disposable Interface.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -55,8 +55,14 @@ typedef	if_disposable_1_0_t		if_disposable_t;
  */
 LIBAPI
 extit_status_t		EXTIT_DECL
-			if_disposable_free(
+			if_disposable_free__1_0(
 				if_disposable_t *disposable);
+
+
+#if	IV_VERSION_MAJOR(IF_DISPOSABLE_ABI_TARGET) == 1
+#define	if_disposable_free(disposable)	\
+			if_disposable_free__1_0((disposable))
+#endif	/* IV_VERSION_MAJOR(IF_DISPOSABLE_ABI_TARGET) == 1 */
 
 #undef	LIBAPI
 

@@ -3,7 +3,7 @@
  *
  * Allocator Interface.
  *
- * Copyright (c) 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -103,7 +103,6 @@ void *			EXTIT_DECL
 
 #define	if_allocator_zalloc(allocator, size)	\
 			if_allocator_zalloc__1_0((allocator), (size))
-
 #endif	/* IV_VERSION_MAJOR(IF_ALLOCATOR_ABI_TARGET) == 1 */
 
 #undef	LIBAPI

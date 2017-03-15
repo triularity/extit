@@ -3,7 +3,7 @@
  *
  * Disposable Interface implementation.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -27,12 +27,8 @@ typedef struct _if_disposable_1_0_ops
 struct _if_disposable_1_0
 {
 	iv_version_t			version;	/* 1.0+ */
-	if_disposable_ops_1_0_t *	ops;
+	if_disposable_ops_1_0_t *	ops_1_0;
 };
-
-
-#define	IF_DISPOSABLE_FREE(disposable)	\
-			((disposable)->ops->op_free(disposable))
 
 #ifdef	__cplusplus
 }
