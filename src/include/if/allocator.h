@@ -3,7 +3,7 @@
  *
  * Allocator Interface.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -57,35 +57,54 @@ typedef	if_allocator_1_0_t		if_allocator_t;
  */
 LIBAPI
 void *			EXTIT_DECL
-			if_allocator_alloc(
+			if_allocator_alloc__1_0(
 				if_allocator_t *allocator,
 				size_t size);
 
 LIBAPI
+void *			EXTIT_DECL
+			if_allocator_dup__1_0(
+				if_allocator_t *allocator,
+				void *ptr,
+				size_t size);
+
+LIBAPI
 void			EXTIT_DECL
-			if_allocator_free(
+			if_allocator_free__1_0(
 				if_allocator_t *allocator,
 				void *ptr);
 
 LIBAPI
 void *			EXTIT_DECL
-			if_allocator_realloc(
+			if_allocator_realloc__1_0(
 				if_allocator_t *allocator,
 				void *ptr,
 				size_t size);
 
 LIBAPI
 void *			EXTIT_DECL
-			if_allocator_zalloc(
+			if_allocator_zalloc__1_0(
 				if_allocator_t *allocator,
 				size_t size);
 
-LIBAPI
-void *			EXTIT_DECL
-			if_allocator_dup(
-				if_allocator_t *allocator,
-				void *ptr,
-				size_t size);
+
+#if	IV_VERSION_MAJOR(IF_ALLOCATOR_ABI_TARGET) == 1
+#define	if_allocator_alloc(allocator, size)	\
+			if_allocator_alloc__1_0((allocator), (size))
+
+#define	if_allocator_dup(allocator, ptr, size)	\
+			if_allocator_dup__1_0((allocator), (ptr), (size))
+
+#define	if_allocator_free(allocator, ptr)	\
+			if_allocator_free__1_0((allocator), (ptr))
+
+#define	if_allocator_realloc(allocator, ptr, size)	\
+			if_allocator_realloc__1_0((allocator), (ptr), (size))
+
+#define	if_allocator_zalloc(allocator, size)	\
+			if_allocator_zalloc__1_0((allocator), (size))
+
+#endif	/* IV_VERSION_MAJOR(IF_ALLOCATOR_ABI_TARGET) == 1 */
 
 #undef	LIBAPI
 

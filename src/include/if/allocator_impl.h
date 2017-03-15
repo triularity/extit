@@ -3,7 +3,7 @@
  *
  * Allocator Interface implementation.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -46,24 +46,8 @@ typedef struct _if_allocator_1_0_ops
 struct _if_allocator_1_0
 {
 	iv_version_t			version;	/* 1.0+ */
-	if_allocator_ops_1_0_t *	ops;
+	if_allocator_ops_1_0_t *	ops_1_0;
 };
-
-
-#define	IF_ALLOCATOR_ALLOC(allocator, size)	\
-			((allocator)->ops->op_alloc((allocator), (size)))
-
-#define	IF_ALLOCATOR_DUP(allocator, ptr, size)	\
-			((allocator)->ops->op_dup((allocator), (ptr), (size)))
-
-#define	IF_ALLOCATOR_FREE(allocator, ptr)	\
-			((allocator)->ops->op_free((allocator), (ptr)))
-
-#define	IF_ALLOCATOR_REALLOC(allocator, ptr, size)	\
-			((allocator)->ops->op_realloc((allocator), (ptr), (size)))
-
-#define	IF_ALLOCATOR_ZALLOC(allocator, size)	\
-			((allocator)->ops->op_zalloc((allocator), (size)))
 
 #ifdef	__cplusplus
 }

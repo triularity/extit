@@ -3,7 +3,7 @@
  *
  * Allocator Interface client API wrappers.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -21,7 +21,7 @@
 EXTIT_EXPORT
 void *
 EXTIT_DECL
-if_allocator_alloc
+if_allocator_alloc__1_0
 (
 	if_allocator_t *allocator,
 	size_t size
@@ -32,5 +32,5 @@ if_allocator_alloc
 		return NULL;
 #endif
 
-	return IF_ALLOCATOR_ALLOC(allocator, size);
+	return allocator->ops_1_0->op_alloc(allocator, size);
 }
