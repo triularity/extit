@@ -3,7 +3,7 @@
  *
  * Referenced Interface implementation.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -30,15 +30,8 @@ typedef struct _if_referenced_ops_1_0
 struct _if_referenced_1_0
 {
 	iv_version_t			version;	/* 1.x */
-	if_referenced_ops_1_0_t *	ops;
+	if_referenced_ops_1_0_t *	ops_1_0;
 };
-
-
-#define	IF_REFERENCED_ADD(referenced)	\
-			((referenced)->ops->op_add(referenced))
-
-#define	IF_REFERENCED_RELEASE(referenced)	\
-			((referenced)->ops->op_release(referenced))
 
 #ifdef	__cplusplus
 }

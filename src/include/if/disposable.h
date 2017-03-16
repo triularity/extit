@@ -60,8 +60,7 @@ extit_status_t		EXTIT_DECL
 
 
 #if	IV_VERSION_MAJOR(IF_DISPOSABLE_ABI_TARGET) == 1
-#define	if_disposable_free(disposable)	\
-			if_disposable_free__1_0((disposable))
+#define	if_disposable_free		if_disposable_free__1_0
 #endif	/* IV_VERSION_MAJOR(IF_DISPOSABLE_ABI_TARGET) == 1 */
 
 #undef	LIBAPI

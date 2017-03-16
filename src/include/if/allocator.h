@@ -89,20 +89,11 @@ void *			EXTIT_DECL
 
 
 #if	IV_VERSION_MAJOR(IF_ALLOCATOR_ABI_TARGET) == 1
-#define	if_allocator_alloc(allocator, size)	\
-			if_allocator_alloc__1_0((allocator), (size))
-
-#define	if_allocator_dup(allocator, ptr, size)	\
-			if_allocator_dup__1_0((allocator), (ptr), (size))
-
-#define	if_allocator_free(allocator, ptr)	\
-			if_allocator_free__1_0((allocator), (ptr))
-
-#define	if_allocator_realloc(allocator, ptr, size)	\
-			if_allocator_realloc__1_0((allocator), (ptr), (size))
-
-#define	if_allocator_zalloc(allocator, size)	\
-			if_allocator_zalloc__1_0((allocator), (size))
+#define	if_allocator_alloc		if_allocator_alloc__1_0
+#define	if_allocator_dup		if_allocator_dup__1_0
+#define	if_allocator_free		if_allocator_free__1_0
+#define	if_allocator_realloc		if_allocator_realloc__1_0
+#define	if_allocator_zalloc		if_allocator_zalloc__1_0
 #endif	/* IV_VERSION_MAJOR(IF_ALLOCATOR_ABI_TARGET) == 1 */
 
 #undef	LIBAPI

@@ -3,7 +3,7 @@
  *
  * Referenced Interface client API wrappers.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -19,7 +19,7 @@
 EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
-if_referenced_release
+if_referenced_release__1_0
 (
 	if_referenced_t *referenced
 )
@@ -29,5 +29,5 @@ if_referenced_release
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return IF_REFERENCED_RELEASE(referenced);
+	return referenced->ops_1_0->op_release(referenced);
 }

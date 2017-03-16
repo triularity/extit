@@ -3,7 +3,7 @@
  *
  * Messaging Interface client API wrappers.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -20,7 +20,7 @@
 EXTIT_EXPORT
 if_messaging_listener_id_t
 EXTIT_DECL
-if_messaging_bound_add_listener
+if_messaging_bound_add_listener__1_0
 (
 	if_messaging_t *messaging,
 	if_messaging_bound_t *bound,
@@ -33,6 +33,6 @@ if_messaging_bound_add_listener
 		return IF_MESSAGING_LISTENER_ID_NONE;
 #endif
 
-	return IF_MESSAGING_BOUND_ADD_LISTENER(
+	return messaging->ops_1_0->op_bound_add_listener(
 		messaging, bound, callback, client_data);
 }

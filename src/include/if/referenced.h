@@ -3,7 +3,7 @@
  *
  * Referenced Interface.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -55,13 +55,19 @@ typedef	if_referenced_1_0_t		if_referenced_t;
  */
 LIBAPI
 extit_status_t		EXTIT_DECL
-			if_referenced_add(
+			if_referenced_add__1_0(
 				if_referenced_t *referenced);
 
 LIBAPI
 extit_status_t		EXTIT_DECL
-			if_referenced_release(
+			if_referenced_release__1_0(
 				if_referenced_t *referenced);
+
+
+#if	IV_VERSION_MAJOR(IF_REFERENCED_ABI_TARGET) == 1
+#define	if_referenced_add		if_referenced_add__1_0
+#define	if_referenced_release		if_referenced_release__1_0
+#endif	/* IV_VERSION_MAJOR(IF_REFERENCED_ABI_TARGET) == 1 */
 
 #undef	LIBAPI
 

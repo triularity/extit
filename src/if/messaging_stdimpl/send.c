@@ -1,7 +1,7 @@
 /*
  * @(#) if/messaging_stdimpl/send.c
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -20,7 +20,7 @@
 EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
-if_messaging_send_stdimpl
+if_messaging_stdimpl_send__1_0
 (
 	if_messaging_t *messaging,
 	const char *mid,
@@ -58,5 +58,6 @@ if_messaging_send_stdimpl
 	if(bound_entry == NULL)
 		return EXTIT_STATUS_OK;
 
-	return if_messaging_bound_send_stdimpl(messaging, bound_entry, data);
+	return if_messaging_stdimpl_bound_send__1_0(
+		messaging, bound_entry, data);
 }

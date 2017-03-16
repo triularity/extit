@@ -1,7 +1,7 @@
 /*
  * @(#) if/messaging_stdimpl/has_listener.c
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -20,7 +20,7 @@
 EXTIT_EXPORT
 extit_bool_t
 EXTIT_DECL
-if_messaging_has_listener_stdimpl
+if_messaging_stdimpl_has_listener__1_0
 (
 	if_messaging_t *messaging,
 	const char *mid,
@@ -60,5 +60,6 @@ if_messaging_has_listener_stdimpl
 	if(bound_entry == NULL)
 		return EXTIT_FALSE;
 
-	return if_messaging_bound_has_listener_stdimpl(messaging, bound_entry);
+	return if_messaging_stdimpl_bound_has_listener__1_0(
+		messaging, bound_entry);
 }

@@ -1,7 +1,7 @@
 /*
  * @(#) if/messaging_stdimpl/create.c
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -44,7 +44,7 @@ if_messaging_stdimpl_create
 	}
 
 	messaging_i->pub.version = IF_MESSAGING_ABI_1_0;
-	messaging_i->pub.ops = &if_messaging_stdimpl_ops_1_0;
+	messaging_i->pub.ops_1_0 = &if_messaging_stdimpl_ops__1_0;
 
 	messaging_i->lid_list = NULL;
 	messaging_i->lid_next = 1;

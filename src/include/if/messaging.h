@@ -3,7 +3,7 @@
  *
  * Messaging Interface.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -81,7 +81,7 @@ typedef	if_messaging_1_0_t		if_messaging_t;
 LIBAPI
 if_messaging_listener_id_t
 			EXTIT_DECL
-			if_messaging_add_listener(
+			if_messaging_add_listener__1_0(
 				if_messaging_t *messaging,
 				const char *mid,
 				const char *iid,
@@ -92,7 +92,7 @@ if_messaging_listener_id_t
 LIBAPI
 if_messaging_bound_t *
 			EXTIT_DECL
-			if_messaging_bind(
+			if_messaging_bind__1_0(
 				if_messaging_t *messaging,
 				const char *mid,
 				const char *iid,
@@ -101,7 +101,7 @@ if_messaging_bound_t *
 LIBAPI
 if_messaging_listener_id_t
 			EXTIT_DECL
-			if_messaging_bound_add_listener(
+			if_messaging_bound_add_listener__1_0(
 				if_messaging_t *messaging,
 				if_messaging_bound_t *bound,
 				if_messaging_listener_t callback,
@@ -109,13 +109,13 @@ if_messaging_listener_id_t
 
 LIBAPI
 extit_bool_t		EXTIT_DECL
-			if_messaging_bound_has_listener(
+			if_messaging_bound_has_listener__1_0(
 				if_messaging_t *messaging,
 				if_messaging_bound_t *bound);
 
 LIBAPI
 extit_status_t		EXTIT_DECL
-			if_messaging_bound_remove_listener(
+			if_messaging_bound_remove_listener__1_0(
 				if_messaging_t *messaging,
 				if_messaging_bound_t *bound,
 				if_messaging_listener_t callback,
@@ -123,14 +123,14 @@ extit_status_t		EXTIT_DECL
 
 LIBAPI
 extit_status_t		EXTIT_DECL
-			if_messaging_bound_send(
+			if_messaging_bound_send__1_0(
 				if_messaging_t *messaging,
 				if_messaging_bound_t *bound,
 				void *data);
 
 LIBAPI
 extit_bool_t		EXTIT_DECL
-			if_messaging_has_listener(
+			if_messaging_has_listener__1_0(
 				if_messaging_t *messaging,
 				const char *mid,
 				const char *iid,
@@ -138,7 +138,7 @@ extit_bool_t		EXTIT_DECL
 
 LIBAPI
 extit_status_t		EXTIT_DECL
-			if_messaging_remove_listener(
+			if_messaging_remove_listener__1_0(
 				if_messaging_t *messaging,
 				const char *mid,
 				const char *iid,
@@ -148,13 +148,13 @@ extit_status_t		EXTIT_DECL
 
 LIBAPI
 extit_status_t		EXTIT_DECL
-			if_messaging_remove_listener_by_id(
+			if_messaging_remove_listener_by_id__1_0(
 				if_messaging_t *messaging,
 				if_messaging_listener_id_t id);
 
 LIBAPI
 extit_status_t		EXTIT_DECL
-			if_messaging_send(
+			if_messaging_send__1_0(
 				if_messaging_t *messaging,
 				const char *mid,
 				const char *iid,
@@ -163,9 +163,30 @@ extit_status_t		EXTIT_DECL
 
 LIBAPI
 extit_status_t		EXTIT_DECL
-			if_messaging_unbind(
+			if_messaging_unbind__1_0(
 				if_messaging_t *messaging,
 				if_messaging_bound_t *bound);
+
+
+#if	IV_VERSION_MAJOR(IF_MESSAGING_ABI_TARGET) == 1
+#define	if_messaging_add_listener	if_messaging_add_listener__1_0
+#define	if_messaging_bind		if_messaging_bind__1_0
+#define	if_messaging_bound_add_listener	if_messaging_bound_add_listener__1_0
+#define	if_messaging_bound_has_listener	if_messaging_bound_has_listener__1_0
+
+#define	if_messaging_bound_remove_listener \
+					if_messaging_bound_remove_listener__1_0
+
+#define	if_messaging_bound_send		if_messaging_bound_send__1_0
+#define	if_messaging_has_listener	if_messaging_has_listener__1_0
+#define	if_messaging_remove_listener	if_messaging_remove_listener__1_0
+
+#define	if_messaging_remove_listener_by_id \
+					if_messaging_remove_listener_by_id__1_0
+
+#define	if_messaging_send		if_messaging_send__1_0
+#define	if_messaging_unbind		if_messaging_unbind__1_0
+#endif	/* IV_VERSION_MAJOR(IF_MESSAGING_ABI_TARGET) == 1 */
 
 #undef	LIBAPI
 

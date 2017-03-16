@@ -1,7 +1,7 @@
 /*
  * @(#) if/messaging_stdimpl/remove_listener_by_id.c
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -20,7 +20,7 @@
 EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
-if_messaging_remove_listener_by_id_stdimpl
+if_messaging_stdimpl_remove_listener_by_id__1_0
 (
 	if_messaging_t *messaging,
 	if_messaging_listener_id_t id

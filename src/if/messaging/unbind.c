@@ -3,7 +3,7 @@
  *
  * Messaging Interface client API wrappers.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -20,7 +20,7 @@
 EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
-if_messaging_unbind
+if_messaging_unbind__1_0
 (
 	if_messaging_t *messaging,
 	if_messaging_bound_t *bound
@@ -31,5 +31,5 @@ if_messaging_unbind
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return IF_MESSAGING_UNBIND(messaging, bound);
+	return messaging->ops_1_0->op_unbind(messaging, bound);
 }

@@ -3,7 +3,7 @@
  *
  * Resolvable Interface API.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -55,17 +55,23 @@ typedef	if_resolvable_1_0_t		if_resolvable_t;
  */
 LIBAPI
 void *			EXTIT_DECL
-			if_resolvable_get_interface(
+			if_resolvable_get_interface__1_0(
 				if_resolvable_t *resolvable,
 				const char *id,
 				iv_version_t version);
 
 LIBAPI
 iv_version_t		EXTIT_DECL
-			if_resolvable_query_interface(
+			if_resolvable_query_interface__1_0(
 				if_resolvable_t *resolvable,
 				const char *id,
 				iv_version_t base_version);
+
+
+#if	IV_VERSION_MAJOR(IF_RESOLVABLE_ABI_TARGET) == 1
+#define	if_resolvable_get_interface	if_resolvable_get_interface__1_0
+#define	if_resolvable_query_interface	if_resolvable_query_interface__1_0
+#endif	/* IV_VERSION_MAJOR(IF_RESOLVABLE_ABI_TARGET) == 1 */
 
 #undef	LIBAPI
 

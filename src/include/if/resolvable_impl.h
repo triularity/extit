@@ -3,7 +3,7 @@
  *
  * Resolvable Interface API implementation.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -34,17 +34,11 @@ typedef struct _if_resolvable_ops_1_0
 struct _if_resolvable_1_0
 {
 	iv_version_t			version;	/* 1.0+ */
-	if_resolvable_ops_1_0_t *	ops;
+	if_resolvable_ops_1_0_t *	ops_1_0;
 };
 
 #ifdef	__cplusplus
 }
 #endif
-
-#define	IF_RESOLVABLE_GET_INTERFACE(resolvable, id, version)	\
-			((resolvable)->ops->op_get_interface((resolvable), (id), (version)))
-
-#define	IF_RESOLVABLE_QUERY_INTERFACE(resolvable, id, base_version)	\
-			((resolvable)->ops->op_query_interface((resolvable), (id), (base_version)))
 
 #endif	/* !__if__resolvable_impl_h */

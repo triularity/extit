@@ -3,7 +3,7 @@
  *
  * Resolvable Interface client API wrappers.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -22,7 +22,7 @@
 EXTIT_EXPORT
 iv_version_t
 EXTIT_DECL
-if_resolvable_query_interface
+if_resolvable_query_interface__1_0
 (
 	if_resolvable_t *resolvable,
 	const char *id,
@@ -34,5 +34,6 @@ if_resolvable_query_interface
 		return IV_VERSION_NONE;
 #endif
 
-	return IF_RESOLVABLE_QUERY_INTERFACE(resolvable, id, base_version);
+	return resolvable->ops_1_0->op_query_interface(
+		resolvable, id, base_version);
 }

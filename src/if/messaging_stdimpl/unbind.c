@@ -1,7 +1,7 @@
 /*
  * @(#) if/messaging_stdimpl/unbind.c
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -18,7 +18,7 @@
 EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
-if_messaging_unbind_stdimpl
+if_messaging_stdimpl_unbind__1_0
 (
 	if_messaging_t *messaging,
 	if_messaging_bound_t *bound

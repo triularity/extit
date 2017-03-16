@@ -1,7 +1,7 @@
 /*
  * @(#) if/messaging_stdimpl/bind.c
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -19,7 +19,7 @@
 EXTIT_EXPORT
 if_messaging_bound_t *
 EXTIT_DECL
-if_messaging_bind_stdimpl
+if_messaging_stdimpl_bind__1_0
 (
 	if_messaging_t *messaging,
 	const char *mid,

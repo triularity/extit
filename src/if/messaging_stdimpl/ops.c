@@ -1,7 +1,7 @@
 /*
  * @(#) if/messaging_stdimpl/ops.c
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -12,17 +12,17 @@
 
 
 EXTIT_EXPORT
-if_messaging_ops_1_0_t		if_messaging_stdimpl_ops_1_0 =
+if_messaging_ops_1_0_t		if_messaging_stdimpl_ops__1_0 =
 {
-	if_messaging_add_listener_stdimpl,
-	if_messaging_remove_listener_stdimpl,
-	if_messaging_remove_listener_by_id_stdimpl,
-	if_messaging_has_listener_stdimpl,
-	if_messaging_send_stdimpl,
-	if_messaging_bind_stdimpl,
-	if_messaging_unbind_stdimpl,
-	if_messaging_bound_add_listener_stdimpl,
-	if_messaging_bound_remove_listener_stdimpl,
-	if_messaging_bound_has_listener_stdimpl,
-	if_messaging_bound_send_stdimpl
+	if_messaging_stdimpl_add_listener__1_0,
+	if_messaging_stdimpl_remove_listener__1_0,
+	if_messaging_stdimpl_remove_listener_by_id__1_0,
+	if_messaging_stdimpl_has_listener__1_0,
+	if_messaging_stdimpl_send__1_0,
+	if_messaging_stdimpl_bind__1_0,
+	if_messaging_stdimpl_unbind__1_0,
+	if_messaging_stdimpl_bound_add_listener__1_0,
+	if_messaging_stdimpl_bound_remove_listener__1_0,
+	if_messaging_stdimpl_bound_has_listener__1_0,
+	if_messaging_stdimpl_bound_send__1_0
 };

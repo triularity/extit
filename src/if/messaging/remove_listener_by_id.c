@@ -3,7 +3,7 @@
  *
  * Messaging Interface client API wrappers.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -20,7 +20,7 @@
 EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
-if_messaging_remove_listener_by_id
+if_messaging_remove_listener_by_id__1_0
 (
 	if_messaging_t *messaging,
 	if_messaging_listener_id_t id
@@ -31,5 +31,5 @@ if_messaging_remove_listener_by_id
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return IF_MESSAGING_REMOVE_LISTENER_BY_ID(messaging, id);
+	return messaging->ops_1_0->op_remove_listener_by_id(messaging, id);
 }

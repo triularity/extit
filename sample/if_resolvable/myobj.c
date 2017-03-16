@@ -264,14 +264,14 @@ myobj_secret_create(void)
 	obj = malloc(sizeof(myobj_t));
 
 	obj->resolvable.version = IF_RESOLVABLE_ABI_1_0;
-	obj->resolvable.ops = &my_resolv_ops;
+	obj->resolvable.ops_1_0 = &my_resolv_ops;
 
 	obj->configurable.version = IF_CONFIGURABLE_ABI_1_0;
 	obj->configurable.ops = &if_configurable_stdimpl_ops_1_0;
 	obj->configurable.descriptor = &conf_descriptor;
 
 	obj->referenced.version = IF_REFERENCED_ABI_1_0;
-	obj->referenced.ops = &my_referenced_ops;
+	obj->referenced.ops_1_0 = &my_referenced_ops;
 
 	obj->numrefs = EXTIT_REFCOUNT_NONE;
 	obj->enabled = EXTIT_TRUE;
