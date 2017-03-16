@@ -3,7 +3,7 @@
  *
  * Configurable Interface standard implementation.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -23,7 +23,7 @@
 EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
-if_configurable_set_uint32_stdimpl
+if_configurable_stdimpl_set_uint32__1_0
 (
 	if_configurable_t *conf,
 	if_configurable_propref_t *prop,
@@ -35,7 +35,7 @@ if_configurable_set_uint32_stdimpl
                 return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return if_configurable_set_uint32_stdimpl_base(
+	return if_configurable_stdimpl_set_uint32__1_0_base(
 		conf, conf, prop, value);
 }
 
@@ -43,7 +43,7 @@ if_configurable_set_uint32_stdimpl
 EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
-if_configurable_set_uint32_stdimpl_base
+if_configurable_stdimpl_set_uint32__1_0_base
 (
 	if_configurable_t *conf,
 	void *base,

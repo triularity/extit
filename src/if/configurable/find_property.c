@@ -3,7 +3,7 @@
  *
  * Configurable Interface client API wrappers.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -21,7 +21,7 @@
 EXTIT_EXPORT
 if_configurable_propref_t *
 EXTIT_DECL
-if_configurable_find_property
+if_configurable_find_property__1_0
 (
 	if_configurable_t *configurable,
 	const char *id
@@ -32,5 +32,5 @@ if_configurable_find_property
 		return NULL;
 #endif
 
-	return IF_CONFIGURABLE_FIND_PROPERTY(configurable, id);
+	return configurable->ops_1_0->op_find_property(configurable, id);
 }

@@ -31,13 +31,6 @@ LIBAPI
 extern if_messaging_ops_1_0_t		if_messaging_stdimpl_ops__1_0;
 
 
-#if	IF_MESSAGING_ABI_TARGET == IF_MESSAGING_ABI_1_0
-#define	if_messaging_stdimpl_ops	if_messaging_stdimpl_ops__1_0
-#else
-#error	Unsupported IF_MESSAGING_ABI_TARGET version
-#endif
-
-
 LIBAPI
 if_messaging_listener_id_t
 			EXTIT_DECL

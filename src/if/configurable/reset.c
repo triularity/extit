@@ -3,7 +3,7 @@
  *
  * Configurable Interface client API wrappers.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -19,7 +19,7 @@
 EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
-if_configurable_reset
+if_configurable_reset__1_0
 (
 	if_configurable_t *configurable
 )
@@ -29,5 +29,5 @@ if_configurable_reset
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return IF_CONFIGURABLE_RESET(configurable);
+	return configurable->ops_1_0->op_reset(configurable);
 }

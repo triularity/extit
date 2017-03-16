@@ -3,7 +3,7 @@
  *
  * Configurable Interface implementation.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -200,101 +200,10 @@ typedef struct _if_configurable_1_0_ops
 
 struct _if_configurable_1_0
 {
-	iv_version_t				version;
-	if_configurable_ops_1_0_t *		ops;
+	iv_version_t				version;	/* 1.0+ */
+	if_configurable_ops_1_0_t *		ops_1_0;
 	const if_configurable_descriptor_t *	descriptor;
 };
-
-
-#define	IF_CONFIGURABLE_RESET(conf)	\
-			((conf)->ops->op_reset(conf))
-
-#define	IF_CONFIGURABLE_FIND_PROPERTY(conf, id)	\
-			((conf)->ops->op_find_property((conf), (id)))
-
-#define	IF_CONFIGURABLE_GET_BOOL(conf, prop, valuep)	\
-			((conf)->ops->op_get_bool((conf), (prop), (valuep)))
-
-#define	IF_CONFIGURABLE_GET_CUSTOM(conf, prop, valuep)	\
-			((conf)->ops->op_get_custom((conf), (prop), (valuep)))
-
-#define	IF_CONFIGURABLE_GET_DOUBLE(conf, prop, valuep)	\
-			((conf)->ops->op_get_double((conf), (prop), (valuep)))
-
-#define	IF_CONFIGURABLE_GET_ENUM32(conf, prop, valuep)	\
-			((conf)->ops->op_get_enum32((conf), (prop), (valuep)))
-
-#define	IF_CONFIGURABLE_GET_FLOAT(conf, prop, valuep)	\
-			((conf)->ops->op_get_float((conf), (prop), (valuep)))
-
-#define	IF_CONFIGURABLE_GET_INT8(conf, prop, valuep)	\
-			((conf)->ops->op_get_int8((conf), (prop), (valuep)))
-
-#define	IF_CONFIGURABLE_GET_INT16(conf, prop, valuep)	\
-			((conf)->ops->op_get_int16((conf), (prop), (valuep)))
-
-#define	IF_CONFIGURABLE_GET_INT32(conf, prop, valuep)	\
-			((conf)->ops->op_get_int32((conf), (prop), (valuep)))
-
-#define	IF_CONFIGURABLE_GET_INT64(conf, prop, valuep)	\
-			((conf)->ops->op_get_int64((conf), (prop), (valuep)))
-
-#define	IF_CONFIGURABLE_GET_UINT8(conf, prop, valuep)	\
-			((conf)->ops->op_get_uint8((conf), (prop), (valuep)))
-
-#define	IF_CONFIGURABLE_GET_UINT16(conf, prop, valuep)	\
-			((conf)->ops->op_get_uint16((conf), (prop), (valuep)))
-
-#define	IF_CONFIGURABLE_GET_UINT32(conf, prop, valuep)	\
-			((conf)->ops->op_get_uint32((conf), (prop), (valuep)))
-
-#define	IF_CONFIGURABLE_GET_UINT64(conf, prop, valuep)	\
-			((conf)->ops->op_get_uint64((conf), (prop), (valuep)))
-
-#define	IF_CONFIGURABLE_GET_UTF8(conf, prop, valuep)	\
-			((conf)->ops->op_get_utf8((conf), (prop), (valuep)))
-
-#define	IF_CONFIGURABLE_SET_BOOL(conf, prop, value)	\
-			((conf)->ops->op_set_bool((conf), (prop), (value)))
-
-#define	IF_CONFIGURABLE_SET_CUSTOM(conf, prop, value)	\
-			((conf)->ops->op_set_custom((conf), (prop), (value)))
-
-#define	IF_CONFIGURABLE_SET_DOUBLE(conf, prop, value)	\
-			((conf)->ops->op_set_double((conf), (prop), (value)))
-
-#define	IF_CONFIGURABLE_SET_ENUM32(conf, prop, value)	\
-			((conf)->ops->op_set_enum32((conf), (prop), (value)))
-
-#define	IF_CONFIGURABLE_SET_FLOAT(conf, prop, value)	\
-			((conf)->ops->op_set_float((conf), (prop), (value)))
-
-#define	IF_CONFIGURABLE_SET_INT8(conf, prop, value)	\
-			((conf)->ops->op_set_int8((conf), (prop), (value)))
-
-#define	IF_CONFIGURABLE_SET_INT16(conf, prop, value)	\
-			((conf)->ops->op_set_int16((conf), (prop), (value)))
-
-#define	IF_CONFIGURABLE_SET_INT32(conf, prop, value)	\
-			((conf)->ops->op_set_int32((conf), (prop), (value)))
-
-#define	IF_CONFIGURABLE_SET_INT64(conf, prop, value)	\
-			((conf)->ops->op_set_int64((conf), (prop), (value)))
-
-#define	IF_CONFIGURABLE_SET_UINT8(conf, prop, value)	\
-			((conf)->ops->op_set_uint8((conf), (prop), (value)))
-
-#define	IF_CONFIGURABLE_SET_UINT16(conf, prop, value)	\
-			((conf)->ops->op_set_uint16((conf), (prop), (value)))
-
-#define	IF_CONFIGURABLE_SET_UINT32(conf, prop, value)	\
-			((conf)->ops->op_set_uint32((conf), (prop), (value)))
-
-#define	IF_CONFIGURABLE_SET_UINT64(conf, prop, value)	\
-			((conf)->ops->op_set_uint64((conf), (prop), (value)))
-
-#define	IF_CONFIGURABLE_SET_UTF8(conf, prop, value)	\
-			((conf)->ops->op_set_utf8((conf), (prop), (value)))
 
 #ifdef	__cplusplus
 }

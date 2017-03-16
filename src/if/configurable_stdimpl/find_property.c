@@ -3,7 +3,7 @@
  *
  * Configurable Interface standard implementation.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -23,7 +23,7 @@
 EXTIT_EXPORT
 if_configurable_propref_t *
 EXTIT_DECL
-if_configurable_find_property_stdimpl
+if_configurable_stdimpl_find_property__1_0
 (
 	if_configurable_t *conf,
 	const char *id
@@ -73,7 +73,7 @@ prop_compare(const void *key, const void *elem)
 EXTIT_EXPORT
 if_configurable_propref_t *
 EXTIT_DECL
-if_configurable_find_property_stdimpl_sorted
+if_configurable_stdimpl_find_property__1_0_sorted
 (
 	if_configurable_t *conf,
 	const char *id

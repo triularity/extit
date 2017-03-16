@@ -3,7 +3,7 @@
  *
  * Configurable Interface.
  *
- * Copyright (c) 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -242,14 +242,14 @@ typedef	if_configurable_1_0_t		if_configurable_t;
 LIBAPI
 if_configurable_propref_t *
 			EXTIT_DECL
-			if_configurable_find_property(
+			if_configurable_find_property__1_0(
 				if_configurable_t *configurable,
 				const char *id);
 
 LIBAPI
 extit_status_t
 			EXTIT_DECL
-			if_configurable_get_custom(
+			if_configurable_get_custom__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				void **valuep);
@@ -257,7 +257,7 @@ extit_status_t
 LIBAPI
 extit_status_t
 			EXTIT_DECL
-			if_configurable_get_bool(
+			if_configurable_get_bool__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				extit_bool_t *valuep);
@@ -265,13 +265,13 @@ extit_status_t
 LIBAPI
 const if_configurable_descriptor_t *
 			EXTIT_DECL
-			if_configurable_get_descriptor(
+			if_configurable_get_descriptor__1_0(
 				if_configurable_t *configurable);
 
 LIBAPI
 extit_status_t
 			EXTIT_DECL
-			if_configurable_get_double(
+			if_configurable_get_double__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				double *valuep);
@@ -279,7 +279,7 @@ extit_status_t
 LIBAPI
 extit_status_t
 			EXTIT_DECL
-			if_configurable_get_enum32(
+			if_configurable_get_enum32__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				uint32_t *valuep);
@@ -287,7 +287,7 @@ extit_status_t
 LIBAPI
 extit_status_t
 			EXTIT_DECL
-			if_configurable_get_float(
+			if_configurable_get_float__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				float *valuep);
@@ -295,7 +295,7 @@ extit_status_t
 LIBAPI
 extit_status_t
 			EXTIT_DECL
-			if_configurable_get_int8(
+			if_configurable_get_int8__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				int8_t *valuep);
@@ -303,7 +303,7 @@ extit_status_t
 LIBAPI
 extit_status_t
 			EXTIT_DECL
-			if_configurable_get_int16(
+			if_configurable_get_int16__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				int16_t *valuep);
@@ -311,7 +311,7 @@ extit_status_t
 LIBAPI
 extit_status_t
 			EXTIT_DECL
-			if_configurable_get_int32(
+			if_configurable_get_int32__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				int32_t *valuep);
@@ -319,7 +319,7 @@ extit_status_t
 LIBAPI
 extit_status_t
 			EXTIT_DECL
-			if_configurable_get_int64(
+			if_configurable_get_int64__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				int64_t *valuep);
@@ -327,7 +327,7 @@ extit_status_t
 LIBAPI
 extit_status_t
 			EXTIT_DECL
-			if_configurable_get_uint8(
+			if_configurable_get_uint8__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				uint8_t *valuep);
@@ -335,7 +335,7 @@ extit_status_t
 LIBAPI
 extit_status_t
 			EXTIT_DECL
-			if_configurable_get_uint16(
+			if_configurable_get_uint16__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				uint16_t *valuep);
@@ -343,7 +343,7 @@ extit_status_t
 LIBAPI
 extit_status_t
 			EXTIT_DECL
-			if_configurable_get_uint32(
+			if_configurable_get_uint32__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				uint32_t *valuep);
@@ -351,7 +351,7 @@ extit_status_t
 LIBAPI
 extit_status_t
 			EXTIT_DECL
-			if_configurable_get_uint64(
+			if_configurable_get_uint64__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				uint64_t *valuep);
@@ -359,7 +359,7 @@ extit_status_t
 LIBAPI
 extit_status_t
 			EXTIT_DECL
-			if_configurable_get_utf8(
+			if_configurable_get_utf8__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				const char **valuep);
@@ -367,13 +367,13 @@ extit_status_t
 LIBAPI
 extit_status_t
 			EXTIT_DECL
-			if_configurable_reset(
+			if_configurable_reset__1_0(
 				if_configurable_t *configurable);
 
 LIBAPI
 extit_status_t
 			EXTIT_DECL
-			if_configurable_set_bool(
+			if_configurable_set_bool__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				extit_bool_t value);
@@ -381,7 +381,7 @@ extit_status_t
 LIBAPI
 extit_status_t
 			EXTIT_DECL
-			if_configurable_set_custom(
+			if_configurable_set_custom__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				void *value);
@@ -389,7 +389,7 @@ extit_status_t
 LIBAPI
 extit_status_t
 			EXTIT_DECL
-			if_configurable_set_double(
+			if_configurable_set_double__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				double value);
@@ -397,7 +397,7 @@ extit_status_t
 LIBAPI
 extit_status_t
 			EXTIT_DECL
-			if_configurable_set_enum32(
+			if_configurable_set_enum32__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				uint32_t value);
@@ -405,7 +405,7 @@ extit_status_t
 LIBAPI
 extit_status_t
 			EXTIT_DECL
-			if_configurable_set_float(
+			if_configurable_set_float__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				float value);
@@ -413,7 +413,7 @@ extit_status_t
 LIBAPI
 extit_status_t
 			EXTIT_DECL
-			if_configurable_set_int8(
+			if_configurable_set_int8__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				int8_t value);
@@ -421,7 +421,7 @@ extit_status_t
 LIBAPI
 extit_status_t
 			EXTIT_DECL
-			if_configurable_set_int16(
+			if_configurable_set_int16__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				int16_t value);
@@ -429,7 +429,7 @@ extit_status_t
 LIBAPI
 extit_status_t
 			EXTIT_DECL
-			if_configurable_set_int32(
+			if_configurable_set_int32__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				int32_t value);
@@ -437,7 +437,7 @@ extit_status_t
 LIBAPI
 extit_status_t
 			EXTIT_DECL
-			if_configurable_set_int64(
+			if_configurable_set_int64__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				int64_t value);
@@ -445,7 +445,7 @@ extit_status_t
 LIBAPI
 extit_status_t
 			EXTIT_DECL
-			if_configurable_set_uint8(
+			if_configurable_set_uint8__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				uint8_t value);
@@ -453,7 +453,7 @@ extit_status_t
 LIBAPI
 extit_status_t
 			EXTIT_DECL
-			if_configurable_set_uint16(
+			if_configurable_set_uint16__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				uint16_t value);
@@ -461,7 +461,7 @@ extit_status_t
 LIBAPI
 extit_status_t
 			EXTIT_DECL
-			if_configurable_set_uint32(
+			if_configurable_set_uint32__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				uint32_t value);
@@ -469,7 +469,7 @@ extit_status_t
 LIBAPI
 extit_status_t
 			EXTIT_DECL
-			if_configurable_set_uint64(
+			if_configurable_set_uint64__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				uint64_t value);
@@ -477,10 +477,45 @@ extit_status_t
 LIBAPI
 extit_status_t
 			EXTIT_DECL
-			if_configurable_set_utf8(
+			if_configurable_set_utf8__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				const char *value);
+
+
+#if	IV_VERSION_MAJOR(IF_CONFIGURABLE_ABI_TARGET) == 1
+#define	if_configurable_find_property	if_configurable_find_property__1_0
+#define	if_configurable_get_bool	if_configurable_get_bool__1_0
+#define	if_configurable_get_custom	if_configurable_get_custom__1_0
+#define	if_configurable_get_descriptor	if_configurable_get_descriptor__1_0
+#define	if_configurable_get_double	if_configurable_get_double__1_0
+#define	if_configurable_get_enum32	if_configurable_get_enum32__1_0
+#define	if_configurable_get_float	if_configurable_get_float__1_0
+#define	if_configurable_get_int16	if_configurable_get_int16__1_0
+#define	if_configurable_get_int32	if_configurable_get_int32__1_0
+#define	if_configurable_get_int64	if_configurable_get_int64__1_0
+#define	if_configurable_get_int8	if_configurable_get_int8__1_0
+#define	if_configurable_get_uint16	if_configurable_get_uint16__1_0
+#define	if_configurable_get_uint32	if_configurable_get_uint32__1_0
+#define	if_configurable_get_uint64	if_configurable_get_uint64__1_0
+#define	if_configurable_get_uint8	if_configurable_get_uint8__1_0
+#define	if_configurable_get_utf8	if_configurable_get_utf8__1_0
+#define	if_configurable_reset		if_configurable_reset__1_0
+#define	if_configurable_set_bool	if_configurable_set_bool__1_0
+#define	if_configurable_set_custom	if_configurable_set_custom__1_0
+#define	if_configurable_set_double	if_configurable_set_double__1_0
+#define	if_configurable_set_enum32	if_configurable_set_enum32__1_0
+#define	if_configurable_set_float	if_configurable_set_float__1_0
+#define	if_configurable_set_int16	if_configurable_set_int16__1_0
+#define	if_configurable_set_int32	if_configurable_set_int32__1_0
+#define	if_configurable_set_int64	if_configurable_set_int64__1_0
+#define	if_configurable_set_int8	if_configurable_set_int8__1_0
+#define	if_configurable_set_uint16	if_configurable_set_uint16__1_0
+#define	if_configurable_set_uint32	if_configurable_set_uint32__1_0
+#define	if_configurable_set_uint64	if_configurable_set_uint64__1_0
+#define	if_configurable_set_uint8	if_configurable_set_uint8__1_0
+#define	if_configurable_set_utf8	if_configurable_set_utf8__1_0
+#endif	/* IV_VERSION_MAJOR(IF_CONFIGURABLE_ABI_TARGET) == 1 */
 
 #undef	LIBAPI
 

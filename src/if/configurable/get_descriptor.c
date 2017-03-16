@@ -3,7 +3,7 @@
  *
  * Configurable Interface client API wrappers.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -21,7 +21,7 @@
 EXTIT_EXPORT
 const if_configurable_descriptor_t *
 EXTIT_DECL
-if_configurable_get_descriptor
+if_configurable_get_descriptor__1_0
 (
 	if_configurable_t *configurable
 )

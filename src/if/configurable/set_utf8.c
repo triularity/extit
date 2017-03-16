@@ -3,7 +3,7 @@
  *
  * Configurable Interface client API wrappers.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -19,7 +19,7 @@
 EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
-if_configurable_set_utf8
+if_configurable_set_utf8__1_0
 (
 	if_configurable_t *configurable,
 	if_configurable_propref_t *prop,
@@ -31,5 +31,5 @@ if_configurable_set_utf8
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return IF_CONFIGURABLE_SET_UTF8(configurable, prop, value);
+	return configurable->ops_1_0->op_set_utf8(configurable, prop, value);
 }

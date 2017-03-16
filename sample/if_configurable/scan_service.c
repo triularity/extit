@@ -212,7 +212,7 @@ scan_service_create(void)
 	service = malloc(sizeof(scan_service_t));
 
 	service->configurable.version = IF_CONFIGURABLE_ABI_TARGET;
-	service->configurable.ops = &if_configurable_stdimpl_ops;
+	service->configurable.ops_1_0 = &if_configurable_stdimpl_ops_1_0;
 	service->configurable.descriptor = &conf_descriptor;
 
 	service->mode = SCAN_MODE_COLOR;
