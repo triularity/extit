@@ -81,8 +81,8 @@ struct _extit_container_1_0
 	/* base */
 	iv_version_t			version;	/* EXTIT_ABI_1_0 */
 
-	/* 1.0 */
-	extit_container_ops_1_0_t *	ops;
+	/* 1.0+ */
+	extit_container_ops_1_0_t *	ops_1_0;
 };
 
 #ifdef	__cplusplus

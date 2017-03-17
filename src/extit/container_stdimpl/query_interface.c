@@ -3,7 +3,7 @@
  *
  * Standard container/query_interface() implementation.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -16,7 +16,7 @@
 EXTIT_EXPORT
 iv_version_t
 EXTIT_DECL
-extit_container_query_interface_stdimpl
+extit_container_stdimpl_query_interface__1_0
 (
 	const extit_container_t *container,
 	const char *id,

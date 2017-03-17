@@ -3,7 +3,7 @@
  *
  * Standard container/get_function() implementation.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -17,7 +17,7 @@
 EXTIT_EXPORT
 extit_func_t
 EXTIT_DECL
-extit_container_get_function_stdimpl
+extit_container_stdimpl_get_function__1_0
 (
 	const extit_container_t *container,
 	const char *name

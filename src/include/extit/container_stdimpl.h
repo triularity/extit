@@ -3,7 +3,7 @@
  *
  * ExtIt container implementation.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -34,41 +34,34 @@ LIBAPI
 extern extit_container_ops_1_0_t	extit_container_stdimpl_ops_1_0;
 
 
-#if	EXTIT_ABI_TARGET == EXTIT_ABI_1_0
-#define	extit_container_stdimpl_ops	extit_container_stdimpl_ops_1_0
-#else
-#error	Unsupported EXTIT_ABI_TARGET version
-#endif
-
-
 LIBAPI_STATIC
 extit_func_t		EXTIT_DECL
-			extit_container_get_function_stdimpl(
+			extit_container_stdimpl_get_function__1_0(
 				const extit_container_t *container,
 				const char *name);
 
 LIBAPI_STATIC
 void *			EXTIT_DECL
-			extit_container_get_interface_stdimpl(
+			extit_container_stdimpl_get_interface__1_0(
 				const extit_container_t *container,
 				const char *name,
 				iv_version_t version);
 
 LIBAPI_STATIC
 void *			EXTIT_DECL
-			extit_container_get_symbol_stdimpl(
+			extit_container_stdimpl_get_symbol__1_0(
 				const extit_container_t *container,
 				const char *name);
 
 LIBAPI_STATIC
 void			EXTIT_DECL
-			extit_container_log_stdimpl(
+			extit_container_stdimpl_log__1_0(
 				const extit_container_t *container,
 				const char *message);
 
 LIBAPI_STATIC
 iv_version_t		EXTIT_DECL
-			extit_container_query_interface_stdimpl(
+			extit_container_stdimpl_query_interface__1_0(
 				const extit_container_t *container,
 				const char *name,
 				iv_version_t base_version);

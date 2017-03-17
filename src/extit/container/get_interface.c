@@ -3,7 +3,7 @@
  *
  * Container API wrappers.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -16,7 +16,7 @@
 EXTIT_EXPORT
 void *
 EXTIT_DECL
-extit_container_get_interface
+extit_container_get_interface__1_0
 (
 	const extit_container_t *container,
 	const char *iid,
@@ -28,5 +28,5 @@ extit_container_get_interface
 		return NULL;
 #endif
 
-	return container->ops->op_get_interface(container, iid, version);
+	return container->ops_1_0->op_get_interface(container, iid, version);
 }

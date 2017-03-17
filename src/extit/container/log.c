@@ -3,7 +3,7 @@
  *
  * Container API wrappers.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -16,7 +16,7 @@
 EXTIT_EXPORT
 void
 EXTIT_DECL
-extit_container_log
+extit_container_log__1_0
 (
 	const extit_container_t *container,
 	const char *message
@@ -27,5 +27,5 @@ extit_container_log
 		return;
 #endif
 
-	container->ops->op_log(container, message);
+	container->ops_1_0->op_log(container, message);
 }
