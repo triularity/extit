@@ -288,6 +288,7 @@ set(IV_UTIL_HEADER_FILES
 
 set(IV_UTIL_SOURCE_FILES
 	src/iv/util/keymap.c
+	src/iv/util/map.c
 	src/iv/util/matches.c)
 
 
@@ -350,6 +351,7 @@ endif()
 # Configuration Options
 #
 if(EXTIT_PARANOID)
+	add_definitions("-DIV_PARANOID")
 	add_definitions("-DEXTIT_PARANOID")
 endif()
 
@@ -1279,6 +1281,16 @@ if(EXTIT_COMPILE_TESTS)
 
 	target_link_libraries(
 		test_iv_keymap
+			iv_util)
+
+	add_executable(
+		test_iv_map
+			tests/iv_map/test_iv_map.c
+			${IV_HEADER_FILES}
+			${IV_UTIL_HEADER_FILES})
+
+	target_link_libraries(
+		test_iv_map
 			iv_util)
 
 	add_executable(
