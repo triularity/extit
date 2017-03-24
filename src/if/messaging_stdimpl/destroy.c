@@ -1,7 +1,7 @@
 /*
  * @(#) if/messaging_stdimpl/destroy.c
  *
- * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -28,6 +28,5 @@ if_messaging_stdimpl_destroy
 
 	messaging_i = (if_messaging_internal_t *) messaging;
 
-	iv_keymap_destroy(messaging_i->keymap);
-	if_messaging_stdimpl_keybuf_release(&messaging_i->keybuf);
+	iv_map_destroy(messaging_i->map);
 }

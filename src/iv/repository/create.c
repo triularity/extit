@@ -1,7 +1,7 @@
 /*
  * @(#) iv/repository/create.c
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -45,7 +45,7 @@ iv_repository_create(void)
 	if((repo = malloc(sizeof(iv_repository_t))) == NULL)
 		return NULL;
 
-	if((repo->keymap = iv_keymap_create(0, free_vlist)) == NULL)
+	if((repo->map = iv_map_create(0, free_vlist)) == NULL)
 	{
 		free(repo);
 		return NULL;

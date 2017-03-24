@@ -32,7 +32,7 @@ my_get_interface(const extit_container_t *container, const char *name, iv_versio
 {
 	return iv_repository_get(
 		((const my_container_impl_t *) container)->ir,
-		name, version);
+		NULL, name, version);
 }
 
 
@@ -43,7 +43,7 @@ my_query_interface(const extit_container_t *container, const char *name, iv_vers
 {
 	return iv_repository_query(
 		((const my_container_impl_t *) container)->ir,
-		name, base_version);
+		NULL, name, base_version);
 }
 
 
@@ -80,7 +80,7 @@ main(int argc, char **argv)
 		return 2;
 	}
 
-	if(iv_repository_set(ir, PERSISTENCE_IID,
+	if(iv_repository_set(ir, NULL, PERSISTENCE_IID,
 	 PERSISTENCE_ABI_TARGET, &persistence_interface, NULL)
 	 != IV_REPOSITORY_STATUS_OK)
 	{

@@ -1,11 +1,9 @@
 /*
  * @(#) iv/repository/get.c
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
-
-#include <string.h>
 
 #include <iv/base.h>
 #include <iv/util.h>
@@ -20,6 +18,7 @@ IV_DECL
 iv_repository_get
 (
 	const iv_repository_t *repo,
+	const char *key,
 	const char *iid,
 	iv_version_t version
 )
@@ -29,14 +28,16 @@ iv_repository_get
 	iv_version_t		vlist_version;
 
 
+	if(key == NULL)
+		key = "";
+
 	if(iid == NULL)
 		return NULL;
 
 	if(version == IV_VERSION_NONE)
 		return NULL;
 
-	vlist = (version_node_t *) iv_keymap_get(
-		repo->keymap, (const unsigned char *) iid, strlen(iid));
+	vlist = (version_node_t *) iv_map_get(repo->map, key, iid);
 
 	if(vlist == NULL)
 		return NULL;

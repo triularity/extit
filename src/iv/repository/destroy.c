@@ -1,7 +1,7 @@
 /*
  * @(#) iv/repository/destroy.c
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -21,6 +21,6 @@ iv_repository_destroy
 	iv_repository_t *repo
 )
 {
-	iv_keymap_destroy(repo->keymap);
+	iv_map_destroy(repo->map);
 	free(repo);
 }

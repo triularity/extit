@@ -1,7 +1,7 @@
 /*
  * @(#) if/messaging_stdimpl/create.c
  *
- * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -37,7 +37,7 @@ if_messaging_stdimpl_create
 	if((messaging_i = malloc(sizeof(if_messaging_internal_t))) == NULL)
 		return NULL;
 
-	if((messaging_i->keymap = iv_keymap_create(0, bound_destroy)) == NULL)
+	if((messaging_i->map = iv_map_create(0, bound_destroy)) == NULL)
 	{
 		free(messaging_i);
 		return NULL;
@@ -49,8 +49,6 @@ if_messaging_stdimpl_create
 	messaging_i->lid_list = NULL;
 	messaging_i->lid_next = 1;
 	messaging_i->num_deletes = 0;
-
-	if_messaging_stdimpl_keybuf_init(&messaging_i->keybuf);
 
 
 	return &messaging_i->pub;

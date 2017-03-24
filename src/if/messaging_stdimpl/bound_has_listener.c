@@ -1,7 +1,7 @@
 /*
  * @(#) if/messaging_stdimpl/bound_has_listener.c
  *
- * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 

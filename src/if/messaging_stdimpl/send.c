@@ -1,7 +1,7 @@
 /*
  * @(#) if/messaging_stdimpl/send.c
  *
- * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -30,24 +30,14 @@ if_messaging_stdimpl_send__1_0
 )
 {
 	if_messaging_internal_t *	messaging_i;
-	extit_status_t			status;
 	if_messaging_bound_t *		bound_list;
 	if_messaging_bound_t *		bound_entry;
 
 
 	messaging_i = (if_messaging_internal_t *) messaging;
 
-	if((status = if_messaging_stdimpl_keybuf_setids(
-	 &messaging_i->keybuf, mid, iid)) != EXTIT_STATUS_OK)
-	{
-		return status;
-	}
-
 	bound_list = (if_messaging_bound_t *)
-		iv_keymap_get(
-			messaging_i->keymap,
-			messaging_i->keybuf.buf,
-			messaging_i->keybuf.len);
+		iv_map_get(messaging_i->map, mid, iid);
 
 	if(bound_list == NULL)
 		return EXTIT_STATUS_OK;

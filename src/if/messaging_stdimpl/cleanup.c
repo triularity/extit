@@ -1,7 +1,7 @@
 /*
  * @(#) if/messaging_stdimpl/cleanup.c
  *
- * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -54,6 +54,6 @@ if_messaging_stdimpl_cleanup
 
 	messaging_i = (if_messaging_internal_t *) messaging;
 
-	iv_keymap_cleanup(messaging_i->keymap, bound_cleaner);
+	iv_map_cleanup(messaging_i->map, bound_cleaner);
 	messaging_i->num_deletes = 0;
 }

@@ -3,7 +3,7 @@
  *
  * Interface Versioning Repository API.
  *
- * Copyright (c) 2015, 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2015-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -63,6 +63,7 @@ LIBAPI
 void *			IV_DECL
 			iv_repository_get(
 				const iv_repository_t *repo,
+				const char *key,
 				const char *iid,
 				iv_version_t version);
 
@@ -70,6 +71,7 @@ LIBAPI
 iv_version_t		IV_DECL
 			iv_repository_query(
 				const iv_repository_t *repo,
+				const char *key,
 				const char *iid,
 				iv_version_t base_version);
 
@@ -77,6 +79,7 @@ LIBAPI
 iv_repository_status_t	IV_DECL
 			iv_repository_remove(
 				iv_repository_t *repo,
+				const char *key,
 				const char *iid,
 				iv_version_t version,
 				void **old_valuep);
@@ -85,6 +88,7 @@ LIBAPI
 iv_repository_status_t	IV_DECL
 			iv_repository_set(
 				iv_repository_t *repo,
+				const char *key,
 				const char *iid,
 				iv_version_t version,
 				void *value,

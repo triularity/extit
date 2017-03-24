@@ -1,7 +1,7 @@
 /*
  * @(#) if/messaging_stdimpl/add_listener.c
  *
- * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -33,29 +33,20 @@ if_messaging_stdimpl_add_listener__1_0
 	if_messaging_internal_t *	messaging_i;
 	if_messaging_bound_t **		bound_listp;
 	if_messaging_bound_t *		bound_entry;
-	const unsigned char *		internal_key;
+	const char *			internal_mid;
 
 
 	messaging_i = (if_messaging_internal_t *) messaging;
 
-	if(if_messaging_stdimpl_keybuf_setids(&messaging_i->keybuf, mid, iid)
-	 != EXTIT_STATUS_OK)
-	{
-		return IF_MESSAGING_LISTENER_ID_NONE;
-	}
-
 	bound_listp = (if_messaging_bound_t **)
-		iv_keymap_acquire_valueptr(
-			messaging_i->keymap,
-			messaging_i->keybuf.buf,
-			messaging_i->keybuf.len,
-			&internal_key);
+		iv_map_acquire_valueptr(
+			messaging_i->map, mid, iid, &internal_mid, NULL);
 
 	if(bound_listp == NULL)
 		return IF_MESSAGING_LISTENER_ID_NONE;
 
 	bound_entry = if_messaging_stdimpl_bound_acquire(
-		bound_listp, version, (char *) internal_key);
+		bound_listp, version, internal_mid);
 
 	if(bound_entry == NULL)
 		return IF_MESSAGING_LISTENER_ID_NONE;

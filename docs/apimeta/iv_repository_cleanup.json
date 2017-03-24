@@ -38,6 +38,7 @@
 			[
 				[ 'iv_repository_t', '*' ],
 				[ 'const', 'char', '*' ],
+				[ 'const', 'char', '*' ],
 				'iv_version_t',
 				[ 'void', '**' ]
 			],

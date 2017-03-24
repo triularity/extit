@@ -1,7 +1,7 @@
 /*
  * @(#) iv/repository/internal.h
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -30,7 +30,7 @@ struct _version_node
 
 struct _iv_repository
 {
-	iv_keymap_t *		keymap;
+	iv_map_t *		map;
 	unsigned int		num_deletes;
 };
 

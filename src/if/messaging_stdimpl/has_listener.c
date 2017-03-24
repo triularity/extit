@@ -1,7 +1,7 @@
 /*
  * @(#) if/messaging_stdimpl/has_listener.c
  *
- * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -35,22 +35,8 @@ if_messaging_stdimpl_has_listener__1_0
 
 	messaging_i = (if_messaging_internal_t *) messaging;
 
-	if(if_messaging_stdimpl_keybuf_setids(&messaging_i->keybuf, mid, iid)
-	 != EXTIT_STATUS_OK)
-	{
-		/*
-		 * XXX
-		 * This is erroneous. Fail with true to be on the safe side,
-		 * incase there are some.
-		 */
-		return EXTIT_TRUE;
-	}
-
 	bound_list = (if_messaging_bound_t *)
-		iv_keymap_get(
-			messaging_i->keymap,
-			messaging_i->keybuf.buf,
-			messaging_i->keybuf.len);
+		iv_map_get(messaging_i->map, mid, iid);
 
 	if(bound_list == NULL)
 		return EXTIT_FALSE;

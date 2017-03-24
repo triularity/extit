@@ -1,7 +1,7 @@
 /*
  * @(#) stdimpl.h
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -47,37 +47,16 @@ struct _listener_entry
 };
 
 
-typedef struct _keybuf
-{
-	unsigned char *			buf;
-	size_t				len;
-	size_t				capacity;
-	unsigned char			def_buffer[256];
-} keybuf_t;
-
-
 typedef struct _if_messaging_internal
 {
 	if_messaging_1_0_t		pub;
 
-	iv_keymap_t *			keymap;
+	iv_map_t *			map;
 	listener_entry_t *		lid_list;
 	if_messaging_listener_id_t	lid_next;
 	unsigned int			num_deletes;
-	keybuf_t			keybuf;
 } if_messaging_internal_t;
 
-
-void				if_messaging_stdimpl_keybuf_init(
-					keybuf_t *keybuf);
-
-void				if_messaging_stdimpl_keybuf_release(
-					keybuf_t *keybuf);
-
-extit_status_t			if_messaging_stdimpl_keybuf_setids(
-					keybuf_t *keybuf,
-					const char *mid,
-					const char *iid);
 
 if_messaging_bound_t *		if_messaging_stdimpl_bound_acquire(
 					if_messaging_bound_t **bound_listp,

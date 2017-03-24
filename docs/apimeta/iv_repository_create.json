@@ -74,6 +74,7 @@
 			[
 				[ 'iv_repository_t', '*' ],
 				[ 'const', 'char', '*' ],
+				[ 'const', 'char', '*' ],
 				'iv_version_t'
 			],
 			section:	'3'
@@ -99,6 +100,7 @@
 			[
 				[ 'iv_repository_t', '*' ],
 				[ 'const', 'char', '*' ],
+				[ 'const', 'char', '*' ],
 				'iv_version_t'
 			],
 			section:	'3'
@@ -109,6 +111,7 @@
 			parameters:
 			[
 				[ 'iv_repository_t', '*' ],
+				[ 'const', 'char', '*' ],
 				[ 'const', 'char', '*' ],
 				'iv_version_t',
 				[ 'void', '**' ]
@@ -121,6 +124,7 @@
 			parameters:
 			[
 				[ 'iv_repository_t', '*' ],
+				[ 'const', 'char', '*' ],
 				[ 'const', 'char', '*' ],
 				'iv_version_t',
 				[ 'void', '*' ],

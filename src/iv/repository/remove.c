@@ -1,12 +1,11 @@
 /*
  * @(#) iv/repository/remove.c
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
 #include <stdlib.h>
-#include <string.h>
 
 #include <iv/base.h>
 #include <iv/util.h>
@@ -21,6 +20,7 @@ IV_DECL
 iv_repository_remove
 (
 	iv_repository_t *repo,
+	const char *key,
 	const char *iid,
 	iv_version_t version,
 	void **old_valuep
@@ -31,14 +31,16 @@ iv_repository_remove
 	iv_version_t		entry_version;
 
 
+	if(key == NULL)
+		key = "";
+
 	if(iid == NULL)
 		return IV_REPOSITORY_STATUS_INVALID;
 
 	if(version == IV_VERSION_NONE)
 		return IV_REPOSITORY_STATUS_INVALID;
 
-	vlistp = (version_node_t **) iv_keymap_get_valueptr(
-		repo->keymap, (const unsigned char *) iid, strlen(iid));
+	vlistp = (version_node_t **) iv_map_get_valueptr(repo->map, key, iid);
 
 	if(vlistp == NULL)
 		return IV_REPOSITORY_STATUS_NOTFOUND;

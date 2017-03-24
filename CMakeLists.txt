@@ -255,7 +255,6 @@ set(IF_MESSAGING_STDIMPL_SOURCE_FILES
 	src/if/messaging_stdimpl/create.c
 	src/if/messaging_stdimpl/destroy.c
 	src/if/messaging_stdimpl/has_listener.c
-	src/if/messaging_stdimpl/keybuf.c
 	src/if/messaging_stdimpl/ops.c
 	src/if/messaging_stdimpl/remove_listener.c
 	src/if/messaging_stdimpl/remove_listener_by_id.c

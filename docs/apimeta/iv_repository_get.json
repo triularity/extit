@@ -19,7 +19,20 @@
 				},
 				{
 					type:	[ 'const', 'char', '*' ],
-					name:	'id',
+					name:	'key',
+					description:
+					[
+						'An entry key, or ',
+						{
+							type:	'constant',
+							value:	'NULL'
+						},
+						'.'
+					]
+				},
+				{
+					type:	[ 'const', 'char', '*' ],
+					name:	'iid',
 					description: 'An interface identifier.'
 				},
 				{
@@ -45,7 +58,13 @@
 	],
 	description:
 	[
-		'Get the best matching (highest version) assigned interface that is compatible with the requested version.'
+		'Get the best matching (highest version) assigned interface that is compatible with the requested version for a given key.',
+		' A key value of ',
+		{
+			type:	'constant',
+			value:	'NULL'
+		},
+		' is equivilent to "".'
 	],
 	see:
 	[
@@ -61,6 +80,7 @@
 			[
 				[ 'iv_repository_t', '*' ],
 				[ 'const', 'char', '*' ],
+				[ 'const', 'char', '*' ],
 				'iv_version_t'
 			],
 			section:	'3'
@@ -71,6 +91,7 @@
 			parameters:
 			[
 				[ 'iv_repository_t', '*' ],
+				[ 'const', 'char', '*' ],
 				[ 'const', 'char', '*' ],
 				'iv_version_t',
 				[ 'void', '**' ]
@@ -83,6 +104,7 @@
 			parameters:
 			[
 				[ 'iv_repository_t', '*' ],
+				[ 'const', 'char', '*' ],
 				[ 'const', 'char', '*' ],
 				'iv_version_t',
 				[ 'void', '*' ],

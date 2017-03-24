@@ -1,7 +1,7 @@
 /*
  * @(#) iv/repository/cleanup.c
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -19,6 +19,6 @@ iv_repository_cleanup
 	iv_repository_t *repo
 )
 {
-	iv_keymap_cleanup(repo->keymap, NULL);
+	iv_map_cleanup(repo->map, NULL);
 	repo->num_deletes = 0;
 }
