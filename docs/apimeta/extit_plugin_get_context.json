@@ -1,102 +1,102 @@
 {
-	summary:
-		'Get a plugin instance's context value.',
-	includes:
+	"summary":
+		"Get a plugin instance's context value.",
+	"includes":
 	[
-		'extit/base.h',
-		'extit/pmodule.h'
+		"extit/base.h",
+		"extit/pmodule.h"
 	],
-	synopsis:
+	"synopsis":
 	[
 		{
-			type:	'function',
-			name:	'extit_plugin_get_context',
-			parameters:
+			"type": "function",
+			"name": "extit_plugin_get_context",
+			"parameters":
 			[
 				{
-					type:	[ 'extit_plugin_t', '*' ],
-					name:	'plugin',
-					description: 'The plugin.'
+					"type": [ "extit_plugin_t", "*" ],
+					"name": "plugin",
+					"description": "The plugin."
 				}
 			],
-			returns:
+			"returns":
 			{
-				type:	[ 'void', '*' ],
-				description:
-					'The context value.'
+				"type": [ "void", "*" ],
+				"description":
+					"The context value."
 			}
 		}
 	],
-	description:
+	"description":
 	[
-		'Get a plugin instance's context value. The context value is what is returned by the module's ',
+		"Get a plugin instance's context value. The context value is what is returned by the module's ",
 		{
-			type:	'literal',
-			value:	'op_create'
+			"type": "literal",
+			"value": "op_create"
 		},
-		' implementation function.'
+		" implementation function."
 	],
-	see:
+	"see":
 	[
 		{
-			type:	'function',
-			name:	'extit_plugin_destroy',
-			parameters:
+			"type": "function",
+			"name": "extit_plugin_destroy",
+			"parameters":
 			[
-				[ 'extit_plugin_t', '*' ]
+				[ "extit_plugin_t", "*" ]
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_plugin_get_flags',
-			parameters:
+			"type": "function",
+			"name": "extit_plugin_get_flags",
+			"parameters":
 			[
-				[ 'extit_plugin_t', '*' ]
+				[ "extit_plugin_t", "*" ]
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_plugin_get_interface',
-			parameters:
+			"type": "function",
+			"name": "extit_plugin_get_interface",
+			"parameters":
 			[
-				[ 'extit_plugin_t', '*' ],
-				[ 'const', 'char', '*' ],
-				'iv_version_t'
+				[ "extit_plugin_t", "*" ],
+				[ "const", "char", "*" ],
+				"iv_version_t"
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_plugin_get_module',
-			parameters:
+			"type": "function",
+			"name": "extit_plugin_get_module",
+			"parameters":
 			[
-				[ 'extit_plugin_t', '*' ]
+				[ "extit_plugin_t", "*" ]
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_plugin_query_interface',
-			parameters:
+			"type": "function",
+			"name": "extit_plugin_query_interface",
+			"parameters":
 			[
-				[ 'extit_plugin_t', '*' ],
-				[ 'const', 'char', '*' ],
-				'iv_version_t'
+				[ "extit_plugin_t", "*" ],
+				[ "const", "char", "*" ],
+				"iv_version_t"
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_plugin_set_flags',
-			parameters:
+			"type": "function",
+			"name": "extit_plugin_set_flags",
+			"parameters":
 			[
-				[ 'extit_plugin_t', '*' ],
-				'unsigned int'
+				[ "extit_plugin_t", "*" ],
+				"unsigned int"
 			],
-			section:	'3'
+			"section": "3"
 		}
 	],
-	since:	'1.0'
+	"since": "1.0"
 }

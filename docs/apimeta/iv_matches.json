@@ -1,63 +1,63 @@
 {
-	summary:
-		'Check if an interface version implements a required version.',
-	includes:
+	"summary":
+		"Check if an interface version implements a required version.",
+	"includes":
 	[
-		'iv/base.h',
-		'iv/util.h'
+		"iv/base.h",
+		"iv/util.h"
 	],
-	synopsis:
+	"synopsis":
 	[
 		{
-			type:	'function',
-			name:	'iv_matches',
-			parameters:
+			"type": "function",
+			"name": "iv_matches",
+			"parameters":
 			[
 				{
-					type:	'iv_version_t',
-					name:	'version',
-					description: 'The version being checked.'
+					"type": "iv_version_t",
+					"name": "version",
+					"description": "The version being checked."
 				},
 				{
-					type:	'iv_version_t',
-					name:	'req_version',
-					description: 'The required version.'
+					"type": "iv_version_t",
+					"name": "req_version",
+					"description": "The required version."
 				}
 			],
-			returns:
+			"returns":
 			{
-				type:	'iv_bool_t',
-				description:
+				"type": "iv_bool_t",
+				"description":
 				[
 					{
-						type: 'constant',
-						value: 'IV_TRUE'
+						"type": "constant",
+						"value": "IV_TRUE"
 					},
-					' if compatible, ',
+					" if compatible, ",
 					{
-						type: 'constant',
-						value: 'IV_FALSE'
+						"type": "constant",
+						"value": "IV_FALSE"
 					},
-					' otherwise.'
+					" otherwise."
 				]
 			}
 		}
 	],
-	description:
+	"description":
 	[
-		'For normal major versions (i.e. not ',
+		"For normal major versions (i.e. not ",
 		{
-			type:	'literal',
-			value:	'0'
+			"type": "literal",
+			"value": "0"
 		},
-		'), this will check if the major versions are equal and that the checked minor version is greater than or equal to the minor required.',
+		"), this will check if the major versions are equal and that the checked minor version is greater than or equal to the minor required.",
 		null,
-		'For the special version ',
+		"For the special version ",
 		{
-			type:	'literal',
-			value:	'0'
+			"type": "literal",
+			"value": "0"
 		},
-		', the minor versions must match.'
+		", the minor versions must match."
 	],
-	since:	'1.0'
+	"since": "1.0"
 }

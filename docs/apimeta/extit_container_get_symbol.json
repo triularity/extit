@@ -1,86 +1,86 @@
 {
-	summary:
-		'Resolve a symbol pointer from a container interface.',
-	includes:
+	"summary":
+		"Resolve a symbol pointer from a container interface.",
+	"includes":
 	[
-		'extit/base.h',
-		'extit/container.h'
+		"extit/base.h",
+		"extit/container.h"
 	],
-	libraries:
+	"libraries":
 	[
-		'extit_container'
+		"extit_container"
 	],
-	synopsis:
+	"synopsis":
 	[
 		{
-			type:	'function',
-			name:	'extit_container_get_symbol',
-			parameters:
+			"type": "function",
+			"name": "extit_container_get_symbol",
+			"parameters":
 			[
 				{
-					type:	[ 'const', 'extit_container_t', '*' ],
-					name:	'container',
-					description: 'The container interface.'
+					"type": [ "const", "extit_container_t", "*" ],
+					"name": "container",
+					"description": "The container interface."
 				},
 				{
-					type:	[ 'const', 'char', '*' ],
-					name:	'name',
-					description: 'A symbol name.'
+					"type": [ "const", "char", "*" ],
+					"name": "name",
+					"description": "A symbol name."
 				}
 			],
-			returns:
+			"returns":
 			{
-				type:	[ 'void', '*' ],
-				description:
+				"type": [ "void", "*" ],
+				"description":
 				[
-					'A symbol pointer, or ',
+					"A symbol pointer, or ",
 					{
-						type: 'constant',
-						value: 'NULL'
+						"type": "constant",
+						"value": "NULL"
 					},
-					' if the symbol wasn't found.'
+					" if the symbol wasn't found."
 				]
 			}
 		}
 	],
-	description:
+	"description":
 	[
-		'Resolve a function pointer from a container interface.'
+		"Resolve a function pointer from a container interface."
 	],
-	see:
+	"see":
 	[
 		{
-			type:	'function',
-			name:	'extit_container_get_function',
-			parameters:
+			"type": "function",
+			"name": "extit_container_get_function",
+			"parameters":
 			[
-				[ 'const', 'extit_container_t', '*' ],
-				[ 'const', 'char', '*' ]
+				[ "const", "extit_container_t", "*" ],
+				[ "const", "char", "*" ]
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_container_get_interface',
-			parameters:
+			"type": "function",
+			"name": "extit_container_get_interface",
+			"parameters":
 			[
-				[ 'const', 'extit_container_t', '*' ],
-				[ 'const', 'char', '*' ],
-				'iv_version_t'
+				[ "const", "extit_container_t", "*" ],
+				[ "const", "char", "*" ],
+				"iv_version_t"
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_container_query_interface',
-			parameters:
+			"type": "function",
+			"name": "extit_container_query_interface",
+			"parameters":
 			[
-				[ 'const', 'extit_container_t', '*' ],
-				[ 'const', 'char', '*' ],
-				'iv_version_t'
+				[ "const", "extit_container_t", "*" ],
+				[ "const", "char", "*" ],
+				"iv_version_t"
 			],
-			section:	'3'
+			"section": "3"
 		}
 	],
-	since:	'1.0'
+	"since": "1.0"
 }

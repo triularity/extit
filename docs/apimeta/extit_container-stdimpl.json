@@ -1,179 +1,179 @@
 {
-	summary:
-		'Standard implementations of container interface functions.',
-	includes:
+	"summary":
+		"Standard implementations of container interface functions.",
+	"includes":
 	[
-		'iv/base.h',
-		'extit/base.h',
-		'extit/container.h'
-		'extit/container_impl.h'
-		'extit/container_stdimpl.h'
+		"iv/base.h",
+		"extit/base.h",
+		"extit/container.h",
+		"extit/container_impl.h",
+		"extit/container_stdimpl.h"
 	],
-	libraries:
+	"libraries":
 	[
-		'extit_container_stdimpl'
+		"extit_container_stdimpl"
 	],
-	synopsis:
+	"synopsis":
 	[
 		{
-			type:	'function',
-			name:	'extit_container_get_function_stdimpl',
-			parameters:
+			"type": "function",
+			"name": "extit_container_get_function_stdimpl",
+			"parameters":
 			[
 				{
-					type:	[ 'const', 'extit_container_t', '*' ],
-					name:	'container',
-					description: 'The container interface.'
+					"type": [ "const", "extit_container_t", "*" ],
+					"name": "container",
+					"description": "The container interface."
 				},
 				{
-					type:	[ 'const', 'char', '*' ],
-					name:	'name',
-					description: 'A symbol name.'
+					"type": [ "const", "char", "*" ],
+					"name": "name",
+					"description": "A symbol name."
 				}
 			],
-			returns:
+			"returns":
 			{
-				type:	'extit_func_t',
-				description:
+				"type": "extit_func_t",
+				"description":
 				[
-					'A function pointer, or ',
+					"A function pointer, or ",
 					{
-						type: 'constant',
-						value: 'NULL'
+						"type": "constant",
+						"value": "NULL"
 					},
-					' if the symbol wasn't found.'
+					" if the symbol wasn't found."
 				]
 			}
 		},
 		{
-			type:	'function',
-			name:	'extit_container_get_interface_stdimpl',
-			parameters:
+			"type": "function",
+			"name": "extit_container_get_interface_stdimpl",
+			"parameters":
 			[
 				{
-					type:	[ 'const', 'extit_container_t', '*' ],
-					name:	'container',
-					description: 'The container interface.'
+					"type": [ "const", "extit_container_t", "*" ],
+					"name": "container",
+					"description": "The container interface."
 				},
 				{
-					type:	[ 'const', 'char', '*' ],
-					name:	'iid',
-					description: 'An interface ID.'
+					"type": [ "const", "char", "*" ],
+					"name": "iid",
+					"description": "An interface ID."
 				},
 				{
-					type:	'iv_version_t',
-					name:	'version',
-					description: 'An interface version.'
+					"type": "iv_version_t",
+					"name": "version",
+					"description": "An interface version."
 				}
 			],
-			returns:
+			"returns":
 			{
-				type:	[ 'void', '*' ],
-				description:
+				"type": [ "void", "*" ],
+				"description":
 				[
-					'An interface pointer, or ',
+					"An interface pointer, or ",
 					{
-						type: 'constant',
-						value: 'NULL'
+						"type": "constant",
+						"value": "NULL"
 					},
-					' if a matching interface wasn't found.'
+					" if a matching interface wasn't found."
 				]
 			}
 		},
 		{
-			type:	'function',
-			name:	'extit_container_get_symbol_stdimpl',
-			parameters:
+			"type": "function",
+			"name": "extit_container_get_symbol_stdimpl",
+			"parameters":
 			[
 				{
-					type:	[ 'const', 'extit_container_t', '*' ],
-					name:	'container',
-					description: 'The container interface.'
+					"type": [ "const", "extit_container_t", "*" ],
+					"name": "container",
+					"description": "The container interface."
 				},
 				{
-					type:	[ 'const', 'char', '*' ],
-					name:	'name',
-					description: 'A symbol name.'
+					"type": [ "const", "char", "*" ],
+					"name": "name",
+					"description": "A symbol name."
 				}
 			],
-			returns:
+			"returns":
 			{
-				type:	[ 'void', '*' ],
-				description:
+				"type": [ "void", "*" ],
+				"description":
 				[
-					'A symbol pointer, or ',
+					"A symbol pointer, or ",
 					{
-						type: 'constant',
-						value: 'NULL'
+						"type": "constant",
+						"value": "NULL"
 					},
-					' if the symbol wasn't found.'
+					" if the symbol wasn't found."
 				]
 			}
 		},
 		{
-			type:	'function',
-			name:	'extit_container_log_stdimpl',
-			parameters:
+			"type": "function",
+			"name": "extit_container_log_stdimpl",
+			"parameters":
 			[
 				{
-					type:	[ 'const', 'extit_container_t', '*' ],
-					name:	'container',
-					description: 'The container interface.'
+					"type": [ "const", "extit_container_t", "*" ],
+					"name": "container",
+					"description": "The container interface."
 				},
 				{
-					type:	[ 'const', 'char', '*' ],
-					name:	'message',
-					description: 'The message to log.'
+					"type": [ "const", "char", "*" ],
+					"name": "message",
+					"description": "The message to log."
 				}
 			]
 		},
 		{
-			type:	'function',
-			name:	'extit_container_query_interface_stdimpl',
-			parameters:
+			"type": "function",
+			"name": "extit_container_query_interface_stdimpl",
+			"parameters":
 			[
 				{
-					type:	[ 'const', 'extit_container_t', '*' ],
-					name:	'container',
-					description: 'The container interface.'
+					"type": [ "const", "extit_container_t", "*" ],
+					"name": "container",
+					"description": "The container interface."
 				},
 				{
-					type:	[ 'const', 'char', '*' ],
-					name:	'iid',
-					description: 'An interface ID.'
+					"type": [ "const", "char", "*" ],
+					"name": "iid",
+					"description": "An interface ID."
 				},
 				{
-					type:	'iv_version_t',
-					name:	'base_version',
-					description: 'An interface version.'
+					"type": "iv_version_t",
+					"name": "base_version",
+					"description": "An interface version."
 				}
 			],
-			returns:
+			"returns":
 			{
-				type:	'iv_version_t',
-				description:
+				"type": "iv_version_t",
+				"description":
 				[
-					'The highest compatible interface version, or ',
+					"The highest compatible interface version, or ",
 					{
-						type: 'constant',
-						value: 'IV_VERSION_NONE'
+						"type": "constant",
+						"value": "IV_VERSION_NONE"
 					},
-					' if a matching interface wasn't found.'
+					" if a matching interface wasn't found."
 				]
 			}
 		}
 	],
-	description:
+	"description":
 	[
-		'Standard implementations of container interface functions.'
+		"Standard implementations of container interface functions."
 	],
-	see:
+	"see":
 	[
 		{
-			type:	'link',
-			name:	'extit_container-impl',
-			section:	'3'
+			"type": "link",
+			"name": "extit_container-impl",
+			"section": "3"
 		}
 	],
-	since:	'1.0'
+	"since": "1.0"
 }

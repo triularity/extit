@@ -1,63 +1,63 @@
 {
-	summary:
-		'Decrement a reference count.',
-	includes:
+	"summary":
+		"Decrement a reference count.",
+	"includes":
 	[
-		'iv/base.h',
-		'iv/util.h'
+		"iv/base.h",
+		"iv/util.h"
 	],
-	synopsis:
+	"synopsis":
 	[
 		{
-			type:	'function',
-			name:	'extit_refcount_release',
-			parameters:
+			"type": "function",
+			"name": "extit_refcount_release",
+			"parameters":
 			[
 				{
-					type:	[ 'extit_refcount_t', '*' ],
-					name:	'refcount',
-					description: 'The address of a reference count.'
+					"type": [ "extit_refcount_t", "*" ],
+					"name": "refcount",
+					"description": "The address of a reference count."
 				}
 			],
-			returns:
+			"returns":
 			{
-				type:	'extit_status_t',
-				description:
+				"type": "extit_status_t",
+				"description":
 				[
 					{
-						type: 'constant',
-						value: 'EXTIT_STATUS_OK'
+						"type": "constant",
+						"value": "EXTIT_STATUS_OK"
 					},
-					' if it succeeded, or ',
+					" if it succeeded, or ",
 					{
-						type: 'constant',
-						value: 'EXTIT_STATUS_INVALID'
+						"type": "constant",
+						"value": "EXTIT_STATUS_INVALID"
 					},
-					' if it was already at its minimum count (',
+					" if it was already at its minimum count (",
 					{
-						type: 'constant',
-						value: 'EXTIT_REFCOUNT_NONE'
+						"type": "constant",
+						"value": "EXTIT_REFCOUNT_NONE"
 					},
-					').'
+					")."
 				]
 			}
 		}
 	],
-	description:
+	"description":
 	[
-		'Reduce a reference count, doing bound checking first.'
+		"Reduce a reference count, doing bound checking first."
 	],
-	see:
+	"see":
 	[
 		{
-			type:	'function',
-			name:	'extit_refcount_add',
-			parameters:
+			"type": "function",
+			"name": "extit_refcount_add",
+			"parameters":
 			[
-				[ 'extit_refcount_t', '*' ]
+				[ "extit_refcount_t", "*" ]
 			],
-			section:	'3'
+			"section": "3"
 		}
 	],
-	since:	'1.0'
+	"since": "1.0"
 }

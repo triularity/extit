@@ -1,129 +1,129 @@
 {
-	summary:	'Remove an entry from a repository.',
-	includes:
+	"summary": "Remove an entry from a repository.",
+	"includes":
 	[
-		'iv/base.h',
-		'iv/repository.h'
+		"iv/base.h",
+		"iv/repository.h"
 	],
-	synopsis:
+	"synopsis":
 	[
 		{
-			type:	'function',
-			name:	'iv_repository_remove',
-			parameters:
+			"type": "function",
+			"name": "iv_repository_remove",
+			"parameters":
 			[
 				{
-					type:	[ 'iv_repository_t', '*' ],
-					name:	'ivr',
-					description: 'The repository.'
+					"type": [ "iv_repository_t", "*" ],
+					"name": "ivr",
+					"description": "The repository."
 				},
 				{
-					type:	[ 'const', 'char', '*' ],
-					name:	'key',
-					description:
+					"type": [ "const", "char", "*" ],
+					"name": "key",
+					"description":
 					[
-						'An entry key, or ',
+						"An entry key, or ",
 						{
-							type:	'constant',
-							value:	'NULL'
+							"type": "constant",
+							"value": "NULL"
 						},
-						'.'
+						"."
 					]
 				},
 				{
-					type:	[ 'const', 'char', '*' ],
-					name:	'iid',
-					description: 'An interface identifier.'
+					"type": [ "const", "char", "*" ],
+					"name": "iid",
+					"description": "An interface identifier."
 				},
 				{
-					type:	'iv_version_t',
-					name:	'version',
-					description: 'An interface version.'
+					"type": "iv_version_t",
+					"name": "version",
+					"description": "An interface version."
 				},
 				{
-					type:	[ 'void', '**' ],
-					name:	'old_valuep',
-					description:
+					"type": [ "void", "**" ],
+					"name": "old_valuep",
+					"description":
 					[
-						'An optional pointer to store the previous value in, or ',
+						"An optional pointer to store the previous value in, or ",
 						{
-							type:	'constant',
-							value:	'NULL'
+							"type": "constant",
+							"value": "NULL"
 						},
-						' to ignore.'
+						" to ignore."
 					]
 				}
 			],
-			returns:
+			"returns":
 			{
-				type:	'iv_repository_status_t',
-				description:
+				"type": "iv_repository_status_t",
+				"description":
 				[
-					'A status code ',
+					"A status code ",
 					{
-						type:	'literal',
-						value:	'IV_REPOSITORY_STATUS_'
+						"type": "literal",
+						"value": "IV_REPOSITORY_STATUS_"
 					},
-					'*).'
+					"*)."
 				]
 			}
 		}
 	],
-	description:
+	"description":
 	[
-		'Remove an entry from the respository for a given key and exact interface ID/version, optionally returning the previously set value.',
-		' A key value of ',
+		"Remove an entry from the respository for a given key and exact interface ID/version, optionally returning the previously set value.",
+		" A key value of ",
 		{
-			type:	'constant',
-			value:	'NULL'
+			"type": "constant",
+			"value": "NULL"
 		},
-		' is equivilent to "".'
+		" is equivilent to \"\"."
 	],
-	see:
+	"see":
 	[
 		{
-			type:	'function',
-			name:	'iv_repository_create',
-			section:	'3'
+			"type": "function",
+			"name": "iv_repository_create",
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'iv_repository_get',
-			parameters:
+			"type": "function",
+			"name": "iv_repository_get",
+			"parameters":
 			[
-				[ 'const', 'iv_repository_t', '*' ],
-				[ 'const', 'char', '*' ],
-				[ 'const', 'char', '*' ],
-				'iv_version_t'
+				[ "const", "iv_repository_t", "*" ],
+				[ "const", "char", "*" ],
+				[ "const", "char", "*" ],
+				"iv_version_t"
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'iv_repository_query',
-			parameters:
+			"type": "function",
+			"name": "iv_repository_query",
+			"parameters":
 			[
-				[ 'iv_repository_t', '*' ],
-				[ 'const', 'char', '*' ],
-				[ 'const', 'char', '*' ],
-				'iv_version_t'
+				[ "iv_repository_t", "*" ],
+				[ "const", "char", "*" ],
+				[ "const", "char", "*" ],
+				"iv_version_t"
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'iv_repository_set',
-			parameters:
+			"type": "function",
+			"name": "iv_repository_set",
+			"parameters":
 			[
-				[ 'iv_repository_t', '*' ],
-				[ 'const', 'char', '*' ],
-				[ 'const', 'char', '*' ],
-				'iv_version_t',
-				[ 'void', '*' ],
-				[ 'void', '**' ]
+				[ "iv_repository_t", "*" ],
+				[ "const", "char", "*" ],
+				[ "const", "char", "*" ],
+				"iv_version_t",
+				[ "void", "*" ],
+				[ "void", "**" ]
 			],
-			section:	'3'
+			"section": "3"
 		}
 	],
-	since:	'1.0'
+	"since": "1.0"
 }

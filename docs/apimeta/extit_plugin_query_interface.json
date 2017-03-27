@@ -1,113 +1,113 @@
 {
-	summary:
-		'Query an interface version from a plugin instance.',
-	includes:
+	"summary":
+		"Query an interface version from a plugin instance.",
+	"includes":
 	[
-		'iv/base.h',
-		'extit/base.h',
-		'extit/pmodule.h'
+		"iv/base.h",
+		"extit/base.h",
+		"extit/pmodule.h"
 	],
-	synopsis:
+	"synopsis":
 	[
 		{
-			type:	'function',
-			name:	'extit_plugin_query_interface',
-			parameters:
+			"type": "function",
+			"name": "extit_plugin_query_interface",
+			"parameters":
 			[
 				{
-					type:	[ 'extit_plugin_t', '*' ],
-					name:	'plugin',
-					description: 'The plugin.'
+					"type": [ "extit_plugin_t", "*" ],
+					"name": "plugin",
+					"description": "The plugin."
 				},
 				{
-					type:	[ 'const', 'char', '*' ],
-					name:	'iid',
-					description: 'An interface ID.'
+					"type": [ "const", "char", "*" ],
+					"name": "iid",
+					"description": "An interface ID."
 				},
 				{
-					type:	'iv_version_t',
-					name:	'base_version',
-					description: 'An interface version.'
+					"type": "iv_version_t",
+					"name": "base_version",
+					"description": "An interface version."
 				}
 			],
-			returns:
+			"returns":
 			{
-				type:	'iv_version_t',
-				description:
+				"type": "iv_version_t",
+				"description":
 				[
-					'The highest compatible interface version, or ',
+					"The highest compatible interface version, or ",
 					{
-						type: 'constant',
-						value: 'IV_VERSION_NONE'
+						"type": "constant",
+						"value": "IV_VERSION_NONE"
 					},
-					' if a matching interface wasn't found.'
+					" if a matching interface wasn't found."
 				]
 			}
 		}
 	],
-	description:
+	"description":
 	[
-		'Query an interface version from a plugin instance.'
+		"Query an interface version from a plugin instance."
 	],
-	see:
+	"see":
 	[
 		{
-			type:	'function',
-			name:	'extit_plugin_destroy',
-			parameters:
+			"type": "function",
+			"name": "extit_plugin_destroy",
+			"parameters":
 			[
-				[ 'extit_plugin_t', '*' ]
+				[ "extit_plugin_t", "*" ]
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_plugin_get_context',
-			parameters:
+			"type": "function",
+			"name": "extit_plugin_get_context",
+			"parameters":
 			[
-				[ 'extit_plugin_t', '*' ]
+				[ "extit_plugin_t", "*" ]
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_plugin_get_flags',
-			parameters:
+			"type": "function",
+			"name": "extit_plugin_get_flags",
+			"parameters":
 			[
-				[ 'extit_plugin_t', '*' ]
+				[ "extit_plugin_t", "*" ]
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_plugin_get_interface',
-			parameters:
+			"type": "function",
+			"name": "extit_plugin_get_interface",
+			"parameters":
 			[
-				[ 'extit_plugin_t', '*' ],
-				[ 'const', 'char', '*' ],
-				'iv_version_t'
+				[ "extit_plugin_t", "*" ],
+				[ "const", "char", "*" ],
+				"iv_version_t"
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_plugin_get_module',
-			parameters:
+			"type": "function",
+			"name": "extit_plugin_get_module",
+			"parameters":
 			[
-				[ 'extit_plugin_t', '*' ]
+				[ "extit_plugin_t", "*" ]
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_plugin_set_flags',
-			parameters:
+			"type": "function",
+			"name": "extit_plugin_set_flags",
+			"parameters":
 			[
-				[ 'extit_plugin_t', '*' ],
-				'unsigned int'
+				[ "extit_plugin_t", "*" ],
+				"unsigned int"
 			],
-			section:	'3'
+			"section": "3"
 		}
 	],
-	since:	'1.0'
+	"since": "1.0"
 }

@@ -1,31 +1,31 @@
 {
-	summary:	'Destroy an interface version repository.',
-	includes:
+	"summary": "Destroy an interface version repository.",
+	"includes":
 	[
-		'iv/repository.h'
+		"iv/repository.h"
 	],
-	synopsis:
+	"synopsis":
 	[
 		{
-			type:	'function',
-			name:	'iv_repository_destroy',
-			parameters:
+			"type": "function",
+			"name": "iv_repository_destroy",
+			"parameters":
 			[
 				{
-					type:	[ 'iv_repository_t', '*' ],
-					name:	'ivr',
-					description: 'The repository.'
+					"type": [ "iv_repository_t", "*" ],
+					"name": "ivr",
+					"description": "The repository."
 				}
 			]
 		}
 	],
-	see:
+	"see":
 	[
 		{
-			type:	'function',
-			name:	'iv_repository_create',
-			section:	'3'
+			"type": "function",
+			"name": "iv_repository_create",
+			"section": "3"
 		}
 	],
-	since:	'1.0'
+	"since": "1.0"
 }

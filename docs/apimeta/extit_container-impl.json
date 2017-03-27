@@ -1,269 +1,284 @@
 {
-	summary:
-		'Implementation of a container interface.',
-	includes:
+	"summary":
+		"Implementation of a container interface.",
+	"includes":
 	[
-		'iv/base.h',
-		'extit/base.h',
-		'extit/container.h'
-		'extit/container_impl.h'
+		"iv/base.h",
+		"extit/base.h",
+		"extit/container.h",
+		"extit/container_impl.h"
 	],
-	synopsis:
+	"synopsis":
 	[
 		{
-			type:   'typedef',
-			name:   'extit_container_ops_1_0_t',
-			value:  [ 'struct', '_extit_container_ops_1_0' ]
+			"type": "typedef",
+			"name": "extit_container_ops_1_0_t",
+			"value": [ "struct", "_extit_container_ops_1_0" ]
 		},
 		{
-			type:	'struct',
-			name:	'_extit_container_ops_1_0',
-			members:
+			"type": "struct",
+			"name": "_extit_container_ops_1_0",
+			"members":
 			[
 				{
-					type:	':function-pointer',
-					name:	'op_get_symbol',
-					parameters:
-					[
-						{
-							type:	[ 'const', 'extit_container_t', '*' ],
-							name:	'container',
-							description: 'The container interface.'
-						},
-						{
-							type:	[ 'const', 'char', '*' ],
-							name:	'name',
-							description: 'The symbol name.'
-						}
-					],
-					returns:
+					"type":
 					{
-						type:	[ 'void', '*' ],
-						description:
+						"type": "function",
+						"parameters":
 						[
-							'A symbol pointer, or ',
 							{
-								type: 'constant',
-								value: 'NULL'
+								"type": [ "const", "extit_container_t", "*" ],
+								"name": "container",
+								"description": "The container interface."
 							},
-							' if the symbol wasn't found.'
-						]
-					}
+							{
+								"type": [ "const", "char", "*" ],
+								"name": "name",
+								"description": "The symbol name."
+							}
+						],
+						"returns":
+						{
+							"type": [ "void", "*" ],
+							"description":
+							[
+								"A symbol pointer, or ",
+								{
+									"type": "constant",
+									"value": "NULL"
+								},
+								" if the symbol wasn't found."
+							]
+						}
+					},
+					"name": "op_get_symbol"
 				},
 				{
-					type:	':function-pointer',
-					name:	'op_get_function',
-					parameters:
-					[
-						{
-							type:	[ 'const', 'extit_container_t', '*' ],
-							name:	'container',
-							description: 'The container interface.'
-						},
-						{
-							type:	[ 'const', 'char', '*' ],
-							name:	'name',
-							description: 'A symbol name.'
-						}
-					],
-					returns:
+					"type":
 					{
-						type:	'extit_func_t',
-						description:
+						"type": "function",
+						"parameters":
 						[
-							'A function pointer, or ',
 							{
-								type: 'constant',
-								value: 'NULL'
+								"type": [ "const", "extit_container_t", "*" ],
+								"name": "container",
+								"description": "The container interface."
 							},
-							' if the symbol wasn't found.'
-						]
-					}
+							{
+								"type": [ "const", "char", "*" ],
+								"name": "name",
+								"description": "A symbol name."
+							}
+						],
+						"returns":
+						{
+							"type": "extit_func_t",
+							"description":
+							[
+								"A function pointer, or ",
+								{
+									"type": "constant",
+									"value": "NULL"
+								},
+								" if the symbol wasn't found."
+							]
+						}
+					},
+					"name": "op_get_function"
 				},
 				{
-					type:	':function-pointer',
-					name:	'op_get_interface',
-					parameters:
-					[
-						{
-							type:	[ 'const', 'extit_container_t', '*' ],
-							name:	'container',
-							description: 'The container interface.'
-						},
-						{
-							type:	[ 'const', 'char', '*' ],
-							name:	'iid',
-							description: 'An interface ID.'
-						},
-						{
-							type:	'iv_version_t',
-							name:	'version',
-							description: 'An interface version.'
-						}
-					],
-					returns:
+					"type":
 					{
-						type:	[ 'void', '*' ],
-						description:
+						"type": "function",
+						"parameters":
 						[
-							'An interface pointer, or ',
 							{
-								type: 'constant',
-								value: 'NULL'
+								"type": [ "const", "extit_container_t", "*" ],
+								"name": "container",
+								"description": "The container interface."
 							},
-							' if a matching interface wasn't found.'
-						]
-					}
+							{
+								"type": [ "const", "char", "*" ],
+								"name": "iid",
+								"description": "An interface ID."
+							},
+							{
+								"type": "iv_version_t",
+								"name": "version",
+								"description": "An interface version."
+							}
+						],
+						"returns":
+						{
+							"type": [ "void", "*" ],
+							"description":
+							[
+								"An interface pointer, or ",
+								{
+									"type": "constant",
+									"value": "NULL"
+								},
+								" if a matching interface wasn't found."
+							]
+						}
+					},
+					"name": "op_get_interface"
 				},
 				{
-					type:	':function-pointer',
-					name:	'op_query_interface',
-					parameters:
-					[
-						{
-							type:	[ 'const', 'extit_container_t', '*' ],
-							name:	'container',
-							description: 'The container interface.'
-						},
-						{
-							type:	[ 'const', 'char', '*' ],
-							name:	'iid',
-							description: 'An interface ID.'
-						},
-						{
-							type:	'iv_version_t',
-							name:	'base_version',
-							description: 'An interface version.'
-						}
-					],
-					returns:
+					"type":
 					{
-						type:	'iv_version_t',
-						description:
+						"type": "function",
+						"parameters":
 						[
-							'The highest compatible interface version, or ',
 							{
-								type: 'constant',
-								value: 'IV_VERSION_NONE'
+								"type": [ "const", "extit_container_t", "*" ],
+								"name": "container",
+								"description": "The container interface."
 							},
-							' if a matching interface wasn't found.'
-						]
-					}
+							{
+								"type": [ "const", "char", "*" ],
+								"name": "iid",
+								"description": "An interface ID."
+							},
+							{
+								"type": "iv_version_t",
+								"name": "base_version",
+								"description": "An interface version."
+							}
+						],
+						"returns":
+						{
+							"type": "iv_version_t",
+							"description":
+							[
+								"The highest compatible interface version, or ",
+								{
+									"type": "constant",
+									"value": "IV_VERSION_NONE"
+								},
+								" if a matching interface wasn't found."
+							]
+						}
+					},
+					"name": "op_query_interface"
 				},
 				{
-					type:	':function-pointer',
-					name:	'op_log',
-					parameters:
-					[
-						{
-							type:	[ 'const', 'extit_container_t', '*' ],
-							name:	'container',
-							description: 'The container interface.'
-						},
-						{
-							type:	[ 'const', 'char', '*' ],
-							name:	'message',
-							description: 'The message to log.'
-						}
-					]
+					"type":
+					{
+						"type": "function",
+						"parameters":
+						[
+							{
+								"type": [ "const", "extit_container_t", "*" ],
+								"name": "container",
+								"description": "The container interface."
+							},
+							{
+								"type": [ "const", "char", "*" ],
+								"name": "message",
+								"description": "The message to log."
+							}
+						]
+					},
+					"name": "op_log"
 				}
 			]
 		},
 		{
-			type:   'typedef',
-			name:   'extit_container_base_t',
-			value:  [ 'struct', '_extit_container_base' ]
+			"type": "typedef",
+			"name": "extit_container_base_t",
+			"value": [ "struct", "_extit_container_base" ]
 		},
 		{
-			type:	'struct',
-			name:	'_extit_container_base',
-			members:
+			"type": "struct",
+			"name": "_extit_container_base",
+			"members":
 			[
 				{
-					type:	'iv_version_t',
-					name:	'version'
+					"type": "iv_version_t",
+					"name": "version"
 				}
 			]
 		},
 		{
-			type:   'typedef',
-			name:   'extit_container_1_0_t',
-			value:  [ 'struct', '_extit_container_1_0' ]
+			"type": "typedef",
+			"name": "extit_container_1_0_t",
+			"value": [ "struct", "_extit_container_1_0" ]
 		},
 		{
-			type:	'struct',
-			name:	'_extit_container_1_0',
-			members:
+			"type": "struct",
+			"name": "_extit_container_1_0",
+			"members":
 			[
 				{
-					type:	'iv_version_t',
-					name:	'version'
+					"type": "iv_version_t",
+					"name": "version"
 				},
 				{
-					type:	[ 'extit_container_ops_1_0_t', '*' ],
-					name:	'ops'
+					"type": [ "extit_container_ops_1_0_t", "*" ],
+					"name": "ops"
 				}
 			]
 		}
 	],
-	description:
+	"description":
 	[
-		'Implementation of a container interface.'
+		"Implementation of a container interface."
 	],
-	see:
+	"see":
 	[
 		{
-			type:	'function',
-			name:	'extit_container_get_function',
-			parameters:
+			"type": "function",
+			"name": "extit_container_get_function",
+			"parameters":
 			[
-				[ 'const', 'extit_container_t', '*' ],
-				[ 'const', 'char', '*' ]
+				[ "const", "extit_container_t", "*" ],
+				[ "const", "char", "*" ]
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_container_get_interface',
-			parameters:
+			"type": "function",
+			"name": "extit_container_get_interface",
+			"parameters":
 			[
-				[ 'const', 'extit_container_t', '*' ],
-				[ 'const', 'char', '*' ],
-				'iv_version_t'
+				[ "const", "extit_container_t", "*" ],
+				[ "const", "char", "*" ],
+				"iv_version_t"
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_container_get_symbol',
-			parameters:
+			"type": "function",
+			"name": "extit_container_get_symbol",
+			"parameters":
 			[
-				[ 'const', 'extit_container_t', '*' ],
-				[ 'const', 'char', '*' ]
+				[ "const", "extit_container_t", "*" ],
+				[ "const", "char", "*" ]
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_container_query_interface',
-			parameters:
+			"type": "function",
+			"name": "extit_container_query_interface",
+			"parameters":
 			[
-				[ 'const', 'extit_container_t', '*' ],
-				[ 'const', 'char', '*' ],
-				'iv_version_t'
+				[ "const", "extit_container_t", "*" ],
+				[ "const", "char", "*" ],
+				"iv_version_t"
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'link',
-			name:	'extit_container',
-			section:	'3'
+			"type": "link",
+			"name": "extit_container",
+			"section": "3"
 		},
 		{
-			type:	'link',
-			name:	'extit_container-stdimpl',
-			section:	'3'
+			"type": "link",
+			"name": "extit_container-stdimpl",
+			"section": "3"
 		}
 	],
-	since:	'1.0'
+	"since": "1.0"
 }

@@ -1,103 +1,103 @@
 {
-	summary:
-		'Set a plugin instance's flags.',
-	includes:
+	"summary":
+		"Set a plugin instance's flags.",
+	"includes":
 	[
-		'extit/base.h',
-		'extit/pmodule.h'
+		"extit/base.h",
+		"extit/pmodule.h"
 	],
-	synopsis:
+	"synopsis":
 	[
 		{
-			type:	'function',
-			name:	'extit_plugin_set_flags',
-			parameters:
+			"type": "function",
+			"name": "extit_plugin_set_flags",
+			"parameters":
 			[
 				{
-					type:	[ 'extit_plugin_t', '*' ],
-					name:	'plugin',
-					description: 'The plugin.'
+					"type": [ "extit_plugin_t", "*" ],
+					"name": "plugin",
+					"description": "The plugin."
 				},
 				{
-					type:	'unsigned int',
-					name:	'flags',
-					description:
+					"type": "unsigned int",
+					"name": "flags",
+					"description":
 					[
-						'The flags (',
+						"The flags (",
 						{
-							type:	'literal',
-							value:	'EXTIT_FLAG_'
+							"type": "literal",
+							"value": "EXTIT_FLAG_"
 						},
-						'*).'
+						"*)."
 					]
-				]
-			}
+				}
+			]
 		}
 	],
-	description:
+	"description":
 	[
-		'Set a plugin instance's flags.'
+		"Set a plugin instance's flags."
 	],
-	see:
+	"see":
 	[
 		{
-			type:	'function',
-			name:	'extit_plugin_destroy',
-			parameters:
+			"type": "function",
+			"name": "extit_plugin_destroy",
+			"parameters":
 			[
-				[ 'extit_plugin_t', '*' ]
+				[ "extit_plugin_t", "*" ]
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_plugin_get_context',
-			parameters:
+			"type": "function",
+			"name": "extit_plugin_get_context",
+			"parameters":
 			[
-				[ 'extit_plugin_t', '*' ]
+				[ "extit_plugin_t", "*" ]
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_plugin_get_flags',
-			parameters:
+			"type": "function",
+			"name": "extit_plugin_get_flags",
+			"parameters":
 			[
-				[ 'extit_plugin_t', '*' ]
+				[ "extit_plugin_t", "*" ]
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_plugin_get_interface',
-			parameters:
+			"type": "function",
+			"name": "extit_plugin_get_interface",
+			"parameters":
 			[
-				[ 'extit_plugin_t', '*' ],
-				[ 'const', 'char', '*' ],
-				'iv_version_t'
+				[ "extit_plugin_t", "*" ],
+				[ "const", "char", "*" ],
+				"iv_version_t"
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_plugin_get_module',
-			parameters:
+			"type": "function",
+			"name": "extit_plugin_get_module",
+			"parameters":
 			[
-				[ 'extit_plugin_t', '*' ]
+				[ "extit_plugin_t", "*" ]
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_plugin_query_interface',
-			parameters:
+			"type": "function",
+			"name": "extit_plugin_query_interface",
+			"parameters":
 			[
-				[ 'extit_plugin_t', '*' ],
-				[ 'const', 'char', '*' ],
-				'iv_version_t'
+				[ "extit_plugin_t", "*" ],
+				[ "const", "char", "*" ],
+				"iv_version_t"
 			],
-			section:	'3'
+			"section": "3"
 		}
 	],
-	since:	'1.0'
+	"since": "1.0"
 }

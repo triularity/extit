@@ -1,362 +1,380 @@
 {
-	summary:
-		'Implementation of a plugin module.',
-	includes:
+	"summary":
+		"Implementation of a plugin module.",
+	"includes":
 	[
-		'iv/base.h',
-		'extit/base.h',
-		'extit/pmodule_impl.h'
+		"iv/base.h",
+		"extit/base.h",
+		"extit/pmodule_impl.h"
 	],
-	synopsis:
+	"synopsis":
 	[
 		{
-			type:	'typedef',
-			name:	'extit_pmodule_descriptor_base_t',
-			value:	[ 'struct', '_extit_pmodule_descriptor_base' ]
+			"type": "typedef",
+			"name": "extit_pmodule_descriptor_base_t",
+			"value": [ "struct", "_extit_pmodule_descriptor_base" ]
 		},
 		{
-			type:	'struct',
-			name:	'_extit_pmodule_descriptor_base',
-			members:
+			"type": "struct",
+			"name": "_extit_pmodule_descriptor_base",
+			"members":
 			[
 				{
-					type:	'uint32_t',
-					name:	'magic'
+					"type": "uint32_t",
+					"name": "magic"
 				},
 				{
-					type:	'iv_version_t',
-					name:	'extit_version'
+					"type": "iv_version_t",
+					"name": "extit_version"
 				}
 			]
 		},
 		{
-			type:	'typedef',
-			name:	'extit_pmodule_descriptor_1_0_t',
-			value:	[ 'struct', '_extit_pmodule_descriptor_1_0' ]
+			"type": "typedef",
+			"name": "extit_pmodule_descriptor_1_0_t",
+			"value": [ "struct", "_extit_pmodule_descriptor_1_0" ]
 		},
 		{
-			type:	'struct',
-			name:	'_extit_pmodule_descriptor_1_0',
-			members:
+			"type": "struct",
+			"name": "_extit_pmodule_descriptor_1_0",
+			"members":
 			[
 				{
-					type:	'uint32_t',
-					name:	'magic'
+					"type": "uint32_t",
+					"name": "magic"
 				},
 				{
-					type:	'iv_version_t',
-					name:	'extit_version'
+					"type": "iv_version_t",
+					"name": "extit_version"
 				},
 				{
-					type:	[ 'const', 'char', '*' ],
-					name:	'id'
+					"type": [ "const", "char", "*" ],
+					"name": "id"
 				},
 				{
-					type:	'uint32_t',
-					name:	'id_version'
+					"type": "uint32_t",
+					"name": "id_version"
 				},
 				{
-					type:	[ 'const', 'char', '*' ],
-					name:	'name'
+					"type": [ "const", "char", "*" ],
+					"name": "name"
 				},
 				{
-					type:	[ 'const', 'char', '*' ],
-					name:	'version'
+					"type": [ "const", "char", "*" ],
+					"name": "version"
 				},
 				{
-					type:	[ 'extit_pmodule_ops_1_0_t', '*' ],
-					name:	'ops'
+					"type": [ "extit_pmodule_ops_1_0_t", "*" ],
+					"name": "ops"
 				}
 			]
 		},
 		{
-			type:   'typedef',
-			name:   'extit_pmodule_ops_1_0_t',
-			value:  [ 'struct', '_extit_pmodule_ops_1_0' ]
+			"type": "typedef",
+			"name": "extit_pmodule_ops_1_0_t",
+			"value": [ "struct", "_extit_pmodule_ops_1_0" ]
 		},
 		{
-			type:	'struct',
-			name:	'_extit_pmodule_ops_1_0',
-			members:
+			"type": "struct",
+			"name": "_extit_pmodule_ops_1_0",
+			"members":
 			[
 				{
-					type:	':function-pointer',
-					name:	'op_probe',
-					parameters:
-					[
-						{
-							type:	[ 'extit_pmodule_descriptor_1_0_t', '*' ],
-							name:	'descr',
-							description: 'The module descriptor.'
-						},
-						{
-							type:	[ 'const', 'extit_container_t', '*' ],
-							name:	'container',
-							description: 'The container interface.'
-						}
-					],
-					returns:
+					"type":
 					{
-						type:	'extit_status_t',
-						description:
+						"type": "function",
+						"parameters":
 						[
-							'The operation status (',
 							{
-								type:	'literal',
-								value:	'EXTIT_STATUS_'
+								"type": [ "extit_pmodule_descriptor_1_0_t", "*" ],
+								"name": "descr",
+								"description": "The module descriptor."
 							},
-							'*).'
-						]
-					}
+							{
+								"type": [ "const", "extit_container_t", "*" ],
+								"name": "container",
+								"description": "The container interface."
+							}
+						],
+						"returns":
+						{
+							"type": "extit_status_t",
+							"description":
+							[
+								"The operation status (",
+								{
+									"type": "literal",
+									"value": "EXTIT_STATUS_"
+								},
+								"*)."
+							]
+						}
+					},
+					"name": "op_probe"
 				},
 				{
-					type:	':function-pointer',
-					name:	'op_create',
-					parameters:
-					[
-						{
-							type:	[ 'extit_pmodule_descriptor_1_0_t', '*' ],
-							name:	'descr',
-							description: 'The module descriptor.'
-						},
-						{
-							type:	[ 'const', 'extit_container_t', '*' ],
-							name:	'container',
-							description: 'The container interface.'
-						},
-						{
-							type:	[ 'void', '**' ],
-							name:	'ctx_ptr',
-							description: 'The pointer to the instance context data.'
-						}
-					],
-					returns:
+					"type":
 					{
-						type:	'extit_status_t',
-						description:
+						"type": "function",
+						"parameters":
 						[
-							'The operation status (',
 							{
-								type:	'literal',
-								value:	'EXTIT_STATUS_'
+								"type": [ "extit_pmodule_descriptor_1_0_t", "*" ],
+								"name": "descr",
+								"description": "The module descriptor."
 							},
-							'*).'
-						]
-					}
+							{
+								"type": [ "const", "extit_container_t", "*" ],
+								"name": "container",
+								"description": "The container interface."
+							},
+							{
+								"type": [ "void", "**" ],
+								"name": "ctx_ptr",
+								"description": "The pointer to the instance context data."
+							}
+						],
+						"returns":
+						{
+							"type": "extit_status_t",
+							"description":
+							[
+								"The operation status (",
+								{
+									"type": "literal",
+									"value": "EXTIT_STATUS_"
+								},
+								"*)."
+							]
+						}
+					},
+					"name": "op_create"
 				},
 				{
-					type:	':function-pointer',
-					name:	'op_destroy',
-					parameters:
-					[
-						{
-							type:	[ 'extit_pmodule_descriptor_1_0_t', '*' ],
-							name:	'descr',
-							description: 'The module descriptor.'
-						},
-						{
-							type:	[ 'const', 'extit_container_t', '*' ],
-							name:	'container',
-							description: 'The container interface.'
-						},
-						{
-							type:	[ 'void', '*' ],
-							name:	'ctx',
-							description: 'The instance context data.'
-						}
-					],
-					returns:
+					"type":
 					{
-						type:	'extit_status_t',
-						description:
+						"type": "function",
+						"parameters":
 						[
-							'The operation status (',
 							{
-								type:	'literal',
-								value:	'EXTIT_STATUS_'
+								"type": [ "extit_pmodule_descriptor_1_0_t", "*" ],
+								"name": "descr",
+								"description": "The module descriptor."
 							},
-							'*).'
-						]
-					}
+							{
+								"type": [ "const", "extit_container_t", "*" ],
+								"name": "container",
+								"description": "The container interface."
+							},
+							{
+								"type": [ "void", "*" ],
+								"name": "ctx",
+								"description": "The instance context data."
+							}
+						],
+						"returns":
+						{
+							"type": "extit_status_t",
+							"description":
+							[
+								"The operation status (",
+								{
+									"type": "literal",
+									"value": "EXTIT_STATUS_"
+								},
+								"*)."
+							]
+						}
+					},
+					"name": "op_destroy"
 				},
 				{
-					type:	':function-pointer',
-					name:	'op_get_interface',
-					parameters:
-					[
-						{
-							type:	[ 'extit_pmodule_descriptor_1_0_t', '*' ],
-							name:	'descr',
-							description: 'The module descriptor.'
-						},
-						{
-							type:	[ 'const', 'extit_container_t', '*' ],
-							name:	'container',
-							description: 'The container interface.'
-						},
-						{
-							type:	[ 'void', '*' ],
-							name:	'ctx',
-							description: 'The instance context data.'
-						},
-						{
-							type:	[ 'const', 'char', '*' ],
-							name:	'iid',
-							description: 'An interface ID.'
-						},
-						{
-							type:	'iv_version_t',
-							name:	'version',
-							description: 'An interface version.'
-						}
-					],
-					returns:
+					"type":
 					{
-						type:	[ 'void', '*' ],
-						description:
+						"type": "function",
+						"parameters":
 						[
-							'An interface pointer, or ',
 							{
-								type: 'constant',
-								value: 'NULL'
+								"type": [ "extit_pmodule_descriptor_1_0_t", "*" ],
+								"name": "descr",
+								"description": "The module descriptor."
 							},
-							' if a matching interface wasn't found.'
-						]
-					}
+							{
+								"type": [ "const", "extit_container_t", "*" ],
+								"name": "container",
+								"description": "The container interface."
+							},
+							{
+								"type": [ "void", "*" ],
+								"name": "ctx",
+								"description": "The instance context data."
+							},
+							{
+								"type": [ "const", "char", "*" ],
+								"name": "iid",
+								"description": "An interface ID."
+							},
+							{
+								"type": "iv_version_t",
+								"name": "version",
+								"description": "An interface version."
+							}
+						],
+						"returns":
+						{
+							"type": [ "void", "*" ],
+							"description":
+							[
+								"An interface pointer, or ",
+								{
+									"type": "constant",
+									"value": "NULL"
+								},
+								" if a matching interface wasn't found."
+							]
+						}
+					},
+					"name": "op_get_interface"
 				},
 				{
-					type:	':function-pointer',
-					name:	'op_query_interface',
-					parameters:
-					[
-						{
-							type:	[ 'extit_pmodule_descriptor_1_0_t', '*' ],
-							name:	'descr',
-							description: 'The module descriptor.'
-						},
-						{
-							type:	[ 'const', 'extit_container_t', '*' ],
-							name:	'container',
-							description: 'The container interface.'
-						},
-						{
-							type:	[ 'void', '*' ],
-							name:	'ctx',
-							description: 'The instance context data.'
-						},
-						{
-							type:	[ 'const', 'char', '*' ],
-							name:	'iid',
-							description: 'An interface ID.'
-						},
-						{
-							type:	'iv_version_t',
-							name:	'base_version',
-							description: 'An interface version.'
-						}
-					],
-					returns:
+					"type":
 					{
-						type:	'iv_version_t',
-						description:
+						"type": "function",
+						"parameters":
 						[
-							'The highest compatible interface version, or ',
 							{
-								type: 'constant',
-								value: 'IV_VERSION_NONE'
+								"type": [ "extit_pmodule_descriptor_1_0_t", "*" ],
+								"name": "descr",
+								"description": "The module descriptor."
 							},
-							' if a matching interface wasn't found.'
-						]
-					}
+							{
+								"type": [ "const", "extit_container_t", "*" ],
+								"name": "container",
+								"description": "The container interface."
+							},
+							{
+								"type": [ "void", "*" ],
+								"name": "ctx",
+								"description": "The instance context data."
+							},
+							{
+								"type": [ "const", "char", "*" ],
+								"name": "iid",
+								"description": "An interface ID."
+							},
+							{
+								"type": "iv_version_t",
+								"name": "base_version",
+								"description": "An interface version."
+							}
+						],
+						"returns":
+						{
+							"type": "iv_version_t",
+							"description":
+							[
+								"The highest compatible interface version, or ",
+								{
+									"type": "constant",
+									"value": "IV_VERSION_NONE"
+								},
+								" if a matching interface wasn't found."
+							]
+						}
+					},
+					"name": "op_query_interface"
 				},
 				{
-					type:	':function-pointer',
-					name:	'op_unload',
-					parameters:
-					[
-						{
-							type:	[ 'extit_pmodule_descriptor_1_0_t', '*' ],
-							name:	'descr',
-							description: 'The module descriptor.'
-						},
-						{
-							type:	[ 'const', 'extit_container_t', '*' ],
-							name:	'container',
-							description: 'The container interface.'
-						}
-					],
-					returns:
+					"type":
 					{
-						type:	'extit_status_t',
-						description:
+						"type": "function",
+						"parameters":
 						[
-							'The operation status (',
 							{
-								type:	'literal',
-								value:	'EXTIT_STATUS_'
+								"type": [ "extit_pmodule_descriptor_1_0_t", "*" ],
+								"name": "descr",
+								"description": "The module descriptor."
 							},
-							'*).'
-						]
-					}
+							{
+								"type": [ "const", "extit_container_t", "*" ],
+								"name": "container",
+								"description": "The container interface."
+							}
+						],
+						"returns":
+						{
+							"type": "extit_status_t",
+							"description":
+							[
+								"The operation status (",
+								{
+									"type": "literal",
+									"value": "EXTIT_STATUS_"
+								},
+								"*)."
+							]
+						}
+					},
+					"name": "op_unload"
 				}
 			]
 		},
 		{
-			type:	'macro',
-			name:	'EXTIT_DECLARE_PMODULE',
-			parameters:
+			"type": "macro",
+			"name": "EXTIT_DECLARE_PMODULE",
+			"parameters":
 			[
 				{
-					type:	[ 'const', 'char', '*' ],
-					name:	'id'
+					"type": [ "const", "char", "*" ],
+					"name": "id"
 				},
 				{
-					type:	'uint32_t',
-					name:	'id_version'
+					"type": "uint32_t",
+					"name": "id_version"
 				},
 				{
-					type:	[ 'const', 'char', '*' ],
-					name:	'name'
+					"type": [ "const", "char", "*" ],
+					"name": "name"
 				},
 				{
-					type:	[ 'const', 'char', '*' ],
-					name:	'version'
+					"type": [ "const", "char", "*" ],
+					"name": "version"
 				},
 				{
-					type:	[ 'extit_pmodule_ops_#_#_t', '*' ],
-					name:	'ops'
+					"type": [ "extit_pmodule_ops_#_#_t", "*" ],
+					"name": "ops"
 				}
 			]
 		},
 		{
-			type:	'typedef',
-			name:	'extit_pmodule_descriptor_t'
+			"type": "typedef",
+			"name": "extit_pmodule_descriptor_t"
 		},
 		{
-			type:	'macro',
-			name:	'EXTIT_PMODULE_DESCRIPTOR_NAME'
+			"type": "macro",
+			"name": "EXTIT_PMODULE_DESCRIPTOR_NAME"
 		},
 		{
-			type:	'macro',
-			name:	'EXTIT_PMODULE_DESCRIPTOR_SYMBOL'
+			"type": "macro",
+			"name": "EXTIT_PMODULE_DESCRIPTOR_SYMBOL"
 		}
 	],
-	description:
+	"description":
 	[
-		'Implementation of a plugin module.'
+		"Implementation of a plugin module."
 	],
-	see:
+	"see":
 	[
 		{
-			type:	'link',
-			name:	'extit_container',
-			section:	'3'
+			"type": "link",
+			"name": "extit_container",
+			"section": "3"
 		},
 		{
-			type:	'link',
-			name:	'extit_container-stdimpl',
-			section:	'3'
+			"type": "link",
+			"name": "extit_container-stdimpl",
+			"section": "3"
 		}
 	],
-	since:	'1.0'
+	"since": "1.0"
 }

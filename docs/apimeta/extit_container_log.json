@@ -1,38 +1,38 @@
 {
-	summary:
-		'Log a message using a container interface.',
-	includes:
+	"summary":
+		"Log a message using a container interface.",
+	"includes":
 	[
-		'extit/base.h',
-		'extit/container.h'
+		"extit/base.h",
+		"extit/container.h"
 	],
-	libraries:
+	"libraries":
 	[
-		'extit_container'
+		"extit_container"
 	],
-	synopsis:
+	"synopsis":
 	[
 		{
-			type:	'function',
-			name:	'extit_container_log',
-			parameters:
+			"type": "function",
+			"name": "extit_container_log",
+			"parameters":
 			[
 				{
-					type:	[ 'const', 'extit_container_t', '*' ],
-					name:	'container',
-					description: 'The container interface.'
+					"type": [ "const", "extit_container_t", "*" ],
+					"name": "container",
+					"description": "The container interface."
 				},
 				{
-					type:	[ 'const', 'char', '*' ],
-					name:	'message',
-					description: 'The message to log.'
+					"type": [ "const", "char", "*" ],
+					"name": "message",
+					"description": "The message to log."
 				}
 			]
 		}
 	],
-	description:
+	"description":
 	[
-		'Log a message using a container interface. An implicit newline will be added to the message where appropriete, such as console or file output.'
+		"Log a message using a container interface. An implicit newline will be added to the message where appropriete, such as console or file output."
 	],
-	since:	'1.0'
+	"since": "1.0"
 }

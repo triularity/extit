@@ -1,81 +1,81 @@
 {
-	summary:
-		'A container interface.',
-	includes:
+	"summary":
+		"A container interface.",
+	"includes":
 	[
-		'iv/base.h',
-		'extit/base.h',
-		'extit/container.h'
+		"iv/base.h",
+		"extit/base.h",
+		"extit/container.h"
 	],
-	libraries:
+	"libraries":
 	[
-		'extit_container'
+		"extit_container"
 	],
-	synopsis:
+	"synopsis":
 	[
 		{
-			type:	'macro',
-			name:	'EXTIT_ABI_TARGET',
+			"type": "macro",
+			"name": "EXTIT_ABI_TARGET"
 		},
 		{
-			type:   'typedef',
-			name:   'extit_container_t',
-			value:  [ 'struct', '_extit_container' ]
+			"type": "typedef",
+			"name": "extit_container_t",
+			"value": [ "struct", "_extit_container" ]
 		}
 	],
-	description:
+	"description":
 	[
-		'A container is a interface for providing server side resources to a plugin module.'
+		"A container is a interface for providing server side resources to a plugin module."
 	],
-	see:
+	"see":
 	[
 		{
-			type:	'function',
-			name:	'extit_container_get_function',
-			parameters:
+			"type": "function",
+			"name": "extit_container_get_function",
+			"parameters":
 			[
-				[ 'const', 'extit_container_t', '*' ],
-				[ 'const', 'char', '*' ]
+				[ "const", "extit_container_t", "*" ],
+				[ "const", "char", "*" ]
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_container_get_interface',
-			parameters:
+			"type": "function",
+			"name": "extit_container_get_interface",
+			"parameters":
 			[
-				[ 'const', 'extit_container_t', '*' ],
-				[ 'const', 'char', '*' ],
-				'iv_version_t'
+				[ "const", "extit_container_t", "*" ],
+				[ "const", "char", "*" ],
+				"iv_version_t"
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_container_get_symbol',
-			parameters:
+			"type": "function",
+			"name": "extit_container_get_symbol",
+			"parameters":
 			[
-				[ 'const', 'extit_container_t', '*' ],
-				[ 'const', 'char', '*' ]
+				[ "const", "extit_container_t", "*" ],
+				[ "const", "char", "*" ]
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_container_query_interface',
-			parameters:
+			"type": "function",
+			"name": "extit_container_query_interface",
+			"parameters":
 			[
-				[ 'const', 'extit_container_t', '*' ],
-				[ 'const', 'char', '*' ],
-				'iv_version_t'
+				[ "const", "extit_container_t", "*" ],
+				[ "const", "char", "*" ],
+				"iv_version_t"
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'link',
-			name:	'extit_container-impl',
-			section:	'3'
+			"type": "link",
+			"name": "extit_container-impl",
+			"section": "3"
 		}
 	],
-	since:	'1.0'
+	"since": "1.0"
 }

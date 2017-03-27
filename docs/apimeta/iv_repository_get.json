@@ -1,117 +1,117 @@
 {
-	summary:	'Get an interface from a repository.',
-	includes:
+	"summary": "Get an interface from a repository.",
+	"includes":
 	[
-		'iv/base.h',
-		'iv/repository.h'
+		"iv/base.h",
+		"iv/repository.h"
 	],
-	synopsis:
+	"synopsis":
 	[
 		{
-			type:	'function',
-			name:	'iv_repository_get',
-			parameters:
+			"type": "function",
+			"name": "iv_repository_get",
+			"parameters":
 			[
 				{
-					type:	[ 'const', 'iv_repository_t', '*' ],
-					name:	'ivr',
-					description: 'The repository.'
+					"type": [ "const", "iv_repository_t", "*" ],
+					"name": "ivr",
+					"description": "The repository."
 				},
 				{
-					type:	[ 'const', 'char', '*' ],
-					name:	'key',
-					description:
+					"type": [ "const", "char", "*" ],
+					"name": "key",
+					"description":
 					[
-						'An entry key, or ',
+						"An entry key, or ",
 						{
-							type:	'constant',
-							value:	'NULL'
+							"type": "constant",
+							"value": "NULL"
 						},
-						'.'
+						"."
 					]
 				},
 				{
-					type:	[ 'const', 'char', '*' ],
-					name:	'iid',
-					description: 'An interface identifier.'
+					"type": [ "const", "char", "*" ],
+					"name": "iid",
+					"description": "An interface identifier."
 				},
 				{
-					type:	'iv_version_t',
-					name:	'version',
-					description: 'An interface version.'
+					"type": "iv_version_t",
+					"name": "version",
+					"description": "An interface version."
 				}
 			],
-			returns:
+			"returns":
 			{
-				type:	[ 'void', '*' ],
-				description:
+				"type": [ "void", "*" ],
+				"description":
 				[
-					'The interface, or ',
+					"The interface, or ",
 					{
-						type:	'constant',
-						value:	'NULL'
+						"type": "constant",
+						"value": "NULL"
 					},
-					' if none was found.'
+					" if none was found."
 				]
 			}
 		}
 	],
-	description:
+	"description":
 	[
-		'Get the best matching (highest version) assigned interface that is compatible with the requested version for a given key.',
-		' A key value of ',
+		"Get the best matching (highest version) assigned interface that is compatible with the requested version for a given key.",
+		" A key value of ",
 		{
-			type:	'constant',
-			value:	'NULL'
+			"type": "constant",
+			"value": "NULL"
 		},
-		' is equivilent to "".'
+		" is equivilent to \"\"."
 	],
-	see:
+	"see":
 	[
 		{
-			type:	'function',
-			name:	'iv_repository_create',
-			section:	'3'
+			"type": "function",
+			"name": "iv_repository_create",
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'iv_repository_query',
-			parameters:
+			"type": "function",
+			"name": "iv_repository_query",
+			"parameters":
 			[
-				[ 'iv_repository_t', '*' ],
-				[ 'const', 'char', '*' ],
-				[ 'const', 'char', '*' ],
-				'iv_version_t'
+				[ "iv_repository_t", "*" ],
+				[ "const", "char", "*" ],
+				[ "const", "char", "*" ],
+				"iv_version_t"
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'iv_repository_remove',
-			parameters:
+			"type": "function",
+			"name": "iv_repository_remove",
+			"parameters":
 			[
-				[ 'iv_repository_t', '*' ],
-				[ 'const', 'char', '*' ],
-				[ 'const', 'char', '*' ],
-				'iv_version_t',
-				[ 'void', '**' ]
+				[ "iv_repository_t", "*" ],
+				[ "const", "char", "*" ],
+				[ "const", "char", "*" ],
+				"iv_version_t",
+				[ "void", "**" ]
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'iv_repository_set',
-			parameters:
+			"type": "function",
+			"name": "iv_repository_set",
+			"parameters":
 			[
-				[ 'iv_repository_t', '*' ],
-				[ 'const', 'char', '*' ],
-				[ 'const', 'char', '*' ],
-				'iv_version_t',
-				[ 'void', '*' ],
-				[ 'void', '**' ]
+				[ "iv_repository_t", "*" ],
+				[ "const", "char", "*" ],
+				[ "const", "char", "*" ],
+				"iv_version_t",
+				[ "void", "*" ],
+				[ "void", "**" ]
 			],
-			section:	'3'
+			"section": "3"
 		}
 	],
-	since:	'1.0'
+	"since": "1.0"
 }

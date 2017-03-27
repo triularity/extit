@@ -1,372 +1,372 @@
 {
-	summary:
-		'Scan a directory for plugin modules.',
-	includes:
+	"summary":
+		"Scan a directory for plugin modules.",
+	"includes":
 	[
-		'wchar.h',
-		'extit/base.h',
-		'extit/pmodule.h'
+		"wchar.h",
+		"extit/base.h",
+		"extit/pmodule.h"
 	],
-	synopsis:
+	"synopsis":
 	[
 		{
-			type:	'function',
-			name:	'extit_module_scan',
-			parameters:
+			"type": "function",
+			"name": "extit_module_scan",
+			"parameters":
 			[
 				{
-					type:	[ 'extit_container_t', '*' ],
-					name:	'container',
-					description: 'The container interface.'
+					"type": [ "extit_container_t", "*" ],
+					"name": "container",
+					"description": "The container interface."
 				},
 				{
-					type:	[ 'const', 'char', '*' ],
-					name:	'directory',
-					description: 'The directory to scan.'
+					"type": [ "const", "char", "*" ],
+					"name": "directory",
+					"description": "The directory to scan."
 				},
 				{
-					type:	'extit_module_scan_callback_t',
-					name:	'callback',
-					description: 'The callback function.'
+					"type": "extit_module_scan_callback_t",
+					"name": "callback",
+					"description": "The callback function."
 				},
 				{
-					type:	[ 'const', 'void', '*' ],
-					name:	'client_data',
-					description: 'Data to pass to the callback.'
+					"type": [ "const", "void", "*" ],
+					"name": "client_data",
+					"description": "Data to pass to the callback."
 				},
 				{
-					type:	'extit_module_scan_fnfilter_t',
-					name:	'fnfilter',
-					description: 'The filename filter callback function.'
+					"type": "extit_module_scan_fnfilter_t",
+					"name": "fnfilter",
+					"description": "The filename filter callback function."
 				},
 				{
-					type:	'unsigned int',
-					name:	'flags',
-					description:
+					"type": "unsigned int",
+					"name": "flags",
+					"description":
 					[
-						'The module flags (',
+						"The module flags (",
 						{
-							type:	'literal',
-							value:	'EXTIT_FLAG_'
+							"type": "literal",
+							"value": "EXTIT_FLAG_"
 						},
-						'*).'
+						"*)."
 					]
 				}
 			],
-			returns:
+			"returns":
 			{
-				type:	'extit_status_t',
-				description:
+				"type": "extit_status_t",
+				"description":
 				[
-					'The operation status (',
+					"The operation status (",
 					{
-						type:	'literal',
-						value:	'EXTIT_STATUS_'
+						"type": "literal",
+						"value": "EXTIT_STATUS_"
 					},
-					'*).'
+					"*)."
 				]
 			}
 		},
 		{
-			type:	'function',
-			name:	'extit_module_scan_wc',
-			parameters:
+			"type": "function",
+			"name": "extit_module_scan_wc",
+			"parameters":
 			[
 				{
-					type:	[ 'extit_container_t', '*' ],
-					name:	'container',
-					description: 'The container interface.'
+					"type": [ "extit_container_t", "*" ],
+					"name": "container",
+					"description": "The container interface."
 				},
 				{
-					type:	[ 'const', 'wchar_t', '*' ],
-					name:	'directory',
-					description: 'The directory to scan.'
+					"type": [ "const", "wchar_t", "*" ],
+					"name": "directory",
+					"description": "The directory to scan."
 				},
 				{
-					type:	'extit_module_scan_callback_t',
-					name:	'callback',
-					description: 'The callback function.'
+					"type": "extit_module_scan_callback_t",
+					"name": "callback",
+					"description": "The callback function."
 				},
 				{
-					type:	[ 'const', 'void', '*' ],
-					name:	'client_data',
-					description: 'Data to pass to the callback.'
+					"type": [ "const", "void", "*" ],
+					"name": "client_data",
+					"description": "Data to pass to the callback."
 				},
 				{
-					type:	'extit_module_scan_fnfilter_t',
-					name:	'fnfilter',
-					description: 'The filename filter callback function.'
+					"type": "extit_module_scan_fnfilter_t",
+					"name": "fnfilter",
+					"description": "The filename filter callback function."
 				},
 				{
-					type:	'unsigned int',
-					name:	'flags',
-					description:
+					"type": "unsigned int",
+					"name": "flags",
+					"description":
 					[
-						'The module flags (',
+						"The module flags (",
 						{
-							type:	'literal',
-							value:	'EXTIT_FLAG_'
+							"type": "literal",
+							"value": "EXTIT_FLAG_"
 						},
-						'*).'
+						"*)."
 					]
 				}
 			],
-			returns:
+			"returns":
 			{
-				type:	'extit_status_t',
-				description:
+				"type": "extit_status_t",
+				"description":
 				[
-					'The operation status (',
+					"The operation status (",
 					{
-						type:	'literal',
-						value:	'EXTIT_STATUS_'
+						"type": "literal",
+						"value": "EXTIT_STATUS_"
 					},
-					'*).'
+					"*)."
 				]
 			}
 		},
 		{
-			type:	'function',
-			name:	'extit_module_scan_fnfilter_default',
-			parameters:
+			"type": "function",
+			"name": "extit_module_scan_fnfilter_default",
+			"parameters":
 			[
 				{
-					type:	[ 'const', 'char', '*' ],
-					name:	'libname',
-					description: 'The name of the library file.'
+					"type": [ "const", "char", "*" ],
+					"name": "libname",
+					"description": "The name of the library file."
 				},
 				{
-					type:	'size_t',
-					name:	'length',
-					description: 'The length of the library filename.'
+					"type": "size_t",
+					"name": "length",
+					"description": "The length of the library filename."
 				}
 			],
-			returns:
+			"returns":
 			{
-				type:	'extit_bool_t',
-				description:
+				"type": "extit_bool_t",
+				"description":
 				[
 					{
-						type:	'symbol',
-						value:	'EXTIT_TRUE'
+						"type": "symbol",
+						"value": "EXTIT_TRUE"
 					},
-					' to accept the file, or ',
+					" to accept the file, or ",
 					{
-						type:	'symbol',
-						value:	'EXTIT_FALSE'
+						"type": "symbol",
+						"value": "EXTIT_FALSE"
 					},
-					' to reject it.'
+					" to reject it."
 				]
-			],
+			}
 		},
 		{
-			type:	'function',
-			name:	'extit_module_scan_fnfilter_wc_default',
-			parameters:
+			"type": "function",
+			"name": "extit_module_scan_fnfilter_wc_default",
+			"parameters":
 			[
 				{
-					type:	[ 'const', 'wchar_t', '*' ],
-					name:	'libname',
-					description: 'The name of the library file.'
+					"type": [ "const", "wchar_t", "*" ],
+					"name": "libname",
+					"description": "The name of the library file."
 				},
 				{
-					type:	'size_t',
-					name:	'length',
-					description: 'The length of the library filename (in characters).'
+					"type": "size_t",
+					"name": "length",
+					"description": "The length of the library filename (in characters)."
 				}
 			],
-			returns:
+			"returns":
 			{
-				type:	'extit_bool_t',
-				description:
+				"type": "extit_bool_t",
+				"description":
 				[
 					{
-						type:	'symbol',
-						value:	'EXTIT_TRUE'
+						"type": "symbol",
+						"value": "EXTIT_TRUE"
 					},
-					' to accept the file, or ',
+					" to accept the file, or ",
 					{
-						type:	'symbol',
-						value:	'EXTIT_FALSE'
+						"type": "symbol",
+						"value": "EXTIT_FALSE"
 					},
-					' to reject it.'
+					" to reject it."
 				]
-			],
+			}
 		}
 	],
-	description:
+	"description":
 	[
-		'Scan a directory for plugin modules.',
-		' For each valid module found and loaded, the callback will be called with it.',
-		' The '
+		"Scan a directory for plugin modules.",
+		" For each valid module found and loaded, the callback will be called with it.",
+		" The ",
 		{
-			type:	'function',
-			name:	'extit_module_scan_wc'
+			"type": "function",
+			"name": "extit_module_scan_wc"
 		},
-		' and ',
+		" and ",
 		{
-			type:	'function',
-			name:	'extit_module_scan_fnfilter_wc_default'
+			"type": "function",
+			"name": "extit_module_scan_fnfilter_wc_default"
 		},
-		' functions are only available on platforms that support wide character filenames.',
-		' The functions ',
+		" functions are only available on platforms that support wide character filenames.",
+		" The functions ",
 		{
-			type:	'function',
-			name:	'extit_module_scan_fnfilter_default'
+			"type": "function",
+			"name": "extit_module_scan_fnfilter_default"
 		},
-		' and ',
+		" and ",
 		{
-			type:	'function',
-			name:	'extit_module_scan_fnfilter_wc_default'
+			"type": "function",
+			"name": "extit_module_scan_fnfilter_wc_default"
 		},
-		' are case-insensitive on Windows and OS X and case-sensitive for other platforms.'
+		" are case-insensitive on Windows and OS X and case-sensitive for other platforms."
 	],
-	see:
+	"see":
 	[
 		{
-			type:	'function',
-			name:	'extit_module_bind',
-			parameters:
+			"type": "function",
+			"name": "extit_module_bind",
+			"parameters":
 			[
-				[ 'extit_container_t', '*' ],
-				[ 'const', 'void', '*' ],
-				'unsigned int',
+				[ "extit_container_t", "*" ],
+				[ "const", "void", "*" ],
+				"unsigned int"
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_module_create_plugin',
-			parameters:
+			"type": "function",
+			"name": "extit_module_create_plugin",
+			"parameters":
 			[
-				[ 'extit_module_t', '*' ]
+				[ "extit_module_t", "*" ]
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_module_get_abi_version',
-			parameters:
+			"type": "function",
+			"name": "extit_module_get_abi_version",
+			"parameters":
 			[
-				[ 'extit_module_t', '*' ]
+				[ "extit_module_t", "*" ]
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_module_get_effective_abi_version',
-			parameters:
+			"type": "function",
+			"name": "extit_module_get_effective_abi_version",
+			"parameters":
 			[
-				[ 'extit_module_t', '*' ]
+				[ "extit_module_t", "*" ]
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_module_get_flags',
-			parameters:
+			"type": "function",
+			"name": "extit_module_get_flags",
+			"parameters":
 			[
-				[ 'extit_module_t', '*' ]
+				[ "extit_module_t", "*" ]
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_module_get_function',
-			parameters:
+			"type": "function",
+			"name": "extit_module_get_function",
+			"parameters":
 			[
-				[ 'extit_module_t', '*' ],
-				[ 'const', 'char', '*' ]
+				[ "extit_module_t", "*" ],
+				[ "const", "char", "*" ]
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_module_get_id',
-			parameters:
+			"type": "function",
+			"name": "extit_module_get_id",
+			"parameters":
 			[
-				[ 'extit_module_t', '*' ]
+				[ "extit_module_t", "*" ]
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_module_get_id_version',
-			parameters:
+			"type": "function",
+			"name": "extit_module_get_id_version",
+			"parameters":
 			[
-				[ 'extit_module_t', '*' ]
+				[ "extit_module_t", "*" ]
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_module_get_name',
-			parameters:
+			"type": "function",
+			"name": "extit_module_get_name",
+			"parameters":
 			[
-				[ 'extit_module_t', '*' ]
+				[ "extit_module_t", "*" ]
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_module_get_symbol',
-			parameters:
+			"type": "function",
+			"name": "extit_module_get_symbol",
+			"parameters":
 			[
-				[ 'extit_module_t', '*' ],
-				[ 'const', 'char', '*' ]
+				[ "extit_module_t", "*" ],
+				[ "const", "char", "*" ]
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_module_get_version',
-			parameters:
+			"type": "function",
+			"name": "extit_module_get_version",
+			"parameters":
 			[
-				[ 'extit_module_t', '*' ]
+				[ "extit_module_t", "*" ]
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_module_load',
-			parameters:
+			"type": "function",
+			"name": "extit_module_load",
+			"parameters":
 			[
-				[ 'extit_container_t', '*' ],
-				[ 'const', 'char', '*' ],
-				'unsigned int'
+				[ "extit_container_t", "*" ],
+				[ "const", "char", "*" ],
+				"unsigned int"
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_module_load_wc',
-			parameters:
+			"type": "function",
+			"name": "extit_module_load_wc",
+			"parameters":
 			[
-				[ 'extit_container_t', '*' ],
-				[ 'const', 'wchar_t', '*' ],
-				[ 'unsigned int' ]
+				[ "extit_container_t", "*" ],
+				[ "const", "wchar_t", "*" ],
+				[ "unsigned int" ]
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_module_release',
-			parameters:
+			"type": "function",
+			"name": "extit_module_release",
+			"parameters":
 			[
-				[ 'extit_module_t', '*' ]
+				[ "extit_module_t", "*" ]
 			],
-			section:	'3'
+			"section": "3"
 		},
 		{
-			type:	'function',
-			name:	'extit_module_set_flags',
-			parameters:
+			"type": "function",
+			"name": "extit_module_set_flags",
+			"parameters":
 			[
-				[ 'extit_module_t', '*' ],
-				'unsigned int'
+				[ "extit_module_t", "*" ],
+				"unsigned int"
 			],
-			section:	'3'
+			"section": "3"
 		}
 	],
-	since:	'1.0'
+	"since": "1.0"
 }
