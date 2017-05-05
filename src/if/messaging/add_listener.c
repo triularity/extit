@@ -35,6 +35,6 @@ if_messaging_add_listener__1_0
 		return IF_MESSAGING_LISTENER_ID_NONE;
 #endif
 
-	return messaging->ops_1_0->op_add_listener(
+	return messaging->ops->op_add_listener(
 		messaging, mid, iid, version, callback, client_data);
 }

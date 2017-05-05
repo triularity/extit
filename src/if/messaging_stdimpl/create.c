@@ -44,7 +44,7 @@ if_messaging_stdimpl_create
 	}
 
 	messaging_i->pub.version = IF_MESSAGING_ABI_1_0;
-	messaging_i->pub.ops_1_0 = &if_messaging_stdimpl_ops__1_0;
+	messaging_i->pub.ops = &if_messaging_stdimpl_ops__1_0;
 
 	messaging_i->lid_list = NULL;
 	messaging_i->lid_next = 1;

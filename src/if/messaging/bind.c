@@ -33,5 +33,5 @@ if_messaging_bind__1_0
 		return IF_MESSAGING_BOUND_NONE;
 #endif
 
-	return messaging->ops_1_0->op_bind(messaging, mid, iid, version);
+	return messaging->ops->op_bind(messaging, mid, iid, version);
 }

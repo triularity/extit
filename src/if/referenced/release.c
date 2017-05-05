@@ -29,5 +29,5 @@ if_referenced_release__1_0
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return referenced->ops_1_0->op_release(referenced);
+	return referenced->ops->op_release(referenced);
 }

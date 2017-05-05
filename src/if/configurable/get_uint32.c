@@ -31,6 +31,5 @@ if_configurable_get_uint32__1_0
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return configurable->ops_1_0->op_get_uint32(
-		configurable, prop, valuep);
+	return configurable->ops->op_get_uint32(configurable, prop, valuep);
 }

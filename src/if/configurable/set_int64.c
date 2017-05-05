@@ -31,5 +31,5 @@ if_configurable_set_int64__1_0
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return configurable->ops_1_0->op_set_int64(configurable, prop, value);
+	return configurable->ops->op_set_int64(configurable, prop, value);
 }

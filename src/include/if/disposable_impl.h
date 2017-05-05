@@ -27,7 +27,7 @@ typedef struct _if_disposable_1_0_ops
 struct _if_disposable_1_0
 {
 	iv_version_t			version;	/* 1.0+ */
-	if_disposable_ops_1_0_t *	ops_1_0;
+	if_disposable_ops_1_0_t *	ops;
 };
 
 #ifdef	__cplusplus

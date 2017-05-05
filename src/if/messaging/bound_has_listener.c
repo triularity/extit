@@ -31,5 +31,5 @@ if_messaging_bound_has_listener__1_0
 		return EXTIT_FALSE;
 #endif
 
-	return messaging->ops_1_0->op_bound_has_listener(messaging, bound);
+	return messaging->ops->op_bound_has_listener(messaging, bound);
 }

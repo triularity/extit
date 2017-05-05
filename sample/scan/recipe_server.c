@@ -58,7 +58,7 @@ main(int argc, char **argv)
 	modules = NULL;
 
 	my_container.version = EXTIT_ABI_1_0;
-	my_container.ops_1_0 = &extit_container_stdimpl_ops_1_0;
+	my_container.ops = &extit_container_stdimpl_ops_1_0;
 
 	status = extit_module_scan(
 			&my_container,

@@ -35,6 +35,6 @@ if_messaging_remove_listener__1_0
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return messaging->ops_1_0->op_remove_listener(
+	return messaging->ops->op_remove_listener(
 		messaging, mid, iid, version, callback, client_data);
 }

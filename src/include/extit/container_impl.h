@@ -3,7 +3,7 @@
  *
  * ExtIt container implementation.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -82,7 +82,7 @@ struct _extit_container_1_0
 	iv_version_t			version;	/* EXTIT_ABI_1_0 */
 
 	/* 1.0+ */
-	extit_container_ops_1_0_t *	ops_1_0;
+	extit_container_ops_1_0_t *	ops;
 };
 
 #ifdef	__cplusplus

@@ -64,7 +64,7 @@ item_create(void (*wfunc)(void))
 	item->wfunc = wfunc;
 
 	item->disposable.version = IF_DISPOSABLE_ABI_1_0;
-	item->disposable.ops_1_0 = &item_disposable_ops;
+	item->disposable.ops = &item_disposable_ops;
 
 	return item;
 }

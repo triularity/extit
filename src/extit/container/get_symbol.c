@@ -27,5 +27,5 @@ extit_container_get_symbol__1_0
 		return NULL;
 #endif
 
-	return container->ops_1_0->op_get_symbol(container, name);
+	return container->ops->op_get_symbol(container, name);
 }

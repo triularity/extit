@@ -46,7 +46,7 @@ typedef struct _if_allocator_1_0_ops
 struct _if_allocator_1_0
 {
 	iv_version_t			version;	/* 1.0+ */
-	if_allocator_ops_1_0_t *	ops_1_0;
+	if_allocator_ops_1_0_t *	ops;
 };
 
 #ifdef	__cplusplus

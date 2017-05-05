@@ -108,7 +108,7 @@ alloc_myobj(myobj_type_t type)
 		obji->refcount = EXTIT_REFCOUNT_NONE;
 
 		obji->if_referenced.pub.version = IF_REFERENCED_ABI_1_0;
-		obji->if_referenced.pub.ops_1_0 = &myobj__referenced_ops;
+		obji->if_referenced.pub.ops = &myobj__referenced_ops;
 
 		obji->if_referenced.myobj = obji;
 	}

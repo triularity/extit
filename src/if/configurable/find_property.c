@@ -32,5 +32,5 @@ if_configurable_find_property__1_0
 		return NULL;
 #endif
 
-	return configurable->ops_1_0->op_find_property(configurable, id);
+	return configurable->ops->op_find_property(configurable, id);
 }

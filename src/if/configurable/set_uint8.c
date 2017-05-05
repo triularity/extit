@@ -31,5 +31,5 @@ if_configurable_set_uint8__1_0
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return configurable->ops_1_0->op_set_uint8(configurable, prop, value);
+	return configurable->ops->op_set_uint8(configurable, prop, value);
 }

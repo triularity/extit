@@ -34,5 +34,5 @@ if_messaging_send__1_0
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return messaging->ops_1_0->op_send(messaging, mid, iid, version, data);
+	return messaging->ops->op_send(messaging, mid, iid, version, data);
 }

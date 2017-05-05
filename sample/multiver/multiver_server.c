@@ -93,7 +93,7 @@ main(int argc, char **argv)
 	}
 
 	container_impl.container.version = EXTIT_ABI_1_0;
-	container_impl.container.ops_1_0 = &my_container_ops;
+	container_impl.container.ops = &my_container_ops;
 	container_impl.ir = ir;
 
 	module = extit_module_load(

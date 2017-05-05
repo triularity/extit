@@ -29,5 +29,5 @@ if_configurable_reset__1_0
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return configurable->ops_1_0->op_reset(configurable);
+	return configurable->ops->op_reset(configurable);
 }

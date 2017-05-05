@@ -31,98 +31,98 @@ reset_prop
 	switch(prop->definition.type)
 	{
 		case IF_CONFIGURABLE_TYPE_CUSTOM:
-			status = conf->ops_1_0->op_set_custom(
+			status = conf->ops->op_set_custom(
 				conf,
 				prop,
 				prop->definition.spec.type_custom.def_value);
 			break;
 
 		case IF_CONFIGURABLE_TYPE_BOOL:
-			status = conf->ops_1_0->op_set_bool(
+			status = conf->ops->op_set_bool(
 				conf,
 				prop,
 				prop->definition.spec.type_bool.def_value);
 			break;
 
 		case IF_CONFIGURABLE_TYPE_DOUBLE:
-			status = conf->ops_1_0->op_set_double(
+			status = conf->ops->op_set_double(
 				conf,
 				prop,
 				prop->definition.spec.type_double.def_value);
 			break;
 
 		case IF_CONFIGURABLE_TYPE_ENUM32:
-			status = conf->ops_1_0->op_set_enum32(
+			status = conf->ops->op_set_enum32(
 				conf,
 				prop,
 				prop->definition.spec.type_enum32.def_value);
 			break;
 
 		case IF_CONFIGURABLE_TYPE_FLOAT:
-			status = conf->ops_1_0->op_set_float(
+			status = conf->ops->op_set_float(
 				conf,
 				prop,
 				prop->definition.spec.type_float.def_value);
 			break;
 
 		case IF_CONFIGURABLE_TYPE_INT8:
-			status = conf->ops_1_0->op_set_int8(
+			status = conf->ops->op_set_int8(
 				conf,
 				prop,
 				prop->definition.spec.type_int8.def_value);
 			break;
 
 		case IF_CONFIGURABLE_TYPE_INT16:
-			status = conf->ops_1_0->op_set_int16(
+			status = conf->ops->op_set_int16(
 				conf,
 				prop,
 				prop->definition.spec.type_int16.def_value);
 			break;
 
 		case IF_CONFIGURABLE_TYPE_INT32:
-			status = conf->ops_1_0->op_set_int32(
+			status = conf->ops->op_set_int32(
 				conf,
 				prop,
 				prop->definition.spec.type_int32.def_value);
 			break;
 
 		case IF_CONFIGURABLE_TYPE_INT64:
-			status = conf->ops_1_0->op_set_int64(
+			status = conf->ops->op_set_int64(
 				conf,
 				prop,
 				prop->definition.spec.type_int64.def_value);
 			break;
 
 		case IF_CONFIGURABLE_TYPE_UINT8:
-			status = conf->ops_1_0->op_set_uint8(
+			status = conf->ops->op_set_uint8(
 				conf,
 				prop,
 				prop->definition.spec.type_uint8.def_value);
 			break;
 
 		case IF_CONFIGURABLE_TYPE_UINT16:
-			status = conf->ops_1_0->op_set_uint16(
+			status = conf->ops->op_set_uint16(
 				conf,
 				prop,
 				prop->definition.spec.type_uint16.def_value);
 			break;
 
 		case IF_CONFIGURABLE_TYPE_UINT32:
-			status = conf->ops_1_0->op_set_uint32(
+			status = conf->ops->op_set_uint32(
 				conf,
 				prop,
 				prop->definition.spec.type_uint32.def_value);
 			break;
 
 		case IF_CONFIGURABLE_TYPE_UINT64:
-			status = conf->ops_1_0->op_set_uint64(
+			status = conf->ops->op_set_uint64(
 				conf,
 				prop,
 				prop->definition.spec.type_uint64.def_value);
 			break;
 
 		case IF_CONFIGURABLE_TYPE_UTF8:
-			status = conf->ops_1_0->op_set_utf8(
+			status = conf->ops->op_set_utf8(
 				conf,
 				prop,
 				prop->definition.spec.type_utf8.def_value);

@@ -34,7 +34,7 @@ typedef struct _if_resolvable_ops_1_0
 struct _if_resolvable_1_0
 {
 	iv_version_t			version;	/* 1.0+ */
-	if_resolvable_ops_1_0_t *	ops_1_0;
+	if_resolvable_ops_1_0_t *	ops;
 };
 
 #ifdef	__cplusplus
