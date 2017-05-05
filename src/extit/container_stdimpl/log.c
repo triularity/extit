@@ -24,4 +24,5 @@ extit_container_stdimpl_log__1_0
 )
 {
 	fputs(message, stderr);
+	fputc('\n', stderr);
 }
