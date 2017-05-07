@@ -150,12 +150,15 @@ plugin_query_interface
 static
 extit_pmodule_ops_1_0_t		plugin_ops =
 {
-	NULL,				/* op_probe */
-	plugin_create,			/* op_create */
-	plugin_destroy,			/* op_destroy */
-	plugin_get_interface,		/* op_get_interface */
-	plugin_query_interface,		/* op_query_interface */
-	NULL				/* op_unload */
+	/* v0 */
+	{
+		NULL,				/* op_probe */
+		plugin_create,			/* op_create */
+		plugin_destroy,			/* op_destroy */
+		plugin_get_interface,		/* op_get_interface */
+		plugin_query_interface,		/* op_query_interface */
+		NULL				/* op_unload */
+	}
 };
 
 

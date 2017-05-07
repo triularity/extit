@@ -33,5 +33,5 @@ if_allocator_realloc__1_0
 		return NULL;
 #endif
 
-	return allocator->ops->op_realloc(allocator, ptr, size);
+	return allocator->ops->v0.op_realloc(allocator, ptr, size);
 }

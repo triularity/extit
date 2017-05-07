@@ -31,5 +31,5 @@ if_messaging_bound_send__1_0
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return messaging->ops->op_bound_send(messaging, bound, data);
+	return messaging->ops->v0.op_bound_send(messaging, bound, data);
 }

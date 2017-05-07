@@ -3,7 +3,7 @@
  *
  * Platform neutral container library implementation.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -109,9 +109,9 @@ extit_module_bind
 	}
 #endif	/* EXTIT_DEBUG */
 
-	if(descriptor_1_0->ops->op_probe != NULL)
+	if(descriptor_1_0->ops->v0.op_probe != NULL)
 	{
-		status = descriptor_1_0->ops->op_probe(
+		status = descriptor_1_0->ops->v0.op_probe(
 			descriptor_1_0, (extit_container_t *) container);
 
 #ifdef	EXTIT_DEBUG

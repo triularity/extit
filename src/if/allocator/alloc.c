@@ -32,5 +32,5 @@ if_allocator_alloc__1_0
 		return NULL;
 #endif
 
-	return allocator->ops->op_alloc(allocator, size);
+	return allocator->ops->v0.op_alloc(allocator, size);
 }

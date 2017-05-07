@@ -17,7 +17,10 @@
 extern "C" {
 #endif
 
-typedef struct _if_resolvable_ops_1_0
+/*
+ * Resolvable operations (1.0 component)
+ */
+typedef struct _if_resolvable_ops_comp_1_0
 {
 	void *			(EXTIT_DECL *op_get_interface)(
 					if_resolvable_t *resolvable,
@@ -28,9 +31,21 @@ typedef struct _if_resolvable_ops_1_0
 					if_resolvable_t *resolvable,
 					const char *id,
 					iv_version_t base_version);
+} if_resolvable_ops_comp_1_0_t;
+
+
+/*
+ * Resolvable operations (1.0)
+ */
+typedef struct _if_resolvable_ops_1_0
+{
+	if_resolvable_ops_comp_1_0_t	v0;		/* [1].0 component */
 } if_resolvable_ops_1_0_t;
 
 
+/*
+ * Resolvable (1.0)
+ */
 struct _if_resolvable_1_0
 {
 	iv_version_t			version;	/* 1.0+ */

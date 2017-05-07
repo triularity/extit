@@ -31,5 +31,5 @@ if_messaging_unbind__1_0
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return messaging->ops->op_unbind(messaging, bound);
+	return messaging->ops->v0.op_unbind(messaging, bound);
 }

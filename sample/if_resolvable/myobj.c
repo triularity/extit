@@ -168,8 +168,11 @@ my_resolv_query_interface
 static
 if_resolvable_ops_1_0_t		my_resolv_ops =
 {
-	my_resolv_get_interface,	/* op_get_interface */
-	my_resolv_query_interface	/* op_query_interface */
+	/* v0 */
+	{
+		my_resolv_get_interface,	/* op_get_interface */
+		my_resolv_query_interface	/* op_query_interface */
+	}
 };
 
 
@@ -216,8 +219,11 @@ my_referenced_release(if_referenced_t *referenced)
 static
 if_referenced_ops_1_0_t		my_referenced_ops =
 {
-	my_referenced_add,		/* op_add */
-	my_referenced_release		/* op_release */
+	/* v0 */
+	{
+		my_referenced_add,		/* op_add */
+		my_referenced_release		/* op_release */
+	}
 };
 
 

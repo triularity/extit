@@ -31,5 +31,5 @@ if_allocator_free__1_0
 		return;
 #endif
 
-	allocator->ops->op_free(allocator, ptr);
+	allocator->ops->v0.op_free(allocator, ptr);
 }

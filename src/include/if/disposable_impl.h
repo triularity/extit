@@ -17,13 +17,28 @@
 extern "C" {
 #endif
 
-typedef struct _if_disposable_1_0_ops
+/*
+ * Disposable operations (1.0 component)
+ */
+typedef struct _if_disposable_ops_comp_1_0
 {
 	extit_status_t		(EXTIT_DECL *op_free)(
 					if_disposable_t *disposable);
+} if_disposable_ops_comp_1_0_t;
+
+
+/*
+ * Disposable operations (1.0)
+ */
+typedef struct _if_disposable_ops_1_0
+{
+	if_disposable_ops_comp_1_0_t	v0;		/* [1].0 component */
 } if_disposable_ops_1_0_t;
 
 
+/*
+ * Disposable (1.0)
+ */
 struct _if_disposable_1_0
 {
 	iv_version_t			version;	/* 1.0+ */

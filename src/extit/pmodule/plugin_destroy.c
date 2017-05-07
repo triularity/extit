@@ -3,7 +3,7 @@
  *
  * Platform neutral container library implementation.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -56,9 +56,9 @@ extit_plugin_destroy
 	}
 #endif	/* EXTIT_PARANOID */
 
-	if(descriptor->ops->op_destroy != NULL)
+	if(descriptor->ops->v0.op_destroy != NULL)
 	{
-		status = descriptor->ops->op_destroy(
+		status = descriptor->ops->v0.op_destroy(
 			descriptor, module->container, plugin->ctx);
 
 		if(status != EXTIT_STATUS_OK)

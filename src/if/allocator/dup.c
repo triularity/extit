@@ -33,5 +33,5 @@ if_allocator_dup__1_0
 		return NULL;
 #endif
 
-	return allocator->ops->op_dup(allocator, ptr, size);
+	return allocator->ops->v0.op_dup(allocator, ptr, size);
 }

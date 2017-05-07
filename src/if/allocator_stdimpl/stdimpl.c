@@ -127,11 +127,14 @@ allocator_op_zalloc__1_0
 static
 if_allocator_ops_1_0_t	allocator_ops_1_0 =
 {
-	allocator_op_alloc__1_0,	/* op_alloc */
-	allocator_op_free__1_0,		/* op_free */
-	allocator_op_realloc__1_0,	/* op_realloc */
-	allocator_op_zalloc__1_0,	/* op_zalloc */
-	allocator_op_dup__1_0		/* op_dup */
+	/* v0 */
+	{
+		allocator_op_alloc__1_0,	/* op_alloc */
+		allocator_op_free__1_0,		/* op_free */
+		allocator_op_realloc__1_0,	/* op_realloc */
+		allocator_op_zalloc__1_0,	/* op_zalloc */
+		allocator_op_dup__1_0		/* op_dup */
+	}
 };
 
 

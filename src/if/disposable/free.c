@@ -29,5 +29,5 @@ if_disposable_free__1_0
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return disposable->ops->op_free(disposable);
+	return disposable->ops->v0.op_free(disposable);
 }

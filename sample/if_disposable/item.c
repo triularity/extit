@@ -47,7 +47,10 @@ item_disposable_free
 static
 if_disposable_ops_1_0_t		item_disposable_ops =
 {
-	item_disposable_free		/* op_free */
+	/* v0 */
+	{
+		item_disposable_free		/* op_free */
+	}
 };
 
 

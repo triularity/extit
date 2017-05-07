@@ -3,7 +3,7 @@
  *
  * Plugin module implementation.
  *
- * Copyright (c) 2014-2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2014-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -23,7 +23,10 @@ extern "C" {
 typedef struct _extit_pmodule_descriptor_1_0
 					extit_pmodule_descriptor_1_0_t;
 
-typedef struct _extit_pmodule_ops_1_0
+/*
+ * Plugin Module operations (1.0 component)
+ */
+typedef struct _extit_pmodule_ops_comp_1_0
 {
 	extit_status_t		(EXTIT_DECL *op_probe)(
 					extit_pmodule_descriptor_1_0_t *descr,
@@ -56,6 +59,15 @@ typedef struct _extit_pmodule_ops_1_0
 	extit_status_t		(EXTIT_DECL *op_unload)(
 					extit_pmodule_descriptor_1_0_t *descr,
 					extit_container_t *container);
+} extit_pmodule_ops_comp_1_0_t;
+
+
+/*
+ * Plugin Module operations (1.0)
+ */
+typedef struct _extit_pmodule_ops_1_0
+{
+	extit_pmodule_ops_comp_1_0_t	v0;		/* [1].0 component */
 } extit_pmodule_ops_1_0_t;
 
 

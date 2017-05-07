@@ -17,7 +17,10 @@
 extern "C" {
 #endif
 
-typedef struct _if_configurable_1_0_ops
+/*
+ * Configurable operations (1.0 component)
+ */
+typedef struct _if_configurable_ops_comp_1_0
 {
 	extit_status_t
 				(EXTIT_DECL *op_reset)(
@@ -195,9 +198,21 @@ typedef struct _if_configurable_1_0_ops
 					if_configurable_t *conf,
 					if_configurable_propref_t *prop,
 					const char *value);
+} if_configurable_ops_comp_1_0_t;
+
+
+/*
+ * Configurable operations (1.0)
+ */
+typedef struct _if_configurable_ops_1_0
+{
+	if_configurable_ops_comp_1_0_t		v0;	/* [1].0 component */
 } if_configurable_ops_1_0_t;
 
 
+/*
+ * Configurable (1.0)
+ */
 struct _if_configurable_1_0
 {
 	iv_version_t				version;	/* 1.0+ */

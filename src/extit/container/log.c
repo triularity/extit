@@ -27,5 +27,5 @@ extit_container_log__1_0
 		return;
 #endif
 
-	container->ops->op_log(container, message);
+	container->ops->v0.op_log(container, message);
 }

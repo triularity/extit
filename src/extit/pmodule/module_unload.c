@@ -3,7 +3,7 @@
  *
  * Platform neutral container library implementation.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -63,10 +63,10 @@ _extit_module_unload
 
 	descriptor = (extit_pmodule_descriptor_1_0_t *) module->descriptor;
 
-	if(descriptor->ops->op_unload == NULL)
+	if(descriptor->ops->v0.op_unload == NULL)
 		return EXTIT_STATUS_OK;
 
-	status = descriptor->ops->op_unload(descriptor, module->container);
+	status = descriptor->ops->v0.op_unload(descriptor, module->container);
 
 	if(status == EXTIT_STATUS_NOTIMPLEMENTED)
 	{

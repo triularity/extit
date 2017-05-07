@@ -34,5 +34,5 @@ if_resolvable_get_interface__1_0
 		return NULL;
 #endif
 
-	return resolvable->ops->op_get_interface(resolvable, id, version);
+	return resolvable->ops->v0.op_get_interface(resolvable, id, version);
 }

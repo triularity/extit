@@ -28,6 +28,6 @@ extit_container_query_interface__1_0
 		return IV_VERSION_NONE;
 #endif
 
-	return container->ops->op_query_interface(
+	return container->ops->v0.op_query_interface(
 		container, iid, base_version);
 }

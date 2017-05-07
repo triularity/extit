@@ -17,16 +17,31 @@
 extern "C" {
 #endif
 
-typedef struct _if_referenced_ops_1_0
+/*
+ * Referenced operations (1.0 component)
+ */
+typedef struct _if_referenced_ops_comp_1_0
 {
 	extit_status_t		(EXTIT_DECL *op_add)(
 					if_referenced_t *referenced);
 
 	extit_status_t		(EXTIT_DECL *op_release)(
 					if_referenced_t *referenced);
+} if_referenced_ops_comp_1_0_t;
+
+
+/*
+ * Referenced operations (1.0)
+ */
+typedef struct _if_referenced_ops_1_0
+{
+	if_referenced_ops_comp_1_0_t	v0;		/* [1].0 component */
 } if_referenced_ops_1_0_t;
 
 
+/*
+ * Referenced (1.0)
+ */
 struct _if_referenced_1_0
 {
 	iv_version_t			version;	/* 1.x */

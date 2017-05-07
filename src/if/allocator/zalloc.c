@@ -32,5 +32,5 @@ if_allocator_zalloc__1_0
 		return NULL;
 #endif
 
-	return allocator->ops->op_zalloc(allocator, size);
+	return allocator->ops->v0.op_zalloc(allocator, size);
 }

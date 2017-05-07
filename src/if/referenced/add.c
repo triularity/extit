@@ -29,5 +29,5 @@ if_referenced_add__1_0
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return referenced->ops->op_add(referenced);
+	return referenced->ops->v0.op_add(referenced);
 }

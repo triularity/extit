@@ -88,8 +88,11 @@ myobj__referenced__release(if_referenced_t *refcount)
 static
 if_referenced_ops_1_0_t	myobj__referenced_ops =
 {
-	myobj__referenced__add,			/* op_add */
-	myobj__referenced__release		/* op_release */
+	/* v0 */
+	{
+		myobj__referenced__add,			/* op_add */
+		myobj__referenced__release		/* op_release */
+	}
 };
 
 

@@ -82,12 +82,15 @@ plugin_unload
 static
 extit_pmodule_ops_1_0_t		plugin_ops =
 {
-	plugin_probe,			/* op_probe */
-	plugin_create,			/* op_create */
-	plugin_destroy,			/* op_destroy */
-	NULL,				/* op_get_interface */
-	NULL,				/* op_query_interface */
-	plugin_unload			/* op_unload */
+	/* v0 */
+	{
+		plugin_probe,			/* op_probe */
+		plugin_create,			/* op_create */
+		plugin_destroy,			/* op_destroy */
+		NULL,				/* op_get_interface */
+		NULL,				/* op_query_interface */
+		plugin_unload			/* op_unload */
+	}
 };
 
 EXTIT_DECLARE_PMODULE("{16a0590c-1acd-11e4-a457-406186e454c1}", IV_VERSION(1,0), "Simple Plugin", "1.0", &plugin_ops)

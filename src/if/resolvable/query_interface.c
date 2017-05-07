@@ -34,6 +34,6 @@ if_resolvable_query_interface__1_0
 		return IV_VERSION_NONE;
 #endif
 
-	return resolvable->ops->op_query_interface(
+	return resolvable->ops->v0.op_query_interface(
 		resolvable, id, base_version);
 }

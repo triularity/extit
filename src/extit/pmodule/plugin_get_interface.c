@@ -3,7 +3,7 @@
  *
  * Platform neutral container library implementation.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -41,9 +41,9 @@ extit_plugin_get_interface
 
 	descriptor = (extit_pmodule_descriptor_1_0_t *) module->descriptor;
 
-	if(descriptor->ops->op_get_interface == NULL)
+	if(descriptor->ops->v0.op_get_interface == NULL)
 		return NULL;
 
-	return descriptor->ops->op_get_interface(
+	return descriptor->ops->v0.op_get_interface(
 		descriptor, module->container, plugin->ctx, id, version);
 }

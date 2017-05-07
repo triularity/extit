@@ -33,6 +33,6 @@ if_messaging_bound_add_listener__1_0
 		return IF_MESSAGING_LISTENER_ID_NONE;
 #endif
 
-	return messaging->ops->op_bound_add_listener(
+	return messaging->ops->v0.op_bound_add_listener(
 		messaging, bound, callback, client_data);
 }

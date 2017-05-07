@@ -31,5 +31,5 @@ if_configurable_set_bool__1_0
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return configurable->ops->op_set_bool(configurable, prop, value);
+	return configurable->ops->v0.op_set_bool(configurable, prop, value);
 }

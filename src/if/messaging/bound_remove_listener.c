@@ -33,6 +33,6 @@ if_messaging_bound_remove_listener__1_0
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return messaging->ops->op_bound_remove_listener(
+	return messaging->ops->v0.op_bound_remove_listener(
 		messaging, bound, callback, client_data);
 }

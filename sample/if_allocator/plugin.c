@@ -122,12 +122,15 @@ plugin_destroy
 static
 extit_pmodule_ops_1_0_t		plugin_ops =
 {
-	plugin_probe,			/* op_probe */
-	plugin_create,			/* op_create */
-	plugin_destroy,			/* op_destroy */
-	NULL,				/* op_get_interface */
-	NULL,				/* op_query_interface */
-	NULL				/* op_unload */
+	/* v0 */
+	{
+		plugin_probe,			/* op_probe */
+		plugin_create,			/* op_create */
+		plugin_destroy,			/* op_destroy */
+		NULL,				/* op_get_interface */
+		NULL,				/* op_query_interface */
+		NULL				/* op_unload */
+	}
 };
 
 EXTIT_DECLARE_PMODULE("{b61bf752-4562-11e6-9660-406186e454c1}", IV_VERSION(1,0), "Allocating Plugin", "1.0", &plugin_ops)

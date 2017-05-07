@@ -66,12 +66,15 @@ my_probe
 static
 extit_pmodule_ops_1_0_t		my_ops =
 {
-	my_probe,			/* op_probe */
-	NULL,				/* op_create */
-	NULL,				/* op_destroy */
-	NULL,				/* op_get_interface */
-	NULL,				/* op_query_interface */
-	NULL				/* op_unload */
+	/* v0 */
+	{
+		my_probe,			/* op_probe */
+		NULL,				/* op_create */
+		NULL,				/* op_destroy */
+		NULL,				/* op_get_interface */
+		NULL,				/* op_query_interface */
+		NULL				/* op_unload */
+	}
 };
 
 

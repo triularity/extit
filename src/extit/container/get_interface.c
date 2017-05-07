@@ -28,5 +28,5 @@ extit_container_get_interface__1_0
 		return NULL;
 #endif
 
-	return container->ops->op_get_interface(container, iid, version);
+	return container->ops->v0.op_get_interface(container, iid, version);
 }

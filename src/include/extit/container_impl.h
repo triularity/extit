@@ -21,9 +21,9 @@ extern "C" {
 #endif
 
 /*
- * Container operations (1.0)
+ * Container operations (1.0 component)
  */
-typedef struct _extit_container_ops_1_0
+typedef struct _extit_container_ops_comp_1_0
 {
 	/*
 	 * Get a raw named symbol
@@ -61,6 +61,15 @@ typedef struct _extit_container_ops_1_0
 	void			(EXTIT_DECL *op_log)(
 					const extit_container_t *container,
 					const char *message);
+} extit_container_ops_comp_1_0_t;
+
+
+/*
+ * Container operations (1.0)
+ */
+typedef struct _extit_container_ops_1_0
+{
+	extit_container_ops_comp_1_0_t	v0;		/* [1].0 component */
 } extit_container_ops_1_0_t;
 
 

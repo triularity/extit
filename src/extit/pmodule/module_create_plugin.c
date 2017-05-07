@@ -3,7 +3,7 @@
  *
  * Platform neutral container library implementation.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -69,9 +69,9 @@ extit_module_create_plugin
 
 	plugin->ctx = NULL;
 
-	if(descriptor->ops->op_create != NULL)
+	if(descriptor->ops->v0.op_create != NULL)
 	{
-		status = descriptor->ops->op_create(
+		status = descriptor->ops->v0.op_create(
 			descriptor, module->container, &plugin->ctx);
 
 		if(status != EXTIT_STATUS_OK)

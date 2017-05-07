@@ -31,5 +31,5 @@ if_configurable_get_enum32__1_0
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return configurable->ops->op_get_enum32(configurable, prop, valuep);
+	return configurable->ops->v0.op_get_enum32(configurable, prop, valuep);
 }

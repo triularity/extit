@@ -31,5 +31,5 @@ if_configurable_get_int8__1_0
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return configurable->ops->op_get_int8(configurable, prop, valuep);
+	return configurable->ops->v0.op_get_int8(configurable, prop, valuep);
 }

@@ -17,7 +17,10 @@
 extern "C" {
 #endif
 
-typedef struct _if_allocator_1_0_ops
+/*
+ * Allocator operations (1.0 component)
+ */
+typedef struct _if_allocator_ops_comp_1_0
 {
 	void *			(EXTIT_DECL *op_alloc)(
 					if_allocator_t *allocator,
@@ -40,9 +43,21 @@ typedef struct _if_allocator_1_0_ops
 					if_allocator_t *allocator,
 					void *ptr,
 					size_t size);
+} if_allocator_ops_comp_1_0_t;
+
+
+/*
+ * Allocator operations (1.0)
+ */
+typedef struct _if_allocator_ops_1_0
+{
+	if_allocator_ops_comp_1_0_t	v0;		/* [1].0 components */
 } if_allocator_ops_1_0_t;
 
 
+/*
+ * Allocator (1.0)
+ */
 struct _if_allocator_1_0
 {
 	iv_version_t			version;	/* 1.0+ */

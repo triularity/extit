@@ -33,5 +33,6 @@ if_messaging_has_listener__1_0
 		return EXTIT_FALSE;
 #endif
 
-	return messaging->ops->op_has_listener(messaging, mid, iid, version);
+	return messaging->ops->v0.op_has_listener(
+		messaging, mid, iid, version);
 }
