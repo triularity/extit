@@ -3,7 +3,7 @@
  *
  * Interface Versioning base.
  *
- * Copyright (c) 2015, 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2015-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -17,10 +17,10 @@ extern "C" {
 #endif
 
 /*
- * Library version (v0.2.0)
+ * Library version (v0.9.0)
  */
 #define	IV_LIB_VERSION_MAJOR		0
-#define	IV_LIB_VERSION_MINOR		2
+#define	IV_LIB_VERSION_MINOR		9
 #define	IV_LIB_VERSION_PATCH		0
 #define	IV_LIB_VERSION			((IV_LIB_VERSION_MAJOR << 16)|(IV_LIB_VERSION_MINOR<<8)|IV_LIB_VERSION_PATCH)
 

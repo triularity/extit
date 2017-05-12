@@ -3,7 +3,7 @@
  *
  * ExtIt base declarations.
  *
- * Copyright (c) 2014-2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2014-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -19,10 +19,10 @@
 #include <iv/base.h>
 
 /*
- * ExtIt Library Version (v0.5.0)
+ * ExtIt Library Version (v0.9.0)
  */
 #define	EXTIT_LIB_VERSION_MAJOR		0
-#define	EXTIT_LIB_VERSION_MINOR		5
+#define	EXTIT_LIB_VERSION_MINOR		9
 #define	EXTIT_LIB_VERSION_PATCH		0
 #define	EXTIT_LIB_VERSION		((EXTIT_LIB_VERSION_MAJOR << 16)|(EXTIT_LIB_VERSION_MINOR<<8)|EXTIT_LIB_VERSION_PATCH)
 
