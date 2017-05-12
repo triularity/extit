@@ -1,0 +1,404 @@
+{
+	"title": "Iterface Versioning Repository(3)",
+	"includes":
+	[
+		"iv/base.h",
+		"iv/repository.h"
+	],
+	"libraries":
+	[
+		"iv_repository"
+	],
+	"synopsis":
+	[
+		{
+			"type": "function",
+			"name": "iv_repository_cleanup",
+			"parameters":
+			[
+				{
+					"type": [ "iv_repository_t", "*" ],
+					"name": "ivr",
+					"description": "The repository."
+				}
+			],
+			"summary": "Release any internal memory that is no longer needed.",
+			"description":
+			[
+				"Release any internal memory that is no longer needed.",
+				" After deleting an item from the repository, internal structures for common resources may still be allocated, but empty. This will force such memory to be release immediately."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "iv_repository_create",
+			"returns":
+			{
+				"type": [ "iv_repository_t", "*" ],
+				"description":
+				[
+					"A repository, or ",
+					{
+						"type": "ref:constant",
+						"name": "NULL"
+					},
+					" if memory allocation failed."
+				]
+			},
+			"summary": "Create an interface version repository.",
+			"description":
+			[
+				"Create an interface version repository.",
+				" The repository should be freed using ",
+				{
+					"type": "ref:function",
+					"name": "iv_repository_destroy",
+					"parameters":
+					[
+						[ "iv_repository_t", "*" ]
+					]
+				},
+				"."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "iv_repository_destroy",
+			"parameters":
+			[
+				{
+					"type": [ "iv_repository_t", "*" ],
+					"name": "ivr",
+					"description": "The repository."
+				}
+			],
+			"description": "Destroy an interface version repository.",
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "iv_repository_get",
+			"parameters":
+			[
+				{
+					"type": [ "const", "iv_repository_t", "*" ],
+					"name": "ivr",
+					"description": "The repository."
+				},
+				{
+					"type": [ "const", "char", "*" ],
+					"name": "key",
+					"description":
+					[
+						"An entry key, or ",
+						{
+							"type": "ref:constant",
+							"name": "NULL"
+						},
+						"."
+					]
+				},
+				{
+					"type": [ "const", "char", "*" ],
+					"name": "iid",
+					"description": "An interface identifier."
+				},
+				{
+					"type": "iv_version_t",
+					"name": "version",
+					"description": "An interface version."
+				}
+			],
+			"returns":
+			{
+				"type": [ "void", "*" ],
+				"description":
+				[
+					"The interface, or ",
+					{
+						"type": "ref:constant",
+						"name": "NULL"
+					},
+					" if none was found."
+				]
+			},
+			"summary": "Get an interface from a repository.",
+			"description":
+			[
+				"Get an interface from a repository.",
+				" This will return the best matching (highest version) assigned value that is compatible with the requested interface/version for a given key.",
+				" A ",
+				{
+					"type": "ref:parameter",
+					"name": "key"
+				},
+				" value of ",
+				{
+					"type": "ref:constant",
+					"name": "NULL"
+				},
+				" is equivilent to ",
+				{
+					"type": "text:code",
+					"value": "\"\""
+				},
+				"."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "iv_repository_query",
+			"parameters":
+			[
+				{
+					"type": [ "const", "iv_repository_t", "*" ],
+					"name": "ivr",
+					"description": "The repository."
+				},
+				{
+					"type": [ "const", "char", "*" ],
+					"name": "key",
+					"description":
+					[
+						"An entry key, or ",
+						{
+							"type": "ref:constant",
+							"name": "NULL"
+						},
+						"."
+					]
+				},
+				{
+					"type": [ "const", "char", "*" ],
+					"name": "iid",
+					"description": "An interface identifier."
+				},
+				{
+					"type": "iv_version_t",
+					"name": "base_version",
+					"description": "A base interface version."
+				}
+			],
+			"returns":
+			{
+				"type": "iv_version_t",
+				"description":
+				[
+					"The highest available version, or ",
+					{
+						"type": "ref:constant",
+						"name": "IV_VERSION_NONE"
+					},
+					" if none was found."
+				]
+			},
+			"summary": "Query the interface version available from a repository.",
+			"description":
+			[
+				"Query the interface version available from a repository.",
+				" This will return the highest registered version that is compatible with the requested interface identifier/version for a given key.",
+				" A ",
+				{
+					"type": "ref:parameter",
+					"name": "key"
+				},
+				" value of ",
+				{
+					"type": "ref:constant",
+					"name": "NULL"
+				},
+				" is equivilent to ",
+				{
+					"type": "text:code",
+					"value": "\"\""
+				},
+				"."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "iv_repository_remove",
+			"parameters":
+			[
+				{
+					"type": [ "iv_repository_t", "*" ],
+					"name": "ivr",
+					"description": "The repository."
+				},
+				{
+					"type": [ "const", "char", "*" ],
+					"name": "key",
+					"description":
+					[
+						"An entry key, or ",
+						{
+							"type": "ref:constant",
+							"name": "NULL"
+						},
+						"."
+					]
+				},
+				{
+					"type": [ "const", "char", "*" ],
+					"name": "iid",
+					"description": "An interface identifier."
+				},
+				{
+					"type": "iv_version_t",
+					"name": "version",
+					"description": "An interface version."
+				},
+				{
+					"type": [ "void", "**" ],
+					"name": "old_valuep",
+					"description":
+					[
+						"An optional pointer to store the previous value in, or ",
+						{
+							"type": "ref:constant",
+							"name": "NULL"
+						},
+						" to ignore."
+					]
+				}
+			],
+			"returns":
+			{
+				"type": "iv_repository_status_t",
+				"description":
+				[
+					"A status code (",
+					{
+						"type": "text:code",
+						"value": "IV_REPOSITORY_STATUS_"
+					},
+					"*)."
+				]
+			},
+			"summary": "Remove an entry from a repository.",
+			"description":
+			[
+				"Remove an entry from the respository for a given key and exact interface identifier/version, optionally returning the previously set value.",
+				" A ",
+				{
+					"type": "ref:parameter",
+					"name": "key"
+				},
+				" value of ",
+				{
+					"type": "ref:constant",
+					"name": "NULL"
+				},
+				" is equivilent to ",
+				{
+					"type": "text:code",
+					"value": "\"\""
+				},
+				"."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "iv_repository_set",
+			"parameters":
+			[
+				{
+					"type": [ "iv_repository_t", "*" ],
+					"name": "ivr",
+					"description": "The repository."
+				},
+				{
+					"type": [ "const", "char", "*" ],
+					"name": "key",
+					"description":
+					[
+						"An entry key, or ",
+						{
+							"type": "ref:constant",
+							"name": "NULL"
+						},
+						"."
+					]
+				},
+				{
+					"type": [ "const", "char", "*" ],
+					"name": "iid",
+					"description": "An interface identifier."
+				},
+				{
+					"type": "iv_version_t",
+					"name": "version",
+					"description": "An interface version."
+				},
+				{
+					"type": [ "void", "*" ],
+					"name": "value",
+					"description": "The value to set."
+				},
+				{
+					"type": [ "void", "**" ],
+					"name": "old_valuep",
+					"description":
+					[
+						"An optional pointer to store the previous value in, or ",
+						{
+							"type": "ref:constant",
+							"name": "NULL"
+						},
+						" to ignore."
+					]
+				}
+			],
+			"returns":
+			{
+				"type": "iv_repository_status_t",
+				"description":
+				[
+					"A status code (",
+					{
+						"type": "text:code",
+						"value": "IV_REPOSITORY_STATUS_"
+					},
+					"*)."
+				]
+			},
+			"summary": "Set an interface entry in a repository.",
+			"description":
+			[
+				"Set an interface entry in a respository, optionally returning the previously set value.",
+				" This will not replace an existing entry that has the same key but different interface identifier/version, allowing for multiple interfaces for the same key.",
+				" A ",
+				{
+					"type": "ref:parameter",
+					"name": "key"
+				},
+				" value of ",
+				{
+					"type": "ref:constant",
+					"name": "NULL"
+				},
+				" is equivilent to ",
+				{
+					"type": "text:code",
+					"value": "\"\""
+				},
+				"."
+			],
+			"since": "1.0"
+		}
+	],
+	"see":
+	[
+		{
+			"type": "ref:generic",
+			"name": "Interface Versioning",
+			"link": "iv",
+			"section": "3"
+		}
+	]
+}

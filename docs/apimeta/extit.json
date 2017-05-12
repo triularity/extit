@@ -1,0 +1,317 @@
+{
+	"title":
+		"Extend It (ExtIt)",
+	"includes":
+	[
+		"iv/base.h",
+		"extit/base.h"
+	],
+	"synopsis":
+	[
+		{
+			"type": "macro",
+			"name": "EXTIT_ABI_1_0",
+			"description":
+			[
+				"The ExtIt ABI version for 1.0.",
+				" This is equivalent to ",
+				{
+					"type": "text:code",
+					"value": "IV_VERSION(1, 0)",
+					"code": true
+				},
+				"."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "macro",
+			"name": "EXTIT_ABI_TARGET",
+			"description":
+			[
+				"The target ABI version that should be defined before including ExtIt header files.",
+				" This is set to a defined version constant, such as ",
+				{
+					"type": "ref:constant",
+					"name": "EXTIT_ABI_1_0"
+				},
+				"."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "macro",
+			"name": "EXTIT_LIB_VERSION_MAJOR",
+			"description":
+			[
+				"The library package major version. This is not the same as those used by ",
+				{
+					"type": "text:code",
+					"value": "EXTIT_ABI_",
+					"code": true
+				},
+				"*, and should only be used for package management and informational purposes."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "macro",
+			"name": "EXTIT_LIB_VERSION_MINOR",
+			"description":
+			[
+				"The library package minor version. This is not the same as those used by ",
+				{
+					"type": "text:code",
+					"value": "EXTIT_ABI_",
+					"code": true
+				},
+				"*, and should only be used for package management and informational purposes."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "macro",
+			"name": "EXTIT_LIB_VERSION_PATCH",
+			"description":
+			[
+				"The library package patch level. This is not the same as those used by ",
+				{
+					"type": "text:code",
+					"value": "EXTIT_ABI_",
+					"code": true
+				},
+				"*, and should only be used for package management and informational purposes."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "macro",
+			"name": "EXTIT_LIB_VERSION",
+			"description":
+			[
+				"The library package version representing the major, minor, and patch level as a single integer value. This is not the same as ",
+				{
+					"type": "text:code",
+					"value": "EXTIT_ABI_",
+					"code": true
+				},
+				"*, and should only be used for package management and informational purposes.",
+				" The value is effectively equivalent to ",
+				{
+					"type": "text:code",
+					"value": "(EXTIT_LIB_VERSION_MAJOR * 65536) + (EXTIT_LIB_VERSION_MINOR * 256) + EXTIT_LIB_VERSION_PATCH",
+					"code": true
+				},
+				"."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "macro",
+			"name": "EXTIT_FLAG_LOG",
+			"description": "The flags mask for log settings.",
+			"since": "1.0"
+		},
+		{
+			"type": "macro",
+			"name": "EXTIT_FLAG_LOG_MINIMAL",
+			"description": "The flags for minimal logging.",
+			"since": "1.0"
+		},
+		{
+			"type": "macro",
+			"name": "EXTIT_FLAG_LOG_NORMAL",
+			"description": "The flags for normal logging.",
+			"since": "1.0"
+		},
+		{
+			"type": "macro",
+			"name": "EXTIT_FLAG_LOG_DEBUG",
+			"description": "The flags for debug logging.",
+			"since": "1.0"
+		},
+		{
+			"type": "macro",
+			"name": "EXTIT_FLAG_LOG_TRACE",
+			"description": "The flags for trace logging. Using this may cause very verbose output.",
+			"since": "1.0"
+		},
+		{
+			"type": "macro",
+			"name": "EXTIT_PACK",
+			"description": "A declaration modifier that causes structures to be tightly packed.",
+			"since": "ABI 1.0"
+		},
+		{
+			"type": "macro",
+			"name": "EXTIT_DECL",
+			"description": "A function declaration modifier for consistent calling convension.",
+			"since": "ABI 1.0"
+		},
+		{
+			"type": "macro",
+			"name": "EXTIT_DECL_VARGS",
+			"description": "A variable arguments function declaration modifier for consistent calling convension.",
+			"since": "ABI 1.0"
+		},
+		{
+			"type": "macro",
+			"name": "EXTIT_EXPORT",
+			"description":
+			[
+				"A portable declaration modifier for exporting symbols on platforms that require them. This should be used when building shared libraries that required symbols to be directly exported."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "macro",
+			"name": "EXTIT_IMPORT",
+			"description":
+			[
+				"A portable declaration modifier for importing symbols on platforms that require them. This should be used with headers declarations for symbols that will be linked from shared libraries that were exported with ",
+				{
+					"type": "ref:constant",
+					"name": "EXTIT_EXPORT"
+				},
+				"."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "macro",
+			"name": "EXTIT_IMPORT_STATIC",
+			"description":
+			[
+				"A portable declaration modifier for static importing symbols on platforms that require them. This may be used with headers declarations for symbols that will be linked from shared libraries that were exported with ",
+				{
+					"type": "ref:constant",
+					"name": "EXTIT_EXPORT"
+				},
+				".",
+				" This differs from ",
+				{
+					"type": "ref:constant",
+					"name": "EXTIT_IMPORT"
+				},
+				", in that it will link stubs during compile time on platforms that have them.",
+				" Use of this modifier should be avoided, but is included for situations where linking requires it."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "typedef",
+			"name": "extit_func_t",
+			"description": "A portable function pointer.",
+			"since": "ABI 1.0"
+		},
+		{
+			"type": "enum",
+			"_name": "_extit_bool",
+			"typedef": "extit_bool_t",
+			"members":
+			[
+				{
+					"name": "EXTIT_FALSE",
+					"description": "The false value."
+				},
+				{
+					"name": "EXTIT_TRUE",
+					"description": "The true value."
+				}
+			],
+			"description": "A portable boolean type.",
+			"since": "1.0"
+		},
+		{
+			"type": "enum",
+			"_name": "_extit_status",
+			"typedef": "extit_status_t",
+			"members":
+			[
+				{
+					"name": "EXTIT_STATUS_OK",
+					"description": "Success.",
+					"since": "ABI 1.0"
+				},
+				{
+					"name": "EXTIT_STATUS_FAIL",
+					"description": "General error.",
+					"since": "ABI 1.0"
+				},
+				{
+					"name": "EXTIT_STATUS_NOMEM",
+					"description": "Memory allocation failed.",
+					"since": "ABI 1.0"
+				},
+				{
+					"name": "EXTIT_STATUS_INVALID",
+					"description": "Invalid parameter/state.",
+					"since": "ABI 1.0"
+				},
+				{
+					"name": "EXTIT_STATUS_UNSUPPORTED",
+					"description": "API/version not supported.",
+					"since": "ABI 1.0"
+				},
+				{
+					"name": "EXTIT_STATUS_BUSY",
+					"description": "In use.",
+					"since": "ABI 1.0"
+				},
+				{
+					"name": "EXTIT_STATUS_NOTIMPLEMENTED",
+					"description": "Function not implemented.",
+					"since": "ABI 1.0"
+				},
+				{
+					"name": "EXTIT_STATUS_NOTFOUND",
+					"description": "Result not found.",
+					"since": "ABI 1.0"
+				},
+				{
+					"name": "EXTIT_STATUS_NOPREREQ",
+					"description": "Pre-requirement missing.",
+					"since": "ABI 1.0"
+				},
+				{
+					"name": "EXTIT_STATUS_CUSTOM_BASE",
+					"description": "A base value for custom status/error codes.",
+					"since": "ABI 1.0"
+				}
+			],
+			"description": "ExtIt status codes.",
+			"since": "ABI 1.0"
+		}
+	],
+	"description":
+	[
+		"..."
+	],
+	"see":
+	[
+		{
+			"type": "ref:generic",
+			"link": "iv",
+			"name": "Interface Versioning",
+			"section": "3"
+		},
+		{
+			"type": "ref:generic",
+			"link": "extit_container",
+			"name": "ExtIt Container",
+			"section": "3"
+		},
+		{
+			"type": "ref:generic",
+			"link": "extit_container-impl",
+			"name": "ExtIt Container implementation",
+			"section": "3"
+		},
+		{
+			"type": "ref:generic",
+			"link": "extit_refcount",
+			"name": "ExtIt Reference Count",
+			"section": "3"
+		}
+	]
+}

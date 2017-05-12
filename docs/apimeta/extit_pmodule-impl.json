@@ -1,4 +1,6 @@
 {
+	"title":
+		"ExtIt plugin module implementation",
 	"summary":
 		"Implementation of a plugin module.",
 	"includes":
@@ -10,73 +12,9 @@
 	"synopsis":
 	[
 		{
-			"type": "typedef",
-			"name": "extit_pmodule_descriptor_base_t",
-			"value": [ "struct", "_extit_pmodule_descriptor_base" ]
-		},
-		{
 			"type": "struct",
-			"name": "_extit_pmodule_descriptor_base",
-			"members":
-			[
-				{
-					"type": "uint32_t",
-					"name": "magic"
-				},
-				{
-					"type": "iv_version_t",
-					"name": "extit_version"
-				}
-			]
-		},
-		{
-			"type": "typedef",
-			"name": "extit_pmodule_descriptor_1_0_t",
-			"value": [ "struct", "_extit_pmodule_descriptor_1_0" ]
-		},
-		{
-			"type": "struct",
-			"name": "_extit_pmodule_descriptor_1_0",
-			"members":
-			[
-				{
-					"type": "uint32_t",
-					"name": "magic"
-				},
-				{
-					"type": "iv_version_t",
-					"name": "extit_version"
-				},
-				{
-					"type": [ "const", "char", "*" ],
-					"name": "id"
-				},
-				{
-					"type": "uint32_t",
-					"name": "id_version"
-				},
-				{
-					"type": [ "const", "char", "*" ],
-					"name": "name"
-				},
-				{
-					"type": [ "const", "char", "*" ],
-					"name": "version"
-				},
-				{
-					"type": [ "extit_pmodule_ops_1_0_t", "*" ],
-					"name": "ops"
-				}
-			]
-		},
-		{
-			"type": "typedef",
-			"name": "extit_pmodule_ops_1_0_t",
-			"value": [ "struct", "_extit_pmodule_ops_1_0" ]
-		},
-		{
-			"type": "struct",
-			"name": "_extit_pmodule_ops_1_0",
+			"_name": "_extit_pmodule_ops_comp_1_0",
+			"typedef": "extit_pmodule_ops_comp_1_0_t",
 			"members":
 			[
 				{
@@ -103,14 +41,15 @@
 							[
 								"The operation status (",
 								{
-									"type": "literal",
+									"type": "text:code",
 									"value": "EXTIT_STATUS_"
 								},
 								"*)."
 							]
 						}
 					},
-					"name": "op_probe"
+					"name": "op_probe",
+					"description": "Probe the module. Implementers should do minimal checking, such as required interfaces, without any potentially long running operations."
 				},
 				{
 					"type":
@@ -141,14 +80,23 @@
 							[
 								"The operation status (",
 								{
-									"type": "literal",
+									"type": "text:code",
 									"value": "EXTIT_STATUS_"
 								},
 								"*)."
 							]
 						}
 					},
-					"name": "op_create"
+					"name": "op_create",
+					"description":
+					[
+						"Create a module instance. Any private data references should be assigned to ",
+						{
+							"type": "ref:parameter",
+							"name": "ctx_ptr"
+						},
+						"."
+					]
 				},
 				{
 					"type":
@@ -179,14 +127,23 @@
 							[
 								"The operation status (",
 								{
-									"type": "literal",
+									"type": "text:code",
 									"value": "EXTIT_STATUS_"
 								},
 								"*)."
 							]
 						}
 					},
-					"name": "op_destroy"
+					"name": "op_destroy",
+					"description":
+					[
+						"Destroy a module instance. Any private data reference by ",
+						{
+							"type": "ref:parameter",
+							"name": "ctx"
+						},
+						" should be released."
+					]
 				},
 				{
 					"type":
@@ -227,14 +184,15 @@
 							[
 								"An interface pointer, or ",
 								{
-									"type": "constant",
-									"value": "NULL"
+									"type": "ref:constant",
+									"name": "NULL"
 								},
 								" if a matching interface wasn't found."
 							]
 						}
 					},
-					"name": "op_get_interface"
+					"name": "op_get_interface",
+					"description": "Get a named interface object by version for an instance."
 				},
 				{
 					"type":
@@ -275,14 +233,15 @@
 							[
 								"The highest compatible interface version, or ",
 								{
-									"type": "constant",
-									"value": "IV_VERSION_NONE"
+									"type": "ref:constant",
+									"name": "IV_VERSION_NONE"
 								},
 								" if a matching interface wasn't found."
 							]
 						}
 					},
-					"name": "op_query_interface"
+					"name": "op_query_interface",
+					"description": "Query the supported version of an interface for an instance."
 				},
 				{
 					"type":
@@ -308,16 +267,116 @@
 							[
 								"The operation status (",
 								{
-									"type": "literal",
+									"type": "text:code",
 									"value": "EXTIT_STATUS_"
 								},
 								"*)."
 							]
 						}
 					},
-					"name": "op_unload"
+					"name": "op_unload",
+					"description": "Release any global resources still allocated by this module. This is called just prior to unloading the module from the process."
 				}
-			]
+			],
+			"description": "The version 1.0 plugin module interface operations component.",
+			"version": "ABI 1.0",
+			"since": "ABI 1.0"
+		},
+		{
+			"type": "struct",
+			"_name": "_extit_pmodule_ops_1_0",
+			"typedef": "extit_pmodule_ops_1_0_t",
+			"members":
+			[
+				{
+					"type": "extit_pmodule_ops_comp_1_0_t",
+					"name": "v0",
+					"description": "The x.0 component."
+				}
+			],
+			"description": "The version 1.0 plugin module interface operations.",
+			"version": "ABI 1.0",
+			"since": "ABI 1.0"
+		},
+		{
+			"type": "struct",
+			"_name": "_extit_pmodule_descriptor_base",
+			"typedef": "extit_pmodule_descriptor_base_t",
+			"members":
+			[
+				{
+					"type": "uint32_t",
+					"name": "magic",
+					"description":
+					[
+						"The value defined by ",
+						{
+							"type": "ref:constant",
+							"name": "EXTIT_PMODULE_MAGIC"
+						},
+						"."
+					]
+				},
+				{
+					"type": "iv_version_t",
+					"name": "extit_version",
+					"description": "The ExtIt interface version used by this module."
+				}
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "struct",
+			"_name": "_extit_pmodule_descriptor_1_0",
+			"typedef": "extit_pmodule_descriptor_1_0_t",
+			"members":
+			[
+				{
+					"type": "uint32_t",
+					"name": "magic",
+					"description":
+					[
+						"The value defined by ",
+						{
+							"type": "ref:constant",
+							"name": "EXTIT_PMODULE_MAGIC"
+						},
+						"."
+					]
+				},
+				{
+					"type": "iv_version_t",
+					"name": "extit_version",
+					"description": "The ExtIt interface version used by this module."
+				},
+				{
+					"type": [ "const", "char", "*" ],
+					"name": "id",
+					"description": "The unique module identifier."
+				},
+				{
+					"type": "uint32_t",
+					"name": "id_version",
+					"description": "The module version value. Its value must be lexicographic, but is otherwise treated as opaque."
+				},
+				{
+					"type": [ "const", "char", "*" ],
+					"name": "name",
+					"description": "The human readable module name."
+				},
+				{
+					"type": [ "const", "char", "*" ],
+					"name": "version",
+					"description": "The human readable module version."
+				},
+				{
+					"type": [ "extit_pmodule_ops_1_0_t", "*" ],
+					"name": "ops",
+					"description": "The module operations."
+				}
+			],
+			"version": "ABI 1.0",
+			"since": "ABI 1.0"
 		},
 		{
 			"type": "macro",
@@ -325,38 +384,69 @@
 			"parameters":
 			[
 				{
-					"type": [ "const", "char", "*" ],
-					"name": "id"
+					"name": "id",
+					"description": "The unique module identifier."
 				},
 				{
-					"type": "uint32_t",
-					"name": "id_version"
+					"name": "id_version",
+					"description": "The module version value. Its value must be lexicographic, but is otherwise treated as opaque."
 				},
 				{
-					"type": [ "const", "char", "*" ],
-					"name": "name"
+					"name": "name",
+					"description": "The human readable module name."
 				},
 				{
-					"type": [ "const", "char", "*" ],
-					"name": "version"
+					"name": "version",
+					"description": "The human readable module version."
 				},
 				{
-					"type": [ "extit_pmodule_ops_#_#_t", "*" ],
-					"name": "ops"
+					"name": "ops",
+					"description": "The module operations."
 				}
-			]
+			],
+			"description":
+			[
+				"Declare a module with fields that populate its ",
+				{
+					"type": "ref:type",
+					"name": "extit_pmodule_descriptor_t"
+				},
+				"."
+			],
+			"version": "1.0",
+			"since": "1.0"
 		},
 		{
 			"type": "typedef",
-			"name": "extit_pmodule_descriptor_t"
+			"name": "extit_pmodule_descriptor_t",
+			"description":
+			[
+				"A generic plugin module descriptor that is mapped to the appropriete descriptor version based on ",
+				{
+					"type": "ref:constant",
+					"name": "EXTIT_ABI_TARGET"
+				},
+				"."
+			],
+			"since": "1.0"
 		},
 		{
 			"type": "macro",
-			"name": "EXTIT_PMODULE_DESCRIPTOR_NAME"
+			"name": "EXTIT_PMODULE_MAGIC",
+			"description": "The magic value at the beginning of the module descriptor.",
+			"since": "ABI 1.0"
 		},
 		{
 			"type": "macro",
-			"name": "EXTIT_PMODULE_DESCRIPTOR_SYMBOL"
+			"name": "EXTIT_PMODULE_DESCRIPTOR_NAME",
+			"description": "The global module descriptor name.",
+			"since": "1.0"
+		},
+		{
+			"type": "macro",
+			"name": "EXTIT_PMODULE_DESCRIPTOR_SYMBOL",
+			"description": "The global module descriptor symbol string.",
+			"since": "1.0"
 		}
 	],
 	"description":
@@ -366,15 +456,22 @@
 	"see":
 	[
 		{
-			"type": "link",
-			"name": "extit_container",
+			"type": "ref:generic",
+			"name": "ExtIt",
+			"link": "extit",
 			"section": "3"
 		},
 		{
-			"type": "link",
-			"name": "extit_container-stdimpl",
+			"type": "ref:generic",
+			"name": "ExtIt Container",
+			"link": "extit_container",
+			"section": "3"
+		},
+		{
+			"type": "ref:generic",
+			"name": "ExtIt Container standard implementation",
+			"link": "extit_container-stdimpl",
 			"section": "3"
 		}
-	],
-	"since": "1.0"
+	]
 }

@@ -1,6 +1,6 @@
 {
-	"summary":
-		"Implementation of a container interface.",
+	"title":
+		"ExtIt Container implementation",
 	"includes":
 	[
 		"iv/base.h",
@@ -11,13 +11,9 @@
 	"synopsis":
 	[
 		{
-			"type": "typedef",
-			"name": "extit_container_ops_1_0_t",
-			"value": [ "struct", "_extit_container_ops_1_0" ]
-		},
-		{
 			"type": "struct",
-			"name": "_extit_container_ops_1_0",
+			"_name": "_extit_container_ops_comp_1_0",
+			"typedef": "extit_container_ops_comp_1_0_t",
 			"members":
 			[
 				{
@@ -44,14 +40,15 @@
 							[
 								"A symbol pointer, or ",
 								{
-									"type": "constant",
-									"value": "NULL"
+									"type": "ref:constant",
+									"name": "NULL"
 								},
 								" if the symbol wasn't found."
 							]
 						}
 					},
-					"name": "op_get_symbol"
+					"name": "op_get_symbol",
+					"description": "Get a raw named symbol address."
 				},
 				{
 					"type":
@@ -77,14 +74,15 @@
 							[
 								"A function pointer, or ",
 								{
-									"type": "constant",
-									"value": "NULL"
+									"type": "ref:constant",
+									"name": "NULL"
 								},
 								" if the symbol wasn't found."
 							]
 						}
 					},
-					"name": "op_get_function"
+					"name": "op_get_function",
+					"description": "Get a raw named function address."
 				},
 				{
 					"type":
@@ -100,7 +98,7 @@
 							{
 								"type": [ "const", "char", "*" ],
 								"name": "iid",
-								"description": "An interface ID."
+								"description": "An interface identifier."
 							},
 							{
 								"type": "iv_version_t",
@@ -115,14 +113,15 @@
 							[
 								"An interface pointer, or ",
 								{
-									"type": "constant",
-									"value": "NULL"
+									"type": "ref:constant",
+									"name": "NULL"
 								},
 								" if a matching interface wasn't found."
 							]
 						}
 					},
-					"name": "op_get_interface"
+					"name": "op_get_interface",
+					"description": "Get a named interface object by version."
 				},
 				{
 					"type":
@@ -138,7 +137,7 @@
 							{
 								"type": [ "const", "char", "*" ],
 								"name": "iid",
-								"description": "An interface ID."
+								"description": "An interface identifier."
 							},
 							{
 								"type": "iv_version_t",
@@ -153,14 +152,15 @@
 							[
 								"The highest compatible interface version, or ",
 								{
-									"type": "constant",
-									"value": "IV_VERSION_NONE"
+									"type": "ref:constant",
+									"name": "IV_VERSION_NONE"
 								},
 								" if a matching interface wasn't found."
 							]
 						}
 					},
-					"name": "op_query_interface"
+					"name": "op_query_interface",
+					"description": "Query the supported version of an interface."
 				},
 				{
 					"type":
@@ -180,45 +180,79 @@
 							}
 						]
 					},
-					"name": "op_log"
+					"name": "op_log",
+					"description": "Log a simple message."
 				}
-			]
-		},
-		{
-			"type": "typedef",
-			"name": "extit_container_base_t",
-			"value": [ "struct", "_extit_container_base" ]
+			],
+			"description":
+			[
+				"The version 1.0 container interface operations component."
+			],
+			"version": "ABI 1.0",
+			"since": "ABI 1.0"
 		},
 		{
 			"type": "struct",
-			"name": "_extit_container_base",
+			"_name": "_extit_container_ops_1_0",
+			"typedef": "extit_container_ops_1_0_t",
+			"members":
+			[
+				{
+					"type": "extit_container_ops_comp_1_0_t",
+					"name": "v0",
+					"description": "The x.0 component."
+				}
+			],
+			"description":
+			[
+				"The version 1.0 container interface operations."
+			],
+			"version": "ABI 1.0",
+			"since": "ABI 1.0"
+		},
+		{
+			"type": "struct",
+			"_name": "_extit_container_base",
+			"typedef": "extit_container_base_t",
 			"members":
 			[
 				{
 					"type": "iv_version_t",
-					"name": "version"
+					"name": "version",
+					"description": "The interface version of the container."
 				}
-			]
-		},
-		{
-			"type": "typedef",
-			"name": "extit_container_1_0_t",
-			"value": [ "struct", "_extit_container_1_0" ]
+			],
+			"description":
+			[
+				"The base container interface data.",
+				" All containers share this common structure, which is used to determine the ABI version.",
+				" Normal application code is not expected to use this directly."
+			],
+			"since": "ABI 1.0"
 		},
 		{
 			"type": "struct",
-			"name": "_extit_container_1_0",
+			"_name": "_extit_container_1_0",
+			"typedef": "extit_container_1_0_t",
 			"members":
 			[
 				{
 					"type": "iv_version_t",
-					"name": "version"
+					"name": "version",
+					"description": "The interface version of the container."
 				},
 				{
 					"type": [ "extit_container_ops_1_0_t", "*" ],
-					"name": "ops"
+					"name": "ops",
+					"description": "The container interface operations."
 				}
-			]
+			],
+			"description":
+			[
+				"The version 1.0 container interface data."
+			],
+			"version": "ABI 1.0",
+			"since": "ABI 1.0"
 		}
 	],
 	"description":
@@ -228,7 +262,7 @@
 	"see":
 	[
 		{
-			"type": "function",
+			"type": "ref:function",
 			"name": "extit_container_get_function",
 			"parameters":
 			[
@@ -238,7 +272,17 @@
 			"section": "3"
 		},
 		{
-			"type": "function",
+			"type": "ref:function",
+			"name": "extit_container_get_function__1_0",
+			"parameters":
+			[
+				[ "const", "extit_container_t", "*" ],
+				[ "const", "char", "*" ]
+			],
+			"section": "3"
+		},
+		{
+			"type": "ref:function",
 			"name": "extit_container_get_interface",
 			"parameters":
 			[
@@ -249,7 +293,18 @@
 			"section": "3"
 		},
 		{
-			"type": "function",
+			"type": "ref:function",
+			"name": "extit_container_get_interface__1_0",
+			"parameters":
+			[
+				[ "const", "extit_container_t", "*" ],
+				[ "const", "char", "*" ],
+				"iv_version_t"
+			],
+			"section": "3"
+		},
+		{
+			"type": "ref:function",
 			"name": "extit_container_get_symbol",
 			"parameters":
 			[
@@ -259,7 +314,17 @@
 			"section": "3"
 		},
 		{
-			"type": "function",
+			"type": "ref:function",
+			"name": "extit_container_get_symbol__1_0",
+			"parameters":
+			[
+				[ "const", "extit_container_t", "*" ],
+				[ "const", "char", "*" ]
+			],
+			"section": "3"
+		},
+		{
+			"type": "ref:function",
 			"name": "extit_container_query_interface",
 			"parameters":
 			[
@@ -270,15 +335,27 @@
 			"section": "3"
 		},
 		{
-			"type": "link",
-			"name": "extit_container",
+			"type": "ref:function",
+			"name": "extit_container_query_interface__1_0",
+			"parameters":
+			[
+				[ "const", "extit_container_t", "*" ],
+				[ "const", "char", "*" ],
+				"iv_version_t"
+			],
 			"section": "3"
 		},
 		{
-			"type": "link",
-			"name": "extit_container-stdimpl",
+			"type": "ref:generic",
+			"link": "extit_container",
+			"name": "ExtIt Container",
+			"section": "3"
+		},
+		{
+			"type": "ref:generic",
+			"link": "extit_container-stdimpl",
+			"name": "ExtIt Container Standard Implementation",
 			"section": "3"
 		}
-	],
-	"since": "1.0"
+	]
 }

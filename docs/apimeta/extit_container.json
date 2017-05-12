@@ -1,6 +1,5 @@
 {
-	"summary":
-		"A container interface.",
+	"title": "ExtIt Container",
 	"includes":
 	[
 		"iv/base.h",
@@ -14,13 +13,451 @@
 	"synopsis":
 	[
 		{
-			"type": "macro",
-			"name": "EXTIT_ABI_TARGET"
-		},
-		{
 			"type": "typedef",
 			"name": "extit_container_t",
-			"value": [ "struct", "_extit_container" ]
+			"_value": [ "struct", "_extit_container" ],
+			"description": "A container interface.",
+			"since": "ABI 1.0"
+		},
+		{
+			"type": "macro",
+			"name": "extit_container_get_function",
+			"parameters":
+			[
+				{
+					"name": "container",
+					"description": "The container interface."
+				},
+				{
+					"name": "name",
+					"description": "A symbol name."
+				}
+			],
+			"returns":
+			[
+				"A function pointer, or ",
+				{
+					"type": "ref:constant",
+					"name": "NULL"
+				},
+				" if the symbol wasn't found or the container version was incompatable."
+			],
+			"summary": "Resolve a function pointer from a container interface.",
+			"description":
+			[
+				"Resolve a function pointer from a container interface.",
+				" This is a compile time macro that is mapped to the appropriete ABI version named function based on ",
+				{
+					"type": "ref:constant",
+					"name": "EXTIT_ABI_TARGET"
+				},
+				"."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_container_get_function__1_0",
+			"parameters":
+			[
+				{
+					"type": [ "const", "extit_container_t", "*" ],
+					"name": "container",
+					"description": "The container interface."
+				},
+				{
+					"type": [ "const", "char", "*" ],
+					"name": "name",
+					"description": "A symbol name."
+				}
+			],
+			"returns":
+			{
+				"type": "extit_func_t",
+				"description":
+				[
+					"A function pointer, or ",
+					{
+						"type": "ref:constant",
+						"name": "NULL"
+					},
+					" if the symbol wasn't found or the container version was incompatable."
+				]
+			},
+			"summary": "Resolve a function pointer from a container interface.",
+			"description":
+			[
+				"Resolve a function pointer from a container interface.",
+				" This is a convenience function that calls ",
+				{
+					"type": "ref:parameter",
+					"name": "container"
+				},
+				{
+					"type": "text:code",
+					"value": "->ops->v0."
+				},
+				{
+					"type": "ref:generic",
+					"link": "extit_container_ops_comp_1_0_t",
+					"anchor": "extit_container_ops_comp_1_0_t.op_get_function",
+					"name": "op_get_function( ... )",
+					"code": true
+				},
+				"."
+			],
+			"version": "ABI 1.0",
+			"since": "ABI 1.0"
+		},
+		{
+			"type": "macro",
+			"name": "extit_container_get_interface",
+			"parameters":
+			[
+				{
+					"name": "container",
+					"description": "The container interface."
+				},
+				{
+					"name": "iid",
+					"description": "An interface identifier."
+				},
+				{
+					"name": "version",
+					"description": "An interface version."
+				}
+			],
+			"returns":
+			[
+				"An interface pointer, or ",
+				{
+					"type": "ref:constant",
+					"name": "NULL"
+				},
+				" if a matching interface wasn't found or the container version was incompatable."
+			],
+			"description":
+			[
+				"Get an interface from a container interface.",
+				" This is a compile time macro that is mapped to the appropriete ABI version named function based on ",
+				{
+					"type": "ref:constant",
+					"name": "EXTIT_ABI_TARGET"
+				},
+				"."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_container_get_interface__1_0",
+			"parameters":
+			[
+				{
+					"type": [ "const", "extit_container_t", "*" ],
+					"name": "container",
+					"description": "The container interface."
+				},
+				{
+					"type": [ "const", "char", "*" ],
+					"name": "iid",
+					"description": "An interface identifier."
+				},
+				{
+					"type": "iv_version_t",
+					"name": "version",
+					"description": "An interface version."
+				}
+			],
+			"returns":
+			{
+				"type": [ "void", "*" ],
+				"description":
+				[
+					"An interface pointer, or ",
+					{
+						"type": "ref:constant",
+						"name": "NULL"
+					},
+					" if a matching interface wasn't found or the container version was incompatable.",
+					" The returned interface will be valid as long as the container is."
+				]
+			},
+			"description":
+			[
+				"Get an interface from a container interface.",
+				" This is a convenience function that calls ",
+				{
+					"type": "ref:parameter",
+					"name": "container"
+				},
+				{
+					"type": "text:code",
+					"value": "->ops->v0."
+				},
+				{
+					"type": "ref:generic",
+					"link": "extit_container_ops_comp_1_0_t",
+					"anchor": "extit_container_ops_comp_1_0_t.op_get_interface",
+					"name": "op_get_interface( ... )",
+					"code": true
+				},
+				"."
+			],
+			"version": "ABI 1.0",
+			"since": "ABI 1.0"
+		},
+
+		{
+			"type": "macro",
+			"name": "extit_container_get_symbol",
+			"parameters":
+			[
+				{
+					"name": "container",
+					"description": "The container interface."
+				},
+				{
+					"name": "name",
+					"description": "A symbol name."
+				}
+			],
+			"returns":
+			[
+				"An address pointer, or ",
+				{
+					"type": "ref:constant",
+					"name": "NULL"
+				},
+				" if the symbol wasn't found or the container version was incompatable."
+			],
+			"description":
+			[
+				"Get an interface from a container interface.",
+				" This is a compile time macro that is mapped to the appropriete ABI version named function."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_container_get_symbol__1_0",
+			"parameters":
+			[
+				{
+					"type": [ "const", "extit_container_t", "*" ],
+					"name": "container",
+					"description": "The container interface."
+				},
+				{
+					"type": [ "const", "char", "*" ],
+					"name": "name",
+					"description": "A symbol name."
+				}
+			],
+			"returns":
+			{
+				"type": [ "void", "*" ],
+				"description":
+				[
+					"An address pointer, or ",
+					{
+						"type": "ref:constant",
+						"name": "NULL"
+					},
+					" if the symbol wasn't found or the container version was incompatable."
+				]
+			},
+			"description":
+			[
+				"Resolve a symbol pointer from a container interface.",
+				" This is a convenience function that calls ",
+				{
+					"type": "ref:parameter",
+					"name": "container"
+				},
+				{
+					"type": "text:code",
+					"value": "->ops->v0."
+				},
+				{
+					"type": "ref:generic",
+					"link": "extit_container_ops_comp_1_0_t",
+					"anchor": "extit_container_ops_comp_1_0_t.op_get_symbol",
+					"name": "op_get_symbol( ... )",
+					"code": true
+				},
+				"."
+			],
+			"version": "ABI 1.0",
+			"since": "ABI 1.0"
+		},
+		{
+			"type": "macro",
+			"name": "extit_container_log",
+			"parameters":
+			[
+				{
+					"name": "container",
+					"description": "The container interface."
+				},
+				{
+					"name": "message",
+					"description": "The message to log."
+				}
+			],
+			"summary": "Log a message using a container interface.",
+			"description":
+			[
+				"Log a message using a container interface.",
+				" This is a compile time macro that is mapped to the appropriete ABI version named function based on ",
+				{
+					"type": "ref:constant",
+					"name": "EXTIT_ABI_TARGET"
+				},
+				"."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_container_log__1_0",
+			"parameters":
+			[
+				{
+					"type": [ "const", "extit_container_t", "*" ],
+					"name": "container",
+					"description": "The container interface."
+				},
+				{
+					"type": [ "const", "char", "*" ],
+					"name": "message",
+					"description": "The message to log."
+				}
+			],
+			"summary": "Log a message using a container interface.",
+			"description":
+			[
+				"Log a message using a container interface.",
+				" An implicit newline will be added to the message where appropriete, such as console or file output.",
+				" This is a convenience function that calls ",
+				{
+					"type": "ref:parameter",
+					"name": "container"
+				},
+				{
+					"type": "text:code",
+					"value": "->ops->v0."
+				},
+				{
+					"type": "ref:generic",
+					"link": "extit_container_ops_comp_1_0_t",
+					"anchor": "extit_container_ops_comp_1_0_t.op_log",
+					"name": "op_log( ... )",
+					"code": true
+				},
+				"."
+			],
+			"version": "ABI 1.0",
+			"since": "ABI 1.0"
+		},
+		{
+			"type": "macro",
+			"name": "extit_container_query_interface",
+			"parameters":
+			[
+				{
+					"name": "container",
+					"description": "The container interface."
+				},
+				{
+					"name": "iid",
+					"description": "An interface identifier."
+				},
+				{
+					"name": "base_version",
+					"description": "An interface version."
+				}
+			],
+			"returns":
+			[
+				"The highest compatible interface version, or ",
+				{
+					"type": "ref:constant",
+					"name": "IV_VERSION_NONE"
+				},
+				" if a matching interface wasn't found or the container version was incompatable."
+			],
+			"summary": "Query an interface version from a container interface.",
+			"description":
+			[
+				"Query an interface version from a container interface.",
+				" This is a compile time macro that is mapped to the appropriete ABI version named function based on ",
+				{
+					"type": "ref:constant",
+					"name": "EXTIT_ABI_TARGET"
+				},
+				"."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_container_query_interface__1_0",
+			"parameters":
+			[
+				{
+					"type": [ "const", "extit_container_t", "*" ],
+					"name": "container",
+					"description": "The container interface."
+				},
+				{
+					"type": [ "const", "char", "*" ],
+					"name": "iid",
+					"description": "An interface identifier."
+				},
+				{
+					"type": "iv_version_t",
+					"name": "base_version",
+					"description": "An interface version."
+				}
+			],
+			"returns":
+			{
+				"type": "iv_version_t",
+				"description":
+				[
+					"The highest compatible interface version, or ",
+					{
+						"type": "ref:constant",
+						"name": "IV_VERSION_NONE"
+					},
+					" if a matching interface wasn't found or the container version was incompatable."
+				]
+			},
+			"summary": "Query an interface version from a container interface.",
+			"description":
+			[
+				"Query an interface version from a container interface.",
+				" This is a convenience function that calls ",
+				{
+					"type": "ref:parameter",
+					"name": "container"
+				},
+				{
+					"type": "text:code",
+					"value": "->ops->v0."
+				},
+				{
+					"type": "ref:generic",
+					"link": "extit_container_ops_comp_1_0_t",
+					"anchor": "extit_container_ops_comp_1_0_t.op_query_interface",
+					"name": "op_query_interface( ... )",
+					"code": true
+				},
+				"."
+			],
+			"version": "ABI 1.0",
+			"since": "ABI 1.0"
 		}
 	],
 	"description":
@@ -30,52 +467,16 @@
 	"see":
 	[
 		{
-			"type": "function",
-			"name": "extit_container_get_function",
-			"parameters":
-			[
-				[ "const", "extit_container_t", "*" ],
-				[ "const", "char", "*" ]
-			],
+			"type": "ref:generic",
+			"link": "extit",
+			"name": "ExtIt",
 			"section": "3"
 		},
 		{
-			"type": "function",
-			"name": "extit_container_get_interface",
-			"parameters":
-			[
-				[ "const", "extit_container_t", "*" ],
-				[ "const", "char", "*" ],
-				"iv_version_t"
-			],
-			"section": "3"
-		},
-		{
-			"type": "function",
-			"name": "extit_container_get_symbol",
-			"parameters":
-			[
-				[ "const", "extit_container_t", "*" ],
-				[ "const", "char", "*" ]
-			],
-			"section": "3"
-		},
-		{
-			"type": "function",
-			"name": "extit_container_query_interface",
-			"parameters":
-			[
-				[ "const", "extit_container_t", "*" ],
-				[ "const", "char", "*" ],
-				"iv_version_t"
-			],
-			"section": "3"
-		},
-		{
-			"type": "link",
-			"name": "extit_container-impl",
+			"type": "ref:generic",
+			"link": "extit_container-impl",
+			"name": "ExtIt Container implementation",
 			"section": "3"
 		}
-	],
-	"since": "1.0"
+	]
 }

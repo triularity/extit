@@ -1,10 +1,16 @@
 {
+	"title":
+		"iv_matches(3)",
 	"summary":
 		"Check if an interface version implements a required version.",
 	"includes":
 	[
 		"iv/base.h",
 		"iv/util.h"
+	],
+	"libraries":
+	[
+		"iv_util"
 	],
 	"synopsis":
 	[
@@ -30,34 +36,34 @@
 				"description":
 				[
 					{
-						"type": "constant",
-						"value": "IV_TRUE"
+						"type": "ref:constant",
+						"name": "IV_TRUE"
 					},
 					" if compatible, ",
 					{
-						"type": "constant",
-						"value": "IV_FALSE"
+						"type": "ref:constant",
+						"name": "IV_FALSE"
 					},
 					" otherwise."
 				]
-			}
+			},
+			"since": "1.0"
 		}
 	],
 	"description":
 	[
 		"For normal major versions (i.e. not ",
 		{
-			"type": "literal",
+			"type": "text:code",
 			"value": "0"
 		},
 		"), this will check if the major versions are equal and that the checked minor version is greater than or equal to the minor required.",
 		null,
 		"For the special version ",
 		{
-			"type": "literal",
+			"type": "text:code",
 			"value": "0"
 		},
 		", the minor versions must match."
-	],
-	"since": "1.0"
+	]
 }

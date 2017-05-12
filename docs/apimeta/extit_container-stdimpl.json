@@ -1,6 +1,6 @@
 {
-	"summary":
-		"Standard implementations of container interface functions.",
+	"title":
+		"ExtIt Container standard implementation",
 	"includes":
 	[
 		"iv/base.h",
@@ -17,7 +17,7 @@
 	[
 		{
 			"type": "function",
-			"name": "extit_container_get_function_stdimpl",
+			"name": "extit_container_stdimpl_get_function__1_0",
 			"parameters":
 			[
 				{
@@ -38,16 +38,45 @@
 				[
 					"A function pointer, or ",
 					{
-						"type": "constant",
-						"value": "NULL"
+						"type": "ref:constant",
+						"name": "NULL"
 					},
 					" if the symbol wasn't found."
 				]
-			}
+			},
+			"description":
+			[
+				"A standard implementation for ",
+				{
+					"type": "ref:generic",
+					"link": "extit_container-impl",
+					"anchor": "extit_container_ops_comp_1_0_t.op_get_function",
+					"name": "op_get_function",
+					"code": true
+				},
+				".",
+				" This function uses the native system implementation for resolving executable function, such as ",
+				{
+					"type": "ref:function",
+					"name": "dlfunc"
+				},
+				" / ",
+				{
+					"type": "ref:function",
+					"name": "dlsym"
+				},
+				" on unix, or ",
+				{
+					"type": "ref:function",
+					"name": "GetProcAddress"
+				},
+				" on windows."
+			],
+			"since": "1.0"
 		},
 		{
 			"type": "function",
-			"name": "extit_container_get_interface_stdimpl",
+			"name": "extit_container_stdimpl_get_interface__1_0",
 			"parameters":
 			[
 				{
@@ -58,7 +87,7 @@
 				{
 					"type": [ "const", "char", "*" ],
 					"name": "iid",
-					"description": "An interface ID."
+					"description": "An interface identifier."
 				},
 				{
 					"type": "iv_version_t",
@@ -73,16 +102,35 @@
 				[
 					"An interface pointer, or ",
 					{
-						"type": "constant",
-						"value": "NULL"
+						"type": "ref:constant",
+						"name": "NULL"
 					},
 					" if a matching interface wasn't found."
 				]
-			}
+			},
+			"description":
+			[
+				"A standard implementation for ",
+				{
+					"type": "ref:generic",
+					"link": "extit_container-impl",
+					"anchor": "extit_container_ops_comp_1_0_t.op_get_interface",
+					"name": "op_get_interface",
+					"code": true
+				},
+				".",
+				" This function always returns ",
+				{
+					"type": "ref:constant",
+					"name": "NULL"
+				},
+				"."
+			],
+			"since": "1.0"
 		},
 		{
 			"type": "function",
-			"name": "extit_container_get_symbol_stdimpl",
+			"name": "extit_container_stdimpl_get_symbol__1_0",
 			"parameters":
 			[
 				{
@@ -103,16 +151,40 @@
 				[
 					"A symbol pointer, or ",
 					{
-						"type": "constant",
-						"value": "NULL"
+						"type": "ref:constant",
+						"name": "NULL"
 					},
 					" if the symbol wasn't found."
 				]
-			}
+			},
+			"description":
+			[
+				"A standard implementation for ",
+				{
+					"type": "ref:generic",
+					"link": "extit_container-impl",
+					"anchor": "extit_container_ops_comp_1_0_t.op_get_symbol",
+					"name": "op_get_symbol",
+					"code": true
+				},
+				".",
+				" This function uses the native system implementation for resolving executable function, such as ",
+				{
+					"type": "ref:function",
+					"name": "dlsym"
+				},
+				" on unix, or ",
+				{
+					"type": "ref:function",
+					"name": "GetProcAddress()"
+				},
+				" on windows."
+			],
+			"since": "1.0"
 		},
 		{
 			"type": "function",
-			"name": "extit_container_log_stdimpl",
+			"name": "extit_container_stdimpl_log__1_0",
 			"parameters":
 			[
 				{
@@ -125,11 +197,35 @@
 					"name": "message",
 					"description": "The message to log."
 				}
-			]
+			],
+			"description":
+			[
+				"A standard implementation for ",
+				{
+					"type": "ref:generic",
+					"link": "extit_container-impl",
+					"anchor": "extit_container_ops_comp_1_0_t.op_log",
+					"name": "op_log",
+					"code": true
+				},
+				".",
+				" This function writes ",
+				{
+					"type": "ref:parameter",
+					"name": "message"
+				},
+				" to ",
+				{
+					"type": "ref:symbol",
+					"name": "stderr"
+				},
+				", followed by a newline."
+			],
+			"since": "1.0"
 		},
 		{
 			"type": "function",
-			"name": "extit_container_query_interface_stdimpl",
+			"name": "extit_container_stdimpl_query_interface__1_0",
 			"parameters":
 			[
 				{
@@ -140,7 +236,7 @@
 				{
 					"type": [ "const", "char", "*" ],
 					"name": "iid",
-					"description": "An interface ID."
+					"description": "An interface identifier."
 				},
 				{
 					"type": "iv_version_t",
@@ -155,12 +251,31 @@
 				[
 					"The highest compatible interface version, or ",
 					{
-						"type": "constant",
-						"value": "IV_VERSION_NONE"
+						"type": "ref:constant",
+						"name": "IV_VERSION_NONE"
 					},
 					" if a matching interface wasn't found."
 				]
-			}
+			},
+			"description":
+			[
+				"A standard implementation for ",
+				{
+					"type": "ref:generic",
+					"link": "extit_container-impl",
+					"anchor": "extit_container_ops_comp_1_0_t.op_query_interface",
+					"name": "op_query_interface",
+					"code": true
+				},
+				".",
+				" This function always returns ",
+				{
+					"type": "ref:constant",
+					"name": "IV_VERSION_NONE"
+				},
+				"."
+			],
+			"since": "1.0"
 		}
 	],
 	"description":
@@ -170,10 +285,16 @@
 	"see":
 	[
 		{
-			"type": "link",
-			"name": "extit_container-impl",
+			"type": "ref:generic",
+			"link": "extit_container",
+			"name": "ExtIt Container",
+			"section": "3"
+		},
+		{
+			"type": "ref:generic",
+			"link": "extit_container-impl",
+			"name": "ExtIt Container implemention",
 			"section": "3"
 		}
-	],
-	"since": "1.0"
+	]
 }

@@ -1,0 +1,166 @@
+{
+	"title": "ExtIt Utilities - Reference Count",
+	"includes":
+	[
+		"iv/base.h",
+		"iv/util.h"
+	],
+	"libraries":
+	[
+		"extit_util"
+	],
+	"synopsis":
+	[
+		{
+			"type": "typedef",
+			"name": "extit_refcount_t",
+			"_value": "uint32_t",
+			"description": "A reference count. This is an integer type, but portable application code should treat it as opaque.",
+			"since": "1.0"
+		},
+		{
+			"type": "macro",
+			"name": "EXTIT_REFCOUNT_NONE",
+			"description": "The minimum reference count value.",
+			"since": "1.0"
+		},
+		{
+			"type": "macro",
+			"name": "EXTIT_REFCOUNT_MAX",
+			"description": "The maximum reference count value.",
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_refcount_add",
+			"parameters":
+			[
+				{
+					"type": [ "extit_refcount_t", "*" ],
+					"name": "refcount",
+					"description": "The address of a reference count."
+				}
+			],
+			"returns":
+			{
+				"type": "extit_status_t",
+				"description":
+				[
+					{
+						"type": "ref:constant",
+						"name": "EXTIT_STATUS_OK"
+					},
+					" if it succeeded, or ",
+					{
+						"type": "ref:constant",
+						"name": "EXTIT_STATUS_INVALID"
+					},
+					" if it was already at its maximum count (",
+					{
+						"type": "ref:constant",
+						"name": "EXTIT_REFCOUNT_MAX"
+					},
+					").",
+					" While other status codes are not currently specified for this function, any value other than ",
+					{
+						"type": "ref:constant",
+						"name": "EXTIT_STATUS_OK"
+					},
+					" should be considered a failure."
+				]
+			},
+			"summary": "Increment a reference count.",
+			"description": "Add to a reference count, doing bounds checking first.",
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_refcount_isnone",
+			"parameters":
+			[
+				{
+					"type": [ "const", "extit_refcount_t", "*" ],
+					"name": "refcount",
+					"description": "The address of a reference count."
+				}
+			],
+			"returns":
+			{
+				"type": "extit_bool_t",
+				"description":
+				[
+					{
+						"type": "ref:constant",
+						"name": "EXTIT_TRUE"
+					},
+					" if the count is ",
+					{
+						"type": "ref:constant",
+						"name": "EXTIT_REFCOUNT_NONE"
+					},
+					", otherwise ",
+					{
+						"type": "ref:constant",
+						"name": "EXTIT_FALSE"
+					},
+					"."
+				]
+			},
+			"summary": "Check if a reference count is none.",
+			"description": "Check if a reference count is none.",
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_refcount_release",
+			"parameters":
+			[
+				{
+					"type": [ "extit_refcount_t", "*" ],
+					"name": "refcount",
+					"description": "The address of a reference count."
+				}
+			],
+			"returns":
+			{
+				"type": "extit_status_t",
+				"description":
+				[
+					{
+						"type": "ref:constant",
+						"name": "EXTIT_STATUS_OK"
+					},
+					" if it succeeded, or ",
+					{
+						"type": "ref:constant",
+						"name": "EXTIT_STATUS_INVALID"
+					},
+					" if it was already at its minimum count (",
+					{
+						"type": "ref:constant",
+						"name": "EXTIT_REFCOUNT_NONE"
+					},
+					").",
+					" While other status codes are not currently specified for this function, any value other than ",
+					{
+						"type": "ref:constant",
+						"name": "EXTIT_STATUS_OK"
+					},
+					" should be considered a failure."
+				]
+			},
+			"summary": "Decrement a reference count.",
+			"description": "Reduce a reference count, doing bounds checking first.",
+			"since": "1.0"
+		}
+	],
+	"see":
+	[
+		{
+			"type": "ref:generic",
+			"name": "ExtIt",
+			"link": "extit",
+			"section": "3"
+		}
+	]
+}
