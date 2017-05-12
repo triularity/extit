@@ -44,17 +44,18 @@ extit_plugin_destroy
 
 	descriptor = (extit_pmodule_descriptor_1_0_t *) module->descriptor;
 
-#ifdef	EXTIT_PARANOID
-	if(module->refcount == EXTIT_REFCOUNT_NONE)
+	if(extit_refcount_isnone(&module->refcount))
 	{
-		fprintf(stderr,
-			"[extit:plugin] Attempting to destroy an instance for plugin %s:%u, which has no instances.\n",
-			descriptor->id,
-			descriptor->id_version);
+		if((flags & EXTIT_FLAG_LOG) > EXTIT_FLAG_LOG_MINIMAL)
+		{
+			fprintf(stderr,
+				"[extit:plugin] Attempting to destroy an instance for plugin %s:%u, which has no instances.\n",
+				descriptor->id,
+				descriptor->id_version);
+		}
 
 		return EXTIT_STATUS_INVALID;
 	}
-#endif	/* EXTIT_PARANOID */
 
 	if(descriptor->ops->v0.op_destroy != NULL)
 	{
@@ -65,19 +66,8 @@ extit_plugin_destroy
 			return status;
 	}
 
-	status = extit_refcount_release(&plugin->module->refcount);
-
-#ifdef	EXTIT_DEBUG
-	if((status != EXTIT_STATUS_OK) && (status != EXTIT_STATUS_BUSY))
-	{
-		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_NORMAL)
-		{
-			fprintf(stderr,
-			 "[extit:plugin] Refcount error, status = %u.\n",
-				status);
-		}
-	}
-#endif	/* EXTIT_DEBUG */
+	/* no check - will always succeed */
+	extit_refcount_release(&plugin->module->refcount);
 
 	free(plugin);
 

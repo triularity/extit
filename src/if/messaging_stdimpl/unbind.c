@@ -30,9 +30,6 @@ if_messaging_stdimpl_unbind__1_0
 
 	status = extit_refcount_release(&bound->bound_refcount);
 
-	if(status == EXTIT_STATUS_BUSY)
-		status = EXTIT_STATUS_OK;
-
 	if(status == EXTIT_STATUS_OK)
 	{
 		messaging_i = (if_messaging_internal_t *) messaging;

@@ -28,7 +28,7 @@ bound_cleaner(void **valueptr)
 	while((bound_entry = *bound_entryp) != NULL)
 	{
 		if((bound_entry->listeners == NULL)
-		 && (bound_entry->bound_refcount == EXTIT_REFCOUNT_NONE))
+		 && extit_refcount_isnone(&bound_entry->bound_refcount))
 		{
 			*bound_entryp = bound_entry->next;
 			free(bound_entry);

@@ -63,7 +63,9 @@ extit_module_create_plugin
 				descriptor->id_version);
 		}
 
+		/* no check - will always succeed */
 		extit_refcount_release(&module->refcount);
+
 		return NULL;
 	}
 
@@ -87,7 +89,9 @@ extit_module_create_plugin
 					status);
 			}
 
+			/* no check - will always succeed */
 			extit_refcount_release(&module->refcount);
+
 			return NULL;
 		}
 	}

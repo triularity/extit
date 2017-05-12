@@ -73,9 +73,10 @@ myobj__referenced__release(if_referenced_t *refcount)
 	status = extit_refcount_release(&obji->refcount);
 
 	/*
-	 * If it wasn't busy, free the object
+	 * If it isn't busy, free the object
 	 */
-	if(status == EXTIT_STATUS_OK)
+	if((status == EXTIT_STATUS_OK)
+	 && extit_refcount_isnone(&obji->refcount))
 	{
 		printf("freeing object\n");
 		free(obji);

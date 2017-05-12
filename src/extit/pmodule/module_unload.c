@@ -42,7 +42,7 @@ _extit_module_unload
 	}
 #endif
 
-	if(module->refcount != EXTIT_REFCOUNT_NONE)
+	if(!extit_refcount_isnone(&module->refcount))
 	{
 #ifdef	EXTIT_DEBUG
 		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)

@@ -209,7 +209,7 @@ my_referenced_release(if_referenced_t *referenced)
 
 	status = extit_refcount_release(&obj->numrefs);
 
-	if(status == EXTIT_STATUS_OK)
+	if((status == EXTIT_STATUS_OK) && extit_refcount_isnone(&obj->numrefs))
 		my_free_obj(obj);
 
 	return status;
