@@ -3,7 +3,7 @@
  *
  * Reference Count utilities.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -32,6 +32,18 @@ extit_refcount_add
 
 
 EXTIT_EXPORT
+extit_bool_t
+EXTIT_DECL
+extit_refcount_isnone
+(
+	const extit_refcount_t *refcount
+)
+{
+	return (*refcount == EXTIT_REFCOUNT_NONE) ? EXTIT_TRUE : EXTIT_FALSE;
+}
+
+
+EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
 extit_refcount_release
@@ -47,9 +59,6 @@ extit_refcount_release
 
 	*refcount = --count;
 
-	if(count != EXTIT_REFCOUNT_NONE)
-		return EXTIT_STATUS_BUSY;
-	else
-		return EXTIT_STATUS_OK;
+	return EXTIT_STATUS_OK;
 }
 

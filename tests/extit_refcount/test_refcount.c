@@ -34,9 +34,25 @@ main(int argc, char **argv)
 
 
 	/*
+	 * isnone
+	 */
+	refcount = EXTIT_REFCOUNT_NONE;
+
+	if(!extit_refcount_isnone(&refcount))
+	{
+		fprintf(stderr,
+			"Test FAILED - !extit_refcount_isnone()\n");
+
+		rc = 1;
+	}
+
+
+	/*
 	 * add succeeds
 	 * count == 1
-	 * release succeeds (!busy)
+	 * !isnone
+	 * release succeeds
+	 * isnone
 	 */
 	refcount = EXTIT_REFCOUNT_NONE;
 
@@ -47,19 +63,31 @@ main(int argc, char **argv)
 
 		rc = 1;
 	}
-
-	if(refcount != 1)
+	else if(refcount != 1)
 	{
 		fprintf(stderr,
 			"Test FAILED - extit_refcount_add() - [0 -> 1]\n");
 
 		rc = 1;
 	}
+	else if(extit_refcount_isnone(&refcount))
+	{
+		fprintf(stderr,
+			"Test FAILED - extit_refcount_isnone() - after add\n");
 
-	if(extit_refcount_release(&refcount) != EXTIT_STATUS_OK)
+		rc = 1;
+	}
+	else if(extit_refcount_release(&refcount) != EXTIT_STATUS_OK)
 	{
 		fprintf(stderr,
 			"Test FAILED - extit_refcount_release() [1 -> 0]\n");
+
+		rc = 1;
+	}
+	else if(!extit_refcount_isnone(&refcount))
+	{
+		fprintf(stderr,
+			"Test FAILED - !extit_refcount_isnone() - after release\n");
 
 		rc = 1;
 	}
@@ -99,10 +127,17 @@ main(int argc, char **argv)
 
 		rc = 1;
 	}
-	else if(extit_refcount_release(&refcount) != EXTIT_STATUS_BUSY)
+	else if(extit_refcount_release(&refcount) != EXTIT_STATUS_OK)
 	{
 		fprintf(stderr,
 			"Test FAILED - extit_refcount_release() [2 -> 1]\n");
+
+		rc = 1;
+	}
+	else if(extit_refcount_isnone(&refcount))
+	{
+		fprintf(stderr,
+			"Test FAILED - extit_refcount_isnone() - after single release\n");
 
 		rc = 1;
 	}
@@ -117,6 +152,13 @@ main(int argc, char **argv)
 	{
 		fprintf(stderr,
 			"Test FAILED - extit_refcount_add() [max -> max+1]\n");
+
+		rc = 1;
+	}
+	else if(refcount != EXTIT_REFCOUNT_MAX)
+	{
+		fprintf(stderr,
+			"Test FAILED - refcount != EXTIT_REFCOUNT_MAX\n");
 
 		rc = 1;
 	}

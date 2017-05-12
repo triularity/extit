@@ -3,7 +3,7 @@
  *
  * ExtIt utilities.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -35,6 +35,11 @@ LIBAPI
 extit_status_t		EXTIT_DECL
 			extit_refcount_add(
 				extit_refcount_t *refcount);
+
+LIBAPI
+extit_bool_t		EXTIT_DECL
+			extit_refcount_isnone(
+				const extit_refcount_t *refcount);
 
 LIBAPI
 extit_status_t		EXTIT_DECL
