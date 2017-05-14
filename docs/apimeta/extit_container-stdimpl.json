@@ -1,6 +1,5 @@
 {
-	"title":
-		"ExtIt Container standard implementation",
+	"title": "ExtIt Container - Standard Implementation",
 	"includes":
 	[
 		"iv/base.h",
@@ -48,11 +47,14 @@
 			[
 				"A standard implementation for ",
 				{
-					"type": "ref:generic",
-					"link": "extit_container-impl",
-					"anchor": "extit_container_ops_comp_1_0_t.op_get_function",
+					"type": "ref:symbol",
 					"name": "op_get_function",
-					"code": true
+					"container":
+					{
+						"type": "ref:type",
+						"name": "extit_container_ops_comp_1_0_t"
+					},
+					"link": "extit_container_ops_comp_1_0_t"
 				},
 				".",
 				" This function uses the native system implementation for resolving executable function, such as ",
@@ -112,11 +114,14 @@
 			[
 				"A standard implementation for ",
 				{
-					"type": "ref:generic",
-					"link": "extit_container-impl",
-					"anchor": "extit_container_ops_comp_1_0_t.op_get_interface",
+					"type": "ref:symbol",
 					"name": "op_get_interface",
-					"code": true
+					"container":
+					{
+						"type": "ref:type",
+						"name": "extit_container_ops_comp_1_0_t"
+					},
+					"link": "extit_container_ops_comp_1_0_t"
 				},
 				".",
 				" This function always returns ",
@@ -161,11 +166,14 @@
 			[
 				"A standard implementation for ",
 				{
-					"type": "ref:generic",
-					"link": "extit_container-impl",
-					"anchor": "extit_container_ops_comp_1_0_t.op_get_symbol",
+					"type": "ref:symbol",
 					"name": "op_get_symbol",
-					"code": true
+					"container":
+					{
+						"type": "ref:type",
+						"name": "extit_container_ops_comp_1_0_t"
+					},
+					"link": "extit_container_ops_comp_1_0_t"
 				},
 				".",
 				" This function uses the native system implementation for resolving executable function, such as ",
@@ -202,11 +210,14 @@
 			[
 				"A standard implementation for ",
 				{
-					"type": "ref:generic",
-					"link": "extit_container-impl",
-					"anchor": "extit_container_ops_comp_1_0_t.op_log",
+					"type": "ref:symbol",
 					"name": "op_log",
-					"code": true
+					"container":
+					{
+						"type": "ref:type",
+						"name": "extit_container_ops_comp_1_0_t"
+					},
+					"link": "extit_container_ops_comp_1_0_t"
 				},
 				".",
 				" This function writes ",
@@ -261,11 +272,14 @@
 			[
 				"A standard implementation for ",
 				{
-					"type": "ref:generic",
-					"link": "extit_container-impl",
-					"anchor": "extit_container_ops_comp_1_0_t.op_query_interface",
+					"type": "ref:symbol",
 					"name": "op_query_interface",
-					"code": true
+					"container":
+					{
+						"type": "ref:type",
+						"name": "extit_container_ops_comp_1_0_t"
+					},
+					"link": "extit_container_ops_comp_1_0_t"
 				},
 				".",
 				" This function always returns ",
@@ -286,14 +300,14 @@
 	[
 		{
 			"type": "ref:generic",
-			"link": "extit_container",
 			"name": "ExtIt Container",
+			"link": "extit_container",
 			"section": "3"
 		},
 		{
 			"type": "ref:generic",
+			"name": "ExtIt Container - Implementation",
 			"link": "extit_container-impl",
-			"name": "ExtIt Container implemention",
 			"section": "3"
 		}
 	]

@@ -1,8 +1,5 @@
 {
-	"title":
-		"iv_matches(3)",
-	"summary":
-		"Check if an interface version implements a required version.",
+	"title": "iv_matches()",
 	"includes":
 	[
 		"iv/base.h",
@@ -47,23 +44,43 @@
 					" otherwise."
 				]
 			},
+			"summary": "Check if an interface version implements a required version.",
+			"description":
+			[
+				"Check if an interface version implements a required version.",
+				" For a normal ",
+				{
+					"type": "ref:parameter",
+					"name": "req_version"
+				},
+				", not ",
+				{
+					"type": "text:code",
+					"value": "0.x"
+				},
+				", this will check if the major versions are equal and that the minor version is greater than or equal to the required minor version.",
+				" For a special ",
+				{
+					"type": "ref:parameter",
+					"name": "req_version"
+				},
+				", ",
+				{
+					"type": "text:code",
+					"value": "0.x"
+				},
+				", the minor versions must be equal to match."
+			],
 			"since": "1.0"
 		}
 	],
-	"description":
+	"see":
 	[
-		"For normal major versions (i.e. not ",
 		{
-			"type": "text:code",
-			"value": "0"
-		},
-		"), this will check if the major versions are equal and that the checked minor version is greater than or equal to the minor required.",
-		null,
-		"For the special version ",
-		{
-			"type": "text:code",
-			"value": "0"
-		},
-		", the minor versions must match."
+			"type": "ref:generic",
+			"name": "Interface Versioning",
+			"link": "iv",
+			"section": "3"
+		}
 	]
 }

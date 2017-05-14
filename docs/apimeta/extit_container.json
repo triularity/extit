@@ -40,13 +40,13 @@
 					"type": "ref:constant",
 					"name": "NULL"
 				},
-				" if the symbol wasn't found or the container version was incompatable."
+				" if the symbol wasn't found or the container version was incompatible."
 			],
 			"summary": "Resolve a function pointer from a container interface.",
 			"description":
 			[
 				"Resolve a function pointer from a container interface.",
-				" This is a compile time macro that is mapped to the appropriete ABI version named function based on ",
+				" This is a compile time macro that is mapped to the appropriate ABI version named function based on ",
 				{
 					"type": "ref:constant",
 					"name": "EXTIT_ABI_TARGET"
@@ -81,7 +81,7 @@
 						"type": "ref:constant",
 						"name": "NULL"
 					},
-					" if the symbol wasn't found or the container version was incompatable."
+					" if the symbol wasn't found or the container version was incompatible."
 				]
 			},
 			"summary": "Resolve a function pointer from a container interface.",
@@ -134,12 +134,12 @@
 					"type": "ref:constant",
 					"name": "NULL"
 				},
-				" if a matching interface wasn't found or the container version was incompatable."
+				" if a matching interface wasn't found or the container version was incompatible."
 			],
 			"description":
 			[
 				"Get an interface from a container interface.",
-				" This is a compile time macro that is mapped to the appropriete ABI version named function based on ",
+				" This is a compile time macro that is mapped to the appropriate ABI version named function based on ",
 				{
 					"type": "ref:constant",
 					"name": "EXTIT_ABI_TARGET"
@@ -179,7 +179,7 @@
 						"type": "ref:constant",
 						"name": "NULL"
 					},
-					" if a matching interface wasn't found or the container version was incompatable.",
+					" if a matching interface wasn't found or the container version was incompatible.",
 					" The returned interface will be valid as long as the container is."
 				]
 			},
@@ -229,12 +229,12 @@
 					"type": "ref:constant",
 					"name": "NULL"
 				},
-				" if the symbol wasn't found or the container version was incompatable."
+				" if the symbol wasn't found or the container version was incompatible."
 			],
 			"description":
 			[
 				"Get an interface from a container interface.",
-				" This is a compile time macro that is mapped to the appropriete ABI version named function."
+				" This is a compile time macro that is mapped to the appropriate ABI version named function."
 			],
 			"since": "1.0"
 		},
@@ -264,7 +264,7 @@
 						"type": "ref:constant",
 						"name": "NULL"
 					},
-					" if the symbol wasn't found or the container version was incompatable."
+					" if the symbol wasn't found or the container version was incompatible."
 				]
 			},
 			"description":
@@ -309,7 +309,7 @@
 			"description":
 			[
 				"Log a message using a container interface.",
-				" This is a compile time macro that is mapped to the appropriete ABI version named function based on ",
+				" This is a compile time macro that is mapped to the appropriate ABI version named function based on ",
 				{
 					"type": "ref:constant",
 					"name": "EXTIT_ABI_TARGET"
@@ -338,7 +338,7 @@
 			"description":
 			[
 				"Log a message using a container interface.",
-				" An implicit newline will be added to the message where appropriete, such as console or file output.",
+				" An implicit newline will be added to the message where appropriate, such as console or file output.",
 				" This is a convenience function that calls ",
 				{
 					"type": "ref:parameter",
@@ -385,13 +385,13 @@
 					"type": "ref:constant",
 					"name": "IV_VERSION_NONE"
 				},
-				" if a matching interface wasn't found or the container version was incompatable."
+				" if a matching interface wasn't found or the container version was incompatible."
 			],
 			"summary": "Query an interface version from a container interface.",
 			"description":
 			[
 				"Query an interface version from a container interface.",
-				" This is a compile time macro that is mapped to the appropriete ABI version named function based on ",
+				" This is a compile time macro that is mapped to the appropriate ABI version named function based on ",
 				{
 					"type": "ref:constant",
 					"name": "EXTIT_ABI_TARGET"
@@ -431,7 +431,7 @@
 						"type": "ref:constant",
 						"name": "IV_VERSION_NONE"
 					},
-					" if a matching interface wasn't found or the container version was incompatable."
+					" if a matching interface wasn't found or the container version was incompatible."
 				]
 			},
 			"summary": "Query an interface version from a container interface.",
@@ -468,14 +468,14 @@
 	[
 		{
 			"type": "ref:generic",
-			"link": "extit",
 			"name": "ExtIt",
+			"link": "extit",
 			"section": "3"
 		},
 		{
 			"type": "ref:generic",
+			"name": "ExtIt Container - Implementation",
 			"link": "extit_container-impl",
-			"name": "ExtIt Container implementation",
 			"section": "3"
 		}
 	]

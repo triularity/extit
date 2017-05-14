@@ -1,5 +1,9 @@
 {
-	"title": "Interface Version",
+	"title": "Interface Versioning",
+	"description":
+	[
+		"..."
+	],
 	"includes":
 	[
 		"iv/base.h"
@@ -153,10 +157,6 @@
 			"since": "1.0"
 		}
 	],
-	"description":
-	[
-		"..."
-	],
 	"see":
 	[
 		{
@@ -166,7 +166,7 @@
 		},
 		{
 			"type": "ref:generic",
-			"name": "Interface Version Repository",
+			"name": "Interface Versioning Repository",
 			"link": "iv_repository",
 			"section": "3"
 		}

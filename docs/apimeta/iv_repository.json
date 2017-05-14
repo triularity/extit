@@ -1,5 +1,5 @@
 {
-	"title": "Iterface Versioning Repository(3)",
+	"title": "Interface Versioning Repository",
 	"includes":
 	[
 		"iv/base.h",
@@ -11,6 +11,13 @@
 	],
 	"synopsis":
 	[
+		{
+			"type": "typedef",
+			"name": "iv_repository_t",
+			"_value": [ "struct", "_iv_repository" ],
+			"description": "An interface versioning repository.",
+			"since": "1.0"
+		},
 		{
 			"type": "function",
 			"name": "iv_repository_cleanup",
@@ -139,7 +146,7 @@
 					"type": "ref:constant",
 					"name": "NULL"
 				},
-				" is equivilent to ",
+				" is equivalent to ",
 				{
 					"type": "text:code",
 					"value": "\"\""
@@ -210,7 +217,7 @@
 					"type": "ref:constant",
 					"name": "NULL"
 				},
-				" is equivilent to ",
+				" is equivalent to ",
 				{
 					"type": "text:code",
 					"value": "\"\""
@@ -282,7 +289,7 @@
 			"summary": "Remove an entry from a repository.",
 			"description":
 			[
-				"Remove an entry from the respository for a given key and exact interface identifier/version, optionally returning the previously set value.",
+				"Remove an entry from the repository for a given key and exact interface identifier/version, optionally returning the previously set value.",
 				" A ",
 				{
 					"type": "ref:parameter",
@@ -293,7 +300,7 @@
 					"type": "ref:constant",
 					"name": "NULL"
 				},
-				" is equivilent to ",
+				" is equivalent to ",
 				{
 					"type": "text:code",
 					"value": "\"\""
@@ -370,7 +377,7 @@
 			"summary": "Set an interface entry in a repository.",
 			"description":
 			[
-				"Set an interface entry in a respository, optionally returning the previously set value.",
+				"Set an interface entry in a repository, optionally returning the previously set value.",
 				" This will not replace an existing entry that has the same key but different interface identifier/version, allowing for multiple interfaces for the same key.",
 				" A ",
 				{
@@ -382,7 +389,7 @@
 					"type": "ref:constant",
 					"name": "NULL"
 				},
-				" is equivilent to ",
+				" is equivalent to ",
 				{
 					"type": "text:code",
 					"value": "\"\""

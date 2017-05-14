@@ -1,8 +1,6 @@
 {
-	"title":
-		"ExtIt plugin module implementation",
-	"summary":
-		"Implementation of a plugin module.",
+	"title": "ExtIt Plugin Module - Implementation",
+	"description": "Implementation of a plugin module.",
 	"includes":
 	[
 		"iv/base.h",
@@ -421,7 +419,7 @@
 			"name": "extit_pmodule_descriptor_t",
 			"description":
 			[
-				"A generic plugin module descriptor that is mapped to the appropriete descriptor version based on ",
+				"A generic plugin module descriptor that is mapped to the appropriate descriptor version based on ",
 				{
 					"type": "ref:constant",
 					"name": "EXTIT_ABI_TARGET"
@@ -449,10 +447,6 @@
 			"since": "1.0"
 		}
 	],
-	"description":
-	[
-		"Implementation of a plugin module."
-	],
 	"see":
 	[
 		{
@@ -469,7 +463,7 @@
 		},
 		{
 			"type": "ref:generic",
-			"name": "ExtIt Container standard implementation",
+			"name": "ExtIt Container - Standard Implementation",
 			"link": "extit_container-stdimpl",
 			"section": "3"
 		}

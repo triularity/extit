@@ -1,6 +1,5 @@
 {
-	"title":
-		"ExtIt Container implementation",
+	"title": "ExtIt Container - Implementation",
 	"includes":
 	[
 		"iv/base.h",
@@ -184,10 +183,7 @@
 					"description": "Log a simple message."
 				}
 			],
-			"description":
-			[
-				"The version 1.0 container interface operations component."
-			],
+			"description": "The version 1.0 container interface operations component.",
 			"version": "ABI 1.0",
 			"since": "ABI 1.0"
 		},
@@ -203,10 +199,7 @@
 					"description": "The x.0 component."
 				}
 			],
-			"description":
-			[
-				"The version 1.0 container interface operations."
-			],
+			"description": "The version 1.0 container interface operations.",
 			"version": "ABI 1.0",
 			"since": "ABI 1.0"
 		},
@@ -247,10 +240,7 @@
 					"description": "The container interface operations."
 				}
 			],
-			"description":
-			[
-				"The version 1.0 container interface data."
-			],
+			"description": "The version 1.0 container interface data.",
 			"version": "ABI 1.0",
 			"since": "ABI 1.0"
 		}
@@ -347,14 +337,14 @@
 		},
 		{
 			"type": "ref:generic",
-			"link": "extit_container",
 			"name": "ExtIt Container",
+			"link": "extit_container",
 			"section": "3"
 		},
 		{
 			"type": "ref:generic",
+			"name": "ExtIt Container - Standard Implementation",
 			"link": "extit_container-stdimpl",
-			"name": "ExtIt Container Standard Implementation",
 			"section": "3"
 		}
 	]
