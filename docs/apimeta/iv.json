@@ -160,7 +160,7 @@
 	"see":
 	[
 		{
-			"type": "ref:generic",
+			"type": "ref:function",
 			"name": "iv_matches",
 			"section": "3"
 		},

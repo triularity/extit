@@ -306,6 +306,24 @@
 		},
 		{
 			"type": "ref:generic",
+			"name": "ExtIt Module",
+			"link": "extit_module",
+			"section": "3"
+		},
+		{
+			"type": "ref:generic",
+			"name": "ExtIt Plugin",
+			"link": "extit_plugin",
+			"section": "3"
+		},
+		{
+			"type": "ref:generic",
+			"name": "ExtIt Plugin Module - Implementation",
+			"link": "extit_pmodule-impl",
+			"section": "3"
+		},
+		{
+			"type": "ref:generic",
 			"name": "ExtIt Reference Count",
 			"link": "extit_refcount",
 			"section": "3"
