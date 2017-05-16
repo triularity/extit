@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <!-- !!! THIS FILE WAS AUTOMATICALLY GENERATED - ANY EDITS MAY BE LOST !!! -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>ExtIt Container - Implementation</title>
+  <link rel="stylesheet" href="style.css">
+ </head>
+
+ <body>
+  <div class="section" id="headers">
+   <a name="headers"><h2 class="label">Headers</h2></a>
+
+   <div class="content">
+    <table>
+     <tr>
+      <td>#include &lt;iv/base.h&gt;</td>
+     </tr>
+     <tr>
+      <td>#include &lt;extit/base.h&gt;</td>
+     </tr>
+     <tr>
+      <td>#include &lt;extit/container.h&gt;</td>
+     </tr>
+     <tr>
+      <td>#include &lt;extit/container_impl.h&gt;</td>
+     </tr>
+    </table>
+   </div>
+  </div>
+
+  <div class="section" id="usage">
+   <a name="usage"><h2 class="label">Usage</h2></a>
+
+   <div class="content">
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td colspan="8">typedef struct</td>
+       </tr>
+       <tr>
+        <td colspan="8">{</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td class="retval">void *</td>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td>(*<a name="extit_container_ops_comp_1_0_t.op_get_symbol">op_get_symbol</a>)(const <a href="extit_container.html#extit_container_t">extit_container_t</a> * <em class="parameter-name">container</em>, const char * <em class="parameter-name">name</em>);</td>
+        <td colspan="4">&nbsp;</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td class="retval"><a href="extit.html#extit_func_t">extit_func_t</a></td>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td>(*<a name="extit_container_ops_comp_1_0_t.op_get_function">op_get_function</a>)(const <a href="extit_container.html#extit_container_t">extit_container_t</a> * <em class="parameter-name">container</em>, const char * <em class="parameter-name">name</em>);</td>
+        <td colspan="4">&nbsp;</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td class="retval">void *</td>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td>(*<a name="extit_container_ops_comp_1_0_t.op_get_interface">op_get_interface</a>)(const <a href="extit_container.html#extit_container_t">extit_container_t</a> * <em class="parameter-name">container</em>, const char * <em class="parameter-name">iid</em>, <a href="iv.html#iv_version_t">iv_version_t</a> <em class="parameter-name">version</em>);</td>
+        <td colspan="4">&nbsp;</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td class="retval"><a href="iv.html#iv_version_t">iv_version_t</a></td>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td>(*<a name="extit_container_ops_comp_1_0_t.op_query_interface">op_query_interface</a>)(const <a href="extit_container.html#extit_container_t">extit_container_t</a> * <em class="parameter-name">container</em>, const char * <em class="parameter-name">iid</em>, <a href="iv.html#iv_version_t">iv_version_t</a> <em class="parameter-name">base_version</em>);</td>
+        <td colspan="4">&nbsp;</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td class="retval">void</td>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td>(*<a name="extit_container_ops_comp_1_0_t.op_log">op_log</a>)(const <a href="extit_container.html#extit_container_t">extit_container_t</a> * <em class="parameter-name">container</em>, const char * <em class="parameter-name">message</em>);</td>
+        <td colspan="4">&nbsp;</td>
+       </tr>
+       <tr>
+        <td colspan="8">} <span class="typedef-name"><a name="extit_container_ops_comp_1_0_t">extit_container_ops_comp_1_0_t</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      The version 1.0 container interface operations component.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="members"><strong class="label">Members:</strong></dt>
+      <dd>
+        <span class="member-name">op_get_symbol</span> - Get a raw named symbol address.<br />
+        <span class="member-name">op_get_function</span> - Get a raw named function address.<br />
+        <span class="member-name">op_get_interface</span> - Get a named interface object by version.<br />
+        <span class="member-name">op_query_interface</span> - Query the supported version of an interface.<br />
+        <span class="member-name">op_log</span> - Log a simple message.<br />
+      </dd>
+
+      <dt class="version"><strong class="label">Version:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td colspan="8">typedef struct</td>
+       </tr>
+       <tr>
+        <td colspan="8">{</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td class="retval"><a href="extit_container-impl.html#extit_container_ops_comp_1_0_t">extit_container_ops_comp_1_0_t</a></td>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="extit_container_ops_1_0_t.v0">v0</a>;</td>
+       </tr>
+       <tr>
+        <td colspan="8">} <span class="typedef-name"><a name="extit_container_ops_1_0_t">extit_container_ops_1_0_t</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      The version 1.0 container interface operations.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="members"><strong class="label">Members:</strong></dt>
+      <dd>
+        <span class="member-name">v0</span> - The x.0 component.<br />
+      </dd>
+
+      <dt class="version"><strong class="label">Version:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td colspan="8">typedef struct</td>
+       </tr>
+       <tr>
+        <td colspan="8">{</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td class="retval"><a href="iv.html#iv_version_t">iv_version_t</a></td>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="extit_container_base_t.version">version</a>;</td>
+       </tr>
+       <tr>
+        <td colspan="8">} <span class="typedef-name"><a name="extit_container_base_t">extit_container_base_t</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      The base container interface data. All containers share this common structure, which is used to determine the ABI version. Normal application code is not expected to use this directly.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="members"><strong class="label">Members:</strong></dt>
+      <dd>
+        <span class="member-name">version</span> - The interface version of the container.<br />
+      </dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td colspan="8">typedef struct</td>
+       </tr>
+       <tr>
+        <td colspan="8">{</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td class="retval"><a href="iv.html#iv_version_t">iv_version_t</a></td>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="extit_container_1_0_t.version">version</a>;</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td class="retval"><a href="extit_container-impl.html#extit_container_ops_1_0_t">extit_container_ops_1_0_t</a> *</td>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="extit_container_1_0_t.ops">ops</a>;</td>
+       </tr>
+       <tr>
+        <td colspan="8">} <span class="typedef-name"><a name="extit_container_1_0_t">extit_container_1_0_t</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      The version 1.0 container interface data.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="members"><strong class="label">Members:</strong></dt>
+      <dd>
+        <span class="member-name">version</span> - The interface version of the container.<br />
+        <span class="member-name">ops</span> - The container interface operations.<br />
+      </dd>
+
+      <dt class="version"><strong class="label">Version:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+     </dl>
+    </div>
+
+   </div>
+  </div>
+
+  <div class="section" id="see">
+   <a name="see"><h2 class="label">See Also</h2></a>
+
+   <div class="content">
+    <table>
+     <tr>
+      <td><code class="ref"><a href="extit_container.html#extit_container_get_function">extit_container_get_function()</a></code></li>
+</td>
+     </tr>
+     <tr>
+      <td><code class="ref"><a href="extit_container.html#extit_container_get_function__1_0">extit_container_get_function__1_0()</a></code></li>
+</td>
+     </tr>
+     <tr>
+      <td><code class="ref"><a href="extit_container.html#extit_container_get_interface">extit_container_get_interface()</a></code></li>
+</td>
+     </tr>
+     <tr>
+      <td><code class="ref"><a href="extit_container.html#extit_container_get_interface__1_0">extit_container_get_interface__1_0()</a></code></li>
+</td>
+     </tr>
+     <tr>
+      <td><code class="ref"><a href="extit_container.html#extit_container_get_symbol">extit_container_get_symbol()</a></code></li>
+</td>
+     </tr>
+     <tr>
+      <td><code class="ref"><a href="extit_container.html#extit_container_get_symbol__1_0">extit_container_get_symbol__1_0()</a></code></li>
+</td>
+     </tr>
+     <tr>
+      <td><code class="ref"><a href="extit_container.html#extit_container_query_interface">extit_container_query_interface()</a></code></li>
+</td>
+     </tr>
+     <tr>
+      <td><code class="ref"><a href="extit_container.html#extit_container_query_interface__1_0">extit_container_query_interface__1_0()</a></code></li>
+</td>
+     </tr>
+     <tr>
+      <td><span class="ref"><a href="extit_container.html">ExtIt Container</a></span></li>
+</td>
+     </tr>
+     <tr>
+      <td><span class="ref"><a href="extit_container-stdimpl.html">ExtIt Container - Standard Implementation</a></span></li>
+</td>
+     </tr>
+    </table>
+   </div>
+  </div>
+
+  <div class="copyright">
+   <hr />
+   Copyright &copy; 2017, Chad M. Fraleigh.  All rights reserved.
+  </div>
+ </body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <!-- !!! THIS FILE WAS AUTOMATICALLY GENERATED - ANY EDITS MAY BE LOST !!! -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>ExtIt Container - Standard Implementation</title>
+  <link rel="stylesheet" href="style.css">
+ </head>
+
+ <body>
+  <div class="section" id="libraries">
+   <a name="libraries"><h2 class="label">Libraries</h2></a>
+
+   <div class="content">
+    extit_container_stdimpl (<code class="cmdline"><code class="cmdline">-lextit_container_stdimpl</code>, extit_container_stdimpl.lib</code>)<br />
+   </div>
+  </div>
+
+  <div class="section" id="headers">
+   <a name="headers"><h2 class="label">Headers</h2></a>
+
+   <div class="content">
+    <table>
+     <tr>
+      <td>#include &lt;iv/base.h&gt;</td>
+     </tr>
+     <tr>
+      <td>#include &lt;extit/base.h&gt;</td>
+     </tr>
+     <tr>
+      <td>#include &lt;extit/container.h&gt;</td>
+     </tr>
+     <tr>
+      <td>#include &lt;extit/container_impl.h&gt;</td>
+     </tr>
+     <tr>
+      <td>#include &lt;extit/container_stdimpl.h&gt;</td>
+     </tr>
+    </table>
+   </div>
+  </div>
+
+  <div class="section" id="usage">
+   <a name="usage"><h2 class="label">Usage</h2></a>
+
+   <div class="content">
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><a href="extit.html#extit_func_t">extit_func_t</a></td>
+       </tr>
+       <tr>
+        <td><span class="function-name"><a name="extit_container_stdimpl_get_function__1_0">extit_container_stdimpl_get_function__1_0</a></span>(const <a href="extit_container.html#extit_container_t">extit_container_t</a> * <em class="parameter-name">container</em>, const char * <em class="parameter-name">name</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      A standard implementation for <code class="ref"><a href="extit_container-impl.html#extit_container_ops_comp_1_0_t.op_get_function">extit_container_ops_comp_1_0_t.op_get_function</a></code>. This function uses the native system implementation for resolving executable function, such as <code class="ref">dlfunc()</code> / <code class="ref">dlsym()</code> on unix, or <code class="ref">GetProcAddress()</code> on windows.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">container</em> - The container interface.<br />
+       <em class="parameter-name">name</em> - A symbol name.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd>A function pointer, or <code class="ref">NULL</code> if the symbol wasn&apos;t found.</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td>void *</td>
+       </tr>
+       <tr>
+        <td><span class="function-name"><a name="extit_container_stdimpl_get_interface__1_0">extit_container_stdimpl_get_interface__1_0</a></span>(const <a href="extit_container.html#extit_container_t">extit_container_t</a> * <em class="parameter-name">container</em>, const char * <em class="parameter-name">iid</em>, <a href="iv.html#iv_version_t">iv_version_t</a> <em class="parameter-name">version</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      A standard implementation for <code class="ref"><a href="extit_container-impl.html#extit_container_ops_comp_1_0_t.op_get_interface">extit_container_ops_comp_1_0_t.op_get_interface</a></code>. This function always returns <code class="ref">NULL</code>.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">container</em> - The container interface.<br />
+       <em class="parameter-name">iid</em> - An interface identifier.<br />
+       <em class="parameter-name">version</em> - An interface version.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd>An interface pointer, or <code class="ref">NULL</code> if a matching interface wasn&apos;t found.</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td>void *</td>
+       </tr>
+       <tr>
+        <td><span class="function-name"><a name="extit_container_stdimpl_get_symbol__1_0">extit_container_stdimpl_get_symbol__1_0</a></span>(const <a href="extit_container.html#extit_container_t">extit_container_t</a> * <em class="parameter-name">container</em>, const char * <em class="parameter-name">name</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      A standard implementation for <code class="ref"><a href="extit_container-impl.html#extit_container_ops_comp_1_0_t.op_get_symbol">extit_container_ops_comp_1_0_t.op_get_symbol</a></code>. This function uses the native system implementation for resolving executable function, such as <code class="ref">dlsym()</code> on unix, or <code class="ref">GetProcAddress()()</code> on windows.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">container</em> - The container interface.<br />
+       <em class="parameter-name">name</em> - A symbol name.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd>A symbol pointer, or <code class="ref">NULL</code> if the symbol wasn&apos;t found.</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td>void</td>
+       </tr>
+       <tr>
+        <td><span class="function-name"><a name="extit_container_stdimpl_log__1_0">extit_container_stdimpl_log__1_0</a></span>(const <a href="extit_container.html#extit_container_t">extit_container_t</a> * <em class="parameter-name">container</em>, const char * <em class="parameter-name">message</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      A standard implementation for <code class="ref"><a href="extit_container-impl.html#extit_container_ops_comp_1_0_t.op_log">extit_container_ops_comp_1_0_t.op_log</a></code>. This function writes <em class="parameter-name">message</em> to <code class="ref">stderr</code>, followed by a newline.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">container</em> - The container interface.<br />
+       <em class="parameter-name">message</em> - The message to log.<br />
+      </dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><a href="iv.html#iv_version_t">iv_version_t</a></td>
+       </tr>
+       <tr>
+        <td><span class="function-name"><a name="extit_container_stdimpl_query_interface__1_0">extit_container_stdimpl_query_interface__1_0</a></span>(const <a href="extit_container.html#extit_container_t">extit_container_t</a> * <em class="parameter-name">container</em>, const char * <em class="parameter-name">iid</em>, <a href="iv.html#iv_version_t">iv_version_t</a> <em class="parameter-name">base_version</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      A standard implementation for <code class="ref"><a href="extit_container-impl.html#extit_container_ops_comp_1_0_t.op_query_interface">extit_container_ops_comp_1_0_t.op_query_interface</a></code>. This function always returns <code class="ref"><a href="iv.html#IV_VERSION_NONE">IV_VERSION_NONE</a></code>.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">container</em> - The container interface.<br />
+       <em class="parameter-name">iid</em> - An interface identifier.<br />
+       <em class="parameter-name">base_version</em> - An interface version.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd>The highest compatible interface version, or <code class="ref"><a href="iv.html#IV_VERSION_NONE">IV_VERSION_NONE</a></code> if a matching interface wasn&apos;t found.</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+   </div>
+  </div>
+
+  <div class="section" id="see">
+   <a name="see"><h2 class="label">See Also</h2></a>
+
+   <div class="content">
+    <table>
+     <tr>
+      <td><span class="ref"><a href="extit_container.html">ExtIt Container</a></span></li>
+</td>
+     </tr>
+     <tr>
+      <td><span class="ref"><a href="extit_container-impl.html">ExtIt Container - Implementation</a></span></li>
+</td>
+     </tr>
+    </table>
+   </div>
+  </div>
+
+  <div class="copyright">
+   <hr />
+   Copyright &copy; 2017, Chad M. Fraleigh.  All rights reserved.
+  </div>
+ </body>
+</html>

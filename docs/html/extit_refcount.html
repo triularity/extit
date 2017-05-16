@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <!-- !!! THIS FILE WAS AUTOMATICALLY GENERATED - ANY EDITS MAY BE LOST !!! -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>ExtIt Utilities - Reference Count</title>
+  <link rel="stylesheet" href="style.css">
+ </head>
+
+ <body>
+  <div class="section" id="libraries">
+   <a name="libraries"><h2 class="label">Libraries</h2></a>
+
+   <div class="content">
+    extit_util (<code class="cmdline"><code class="cmdline">-lextit_util</code>, extit_util.lib</code>)<br />
+   </div>
+  </div>
+
+  <div class="section" id="headers">
+   <a name="headers"><h2 class="label">Headers</h2></a>
+
+   <div class="content">
+    <table>
+     <tr>
+      <td>#include &lt;iv/base.h&gt;</td>
+     </tr>
+     <tr>
+      <td>#include &lt;iv/util.h&gt;</td>
+     </tr>
+    </table>
+   </div>
+  </div>
+
+  <div class="section" id="usage">
+   <a name="usage"><h2 class="label">Usage</h2></a>
+
+   <div class="content">
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td>typedef <span class="opaque">...</span> <a name="extit_refcount_t"><span class="typedef-name">extit_refcount_t</span></a></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      A reference count. This is an integer type, but portable application code should treat it as opaque.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="EXTIT_REFCOUNT_NONE">EXTIT_REFCOUNT_NONE</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      The minimum reference count value.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="EXTIT_REFCOUNT_MAX">EXTIT_REFCOUNT_MAX</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      The maximum reference count value.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><a href="extit.html#extit_status_t">extit_status_t</a></td>
+       </tr>
+       <tr>
+        <td><span class="function-name"><a name="extit_refcount_add">extit_refcount_add</a></span>(extit_refcount_t * <em class="parameter-name">refcount</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      Add to a reference count, doing bounds checking first.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">refcount</em> - The address of a reference count.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd><code class="ref"><a href="extit.html#EXTIT_STATUS_OK">EXTIT_STATUS_OK</a></code> if it succeeded, or <code class="ref"><a href="extit.html#EXTIT_STATUS_INVALID">EXTIT_STATUS_INVALID</a></code> if it was already at its maximum count (<code class="ref"><a href="extit_refcount.html#EXTIT_REFCOUNT_MAX">EXTIT_REFCOUNT_MAX</a></code>). While other status codes are not currently specified for this function, any value other than <code class="ref"><a href="extit.html#EXTIT_STATUS_OK">EXTIT_STATUS_OK</a></code> should be considered a failure.</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><a href="extit.html#extit_bool_t">extit_bool_t</a></td>
+       </tr>
+       <tr>
+        <td><span class="function-name"><a name="extit_refcount_isnone">extit_refcount_isnone</a></span>(const extit_refcount_t * <em class="parameter-name">refcount</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      Check if a reference count is none.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">refcount</em> - The address of a reference count.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd><code class="ref"><a href="extit.html#EXTIT_TRUE">EXTIT_TRUE</a></code> if the count is <code class="ref"><a href="extit_refcount.html#EXTIT_REFCOUNT_NONE">EXTIT_REFCOUNT_NONE</a></code>, otherwise <code class="ref"><a href="extit.html#EXTIT_FALSE">EXTIT_FALSE</a></code>.</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><a href="extit.html#extit_status_t">extit_status_t</a></td>
+       </tr>
+       <tr>
+        <td><span class="function-name"><a name="extit_refcount_release">extit_refcount_release</a></span>(extit_refcount_t * <em class="parameter-name">refcount</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      Reduce a reference count, doing bounds checking first.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">refcount</em> - The address of a reference count.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd><code class="ref"><a href="extit.html#EXTIT_STATUS_OK">EXTIT_STATUS_OK</a></code> if it succeeded, or <code class="ref"><a href="extit.html#EXTIT_STATUS_INVALID">EXTIT_STATUS_INVALID</a></code> if it was already at its minimum count (<code class="ref"><a href="extit_refcount.html#EXTIT_REFCOUNT_NONE">EXTIT_REFCOUNT_NONE</a></code>). While other status codes are not currently specified for this function, any value other than <code class="ref"><a href="extit.html#EXTIT_STATUS_OK">EXTIT_STATUS_OK</a></code> should be considered a failure.</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+   </div>
+  </div>
+
+  <div class="section" id="see">
+   <a name="see"><h2 class="label">See Also</h2></a>
+
+   <div class="content">
+    <table>
+     <tr>
+      <td><span class="ref"><a href="extit.html">ExtIt</a></span></li>
+</td>
+     </tr>
+    </table>
+   </div>
+  </div>
+
+  <div class="copyright">
+   <hr />
+   Copyright &copy; 2017, Chad M. Fraleigh.  All rights reserved.
+  </div>
+ </body>
+</html>

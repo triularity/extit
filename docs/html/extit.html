@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <!-- !!! THIS FILE WAS AUTOMATICALLY GENERATED - ANY EDITS MAY BE LOST !!! -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>ExtIt</title>
+  <link rel="stylesheet" href="style.css">
+ </head>
+
+ <body>
+  <div class="section" id="headers">
+   <a name="headers"><h2 class="label">Headers</h2></a>
+
+   <div class="content">
+    <table>
+     <tr>
+      <td>#include &lt;iv/base.h&gt;</td>
+     </tr>
+     <tr>
+      <td>#include &lt;extit/base.h&gt;</td>
+     </tr>
+    </table>
+   </div>
+  </div>
+
+  <div class="section" id="usage">
+   <a name="usage"><h2 class="label">Usage</h2></a>
+
+   <div class="content">
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="EXTIT_ABI_1_0">EXTIT_ABI_1_0</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      The ExtIt ABI version for 1.0. This is equivalent to <code class="literal">IV_VERSION(1, 0)</code>.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="EXTIT_ABI_TARGET">EXTIT_ABI_TARGET</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      The target ABI version that should be defined before including ExtIt header files. This is set to a defined version constant, such as <code class="ref"><a href="extit.html#EXTIT_ABI_1_0">EXTIT_ABI_1_0</a></code>.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="EXTIT_LIB_VERSION_MAJOR">EXTIT_LIB_VERSION_MAJOR</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      The library package major version. This is not the same as those used by <code class="literal">EXTIT_ABI_</code>*, and should only be used for package management and informational purposes.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="EXTIT_LIB_VERSION_MINOR">EXTIT_LIB_VERSION_MINOR</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      The library package minor version. This is not the same as those used by <code class="literal">EXTIT_ABI_</code>*, and should only be used for package management and informational purposes.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="EXTIT_LIB_VERSION_PATCH">EXTIT_LIB_VERSION_PATCH</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      The library package patch level. This is not the same as those used by <code class="literal">EXTIT_ABI_</code>*, and should only be used for package management and informational purposes.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="EXTIT_LIB_VERSION">EXTIT_LIB_VERSION</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      The library package version representing the major, minor, and patch level as a single integer value. This is not the same as <code class="literal">EXTIT_ABI_</code>*, and should only be used for package management and informational purposes. The value is effectively equivalent to <code class="literal">(EXTIT_LIB_VERSION_MAJOR * 65536) + (EXTIT_LIB_VERSION_MINOR * 256) + EXTIT_LIB_VERSION_PATCH</code>.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="EXTIT_FLAG_LOG">EXTIT_FLAG_LOG</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      The flags mask for log settings.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="EXTIT_FLAG_LOG_MINIMAL">EXTIT_FLAG_LOG_MINIMAL</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      The flags for minimal logging.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="EXTIT_FLAG_LOG_NORMAL">EXTIT_FLAG_LOG_NORMAL</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      The flags for normal logging.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="EXTIT_FLAG_LOG_DEBUG">EXTIT_FLAG_LOG_DEBUG</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      The flags for debug logging.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="EXTIT_FLAG_LOG_TRACE">EXTIT_FLAG_LOG_TRACE</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      The flags for trace logging. Using this may cause very verbose output.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="EXTIT_PACK">EXTIT_PACK</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      A declaration modifier that causes structures to be tightly packed.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="EXTIT_DECL">EXTIT_DECL</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      A function declaration modifier for consistent calling convention.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="EXTIT_DECL_VARGS">EXTIT_DECL_VARGS</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      A variable arguments function declaration modifier for consistent calling convention.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="EXTIT_EXPORT">EXTIT_EXPORT</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      A portable declaration modifier for exporting symbols on platforms that require them. This should be used when building shared libraries that required symbols to be directly exported.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="EXTIT_IMPORT">EXTIT_IMPORT</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      A portable declaration modifier for importing symbols on platforms that require them. This should be used with headers declarations for symbols that will be linked from shared libraries that were exported with <code class="ref"><a href="extit.html#EXTIT_EXPORT">EXTIT_EXPORT</a></code>.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="EXTIT_IMPORT_STATIC">EXTIT_IMPORT_STATIC</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      A portable declaration modifier for static importing symbols on platforms that require them. This may be used with headers declarations for symbols that will be linked from shared libraries that were exported with <code class="ref"><a href="extit.html#EXTIT_EXPORT">EXTIT_EXPORT</a></code>. This differs from <code class="ref"><a href="extit.html#EXTIT_IMPORT">EXTIT_IMPORT</a></code>, in that it will link stubs during compile time on platforms that have them. Use of this modifier should be avoided, but is included for situations where linking requires it.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td>typedef <span class="opaque">...</span> <a name="extit_func_t"><span class="typedef-name">extit_func_t</span></a></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      A portable function pointer.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td colspan="2">typedef enum</td>
+       </tr>
+       <tr>
+        <td colspan="2">{</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="EXTIT_FALSE">EXTIT_FALSE</a>,</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="EXTIT_TRUE">EXTIT_TRUE</a>,</td>
+       </tr>
+       <tr>
+        <td colspan="2">} <span class="typedef-name"><a name="extit_bool_t">extit_bool_t</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      A portable boolean type.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="members"><strong class="label">Members:</strong></dt>
+      <dd>
+        <span class="member-name">EXTIT_FALSE</span> - The false value.<br />
+        <span class="member-name">EXTIT_TRUE</span> - The true value.<br />
+      </dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td colspan="2">typedef enum</td>
+       </tr>
+       <tr>
+        <td colspan="2">{</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="EXTIT_STATUS_OK">EXTIT_STATUS_OK</a>,</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="EXTIT_STATUS_FAIL">EXTIT_STATUS_FAIL</a>,</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="EXTIT_STATUS_NOMEM">EXTIT_STATUS_NOMEM</a>,</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="EXTIT_STATUS_INVALID">EXTIT_STATUS_INVALID</a>,</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="EXTIT_STATUS_UNSUPPORTED">EXTIT_STATUS_UNSUPPORTED</a>,</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="EXTIT_STATUS_BUSY">EXTIT_STATUS_BUSY</a>,</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="EXTIT_STATUS_NOTIMPLEMENTED">EXTIT_STATUS_NOTIMPLEMENTED</a>,</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="EXTIT_STATUS_NOTFOUND">EXTIT_STATUS_NOTFOUND</a>,</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="EXTIT_STATUS_NOPREREQ">EXTIT_STATUS_NOPREREQ</a>,</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="EXTIT_STATUS_CUSTOM_BASE">EXTIT_STATUS_CUSTOM_BASE</a>,</td>
+       </tr>
+       <tr>
+        <td colspan="2">} <span class="typedef-name"><a name="extit_status_t">extit_status_t</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      ExtIt status codes.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="members"><strong class="label">Members:</strong></dt>
+      <dd>
+        <span class="member-name">EXTIT_STATUS_OK</span> - Success.<br />
+        <span class="member-name">EXTIT_STATUS_FAIL</span> - A general error. This is used when a specific status type is unavailable.<br />
+        <span class="member-name">EXTIT_STATUS_NOMEM</span> - Memory allocation failed.<br />
+        <span class="member-name">EXTIT_STATUS_INVALID</span> - An invalid parameter value was given, or the resource is in the wrong state.<br />
+        <span class="member-name">EXTIT_STATUS_UNSUPPORTED</span> - The expected API/version not supported. This means that an interface pointer is using an instance with a version not supported by the caller.<br />
+        <span class="member-name">EXTIT_STATUS_BUSY</span> - The resource is in use.<br />
+        <span class="member-name">EXTIT_STATUS_NOTIMPLEMENTED</span> - The function is not implemented. In some contexts, this is not an error if the operation is optional<br />
+        <span class="member-name">EXTIT_STATUS_NOTFOUND</span> - No result(s) where found.<br />
+        <span class="member-name">EXTIT_STATUS_NOPREREQ</span> - A pre-requirement is missing, such as a needed interface.<br />
+        <span class="member-name">EXTIT_STATUS_CUSTOM_BASE</span> - A base value for custom status/error codes.<br />
+      </dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+     </dl>
+    </div>
+
+   </div>
+  </div>
+
+  <div class="section" id="see">
+   <a name="see"><h2 class="label">See Also</h2></a>
+
+   <div class="content">
+    <table>
+     <tr>
+      <td><span class="ref"><a href="iv.html">Interface Versioning</a></span></li>
+</td>
+     </tr>
+     <tr>
+      <td><span class="ref"><a href="extit_container.html">ExtIt Container</a></span></li>
+</td>
+     </tr>
+     <tr>
+      <td><span class="ref"><a href="extit_container-impl.html">ExtIt Container - Implementation</a></span></li>
+</td>
+     </tr>
+     <tr>
+      <td><span class="ref"><a href="extit_refcount.html">ExtIt Reference Count</a></span></li>
+</td>
+     </tr>
+    </table>
+   </div>
+  </div>
+
+  <div class="copyright">
+   <hr />
+   Copyright &copy; 2017, Chad M. Fraleigh.  All rights reserved.
+  </div>
+ </body>
+</html>

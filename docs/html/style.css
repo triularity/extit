@@ -1,0 +1,103 @@
+
+body {
+	background-color: #f0f3ff;
+}
+
+.copyright {
+	font-size: 0.75em;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.copyright > hr {
+	border: 0;
+	height: 1px;
+	background: #888888;
+	margin-top: 2em;
+}
+
+div.section > div.content {
+	margin-left: 20px;
+}
+
+#headers > div.content table td {
+	border: 0;
+	font-family: monospace;
+	padding-left: 4em;
+	text-indent: -4em;
+}
+
+#usage > div.content > .item {
+	border: 1px solid #777777;
+	border-radius: 4px;
+	margin-bottom: 24px;
+	background-color: #f9f9f9;
+}
+
+#usage > div.content .declaration {
+	margin: 0 0 0 0;
+	padding: 8px;
+	background-color: #e0e7f7;
+	border-bottom: 1px solid #777777;
+}
+
+#usage > div.content .declaration table td {
+	border: 0;
+	font-family: monospace;
+	padding-left: 4em;
+	text-indent: -4em;
+}
+
+#usage > div.content .declaration pre {
+	margin: 0 0 0 0;
+	padding: 0;
+}
+
+#usage > div.content .description {
+	margin-left: 20px;
+	padding-top: 0.5em;
+	padding-bottom: 8px;
+}
+
+#usage > div.content .details {
+	margin-left: 20px;
+}
+
+#usage > div.content .details > dt {
+	margin-top: 0.5em;
+}
+
+
+span.enum-name {
+	font-weight: bold;
+}
+
+span.function-name {
+	font-weight: bold;
+}
+
+span.macro-name {
+	font-weight: bold;
+}
+
+span.member-name {
+	color: #553300;
+	font-family: monospace;
+}
+
+em.parameter-name {
+	color: #884400;
+}
+
+span.struct-name {
+	font-weight: bold;
+}
+
+span.typedef-name {
+	font-weight: bold;
+}
+
+span.opaque {
+	color: #777777;
+}
+

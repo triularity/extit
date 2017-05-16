@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <!-- !!! THIS FILE WAS AUTOMATICALLY GENERATED - ANY EDITS MAY BE LOST !!! -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>ExtIt Container</title>
+  <link rel="stylesheet" href="style.css">
+ </head>
+
+ <body>
+  <div class="section" id="libraries">
+   <a name="libraries"><h2 class="label">Libraries</h2></a>
+
+   <div class="content">
+    extit_container (<code class="cmdline"><code class="cmdline">-lextit_container</code>, extit_container.lib</code>)<br />
+   </div>
+  </div>
+
+  <div class="section" id="headers">
+   <a name="headers"><h2 class="label">Headers</h2></a>
+
+   <div class="content">
+    <table>
+     <tr>
+      <td>#include &lt;iv/base.h&gt;</td>
+     </tr>
+     <tr>
+      <td>#include &lt;extit/base.h&gt;</td>
+     </tr>
+     <tr>
+      <td>#include &lt;extit/container.h&gt;</td>
+     </tr>
+    </table>
+   </div>
+  </div>
+
+  <div class="section" id="usage">
+   <a name="usage"><h2 class="label">Usage</h2></a>
+
+   <div class="content">
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td>typedef <span class="opaque">...</span> <a name="extit_container_t"><span class="typedef-name">extit_container_t</span></a></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      A container interface.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="extit_container_get_function">extit_container_get_function</a></span>(<em class="parameter-name">container</em>, <em class="parameter-name">name</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      Resolve a function pointer from a container interface. This is a compile time macro that is mapped to the appropriate ABI version named function based on <code class="ref"><a href="extit.html#EXTIT_ABI_TARGET">EXTIT_ABI_TARGET</a></code>.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">container</em> - The container interface.<br />
+       <em class="parameter-name">name</em> - A symbol name.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd>A function pointer, or <code class="ref">NULL</code> if the symbol wasn&apos;t found or the container version was incompatible.</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><a href="extit.html#extit_func_t">extit_func_t</a></td>
+       </tr>
+       <tr>
+        <td><span class="function-name"><a name="extit_container_get_function__1_0">extit_container_get_function__1_0</a></span>(const <a href="extit_container.html#extit_container_t">extit_container_t</a> * <em class="parameter-name">container</em>, const char * <em class="parameter-name">name</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      Resolve a function pointer from a container interface. This is a convenience function that calls <em class="parameter-name">container</em><code class="literal">-&gt;ops-&gt;v0.</code><code class="ref"><a href="extit_container-impl.html#extit_container_ops_comp_1_0_t.op_get_function">op_get_function( ... )</a></code>.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">container</em> - The container interface.<br />
+       <em class="parameter-name">name</em> - A symbol name.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd>A function pointer, or <code class="ref">NULL</code> if the symbol wasn&apos;t found or the container version was incompatible.</dd>
+
+      <dt class="version"><strong class="label">Version:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="extit_container_get_interface">extit_container_get_interface</a></span>(<em class="parameter-name">container</em>, <em class="parameter-name">iid</em>, <em class="parameter-name">version</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      Get an interface from a container interface. This is a compile time macro that is mapped to the appropriate ABI version named function based on <code class="ref"><a href="extit.html#EXTIT_ABI_TARGET">EXTIT_ABI_TARGET</a></code>.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">container</em> - The container interface.<br />
+       <em class="parameter-name">iid</em> - An interface identifier.<br />
+       <em class="parameter-name">version</em> - An interface version.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd>An interface pointer, or <code class="ref">NULL</code> if a matching interface wasn&apos;t found or the container version was incompatible.</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td>void *</td>
+       </tr>
+       <tr>
+        <td><span class="function-name"><a name="extit_container_get_interface__1_0">extit_container_get_interface__1_0</a></span>(const <a href="extit_container.html#extit_container_t">extit_container_t</a> * <em class="parameter-name">container</em>, const char * <em class="parameter-name">iid</em>, <a href="iv.html#iv_version_t">iv_version_t</a> <em class="parameter-name">version</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      Get an interface from a container interface. This is a convenience function that calls <em class="parameter-name">container</em><code class="literal">-&gt;ops-&gt;v0.</code><code class="ref"><a href="extit_container-impl.html#extit_container_ops_comp_1_0_t.op_get_interface">op_get_interface( ... )</a></code>.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">container</em> - The container interface.<br />
+       <em class="parameter-name">iid</em> - An interface identifier.<br />
+       <em class="parameter-name">version</em> - An interface version.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd>An interface pointer, or <code class="ref">NULL</code> if a matching interface wasn&apos;t found or the container version was incompatible. The returned interface will be valid as long as the container is.</dd>
+
+      <dt class="version"><strong class="label">Version:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="extit_container_get_symbol">extit_container_get_symbol</a></span>(<em class="parameter-name">container</em>, <em class="parameter-name">name</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      Get an interface from a container interface. This is a compile time macro that is mapped to the appropriate ABI version named function.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">container</em> - The container interface.<br />
+       <em class="parameter-name">name</em> - A symbol name.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd>An address pointer, or <code class="ref">NULL</code> if the symbol wasn&apos;t found or the container version was incompatible.</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td>void *</td>
+       </tr>
+       <tr>
+        <td><span class="function-name"><a name="extit_container_get_symbol__1_0">extit_container_get_symbol__1_0</a></span>(const <a href="extit_container.html#extit_container_t">extit_container_t</a> * <em class="parameter-name">container</em>, const char * <em class="parameter-name">name</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      Resolve a symbol pointer from a container interface. This is a convenience function that calls <em class="parameter-name">container</em><code class="literal">-&gt;ops-&gt;v0.</code><code class="ref"><a href="extit_container-impl.html#extit_container_ops_comp_1_0_t.op_get_symbol">op_get_symbol( ... )</a></code>.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">container</em> - The container interface.<br />
+       <em class="parameter-name">name</em> - A symbol name.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd>An address pointer, or <code class="ref">NULL</code> if the symbol wasn&apos;t found or the container version was incompatible.</dd>
+
+      <dt class="version"><strong class="label">Version:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="extit_container_log">extit_container_log</a></span>(<em class="parameter-name">container</em>, <em class="parameter-name">message</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      Log a message using a container interface. This is a compile time macro that is mapped to the appropriate ABI version named function based on <code class="ref"><a href="extit.html#EXTIT_ABI_TARGET">EXTIT_ABI_TARGET</a></code>.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">container</em> - The container interface.<br />
+       <em class="parameter-name">message</em> - The message to log.<br />
+      </dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td>void</td>
+       </tr>
+       <tr>
+        <td><span class="function-name"><a name="extit_container_log__1_0">extit_container_log__1_0</a></span>(const <a href="extit_container.html#extit_container_t">extit_container_t</a> * <em class="parameter-name">container</em>, const char * <em class="parameter-name">message</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      Log a message using a container interface. An implicit newline will be added to the message where appropriate, such as console or file output. This is a convenience function that calls <em class="parameter-name">container</em><code class="literal">-&gt;ops-&gt;v0.</code><code class="ref"><a href="extit_container-impl.html#extit_container_ops_comp_1_0_t.op_log">op_log( ... )</a></code>.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">container</em> - The container interface.<br />
+       <em class="parameter-name">message</em> - The message to log.<br />
+      </dd>
+
+      <dt class="version"><strong class="label">Version:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="extit_container_query_interface">extit_container_query_interface</a></span>(<em class="parameter-name">container</em>, <em class="parameter-name">iid</em>, <em class="parameter-name">base_version</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      Query an interface version from a container interface. This is a compile time macro that is mapped to the appropriate ABI version named function based on <code class="ref"><a href="extit.html#EXTIT_ABI_TARGET">EXTIT_ABI_TARGET</a></code>.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">container</em> - The container interface.<br />
+       <em class="parameter-name">iid</em> - An interface identifier.<br />
+       <em class="parameter-name">base_version</em> - An interface version.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd>The highest compatible interface version, or <code class="ref"><a href="iv.html#IV_VERSION_NONE">IV_VERSION_NONE</a></code> if a matching interface wasn&apos;t found or the container version was incompatible.</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><a href="iv.html#iv_version_t">iv_version_t</a></td>
+       </tr>
+       <tr>
+        <td><span class="function-name"><a name="extit_container_query_interface__1_0">extit_container_query_interface__1_0</a></span>(const <a href="extit_container.html#extit_container_t">extit_container_t</a> * <em class="parameter-name">container</em>, const char * <em class="parameter-name">iid</em>, <a href="iv.html#iv_version_t">iv_version_t</a> <em class="parameter-name">base_version</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      Query an interface version from a container interface. This is a convenience function that calls <em class="parameter-name">container</em><code class="literal">-&gt;ops-&gt;v0.</code><code class="ref"><a href="extit_container-impl.html#extit_container_ops_comp_1_0_t.op_query_interface">op_query_interface( ... )</a></code>.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">container</em> - The container interface.<br />
+       <em class="parameter-name">iid</em> - An interface identifier.<br />
+       <em class="parameter-name">base_version</em> - An interface version.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd>The highest compatible interface version, or <code class="ref"><a href="iv.html#IV_VERSION_NONE">IV_VERSION_NONE</a></code> if a matching interface wasn&apos;t found or the container version was incompatible.</dd>
+
+      <dt class="version"><strong class="label">Version:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+     </dl>
+    </div>
+
+   </div>
+  </div>
+
+  <div class="section" id="see">
+   <a name="see"><h2 class="label">See Also</h2></a>
+
+   <div class="content">
+    <table>
+     <tr>
+      <td><span class="ref"><a href="extit.html">ExtIt</a></span></li>
+</td>
+     </tr>
+     <tr>
+      <td><span class="ref"><a href="extit_container-impl.html">ExtIt Container - Implementation</a></span></li>
+</td>
+     </tr>
+    </table>
+   </div>
+  </div>
+
+  <div class="copyright">
+   <hr />
+   Copyright &copy; 2017, Chad M. Fraleigh.  All rights reserved.
+  </div>
+ </body>
+</html>

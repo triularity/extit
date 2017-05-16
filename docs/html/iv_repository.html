@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <!-- !!! THIS FILE WAS AUTOMATICALLY GENERATED - ANY EDITS MAY BE LOST !!! -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Interface Versioning Repository</title>
+  <link rel="stylesheet" href="style.css">
+ </head>
+
+ <body>
+  <div class="section" id="libraries">
+   <a name="libraries"><h2 class="label">Libraries</h2></a>
+
+   <div class="content">
+    iv_repository (<code class="cmdline"><code class="cmdline">-liv_repository</code>, iv_repository.lib</code>)<br />
+   </div>
+  </div>
+
+  <div class="section" id="headers">
+   <a name="headers"><h2 class="label">Headers</h2></a>
+
+   <div class="content">
+    <table>
+     <tr>
+      <td>#include &lt;iv/base.h&gt;</td>
+     </tr>
+     <tr>
+      <td>#include &lt;iv/repository.h&gt;</td>
+     </tr>
+    </table>
+   </div>
+  </div>
+
+  <div class="section" id="usage">
+   <a name="usage"><h2 class="label">Usage</h2></a>
+
+   <div class="content">
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td>typedef <span class="opaque">...</span> <a name="iv_repository_t"><span class="typedef-name">iv_repository_t</span></a></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      An interface versioning repository.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td>void</td>
+       </tr>
+       <tr>
+        <td><span class="function-name"><a name="iv_repository_cleanup">iv_repository_cleanup</a></span>(<a href="iv_repository.html#iv_repository_t">iv_repository_t</a> * <em class="parameter-name">ivr</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      Release any internal memory that is no longer needed. After deleting an item from the repository, internal structures for common resources may still be allocated, but empty. This will force such memory to be release immediately.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">ivr</em> - The repository.<br />
+      </dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><a href="iv_repository.html#iv_repository_t">iv_repository_t</a> *</td>
+       </tr>
+       <tr>
+        <td><span class="function-name"><a name="iv_repository_create">iv_repository_create</a></span>(void)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      Create an interface version repository. The repository should be freed using <code class="ref"><a href="iv_repository.html#iv_repository_destroy">iv_repository_destroy()</a></code>.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd>A repository, or <code class="ref">NULL</code> if memory allocation failed.</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td>void</td>
+       </tr>
+       <tr>
+        <td><span class="function-name"><a name="iv_repository_destroy">iv_repository_destroy</a></span>(<a href="iv_repository.html#iv_repository_t">iv_repository_t</a> * <em class="parameter-name">ivr</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      Destroy an interface version repository.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">ivr</em> - The repository.<br />
+      </dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td>void *</td>
+       </tr>
+       <tr>
+        <td><span class="function-name"><a name="iv_repository_get">iv_repository_get</a></span>(const <a href="iv_repository.html#iv_repository_t">iv_repository_t</a> * <em class="parameter-name">ivr</em>, const char * <em class="parameter-name">key</em>, const char * <em class="parameter-name">iid</em>, <a href="iv.html#iv_version_t">iv_version_t</a> <em class="parameter-name">version</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      Get an interface from a repository. This will return the best matching (highest version) assigned value that is compatible with the requested interface/version for a given key. A <em class="parameter-name">key</em> value of <code class="ref">NULL</code> is equivalent to <code class="literal">&quot;&quot;</code>.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">ivr</em> - The repository.<br />
+       <em class="parameter-name">key</em> - An entry key, or <code class="ref">NULL</code>.<br />
+       <em class="parameter-name">iid</em> - An interface identifier.<br />
+       <em class="parameter-name">version</em> - An interface version.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd>The interface, or <code class="ref">NULL</code> if none was found.</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><a href="iv.html#iv_version_t">iv_version_t</a></td>
+       </tr>
+       <tr>
+        <td><span class="function-name"><a name="iv_repository_query">iv_repository_query</a></span>(const <a href="iv_repository.html#iv_repository_t">iv_repository_t</a> * <em class="parameter-name">ivr</em>, const char * <em class="parameter-name">key</em>, const char * <em class="parameter-name">iid</em>, <a href="iv.html#iv_version_t">iv_version_t</a> <em class="parameter-name">base_version</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      Query the interface version available from a repository. This will return the highest registered version that is compatible with the requested interface identifier/version for a given key. A <em class="parameter-name">key</em> value of <code class="ref">NULL</code> is equivalent to <code class="literal">&quot;&quot;</code>.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">ivr</em> - The repository.<br />
+       <em class="parameter-name">key</em> - An entry key, or <code class="ref">NULL</code>.<br />
+       <em class="parameter-name">iid</em> - An interface identifier.<br />
+       <em class="parameter-name">base_version</em> - A base interface version.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd>The highest available version, or <code class="ref"><a href="iv.html#IV_VERSION_NONE">IV_VERSION_NONE</a></code> if none was found.</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td>iv_repository_status_t</td>
+       </tr>
+       <tr>
+        <td><span class="function-name"><a name="iv_repository_remove">iv_repository_remove</a></span>(<a href="iv_repository.html#iv_repository_t">iv_repository_t</a> * <em class="parameter-name">ivr</em>, const char * <em class="parameter-name">key</em>, const char * <em class="parameter-name">iid</em>, <a href="iv.html#iv_version_t">iv_version_t</a> <em class="parameter-name">version</em>, void ** <em class="parameter-name">old_valuep</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      Remove an entry from the repository for a given key and exact interface identifier/version, optionally returning the previously set value. A <em class="parameter-name">key</em> value of <code class="ref">NULL</code> is equivalent to <code class="literal">&quot;&quot;</code>.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">ivr</em> - The repository.<br />
+       <em class="parameter-name">key</em> - An entry key, or <code class="ref">NULL</code>.<br />
+       <em class="parameter-name">iid</em> - An interface identifier.<br />
+       <em class="parameter-name">version</em> - An interface version.<br />
+       <em class="parameter-name">old_valuep</em> - An optional pointer to store the previous value in, or <code class="ref">NULL</code> to ignore.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd>A status code (<code class="literal">IV_REPOSITORY_STATUS_</code>*).</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td>iv_repository_status_t</td>
+       </tr>
+       <tr>
+        <td><span class="function-name"><a name="iv_repository_set">iv_repository_set</a></span>(<a href="iv_repository.html#iv_repository_t">iv_repository_t</a> * <em class="parameter-name">ivr</em>, const char * <em class="parameter-name">key</em>, const char * <em class="parameter-name">iid</em>, <a href="iv.html#iv_version_t">iv_version_t</a> <em class="parameter-name">version</em>, void * <em class="parameter-name">value</em>, void ** <em class="parameter-name">old_valuep</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      Set an interface entry in a repository, optionally returning the previously set value. This will not replace an existing entry that has the same key but different interface identifier/version, allowing for multiple interfaces for the same key. A <em class="parameter-name">key</em> value of <code class="ref">NULL</code> is equivalent to <code class="literal">&quot;&quot;</code>.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">ivr</em> - The repository.<br />
+       <em class="parameter-name">key</em> - An entry key, or <code class="ref">NULL</code>.<br />
+       <em class="parameter-name">iid</em> - An interface identifier.<br />
+       <em class="parameter-name">version</em> - An interface version.<br />
+       <em class="parameter-name">value</em> - The value to set.<br />
+       <em class="parameter-name">old_valuep</em> - An optional pointer to store the previous value in, or <code class="ref">NULL</code> to ignore.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd>A status code (<code class="literal">IV_REPOSITORY_STATUS_</code>*).</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+   </div>
+  </div>
+
+  <div class="section" id="see">
+   <a name="see"><h2 class="label">See Also</h2></a>
+
+   <div class="content">
+    <table>
+     <tr>
+      <td><span class="ref"><a href="iv.html">Interface Versioning</a></span></li>
+</td>
+     </tr>
+    </table>
+   </div>
+  </div>
+
+  <div class="copyright">
+   <hr />
+   Copyright &copy; 2017, Chad M. Fraleigh.  All rights reserved.
+  </div>
+ </body>
+</html>

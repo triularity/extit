@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <!-- !!! THIS FILE WAS AUTOMATICALLY GENERATED - ANY EDITS MAY BE LOST !!! -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>ExtIt Plugin Module - Implementation</title>
+  <link rel="stylesheet" href="style.css">
+ </head>
+
+ <body>
+  <div class="section" id="headers">
+   <a name="headers"><h2 class="label">Headers</h2></a>
+
+   <div class="content">
+    <table>
+     <tr>
+      <td>#include &lt;iv/base.h&gt;</td>
+     </tr>
+     <tr>
+      <td>#include &lt;extit/base.h&gt;</td>
+     </tr>
+     <tr>
+      <td>#include &lt;extit/pmodule_impl.h&gt;</td>
+     </tr>
+    </table>
+   </div>
+  </div>
+
+  <div class="section" id="usage">
+   <a name="usage"><h2 class="label">Usage</h2></a>
+
+   <div class="content">
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td colspan="8">typedef struct</td>
+       </tr>
+       <tr>
+        <td colspan="8">{</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td class="retval"><a href="extit.html#extit_status_t">extit_status_t</a></td>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td>(*<a name="extit_pmodule_ops_comp_1_0_t.op_probe">op_probe</a>)(<a href="extit_pmodule-impl.html#extit_pmodule_descriptor_1_0_t">extit_pmodule_descriptor_1_0_t</a> * <em class="parameter-name">descr</em>, const <a href="extit_container.html#extit_container_t">extit_container_t</a> * <em class="parameter-name">container</em>);</td>
+        <td colspan="4">&nbsp;</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td class="retval"><a href="extit.html#extit_status_t">extit_status_t</a></td>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td>(*<a name="extit_pmodule_ops_comp_1_0_t.op_create">op_create</a>)(<a href="extit_pmodule-impl.html#extit_pmodule_descriptor_1_0_t">extit_pmodule_descriptor_1_0_t</a> * <em class="parameter-name">descr</em>, const <a href="extit_container.html#extit_container_t">extit_container_t</a> * <em class="parameter-name">container</em>, void ** <em class="parameter-name">ctx_ptr</em>);</td>
+        <td colspan="4">&nbsp;</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td class="retval"><a href="extit.html#extit_status_t">extit_status_t</a></td>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td>(*<a name="extit_pmodule_ops_comp_1_0_t.op_destroy">op_destroy</a>)(<a href="extit_pmodule-impl.html#extit_pmodule_descriptor_1_0_t">extit_pmodule_descriptor_1_0_t</a> * <em class="parameter-name">descr</em>, const <a href="extit_container.html#extit_container_t">extit_container_t</a> * <em class="parameter-name">container</em>, void * <em class="parameter-name">ctx</em>);</td>
+        <td colspan="4">&nbsp;</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td class="retval">void *</td>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td>(*<a name="extit_pmodule_ops_comp_1_0_t.op_get_interface">op_get_interface</a>)(<a href="extit_pmodule-impl.html#extit_pmodule_descriptor_1_0_t">extit_pmodule_descriptor_1_0_t</a> * <em class="parameter-name">descr</em>, const <a href="extit_container.html#extit_container_t">extit_container_t</a> * <em class="parameter-name">container</em>, void * <em class="parameter-name">ctx</em>, const char * <em class="parameter-name">iid</em>, <a href="iv.html#iv_version_t">iv_version_t</a> <em class="parameter-name">version</em>);</td>
+        <td colspan="4">&nbsp;</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td class="retval"><a href="iv.html#iv_version_t">iv_version_t</a></td>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td>(*<a name="extit_pmodule_ops_comp_1_0_t.op_query_interface">op_query_interface</a>)(<a href="extit_pmodule-impl.html#extit_pmodule_descriptor_1_0_t">extit_pmodule_descriptor_1_0_t</a> * <em class="parameter-name">descr</em>, const <a href="extit_container.html#extit_container_t">extit_container_t</a> * <em class="parameter-name">container</em>, void * <em class="parameter-name">ctx</em>, const char * <em class="parameter-name">iid</em>, <a href="iv.html#iv_version_t">iv_version_t</a> <em class="parameter-name">base_version</em>);</td>
+        <td colspan="4">&nbsp;</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td class="retval"><a href="extit.html#extit_status_t">extit_status_t</a></td>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td>(*<a name="extit_pmodule_ops_comp_1_0_t.op_unload">op_unload</a>)(<a href="extit_pmodule-impl.html#extit_pmodule_descriptor_1_0_t">extit_pmodule_descriptor_1_0_t</a> * <em class="parameter-name">descr</em>, const <a href="extit_container.html#extit_container_t">extit_container_t</a> * <em class="parameter-name">container</em>);</td>
+        <td colspan="4">&nbsp;</td>
+       </tr>
+       <tr>
+        <td colspan="8">} <span class="typedef-name"><a name="extit_pmodule_ops_comp_1_0_t">extit_pmodule_ops_comp_1_0_t</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      The version 1.0 plugin module interface operations component.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="members"><strong class="label">Members:</strong></dt>
+      <dd>
+        <span class="member-name">op_probe</span> - Probe the module. Implementers should do minimal checking, such as required interfaces, without any potentially long running operations.<br />
+        <span class="member-name">op_create</span> - Create a module instance. Any private data references should be assigned to <em class="parameter-name">ctx_ptr</em>.<br />
+        <span class="member-name">op_destroy</span> - Destroy a module instance. Any private data reference by <em class="parameter-name">ctx</em> should be released.<br />
+        <span class="member-name">op_get_interface</span> - Get a named interface object by version for an instance.<br />
+        <span class="member-name">op_query_interface</span> - Query the supported version of an interface for an instance.<br />
+        <span class="member-name">op_unload</span> - Release any global resources still allocated by this module. This is called just prior to unloading the module from the process.<br />
+      </dd>
+
+      <dt class="version"><strong class="label">Version:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td colspan="8">typedef struct</td>
+       </tr>
+       <tr>
+        <td colspan="8">{</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td class="retval"><a href="extit_pmodule-impl.html#extit_pmodule_ops_comp_1_0_t">extit_pmodule_ops_comp_1_0_t</a></td>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="extit_pmodule_ops_1_0_t.v0">v0</a>;</td>
+       </tr>
+       <tr>
+        <td colspan="8">} <span class="typedef-name"><a name="extit_pmodule_ops_1_0_t">extit_pmodule_ops_1_0_t</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      The version 1.0 plugin module interface operations.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="members"><strong class="label">Members:</strong></dt>
+      <dd>
+        <span class="member-name">v0</span> - The x.0 component.<br />
+      </dd>
+
+      <dt class="version"><strong class="label">Version:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td colspan="8">typedef struct</td>
+       </tr>
+       <tr>
+        <td colspan="8">{</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td class="retval">uint32_t</td>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="extit_pmodule_descriptor_base_t.magic">magic</a>;</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td class="retval"><a href="iv.html#iv_version_t">iv_version_t</a></td>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="extit_pmodule_descriptor_base_t.extit_version">extit_version</a>;</td>
+       </tr>
+       <tr>
+        <td colspan="8">} <span class="typedef-name"><a name="extit_pmodule_descriptor_base_t">extit_pmodule_descriptor_base_t</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <dl class="details">
+      <dt class="members"><strong class="label">Members:</strong></dt>
+      <dd>
+        <span class="member-name">magic</span> - The value defined by <code class="ref">EXTIT_PMODULE_MAGIC</code>.<br />
+        <span class="member-name">extit_version</span> - The ExtIt interface version used by this module.<br />
+      </dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td colspan="8">typedef struct</td>
+       </tr>
+       <tr>
+        <td colspan="8">{</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td class="retval">uint32_t</td>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="extit_pmodule_descriptor_1_0_t.magic">magic</a>;</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td class="retval"><a href="iv.html#iv_version_t">iv_version_t</a></td>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="extit_pmodule_descriptor_1_0_t.extit_version">extit_version</a>;</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td class="retval">const char *</td>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="extit_pmodule_descriptor_1_0_t.id">id</a>;</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td class="retval">uint32_t</td>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="extit_pmodule_descriptor_1_0_t.id_version">id_version</a>;</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td class="retval">const char *</td>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="extit_pmodule_descriptor_1_0_t.name">name</a>;</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td class="retval">const char *</td>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="extit_pmodule_descriptor_1_0_t.version">version</a>;</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td class="retval"><a href="extit_pmodule-impl.html#extit_pmodule_ops_1_0_t">extit_pmodule_ops_1_0_t</a> *</td>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="extit_pmodule_descriptor_1_0_t.ops">ops</a>;</td>
+       </tr>
+       <tr>
+        <td colspan="8">} <span class="typedef-name"><a name="extit_pmodule_descriptor_1_0_t">extit_pmodule_descriptor_1_0_t</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <dl class="details">
+      <dt class="members"><strong class="label">Members:</strong></dt>
+      <dd>
+        <span class="member-name">magic</span> - The value defined by <code class="ref">EXTIT_PMODULE_MAGIC</code>.<br />
+        <span class="member-name">extit_version</span> - The ExtIt interface version used by this module.<br />
+        <span class="member-name">id</span> - The unique module identifier.<br />
+        <span class="member-name">id_version</span> - The module version value. Its value must be lexicographic, but is otherwise treated as opaque.<br />
+        <span class="member-name">name</span> - The human readable module name.<br />
+        <span class="member-name">version</span> - The human readable module version.<br />
+        <span class="member-name">ops</span> - The module operations.<br />
+      </dd>
+
+      <dt class="version"><strong class="label">Version:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="EXTIT_DECLARE_PMODULE">EXTIT_DECLARE_PMODULE</a></span>(<em class="parameter-name">id</em>, <em class="parameter-name">id_version</em>, <em class="parameter-name">name</em>, <em class="parameter-name">version</em>, <em class="parameter-name">ops</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      Declare a module with fields that populate its <code class="ref"><a href="extit_pmodule-impl.html#extit_pmodule_descriptor_t">extit_pmodule_descriptor_t</a></code>.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">id</em> - The unique module identifier.<br />
+       <em class="parameter-name">id_version</em> - The module version value. Its value must be lexicographic, but is otherwise treated as opaque.<br />
+       <em class="parameter-name">name</em> - The human readable module name.<br />
+       <em class="parameter-name">version</em> - The human readable module version.<br />
+       <em class="parameter-name">ops</em> - The module operations.<br />
+      </dd>
+
+      <dt class="version"><strong class="label">Version:</strong></dt>
+      <dd>1.0</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td>typedef <span class="opaque">...</span> <a name="extit_pmodule_descriptor_t"><span class="typedef-name">extit_pmodule_descriptor_t</span></a></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      A generic plugin module descriptor that is mapped to the appropriate descriptor version based on <code class="ref"><a href="extit.html#EXTIT_ABI_TARGET">EXTIT_ABI_TARGET</a></code>.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="EXTIT_PMODULE_MAGIC">EXTIT_PMODULE_MAGIC</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      The magic value at the beginning of the module descriptor.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="EXTIT_PMODULE_DESCRIPTOR_NAME">EXTIT_PMODULE_DESCRIPTOR_NAME</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      The global module descriptor name.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="EXTIT_PMODULE_DESCRIPTOR_SYMBOL">EXTIT_PMODULE_DESCRIPTOR_SYMBOL</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      The global module descriptor symbol string.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+   </div>
+  </div>
+
+  <div class="section" id="see">
+   <a name="see"><h2 class="label">See Also</h2></a>
+
+   <div class="content">
+    <table>
+     <tr>
+      <td><span class="ref"><a href="extit.html">ExtIt</a></span></li>
+</td>
+     </tr>
+     <tr>
+      <td><span class="ref"><a href="extit_container.html">ExtIt Container</a></span></li>
+</td>
+     </tr>
+     <tr>
+      <td><span class="ref"><a href="extit_container-stdimpl.html">ExtIt Container - Standard Implementation</a></span></li>
+</td>
+     </tr>
+    </table>
+   </div>
+  </div>
+
+  <div class="copyright">
+   <hr />
+   Copyright &copy; 2017, Chad M. Fraleigh.  All rights reserved.
+  </div>
+ </body>
+</html>

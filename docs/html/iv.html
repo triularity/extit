@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <!-- !!! THIS FILE WAS AUTOMATICALLY GENERATED - ANY EDITS MAY BE LOST !!! -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Interface Versioning</title>
+  <link rel="stylesheet" href="style.css">
+ </head>
+
+ <body>
+  <div class="section" id="headers">
+   <a name="headers"><h2 class="label">Headers</h2></a>
+
+   <div class="content">
+    <table>
+     <tr>
+      <td>#include &lt;iv/base.h&gt;</td>
+     </tr>
+    </table>
+   </div>
+  </div>
+
+  <div class="section" id="usage">
+   <a name="usage"><h2 class="label">Usage</h2></a>
+
+   <div class="content">
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="IV_LIB_VERSION_MAJOR">IV_LIB_VERSION_MAJOR</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      The library package major version.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="IV_LIB_VERSION_MINOR">IV_LIB_VERSION_MINOR</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      The library package minor version.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="IV_LIB_VERSION_PATCH">IV_LIB_VERSION_PATCH</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      The library package patch level.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="IV_LIB_VERSION">IV_LIB_VERSION</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      The library package version representing the major, minor, and patch level as a single integer value. The value is effectively equivalent to <code class="literal">(IV_LIB_VERSION_MAJOR * 65536) + (IV_LIB_VERSION_MINOR * 256) + IV_LIB_VERSION_PATCH</code>.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="IV_VERSION">IV_VERSION</a></span>(<em class="parameter-name">major</em>, <em class="parameter-name">minor</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      Create an interface version value from a major and minor version. This is effectively equivalent to <code class="literal">(</code><em class="parameter-name">major</em><code class="literal"> * 65536) + </code><em class="parameter-name">minor</em>.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">major</em> - The major version (0 - 65535).<br />
+       <em class="parameter-name">minor</em> - The minor version (0 - 65535).<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd>An interface version.</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="IV_VERSION_MAJOR">IV_VERSION_MAJOR</a></span>(<em class="parameter-name">iv</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      Extract the major version from an interface version.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">iv</em> - The interface version.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd>The major version value (0 - 65535).</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="IV_VERSION_MINOR">IV_VERSION_MINOR</a></span>(<em class="parameter-name">iv</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      Extract the minor version from an interface version.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">iv</em> - The interface version.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd>The minor version value (0 - 65535).</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="IV_VERSION_NONE">IV_VERSION_NONE</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      A special value representing &apos;no version&apos;. This is equivalent to <code class="literal">IV_VERSION(0, 0)</code>.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td>typedef uint32_t <a name="iv_version_t"><span class="typedef-name">iv_version_t</span></a></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      An interface version. This is an unsigned 32-bit value with the major version in the upper 16-bits and the minor version in the lower 16-bits.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td colspan="2">typedef enum</td>
+       </tr>
+       <tr>
+        <td colspan="2">{</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="IV_FALSE">IV_FALSE</a>,</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="IV_TRUE">IV_TRUE</a>,</td>
+       </tr>
+       <tr>
+        <td colspan="2">} <span class="typedef-name"><a name="iv_bool_t">iv_bool_t</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      A boolean type used by the IV library.<br />
+     </div>
+
+     <dl class="details">
+      <dt class="members"><strong class="label">Members:</strong></dt>
+      <dd>
+        <span class="member-name">IV_FALSE</span> - The false value.<br />
+        <span class="member-name">IV_TRUE</span> - The true value.<br />
+      </dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+   </div>
+  </div>
+
+  <div class="section" id="see">
+   <a name="see"><h2 class="label">See Also</h2></a>
+
+   <div class="content">
+    <table>
+     <tr>
+      <td><span class="ref"><a href="iv_matches.html">iv_matches</a></span></li>
+</td>
+     </tr>
+     <tr>
+      <td><span class="ref"><a href="iv_repository.html">Interface Versioning Repository</a></span></li>
+</td>
+     </tr>
+    </table>
+   </div>
+  </div>
+
+  <div class="copyright">
+   <hr />
+   Copyright &copy; 2017, Chad M. Fraleigh.  All rights reserved.
+  </div>
+ </body>
+</html>
