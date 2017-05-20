@@ -1,0 +1,1073 @@
+{
+	"title": "ExtIt Plugin Module",
+	"includes":
+	[
+		"iv/base.h",
+		"extit/base.h",
+		"extit/pmodule.h"
+	],
+	"libraries":
+	[
+		"extit_pmodule"
+	],
+	"synopsis":
+	[
+		{
+			"type": "typedef",
+			"name": "extit_module_t",
+			"_value": [ "struct", "_extit_module" ],
+			"description": "A module instance.",
+			"since": "1.0"
+		},
+		{
+			"type": "typedef",
+			"name": "extit_plugin_t",
+			"_value": [ "struct", "_extit_plugin" ],
+			"description": "A plugin instance.",
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_module_bind",
+			"parameters":
+			[
+				{
+					"type": [ "extit_container_t", "*" ],
+					"name": "container",
+					"description": "The container interface."
+				},
+				{
+					"type": [ "const", "void", "*" ],
+					"name": "descriptor",
+					"description": "The descriptor address."
+				},
+				{
+					"type": "unsigned int",
+					"name": "flags",
+					"description":
+					[
+						"The module flags (",
+						{
+							"type": "text:code",
+							"value": "EXTIT_FLAG_"
+						},
+						"*)."
+					]
+				}
+			],
+			"returns":
+			{
+				"type": [ "extit_module_t", "*" ],
+				"description":
+				[
+					"A module pointer, or ",
+					{
+						"type": "ref:constant",
+						"name": "NULL"
+					},
+					" if the bind failed."
+				]
+			},
+			"summary": "Create a module from a plugin module descriptor.",
+			"description":
+			[
+				"Create a module from a plugin module descriptor.",
+				" This should be released with ",
+				{
+					"type": "ref:function",
+					"name": "extit_module_release",
+					"parameters":
+					[
+						[ "extit_module_t", "*" ]
+					]
+				},
+				"."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_module_create_plugin",
+			"parameters":
+			[
+				{
+					"type": [ "extit_module_t", "*" ],
+					"name": "module",
+					"description": "The plugin module."
+				}
+			],
+			"returns":
+			{
+				"type": [ "extit_plugin_t", "*" ],
+				"description":
+				[
+					"A plugin pointer, or ",
+					{
+						"type": "ref:constant",
+						"name": "NULL"
+					},
+					" if the create failed."
+				]
+			},
+			"summary": "Create a plugin instance for a module.",
+			"description":
+			[
+				"Create a plugin instance for a module.",
+				" The plugin should be freed with ",
+				{
+					"type": "ref:function",
+					"name": "extit_plugin_destroy",
+					"parameters":
+					[
+						[ "extit_plugin_t", "*" ]
+					]
+				},
+				"."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_module_get_abi_version",
+			"parameters":
+			[
+				{
+					"type": [ "extit_module_t", "*" ],
+					"name": "module",
+					"description": "The plugin module."
+				}
+			],
+			"returns":
+			{
+				"type": "iv_version_t",
+				"description":
+				[
+					"The plugin system ABI version"
+				]
+			},
+			"summary": "Get the plugin system ABI version supported by the plugin module.",
+			"description":
+			[
+				"Get the plugin system ABI version supported by the plugin module."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_module_get_effective_abi_version",
+			"parameters":
+			[
+				{
+					"type": [ "extit_module_t", "*" ],
+					"name": "module",
+					"description": "The plugin module."
+				}
+			],
+			"returns":
+			{
+				"type": "iv_version_t",
+				"description":
+				[
+					"The plugin system ABI version being used for this module."
+				]
+			},
+			"summary": "Get the plugin system ABI version level supported by both the container and the plugin module.",
+			"description":
+			[
+				"Get the plugin system ABI version level supported by both the container and the plugin module."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_module_get_flags",
+			"parameters":
+			[
+				{
+					"type": [ "extit_module_t", "*" ],
+					"name": "module",
+					"description": "The plugin module."
+				}
+			],
+			"returns":
+			{
+				"type": "unsigned int",
+				"description":
+				[
+					"The module flags (",
+					{
+						"type": "text:code",
+						"value": "EXTIT_FLAG_"
+					},
+					"*)."
+				]
+			},
+			"summary": "Get the flags for the plugin module.",
+			"description":
+			[
+				"Get the flags for the plugin module."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_module_get_function",
+			"parameters":
+			[
+				{
+					"type": [ "extit_module_t", "*" ],
+					"name": "module",
+					"description": "The plugin module."
+				},
+				{
+					"type": [ "const", "char", "*" ],
+					"name": "name",
+					"description": "The symbol name."
+				}
+			],
+			"returns":
+			{
+				"type": "extit_func_t",
+				"description":
+				[
+					"A function pointer, or ",
+					{
+						"type": "ref:constant",
+						"name": "NULL"
+					},
+					" if the symbol wasn't found."
+				]
+			},
+			"summary": "Resolve a function symbol in a plugin module.",
+			"description":
+			[
+				"Resolve a function symbol in a plugin module."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_module_get_id",
+			"parameters":
+			[
+				{
+					"type": [ "extit_module_t", "*" ],
+					"name": "module",
+					"description": "The plugin module."
+				}
+			],
+			"returns":
+			{
+				"type": [ "const", "char", "*" ],
+				"description":
+				[
+					"The plugin ID."
+				]
+			},
+			"summary": "Get the unique ID of the plugin module.",
+			"description":
+			[
+				"Get the unique ID of the plugin module."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_module_get_id_version",
+			"parameters":
+			[
+				{
+					"type": [ "extit_module_t", "*" ],
+					"name": "module",
+					"description": "The plugin module."
+				}
+			],
+			"returns":
+			{
+				"type": "uint32_t",
+				"description":
+				[
+					"The plugin version relative to the ID."
+				]
+			},
+			"summary": "Get the ID relative version of the plugin module.",
+			"description":
+			[
+				"Get the ID relative version of the plugin module. The format is implementation defined, but must return larger values for higher versions and smaller values for lower versions."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_module_get_name",
+			"parameters":
+			[
+				{
+					"type": [ "extit_module_t", "*" ],
+					"name": "module",
+					"description": "The plugin module."
+				}
+			],
+			"returns":
+			{
+				"type": [ "const", "char", "*" ],
+				"description":
+				[
+					"The plugin name."
+				]
+			},
+			"summary": "Get the name of the plugin module.",
+			"description":
+			[
+				"Get the name of the plugin module."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_module_get_symbol",
+			"parameters":
+			[
+				{
+					"type": [ "extit_module_t", "*" ],
+					"name": "module",
+					"description": "The plugin module."
+				},
+				{
+					"type": [ "const", "char", "*" ],
+					"name": "name",
+					"description": "The symbol name."
+				}
+			],
+			"returns":
+			{
+				"type": [ "void", "*" ],
+				"description":
+				[
+					"An address pointer, or ",
+					{
+						"type": "ref:constant",
+						"name": "NULL"
+					},
+					" if the symbol wasn't found."
+				]
+			},
+			"summary": "Resolve a symbol address in a plugin module.",
+			"description":
+			[
+				"Resolve a symbol address in a plugin module."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_module_get_version",
+			"parameters":
+			[
+				{
+					"type": [ "extit_module_t", "*" ],
+					"name": "module",
+					"description": "The plugin module."
+				}
+			],
+			"returns":
+			{
+				"type": [ "const", "char", "*" ],
+				"description":
+				[
+					"The plugin version (in text format)."
+				]
+			},
+			"summary": "Get the version of the plugin module.",
+			"description":
+			[
+				"Get the version of the plugin module."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_module_load",
+			"parameters":
+			[
+				{
+					"type": [ "extit_container_t", "*" ],
+					"name": "container",
+					"description": "The container interface."
+				},
+				{
+					"type": [ "const", "char", "*" ],
+					"name": "path",
+					"description": "The loadable library file path."
+				},
+				{
+					"type": "unsigned int",
+					"name": "flags",
+					"description":
+					[
+						"The module flags (",
+						{
+							"type": "text:code",
+							"value": "EXTIT_FLAG_"
+						},
+						"*)."
+					]
+				}
+			],
+			"returns":
+			{
+				"type": [ "extit_module_t", "*" ],
+				"description":
+				[
+					"A module pointer, or ",
+					{
+						"type": "ref:constant",
+						"name": "NULL"
+					},
+					" if the load failed."
+				]
+			},
+			"summary": "Create a module from a loadable library file.",
+			"description":
+			[
+				"Create a module from a loadable library file.",
+				" This should be released with ",
+				{
+					"type": "ref:function",
+					"name": "extit_module_release",
+					"parameters":
+					[
+						[ "extit_module_t", "*" ]
+					]
+				},
+				"."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_module_load_wc",
+			"parameters":
+			[
+				{
+					"type": [ "extit_container_t", "*" ],
+					"name": "container",
+					"description": "The container interface."
+				},
+				{
+					"type": [ "const", "wchar_t", "*" ],
+					"name": "path",
+					"description": "The loadable library file path."
+				},
+				{
+					"type": "unsigned int",
+					"name": "flags",
+					"description":
+					[
+						"The module flags (",
+						{
+							"type": "text:code",
+							"value": "EXTIT_FLAG_"
+						},
+						"*)."
+					]
+				}
+			],
+			"returns":
+			{
+				"type": [ "extit_module_t", "*" ],
+				"description":
+				[
+					"A module pointer, or ",
+					{
+						"type": "ref:constant",
+						"name": "NULL"
+					},
+					" if the load failed."
+				]
+			},
+			"summary": "Create a module from a loadable library file.",
+			"description":
+			[
+				"Create a module from a loadable library file.",
+				" This function is only available on platforms that support wide character filenames.",
+				" This should be released with ",
+				{
+					"type": "ref:function",
+					"name": "extit_module_release",
+					"parameters":
+					[
+						[ "extit_module_t", "*" ]
+					]
+				},
+				"."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_module_release",
+			"parameters":
+			[
+				{
+					"type": [ "extit_module_t", "*" ],
+					"name": "module",
+					"description": "The plugin module."
+				}
+			],
+			"returns":
+			{
+				"type": "extit_status_t",
+				"description":
+				[
+					"The operation status (",
+					{
+						"type": "text:code",
+						"value": "EXTIT_STATUS_"
+					},
+					"*)."
+				]
+			},
+			"summary": "Release a plugin module.",
+			"description":
+			[
+				"Release a plugin module. This fail if plugins instances still exist for the module."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_module_scan",
+			"parameters":
+			[
+				{
+					"type": [ "extit_container_t", "*" ],
+					"name": "container",
+					"description": "The container interface."
+				},
+				{
+					"type": [ "const", "char", "*" ],
+					"name": "directory",
+					"description": "The directory to scan."
+				},
+				{
+					"type": "extit_module_scan_callback_t",
+					"name": "callback",
+					"description": "The callback function."
+				},
+				{
+					"type": [ "const", "void", "*" ],
+					"name": "client_data",
+					"description": "Additional data to pass to the callback."
+				},
+				{
+					"type": "extit_module_scan_fnfilter_t",
+					"name": "fnfilter",
+					"description": "The filename filter callback function."
+				},
+				{
+					"type": "unsigned int",
+					"name": "flags",
+					"description":
+					[
+						"The module flags (",
+						{
+							"type": "text:code",
+							"value": "EXTIT_FLAG_"
+						},
+						"*)."
+					]
+				}
+			],
+			"returns":
+			{
+				"type": "extit_status_t",
+				"description":
+				[
+					"The operation status (",
+					{
+						"type": "text:code",
+						"value": "EXTIT_STATUS_"
+					},
+					"*)."
+				]
+			},
+			"summary": "Scan a directory for plugin modules.",
+			"description":
+			[
+				"Scan a directory for plugin modules.",
+				" ",
+				{
+					"type": "ref:parameter",
+					"name": "fnfilter"
+				},
+				" will be called for each normal file, which should return ",
+				{
+					"type": "ref:constant",
+					"name": "EXTIT_TRUE"
+				},
+				", if the filename is acceptable, or ",
+				{
+					"type": "ref:constant",
+					"name": "EXTIT_FALSE"
+				},
+				" otherwise.",
+				" For each valid module found and loaded, ",
+				{
+					"type": "ref:parameter",
+					"name": "callback"
+				},
+				" will be called with it.",
+				" Any module loaded by this function must be released with ",
+				{
+					"type": "ref:function",
+					"name": "extit_module_release",
+					"parameters":
+					[
+						[ "extit_module_t", "*" ]
+					]
+				},
+				" to prevent memory and/or resource leaks, even if the callback does not use the module."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_module_scan_wc",
+			"parameters":
+			[
+				{
+					"type": [ "extit_container_t", "*" ],
+					"name": "container",
+					"description": "The container interface."
+				},
+				{
+					"type": [ "const", "wchar_t", "*" ],
+					"name": "directory",
+					"description": "The directory to scan."
+				},
+				{
+					"type": "extit_module_scan_callback_t",
+					"name": "callback",
+					"description": "The callback function."
+				},
+				{
+					"type": [ "const", "void", "*" ],
+					"name": "client_data",
+					"description": "Additional data to pass to the callback."
+				},
+				{
+					"type": "extit_module_scan_fnfilter_wc_t",
+					"name": "fnfilter",
+					"description": "The filename filter callback function."
+				},
+				{
+					"type": "unsigned int",
+					"name": "flags",
+					"description":
+					[
+						"The module flags (",
+						{
+							"type": "text:code",
+							"value": "EXTIT_FLAG_"
+						},
+						"*)."
+					]
+				}
+			],
+			"returns":
+			{
+				"type": "extit_status_t",
+				"description":
+				[
+					"The operation status (",
+					{
+						"type": "text:code",
+						"value": "EXTIT_STATUS_"
+					},
+					"*)."
+				]
+			},
+			"summary": "Scan a directory for plugin modules.",
+			"description":
+			[
+				"Scan a directory for plugin modules.",
+				" ",
+				{
+					"type": "ref:parameter",
+					"name": "fnfilter"
+				},
+				" will be called for each normal file, which should return ",
+				{
+					"type": "ref:constant",
+					"name": "EXTIT_TRUE"
+				},
+				", if the filename is acceptable, or ",
+				{
+					"type": "ref:constant",
+					"name": "EXTIT_FALSE"
+				},
+				" otherwise.",
+				" For each valid module found and loaded, ",
+				{
+					"type": "ref:parameter",
+					"name": "callback"
+				},
+				" will be called with it.",
+				" Any module loaded by this function must be released with ",
+				{
+					"type": "ref:function",
+					"name": "extit_module_release",
+					"parameters":
+					[
+						[ "extit_module_t", "*" ]
+					]
+				},
+				" to prevent memory and/or resource leaks, even if the callback does not use the module.",
+				" This function is only available on platforms that support wide character filenames."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_module_scan_fnfilter_default",
+			"parameters":
+			[
+				{
+					"type": [ "const", "char", "*" ],
+					"name": "libname",
+					"description": "The name of the library file."
+				},
+				{
+					"type": "size_t",
+					"name": "length",
+					"description": "The length of the library filename."
+				}
+			],
+			"returns":
+			{
+				"type": "extit_bool_t",
+				"description":
+				[
+					{
+						"type": "ref:constant",
+						"name": "EXTIT_TRUE"
+					},
+					" to accept the file, or ",
+					{
+						"type": "ref:constant",
+						"name": "EXTIT_FALSE"
+					},
+					" to reject it."
+				]
+			},
+			"summary": "A standard filename filter.",
+			"description":
+			[
+				"A standard filename filter.",
+				" Checks are case-insensitive on Windows and macOS and case-sensitive for other platforms."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_module_scan_fnfilter_wc_default",
+			"parameters":
+			[
+				{
+					"type": [ "const", "wchar_t", "*" ],
+					"name": "libname",
+					"description": "The name of the library file."
+				},
+				{
+					"type": "size_t",
+					"name": "length",
+					"description": "The length of the library filename (in characters)."
+				}
+			],
+			"returns":
+			{
+				"type": "extit_bool_t",
+				"description":
+				[
+					{
+						"type": "ref:constant",
+						"name": "EXTIT_TRUE"
+					},
+					" to accept the file, or ",
+					{
+						"type": "ref:constant",
+						"name": "EXTIT_FALSE"
+					},
+					" to reject it."
+				]
+			},
+			"summary": "A standard filename filter.",
+			"description":
+			[
+				"A standard filename filter.",
+				" Checks are case-insensitive on Windows and macOS and case-sensitive for other platforms.",
+				" This function is only available on platforms that support wide character filenames."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_module_set_flags",
+			"parameters":
+			[
+				{
+					"type": [ "extit_module_t", "*" ],
+					"name": "module",
+					"description": "The plugin module."
+				},
+				{
+					"type": "unsigned int",
+					"name": "flags",
+					"description":
+					[
+						"The module flags (",
+						{
+							"type": "text:code",
+							"value": "EXTIT_FLAG_"
+						},
+						"*)."
+					]
+				}
+			],
+			"summary": "Set a plugin module's flags.",
+			"description": "Set a plugin module's flags.",
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_plugin_destroy",
+			"parameters":
+			[
+				{
+					"type": [ "extit_plugin_t", "*" ],
+					"name": "plugin",
+					"description": "The plugin."
+				}
+			],
+			"returns":
+			{
+				"type": "extit_status_t",
+				"description":
+				[
+					"The operation status (",
+					{
+						"type": "text:code",
+						"value": "EXTIT_STATUS_"
+					},
+					"*)."
+				]
+			},
+			"summary": "Destroy a plugin instance.",
+			"description": "Destroy a plugin instance.",
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_plugin_get_context",
+			"parameters":
+			[
+				{
+					"type": [ "extit_plugin_t", "*" ],
+					"name": "plugin",
+					"description": "The plugin."
+				}
+			],
+			"returns":
+			{
+				"type": [ "void", "*" ],
+				"description": "The context value."
+			},
+			"summary": "Get a plugin instance's context value.",
+			"description":
+			[
+				"Get a plugin instance's context value. The context value is what is returned by the module's ",
+				{
+					"type": "text:code",
+					"value": "op_create"
+				},
+				" implementation function."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_plugin_get_flags",
+			"parameters":
+			[
+				{
+					"type": [ "extit_plugin_t", "*" ],
+					"name": "plugin",
+					"description": "The plugin."
+				}
+			],
+			"returns":
+			{
+				"type": "unsigned int",
+				"description":
+				[
+					"The module flags (",
+					{
+						"type": "text:code",
+						"value": "EXTIT_FLAG_"
+					},
+					"*)."
+				]
+			},
+			"summary": "Get a plugin instance's flags.",
+			"description": "Get a plugin instance's flags.",
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_plugin_get_interface",
+			"parameters":
+			[
+				{
+					"type": [ "extit_plugin_t", "*" ],
+					"name": "plugin",
+					"description": "The plugin."
+				},
+				{
+					"type": [ "const", "char", "*" ],
+					"name": "iid",
+					"description": "An interface ID."
+				},
+				{
+					"type": "iv_version_t",
+					"name": "version",
+					"description": "An interface version."
+				}
+			],
+			"returns":
+			{
+				"type": [ "void", "*" ],
+				"description":
+				[
+					"An interface pointer, or ",
+					{
+						"type": "ref:constant",
+						"name": "NULL"
+					},
+					" if a matching interface wasn't found."
+				]
+			},
+			"summary": "Get an interface from a plugin instance.",
+			"description": "Get an interface from a plugin instance.",
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_plugin_get_module",
+			"parameters":
+			[
+				{
+					"type": [ "extit_plugin_t", "*" ],
+					"name": "plugin",
+					"description": "The plugin."
+				}
+			],
+			"returns":
+			{
+				"type": [ "extit_module_t", "*" ],
+				"description":
+					"The plugin module."
+			},
+			"summary": "Get a plugin instance's parent module.",
+			"description": "Get a plugin instance's parent module.",
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_plugin_query_interface",
+			"parameters":
+			[
+				{
+					"type": [ "extit_plugin_t", "*" ],
+					"name": "plugin",
+					"description": "The plugin."
+				},
+				{
+					"type": [ "const", "char", "*" ],
+					"name": "iid",
+					"description": "An interface ID."
+				},
+				{
+					"type": "iv_version_t",
+					"name": "base_version",
+					"description": "An interface version."
+				}
+			],
+			"returns":
+			{
+				"type": "iv_version_t",
+				"description":
+				[
+					"The highest compatible interface version, or ",
+					{
+						"type": "ref:constant",
+						"name": "IV_VERSION_NONE"
+					},
+					" if a matching interface wasn't found."
+				]
+			},
+			"summary": "Query an interface version from a plugin instance.",
+			"description": "Query an interface version from a plugin instance.",
+			"since": "1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_plugin_set_flags",
+			"parameters":
+			[
+				{
+					"type": [ "extit_plugin_t", "*" ],
+					"name": "plugin",
+					"description": "The plugin."
+				},
+				{
+					"type": "unsigned int",
+					"name": "flags",
+					"description":
+					[
+						"The flags (",
+						{
+							"type": "text:code",
+							"value": "EXTIT_FLAG_"
+						},
+						"*)."
+					]
+				}
+			],
+			"summary": "Set a plugin instance's flags.",
+			"description": "Set a plugin instance's flags.",
+			"since": "1.0"
+		}
+	],
+	"see":
+	[
+		{
+			"type": "ref:generic",
+			"name": "Interface Versioning",
+			"link": "iv",
+			"section": "3"
+		},
+		{
+			"type": "ref:generic",
+			"name": "ExtIt",
+			"link": "extit",
+			"section": "3"
+		},
+		{
+			"type": "ref:generic",
+			"name": "ExtIt Plugin Module - Implementation",
+			"link": "extit_pmodule-impl",
+			"section": "3"
+		}
+	]
+}

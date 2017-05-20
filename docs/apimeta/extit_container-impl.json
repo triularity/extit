@@ -252,87 +252,15 @@
 	"see":
 	[
 		{
-			"type": "ref:function",
-			"name": "extit_container_get_function",
-			"parameters":
-			[
-				[ "const", "extit_container_t", "*" ],
-				[ "const", "char", "*" ]
-			],
+			"type": "ref:generic",
+			"name": "Interface Versioning",
+			"link": "iv",
 			"section": "3"
 		},
 		{
-			"type": "ref:function",
-			"name": "extit_container_get_function__1_0",
-			"parameters":
-			[
-				[ "const", "extit_container_t", "*" ],
-				[ "const", "char", "*" ]
-			],
-			"section": "3"
-		},
-		{
-			"type": "ref:function",
-			"name": "extit_container_get_interface",
-			"parameters":
-			[
-				[ "const", "extit_container_t", "*" ],
-				[ "const", "char", "*" ],
-				"iv_version_t"
-			],
-			"section": "3"
-		},
-		{
-			"type": "ref:function",
-			"name": "extit_container_get_interface__1_0",
-			"parameters":
-			[
-				[ "const", "extit_container_t", "*" ],
-				[ "const", "char", "*" ],
-				"iv_version_t"
-			],
-			"section": "3"
-		},
-		{
-			"type": "ref:function",
-			"name": "extit_container_get_symbol",
-			"parameters":
-			[
-				[ "const", "extit_container_t", "*" ],
-				[ "const", "char", "*" ]
-			],
-			"section": "3"
-		},
-		{
-			"type": "ref:function",
-			"name": "extit_container_get_symbol__1_0",
-			"parameters":
-			[
-				[ "const", "extit_container_t", "*" ],
-				[ "const", "char", "*" ]
-			],
-			"section": "3"
-		},
-		{
-			"type": "ref:function",
-			"name": "extit_container_query_interface",
-			"parameters":
-			[
-				[ "const", "extit_container_t", "*" ],
-				[ "const", "char", "*" ],
-				"iv_version_t"
-			],
-			"section": "3"
-		},
-		{
-			"type": "ref:function",
-			"name": "extit_container_query_interface__1_0",
-			"parameters":
-			[
-				[ "const", "extit_container_t", "*" ],
-				[ "const", "char", "*" ],
-				"iv_version_t"
-			],
+			"type": "ref:generic",
+			"name": "ExtIt",
+			"link": "extit",
 			"section": "3"
 		},
 		{

@@ -48,7 +48,9 @@
      </div>
 
      <div class="description">
-      A container interface.<br />
+      <p>
+       A container interface.<br />
+      </p>
      </div>
 
      <dl class="details">
@@ -68,7 +70,9 @@
      </div>
 
      <div class="description">
-      Resolve a function pointer from a container interface. This is a compile time macro that is mapped to the appropriate ABI version named function based on <code class="ref"><a href="extit.html#EXTIT_ABI_TARGET">EXTIT_ABI_TARGET</a></code>.<br />
+      <p>
+       Resolve a function pointer from a container interface. This is a compile time macro that is mapped to the appropriate ABI version named function based on <code class="ref"><a href="extit.html#EXTIT_ABI_TARGET">EXTIT_ABI_TARGET</a></code>.<br />
+      </p>
      </div>
 
      <dl class="details">
@@ -94,13 +98,15 @@
         <td><a href="extit.html#extit_func_t">extit_func_t</a></td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="extit_container_get_function__1_0">extit_container_get_function__1_0</a></span>(const <a href="extit_container.html#extit_container_t">extit_container_t</a> * <em class="parameter-name">container</em>, const char * <em class="parameter-name">name</em>)</td>
+        <td><span class="function-name"><a name="extit_container_get_function__1_0">extit_container_get_function__1_0</a></span>(const&nbsp;<a href="extit_container.html#extit_container_t">extit_container_t</a>&nbsp;*&nbsp;<em class="parameter-name">container</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">name</em>)</td>
        </tr>
       </table>
      </div>
 
      <div class="description">
-      Resolve a function pointer from a container interface. This is a convenience function that calls <em class="parameter-name">container</em><code class="literal">-&gt;ops-&gt;v0.</code><code class="ref"><a href="extit_container-impl.html#extit_container_ops_comp_1_0_t.op_get_function">op_get_function( ... )</a></code>.<br />
+      <p>
+       Resolve a function pointer from a container interface. This is a convenience function that calls <em class="parameter-name">container</em><code class="literal">-&gt;ops-&gt;v0.</code><code class="ref"><a href="extit_container-impl.html#extit_container_ops_comp_1_0_t.op_get_function">op_get_function( ... )</a></code>.<br />
+      </p>
      </div>
 
      <dl class="details">
@@ -132,7 +138,9 @@
      </div>
 
      <div class="description">
-      Get an interface from a container interface. This is a compile time macro that is mapped to the appropriate ABI version named function based on <code class="ref"><a href="extit.html#EXTIT_ABI_TARGET">EXTIT_ABI_TARGET</a></code>.<br />
+      <p>
+       Get an interface from a container interface. This is a compile time macro that is mapped to the appropriate ABI version named function based on <code class="ref"><a href="extit.html#EXTIT_ABI_TARGET">EXTIT_ABI_TARGET</a></code>.<br />
+      </p>
      </div>
 
      <dl class="details">
@@ -156,16 +164,18 @@
      <div class="declaration">
       <table>
        <tr>
-        <td>void *</td>
+        <td>void&nbsp;*</td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="extit_container_get_interface__1_0">extit_container_get_interface__1_0</a></span>(const <a href="extit_container.html#extit_container_t">extit_container_t</a> * <em class="parameter-name">container</em>, const char * <em class="parameter-name">iid</em>, <a href="iv.html#iv_version_t">iv_version_t</a> <em class="parameter-name">version</em>)</td>
+        <td><span class="function-name"><a name="extit_container_get_interface__1_0">extit_container_get_interface__1_0</a></span>(const&nbsp;<a href="extit_container.html#extit_container_t">extit_container_t</a>&nbsp;*&nbsp;<em class="parameter-name">container</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">iid</em>, <a href="iv.html#iv_version_t">iv_version_t</a>&nbsp;<em class="parameter-name">version</em>)</td>
        </tr>
       </table>
      </div>
 
      <div class="description">
-      Get an interface from a container interface. This is a convenience function that calls <em class="parameter-name">container</em><code class="literal">-&gt;ops-&gt;v0.</code><code class="ref"><a href="extit_container-impl.html#extit_container_ops_comp_1_0_t.op_get_interface">op_get_interface( ... )</a></code>.<br />
+      <p>
+       Get an interface from a container interface. This is a convenience function that calls <em class="parameter-name">container</em><code class="literal">-&gt;ops-&gt;v0.</code><code class="ref"><a href="extit_container-impl.html#extit_container_ops_comp_1_0_t.op_get_interface">op_get_interface( ... )</a></code>.<br />
+      </p>
      </div>
 
      <dl class="details">
@@ -198,7 +208,9 @@
      </div>
 
      <div class="description">
-      Get an interface from a container interface. This is a compile time macro that is mapped to the appropriate ABI version named function.<br />
+      <p>
+       Get an interface from a container interface. This is a compile time macro that is mapped to the appropriate ABI version named function.<br />
+      </p>
      </div>
 
      <dl class="details">
@@ -221,16 +233,18 @@
      <div class="declaration">
       <table>
        <tr>
-        <td>void *</td>
+        <td>void&nbsp;*</td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="extit_container_get_symbol__1_0">extit_container_get_symbol__1_0</a></span>(const <a href="extit_container.html#extit_container_t">extit_container_t</a> * <em class="parameter-name">container</em>, const char * <em class="parameter-name">name</em>)</td>
+        <td><span class="function-name"><a name="extit_container_get_symbol__1_0">extit_container_get_symbol__1_0</a></span>(const&nbsp;<a href="extit_container.html#extit_container_t">extit_container_t</a>&nbsp;*&nbsp;<em class="parameter-name">container</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">name</em>)</td>
        </tr>
       </table>
      </div>
 
      <div class="description">
-      Resolve a symbol pointer from a container interface. This is a convenience function that calls <em class="parameter-name">container</em><code class="literal">-&gt;ops-&gt;v0.</code><code class="ref"><a href="extit_container-impl.html#extit_container_ops_comp_1_0_t.op_get_symbol">op_get_symbol( ... )</a></code>.<br />
+      <p>
+       Resolve a symbol pointer from a container interface. This is a convenience function that calls <em class="parameter-name">container</em><code class="literal">-&gt;ops-&gt;v0.</code><code class="ref"><a href="extit_container-impl.html#extit_container_ops_comp_1_0_t.op_get_symbol">op_get_symbol( ... )</a></code>.<br />
+      </p>
      </div>
 
      <dl class="details">
@@ -262,7 +276,9 @@
      </div>
 
      <div class="description">
-      Log a message using a container interface. This is a compile time macro that is mapped to the appropriate ABI version named function based on <code class="ref"><a href="extit.html#EXTIT_ABI_TARGET">EXTIT_ABI_TARGET</a></code>.<br />
+      <p>
+       Log a message using a container interface. This is a compile time macro that is mapped to the appropriate ABI version named function based on <code class="ref"><a href="extit.html#EXTIT_ABI_TARGET">EXTIT_ABI_TARGET</a></code>.<br />
+      </p>
      </div>
 
      <dl class="details">
@@ -285,13 +301,15 @@
         <td>void</td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="extit_container_log__1_0">extit_container_log__1_0</a></span>(const <a href="extit_container.html#extit_container_t">extit_container_t</a> * <em class="parameter-name">container</em>, const char * <em class="parameter-name">message</em>)</td>
+        <td><span class="function-name"><a name="extit_container_log__1_0">extit_container_log__1_0</a></span>(const&nbsp;<a href="extit_container.html#extit_container_t">extit_container_t</a>&nbsp;*&nbsp;<em class="parameter-name">container</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">message</em>)</td>
        </tr>
       </table>
      </div>
 
      <div class="description">
-      Log a message using a container interface. An implicit newline will be added to the message where appropriate, such as console or file output. This is a convenience function that calls <em class="parameter-name">container</em><code class="literal">-&gt;ops-&gt;v0.</code><code class="ref"><a href="extit_container-impl.html#extit_container_ops_comp_1_0_t.op_log">op_log( ... )</a></code>.<br />
+      <p>
+       Log a message using a container interface. An implicit newline will be added to the message where appropriate, such as console or file output. This is a convenience function that calls <em class="parameter-name">container</em><code class="literal">-&gt;ops-&gt;v0.</code><code class="ref"><a href="extit_container-impl.html#extit_container_ops_comp_1_0_t.op_log">op_log( ... )</a></code>.<br />
+      </p>
      </div>
 
      <dl class="details">
@@ -320,7 +338,9 @@
      </div>
 
      <div class="description">
-      Query an interface version from a container interface. This is a compile time macro that is mapped to the appropriate ABI version named function based on <code class="ref"><a href="extit.html#EXTIT_ABI_TARGET">EXTIT_ABI_TARGET</a></code>.<br />
+      <p>
+       Query an interface version from a container interface. This is a compile time macro that is mapped to the appropriate ABI version named function based on <code class="ref"><a href="extit.html#EXTIT_ABI_TARGET">EXTIT_ABI_TARGET</a></code>.<br />
+      </p>
      </div>
 
      <dl class="details">
@@ -347,13 +367,15 @@
         <td><a href="iv.html#iv_version_t">iv_version_t</a></td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="extit_container_query_interface__1_0">extit_container_query_interface__1_0</a></span>(const <a href="extit_container.html#extit_container_t">extit_container_t</a> * <em class="parameter-name">container</em>, const char * <em class="parameter-name">iid</em>, <a href="iv.html#iv_version_t">iv_version_t</a> <em class="parameter-name">base_version</em>)</td>
+        <td><span class="function-name"><a name="extit_container_query_interface__1_0">extit_container_query_interface__1_0</a></span>(const&nbsp;<a href="extit_container.html#extit_container_t">extit_container_t</a>&nbsp;*&nbsp;<em class="parameter-name">container</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">iid</em>, <a href="iv.html#iv_version_t">iv_version_t</a>&nbsp;<em class="parameter-name">base_version</em>)</td>
        </tr>
       </table>
      </div>
 
      <div class="description">
-      Query an interface version from a container interface. This is a convenience function that calls <em class="parameter-name">container</em><code class="literal">-&gt;ops-&gt;v0.</code><code class="ref"><a href="extit_container-impl.html#extit_container_ops_comp_1_0_t.op_query_interface">op_query_interface( ... )</a></code>.<br />
+      <p>
+       Query an interface version from a container interface. This is a convenience function that calls <em class="parameter-name">container</em><code class="literal">-&gt;ops-&gt;v0.</code><code class="ref"><a href="extit_container-impl.html#extit_container_ops_comp_1_0_t.op_query_interface">op_query_interface( ... )</a></code>.<br />
+      </p>
      </div>
 
      <dl class="details">

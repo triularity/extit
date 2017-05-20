@@ -44,37 +44,37 @@
        </tr>
        <tr>
         <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-        <td class="retval">void *</td>
+        <td class="retval">void&nbsp;*</td>
         <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-        <td>(*<a name="extit_container_ops_comp_1_0_t.op_get_symbol">op_get_symbol</a>)(const <a href="extit_container.html#extit_container_t">extit_container_t</a> * <em class="parameter-name">container</em>, const char * <em class="parameter-name">name</em>);</td>
+        <td>(*<a name="extit_container_ops_comp_1_0_t.op_get_symbol">op_get_symbol</a>)(const&nbsp;<a href="extit_container.html#extit_container_t">extit_container_t</a>&nbsp;*&nbsp;<em class="parameter-name">container</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">name</em>);</td>
         <td colspan="4">&nbsp;</td>
        </tr>
        <tr>
         <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
         <td class="retval"><a href="extit.html#extit_func_t">extit_func_t</a></td>
         <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-        <td>(*<a name="extit_container_ops_comp_1_0_t.op_get_function">op_get_function</a>)(const <a href="extit_container.html#extit_container_t">extit_container_t</a> * <em class="parameter-name">container</em>, const char * <em class="parameter-name">name</em>);</td>
+        <td>(*<a name="extit_container_ops_comp_1_0_t.op_get_function">op_get_function</a>)(const&nbsp;<a href="extit_container.html#extit_container_t">extit_container_t</a>&nbsp;*&nbsp;<em class="parameter-name">container</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">name</em>);</td>
         <td colspan="4">&nbsp;</td>
        </tr>
        <tr>
         <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-        <td class="retval">void *</td>
+        <td class="retval">void&nbsp;*</td>
         <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-        <td>(*<a name="extit_container_ops_comp_1_0_t.op_get_interface">op_get_interface</a>)(const <a href="extit_container.html#extit_container_t">extit_container_t</a> * <em class="parameter-name">container</em>, const char * <em class="parameter-name">iid</em>, <a href="iv.html#iv_version_t">iv_version_t</a> <em class="parameter-name">version</em>);</td>
+        <td>(*<a name="extit_container_ops_comp_1_0_t.op_get_interface">op_get_interface</a>)(const&nbsp;<a href="extit_container.html#extit_container_t">extit_container_t</a>&nbsp;*&nbsp;<em class="parameter-name">container</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">iid</em>, <a href="iv.html#iv_version_t">iv_version_t</a>&nbsp;<em class="parameter-name">version</em>);</td>
         <td colspan="4">&nbsp;</td>
        </tr>
        <tr>
         <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
         <td class="retval"><a href="iv.html#iv_version_t">iv_version_t</a></td>
         <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-        <td>(*<a name="extit_container_ops_comp_1_0_t.op_query_interface">op_query_interface</a>)(const <a href="extit_container.html#extit_container_t">extit_container_t</a> * <em class="parameter-name">container</em>, const char * <em class="parameter-name">iid</em>, <a href="iv.html#iv_version_t">iv_version_t</a> <em class="parameter-name">base_version</em>);</td>
+        <td>(*<a name="extit_container_ops_comp_1_0_t.op_query_interface">op_query_interface</a>)(const&nbsp;<a href="extit_container.html#extit_container_t">extit_container_t</a>&nbsp;*&nbsp;<em class="parameter-name">container</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">iid</em>, <a href="iv.html#iv_version_t">iv_version_t</a>&nbsp;<em class="parameter-name">base_version</em>);</td>
         <td colspan="4">&nbsp;</td>
        </tr>
        <tr>
         <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
         <td class="retval">void</td>
         <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-        <td>(*<a name="extit_container_ops_comp_1_0_t.op_log">op_log</a>)(const <a href="extit_container.html#extit_container_t">extit_container_t</a> * <em class="parameter-name">container</em>, const char * <em class="parameter-name">message</em>);</td>
+        <td>(*<a name="extit_container_ops_comp_1_0_t.op_log">op_log</a>)(const&nbsp;<a href="extit_container.html#extit_container_t">extit_container_t</a>&nbsp;*&nbsp;<em class="parameter-name">container</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">message</em>);</td>
         <td colspan="4">&nbsp;</td>
        </tr>
        <tr>
@@ -84,7 +84,9 @@
      </div>
 
      <div class="description">
-      The version 1.0 container interface operations component.<br />
+      <p>
+       The version 1.0 container interface operations component.<br />
+      </p>
      </div>
 
      <dl class="details">
@@ -128,7 +130,9 @@
      </div>
 
      <div class="description">
-      The version 1.0 container interface operations.<br />
+      <p>
+       The version 1.0 container interface operations.<br />
+      </p>
      </div>
 
      <dl class="details">
@@ -168,7 +172,9 @@
      </div>
 
      <div class="description">
-      The base container interface data. All containers share this common structure, which is used to determine the ABI version. Normal application code is not expected to use this directly.<br />
+      <p>
+       The base container interface data. All containers share this common structure, which is used to determine the ABI version. Normal application code is not expected to use this directly.<br />
+      </p>
      </div>
 
      <dl class="details">
@@ -200,7 +206,7 @@
        </tr>
        <tr>
         <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-        <td class="retval"><a href="extit_container-impl.html#extit_container_ops_1_0_t">extit_container_ops_1_0_t</a> *</td>
+        <td class="retval"><a href="extit_container-impl.html#extit_container_ops_1_0_t">extit_container_ops_1_0_t</a>&nbsp;*</td>
         <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
         <td><a name="extit_container_1_0_t.ops">ops</a>;</td>
        </tr>
@@ -211,7 +217,9 @@
      </div>
 
      <div class="description">
-      The version 1.0 container interface data.<br />
+      <p>
+       The version 1.0 container interface data.<br />
+      </p>
      </div>
 
      <dl class="details">
@@ -239,35 +247,11 @@
    <div class="content">
     <table>
      <tr>
-      <td><code class="ref"><a href="extit_container.html#extit_container_get_function">extit_container_get_function()</a></code></li>
+      <td><span class="ref"><a href="iv.html">Interface Versioning</a></span></li>
 </td>
      </tr>
      <tr>
-      <td><code class="ref"><a href="extit_container.html#extit_container_get_function__1_0">extit_container_get_function__1_0()</a></code></li>
-</td>
-     </tr>
-     <tr>
-      <td><code class="ref"><a href="extit_container.html#extit_container_get_interface">extit_container_get_interface()</a></code></li>
-</td>
-     </tr>
-     <tr>
-      <td><code class="ref"><a href="extit_container.html#extit_container_get_interface__1_0">extit_container_get_interface__1_0()</a></code></li>
-</td>
-     </tr>
-     <tr>
-      <td><code class="ref"><a href="extit_container.html#extit_container_get_symbol">extit_container_get_symbol()</a></code></li>
-</td>
-     </tr>
-     <tr>
-      <td><code class="ref"><a href="extit_container.html#extit_container_get_symbol__1_0">extit_container_get_symbol__1_0()</a></code></li>
-</td>
-     </tr>
-     <tr>
-      <td><code class="ref"><a href="extit_container.html#extit_container_query_interface">extit_container_query_interface()</a></code></li>
-</td>
-     </tr>
-     <tr>
-      <td><code class="ref"><a href="extit_container.html#extit_container_query_interface__1_0">extit_container_query_interface__1_0()</a></code></li>
+      <td><span class="ref"><a href="extit.html">ExtIt</a></span></li>
 </td>
      </tr>
      <tr>

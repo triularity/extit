@@ -300,6 +300,18 @@
 	[
 		{
 			"type": "ref:generic",
+			"name": "Interface Versioning",
+			"link": "iv",
+			"section": "3"
+		},
+		{
+			"type": "ref:generic",
+			"name": "ExtIt",
+			"link": "extit",
+			"section": "3"
+		},
+		{
+			"type": "ref:generic",
 			"name": "ExtIt Container",
 			"link": "extit_container",
 			"section": "3"
