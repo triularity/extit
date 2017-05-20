@@ -306,14 +306,8 @@
 		},
 		{
 			"type": "ref:generic",
-			"name": "ExtIt Module",
-			"link": "extit_module",
-			"section": "3"
-		},
-		{
-			"type": "ref:generic",
-			"name": "ExtIt Plugin",
-			"link": "extit_plugin",
+			"name": "ExtIt Plugin Module",
+			"link": "extit_pmodule",
 			"section": "3"
 		},
 		{
