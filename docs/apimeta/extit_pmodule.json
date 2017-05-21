@@ -27,6 +27,150 @@
 			"since": "1.0"
 		},
 		{
+			"type": "typedef",
+			"name": "extit_module_scan_callback_t",
+			"value":
+			{
+				"type": "function",
+				"parameters":
+				[
+					{
+						"type": [ "extit_module_t", "*" ],
+						"name": "module",
+						"description": "The module instance."
+					},
+					{
+						"type": [ "void", "*" ],
+						"name": "client_data",
+						"description": "Application defined data."
+					}
+				],
+				"returns":
+				{
+					"type": "extit_status_t",
+					"description":
+					[
+						"The operation status (",
+						{
+							"type": "text:code",
+							"value": "EXTIT_STATUS_"
+						},
+						"*)."
+					]
+				}
+			},
+			"description":
+			[
+				"A function that is called by ",
+				{
+					"type": "ref:function",
+					"name": "extit_module_scan"
+				},
+				" or ",
+				{
+					"type": "ref:function",
+					"name": "extit_module_scan_wc"
+				},
+				" for loaded modules."
+			]
+		},
+		{
+			"type": "typedef",
+			"name": "extit_module_scan_fnfilter_t",
+			"value":
+			{
+				"type": "function",
+				"parameters":
+				[
+					{
+						"type": [ "const", "char", "*" ],
+						"name": "basename",
+						"description": "The filename without any directory."
+					},
+					{
+						"type": [ "size_t" ],
+						"name": "length",
+						"description": "The length of the filename."
+					}
+				],
+				"returns":
+				{
+					"type": "extit_bool_t",
+					"description":
+					[
+						{
+							"type": "ref:constant",
+							"name": "EXTIT_TRUE"
+						},
+						", if the filename is acceptable, or ",
+						{
+							"type": "ref:constant",
+							"name": "EXTIT_FALSE"
+						},
+						" otherwise."
+					]
+				}
+			},
+			"description":
+			[
+				"A function that is called by ",
+				{
+					"type": "ref:function",
+					"name": "extit_module_scan"
+				},
+				" for each potential file."
+			]
+		},
+
+		{
+			"type": "typedef",
+			"name": "extit_module_scan_fnfilter_wc_t",
+			"value":
+			{
+				"type": "function",
+				"parameters":
+				[
+					{
+						"type": [ "const", "wchar_t", "*" ],
+						"name": "basename",
+						"description": "The filename without any directory."
+					},
+					{
+						"type": [ "size_t" ],
+						"name": "length",
+						"description": "The length of the filename (in characters)."
+					}
+				],
+				"returns":
+				{
+					"type": "extit_bool_t",
+					"description":
+					[
+						{
+							"type": "ref:constant",
+							"name": "EXTIT_TRUE"
+						},
+						", if the filename is acceptable, or ",
+						{
+							"type": "ref:constant",
+							"name": "EXTIT_FALSE"
+						},
+						" otherwise."
+					]
+				}
+			},
+			"description":
+			[
+				"A function that is called by ",
+				{
+					"type": "ref:function",
+					"name": "extit_module_scan_wc"
+				},
+				" for each potential file.",
+				" This function is only available on platforms that support wide character filenames."
+			]
+		},
+		{
 			"type": "function",
 			"name": "extit_module_bind",
 			"parameters":

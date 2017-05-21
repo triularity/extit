@@ -86,7 +86,64 @@
      <div class="declaration">
       <table>
        <tr>
-        <td><a href="extit_module.html#extit_module_t">extit_module_t</a>&nbsp;*</td>
+        <td>typedef <a href="extit.html#extit_status_t">extit_status_t</a> (*<a name="extit_module_scan_callback_t"><span class="typedef-name">extit_module_scan_callback_t</span></a>)(<a href="extit_pmodule.html#extit_module_t">extit_module_t</a>&nbsp;*&nbsp;<em class="parameter-name">module</em>, void&nbsp;*&nbsp;<em class="parameter-name">client_data</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      <p>
+       A function that is called by <code class="ref"><a href="extit_pmodule.html#extit_module_scan">extit_module_scan()</a></code> or <code class="ref"><a href="extit_pmodule.html#extit_module_scan_wc">extit_module_scan_wc()</a></code> for loaded modules.<br />
+      </p>
+     </div>
+
+     <dl class="details">
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td>typedef <a href="extit.html#extit_bool_t">extit_bool_t</a> (*<a name="extit_module_scan_fnfilter_t"><span class="typedef-name">extit_module_scan_fnfilter_t</span></a>)(const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">basename</em>, size_t&nbsp;<em class="parameter-name">length</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      <p>
+       A function that is called by <code class="ref"><a href="extit_pmodule.html#extit_module_scan">extit_module_scan()</a></code> for each potential file.<br />
+      </p>
+     </div>
+
+     <dl class="details">
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td>typedef <a href="extit.html#extit_bool_t">extit_bool_t</a> (*<a name="extit_module_scan_fnfilter_wc_t"><span class="typedef-name">extit_module_scan_fnfilter_wc_t</span></a>)(const&nbsp;wchar_t&nbsp;*&nbsp;<em class="parameter-name">basename</em>, size_t&nbsp;<em class="parameter-name">length</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      <p>
+       A function that is called by <code class="ref"><a href="extit_pmodule.html#extit_module_scan_wc">extit_module_scan_wc()</a></code> for each potential file. This function is only available on platforms that support wide character filenames.<br />
+      </p>
+     </div>
+
+     <dl class="details">
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><a href="extit_pmodule.html#extit_module_t">extit_module_t</a>&nbsp;*</td>
        </tr>
        <tr>
         <td><span class="function-name"><a name="extit_module_bind">extit_module_bind</a></span>(<a href="extit_container.html#extit_container_t">extit_container_t</a>&nbsp;*&nbsp;<em class="parameter-name">container</em>, const&nbsp;void&nbsp;*&nbsp;<em class="parameter-name">descriptor</em>, unsigned int&nbsp;<em class="parameter-name">flags</em>)</td>
@@ -96,7 +153,7 @@
 
      <div class="description">
       <p>
-       Create a module from a plugin module descriptor. This should be released with <code class="ref"><a href="extit_module.html#extit_module_release">extit_module_release()</a></code>.<br />
+       Create a module from a plugin module descriptor. This should be released with <code class="ref"><a href="extit_pmodule.html#extit_module_release">extit_module_release()</a></code>.<br />
       </p>
      </div>
 
@@ -121,17 +178,17 @@
      <div class="declaration">
       <table>
        <tr>
-        <td><a href="extit_plugin.html#extit_plugin_t">extit_plugin_t</a>&nbsp;*</td>
+        <td><a href="extit_pmodule.html#extit_plugin_t">extit_plugin_t</a>&nbsp;*</td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="extit_module_create_plugin">extit_module_create_plugin</a></span>(<a href="extit_module.html#extit_module_t">extit_module_t</a>&nbsp;*&nbsp;<em class="parameter-name">module</em>)</td>
+        <td><span class="function-name"><a name="extit_module_create_plugin">extit_module_create_plugin</a></span>(<a href="extit_pmodule.html#extit_module_t">extit_module_t</a>&nbsp;*&nbsp;<em class="parameter-name">module</em>)</td>
        </tr>
       </table>
      </div>
 
      <div class="description">
       <p>
-       Create a plugin instance for a module. The plugin should be freed with <code class="ref"><a href="extit_plugin.html#extit_plugin_destroy">extit_plugin_destroy()</a></code>.<br />
+       Create a plugin instance for a module. The plugin should be freed with <code class="ref"><a href="extit_pmodule.html#extit_plugin_destroy">extit_plugin_destroy()</a></code>.<br />
       </p>
      </div>
 
@@ -157,7 +214,7 @@
         <td><a href="iv.html#iv_version_t">iv_version_t</a></td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="extit_module_get_abi_version">extit_module_get_abi_version</a></span>(<a href="extit_module.html#extit_module_t">extit_module_t</a>&nbsp;*&nbsp;<em class="parameter-name">module</em>)</td>
+        <td><span class="function-name"><a name="extit_module_get_abi_version">extit_module_get_abi_version</a></span>(<a href="extit_pmodule.html#extit_module_t">extit_module_t</a>&nbsp;*&nbsp;<em class="parameter-name">module</em>)</td>
        </tr>
       </table>
      </div>
@@ -190,7 +247,7 @@
         <td><a href="iv.html#iv_version_t">iv_version_t</a></td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="extit_module_get_effective_abi_version">extit_module_get_effective_abi_version</a></span>(<a href="extit_module.html#extit_module_t">extit_module_t</a>&nbsp;*&nbsp;<em class="parameter-name">module</em>)</td>
+        <td><span class="function-name"><a name="extit_module_get_effective_abi_version">extit_module_get_effective_abi_version</a></span>(<a href="extit_pmodule.html#extit_module_t">extit_module_t</a>&nbsp;*&nbsp;<em class="parameter-name">module</em>)</td>
        </tr>
       </table>
      </div>
@@ -223,7 +280,7 @@
         <td>unsigned int</td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="extit_module_get_flags">extit_module_get_flags</a></span>(<a href="extit_module.html#extit_module_t">extit_module_t</a>&nbsp;*&nbsp;<em class="parameter-name">module</em>)</td>
+        <td><span class="function-name"><a name="extit_module_get_flags">extit_module_get_flags</a></span>(<a href="extit_pmodule.html#extit_module_t">extit_module_t</a>&nbsp;*&nbsp;<em class="parameter-name">module</em>)</td>
        </tr>
       </table>
      </div>
@@ -256,7 +313,7 @@
         <td><a href="extit.html#extit_func_t">extit_func_t</a></td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="extit_module_get_function">extit_module_get_function</a></span>(<a href="extit_module.html#extit_module_t">extit_module_t</a>&nbsp;*&nbsp;<em class="parameter-name">module</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">name</em>)</td>
+        <td><span class="function-name"><a name="extit_module_get_function">extit_module_get_function</a></span>(<a href="extit_pmodule.html#extit_module_t">extit_module_t</a>&nbsp;*&nbsp;<em class="parameter-name">module</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">name</em>)</td>
        </tr>
       </table>
      </div>
@@ -290,7 +347,7 @@
         <td>const&nbsp;char&nbsp;*</td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="extit_module_get_id">extit_module_get_id</a></span>(<a href="extit_module.html#extit_module_t">extit_module_t</a>&nbsp;*&nbsp;<em class="parameter-name">module</em>)</td>
+        <td><span class="function-name"><a name="extit_module_get_id">extit_module_get_id</a></span>(<a href="extit_pmodule.html#extit_module_t">extit_module_t</a>&nbsp;*&nbsp;<em class="parameter-name">module</em>)</td>
        </tr>
       </table>
      </div>
@@ -323,7 +380,7 @@
         <td>uint32_t</td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="extit_module_get_id_version">extit_module_get_id_version</a></span>(<a href="extit_module.html#extit_module_t">extit_module_t</a>&nbsp;*&nbsp;<em class="parameter-name">module</em>)</td>
+        <td><span class="function-name"><a name="extit_module_get_id_version">extit_module_get_id_version</a></span>(<a href="extit_pmodule.html#extit_module_t">extit_module_t</a>&nbsp;*&nbsp;<em class="parameter-name">module</em>)</td>
        </tr>
       </table>
      </div>
@@ -356,7 +413,7 @@
         <td>const&nbsp;char&nbsp;*</td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="extit_module_get_name">extit_module_get_name</a></span>(<a href="extit_module.html#extit_module_t">extit_module_t</a>&nbsp;*&nbsp;<em class="parameter-name">module</em>)</td>
+        <td><span class="function-name"><a name="extit_module_get_name">extit_module_get_name</a></span>(<a href="extit_pmodule.html#extit_module_t">extit_module_t</a>&nbsp;*&nbsp;<em class="parameter-name">module</em>)</td>
        </tr>
       </table>
      </div>
@@ -389,7 +446,7 @@
         <td>void&nbsp;*</td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="extit_module_get_symbol">extit_module_get_symbol</a></span>(<a href="extit_module.html#extit_module_t">extit_module_t</a>&nbsp;*&nbsp;<em class="parameter-name">module</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">name</em>)</td>
+        <td><span class="function-name"><a name="extit_module_get_symbol">extit_module_get_symbol</a></span>(<a href="extit_pmodule.html#extit_module_t">extit_module_t</a>&nbsp;*&nbsp;<em class="parameter-name">module</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">name</em>)</td>
        </tr>
       </table>
      </div>
@@ -423,7 +480,7 @@
         <td>const&nbsp;char&nbsp;*</td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="extit_module_get_version">extit_module_get_version</a></span>(<a href="extit_module.html#extit_module_t">extit_module_t</a>&nbsp;*&nbsp;<em class="parameter-name">module</em>)</td>
+        <td><span class="function-name"><a name="extit_module_get_version">extit_module_get_version</a></span>(<a href="extit_pmodule.html#extit_module_t">extit_module_t</a>&nbsp;*&nbsp;<em class="parameter-name">module</em>)</td>
        </tr>
       </table>
      </div>
@@ -453,7 +510,7 @@
      <div class="declaration">
       <table>
        <tr>
-        <td><a href="extit_module.html#extit_module_t">extit_module_t</a>&nbsp;*</td>
+        <td><a href="extit_pmodule.html#extit_module_t">extit_module_t</a>&nbsp;*</td>
        </tr>
        <tr>
         <td><span class="function-name"><a name="extit_module_load">extit_module_load</a></span>(<a href="extit_container.html#extit_container_t">extit_container_t</a>&nbsp;*&nbsp;<em class="parameter-name">container</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">path</em>, unsigned int&nbsp;<em class="parameter-name">flags</em>)</td>
@@ -463,7 +520,7 @@
 
      <div class="description">
       <p>
-       Create a module from a loadable library file. This should be released with <code class="ref"><a href="extit_module.html#extit_module_release">extit_module_release()</a></code>.<br />
+       Create a module from a loadable library file. This should be released with <code class="ref"><a href="extit_pmodule.html#extit_module_release">extit_module_release()</a></code>.<br />
       </p>
      </div>
 
@@ -488,7 +545,7 @@
      <div class="declaration">
       <table>
        <tr>
-        <td><a href="extit_module.html#extit_module_t">extit_module_t</a>&nbsp;*</td>
+        <td><a href="extit_pmodule.html#extit_module_t">extit_module_t</a>&nbsp;*</td>
        </tr>
        <tr>
         <td><span class="function-name"><a name="extit_module_load_wc">extit_module_load_wc</a></span>(<a href="extit_container.html#extit_container_t">extit_container_t</a>&nbsp;*&nbsp;<em class="parameter-name">container</em>, const&nbsp;wchar_t&nbsp;*&nbsp;<em class="parameter-name">path</em>, unsigned int&nbsp;<em class="parameter-name">flags</em>)</td>
@@ -498,7 +555,7 @@
 
      <div class="description">
       <p>
-       Create a module from a loadable library file. This function is only available on platforms that support wide character filenames. This should be released with <code class="ref"><a href="extit_module.html#extit_module_release">extit_module_release()</a></code>.<br />
+       Create a module from a loadable library file. This function is only available on platforms that support wide character filenames. This should be released with <code class="ref"><a href="extit_pmodule.html#extit_module_release">extit_module_release()</a></code>.<br />
       </p>
      </div>
 
@@ -526,7 +583,7 @@
         <td><a href="extit.html#extit_status_t">extit_status_t</a></td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="extit_module_release">extit_module_release</a></span>(<a href="extit_module.html#extit_module_t">extit_module_t</a>&nbsp;*&nbsp;<em class="parameter-name">module</em>)</td>
+        <td><span class="function-name"><a name="extit_module_release">extit_module_release</a></span>(<a href="extit_pmodule.html#extit_module_t">extit_module_t</a>&nbsp;*&nbsp;<em class="parameter-name">module</em>)</td>
        </tr>
       </table>
      </div>
@@ -559,14 +616,14 @@
         <td><a href="extit.html#extit_status_t">extit_status_t</a></td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="extit_module_scan">extit_module_scan</a></span>(<a href="extit_container.html#extit_container_t">extit_container_t</a>&nbsp;*&nbsp;<em class="parameter-name">container</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">directory</em>, <a href="extit_module.html#extit_module_scan_callback_t">extit_module_scan_callback_t</a>&nbsp;<em class="parameter-name">callback</em>, const&nbsp;void&nbsp;*&nbsp;<em class="parameter-name">client_data</em>, <a href="extit_module.html#extit_module_scan_fnfilter_t">extit_module_scan_fnfilter_t</a>&nbsp;<em class="parameter-name">fnfilter</em>, unsigned int&nbsp;<em class="parameter-name">flags</em>)</td>
+        <td><span class="function-name"><a name="extit_module_scan">extit_module_scan</a></span>(<a href="extit_container.html#extit_container_t">extit_container_t</a>&nbsp;*&nbsp;<em class="parameter-name">container</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">directory</em>, <a href="extit_pmodule.html#extit_module_scan_callback_t">extit_module_scan_callback_t</a>&nbsp;<em class="parameter-name">callback</em>, const&nbsp;void&nbsp;*&nbsp;<em class="parameter-name">client_data</em>, <a href="extit_pmodule.html#extit_module_scan_fnfilter_t">extit_module_scan_fnfilter_t</a>&nbsp;<em class="parameter-name">fnfilter</em>, unsigned int&nbsp;<em class="parameter-name">flags</em>)</td>
        </tr>
       </table>
      </div>
 
      <div class="description">
       <p>
-       Scan a directory for plugin modules. <em class="parameter-name">fnfilter</em> will be called for each normal file, which should return <code class="ref"><a href="extit.html#EXTIT_TRUE">EXTIT_TRUE</a></code>, if the filename is acceptable, or <code class="ref"><a href="extit.html#EXTIT_FALSE">EXTIT_FALSE</a></code> otherwise. For each valid module found and loaded, <em class="parameter-name">callback</em> will be called with it. Any module loaded by this function must be released with <code class="ref"><a href="extit_module.html#extit_module_release">extit_module_release()</a></code> to prevent memory and/or resource leaks, even if the callback does not use the module.<br />
+       Scan a directory for plugin modules. <em class="parameter-name">fnfilter</em> will be called for each normal file, which should return <code class="ref"><a href="extit.html#EXTIT_TRUE">EXTIT_TRUE</a></code>, if the filename is acceptable, or <code class="ref"><a href="extit.html#EXTIT_FALSE">EXTIT_FALSE</a></code> otherwise. For each valid module found and loaded, <em class="parameter-name">callback</em> will be called with it. Any module loaded by this function must be released with <code class="ref"><a href="extit_pmodule.html#extit_module_release">extit_module_release()</a></code> to prevent memory and/or resource leaks, even if the callback does not use the module.<br />
       </p>
      </div>
 
@@ -597,14 +654,14 @@
         <td><a href="extit.html#extit_status_t">extit_status_t</a></td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="extit_module_scan_wc">extit_module_scan_wc</a></span>(<a href="extit_container.html#extit_container_t">extit_container_t</a>&nbsp;*&nbsp;<em class="parameter-name">container</em>, const&nbsp;wchar_t&nbsp;*&nbsp;<em class="parameter-name">directory</em>, <a href="extit_module.html#extit_module_scan_callback_t">extit_module_scan_callback_t</a>&nbsp;<em class="parameter-name">callback</em>, const&nbsp;void&nbsp;*&nbsp;<em class="parameter-name">client_data</em>, <a href="extit_module.html#extit_module_scan_fnfilter_wc_t">extit_module_scan_fnfilter_wc_t</a>&nbsp;<em class="parameter-name">fnfilter</em>, unsigned int&nbsp;<em class="parameter-name">flags</em>)</td>
+        <td><span class="function-name"><a name="extit_module_scan_wc">extit_module_scan_wc</a></span>(<a href="extit_container.html#extit_container_t">extit_container_t</a>&nbsp;*&nbsp;<em class="parameter-name">container</em>, const&nbsp;wchar_t&nbsp;*&nbsp;<em class="parameter-name">directory</em>, <a href="extit_pmodule.html#extit_module_scan_callback_t">extit_module_scan_callback_t</a>&nbsp;<em class="parameter-name">callback</em>, const&nbsp;void&nbsp;*&nbsp;<em class="parameter-name">client_data</em>, <a href="extit_pmodule.html#extit_module_scan_fnfilter_wc_t">extit_module_scan_fnfilter_wc_t</a>&nbsp;<em class="parameter-name">fnfilter</em>, unsigned int&nbsp;<em class="parameter-name">flags</em>)</td>
        </tr>
       </table>
      </div>
 
      <div class="description">
       <p>
-       Scan a directory for plugin modules. <em class="parameter-name">fnfilter</em> will be called for each normal file, which should return <code class="ref"><a href="extit.html#EXTIT_TRUE">EXTIT_TRUE</a></code>, if the filename is acceptable, or <code class="ref"><a href="extit.html#EXTIT_FALSE">EXTIT_FALSE</a></code> otherwise. For each valid module found and loaded, <em class="parameter-name">callback</em> will be called with it. Any module loaded by this function must be released with <code class="ref"><a href="extit_module.html#extit_module_release">extit_module_release()</a></code> to prevent memory and/or resource leaks, even if the callback does not use the module. This function is only available on platforms that support wide character filenames.<br />
+       Scan a directory for plugin modules. <em class="parameter-name">fnfilter</em> will be called for each normal file, which should return <code class="ref"><a href="extit.html#EXTIT_TRUE">EXTIT_TRUE</a></code>, if the filename is acceptable, or <code class="ref"><a href="extit.html#EXTIT_FALSE">EXTIT_FALSE</a></code> otherwise. For each valid module found and loaded, <em class="parameter-name">callback</em> will be called with it. Any module loaded by this function must be released with <code class="ref"><a href="extit_pmodule.html#extit_module_release">extit_module_release()</a></code> to prevent memory and/or resource leaks, even if the callback does not use the module. This function is only available on platforms that support wide character filenames.<br />
       </p>
      </div>
 
@@ -703,7 +760,7 @@
         <td>void</td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="extit_module_set_flags">extit_module_set_flags</a></span>(<a href="extit_module.html#extit_module_t">extit_module_t</a>&nbsp;*&nbsp;<em class="parameter-name">module</em>, unsigned int&nbsp;<em class="parameter-name">flags</em>)</td>
+        <td><span class="function-name"><a name="extit_module_set_flags">extit_module_set_flags</a></span>(<a href="extit_pmodule.html#extit_module_t">extit_module_t</a>&nbsp;*&nbsp;<em class="parameter-name">module</em>, unsigned int&nbsp;<em class="parameter-name">flags</em>)</td>
        </tr>
       </table>
      </div>
@@ -734,7 +791,7 @@
         <td><a href="extit.html#extit_status_t">extit_status_t</a></td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="extit_plugin_destroy">extit_plugin_destroy</a></span>(<a href="extit_plugin.html#extit_plugin_t">extit_plugin_t</a>&nbsp;*&nbsp;<em class="parameter-name">plugin</em>)</td>
+        <td><span class="function-name"><a name="extit_plugin_destroy">extit_plugin_destroy</a></span>(<a href="extit_pmodule.html#extit_plugin_t">extit_plugin_t</a>&nbsp;*&nbsp;<em class="parameter-name">plugin</em>)</td>
        </tr>
       </table>
      </div>
@@ -767,7 +824,7 @@
         <td>void&nbsp;*</td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="extit_plugin_get_context">extit_plugin_get_context</a></span>(<a href="extit_plugin.html#extit_plugin_t">extit_plugin_t</a>&nbsp;*&nbsp;<em class="parameter-name">plugin</em>)</td>
+        <td><span class="function-name"><a name="extit_plugin_get_context">extit_plugin_get_context</a></span>(<a href="extit_pmodule.html#extit_plugin_t">extit_plugin_t</a>&nbsp;*&nbsp;<em class="parameter-name">plugin</em>)</td>
        </tr>
       </table>
      </div>
@@ -800,7 +857,7 @@
         <td>unsigned int</td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="extit_plugin_get_flags">extit_plugin_get_flags</a></span>(<a href="extit_plugin.html#extit_plugin_t">extit_plugin_t</a>&nbsp;*&nbsp;<em class="parameter-name">plugin</em>)</td>
+        <td><span class="function-name"><a name="extit_plugin_get_flags">extit_plugin_get_flags</a></span>(<a href="extit_pmodule.html#extit_plugin_t">extit_plugin_t</a>&nbsp;*&nbsp;<em class="parameter-name">plugin</em>)</td>
        </tr>
       </table>
      </div>
@@ -833,7 +890,7 @@
         <td>void&nbsp;*</td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="extit_plugin_get_interface">extit_plugin_get_interface</a></span>(<a href="extit_plugin.html#extit_plugin_t">extit_plugin_t</a>&nbsp;*&nbsp;<em class="parameter-name">plugin</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">iid</em>, <a href="iv.html#iv_version_t">iv_version_t</a>&nbsp;<em class="parameter-name">version</em>)</td>
+        <td><span class="function-name"><a name="extit_plugin_get_interface">extit_plugin_get_interface</a></span>(<a href="extit_pmodule.html#extit_plugin_t">extit_plugin_t</a>&nbsp;*&nbsp;<em class="parameter-name">plugin</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">iid</em>, <a href="iv.html#iv_version_t">iv_version_t</a>&nbsp;<em class="parameter-name">version</em>)</td>
        </tr>
       </table>
      </div>
@@ -865,10 +922,10 @@
      <div class="declaration">
       <table>
        <tr>
-        <td><a href="extit_module.html#extit_module_t">extit_module_t</a>&nbsp;*</td>
+        <td><a href="extit_pmodule.html#extit_module_t">extit_module_t</a>&nbsp;*</td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="extit_plugin_get_module">extit_plugin_get_module</a></span>(<a href="extit_plugin.html#extit_plugin_t">extit_plugin_t</a>&nbsp;*&nbsp;<em class="parameter-name">plugin</em>)</td>
+        <td><span class="function-name"><a name="extit_plugin_get_module">extit_plugin_get_module</a></span>(<a href="extit_pmodule.html#extit_plugin_t">extit_plugin_t</a>&nbsp;*&nbsp;<em class="parameter-name">plugin</em>)</td>
        </tr>
       </table>
      </div>
@@ -901,7 +958,7 @@
         <td><a href="iv.html#iv_version_t">iv_version_t</a></td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="extit_plugin_query_interface">extit_plugin_query_interface</a></span>(<a href="extit_plugin.html#extit_plugin_t">extit_plugin_t</a>&nbsp;*&nbsp;<em class="parameter-name">plugin</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">iid</em>, <a href="iv.html#iv_version_t">iv_version_t</a>&nbsp;<em class="parameter-name">base_version</em>)</td>
+        <td><span class="function-name"><a name="extit_plugin_query_interface">extit_plugin_query_interface</a></span>(<a href="extit_pmodule.html#extit_plugin_t">extit_plugin_t</a>&nbsp;*&nbsp;<em class="parameter-name">plugin</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">iid</em>, <a href="iv.html#iv_version_t">iv_version_t</a>&nbsp;<em class="parameter-name">base_version</em>)</td>
        </tr>
       </table>
      </div>
@@ -936,7 +993,7 @@
         <td>void</td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="extit_plugin_set_flags">extit_plugin_set_flags</a></span>(<a href="extit_plugin.html#extit_plugin_t">extit_plugin_t</a>&nbsp;*&nbsp;<em class="parameter-name">plugin</em>, unsigned int&nbsp;<em class="parameter-name">flags</em>)</td>
+        <td><span class="function-name"><a name="extit_plugin_set_flags">extit_plugin_set_flags</a></span>(<a href="extit_pmodule.html#extit_plugin_t">extit_plugin_t</a>&nbsp;*&nbsp;<em class="parameter-name">plugin</em>, unsigned int&nbsp;<em class="parameter-name">flags</em>)</td>
        </tr>
       </table>
      </div>
