@@ -46,13 +46,70 @@
 
      <div class="description">
       <p>
-       An interface versioning repository.<br />
+       An interface versioning repository instance.<br />
       </p>
      </div>
 
      <dl class="details">
       <dt class="since"><strong class="label">Since:</strong></dt>
       <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td colspan="2">typedef enum</td>
+       </tr>
+       <tr>
+        <td colspan="2">{</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="IV_REPOSITORY_STATUS_OK">IV_REPOSITORY_STATUS_OK</a>,</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="IV_REPOSITORY_STATUS_FAIL">IV_REPOSITORY_STATUS_FAIL</a>,</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="IV_REPOSITORY_STATUS_NOMEM">IV_REPOSITORY_STATUS_NOMEM</a>,</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="IV_REPOSITORY_STATUS_INVALID">IV_REPOSITORY_STATUS_INVALID</a>,</td>
+       </tr>
+       <tr>
+        <td class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><a name="IV_REPOSITORY_STATUS_NOTFOUND">IV_REPOSITORY_STATUS_NOTFOUND</a>,</td>
+       </tr>
+       <tr>
+        <td colspan="2">} <span class="typedef-name"><a name="iv_repository_status_t">iv_repository_status_t</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      <p>
+       Repository status codes.<br />
+      </p>
+     </div>
+
+     <dl class="details">
+      <dt class="members"><strong class="label">Members:</strong></dt>
+      <dd>
+        <span class="member-name">IV_REPOSITORY_STATUS_OK</span> - Success.<br />
+        <span class="member-name">IV_REPOSITORY_STATUS_FAIL</span> - A general error. This is used when a specific status type is unavailable.<br />
+        <span class="member-name">IV_REPOSITORY_STATUS_NOMEM</span> - Memory allocation failed.<br />
+        <span class="member-name">IV_REPOSITORY_STATUS_INVALID</span> - An invalid parameter value was given, or the resource is in the wrong state.<br />
+        <span class="member-name">IV_REPOSITORY_STATUS_NOTFOUND</span> - No result(s) where found.<br />
+      </dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>ABI 1.0</dd>
 
      </dl>
     </div>
@@ -221,7 +278,7 @@
      <div class="declaration">
       <table>
        <tr>
-        <td>iv_repository_status_t</td>
+        <td><a href="iv_repository.html#iv_repository_status_t">iv_repository_status_t</a></td>
        </tr>
        <tr>
         <td><span class="function-name"><a name="iv_repository_remove">iv_repository_remove</a></span>(<a href="iv_repository.html#iv_repository_t">iv_repository_t</a>&nbsp;*&nbsp;<em class="parameter-name">ivr</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">key</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">iid</em>, <a href="iv.html#iv_version_t">iv_version_t</a>&nbsp;<em class="parameter-name">version</em>, void&nbsp;**&nbsp;<em class="parameter-name">old_valuep</em>)</td>
@@ -258,7 +315,7 @@
      <div class="declaration">
       <table>
        <tr>
-        <td>iv_repository_status_t</td>
+        <td><a href="iv_repository.html#iv_repository_status_t">iv_repository_status_t</a></td>
        </tr>
        <tr>
         <td><span class="function-name"><a name="iv_repository_set">iv_repository_set</a></span>(<a href="iv_repository.html#iv_repository_t">iv_repository_t</a>&nbsp;*&nbsp;<em class="parameter-name">ivr</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">key</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">iid</em>, <a href="iv.html#iv_version_t">iv_version_t</a>&nbsp;<em class="parameter-name">version</em>, void&nbsp;*&nbsp;<em class="parameter-name">value</em>, void&nbsp;**&nbsp;<em class="parameter-name">old_valuep</em>)</td>

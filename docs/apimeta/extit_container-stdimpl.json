@@ -15,6 +15,13 @@
 	"synopsis":
 	[
 		{
+			"type": "global",
+			"name": "extit_container_stdimpl_ops_1_0",
+			"value": "extit_container_ops_1_0_t",
+			"description": "Pre-populated 1.0 container interface operations using standard implementaion functions.",
+			"since": "1.0"
+		},
+		{
 			"type": "function",
 			"name": "extit_container_stdimpl_get_function__1_0",
 			"parameters":

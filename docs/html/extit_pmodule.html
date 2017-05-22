@@ -64,28 +64,6 @@
      <div class="declaration">
       <table>
        <tr>
-        <td>typedef <span class="opaque">...</span> <a name="extit_plugin_t"><span class="typedef-name">extit_plugin_t</span></a></td>
-       </tr>
-      </table>
-     </div>
-
-     <div class="description">
-      <p>
-       A plugin instance.<br />
-      </p>
-     </div>
-
-     <dl class="details">
-      <dt class="since"><strong class="label">Since:</strong></dt>
-      <dd>1.0</dd>
-
-     </dl>
-    </div>
-
-    <div class="item">
-     <div class="declaration">
-      <table>
-       <tr>
         <td>typedef <a href="extit.html#extit_status_t">extit_status_t</a> (*<a name="extit_module_scan_callback_t"><span class="typedef-name">extit_module_scan_callback_t</span></a>)(<a href="extit_pmodule.html#extit_module_t">extit_module_t</a>&nbsp;*&nbsp;<em class="parameter-name">module</em>, void&nbsp;*&nbsp;<em class="parameter-name">client_data</em>)</td>
        </tr>
       </table>
@@ -98,6 +76,18 @@
      </div>
 
      <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">module</em> - The module instance.<br />
+       <em class="parameter-name">client_data</em> - Application defined data.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd>The operation status (<code class="literal">EXTIT_STATUS_</code>*). If <code class="ref"><a href="extit.html#EXTIT_STATUS_OK">EXTIT_STATUS_OK</a></code> is returned, then it is the responsibility of the callback to release the module with <code class="ref"><a href="extit_pmodule.html#extit_module_release">extit_module_release()</a></code>. Any other return value will cause the module to be immediately released.</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
      </dl>
     </div>
 
@@ -112,11 +102,23 @@
 
      <div class="description">
       <p>
-       A function that is called by <code class="ref"><a href="extit_pmodule.html#extit_module_scan">extit_module_scan()</a></code> for each potential file.<br />
+       A function that is called by <code class="ref"><a href="extit_pmodule.html#extit_module_scan">extit_module_scan()</a></code> for each potential file to check if it is acceptable.<br />
       </p>
      </div>
 
      <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">basename</em> - The filename without any directory.<br />
+       <em class="parameter-name">length</em> - The length of the filename.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd><code class="ref"><a href="extit.html#EXTIT_TRUE">EXTIT_TRUE</a></code>, if the filename is acceptable, or <code class="ref"><a href="extit.html#EXTIT_FALSE">EXTIT_FALSE</a></code> otherwise.</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
      </dl>
     </div>
 
@@ -131,11 +133,23 @@
 
      <div class="description">
       <p>
-       A function that is called by <code class="ref"><a href="extit_pmodule.html#extit_module_scan_wc">extit_module_scan_wc()</a></code> for each potential file. This function is only available on platforms that support wide character filenames.<br />
+       A function that is called by <code class="ref"><a href="extit_pmodule.html#extit_module_scan_wc">extit_module_scan_wc()</a></code> for each potential file to check if it is acceptable. This function is only available on platforms that support wide character filenames.<br />
       </p>
      </div>
 
      <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">basename</em> - The filename without any directory.<br />
+       <em class="parameter-name">length</em> - The length of the filename (in characters).<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd><code class="ref"><a href="extit.html#EXTIT_TRUE">EXTIT_TRUE</a></code>, if the filename is acceptable, or <code class="ref"><a href="extit.html#EXTIT_FALSE">EXTIT_FALSE</a></code> otherwise.</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
      </dl>
     </div>
 
@@ -354,7 +368,7 @@
 
      <div class="description">
       <p>
-       Get the unique ID of the plugin module.<br />
+       Get the unique identifier of the plugin module.<br />
       </p>
      </div>
 
@@ -365,7 +379,7 @@
       </dd>
 
       <dt class="returns"><strong class="label">Returns:</strong></dt>
-      <dd>The plugin ID.</dd>
+      <dd>The plugin identifier.</dd>
 
       <dt class="since"><strong class="label">Since:</strong></dt>
       <dd>1.0</dd>
@@ -387,7 +401,7 @@
 
      <div class="description">
       <p>
-       Get the ID relative version of the plugin module. The format is implementation defined, but must return larger values for higher versions and smaller values for lower versions.<br />
+       Get the identifier relative version of the plugin module. The format is implementation defined, but must return larger values for higher versions and smaller values for lower versions.<br />
       </p>
      </div>
 
@@ -398,7 +412,7 @@
       </dd>
 
       <dt class="returns"><strong class="label">Returns:</strong></dt>
-      <dd>The plugin version relative to the ID.</dd>
+      <dd>The plugin version relative to the identifier.</dd>
 
       <dt class="since"><strong class="label">Since:</strong></dt>
       <dd>1.0</dd>
@@ -623,7 +637,7 @@
 
      <div class="description">
       <p>
-       Scan a directory for plugin modules. <em class="parameter-name">fnfilter</em> will be called for each normal file, which should return <code class="ref"><a href="extit.html#EXTIT_TRUE">EXTIT_TRUE</a></code>, if the filename is acceptable, or <code class="ref"><a href="extit.html#EXTIT_FALSE">EXTIT_FALSE</a></code> otherwise. For each valid module found and loaded, <em class="parameter-name">callback</em> will be called with it. Any module loaded by this function must be released with <code class="ref"><a href="extit_pmodule.html#extit_module_release">extit_module_release()</a></code> to prevent memory and/or resource leaks, even if the callback does not use the module.<br />
+       Scan a directory for plugin modules. <em class="parameter-name">fnfilter</em> will be called for each normal file, which should return <code class="ref"><a href="extit.html#EXTIT_TRUE">EXTIT_TRUE</a></code>, if the filename is acceptable, or <code class="ref"><a href="extit.html#EXTIT_FALSE">EXTIT_FALSE</a></code> otherwise. For each valid module found and loaded, <em class="parameter-name">callback</em> will be called with it. Any module that was passed to <em class="parameter-name">callback</em>, which returned <code class="ref"><a href="extit.html#EXTIT_STATUS_OK">EXTIT_STATUS_OK</a></code>, must be released with <code class="ref"><a href="extit_pmodule.html#extit_module_release">extit_module_release()</a></code> to prevent memory and/or resource leaks, even if the callback does not use the module.<br />
       </p>
      </div>
 
@@ -661,7 +675,7 @@
 
      <div class="description">
       <p>
-       Scan a directory for plugin modules. <em class="parameter-name">fnfilter</em> will be called for each normal file, which should return <code class="ref"><a href="extit.html#EXTIT_TRUE">EXTIT_TRUE</a></code>, if the filename is acceptable, or <code class="ref"><a href="extit.html#EXTIT_FALSE">EXTIT_FALSE</a></code> otherwise. For each valid module found and loaded, <em class="parameter-name">callback</em> will be called with it. Any module loaded by this function must be released with <code class="ref"><a href="extit_pmodule.html#extit_module_release">extit_module_release()</a></code> to prevent memory and/or resource leaks, even if the callback does not use the module. This function is only available on platforms that support wide character filenames.<br />
+       Scan a directory for plugin modules. <em class="parameter-name">fnfilter</em> will be called for each normal file, which should return <code class="ref"><a href="extit.html#EXTIT_TRUE">EXTIT_TRUE</a></code>, if the filename is acceptable, or <code class="ref"><a href="extit.html#EXTIT_FALSE">EXTIT_FALSE</a></code> otherwise. For each valid module found and loaded, <em class="parameter-name">callback</em> will be called with it. Any module that was passed to <em class="parameter-name">callback</em>, which returned <code class="ref"><a href="extit.html#EXTIT_STATUS_OK">EXTIT_STATUS_OK</a></code>, must be released with <code class="ref"><a href="extit_pmodule.html#extit_module_release">extit_module_release()</a></code> to prevent memory and/or resource leaks, even if the callback does not use the module. This function is only available on platforms that support wide character filenames.<br />
       </p>
      </div>
 
@@ -778,6 +792,28 @@
        <em class="parameter-name">flags</em> - The module flags (<code class="literal">EXTIT_FLAG_</code>*).<br />
       </dd>
 
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td>typedef <span class="opaque">...</span> <a name="extit_plugin_t"><span class="typedef-name">extit_plugin_t</span></a></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      <p>
+       A plugin instance.<br />
+      </p>
+     </div>
+
+     <dl class="details">
       <dt class="since"><strong class="label">Since:</strong></dt>
       <dd>1.0</dd>
 
@@ -905,7 +941,7 @@
       <dt class="parameters"><strong class="label">Parameters:</strong></dt>
       <dd>
        <em class="parameter-name">plugin</em> - The plugin.<br />
-       <em class="parameter-name">iid</em> - An interface ID.<br />
+       <em class="parameter-name">iid</em> - An interface identifier.<br />
        <em class="parameter-name">version</em> - An interface version.<br />
       </dd>
 
@@ -973,7 +1009,7 @@
       <dt class="parameters"><strong class="label">Parameters:</strong></dt>
       <dd>
        <em class="parameter-name">plugin</em> - The plugin.<br />
-       <em class="parameter-name">iid</em> - An interface ID.<br />
+       <em class="parameter-name">iid</em> - An interface identifier.<br />
        <em class="parameter-name">base_version</em> - An interface version.<br />
       </dd>
 

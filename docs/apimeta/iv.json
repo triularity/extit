@@ -12,6 +12,22 @@
 	[
 		{
 			"type": "macro",
+			"name": "IV_LIB_VERSION",
+			"description":
+			[
+				"The library package version representing the major, minor, and patch level as a single integer value.",
+				" The value is effectively equivalent to ",
+				{
+					"type": "text:code",
+					"value": "(IV_LIB_VERSION_MAJOR * 65536) + (IV_LIB_VERSION_MINOR * 256) + IV_LIB_VERSION_PATCH",
+					"code": true
+				},
+				"."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "macro",
 			"name": "IV_LIB_VERSION_MAJOR",
 			"description": "The library package major version.",
 			"since": "1.0"
@@ -26,22 +42,6 @@
 			"type": "macro",
 			"name": "IV_LIB_VERSION_PATCH",
 			"description": "The library package patch level.",
-			"since": "1.0"
-		},
-		{
-			"type": "macro",
-			"name": "IV_LIB_VERSION",
-			"description":
-			[
-				"The library package version representing the major, minor, and patch level as a single integer value.",
-				" The value is effectively equivalent to ",
-				{
-					"type": "text:code",
-					"value": "(IV_LIB_VERSION_MAJOR * 65536) + (IV_LIB_VERSION_MINOR * 256) + IV_LIB_VERSION_PATCH",
-					"code": true
-				},
-				"."
-			],
 			"since": "1.0"
 		},
 		{
@@ -128,17 +128,6 @@
 			"since": "1.0"
 		},
 		{
-			"type": "typedef",
-			"value": "uint32_t",
-			"name": "iv_version_t",
-			"description":
-			[
-				"An interface version.",
-				" This is an unsigned 32-bit value with the major version in the upper 16-bits and the minor version in the lower 16-bits."
-			],
-			"since": "ABI 1.0"
-		},
-		{
 			"type": "enum",
 			"_name": "_iv_bool",
 			"typedef": "iv_bool_t",
@@ -155,6 +144,17 @@
 			],
 			"description": "A boolean type used by the IV library.",
 			"since": "1.0"
+		},
+		{
+			"type": "typedef",
+			"value": "uint32_t",
+			"name": "iv_version_t",
+			"description":
+			[
+				"An interface version.",
+				" This is an unsigned 32-bit value with the major version in the upper 16-bits and the minor version in the lower 16-bits."
+			],
+			"since": "ABI 1.0"
 		}
 	],
 	"see":

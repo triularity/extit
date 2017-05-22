@@ -16,7 +16,23 @@
 			"type": "typedef",
 			"name": "extit_container_t",
 			"_value": [ "struct", "_extit_container" ],
-			"description": "A container interface.",
+			"description":
+			[
+				"A container interface instance.",
+				" This is a compile time alias that is mapped to the appropriate ABI version named type based on ",
+				{
+					"type": "ref:constant",
+					"name": "EXTIT_ABI_TARGET"
+				},
+				"."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "typedef",
+			"name": "extit_container_1_0_t",
+			"_value": [ "struct", "_extit_container_1_0" ],
+			"description": "A 1.0 container interface instance.",
 			"since": "ABI 1.0"
 		},
 		{

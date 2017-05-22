@@ -12,10 +12,9 @@
 	"synopsis":
 	[
 		{
-			"type": "typedef",
-			"name": "extit_refcount_t",
-			"_value": "uint32_t",
-			"description": "A reference count. This is an integer type, but portable application code should treat it as opaque.",
+			"type": "macro",
+			"name": "EXTIT_REFCOUNT_MAX",
+			"description": "The maximum reference count value.",
 			"since": "1.0"
 		},
 		{
@@ -25,9 +24,10 @@
 			"since": "1.0"
 		},
 		{
-			"type": "macro",
-			"name": "EXTIT_REFCOUNT_MAX",
-			"description": "The maximum reference count value.",
+			"type": "typedef",
+			"name": "extit_refcount_t",
+			"_value": "uint32_t",
+			"description": "A reference count. This is an integer type, but portable application code should treat it as opaque.",
 			"since": "1.0"
 		},
 		{

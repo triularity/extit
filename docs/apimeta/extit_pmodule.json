@@ -21,13 +21,6 @@
 		},
 		{
 			"type": "typedef",
-			"name": "extit_plugin_t",
-			"_value": [ "struct", "_extit_plugin" ],
-			"description": "A plugin instance.",
-			"since": "1.0"
-		},
-		{
-			"type": "typedef",
 			"name": "extit_module_scan_callback_t",
 			"value":
 			{
@@ -55,7 +48,22 @@
 							"type": "text:code",
 							"value": "EXTIT_STATUS_"
 						},
-						"*)."
+						"*).",
+						" If ",
+						{
+							"type": "ref:constant",
+							"name": "EXTIT_STATUS_OK"
+						},
+						" is returned, then it is the responsibility of the callback to release the module with ",
+						{
+							"type": "ref:function",
+							"name": "extit_module_release",
+							"parameters":
+							[
+								[ "extit_module_t", "*" ]
+							]
+						},
+						". Any other return value will cause the module to be immediately released."
 					]
 				}
 			},
@@ -72,7 +80,8 @@
 					"name": "extit_module_scan_wc"
 				},
 				" for loaded modules."
-			]
+			],
+			"since": "1.0"
 		},
 		{
 			"type": "typedef",
@@ -118,8 +127,9 @@
 					"type": "ref:function",
 					"name": "extit_module_scan"
 				},
-				" for each potential file."
-			]
+				" for each potential file to check if it is acceptable."
+			],
+			"since": "1.0"
 		},
 
 		{
@@ -166,9 +176,10 @@
 					"type": "ref:function",
 					"name": "extit_module_scan_wc"
 				},
-				" for each potential file.",
+				" for each potential file to check if it is acceptable.",
 				" This function is only available on platforms that support wide character filenames."
-			]
+			],
+			"since": "1.0"
 		},
 		{
 			"type": "function",
@@ -405,13 +416,13 @@
 				"type": [ "const", "char", "*" ],
 				"description":
 				[
-					"The plugin ID."
+					"The plugin identifier."
 				]
 			},
-			"summary": "Get the unique ID of the plugin module.",
+			"summary": "Get the unique identifier of the plugin module.",
 			"description":
 			[
-				"Get the unique ID of the plugin module."
+				"Get the unique identifier of the plugin module."
 			],
 			"since": "1.0"
 		},
@@ -431,13 +442,13 @@
 				"type": "uint32_t",
 				"description":
 				[
-					"The plugin version relative to the ID."
+					"The plugin version relative to the identifier."
 				]
 			},
-			"summary": "Get the ID relative version of the plugin module.",
+			"summary": "Get the identifier relative version of the plugin module.",
 			"description":
 			[
-				"Get the ID relative version of the plugin module. The format is implementation defined, but must return larger values for higher versions and smaller values for lower versions."
+				"Get the identifier relative version of the plugin module. The format is implementation defined, but must return larger values for higher versions and smaller values for lower versions."
 			],
 			"since": "1.0"
 		},
@@ -762,7 +773,17 @@
 					"name": "callback"
 				},
 				" will be called with it.",
-				" Any module loaded by this function must be released with ",
+				" Any module that was passed to ",
+				{
+					"type": "ref:parameter",
+					"name": "callback"
+				},
+				", which returned ",
+				{
+					"type": "ref:constant",
+					"name": "EXTIT_STATUS_OK"
+				},
+				", must be released with ",
 				{
 					"type": "ref:function",
 					"name": "extit_module_release",
@@ -858,7 +879,17 @@
 					"name": "callback"
 				},
 				" will be called with it.",
-				" Any module loaded by this function must be released with ",
+				" Any module that was passed to ",
+				{
+					"type": "ref:parameter",
+					"name": "callback"
+				},
+				", which returned ",
+				{
+					"type": "ref:constant",
+					"name": "EXTIT_STATUS_OK"
+				},
+				", must be released with ",
 				{
 					"type": "ref:function",
 					"name": "extit_module_release",
@@ -984,6 +1015,13 @@
 			"since": "1.0"
 		},
 		{
+			"type": "typedef",
+			"name": "extit_plugin_t",
+			"_value": [ "struct", "_extit_plugin" ],
+			"description": "A plugin instance.",
+			"since": "1.0"
+		},
+		{
 			"type": "function",
 			"name": "extit_plugin_destroy",
 			"parameters":
@@ -1080,7 +1118,7 @@
 				{
 					"type": [ "const", "char", "*" ],
 					"name": "iid",
-					"description": "An interface ID."
+					"description": "An interface identifier."
 				},
 				{
 					"type": "iv_version_t",
@@ -1139,7 +1177,7 @@
 				{
 					"type": [ "const", "char", "*" ],
 					"name": "iid",
-					"description": "An interface ID."
+					"description": "An interface identifier."
 				},
 				{
 					"type": "iv_version_t",

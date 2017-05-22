@@ -15,8 +15,43 @@
 			"type": "typedef",
 			"name": "iv_repository_t",
 			"_value": [ "struct", "_iv_repository" ],
-			"description": "An interface versioning repository.",
+			"description": "An interface versioning repository instance.",
 			"since": "1.0"
+		},
+		{
+			"type": "enum",
+			"_name": "_iv_repository_status",
+			"typedef": "iv_repository_status_t",
+			"members":
+			[
+				{
+					"name": "IV_REPOSITORY_STATUS_OK",
+					"description": "Success.",
+					"since": "1.0"
+				},
+				{
+					"name": "IV_REPOSITORY_STATUS_FAIL",
+					"description": "A general error. This is used when a specific status type is unavailable.",
+					"since": "1.0"
+				},
+				{
+					"name": "IV_REPOSITORY_STATUS_NOMEM",
+					"description": "Memory allocation failed.",
+					"since": "1.0"
+				},
+				{
+					"name": "IV_REPOSITORY_STATUS_INVALID",
+					"description": "An invalid parameter value was given, or the resource is in the wrong state.",
+					"since": "1.0"
+				},
+				{
+					"name": "IV_REPOSITORY_STATUS_NOTFOUND",
+					"description": "No result(s) where found.",
+					"since": "1.0"
+				}
+			],
+			"description": "Repository status codes.",
+			"since": "ABI 1.0"
 		},
 		{
 			"type": "function",

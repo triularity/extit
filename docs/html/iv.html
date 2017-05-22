@@ -28,6 +28,28 @@
      <div class="declaration">
       <table>
        <tr>
+        <td><span class="macro-name"><a name="IV_LIB_VERSION">IV_LIB_VERSION</a></span></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      <p>
+       The library package version representing the major, minor, and patch level as a single integer value. The value is effectively equivalent to <code class="literal">(IV_LIB_VERSION_MAJOR * 65536) + (IV_LIB_VERSION_MINOR * 256) + IV_LIB_VERSION_PATCH</code>.<br />
+      </p>
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
         <td><span class="macro-name"><a name="IV_LIB_VERSION_MAJOR">IV_LIB_VERSION_MAJOR</a></span></td>
        </tr>
       </table>
@@ -80,28 +102,6 @@
      <div class="description">
       <p>
        The library package patch level.<br />
-      </p>
-     </div>
-
-     <dl class="details">
-      <dt class="since"><strong class="label">Since:</strong></dt>
-      <dd>1.0</dd>
-
-     </dl>
-    </div>
-
-    <div class="item">
-     <div class="declaration">
-      <table>
-       <tr>
-        <td><span class="macro-name"><a name="IV_LIB_VERSION">IV_LIB_VERSION</a></span></td>
-       </tr>
-      </table>
-     </div>
-
-     <div class="description">
-      <p>
-       The library package version representing the major, minor, and patch level as a single integer value. The value is effectively equivalent to <code class="literal">(IV_LIB_VERSION_MAJOR * 65536) + (IV_LIB_VERSION_MINOR * 256) + IV_LIB_VERSION_PATCH</code>.<br />
       </p>
      </div>
 
@@ -229,28 +229,6 @@
      <div class="declaration">
       <table>
        <tr>
-        <td>typedef uint32_t&nbsp;<a name="iv_version_t"><span class="typedef-name">iv_version_t</span></a></td>
-       </tr>
-      </table>
-     </div>
-
-     <div class="description">
-      <p>
-       An interface version. This is an unsigned 32-bit value with the major version in the upper 16-bits and the minor version in the lower 16-bits.<br />
-      </p>
-     </div>
-
-     <dl class="details">
-      <dt class="since"><strong class="label">Since:</strong></dt>
-      <dd>ABI 1.0</dd>
-
-     </dl>
-    </div>
-
-    <div class="item">
-     <div class="declaration">
-      <table>
-       <tr>
         <td colspan="2">typedef enum</td>
        </tr>
        <tr>
@@ -285,6 +263,28 @@
 
       <dt class="since"><strong class="label">Since:</strong></dt>
       <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td>typedef uint32_t&nbsp;<a name="iv_version_t"><span class="typedef-name">iv_version_t</span></a></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      <p>
+       An interface version. This is an unsigned 32-bit value with the major version in the upper 16-bits and the minor version in the lower 16-bits.<br />
+      </p>
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>ABI 1.0</dd>
 
      </dl>
     </div>

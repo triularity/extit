@@ -11,6 +11,22 @@
 	[
 		{
 			"type": "struct",
+			"_name": "_extit_pmodule_ops_1_0",
+			"typedef": "extit_pmodule_ops_1_0_t",
+			"members":
+			[
+				{
+					"type": "extit_pmodule_ops_comp_1_0_t",
+					"name": "v0",
+					"description": "The x.0 component."
+				}
+			],
+			"description": "The version 1.0 plugin module interface operations.",
+			"version": "ABI 1.0",
+			"since": "ABI 1.0"
+		},
+		{
+			"type": "struct",
 			"_name": "_extit_pmodule_ops_comp_1_0",
 			"typedef": "extit_pmodule_ops_comp_1_0_t",
 			"members":
@@ -281,20 +297,18 @@
 			"since": "ABI 1.0"
 		},
 		{
-			"type": "struct",
-			"_name": "_extit_pmodule_ops_1_0",
-			"typedef": "extit_pmodule_ops_1_0_t",
-			"members":
+			"type": "typedef",
+			"name": "extit_pmodule_descriptor_t",
+			"description":
 			[
+				"A generic plugin module descriptor that is mapped to the appropriate descriptor version based on ",
 				{
-					"type": "extit_pmodule_ops_comp_1_0_t",
-					"name": "v0",
-					"description": "The x.0 component."
-				}
+					"type": "ref:constant",
+					"name": "EXTIT_ABI_TARGET"
+				},
+				"."
 			],
-			"description": "The version 1.0 plugin module interface operations.",
-			"version": "ABI 1.0",
-			"since": "ABI 1.0"
+			"since": "1.0"
 		},
 		{
 			"type": "struct",
@@ -415,26 +429,6 @@
 			"since": "1.0"
 		},
 		{
-			"type": "typedef",
-			"name": "extit_pmodule_descriptor_t",
-			"description":
-			[
-				"A generic plugin module descriptor that is mapped to the appropriate descriptor version based on ",
-				{
-					"type": "ref:constant",
-					"name": "EXTIT_ABI_TARGET"
-				},
-				"."
-			],
-			"since": "1.0"
-		},
-		{
-			"type": "macro",
-			"name": "EXTIT_PMODULE_MAGIC",
-			"description": "The magic value at the beginning of the module descriptor.",
-			"since": "ABI 1.0"
-		},
-		{
 			"type": "macro",
 			"name": "EXTIT_PMODULE_DESCRIPTOR_NAME",
 			"description": "The global module descriptor name.",
@@ -445,6 +439,12 @@
 			"name": "EXTIT_PMODULE_DESCRIPTOR_SYMBOL",
 			"description": "The global module descriptor symbol string.",
 			"since": "1.0"
+		},
+		{
+			"type": "macro",
+			"name": "EXTIT_PMODULE_MAGIC",
+			"description": "The magic value at the beginning of the module descriptor.",
+			"since": "ABI 1.0"
 		}
 	],
 	"see":

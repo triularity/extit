@@ -39,6 +39,113 @@
 		},
 		{
 			"type": "macro",
+			"name": "EXTIT_DECL",
+			"description": "A function declaration modifier for consistent calling convention.",
+			"since": "ABI 1.0"
+		},
+		{
+			"type": "macro",
+			"name": "EXTIT_DECL_VARGS",
+			"description": "A variable arguments function declaration modifier for consistent calling convention.",
+			"since": "ABI 1.0"
+		},
+		{
+			"type": "macro",
+			"name": "EXTIT_EXPORT",
+			"description":
+			[
+				"A portable declaration modifier for exporting symbols on platforms that require them. This should be used when building shared libraries that required symbols to be directly exported."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "macro",
+			"name": "EXTIT_FLAG_LOG",
+			"description": "The flags mask for log settings.",
+			"since": "1.0"
+		},
+		{
+			"type": "macro",
+			"name": "EXTIT_FLAG_LOG_DEBUG",
+			"description": "The flags for debug logging.",
+			"since": "1.0"
+		},
+		{
+			"type": "macro",
+			"name": "EXTIT_FLAG_LOG_MINIMAL",
+			"description": "The flags for minimal logging.",
+			"since": "1.0"
+		},
+		{
+			"type": "macro",
+			"name": "EXTIT_FLAG_LOG_NORMAL",
+			"description": "The flags for normal logging.",
+			"since": "1.0"
+		},
+		{
+			"type": "macro",
+			"name": "EXTIT_FLAG_LOG_TRACE",
+			"description": "The flags for trace logging. Using this may cause very verbose output.",
+			"since": "1.0"
+		},
+		{
+			"type": "macro",
+			"name": "EXTIT_IMPORT",
+			"description":
+			[
+				"A portable declaration modifier for importing symbols on platforms that require them. This should be used with headers declarations for symbols that will be linked from shared libraries that were exported with ",
+				{
+					"type": "ref:constant",
+					"name": "EXTIT_EXPORT"
+				},
+				"."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "macro",
+			"name": "EXTIT_IMPORT_STATIC",
+			"description":
+			[
+				"A portable declaration modifier for static importing symbols on platforms that require them. This may be used with headers declarations for symbols that will be linked from shared libraries that were exported with ",
+				{
+					"type": "ref:constant",
+					"name": "EXTIT_EXPORT"
+				},
+				".",
+				" This differs from ",
+				{
+					"type": "ref:constant",
+					"name": "EXTIT_IMPORT"
+				},
+				", in that it will link stubs during compile time on platforms that have them.",
+				" Use of this modifier should be avoided, but is included for situations where linking requires it."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "macro",
+			"name": "EXTIT_LIB_VERSION",
+			"description":
+			[
+				"The library package version representing the major, minor, and patch level as a single integer value.",
+				" This is not the same as ",
+				{
+					"type": "text:code",
+					"value": "EXTIT_ABI_"
+				},
+				"*, and should only be used for package management and informational purposes.",
+				" The value is effectively equivalent to ",
+				{
+					"type": "text:code",
+					"value": "(EXTIT_LIB_VERSION_MAJOR * 65536) + (EXTIT_LIB_VERSION_MINOR * 256) + EXTIT_LIB_VERSION_PATCH"
+				},
+				"."
+			],
+			"since": "1.0"
+		},
+		{
+			"type": "macro",
 			"name": "EXTIT_LIB_VERSION_MAJOR",
 			"description":
 			[
@@ -84,121 +191,8 @@
 		},
 		{
 			"type": "macro",
-			"name": "EXTIT_LIB_VERSION",
-			"description":
-			[
-				"The library package version representing the major, minor, and patch level as a single integer value.",
-				" This is not the same as ",
-				{
-					"type": "text:code",
-					"value": "EXTIT_ABI_"
-				},
-				"*, and should only be used for package management and informational purposes.",
-				" The value is effectively equivalent to ",
-				{
-					"type": "text:code",
-					"value": "(EXTIT_LIB_VERSION_MAJOR * 65536) + (EXTIT_LIB_VERSION_MINOR * 256) + EXTIT_LIB_VERSION_PATCH"
-				},
-				"."
-			],
-			"since": "1.0"
-		},
-		{
-			"type": "macro",
-			"name": "EXTIT_FLAG_LOG",
-			"description": "The flags mask for log settings.",
-			"since": "1.0"
-		},
-		{
-			"type": "macro",
-			"name": "EXTIT_FLAG_LOG_MINIMAL",
-			"description": "The flags for minimal logging.",
-			"since": "1.0"
-		},
-		{
-			"type": "macro",
-			"name": "EXTIT_FLAG_LOG_NORMAL",
-			"description": "The flags for normal logging.",
-			"since": "1.0"
-		},
-		{
-			"type": "macro",
-			"name": "EXTIT_FLAG_LOG_DEBUG",
-			"description": "The flags for debug logging.",
-			"since": "1.0"
-		},
-		{
-			"type": "macro",
-			"name": "EXTIT_FLAG_LOG_TRACE",
-			"description": "The flags for trace logging. Using this may cause very verbose output.",
-			"since": "1.0"
-		},
-		{
-			"type": "macro",
 			"name": "EXTIT_PACK",
 			"description": "A declaration modifier that causes structures to be tightly packed.",
-			"since": "ABI 1.0"
-		},
-		{
-			"type": "macro",
-			"name": "EXTIT_DECL",
-			"description": "A function declaration modifier for consistent calling convention.",
-			"since": "ABI 1.0"
-		},
-		{
-			"type": "macro",
-			"name": "EXTIT_DECL_VARGS",
-			"description": "A variable arguments function declaration modifier for consistent calling convention.",
-			"since": "ABI 1.0"
-		},
-		{
-			"type": "macro",
-			"name": "EXTIT_EXPORT",
-			"description":
-			[
-				"A portable declaration modifier for exporting symbols on platforms that require them. This should be used when building shared libraries that required symbols to be directly exported."
-			],
-			"since": "1.0"
-		},
-		{
-			"type": "macro",
-			"name": "EXTIT_IMPORT",
-			"description":
-			[
-				"A portable declaration modifier for importing symbols on platforms that require them. This should be used with headers declarations for symbols that will be linked from shared libraries that were exported with ",
-				{
-					"type": "ref:constant",
-					"name": "EXTIT_EXPORT"
-				},
-				"."
-			],
-			"since": "1.0"
-		},
-		{
-			"type": "macro",
-			"name": "EXTIT_IMPORT_STATIC",
-			"description":
-			[
-				"A portable declaration modifier for static importing symbols on platforms that require them. This may be used with headers declarations for symbols that will be linked from shared libraries that were exported with ",
-				{
-					"type": "ref:constant",
-					"name": "EXTIT_EXPORT"
-				},
-				".",
-				" This differs from ",
-				{
-					"type": "ref:constant",
-					"name": "EXTIT_IMPORT"
-				},
-				", in that it will link stubs during compile time on platforms that have them.",
-				" Use of this modifier should be avoided, but is included for situations where linking requires it."
-			],
-			"since": "1.0"
-		},
-		{
-			"type": "typedef",
-			"name": "extit_func_t",
-			"description": "A portable function pointer.",
 			"since": "ABI 1.0"
 		},
 		{
@@ -218,6 +212,12 @@
 			],
 			"description": "A portable boolean type.",
 			"since": "1.0"
+		},
+		{
+			"type": "typedef",
+			"name": "extit_func_t",
+			"description": "A portable function pointer.",
+			"since": "ABI 1.0"
 		},
 		{
 			"type": "enum",
