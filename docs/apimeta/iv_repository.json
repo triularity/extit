@@ -88,10 +88,10 @@
 					" if memory allocation failed."
 				]
 			},
-			"summary": "Create an interface version repository.",
+			"summary": "Create an interface versioning repository.",
 			"description":
 			[
-				"Create an interface version repository.",
+				"Create an interface versioning repository.",
 				" The repository should be freed using ",
 				{
 					"type": "ref:function",
@@ -116,7 +116,7 @@
 					"description": "The repository."
 				}
 			],
-			"description": "Destroy an interface version repository.",
+			"description": "Destroy an interface versioning repository.",
 			"since": "1.0"
 		},
 		{

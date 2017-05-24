@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <!-- !!! THIS FILE WAS AUTOMATICALLY GENERATED - ANY EDITS MAY BE LOST !!! -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Interface Versioning Map</title>
+  <link rel="stylesheet" href="style.css">
+ </head>
+
+ <body>
+  <div class="section" id="libraries">
+   <a name="libraries"><h2 class="label">Libraries</h2></a>
+
+   <div class="content">
+    iv_util (<code class="cmdline"><code class="cmdline">-liv_util</code>, iv_util.lib</code>)<br />
+   </div>
+  </div>
+
+  <div class="section" id="headers">
+   <a name="headers"><h2 class="label">Headers</h2></a>
+
+   <div class="content">
+    <table>
+     <tr>
+      <td>#include &lt;iv/base.h&gt;</td>
+     </tr>
+     <tr>
+      <td>#include &lt;iv/util.h&gt;</td>
+     </tr>
+    </table>
+   </div>
+  </div>
+
+  <div class="section" id="usage">
+   <a name="usage"><h2 class="label">Usage</h2></a>
+
+   <div class="content">
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td>typedef <span class="opaque">...</span> <a name="iv_map_t"><span class="typedef-name">iv_map_t</span></a></td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      <p>
+       An interface versioning map instance.<br />
+      </p>
+     </div>
+
+     <dl class="details">
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td>void&nbsp;**</td>
+       </tr>
+       <tr>
+        <td><span class="function-name"><a name="iv_map_acquire_valueptr">iv_map_acquire_valueptr</a></span>(const&nbsp;iv_map_t&nbsp;*&nbsp;<em class="parameter-name">map</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">nid</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">iid</em>, const&nbsp;char&nbsp;**&nbsp;<em class="parameter-name">internal_nid</em>, const&nbsp;char&nbsp;**&nbsp;<em class="parameter-name">internal_iid</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      <p>
+       Get the internal value pointer for a name/interface pair, creating an entry if needed.<br />
+      </p>
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">map</em> - The map.<br />
+       <em class="parameter-name">nid</em> - A name identifier.<br />
+       <em class="parameter-name">iid</em> - An interface identifier.<br />
+       <em class="parameter-name">internal_nid</em> - Where to store the internal name identifier string, or <code class="ref">NULL</code> to ignore.<br />
+       <em class="parameter-name">internal_iid</em> - Where to store the internal interface identifier string, or <code class="ref">NULL</code> to ignore.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd>The value pointer, or <code class="ref">NULL</code> if none was found. Callers of this function are expected to set the contents of the pointer to non-<code class="ref">NULL</code>, marking it as in-use.</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td>void</td>
+       </tr>
+       <tr>
+        <td><span class="function-name"><a name="iv_map_cleanup">iv_map_cleanup</a></span>(iv_map_t&nbsp;*&nbsp;<em class="parameter-name">map</em>, void (*<em class="parameter-name">cleaner</em>)(void&nbsp;**&nbsp;<em class="parameter-name">valueptr</em>))</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      <p>
+       Release any internal memory that is no longer needed. This will iterate through all entries in the map that are not <code class="ref">NULL</code>, calling <em class="parameter-name">cleaner</em> with the value pointer of each one. That function should attempt to release any empty/unused data and set such entries pointers to <code class="ref">NULL</code>. Entries left with <code class="ref">NULL</code> values will removed from the map.<br />
+      </p>
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">map</em> - The map.<br />
+       <em class="parameter-name">cleaner</em> - A callback for freeing unused entry values.<br />
+      </dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td>iv_map_t&nbsp;*</td>
+       </tr>
+       <tr>
+        <td><span class="function-name"><a name="iv_map_create">iv_map_create</a></span>(uint32_t&nbsp;<em class="parameter-name">hashsize</em>, void (*<em class="parameter-name">free_callback</em>)(void&nbsp;*&nbsp;<em class="parameter-name">value</em>))</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      <p>
+       Create an interface versioning map. The map should be freed using <code class="ref"><a href="iv_map.html#iv_map_destroy">iv_map_destroy()</a></code>.<br />
+      </p>
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">hashsize</em> - The hash size, or <code class="literal">0</code> to use the default.<br />
+       <em class="parameter-name">free_callback</em> - A callback for freeing entry values when the map is destroyed.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd>A map, or <code class="ref">NULL</code> if memory allocation failed.</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td>void</td>
+       </tr>
+       <tr>
+        <td><span class="function-name"><a name="iv_map_destroy">iv_map_destroy</a></span>(iv_map_t&nbsp;*&nbsp;<em class="parameter-name">map</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      <p>
+       Destroy an interface versioning map.<br />
+      </p>
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">map</em> - The map.<br />
+      </dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td>void&nbsp;*</td>
+       </tr>
+       <tr>
+        <td><span class="function-name"><a name="iv_map_get">iv_map_get</a></span>(const&nbsp;iv_map_t&nbsp;*&nbsp;<em class="parameter-name">map</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">nid</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">iid</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      <p>
+       Get the value for a name/interface pair.<br />
+      </p>
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">map</em> - The map.<br />
+       <em class="parameter-name">nid</em> - A name identifier.<br />
+       <em class="parameter-name">iid</em> - An interface identifier.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd>The entry value, or <code class="ref">NULL</code> if none was found.</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td>void&nbsp;**</td>
+       </tr>
+       <tr>
+        <td><span class="function-name"><a name="iv_map_get_valueptr">iv_map_get_valueptr</a></span>(const&nbsp;iv_map_t&nbsp;*&nbsp;<em class="parameter-name">map</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">nid</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">iid</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      <p>
+       Get the internal value pointer for a name/interface pair. This is similar to <code class="ref"><a href="iv_map.html#iv_map_acquire_valueptr">iv_map_acquire_valueptr()</a></code>, except an entry will not be created if it does not exist.<br />
+      </p>
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">map</em> - The map.<br />
+       <em class="parameter-name">nid</em> - A name identifier.<br />
+       <em class="parameter-name">iid</em> - An interface identifier.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd>The value pointer, or <code class="ref">NULL</code> if none was found.</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td>const&nbsp;char&nbsp;*</td>
+       </tr>
+       <tr>
+        <td><span class="function-name"><a name="iv_map_intern_interfaceid">iv_map_intern_interfaceid</a></span>(iv_map_t&nbsp;*&nbsp;<em class="parameter-name">map</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">nid</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">iid</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      <p>
+       Get the internal interface identifier for a given name/interface pair. The identifier, if found, is guaranteed to be valid as long as the entry exists and points to a non-<code class="ref">NULL</code> value.<br />
+      </p>
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">map</em> - The map.<br />
+       <em class="parameter-name">nid</em> - A name identifier.<br />
+       <em class="parameter-name">iid</em> - An interface identifier.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd>The internal interface identifier, or <code class="ref">NULL</code> if no entry is found.</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td>const&nbsp;char&nbsp;*</td>
+       </tr>
+       <tr>
+        <td><span class="function-name"><a name="iv_map_intern_nameid">iv_map_intern_nameid</a></span>(iv_map_t&nbsp;*&nbsp;<em class="parameter-name">map</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">nid</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">iid</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      <p>
+       Get the internal name identifier for a given name/interface pair. The identifier, if found, is guaranteed to be valid as long as the entry exists and points to a non-<code class="ref">NULL</code> value.<br />
+      </p>
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">map</em> - The map.<br />
+       <em class="parameter-name">nid</em> - A name identifier.<br />
+       <em class="parameter-name">iid</em> - An interface identifier.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd>The internal name identifier, or <code class="ref">NULL</code> if no entry is found.</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+   </div>
+  </div>
+
+  <div class="section" id="see">
+   <a name="see"><h2 class="label">See Also</h2></a>
+
+   <div class="content">
+    <table>
+     <tr>
+      <td><span class="ref"><a href="iv.html">Interface Versioning</a></span></li>
+</td>
+     </tr>
+    </table>
+   </div>
+  </div>
+
+  <div class="copyright">
+   <hr />
+   Copyright &copy; 2017, Chad M. Fraleigh.  All rights reserved.
+  </div>
+ </body>
+</html>

@@ -166,6 +166,12 @@
 		},
 		{
 			"type": "ref:generic",
+			"name": "Interface Versioning Map",
+			"link": "iv_map",
+			"section": "3"
+		},
+		{
+			"type": "ref:generic",
 			"name": "Interface Versioning Repository",
 			"link": "iv_repository",
 			"section": "3"
