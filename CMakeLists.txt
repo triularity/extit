@@ -31,6 +31,10 @@ set(EXTIT_HAVE_DLFUNC ${DEFAULT_HAVE_DLFUNC} CACHE BOOL "Platform supports dlfun
 set(EXTIT_COMPAT FALSE CACHE BOOL "Enable Backward Compatibility")
 
 
+# Piggy back off of ExtIt setting for now
+set(IV_COMPAT ${EXTIT_COMPAT})
+
+
 include_directories(BEFORE src/include)
 
 
@@ -286,9 +290,14 @@ set(IV_UTIL_HEADER_FILES
 	src/include/iv/util.h)
 
 set(IV_UTIL_SOURCE_FILES
-	src/iv/util/keymap.c
 	src/iv/util/map.c
 	src/iv/util/matches.c)
+
+if(IV_COMPAT)
+	set(IV_UTIL_SOURCE_FILES
+		${IV_UTIL_SOURCE_FILES}
+		src/iv/util/keymap.c)
+endif()
 
 
 #
@@ -369,6 +378,10 @@ endif()
 
 if(EXTIT_COMPAT)
 	add_definitions("-DEXTIT_COMPAT")
+endif()
+
+if(IV_COMPAT)
+	add_definitions("-DIV_COMPAT")
 endif()
 
 
@@ -1272,15 +1285,17 @@ if(EXTIT_COMPILE_TESTS)
 			tests/iv_bool_t/test_iv_bool.c
 			${IV_HEADER_FILES})
 
-	add_executable(
-		test_iv_keymap
-			tests/iv_keymap/test_keymap.c
-			${IV_HEADER_FILES}
-			${IV_UTIL_HEADER_FILES})
+	if(IV_COMPAT)
+		add_executable(
+			test_iv_keymap
+				tests/iv_keymap/test_keymap.c
+				${IV_HEADER_FILES}
+				${IV_UTIL_HEADER_FILES})
 
-	target_link_libraries(
-		test_iv_keymap
-			iv_util)
+		target_link_libraries(
+			test_iv_keymap
+				iv_util)
+	endif()
 
 	add_executable(
 		test_iv_map

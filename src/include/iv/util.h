@@ -24,7 +24,7 @@ extern "C" {
 #define	LIBAPI		IV_IMPORT
 #endif
 
-
+#ifdef	IV_COMPAT
 typedef	struct _iv_keymap	iv_keymap_t;
 
 
@@ -74,6 +74,7 @@ const unsigned char *	IV_DECL
 				iv_keymap_t *keymap,
 				const unsigned char *key,
 				size_t keylen);
+#endif	/* IV_COMPAT */
 
 
 typedef	struct _iv_map		iv_map_t;
@@ -92,13 +93,13 @@ LIBAPI
 void			IV_DECL
 			iv_map_cleanup(
 				iv_map_t *map,
-				void (*value_cleaner)(void **valueptr));
+				void (*cleaner)(void **valueptr));
 
 LIBAPI
 iv_map_t *		IV_DECL
 			iv_map_create(
 				uint32_t hashsize,
-				void (*free_func)(void *value));
+				void (*free_callback)(void *value));
 
 LIBAPI
 void			IV_DECL
