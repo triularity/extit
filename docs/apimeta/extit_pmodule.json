@@ -1,5 +1,6 @@
 {
 	"title": "ExtIt Plugin Module",
+	"description": "The plugin module application side API.",
 	"includes":
 	[
 		"iv/base.h",
@@ -1192,7 +1193,7 @@
 				[
 					"The highest compatible interface version, or ",
 					{
-						"type": "ref:constant",
+						"type": "ref:macro",
 						"name": "IV_VERSION_NONE"
 					},
 					" if a matching interface wasn't found."

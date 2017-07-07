@@ -1,5 +1,6 @@
 {
 	"title": "ExtIt Container - Implementation",
+	"description": "Implementation of a container interface.",
 	"includes":
 	[
 		"iv/base.h",
@@ -151,7 +152,7 @@
 							[
 								"The highest compatible interface version, or ",
 								{
-									"type": "ref:constant",
+									"type": "ref:macro",
 									"name": "IV_VERSION_NONE"
 								},
 								" if a matching interface wasn't found."
@@ -244,10 +245,6 @@
 			"version": "ABI 1.0",
 			"since": "ABI 1.0"
 		}
-	],
-	"description":
-	[
-		"Implementation of a container interface."
 	],
 	"see":
 	[

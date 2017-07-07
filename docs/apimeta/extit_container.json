@@ -1,5 +1,6 @@
 {
 	"title": "ExtIt Container",
+	"description": "A container is a interface for providing server side resources to a plugin module.",
 	"includes":
 	[
 		"iv/base.h",
@@ -21,7 +22,7 @@
 				"A container interface instance.",
 				" This is a compile time alias that is mapped to the appropriate ABI version named type based on ",
 				{
-					"type": "ref:constant",
+					"type": "ref:macro",
 					"name": "EXTIT_ABI_TARGET"
 				},
 				"."
@@ -64,7 +65,7 @@
 				"Resolve a function pointer from a container interface.",
 				" This is a compile time macro that is mapped to the appropriate ABI version named function based on ",
 				{
-					"type": "ref:constant",
+					"type": "ref:macro",
 					"name": "EXTIT_ABI_TARGET"
 				},
 				"."
@@ -157,7 +158,7 @@
 				"Get an interface from a container interface.",
 				" This is a compile time macro that is mapped to the appropriate ABI version named function based on ",
 				{
-					"type": "ref:constant",
+					"type": "ref:macro",
 					"name": "EXTIT_ABI_TARGET"
 				},
 				"."
@@ -327,7 +328,7 @@
 				"Log a message using a container interface.",
 				" This is a compile time macro that is mapped to the appropriate ABI version named function based on ",
 				{
-					"type": "ref:constant",
+					"type": "ref:macro",
 					"name": "EXTIT_ABI_TARGET"
 				},
 				"."
@@ -398,7 +399,7 @@
 			[
 				"The highest compatible interface version, or ",
 				{
-					"type": "ref:constant",
+					"type": "ref:macro",
 					"name": "IV_VERSION_NONE"
 				},
 				" if a matching interface wasn't found or the container version was incompatible."
@@ -409,7 +410,7 @@
 				"Query an interface version from a container interface.",
 				" This is a compile time macro that is mapped to the appropriate ABI version named function based on ",
 				{
-					"type": "ref:constant",
+					"type": "ref:macro",
 					"name": "EXTIT_ABI_TARGET"
 				},
 				"."
@@ -444,7 +445,7 @@
 				[
 					"The highest compatible interface version, or ",
 					{
-						"type": "ref:constant",
+						"type": "ref:macro",
 						"name": "IV_VERSION_NONE"
 					},
 					" if a matching interface wasn't found or the container version was incompatible."
@@ -475,10 +476,6 @@
 			"version": "ABI 1.0",
 			"since": "ABI 1.0"
 		}
-	],
-	"description":
-	[
-		"A container is a interface for providing server side resources to a plugin module."
 	],
 	"see":
 	[

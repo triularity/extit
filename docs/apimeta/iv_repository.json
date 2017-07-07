@@ -1,5 +1,6 @@
 {
 	"title": "Interface Versioning Repository",
+	"description": "A general repository for interface/version mappings.",
 	"includes":
 	[
 		"iv/base.h",
@@ -231,7 +232,7 @@
 				[
 					"The highest available version, or ",
 					{
-						"type": "ref:constant",
+						"type": "ref:macro",
 						"name": "IV_VERSION_NONE"
 					},
 					" if none was found."

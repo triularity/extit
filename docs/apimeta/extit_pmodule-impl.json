@@ -247,7 +247,7 @@
 							[
 								"The highest compatible interface version, or ",
 								{
-									"type": "ref:constant",
+									"type": "ref:macro",
 									"name": "IV_VERSION_NONE"
 								},
 								" if a matching interface wasn't found."
@@ -303,7 +303,7 @@
 			[
 				"A generic plugin module descriptor that is mapped to the appropriate descriptor version based on ",
 				{
-					"type": "ref:constant",
+					"type": "ref:macro",
 					"name": "EXTIT_ABI_TARGET"
 				},
 				"."
@@ -323,7 +323,7 @@
 					[
 						"The value defined by ",
 						{
-							"type": "ref:constant",
+							"type": "ref:macro",
 							"name": "EXTIT_PMODULE_MAGIC"
 						},
 						"."
@@ -350,7 +350,7 @@
 					[
 						"The value defined by ",
 						{
-							"type": "ref:constant",
+							"type": "ref:macro",
 							"name": "EXTIT_PMODULE_MAGIC"
 						},
 						"."

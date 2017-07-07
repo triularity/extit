@@ -1,5 +1,6 @@
 {
 	"title": "ExtIt",
+	"description": "A light weight library for loading interface based plugins.",
 	"includes":
 	[
 		"iv/base.h",
@@ -30,7 +31,7 @@
 				"The target ABI version that should be defined before including ExtIt header files.",
 				" This is set to a defined version constant, such as ",
 				{
-					"type": "ref:constant",
+					"type": "ref:macro",
 					"name": "EXTIT_ABI_1_0"
 				},
 				"."
@@ -95,7 +96,7 @@
 			[
 				"A portable declaration modifier for importing symbols on platforms that require them. This should be used with headers declarations for symbols that will be linked from shared libraries that were exported with ",
 				{
-					"type": "ref:constant",
+					"type": "ref:macro",
 					"name": "EXTIT_EXPORT"
 				},
 				"."
@@ -109,13 +110,13 @@
 			[
 				"A portable declaration modifier for static importing symbols on platforms that require them. This may be used with headers declarations for symbols that will be linked from shared libraries that were exported with ",
 				{
-					"type": "ref:constant",
+					"type": "ref:macro",
 					"name": "EXTIT_EXPORT"
 				},
 				".",
 				" This differs from ",
 				{
-					"type": "ref:constant",
+					"type": "ref:macro",
 					"name": "EXTIT_IMPORT"
 				},
 				", in that it will link stubs during compile time on platforms that have them.",
@@ -188,12 +189,6 @@
 				"*, and should only be used for package management and informational purposes."
 			],
 			"since": "1.0"
-		},
-		{
-			"type": "macro",
-			"name": "EXTIT_PACK",
-			"description": "A declaration modifier that causes structures to be tightly packed.",
-			"since": "ABI 1.0"
 		},
 		{
 			"type": "enum",
@@ -279,10 +274,6 @@
 			"description": "ExtIt status codes.",
 			"since": "ABI 1.0"
 		}
-	],
-	"description":
-	[
-		"..."
 	],
 	"see":
 	[

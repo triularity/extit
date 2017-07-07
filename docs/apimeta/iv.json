@@ -1,9 +1,6 @@
 {
 	"title": "Interface Versioning",
-	"description":
-	[
-		"..."
-	],
+	"description": "A collection of types and macros for managing interface versions.",
 	"includes":
 	[
 		"iv/base.h"

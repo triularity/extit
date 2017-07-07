@@ -113,14 +113,6 @@ typedef enum _extit_status
 
 
 /*
- * Structure Packing
- */
-#ifndef	EXTIT_PACK
-#define	EXTIT_PACK		/* */
-#endif
-
-
-/*
  * Function Declaration (for call style)
  */
 #ifndef	EXTIT_DECL

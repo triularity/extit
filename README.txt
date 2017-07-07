@@ -17,7 +17,7 @@ Supported OS's:
 
 
 Planned OS's:
-	Mac OS X.
+	macOS
 
 
 This package contains 3 main components:
@@ -32,6 +32,8 @@ COMPILING
 This project uses Cmake (2.8+). Configuration options are:
 
 	EXTIT_PARANOID		Enable runtime sanity checks.
+
+	EXTIT_COMPAT		Enabled deprecated compatibility code.
 
 	EXTIT_DEBUG		Enabled runtime debugging.
 

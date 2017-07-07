@@ -1,5 +1,6 @@
 {
 	"title": "ExtIt Container - Standard Implementation",
+	"description": "Standard implementations of container interface functions.",
 	"includes":
 	[
 		"iv/base.h",
@@ -18,7 +19,7 @@
 			"type": "global",
 			"name": "extit_container_stdimpl_ops_1_0",
 			"value": "extit_container_ops_1_0_t",
-			"description": "Pre-populated 1.0 container interface operations using standard implementaion functions.",
+			"description": "Pre-populated 1.0 container interface operations using standard implementation functions.",
 			"since": "1.0"
 		},
 		{
@@ -269,7 +270,7 @@
 				[
 					"The highest compatible interface version, or ",
 					{
-						"type": "ref:constant",
+						"type": "ref:macro",
 						"name": "IV_VERSION_NONE"
 					},
 					" if a matching interface wasn't found."
@@ -291,17 +292,13 @@
 				".",
 				" This function always returns ",
 				{
-					"type": "ref:constant",
+					"type": "ref:macro",
 					"name": "IV_VERSION_NONE"
 				},
 				"."
 			],
 			"since": "1.0"
 		}
-	],
-	"description":
-	[
-		"Standard implementations of container interface functions."
 	],
 	"see":
 	[

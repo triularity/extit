@@ -1,5 +1,6 @@
 {
 	"title": "ExtIt Utilities - Reference Count",
+	"description": "Reference count management utilities.",
 	"includes":
 	[
 		"iv/base.h",
@@ -57,7 +58,7 @@
 					},
 					" if it was already at its maximum count (",
 					{
-						"type": "ref:constant",
+						"type": "ref:macro",
 						"name": "EXTIT_REFCOUNT_MAX"
 					},
 					").",
@@ -95,7 +96,7 @@
 					},
 					" if the count is ",
 					{
-						"type": "ref:constant",
+						"type": "ref:macro",
 						"name": "EXTIT_REFCOUNT_NONE"
 					},
 					", otherwise ",
@@ -137,7 +138,7 @@
 					},
 					" if it was already at its minimum count (",
 					{
-						"type": "ref:constant",
+						"type": "ref:macro",
 						"name": "EXTIT_REFCOUNT_NONE"
 					},
 					").",
@@ -150,7 +151,7 @@
 				]
 			},
 			"summary": "Decrement a reference count.",
-			"description": "Reduce a reference count, doing bounds checking first.",
+			"description": "Decrement a reference count, doing bounds checking first.",
 			"since": "1.0"
 		}
 	],

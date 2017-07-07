@@ -1,5 +1,6 @@
 {
 	"title": "iv_matches()",
+	"description": "A utility for checking interface version compatibility.",
 	"includes":
 	[
 		"iv/base.h",
