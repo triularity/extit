@@ -3,7 +3,7 @@
  *
  * [lib]dl specific implementations of container library.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -48,8 +48,9 @@ extit_module_scan(
 	extit_container_t *container,
 	const char *directory,
 	extit_module_scan_callback_t callback,
-	void *client_data,
+	void *callback_client_data,
 	extit_module_scan_fnfilter_t fnfilter,
+	void *fnfilter_client_data,
 	unsigned int flags
 )
 {
@@ -144,7 +145,7 @@ extit_module_scan(
 		namelen = strlen(entry->d_name);
 #endif
 
-		if(!fnfilter(entry->d_name, namelen))
+		if(!fnfilter(entry->d_name, namelen, fnfilter_client_data))
 			continue;
 
 		if((dlen + namelen + 2) > EXTIT_PATH_MAX)
@@ -156,7 +157,8 @@ extit_module_scan(
 
 		if(module != NULL)
 		{
-			if(callback(module, client_data) != EXTIT_STATUS_OK)
+			if(callback(module, callback_client_data)
+			 != EXTIT_STATUS_OK)
 			{
 #ifdef	EXTIT_DEBUG
 				if((flags & EXTIT_FLAG_LOG)

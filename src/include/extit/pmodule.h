@@ -49,12 +49,14 @@ typedef	extit_status_t	(EXTIT_DECL *extit_module_scan_callback_t)(
 
 typedef	extit_bool_t	(EXTIT_DECL *extit_module_scan_fnfilter_t)(
 				const char *basename,
-				size_t length); 
+				size_t length,
+				void *client_data);
 
 #ifdef  EXTIT_WCHAR
 typedef	extit_bool_t	(EXTIT_DECL *extit_module_scan_fnfilter_wc_t)(
 				const wchar_t *basename,
-				size_t length); 
+				size_t length,
+				void *client_data);
 #endif	/* EXTIT_WCHAR */
 
 LIBAPI
@@ -148,8 +150,9 @@ extit_status_t		EXTIT_DECL
 				extit_container_t *container,
 				const char *directory,
 				extit_module_scan_callback_t callback,
-				void *client_data,
+				void *callback_client_data,
 				extit_module_scan_fnfilter_t fnfilter,
+				void *fnfilter_client_data,
 				unsigned int flags);
 
 #ifdef  EXTIT_WCHAR
@@ -159,8 +162,9 @@ extit_status_t		EXTIT_DECL
 				extit_container_t *container,
 				const wchar_t *directory,
 				extit_module_scan_callback_t callback,
-				void *client_data,
+				void *callback_client_data,
 				extit_module_scan_fnfilter_wc_t fnfilter,
+				void *fnfilter_client_data,
 				unsigned int flags);
 #endif  /* EXTIT_WCHAR */
 
@@ -168,14 +172,16 @@ LIBAPI_STATIC
 extit_bool_t		EXTIT_DECL
 			extit_module_scan_fnfilter_default(
 				const char *libname,
-				size_t length); 
+				size_t length,
+				void *client_data);
 
 #ifdef  EXTIT_WCHAR
 LIBAPI_STATIC
 extit_bool_t		EXTIT_DECL
 			extit_module_scan_fnfilter_wc_default(
 				const wchar_t *libname,
-				size_t length); 
+				size_t length,
+				void *client_data);
 #endif  /* EXTIT_WCHAR */
 
 LIBAPI

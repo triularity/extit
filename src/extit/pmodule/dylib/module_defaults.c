@@ -21,7 +21,8 @@ EXTIT_DECL
 extit_module_scan_fnfilter_default
 (
 	const char *basename,
-	size_t length
+	size_t length,
+	void *client_data
 )
 {
 	/*

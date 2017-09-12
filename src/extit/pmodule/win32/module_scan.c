@@ -3,7 +3,7 @@
  *
  * Windows specific implementations of container library.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -41,8 +41,9 @@ extit_module_scan
 	extit_container_t *container,
 	const char *directory,
 	extit_module_scan_callback_t callback,
-	void *client_data,
+	void *callback_client_data,
 	extit_module_scan_fnfilter_t fnfilter,
+	void *fnfilter_client_data,
 	unsigned int flags
 )
 {
@@ -143,14 +144,15 @@ extit_module_scan
 		if((basename = strrchr(ffd.cFileName, '\\')) == NULL)
 			basename = ffd.cFileName;
 
-		if(!fnfilter(basename, strlen(basename)))
+		if(!fnfilter(basename, strlen(basename), fnfilter_client_data))
 			continue;
 
 		module = extit_module_load(container, ffd.cFileName, flags);
 
 		if(module != NULL)
 		{
-			if(callback(module, client_data) != EXTIT_STATUS_OK)
+			if(callback(module, callback_client_data)
+			 != EXTIT_STATUS_OK)
 			{
 #ifdef	EXTIT_DEBUG
 				if((flags & EXTIT_FLAG_LOG)
@@ -210,8 +212,9 @@ extit_module_scan_wc
 	extit_container_t *container,
 	const wchar_t *directory,
 	extit_module_scan_callback_t callback,
-	void *client_data,
+	void *callback_client_data,
 	extit_module_scan_fnfilter_wc_t fnfilter,
+	void *fnfilter_client_data,
 	unsigned int flags
 )
 {
@@ -312,14 +315,15 @@ extit_module_scan_wc
 		if((basename = wcsrchr(ffd.cFileName, '\\')) == NULL)
 			basename = ffd.cFileName;
 
-		if(!fnfilter(basename, wcslen(basename)))
+		if(!fnfilter(basename, wcslen(basename), fnfilter_client_data))
 			continue;
 
 		module = extit_module_load_wc(container, ffd.cFileName, flags);
 
 		if(module != NULL)
 		{
-			if(callback(module, client_data) != EXTIT_STATUS_OK)
+			if(callback(module, callback_client_data)
+			 != EXTIT_STATUS_OK)
 			{
 #ifdef	EXTIT_DEBUG
 				if((flags & EXTIT_FLAG_LOG)

@@ -4,7 +4,7 @@
  * Windows specific implementations of container library.
  * Default extit_module_*() function implementations.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -27,7 +27,8 @@ EXTIT_DECL
 extit_module_scan_fnfilter_default
 (
 	const char *basename,
-	size_t length
+	size_t length,
+	void *client_data
 )
 {
 	/*
@@ -47,7 +48,8 @@ EXTIT_DECL
 extit_module_scan_fnfilter_wc_default
 (
 	const wchar_t *basename,
-	size_t length
+	size_t length,
+	void *client_data
 )
 {
 	/*

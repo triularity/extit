@@ -30,7 +30,7 @@ struct _module_list
 
 extit_bool_t
 EXTIT_DECL
-recipe_fnfilter(const char *basename, size_t length);
+recipe_fnfilter(const char *basename, size_t length, void *client_data);
 
 extit_status_t
 EXTIT_DECL
@@ -66,6 +66,7 @@ main(int argc, char **argv)
 			process_module_load,
 			&modules,
 			recipe_fnfilter,
+			NULL,
 			EXTIT_FLAG_LOG_TRACE);
 
 	if(status != EXTIT_STATUS_OK)
@@ -112,10 +113,11 @@ EXTIT_DECL
 recipe_fnfilter
 (
 	const char *basename,
-	size_t length
+	size_t length,
+	void *client_data
 )
 {
-	if(!extit_module_scan_fnfilter_default(basename, length))
+	if(!extit_module_scan_fnfilter_default(basename, length, NULL))
 		return 0;
 
 	/*
