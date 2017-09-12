@@ -17,11 +17,11 @@ extern "C" {
 #endif
 
 /*
- * Library version (v0.9.0)
+ * Library version (v0.9.1)
  */
 #define	IV_LIB_VERSION_MAJOR		0
 #define	IV_LIB_VERSION_MINOR		9
-#define	IV_LIB_VERSION_PATCH		0
+#define	IV_LIB_VERSION_PATCH		1
 #define	IV_LIB_VERSION			((IV_LIB_VERSION_MAJOR << 16)|(IV_LIB_VERSION_MINOR<<8)|IV_LIB_VERSION_PATCH)
 
 
@@ -32,11 +32,12 @@ typedef	uint32_t		iv_version_t;
 
 /*
  * IV boolean
+ * (These match C++'s true/false values for binary interoperability)
  */
 typedef	enum _iv_bool
 {
 	IV_FALSE = 0,
-	IV_TRUE = !0
+	IV_TRUE = 1
 } iv_bool_t;
 
 

@@ -19,11 +19,11 @@
 #include <iv/base.h>
 
 /*
- * ExtIt Library Version (v0.9.0)
+ * ExtIt Library Version (v0.9.1)
  */
 #define	EXTIT_LIB_VERSION_MAJOR		0
 #define	EXTIT_LIB_VERSION_MINOR		9
-#define	EXTIT_LIB_VERSION_PATCH		0
+#define	EXTIT_LIB_VERSION_PATCH		1
 #define	EXTIT_LIB_VERSION		((EXTIT_LIB_VERSION_MAJOR << 16)|(EXTIT_LIB_VERSION_MINOR<<8)|EXTIT_LIB_VERSION_PATCH)
 
 
@@ -35,11 +35,12 @@
 
 /*
  * ExtIt boolean
+ * (These match C++'s true/false values for binary interoperability)
  */
 typedef	enum _extit_bool
 {
 	EXTIT_FALSE = 0,
-	EXTIT_TRUE = !0
+	EXTIT_TRUE = 1
 } extit_bool_t;
 
 
