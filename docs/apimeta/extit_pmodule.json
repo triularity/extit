@@ -101,6 +101,11 @@
 						"type": [ "size_t" ],
 						"name": "length",
 						"description": "The length of the filename."
+					},
+					{
+						"type": [ "void", "*" ],
+						"name": "client_data",
+						"description": "Application defined data."
 					}
 				],
 				"returns":
@@ -150,6 +155,11 @@
 						"type": [ "size_t" ],
 						"name": "length",
 						"description": "The length of the filename (in characters)."
+					},
+					{
+						"type": [ "void", "*" ],
+						"name": "client_data",
+						"description": "Application defined data."
 					}
 				],
 				"returns":
@@ -713,13 +723,34 @@
 				},
 				{
 					"type": [ "const", "void", "*" ],
-					"name": "client_data",
-					"description": "Additional data to pass to the callback."
+					"name": "callback_client_data",
+					"description":
+					[
+						"Additional data to pass to ",
+						{
+							"type": "ref:parameter",
+							"name": "callback"
+						},
+						"."
+					]
 				},
 				{
 					"type": "extit_module_scan_fnfilter_t",
 					"name": "fnfilter",
 					"description": "The filename filter callback function."
+				},
+				{
+					"type": [ "const", "void", "*" ],
+					"name": "fnfilter_client_data",
+					"description":
+					[
+						"Additional data to pass to ",
+						{
+							"type": "ref:parameter",
+							"name": "fnfilter"
+						},
+						"."
+					]
 				},
 				{
 					"type": "unsigned int",
@@ -819,13 +850,34 @@
 				},
 				{
 					"type": [ "const", "void", "*" ],
-					"name": "client_data",
-					"description": "Additional data to pass to the callback."
+					"name": "callback_client_data",
+					"description":
+					[
+						"Additional data to pass to ",
+						{
+							"type": "ref:parameter",
+							"name": "callback"
+						},
+						"."
+					]
 				},
 				{
 					"type": "extit_module_scan_fnfilter_wc_t",
 					"name": "fnfilter",
 					"description": "The filename filter callback function."
+				},
+				{
+					"type": [ "const", "void", "*" ],
+					"name": "fnfilter_client_data",
+					"description":
+					[
+						"Additional data to pass to ",
+						{
+							"type": "ref:parameter",
+							"name": "fnfilter"
+						},
+						"."
+					]
 				},
 				{
 					"type": "unsigned int",
@@ -918,6 +970,11 @@
 					"type": "size_t",
 					"name": "length",
 					"description": "The length of the library filename."
+				},
+				{
+					"type": [ "void", "*" ],
+					"name": "client_data",
+					"description": "Application defined data."
 				}
 			],
 			"returns":
@@ -940,8 +997,29 @@
 			"summary": "A standard filename filter.",
 			"description":
 			[
-				"A standard filename filter.",
-				" Checks are case-insensitive on Windows and macOS and case-sensitive for other platforms."
+				"A standard filename filter that accepts filenames with the platform default shared library extension (e.g. ",
+				{
+					"type": "text:code",
+					"value": ".dll"
+				},
+				" on Windows, ",
+				{
+					"type": "text:code",
+					"value": ".so"
+				},
+				" on Unix/Linux/BSD, ",
+				{
+					"type": "text:code",
+					"value": ".dylib"
+				},
+				" on macOS).",
+				" Checks are case-insensitive on Windows/macOS and case-sensitive for other platforms.",
+				" The ",
+				{
+					"type": "ref:parameter",
+					"name": "client_data"
+				},
+				" value is ignored by this function."
 			],
 			"since": "1.0"
 		},
@@ -959,6 +1037,11 @@
 					"type": "size_t",
 					"name": "length",
 					"description": "The length of the library filename (in characters)."
+				},
+				{
+					"type": [ "void", "*" ],
+					"name": "client_data",
+					"description": "Application defined data."
 				}
 			],
 			"returns":
@@ -981,8 +1064,29 @@
 			"summary": "A standard filename filter.",
 			"description":
 			[
-				"A standard filename filter.",
-				" Checks are case-insensitive on Windows and macOS and case-sensitive for other platforms.",
+				"A standard filename filter that accepts filenames with the platform default shared library extension (e.g. ",
+				{
+					"type": "text:code",
+					"value": ".dll"
+				},
+				" on Windows, ",
+				{
+					"type": "text:code",
+					"value": ".so"
+				},
+				" on Unix/Linux/BSD, ",
+				{
+					"type": "text:code",
+					"value": ".dylib"
+				},
+				" on macOS).",
+				" Checks are case-insensitive on Windows/macOS and case-sensitive for other platforms.",
+				" The ",
+				{
+					"type": "ref:parameter",
+					"name": "client_data"
+				},
+				" value is ignored by this function.",
 				" This function is only available on platforms that support wide character filenames."
 			],
 			"since": "1.0"

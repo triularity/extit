@@ -132,11 +132,29 @@
 			[
 				{
 					"name": "IV_FALSE",
-					"description": "The false value."
+					"description":
+					[
+						"The false value.",
+						" Its value is equivalent to the ",
+						{
+							"type": "ref:constant",
+							"name": "false"
+						},
+						" keyword used by C++."
+					]
 				},
 				{
 					"name": "IV_TRUE",
-					"description": "The true value."
+					"description":
+					[
+						"The true value.",
+						" Its value is equivalent to the ",
+						{
+							"type": "ref:constant",
+							"name": "true"
+						},
+						" keyword used by C++."
+					]
 				}
 			],
 			"description": "A boolean type used by the IV library.",
