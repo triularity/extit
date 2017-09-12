@@ -113,7 +113,7 @@
 
      <div class="description">
       <p>
-       Release any internal memory that is no longer needed. This will iterate through all entries in the map that are not <code class="ref">NULL</code>, calling <em class="parameter-name">cleaner</em> with the value pointer of each one. That function should attempt to release any empty/unused data and set such entries pointers to <code class="ref">NULL</code>. Entries left with <code class="ref">NULL</code> values will removed from the map.<br />
+       Release any internal memory that is no longer needed. This will iterate through all entries in the map that are not <code class="ref">NULL</code>, calling <em class="parameter-reference">cleaner</em> with the value pointer of each one. That function should attempt to release any empty/unused data and set such entries pointers to <code class="ref">NULL</code>. Entries left with <code class="ref">NULL</code> values will removed from the map.<br />
       </p>
      </div>
 

@@ -87,6 +87,11 @@ em.parameter-name {
 	color: #884400;
 }
 
+em.parameter-reference {
+	color: #884400;
+	font-family: monospace;
+}
+
 span.struct-name {
 	font-weight: bold;
 }

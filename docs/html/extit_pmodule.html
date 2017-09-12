@@ -644,7 +644,7 @@
 
      <div class="description">
       <p>
-       Scan a directory for plugin modules. <em class="parameter-name">fnfilter</em> will be called for each normal file, which should return <code class="ref"><a href="extit.html#EXTIT_TRUE">EXTIT_TRUE</a></code>, if the filename is acceptable, or <code class="ref"><a href="extit.html#EXTIT_FALSE">EXTIT_FALSE</a></code> otherwise. For each valid module found and loaded, <em class="parameter-name">callback</em> will be called with it. Any module that was passed to <em class="parameter-name">callback</em>, which returned <code class="ref"><a href="extit.html#EXTIT_STATUS_OK">EXTIT_STATUS_OK</a></code>, must be released with <code class="ref"><a href="extit_pmodule.html#extit_module_release">extit_module_release()</a></code> to prevent memory and/or resource leaks, even if the callback does not use the module.<br />
+       Scan a directory for plugin modules. <em class="parameter-reference">fnfilter</em> will be called for each normal file, which should return <code class="ref"><a href="extit.html#EXTIT_TRUE">EXTIT_TRUE</a></code>, if the filename is acceptable, or <code class="ref"><a href="extit.html#EXTIT_FALSE">EXTIT_FALSE</a></code> otherwise. For each valid module found and loaded, <em class="parameter-reference">callback</em> will be called with it. Any module that was passed to <em class="parameter-reference">callback</em>, which returned <code class="ref"><a href="extit.html#EXTIT_STATUS_OK">EXTIT_STATUS_OK</a></code>, must be released with <code class="ref"><a href="extit_pmodule.html#extit_module_release">extit_module_release()</a></code> to prevent memory and/or resource leaks, even if the callback does not use the module.<br />
       </p>
      </div>
 
@@ -654,9 +654,9 @@
        <em class="parameter-name">container</em> - The container interface.<br />
        <em class="parameter-name">directory</em> - The directory to scan.<br />
        <em class="parameter-name">callback</em> - The callback function.<br />
-       <em class="parameter-name">callback_client_data</em> - Additional data to pass to <em class="parameter-name">callback</em>.<br />
+       <em class="parameter-name">callback_client_data</em> - Additional data to pass to <em class="parameter-reference">callback</em>.<br />
        <em class="parameter-name">fnfilter</em> - The filename filter callback function.<br />
-       <em class="parameter-name">fnfilter_client_data</em> - Additional data to pass to <em class="parameter-name">fnfilter</em>.<br />
+       <em class="parameter-name">fnfilter_client_data</em> - Additional data to pass to <em class="parameter-reference">fnfilter</em>.<br />
        <em class="parameter-name">flags</em> - The module flags (<code class="literal">EXTIT_FLAG_</code>*).<br />
       </dd>
 
@@ -683,7 +683,7 @@
 
      <div class="description">
       <p>
-       Scan a directory for plugin modules. <em class="parameter-name">fnfilter</em> will be called for each normal file, which should return <code class="ref"><a href="extit.html#EXTIT_TRUE">EXTIT_TRUE</a></code>, if the filename is acceptable, or <code class="ref"><a href="extit.html#EXTIT_FALSE">EXTIT_FALSE</a></code> otherwise. For each valid module found and loaded, <em class="parameter-name">callback</em> will be called with it. Any module that was passed to <em class="parameter-name">callback</em>, which returned <code class="ref"><a href="extit.html#EXTIT_STATUS_OK">EXTIT_STATUS_OK</a></code>, must be released with <code class="ref"><a href="extit_pmodule.html#extit_module_release">extit_module_release()</a></code> to prevent memory and/or resource leaks, even if the callback does not use the module. This function is only available on platforms that support wide character filenames.<br />
+       Scan a directory for plugin modules. <em class="parameter-reference">fnfilter</em> will be called for each normal file, which should return <code class="ref"><a href="extit.html#EXTIT_TRUE">EXTIT_TRUE</a></code>, if the filename is acceptable, or <code class="ref"><a href="extit.html#EXTIT_FALSE">EXTIT_FALSE</a></code> otherwise. For each valid module found and loaded, <em class="parameter-reference">callback</em> will be called with it. Any module that was passed to <em class="parameter-reference">callback</em>, which returned <code class="ref"><a href="extit.html#EXTIT_STATUS_OK">EXTIT_STATUS_OK</a></code>, must be released with <code class="ref"><a href="extit_pmodule.html#extit_module_release">extit_module_release()</a></code> to prevent memory and/or resource leaks, even if the callback does not use the module. This function is only available on platforms that support wide character filenames.<br />
       </p>
      </div>
 
@@ -693,9 +693,9 @@
        <em class="parameter-name">container</em> - The container interface.<br />
        <em class="parameter-name">directory</em> - The directory to scan.<br />
        <em class="parameter-name">callback</em> - The callback function.<br />
-       <em class="parameter-name">callback_client_data</em> - Additional data to pass to <em class="parameter-name">callback</em>.<br />
+       <em class="parameter-name">callback_client_data</em> - Additional data to pass to <em class="parameter-reference">callback</em>.<br />
        <em class="parameter-name">fnfilter</em> - The filename filter callback function.<br />
-       <em class="parameter-name">fnfilter_client_data</em> - Additional data to pass to <em class="parameter-name">fnfilter</em>.<br />
+       <em class="parameter-name">fnfilter_client_data</em> - Additional data to pass to <em class="parameter-reference">fnfilter</em>.<br />
        <em class="parameter-name">flags</em> - The module flags (<code class="literal">EXTIT_FLAG_</code>*).<br />
       </dd>
 
@@ -722,7 +722,7 @@
 
      <div class="description">
       <p>
-       A standard filename filter that accepts filenames with the platform default shared library extension (e.g. <code class="literal">.dll</code> on Windows, <code class="literal">.so</code> on Unix/Linux/BSD, <code class="literal">.dylib</code> on macOS). Checks are case-insensitive on Windows/macOS and case-sensitive for other platforms. The <em class="parameter-name">client_data</em> value is ignored by this function.<br />
+       A standard filename filter that accepts filenames with the platform default shared library extension (e.g. <code class="literal">.dll</code> on Windows, <code class="literal">.so</code> on Unix/Linux/BSD, <code class="literal">.dylib</code> on macOS). Checks are case-insensitive on Windows/macOS and case-sensitive for other platforms. The <em class="parameter-reference">client_data</em> value is ignored by this function.<br />
       </p>
      </div>
 
@@ -757,7 +757,7 @@
 
      <div class="description">
       <p>
-       A standard filename filter that accepts filenames with the platform default shared library extension (e.g. <code class="literal">.dll</code> on Windows, <code class="literal">.so</code> on Unix/Linux/BSD, <code class="literal">.dylib</code> on macOS). Checks are case-insensitive on Windows/macOS and case-sensitive for other platforms. The <em class="parameter-name">client_data</em> value is ignored by this function. This function is only available on platforms that support wide character filenames.<br />
+       A standard filename filter that accepts filenames with the platform default shared library extension (e.g. <code class="literal">.dll</code> on Windows, <code class="literal">.so</code> on Unix/Linux/BSD, <code class="literal">.dylib</code> on macOS). Checks are case-insensitive on Windows/macOS and case-sensitive for other platforms. The <em class="parameter-reference">client_data</em> value is ignored by this function. This function is only available on platforms that support wide character filenames.<br />
       </p>
      </div>
 

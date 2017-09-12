@@ -145,8 +145,8 @@
       <dt class="members"><strong class="label">Members:</strong></dt>
       <dd>
         <span class="member-name">op_probe</span> - Probe the module. Implementers should do minimal checking, such as required interfaces, without any potentially long running operations.<br />
-        <span class="member-name">op_create</span> - Create a module instance. Any private data references should be assigned to <em class="parameter-name">ctx_ptr</em>.<br />
-        <span class="member-name">op_destroy</span> - Destroy a module instance. Any private data reference by <em class="parameter-name">ctx</em> should be released.<br />
+        <span class="member-name">op_create</span> - Create a module instance. Any private data references should be assigned to <em class="parameter-reference">ctx_ptr</em>.<br />
+        <span class="member-name">op_destroy</span> - Destroy a module instance. Any private data reference by <em class="parameter-reference">ctx</em> should be released.<br />
         <span class="member-name">op_get_interface</span> - Get a named interface object by version for an instance.<br />
         <span class="member-name">op_query_interface</span> - Query the supported version of an interface for an instance.<br />
         <span class="member-name">op_unload</span> - Release any global resources still allocated by this module. This is called just prior to unloading the module from the process.<br />
