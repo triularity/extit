@@ -21,7 +21,7 @@ void *
 EXTIT_DECL
 my_get_interface
 (
-	const extit_container_t *container,
+	const extit_container_1_0_t *container,
 	const char *id,
 	iv_version_t version
 )
@@ -41,7 +41,7 @@ iv_version_t
 EXTIT_DECL
 my_query_interface
 (
-	const extit_container_t *container,
+	const extit_container_1_0_t *container,
 	const char *id,
 	iv_version_t base_version
 )
@@ -79,7 +79,7 @@ extit_container_ops_1_0_t	my_container_ops =
 };
 
 static
-extit_container_t		my_container =
+extit_container_1_0_t		my_container =
 {
 	EXTIT_ABI_1_0,					/* version */
 	&my_container_ops				/* ops */
@@ -101,7 +101,7 @@ main(int argc, char **argv)
 	}
 
 	module = extit_module_load(
-			&my_container,
+			(extit_container_t *) &my_container,
 			argv[1],
 			EXTIT_FLAG_LOG_TRACE);
 

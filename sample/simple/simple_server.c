@@ -16,7 +16,7 @@
 int
 main(int argc, char **argv)
 {
-	extit_container_t	my_container;
+	extit_container_1_0_t	my_container;
 	extit_module_t *	module;
 	extit_plugin_t *	plugin;
 
@@ -31,7 +31,7 @@ main(int argc, char **argv)
 	my_container.ops = &extit_container_stdimpl_ops_1_0;
 
 	module = extit_module_load(
-			&my_container,
+			(extit_container_t *) &my_container,
 			argv[1],
 			EXTIT_FLAG_LOG_TRACE);
 

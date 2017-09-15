@@ -37,32 +37,32 @@ extern extit_container_ops_1_0_t	extit_container_stdimpl_ops_1_0;
 LIBAPI_STATIC
 extit_func_t		EXTIT_DECL
 			extit_container_stdimpl_get_function__1_0(
-				const extit_container_t *container,
+				const extit_container_1_0_t *container,
 				const char *name);
 
 LIBAPI_STATIC
 void *			EXTIT_DECL
 			extit_container_stdimpl_get_interface__1_0(
-				const extit_container_t *container,
+				const extit_container_1_0_t *container,
 				const char *name,
 				iv_version_t version);
 
 LIBAPI_STATIC
 void *			EXTIT_DECL
 			extit_container_stdimpl_get_symbol__1_0(
-				const extit_container_t *container,
+				const extit_container_1_0_t *container,
 				const char *name);
 
 LIBAPI_STATIC
 void			EXTIT_DECL
 			extit_container_stdimpl_log__1_0(
-				const extit_container_t *container,
+				const extit_container_1_0_t *container,
 				const char *message);
 
 LIBAPI_STATIC
 iv_version_t		EXTIT_DECL
 			extit_container_stdimpl_query_interface__1_0(
-				const extit_container_t *container,
+				const extit_container_1_0_t *container,
 				const char *name,
 				iv_version_t base_version);
 

@@ -22,10 +22,15 @@ extit_container_log__1_0
 	const char *message
 )
 {
+	const extit_container_1_0_t *	container_1_0;
+
+
 #ifdef	EXTIT_PARANOID
 	if(IV_VERSION_MAJOR(container->version) != 1)
 		return;
 #endif
 
-	container->ops->v0.op_log(container, message);
+	container_1_0 = (const extit_container_1_0_t *) container;
+
+	container_1_0->ops->v0.op_log(container_1_0, message);
 }

@@ -19,7 +19,7 @@ extit_func_t
 EXTIT_DECL
 extit_container_stdimpl_get_function__1_0
 (
-	const extit_container_t *container,
+	const extit_container_1_0_t *container,
 	const char *name
 )
 {

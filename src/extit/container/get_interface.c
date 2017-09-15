@@ -23,10 +23,16 @@ extit_container_get_interface__1_0
 	iv_version_t version
 )
 {
+	const extit_container_1_0_t *	container_1_0;
+
+
 #ifdef	EXTIT_PARANOID
 	if(IV_VERSION_MAJOR(container->version) != 1)
 		return NULL;
 #endif
 
-	return container->ops->v0.op_get_interface(container, iid, version);
+	container_1_0 = (const extit_container_1_0_t *) container;
+
+	return container_1_0->ops->v0.op_get_interface(
+		container_1_0, iid, version);
 }

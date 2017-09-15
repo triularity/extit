@@ -22,10 +22,15 @@ extit_container_get_function__1_0
 	const char *name
 )
 {
+	const extit_container_1_0_t *	container_1_0;
+
+
 #ifdef	EXTIT_PARANOID
 	if(IV_VERSION_MAJOR(container->version) != 1)
 		return NULL;
 #endif
 
-	return container->ops->v0.op_get_function(container, name);
+	container_1_0 = (const extit_container_1_0_t *) container;
+
+	return container_1_0->ops->v0.op_get_function(container_1_0, name);
 }

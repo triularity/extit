@@ -20,7 +20,7 @@
 
 typedef struct my_container_impl
 {
-	extit_container_t	container;
+	extit_container_1_0_t	container;
 	iv_repository_t *	ir;
 } my_container_impl_t;
 
@@ -28,7 +28,7 @@ typedef struct my_container_impl
 static
 void *
 EXTIT_DECL
-my_get_interface(const extit_container_t *container, const char *name, iv_version_t version)
+my_get_interface(const extit_container_1_0_t *container, const char *name, iv_version_t version)
 {
 	return iv_repository_get(
 		((const my_container_impl_t *) container)->ir,
@@ -39,7 +39,7 @@ my_get_interface(const extit_container_t *container, const char *name, iv_versio
 static
 iv_version_t
 EXTIT_DECL
-my_query_interface(const extit_container_t *container, const char *name, iv_version_t base_version)
+my_query_interface(const extit_container_1_0_t *container, const char *name, iv_version_t base_version)
 {
 	return iv_repository_query(
 		((const my_container_impl_t *) container)->ir,
@@ -109,7 +109,9 @@ main(int argc, char **argv)
 	container_impl.ir = ir;
 
 	module = extit_module_load(
-		&container_impl.container, argv[1], EXTIT_FLAG_LOG_TRACE);
+		(extit_container_t *) &container_impl.container,
+		argv[1],
+		EXTIT_FLAG_LOG_TRACE);
 
 	if(module != NULL)
 	{

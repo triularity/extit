@@ -53,6 +53,7 @@ set(EXTIT_CONTAINER_SOURCE_FILES
 	src/extit/container/get_function.c
 	src/extit/container/get_interface.c
 	src/extit/container/get_symbol.c
+	src/extit/container/get_version.c
 	src/extit/container/log.c
 	src/extit/container/query_interface.c)
 

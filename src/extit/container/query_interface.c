@@ -23,11 +23,16 @@ extit_container_query_interface__1_0
 	iv_version_t base_version
 )
 {
+	const extit_container_1_0_t *	container_1_0;
+
+
 #ifdef	EXTIT_PARANOID
 	if(IV_VERSION_MAJOR(container->version) != 1)
 		return IV_VERSION_NONE;
 #endif
 
-	return container->ops->v0.op_query_interface(
-		container, iid, base_version);
+	container_1_0 = (const extit_container_1_0_t *) container;
+
+	return container_1_0->ops->v0.op_query_interface(
+		container_1_0, iid, base_version);
 }

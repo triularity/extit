@@ -43,7 +43,7 @@ prepare_recipe(extit_module_t *module);
 int
 main(int argc, char **argv)
 {
-	extit_container_t	my_container;
+	extit_container_1_0_t	my_container;
 	module_link_t *		modules;
 	module_link_t *		link;
 	extit_status_t		status;
@@ -61,7 +61,7 @@ main(int argc, char **argv)
 	my_container.ops = &extit_container_stdimpl_ops_1_0;
 
 	status = extit_module_scan(
-			&my_container,
+			(extit_container_t *) &my_container,
 			argv[1],
 			process_module_load,
 			&modules,
