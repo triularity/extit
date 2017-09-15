@@ -54,7 +54,7 @@
 
      <div class="description">
       <p>
-       A container interface instance. This is a compile time alias that is mapped to the appropriate ABI version named type based on <code class="ref"><a href="extit.html#EXTIT_ABI_TARGET">EXTIT_ABI_TARGET</a></code>.<br />
+       A container interface instance.<br />
       </p>
      </div>
 
@@ -283,6 +283,42 @@
 
       <dt class="returns"><strong class="label">Returns:</strong></dt>
       <dd>An address pointer, or <code class="ref">NULL</code> if the symbol wasn&apos;t found or the container version was incompatible.</dd>
+
+      <dt class="version"><strong class="label">Version:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>ABI 1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><a href="iv.html#iv_version_t">iv_version_t</a></td>
+       </tr>
+       <tr>
+        <td><span class="function-name"><a name="extit_container_get_version">extit_container_get_version</a></span>(const&nbsp;<a href="extit_container.html#extit_container_t">extit_container_t</a>&nbsp;*&nbsp;<em class="parameter-name">container</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      <p>
+       Get the ABI version of the container. This is a convenience function that returns <em class="parameter-reference">container</em><code class="literal">-&gt;</code><code class="ref"><a href="extit_container-impl.html#extit_container_t.version">version</a></code>.<br />
+      </p>
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">container</em> - The container interface.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd>The container ABI version</dd>
 
       <dt class="version"><strong class="label">Version:</strong></dt>
       <dd>ABI 1.0</dd>

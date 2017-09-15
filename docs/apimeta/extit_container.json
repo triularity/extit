@@ -17,16 +17,7 @@
 			"type": "typedef",
 			"name": "extit_container_t",
 			"_value": [ "struct", "_extit_container" ],
-			"description":
-			[
-				"A container interface instance.",
-				" This is a compile time alias that is mapped to the appropriate ABI version named type based on ",
-				{
-					"type": "ref:macro",
-					"name": "EXTIT_ABI_TARGET"
-				},
-				"."
-			],
+			"description": "A container interface instance.",
 			"since": "1.0"
 		},
 		{
@@ -301,6 +292,46 @@
 					"link": "extit_container_ops_comp_1_0_t",
 					"anchor": "extit_container_ops_comp_1_0_t.op_get_symbol",
 					"name": "op_get_symbol( ... )",
+					"code": true
+				},
+				"."
+			],
+			"version": "ABI 1.0",
+			"since": "ABI 1.0"
+		},
+		{
+			"type": "function",
+			"name": "extit_container_get_version",
+			"parameters":
+			[
+				{
+					"type": [ "const", "extit_container_t", "*" ],
+					"name": "container",
+					"description": "The container interface."
+				}
+			],
+			"returns":
+			{
+				"type": "iv_version_t",
+				"description": "The container ABI version"
+			},
+			"description":
+			[
+				"Get the ABI version of the container.",
+				" This is a convenience function that returns ",
+				{
+					"type": "ref:parameter",
+					"name": "container"
+				},
+				{
+					"type": "text:code",
+					"value": "->"
+				},
+				{
+					"type": "ref:generic",
+					"link": "extit_container-impl",
+					"anchor": "extit_container_t.version",
+					"name": "version",
 					"code": true
 				},
 				"."

@@ -28,7 +28,7 @@
 			"parameters":
 			[
 				{
-					"type": [ "const", "extit_container_t", "*" ],
+					"type": [ "const", "extit_container__1_0_t", "*" ],
 					"name": "container",
 					"description": "The container interface."
 				},
@@ -90,7 +90,7 @@
 			"parameters":
 			[
 				{
-					"type": [ "const", "extit_container_t", "*" ],
+					"type": [ "const", "extit_container_1_0_t", "*" ],
 					"name": "container",
 					"description": "The container interface."
 				},
@@ -147,7 +147,7 @@
 			"parameters":
 			[
 				{
-					"type": [ "const", "extit_container_t", "*" ],
+					"type": [ "const", "extit_container_1_0_t", "*" ],
 					"name": "container",
 					"description": "The container interface."
 				},
@@ -204,7 +204,7 @@
 			"parameters":
 			[
 				{
-					"type": [ "const", "extit_container_t", "*" ],
+					"type": [ "const", "extit_container_1_0_t", "*" ],
 					"name": "container",
 					"description": "The container interface."
 				},
@@ -248,7 +248,7 @@
 			"parameters":
 			[
 				{
-					"type": [ "const", "extit_container_t", "*" ],
+					"type": [ "const", "extit_container_1_0_t", "*" ],
 					"name": "container",
 					"description": "The container interface."
 				},

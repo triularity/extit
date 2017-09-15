@@ -12,6 +12,46 @@
 	[
 		{
 			"type": "struct",
+			"_name": "_extit_container",
+			"typedef": "extit_container_t",
+			"members":
+			[
+				{
+					"type": "iv_version_t",
+					"name": "version",
+					"description": "The interface version of the container."
+				}
+			],
+			"description":
+			[
+				"The base container interface data.",
+				" All containers share this common structure, which is used to determine the ABI version."
+			],
+			"since": "ABI 1.0"
+		},
+		{
+			"type": "struct",
+			"_name": "_extit_container_1_0",
+			"typedef": "extit_container_1_0_t",
+			"members":
+			[
+				{
+					"type": "iv_version_t",
+					"name": "version",
+					"description": "The interface version of the container."
+				},
+				{
+					"type": [ "extit_container_ops_1_0_t", "*" ],
+					"name": "ops",
+					"description": "The container interface operations."
+				}
+			],
+			"description": "The version 1.0 container interface data.",
+			"version": "ABI 1.0",
+			"since": "ABI 1.0"
+		},
+		{
+			"type": "struct",
 			"_name": "_extit_container_ops_comp_1_0",
 			"typedef": "extit_container_ops_comp_1_0_t",
 			"members":
@@ -23,7 +63,7 @@
 						"parameters":
 						[
 							{
-								"type": [ "const", "extit_container_t", "*" ],
+								"type": [ "const", "extit_container_1_0_t", "*" ],
 								"name": "container",
 								"description": "The container interface."
 							},
@@ -57,7 +97,7 @@
 						"parameters":
 						[
 							{
-								"type": [ "const", "extit_container_t", "*" ],
+								"type": [ "const", "extit_container_1_0_t", "*" ],
 								"name": "container",
 								"description": "The container interface."
 							},
@@ -91,7 +131,7 @@
 						"parameters":
 						[
 							{
-								"type": [ "const", "extit_container_t", "*" ],
+								"type": [ "const", "extit_container_1_0_t", "*" ],
 								"name": "container",
 								"description": "The container interface."
 							},
@@ -130,7 +170,7 @@
 						"parameters":
 						[
 							{
-								"type": [ "const", "extit_container_t", "*" ],
+								"type": [ "const", "extit_container_1_0_t", "*" ],
 								"name": "container",
 								"description": "The container interface."
 							},
@@ -169,7 +209,7 @@
 						"parameters":
 						[
 							{
-								"type": [ "const", "extit_container_t", "*" ],
+								"type": [ "const", "extit_container_1_0_t", "*" ],
 								"name": "container",
 								"description": "The container interface."
 							},
@@ -201,47 +241,6 @@
 				}
 			],
 			"description": "The version 1.0 container interface operations.",
-			"version": "ABI 1.0",
-			"since": "ABI 1.0"
-		},
-		{
-			"type": "struct",
-			"_name": "_extit_container_base",
-			"typedef": "extit_container_base_t",
-			"members":
-			[
-				{
-					"type": "iv_version_t",
-					"name": "version",
-					"description": "The interface version of the container."
-				}
-			],
-			"description":
-			[
-				"The base container interface data.",
-				" All containers share this common structure, which is used to determine the ABI version.",
-				" Normal application code is not expected to use this directly."
-			],
-			"since": "ABI 1.0"
-		},
-		{
-			"type": "struct",
-			"_name": "_extit_container_1_0",
-			"typedef": "extit_container_1_0_t",
-			"members":
-			[
-				{
-					"type": "iv_version_t",
-					"name": "version",
-					"description": "The interface version of the container."
-				},
-				{
-					"type": [ "extit_container_ops_1_0_t", "*" ],
-					"name": "ops",
-					"description": "The container interface operations."
-				}
-			],
-			"description": "The version 1.0 container interface data.",
 			"version": "ABI 1.0",
 			"since": "ABI 1.0"
 		}
