@@ -1,5 +1,5 @@
 /*
- * @(#) container/query_interface.c
+ * @(#) extit/container/query_interface.c
  *
  * Container API wrappers.
  *

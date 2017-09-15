@@ -1,5 +1,5 @@
 /*
- * @(#) pmodule/module_create_plugin.c
+ * @(#) extit/pmodule/module_create_plugin.c
  *
  * Platform neutral container library implementation.
  *

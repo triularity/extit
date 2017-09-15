@@ -1,5 +1,5 @@
 /*
- * @(#) pmodule/module_get_abi_version.c
+ * @(#) extit/pmodule/module_get_abi_version.c
  *
  * Platform neutral container library implementation.
  *

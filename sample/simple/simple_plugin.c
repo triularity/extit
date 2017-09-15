@@ -18,7 +18,7 @@ EXTIT_DECL
 plugin_probe
 (
 	extit_pmodule_descriptor_1_0_t *descr,
-	extit_container_t *container
+	const extit_container_t *container
 )
 {
 	/*
@@ -41,7 +41,7 @@ EXTIT_DECL
 plugin_create
 (
 	extit_pmodule_descriptor_1_0_t *descr,
-	extit_container_t *container,
+	const extit_container_t *container,
 	void **ctx_ptr
 )
 {
@@ -56,7 +56,7 @@ EXTIT_DECL
 plugin_destroy
 (
 	extit_pmodule_descriptor_1_0_t *descr,
-	extit_container_t *container,
+	const extit_container_t *container,
 	void *ctx
 )
 {
@@ -71,7 +71,7 @@ EXTIT_DECL
 plugin_unload
 (
 	extit_pmodule_descriptor_1_0_t *descr,
-	extit_container_t *container
+	const extit_container_t *container
 )
 {
 	extit_container_log(container, "Unloading module\n");

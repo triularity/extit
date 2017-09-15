@@ -1,5 +1,5 @@
 /*
- * @(#) container/get_interface.c
+ * @(#) extit/container/get_interface.c
  *
  * Container API wrappers.
  *

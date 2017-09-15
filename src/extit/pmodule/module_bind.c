@@ -1,5 +1,5 @@
 /*
- * @(#) pmodule/module_bind.c
+ * @(#) extit/pmodule/module_bind.c
  *
  * Platform neutral container library implementation.
  *
@@ -31,7 +31,7 @@ extit_module_t *
 EXTIT_DECL
 extit_module_bind
 (
-	extit_container_t *container,
+	const extit_container_t *container,
 	const void *descriptor,
 	unsigned int flags
 )

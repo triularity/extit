@@ -21,7 +21,7 @@ EXTIT_DECL
 my_probe
 (
 	extit_pmodule_descriptor_1_0_t *descr,
-	extit_container_t *container
+	const extit_container_t *container
 )
 {
 	iv_version_t	version;

@@ -1,5 +1,5 @@
 /*
- * @(#) pmodule/plugin_set_flags.c
+ * @(#) extit/pmodule/plugin_set_flags.c
  *
  * Platform neutral container library implementation.
  *

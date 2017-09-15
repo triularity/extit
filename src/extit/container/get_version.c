@@ -1,5 +1,5 @@
 /*
- * @(#) container/get_version.c
+ * @(#) extit/container/get_version.c
  *
  * Container API wrappers.
  *

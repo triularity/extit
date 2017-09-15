@@ -30,35 +30,35 @@ typedef struct _extit_pmodule_ops_comp_1_0
 {
 	extit_status_t		(EXTIT_DECL *op_probe)(
 					extit_pmodule_descriptor_1_0_t *descr,
-					extit_container_t *container);
+					const extit_container_t *container);
 
 	extit_status_t		(EXTIT_DECL *op_create)(
 					extit_pmodule_descriptor_1_0_t *descr,
-					extit_container_t *container,
+					const extit_container_t *container,
 					void **ctx_ptr);
 
 	extit_status_t		(EXTIT_DECL *op_destroy)(
 					extit_pmodule_descriptor_1_0_t *descr,
-					extit_container_t *container,
+					const extit_container_t *container,
 					void *ctx);
 
 	void *			(EXTIT_DECL *op_get_interface)(
 					extit_pmodule_descriptor_1_0_t *descr,
-					extit_container_t *container,
+					const extit_container_t *container,
 					void *ctx,
 					const char *iid,
 					iv_version_t version);
 
 	iv_version_t		(EXTIT_DECL *op_query_interface)(
 					extit_pmodule_descriptor_1_0_t *descr,
-					extit_container_t *container,
+					const extit_container_t *container,
 					void *ctx,
 					const char *iid,
 					iv_version_t base_version);
 
 	extit_status_t		(EXTIT_DECL *op_unload)(
 					extit_pmodule_descriptor_1_0_t *descr,
-					extit_container_t *container);
+					const extit_container_t *container);
 } extit_pmodule_ops_comp_1_0_t;
 
 

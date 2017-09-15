@@ -1,5 +1,5 @@
 /*
- * @(#) container/get_function.c
+ * @(#) extit/container/get_function.c
  *
  * Container API wrappers.
  *

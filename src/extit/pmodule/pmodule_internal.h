@@ -3,7 +3,7 @@
  *
  * Plugin module internals.
  *
- * Copyright (c) 2014-2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2014-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -29,7 +29,7 @@ struct _extit_module
 	extit_refcount_t			refcount;
 	unsigned int				flags;
 	iv_version_t				abi_version;
-	extit_container_t *			container;
+	const extit_container_t *		container;
 	const extit_pmodule_descriptor_base_t *	descriptor;
 
 #ifdef	_WIN32

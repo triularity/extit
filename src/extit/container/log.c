@@ -1,5 +1,5 @@
 /*
- * @(#) container/log.c
+ * @(#) extit/container/log.c
  *
  * Container API wrappers.
  *

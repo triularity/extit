@@ -3,7 +3,7 @@
  *
  * ExtIt plugin module Interface.
  *
- * Copyright (c) 2014-2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2014-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -26,10 +26,6 @@
 #include <extit/base.h>
 #include <extit/container.h>
 
-#ifdef	__cplusplus
-extern "C" {
-#endif
-
 #ifdef	extit_pmodule_EXPORTS
 #define	LIBAPI		EXTIT_EXPORT
 #define	LIBAPI_STATIC	EXTIT_EXPORT
@@ -38,6 +34,9 @@ extern "C" {
 #define	LIBAPI_STATIC	EXTIT_IMPORT_STATIC
 #endif
 
+#ifdef	__cplusplus
+extern "C" {
+#endif
 
 typedef struct _extit_module		extit_module_t;
 typedef struct _extit_plugin		extit_plugin_t;
@@ -67,7 +66,7 @@ iv_version_t		EXTIT_DECL
 LIBAPI
 extit_module_t *	EXTIT_DECL
 			extit_module_bind(
-				extit_container_t *container,
+				const extit_container_t *container,
 				const void *descriptor,
 				unsigned int flags);
 
@@ -126,7 +125,7 @@ const char *		EXTIT_DECL
 LIBAPI
 extit_module_t *	EXTIT_DECL
 			extit_module_load(
-				extit_container_t *container,
+				const extit_container_t *container,
 				const char *path,
 				unsigned int flags);
 
@@ -134,7 +133,7 @@ extit_module_t *	EXTIT_DECL
 LIBAPI
 extit_module_t *	EXTIT_DECL
 			extit_module_load_wc(
-				extit_container_t *container,
+				const extit_container_t *container,
 				const wchar_t *path,
 				unsigned int flags);
 #endif  /* EXTIT_WCHAR */
@@ -147,7 +146,7 @@ extit_status_t		EXTIT_DECL
 LIBAPI
 extit_status_t		EXTIT_DECL
 			extit_module_scan(
-				extit_container_t *container,
+				const extit_container_t *container,
 				const char *directory,
 				extit_module_scan_callback_t callback,
 				void *callback_client_data,
@@ -159,7 +158,7 @@ extit_status_t		EXTIT_DECL
 LIBAPI
 extit_status_t		EXTIT_DECL
 			extit_module_scan_wc(
-				extit_container_t *container,
+				const extit_container_t *container,
 				const wchar_t *directory,
 				extit_module_scan_callback_t callback,
 				void *callback_client_data,
@@ -230,11 +229,11 @@ void			EXTIT_DECL
 				extit_plugin_t *plugin,
 				unsigned int flags);
 
-#undef	LIBAPI
-#undef	LIBAPI_STATIC
-
 #ifdef	__cplusplus
 }
 #endif
+
+#undef	LIBAPI
+#undef	LIBAPI_STATIC
 
 #endif	/* !__extit__pmodule_h */

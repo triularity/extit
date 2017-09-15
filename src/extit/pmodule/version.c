@@ -1,5 +1,5 @@
 /*
- * @(#) pmodule/version.c
+ * @(#) extit/pmodule/version.c
  *
  * Platform neutral container library implementation.
  *

@@ -1,5 +1,5 @@
 /*
- * @(#) container/get_symbol.c
+ * @(#) extit/container/get_symbol.c
  *
  * Container API wrappers.
  *

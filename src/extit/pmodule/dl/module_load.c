@@ -3,7 +3,7 @@
  *
  * [lib]dl specific implementations of container library.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -25,7 +25,7 @@ EXTIT_EXPORT
 extit_module_t *
 EXTIT_DECL
 extit_module_load(
-	extit_container_t *container,
+	const extit_container_t *container,
 	const char *path,
 	unsigned int flags
 )

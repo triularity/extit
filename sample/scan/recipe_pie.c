@@ -51,7 +51,7 @@ EXTIT_DECL
 plugin_create
 (
 	extit_pmodule_descriptor_1_0_t *descr,
-	extit_container_t *container,
+	const extit_container_t *container,
 	void **ctx_ptr
 )
 {
@@ -80,7 +80,7 @@ EXTIT_DECL
 plugin_destroy
 (
 	extit_pmodule_descriptor_1_0_t *descr,
-	extit_container_t *container,
+	const extit_container_t *container,
 	void *ctx
 )
 {
@@ -96,7 +96,7 @@ EXTIT_DECL
 plugin_get_interface
 (
 	extit_pmodule_descriptor_1_0_t *descr,
-	extit_container_t *container,
+	const extit_container_t *container,
 	void *ctx,
 	const char *iid,
 	iv_version_t version
@@ -126,7 +126,7 @@ EXTIT_DECL
 plugin_query_interface
 (
 	extit_pmodule_descriptor_1_0_t *descr,
-	extit_container_t *container,
+	const extit_container_t *container,
 	void *ctx,
 	const char *iid,
 	iv_version_t base_version

@@ -1,5 +1,5 @@
 /*
- * @(#) pmodule/plugin_destroy.c
+ * @(#) extit/pmodule/plugin_destroy.c
  *
  * Platform neutral container library implementation.
  *

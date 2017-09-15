@@ -1,5 +1,5 @@
 /*
- * @(#) pmodule/module_get_id.c
+ * @(#) extit/pmodule/module_get_id.c
  *
  * Platform neutral container library implementation.
  *

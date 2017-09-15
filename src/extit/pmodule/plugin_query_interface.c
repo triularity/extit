@@ -1,5 +1,5 @@
 /*
- * @(#) pmodule/plugin_query_interface.c
+ * @(#) extit/pmodule/plugin_query_interface.c
  *
  * Platform neutral container library implementation.
  *
