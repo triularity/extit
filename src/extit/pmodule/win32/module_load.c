@@ -3,7 +3,7 @@
  *
  * Windows specific implementations of container library.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -34,7 +34,7 @@ extit_module_t *
 EXTIT_DECL
 extit_module_load
 (
-	extit_container_t *container,
+	const extit_container_t *container,
 	const char *path,
 	unsigned int flags
 )
@@ -127,7 +127,7 @@ extit_module_t *
 EXTIT_DECL
 extit_module_load_wc
 (
-	extit_container_t *container,
+	const extit_container_t *container,
 	const wchar_t *path,
 	unsigned int flags
 )
