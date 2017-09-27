@@ -88,7 +88,7 @@ extit_module_scan
 		{
 			fprintf(stderr,
 			 "[extit:module] Path too long (> %u): '%s'.\n",
-				(sizeof(path) - 3),
+				(unsigned int) (sizeof(path) - 3),
 				directory);
 		}
 #endif	/* EXTIT_DEBUG */
@@ -259,7 +259,7 @@ extit_module_scan_wc
 		{
 			fprintf(stderr,
 			 "[extit:module] Path too long (> %u): '%ls'.\n",
-				(sizeof(path) - 3),
+				(unsigned int) (sizeof(path) - 3),
 				directory);
 		}
 #endif	/* EXTIT_DEBUG */
