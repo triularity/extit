@@ -715,15 +715,7 @@ if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
 	target_link_libraries(extit_pmodule dl)
 endif()
 
-if(${CMAKE_CXX_COMPILER_ID} MATCHES "GNU" OR ${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
-	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99")
-	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -pedantic")
-	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wmissing-prototypes -Wstrict-prototypes")
-
-	if(EXTIT_WARNFREE)
-		set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror")
-	endif()
-elseif(MSVC)
+if(MSVC)
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W4 /wd4054 /wd4100")
 
 	# Get rid of annoying D9025 warning for /W3 /W4
@@ -734,7 +726,24 @@ elseif(MSVC)
 	endif()
 
 	add_definitions("-D_CRT_SECURE_NO_WARNINGS")
-endif()
+else(MSVC)
+	set(GNU_COMPILE_FLAGS "-Wall -pedantic")
+	set(GNU_COMPILE_FLAGS "${GNU_COMPILE_FLAGS} -Wmissing-prototypes -Wstrict-prototypes")
+
+	if(EXTIT_WARNFREE)
+		set(GNU_COMPILE_FLAGS "${GNU_COMPILE_FLAGS} -Werror")
+	endif()
+
+	if(${CMAKE_C_COMPILER_ID} STREQUAL "GNU" OR ${CMAKE_C_COMPILER_ID} STREQUAL "Clang")
+		set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99")
+		set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${GNU_COMPILE_FLAGS}")
+	endif()
+
+	if(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU" OR ${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
+		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++98")
+		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GNU_COMPILE_FLAGS}")
+	endif()
+endif(MSVC)
 
 
 #
