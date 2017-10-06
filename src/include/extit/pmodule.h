@@ -12,7 +12,7 @@
 
 #include <stddef.h>
 
-#ifdef  EXTIT_WCHAR
+#ifdef	EXTIT_WCHAR
 #include <wchar.h>
 #endif
 
@@ -51,7 +51,7 @@ typedef	extit_bool_t	(EXTIT_DECL *extit_module_scan_fnfilter_t)(
 				size_t length,
 				void *client_data);
 
-#ifdef  EXTIT_WCHAR
+#ifdef	EXTIT_WCHAR
 typedef	extit_bool_t	(EXTIT_DECL *extit_module_scan_fnfilter_wc_t)(
 				const wchar_t *basename,
 				size_t length,
@@ -129,14 +129,14 @@ extit_module_t *	EXTIT_DECL
 				const char *path,
 				unsigned int flags);
 
-#ifdef  EXTIT_WCHAR
+#ifdef	EXTIT_WCHAR
 LIBAPI
 extit_module_t *	EXTIT_DECL
 			extit_module_load_wc(
 				const extit_container_t *container,
 				const wchar_t *path,
 				unsigned int flags);
-#endif  /* EXTIT_WCHAR */
+#endif	/* EXTIT_WCHAR */
 
 LIBAPI
 extit_status_t		EXTIT_DECL
@@ -154,7 +154,7 @@ extit_status_t		EXTIT_DECL
 				void *fnfilter_client_data,
 				unsigned int flags);
 
-#ifdef  EXTIT_WCHAR
+#ifdef	EXTIT_WCHAR
 LIBAPI
 extit_status_t		EXTIT_DECL
 			extit_module_scan_wc(
@@ -165,7 +165,7 @@ extit_status_t		EXTIT_DECL
 				extit_module_scan_fnfilter_wc_t fnfilter,
 				void *fnfilter_client_data,
 				unsigned int flags);
-#endif  /* EXTIT_WCHAR */
+#endif	/* EXTIT_WCHAR */
 
 LIBAPI_STATIC
 extit_bool_t		EXTIT_DECL
@@ -174,14 +174,14 @@ extit_bool_t		EXTIT_DECL
 				size_t length,
 				void *client_data);
 
-#ifdef  EXTIT_WCHAR
+#ifdef	EXTIT_WCHAR
 LIBAPI_STATIC
 extit_bool_t		EXTIT_DECL
 			extit_module_scan_fnfilter_wc_default(
 				const wchar_t *libname,
 				size_t length,
 				void *client_data);
-#endif  /* EXTIT_WCHAR */
+#endif	/* EXTIT_WCHAR */
 
 LIBAPI
 void			EXTIT_DECL
