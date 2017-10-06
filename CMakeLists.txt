@@ -22,7 +22,7 @@ endif()
 set(EXTIT_PARANOID TRUE CACHE BOOL "Enable Paranoid Code Checks")
 set(EXTIT_DEBUG TRUE CACHE BOOL "Enable Runtime Debugging")
 set(EXTIT_WARNFREE FALSE CACHE BOOL "Enable Error on Compile Warnings")
-##+set(EXTIT_WITH_CXX FALSE CACHE BOOL "Enable C++ Wrappers")
+set(EXTIT_WITH_CXX TRUE CACHE BOOL "Enable C++ Wrappers")
 set(EXTIT_COMPILE_SAMPLES FALSE CACHE BOOL "Compile Sample Programs")
 set(EXTIT_COMPILE_TESTS FALSE CACHE BOOL "Compile Unit Tests")
 set(EXTIT_LIB_LOADER ${DEFAULT_LIB_LOADER} CACHE STRING "Library Loader (dl|win32|dylib)")
@@ -350,9 +350,25 @@ endif()
 # C++ Support
 #
 if(EXTIT_WITH_CXX)
-##+	set(EXTIT_PMODULE_SOURCE_FILES
-##+		${EXTIT_PMODULE_SOURCE_FILES}
-##+		src/extit/pmodule/container_cxx.cc)
+	set(EXTIT_CONTAINER_HEADER_FILES 
+		${EXTIT_CONTAINER_HEADER_FILES}
+		src/include/extit/container_cxx.h)
+
+	set(EXTIT_CONTAINER_SOURCE_FILES
+		${EXTIT_CONTAINER_SOURCE_FILES}
+		src/extit/container/Container.cc
+		src/extit/container/Container_1_0.cc
+		src/extit/container/ContainerImpl.cc
+		src/extit/container/ContainerImpl_1_0.cc)
+
+	set(EXTIT_PMODULE_HEADER_FILES 
+		${EXTIT_PMODULE_HEADER_FILES}
+		src/include/extit/pmodule_cxx.h)
+
+	set(EXTIT_PMODULE_SOURCE_FILES
+		${EXTIT_PMODULE_SOURCE_FILES}
+		src/extit/pmodule/Module.cc
+		src/extit/pmodule/Plugin.cc)
 endif()
 
 
@@ -405,6 +421,7 @@ set_target_properties(
 
 target_link_libraries(
 	extit_pmodule
+		extit_container
 		extit_util)
 
 if(EXTIT_PARANOID)
