@@ -1,9 +1,9 @@
 /*
  * @(#) if/resolvable_impl.h
  *
- * Resolvable Interface API implementation.
+ * Resolvable Interface - implementation.
  *
- * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -18,7 +18,7 @@ extern "C" {
 #endif
 
 /*
- * Resolvable operations (1.0 component)
+ * Resolvable operations (v1.0 component)
  */
 typedef struct _if_resolvable_ops_comp_1_0
 {
@@ -35,7 +35,7 @@ typedef struct _if_resolvable_ops_comp_1_0
 
 
 /*
- * Resolvable operations (1.0)
+ * Resolvable operations (v1.0)
  */
 typedef struct _if_resolvable_ops_1_0
 {
@@ -53,7 +53,7 @@ struct _if_resolvable
 
 
 /*
- * Resolvable (1.0)
+ * Resolvable (v1.0)
  */
 struct _if_resolvable_1_0
 {

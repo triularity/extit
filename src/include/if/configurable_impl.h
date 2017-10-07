@@ -1,9 +1,9 @@
 /*
  * @(#) if/configurable_impl.h
  *
- * Configurable Interface implementation.
+ * Configurable Interface - implementation.
  *
- * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -18,7 +18,7 @@ extern "C" {
 #endif
 
 /*
- * Configurable operations (1.0 component)
+ * Configurable operations (v1.0 component)
  */
 typedef struct _if_configurable_ops_comp_1_0
 {
@@ -202,7 +202,7 @@ typedef struct _if_configurable_ops_comp_1_0
 
 
 /*
- * Configurable operations (1.0)
+ * Configurable operations (v1.0)
  */
 typedef struct _if_configurable_ops_1_0
 {
@@ -220,7 +220,7 @@ struct _if_configurable
 
 
 /*
- * Configurable (1.0)
+ * Configurable (v1.0)
  */
 struct _if_configurable_1_0
 {

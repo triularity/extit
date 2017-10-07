@@ -3,7 +3,7 @@
  *
  * Allocator Interface.
  *
- * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -15,26 +15,27 @@
 #include <iv/base.h>
 #include <extit/base.h>
 
-#ifdef	__cplusplus
-extern "C" {
-#endif
-
 #ifdef	if_allocator_EXPORTS
 #define	LIBAPI		EXTIT_EXPORT
 #else
 #define	LIBAPI		EXTIT_IMPORT
 #endif
 
+#ifdef	__cplusplus
+extern "C" {
+#endif
 
 /*
  * Allocator Interface ID
  */
 #define IF_ALLOCATOR_IID		"{c1c017b1-44d5-11e6-9660-406186e454c1}/allocator"
 
+
 /*
  * Allocator (base)
  */
 typedef struct _if_allocator		if_allocator_t;
+
 
 /*
  * Allocator (v1.0)
@@ -43,10 +44,6 @@ typedef struct _if_allocator		if_allocator_t;
 
 typedef struct _if_allocator_1_0	if_allocator_1_0_t;
 
-
-/*
- * Public API (v1.0)
- */
 LIBAPI
 void *			EXTIT_DECL
 			if_allocator_alloc__1_0(
@@ -95,10 +92,10 @@ void *			EXTIT_DECL
 #define	if_allocator_zalloc		if_allocator_zalloc__1_0
 #endif	/* IV_VERSION_MAJOR(IF_ALLOCATOR_ABI_TARGET) == 1 */
 
-#undef	LIBAPI
-
 #ifdef	__cplusplus
 }
 #endif
+
+#undef	LIBAPI
 
 #endif	/* !__if__allocator_h */

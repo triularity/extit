@@ -1,9 +1,9 @@
 /*
  * @(#) if/disposable_impl.h
  *
- * Disposable Interface implementation.
+ * Disposable Interface - implementation.
  *
- * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -18,7 +18,7 @@ extern "C" {
 #endif
 
 /*
- * Disposable operations (1.0 component)
+ * Disposable operations (v1.0 component)
  */
 typedef struct _if_disposable_ops_comp_1_0
 {
@@ -28,7 +28,7 @@ typedef struct _if_disposable_ops_comp_1_0
 
 
 /*
- * Disposable operations (1.0)
+ * Disposable operations (v1.0)
  */
 typedef struct _if_disposable_ops_1_0
 {
@@ -47,7 +47,7 @@ struct _if_disposable
 
 
 /*
- * Disposable (1.0)
+ * Disposable (v1.0)
  */
 struct _if_disposable_1_0
 {

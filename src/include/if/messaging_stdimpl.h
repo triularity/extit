@@ -1,9 +1,9 @@
 /*
  * @(#) if/messaging_stdimpl.h
  *
- * Message interface standard implementation.
+ * Message Interface - standard implementation.
  *
- * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -16,20 +16,21 @@
 #include <if/messaging.h>
 #include <if/messaging_impl.h>
 
-#ifdef	__cplusplus
-extern "C" {
-#endif
-
 #ifdef	if_messaging_stdimpl_EXPORTS
 #define	LIBAPI		EXTIT_EXPORT
 #else
 #define	LIBAPI		EXTIT_IMPORT
 #endif
 
+#ifdef	__cplusplus
+extern "C" {
+#endif
 
+/*
+ * Messaging (v1.0)
+ */
 LIBAPI
 extern if_messaging_ops_1_0_t		if_messaging_stdimpl_ops__1_0;
-
 
 LIBAPI
 if_messaging_listener_id_t
@@ -43,8 +44,7 @@ if_messaging_listener_id_t
 				void *client_data);
 
 LIBAPI
-if_messaging_bound_t *
-			EXTIT_DECL
+if_messaging_bound_t *	EXTIT_DECL
 			if_messaging_stdimpl_bind__1_0(
 				if_messaging_1_0_t *messaging,
 				const char *mid,
@@ -61,15 +61,13 @@ if_messaging_listener_id_t
 				void *client_data);
 
 LIBAPI
-extit_bool_t
-			EXTIT_DECL
+extit_bool_t		EXTIT_DECL
 			if_messaging_stdimpl_bound_has_listener__1_0(
 				if_messaging_1_0_t *messaging,
 				if_messaging_bound_t *bound);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_messaging_stdimpl_bound_remove_listener__1_0(
 				if_messaging_1_0_t *messaging,
 				if_messaging_bound_t *bound,
@@ -77,8 +75,7 @@ extit_status_t
 				void *client_data);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_messaging_stdimpl_bound_send__1_0(
 				if_messaging_1_0_t *messaging,
 				if_messaging_bound_t *bound,
@@ -89,8 +86,7 @@ void			if_messaging_stdimpl_cleanup(
 				if_messaging_1_0_t *messaging);
 
 LIBAPI
-if_messaging_1_0_t *
-			EXTIT_DECL
+if_messaging_1_0_t *	EXTIT_DECL
 			if_messaging_stdimpl_create(void);
 
 LIBAPI
@@ -99,8 +95,7 @@ void			EXTIT_DECL
 				if_messaging_1_0_t *messaging);
 
 LIBAPI
-extit_bool_t
-			EXTIT_DECL
+extit_bool_t		EXTIT_DECL
 			if_messaging_stdimpl_has_listener__1_0(
 				if_messaging_1_0_t *messaging,
 				const char *mid,
@@ -108,8 +103,7 @@ extit_bool_t
 				iv_version_t version);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_messaging_stdimpl_remove_listener__1_0(
 				if_messaging_1_0_t *messaging,
 				const char *mid,
@@ -119,15 +113,13 @@ extit_status_t
 				void *client_data);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_messaging_stdimpl_remove_listener_by_id__1_0(
 				if_messaging_1_0_t *messaging,
 				if_messaging_listener_id_t id);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_messaging_stdimpl_send__1_0(
 				if_messaging_1_0_t *messaging,
 				const char *mid,
@@ -136,16 +128,15 @@ extit_status_t
         			void *data);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_messaging_stdimpl_unbind__1_0(
 				if_messaging_1_0_t *messaging,
 				if_messaging_bound_t *bound);
 
-#undef	LIBAPI
-
 #ifdef	__cplusplus
 }
 #endif
+
+#undef	LIBAPI
 
 #endif	/* !__if__messaging_stdimpl_h */

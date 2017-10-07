@@ -3,7 +3,7 @@
  *
  * Messaging Interface.
  *
- * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -16,36 +16,15 @@
 #include <iv/base.h>
 #include <extit/base.h>
 
-#ifdef	__cplusplus
-extern "C" {
-#endif
-
 #ifdef	if_messaging_EXPORTS
 #define	LIBAPI		EXTIT_EXPORT
 #else
 #define	LIBAPI		EXTIT_IMPORT
 #endif
 
-
-/*
- * Messaging Interface ID
- */
-#define IF_MESSAGING_IID		"{25eb0d84-38ee-11e6-9660-406186e454c1}/messaging"
-
-
-/*
- * Messaging (base)
- */
-typedef struct _if_messaging		if_messaging_t;
-
-
-/*
- * Messaging (v1.0)
- */
-#define IF_MESSAGING_ABI_1_0		IV_VERSION(1,0)
-
-typedef struct _if_messaging_1_0	if_messaging_1_0_t;
-
+#ifdef	__cplusplus
+extern "C" {
+#endif
 
 /*
  * A bound interface message
@@ -73,8 +52,24 @@ typedef uint32_t			if_messaging_listener_id_t;
 
 
 /*
- * Public API (v1.0)
+ * Messaging Interface ID
  */
+#define IF_MESSAGING_IID		"{25eb0d84-38ee-11e6-9660-406186e454c1}/messaging"
+
+
+/*
+ * Messaging (base)
+ */
+typedef struct _if_messaging		if_messaging_t;
+
+
+/*
+ * Messaging (v1.0)
+ */
+#define IF_MESSAGING_ABI_1_0		IV_VERSION(1,0)
+
+typedef struct _if_messaging_1_0	if_messaging_1_0_t;
+
 LIBAPI
 if_messaging_listener_id_t
 			EXTIT_DECL
@@ -87,8 +82,7 @@ if_messaging_listener_id_t
 				void *client_data);
 
 LIBAPI
-if_messaging_bound_t *
-			EXTIT_DECL
+if_messaging_bound_t *	EXTIT_DECL
 			if_messaging_bind__1_0(
 				if_messaging_t *messaging,
 				const char *mid,
@@ -192,10 +186,10 @@ extit_status_t		EXTIT_DECL
 #define	if_messaging_unbind		if_messaging_unbind__1_0
 #endif	/* IV_VERSION_MAJOR(IF_MESSAGING_ABI_TARGET) == 1 */
 
-#undef	LIBAPI
-
 #ifdef	__cplusplus
 }
 #endif
+
+#undef	LIBAPI
 
 #endif	/* !__if__messaging_h */

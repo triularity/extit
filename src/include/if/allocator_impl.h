@@ -1,9 +1,9 @@
 /*
  * @(#) if/allocator_impl.h
  *
- * Allocator Interface implementation.
+ * Allocator Interface - implementation.
  *
- * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -18,7 +18,7 @@ extern "C" {
 #endif
 
 /*
- * Allocator operations (1.0 component)
+ * Allocator operations (v1.0 component)
  */
 typedef struct _if_allocator_ops_comp_1_0
 {
@@ -47,7 +47,7 @@ typedef struct _if_allocator_ops_comp_1_0
 
 
 /*
- * Allocator operations (1.0)
+ * Allocator operations (v1.0)
  */
 typedef struct _if_allocator_ops_1_0
 {
@@ -65,7 +65,7 @@ struct _if_allocator
 
 
 /*
- * Allocator (1.0)
+ * Allocator (v1.0)
  */
 struct _if_allocator_1_0
 {

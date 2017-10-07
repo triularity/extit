@@ -1,9 +1,9 @@
 /*
  * @(#) if/messaging_impl.h
  *
- * Messaging Interface implementation.
+ * Messaging Interface - implementation.
  *
- * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -19,7 +19,7 @@ extern "C" {
 #endif
 
 /*
- * Messaging operations (1.0 component)
+ * Messaging operations (v1.0 component)
  */
 typedef struct _if_messaging_ops_comp_1_0
 {
@@ -93,7 +93,7 @@ typedef struct _if_messaging_ops_comp_1_0
 
 
 /*
- * Messaging operations (1.0)
+ * Messaging operations (v1.0)
  */
 typedef struct _if_messaging_ops_1_0
 {
@@ -111,7 +111,7 @@ struct _if_messaging
 
 
 /*
- * Messaging (1.0)
+ * Messaging (v1.0)
  */
 struct _if_messaging_1_0
 {

@@ -3,7 +3,7 @@
  *
  * Configurable Interface.
  *
- * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -13,39 +13,19 @@
 #include <iv/base.h>
 #include <extit/base.h>
 
-#ifdef	__cplusplus
-extern "C" {
-#endif
-
 #ifdef	if_configurable_EXPORTS
 #define	LIBAPI		EXTIT_EXPORT
 #else
 #define	LIBAPI		EXTIT_IMPORT
 #endif
 
-
-/*
- * Configurable Interface ID
- */
-#define IF_CONFIGURABLE_IID		"{e89cceaa-459c-11e6-9660-406186e454c1}/configurable"
-
-
-/*
- * Configurable (base)
- */
-typedef struct _if_configurable		if_configurable_t;
-
-
-/*
- * Configurable (v1.0)
- */
-#define IF_CONFIGURABLE_ABI_1_0		IV_VERSION(1,0)
-
-typedef struct _if_configurable_1_0	if_configurable_1_0_t;
-
+#ifdef	__cplusplus
+extern "C" {
+#endif
 
 typedef enum if_configurable_type
 {
+	/* v1.0 */
 	IF_CONFIGURABLE_TYPE_BOOL	= 0,
 	IF_CONFIGURABLE_TYPE_DOUBLE	= 1,
 	IF_CONFIGURABLE_TYPE_ENUM32	= 2,
@@ -234,8 +214,24 @@ typedef struct if_configurable_propref	if_configurable_propref_t;
 
 
 /*
- * Public API (v1.0)
+ * Configurable Interface ID
  */
+#define IF_CONFIGURABLE_IID		"{e89cceaa-459c-11e6-9660-406186e454c1}/configurable"
+
+
+/*
+ * Configurable (base)
+ */
+typedef struct _if_configurable		if_configurable_t;
+
+
+/*
+ * Configurable (v1.0)
+ */
+#define IF_CONFIGURABLE_ABI_1_0		IV_VERSION(1,0)
+
+typedef struct _if_configurable_1_0	if_configurable_1_0_t;
+
 LIBAPI
 if_configurable_propref_t *
 			EXTIT_DECL
@@ -244,16 +240,14 @@ if_configurable_propref_t *
 				const char *id);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_configurable_get_custom__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				void **valuep);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_configurable_get_bool__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
@@ -266,214 +260,187 @@ const if_configurable_descriptor_t *
 				if_configurable_t *configurable);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_configurable_get_double__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				double *valuep);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_configurable_get_enum32__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				uint32_t *valuep);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_configurable_get_float__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				float *valuep);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_configurable_get_int8__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				int8_t *valuep);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_configurable_get_int16__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				int16_t *valuep);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_configurable_get_int32__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				int32_t *valuep);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_configurable_get_int64__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				int64_t *valuep);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_configurable_get_uint8__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				uint8_t *valuep);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_configurable_get_uint16__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				uint16_t *valuep);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_configurable_get_uint32__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				uint32_t *valuep);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_configurable_get_uint64__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				uint64_t *valuep);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_configurable_get_utf8__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				const char **valuep);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_configurable_reset__1_0(
 				if_configurable_t *configurable);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_configurable_set_bool__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				extit_bool_t value);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_configurable_set_custom__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				void *value);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_configurable_set_double__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				double value);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_configurable_set_enum32__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				uint32_t value);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_configurable_set_float__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				float value);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_configurable_set_int8__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				int8_t value);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_configurable_set_int16__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				int16_t value);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_configurable_set_int32__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				int32_t value);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_configurable_set_int64__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				int64_t value);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_configurable_set_uint8__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				uint8_t value);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_configurable_set_uint16__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				uint16_t value);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_configurable_set_uint32__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				uint32_t value);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_configurable_set_uint64__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				uint64_t value);
 
 LIBAPI
-extit_status_t
-			EXTIT_DECL
+extit_status_t		EXTIT_DECL
 			if_configurable_set_utf8__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
@@ -521,10 +488,10 @@ extit_status_t
 #define	if_configurable_set_utf8	if_configurable_set_utf8__1_0
 #endif	/* IV_VERSION_MAJOR(IF_CONFIGURABLE_ABI_TARGET) == 1 */
 
-#undef	LIBAPI
-
 #ifdef	__cplusplus
 }
 #endif
+
+#undef	LIBAPI
 
 #endif	/* !__if__configurable_h */

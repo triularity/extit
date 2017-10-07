@@ -3,7 +3,7 @@
  *
  * Referenced Interface.
  *
- * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -13,16 +13,15 @@
 #include <iv/base.h>
 #include <extit/base.h>
 
-#ifdef	__cplusplus
-extern "C" {
-#endif
-
 #ifdef	if_referenced_EXPORTS
 #define	LIBAPI		EXTIT_EXPORT
 #else
 #define	LIBAPI		EXTIT_IMPORT
 #endif
 
+#ifdef	__cplusplus
+extern "C" {
+#endif
 
 /*
  * Referenced Interface ID
@@ -43,10 +42,6 @@ typedef struct _if_referenced		if_referenced_t;
 
 typedef struct _if_referenced_1_0	if_referenced_1_0_t;
 
-
-/*
- * Public API (v1.0)
- */
 LIBAPI
 extit_status_t		EXTIT_DECL
 			if_referenced_add__1_0(
@@ -70,10 +65,10 @@ extit_status_t		EXTIT_DECL
 #define	if_referenced_release		if_referenced_release__1_0
 #endif	/* IV_VERSION_MAJOR(IF_REFERENCED_ABI_TARGET) == 1 */
 
-#undef	LIBAPI
-
 #ifdef	__cplusplus
 }
 #endif
+
+#undef	LIBAPI
 
 #endif	/* !__if__referenced_h */

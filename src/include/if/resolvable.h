@@ -1,9 +1,9 @@
 /*
  * @(#) if/resolvable.h
  *
- * Resolvable Interface API.
+ * Resolvable Interface.
  *
- * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -13,16 +13,15 @@
 #include <iv/base.h>
 #include <extit/base.h>
 
-#ifdef	__cplusplus
-extern "C" {
-#endif
-
 #ifdef	if_resolvable_EXPORTS
 #define	LIBAPI		EXTIT_EXPORT
 #else
 #define	LIBAPI		EXTIT_IMPORT
 #endif
 
+#ifdef	__cplusplus
+extern "C" {
+#endif
 
 /*
  * Resolvable Interface ID
@@ -43,10 +42,6 @@ typedef struct _if_resolvable		if_resolvable_t;
 
 typedef struct _if_resolvable_1_0	if_resolvable_1_0_t;
 
-
-/*
- * Public API (v1.0)
- */
 LIBAPI
 void *			EXTIT_DECL
 			if_resolvable_get_interface__1_0(
@@ -74,10 +69,10 @@ iv_version_t		EXTIT_DECL
 #define	if_resolvable_query_interface	if_resolvable_query_interface__1_0
 #endif	/* IV_VERSION_MAJOR(IF_RESOLVABLE_ABI_TARGET) == 1 */
 
-#undef	LIBAPI
-
 #ifdef	__cplusplus
 }
 #endif
+
+#undef	LIBAPI
 
 #endif	/* !__if__resolvable_h */

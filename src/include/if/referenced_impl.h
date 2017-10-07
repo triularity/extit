@@ -1,9 +1,9 @@
 /*
  * @(#) if/referenced_impl.h
  *
- * Referenced Interface implementation.
+ * Referenced Interface - implementation.
  *
- * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -18,7 +18,7 @@ extern "C" {
 #endif
 
 /*
- * Referenced operations (1.0 component)
+ * Referenced operations (v1.0 component)
  */
 typedef struct _if_referenced_ops_comp_1_0
 {
@@ -31,7 +31,7 @@ typedef struct _if_referenced_ops_comp_1_0
 
 
 /*
- * Referenced operations (1.0)
+ * Referenced operations (v1.0)
  */
 typedef struct _if_referenced_ops_1_0
 {
@@ -49,7 +49,7 @@ struct _if_referenced
 
 
 /*
- * Referenced (1.0)
+ * Referenced (v1.0)
  */
 struct _if_referenced_1_0
 {

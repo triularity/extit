@@ -3,7 +3,7 @@
  *
  * Configurable Interface.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -13,19 +13,18 @@
 #include <extit/base.h>
 #include <if/configurable.h>
 
-#ifdef	__cplusplus
-extern "C" {
-#endif
-
 #ifdef	if_configurable_util_EXPORTS
 #define	LIBAPI		EXTIT_EXPORT
 #else
 #define	LIBAPI		EXTIT_IMPORT
 #endif
 
+#ifdef	__cplusplus
+extern "C" {
+#endif
 
 /*
- * Public API (v1.0)
+ * Configurable Utils (v1.0)
  */
 LIBAPI
 const if_configurable_enum32_t *
@@ -43,10 +42,10 @@ const if_configurable_enum32_t *
 				uint32_t count,
 				uint32_t value);
 
-#undef	LIBAPI
-
 #ifdef	__cplusplus
 }
 #endif
+
+#undef	LIBAPI
 
 #endif	/* !__if__configurable_util_h */
