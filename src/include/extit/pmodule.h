@@ -28,10 +28,10 @@
 
 #ifdef	extit_pmodule_EXPORTS
 #define	LIBAPI		EXTIT_EXPORT
-#define	LIBAPI_STATIC	EXTIT_EXPORT
+#define	LIBAPI_STUB	EXTIT_EXPORT
 #else
 #define	LIBAPI		EXTIT_IMPORT
-#define	LIBAPI_STATIC	EXTIT_IMPORT_STATIC
+#define	LIBAPI_STUB	EXTIT_IMPORT_STUB
 #endif
 
 #ifdef	__cplusplus
@@ -167,7 +167,7 @@ extit_status_t		EXTIT_DECL
 				unsigned int flags);
 #endif	/* EXTIT_WCHAR */
 
-LIBAPI_STATIC
+LIBAPI_STUB
 extit_bool_t		EXTIT_DECL
 			extit_module_scan_fnfilter_default(
 				const char *libname,
@@ -175,7 +175,7 @@ extit_bool_t		EXTIT_DECL
 				void *client_data);
 
 #ifdef	EXTIT_WCHAR
-LIBAPI_STATIC
+LIBAPI_STUB
 extit_bool_t		EXTIT_DECL
 			extit_module_scan_fnfilter_wc_default(
 				const wchar_t *libname,
@@ -234,6 +234,6 @@ void			EXTIT_DECL
 #endif
 
 #undef	LIBAPI
-#undef	LIBAPI_STATIC
+#undef	LIBAPI_STUB
 
 #endif	/* !__extit__pmodule_h */

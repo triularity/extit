@@ -19,11 +19,11 @@
 #include <iv/base.h>
 
 /*
- * ExtIt Library Version (v0.9.1)
+ * ExtIt Library Version (v0.9.2)
  */
 #define	EXTIT_LIB_VERSION_MAJOR		0
 #define	EXTIT_LIB_VERSION_MINOR		9
-#define	EXTIT_LIB_VERSION_PATCH		1
+#define	EXTIT_LIB_VERSION_PATCH		2
 #define	EXTIT_LIB_VERSION		((EXTIT_LIB_VERSION_MAJOR << 16)|(EXTIT_LIB_VERSION_MINOR<<8)|EXTIT_LIB_VERSION_PATCH)
 
 
@@ -102,14 +102,14 @@ typedef enum _extit_status
 /*
  * DLL Export Modifier
  */
-#ifdef	_WIN32
+#if	defined(EXTIT_LINK_SHARED) && defined(_WIN32)
 #define	EXTIT_EXPORT		__declspec(dllexport)
 #define	EXTIT_IMPORT		__declspec(dllimport)
-#define	EXTIT_IMPORT_STATIC	/* __declspec(dllimport) */
+#define	EXTIT_IMPORT_STUB	/* */
 #else
 #define	EXTIT_EXPORT		/* */
 #define	EXTIT_IMPORT		/* */
-#define	EXTIT_IMPORT_STATIC	/* */
+#define	EXTIT_IMPORT_STUB	/* */
 #endif
 
 

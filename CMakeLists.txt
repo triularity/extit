@@ -1,6 +1,6 @@
 project(extit)
 
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.8.12)
 
 #
 # Defaults
@@ -637,10 +637,10 @@ set_target_properties(
 	if_messaging_stdimpl PROPERTIES
 		POSITION_INDEPENDENT_CODE ON)
 
-	target_link_libraries(
-		if_messaging_stdimpl
-			iv_util
-			extit_util)
+target_link_libraries(
+	if_messaging_stdimpl
+		iv_util
+		extit_util)
 
 
 #
@@ -733,34 +733,53 @@ if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
 endif()
 
 if(MSVC)
-	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W4 /wd4054 /wd4100")
+	set(TEST_COMPILE_FLAGS "/wd4127")
+
+	set(EXTRA_COMPILE_FLAGS "/W4 /wd4054 /wd4100")
+
+	if(EXTIT_WARNFREE)
+		set(EXTRA_COMPILE_FLAGS "${EXTRA_COMPILE_FLAGS} /WX")
+	endif()
+
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${EXTRA_COMPILE_FLAGS}")
+
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4458")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${EXTRA_COMPILE_FLAGS}")
 
 	# Get rid of annoying D9025 warning for /W3 /W4
 	string(REPLACE "/W3 " "" CMAKE_C_FLAGS ${CMAKE_C_FLAGS})
-
-	if(EXTIT_WARNFREE)
-		set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /WX")
-	endif()
+	string(REPLACE "/W3 " "" CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS})
 
 	add_definitions("-D_CRT_SECURE_NO_WARNINGS")
 else(MSVC)
-	set(GNU_COMPILE_FLAGS "-Wall -pedantic")
-	set(GNU_COMPILE_FLAGS "${GNU_COMPILE_FLAGS} -Wmissing-prototypes -Wstrict-prototypes")
+	set(TEST_COMPILE_FLAGS "")
+
+	set(EXTRA_COMPILE_FLAGS "-Wall -pedantic")
+	set(EXTRA_COMPILE_FLAGS "${EXTRA_COMPILE_FLAGS} -Wmissing-prototypes -Wstrict-prototypes")
 
 	if(EXTIT_WARNFREE)
-		set(GNU_COMPILE_FLAGS "${GNU_COMPILE_FLAGS} -Werror")
+		set(EXTRA_COMPILE_FLAGS "${EXTRA_COMPILE_FLAGS} -Werror")
 	endif()
 
 	if(${CMAKE_C_COMPILER_ID} STREQUAL "GNU" OR ${CMAKE_C_COMPILER_ID} STREQUAL "Clang")
 		set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99")
-		set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${GNU_COMPILE_FLAGS}")
+		set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${EXTRA_COMPILE_FLAGS}")
 	endif()
 
 	if(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU" OR ${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
 		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++98")
-		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GNU_COMPILE_FLAGS}")
+		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${EXTRA_COMPILE_FLAGS}")
 	endif()
 endif(MSVC)
+
+
+#
+# Shared Linking
+#
+if(BUILD_SHARED_LIBS)
+	add_definitions("-DIV_LINK_SHARED")
+	add_definitions("-DEXTIT_LINK_SHARED")
+endif()
 
 
 #
@@ -1292,11 +1311,19 @@ if(EXTIT_COMPILE_TESTS)
 			tests/extit_bool_t/test_bool.c
 			${EXTIT_HEADER_FILES})
 
+	target_compile_options(
+		test_extit_bool_t
+			PRIVATE ${TEST_COMPILE_FLAGS})
+
 	add_executable(
 		test_extit_refcount
 			tests/extit_refcount/test_refcount.c
 			${EXTIT_HEADER_FILES}
 			${EXTIT_UTIL_HEADER_FILES})
+
+	target_compile_options(
+		test_extit_refcount
+			PRIVATE ${TEST_COMPILE_FLAGS})
 
 	target_link_libraries(
 		test_extit_refcount
@@ -1307,10 +1334,18 @@ if(EXTIT_COMPILE_TESTS)
 			tests/iv_version/test_iv_version.c
 			${IV_HEADER_FILES})
 
+	target_compile_options(
+		test_iv_version
+			PRIVATE ${TEST_COMPILE_FLAGS})
+
 	add_executable(
 		test_iv_bool_t
 			tests/iv_bool_t/test_iv_bool.c
 			${IV_HEADER_FILES})
+
+	target_compile_options(
+		test_iv_bool_t
+			PRIVATE ${TEST_COMPILE_FLAGS})
 
 	if(IV_COMPAT)
 		add_executable(
@@ -1318,6 +1353,10 @@ if(EXTIT_COMPILE_TESTS)
 				tests/iv_keymap/test_keymap.c
 				${IV_HEADER_FILES}
 				${IV_UTIL_HEADER_FILES})
+
+		target_compile_options(
+			test_iv_keymap
+				PRIVATE ${TEST_COMPILE_FLAGS})
 
 		target_link_libraries(
 			test_iv_keymap
@@ -1330,6 +1369,10 @@ if(EXTIT_COMPILE_TESTS)
 			${IV_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
 
+	target_compile_options(
+		test_iv_map
+			PRIVATE ${TEST_COMPILE_FLAGS})
+
 	target_link_libraries(
 		test_iv_map
 			iv_util)
@@ -1339,6 +1382,10 @@ if(EXTIT_COMPILE_TESTS)
 			tests/iv_matches/test_iv_matches.c
 			${IV_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
+
+	target_compile_options(
+		test_iv_matches
+			PRIVATE ${TEST_COMPILE_FLAGS})
 
 	target_link_libraries(
 		test_iv_matches

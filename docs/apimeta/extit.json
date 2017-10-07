@@ -105,10 +105,10 @@
 		},
 		{
 			"type": "macro",
-			"name": "EXTIT_IMPORT_STATIC",
+			"name": "EXTIT_IMPORT_STUB",
 			"description":
 			[
-				"A portable declaration modifier for static importing symbols on platforms that require them. This may be used with headers declarations for symbols that will be linked from shared libraries that were exported with ",
+				"A portable declaration modifier for linking static stub symbols on platforms that require them. This may be used with headers declarations for symbols that will be linked from shared libraries that were exported with ",
 				{
 					"type": "ref:macro",
 					"name": "EXTIT_EXPORT"

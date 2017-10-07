@@ -66,7 +66,7 @@ typedef	enum _iv_bool
 /*
  * DLL Export Modifier
  */
-#ifdef	_WIN32
+#if	defined(IV_LINK_SHARED) && defined(_WIN32)
 #define	IV_EXPORT		__declspec(dllexport)
 #define	IV_IMPORT		__declspec(dllimport)
 #else

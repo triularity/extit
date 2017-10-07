@@ -195,7 +195,7 @@ main(int argc, char **argv)
 		rc = 1;
 	}
 
-	if(IV_VERSION(-1, 0) != 0xFFFF0000)
+	if(IV_VERSION((uint32_t) -1, 0) != 0xFFFF0000)
 	{
 		fprintf(stderr,
 			"Test FAILED - IV_VERSION(-1, 0) != 0xFFFF0000\n");
@@ -203,7 +203,7 @@ main(int argc, char **argv)
 		rc = 1;
 	}
 
-	if(IV_VERSION(0, -1) != 0x0000FFFF)
+	if(IV_VERSION(0, (uint32_t) -1) != 0x0000FFFF)
 	{
 		fprintf(stderr,
 			"Test FAILED - IV_VERSION(0, -1) != 0x0000FFFF\n");
@@ -211,7 +211,7 @@ main(int argc, char **argv)
 		rc = 1;
 	}
 
-	if(IV_VERSION(-2, 0) != 0xFFFE0000)
+	if(IV_VERSION((uint32_t) -2, 0) != 0xFFFE0000)
 	{
 		fprintf(stderr,
 			"Test FAILED - IV_VERSION(-2, 0) != 0xFFFE0000\n");
@@ -219,7 +219,7 @@ main(int argc, char **argv)
 		rc = 1;
 	}
 
-	if(IV_VERSION(0, -2) != 0x0000FFFE)
+	if(IV_VERSION(0, (uint32_t) -2) != 0x0000FFFE)
 	{
 		fprintf(stderr,
 			"Test FAILED - IV_VERSION(0, -2) != 0x0000FFFE\n");

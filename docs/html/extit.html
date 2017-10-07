@@ -278,14 +278,14 @@
      <div class="declaration">
       <table>
        <tr>
-        <td><span class="macro-name"><a name="EXTIT_IMPORT_STATIC">EXTIT_IMPORT_STATIC</a></span></td>
+        <td><span class="macro-name"><a name="EXTIT_IMPORT_STUB">EXTIT_IMPORT_STUB</a></span></td>
        </tr>
       </table>
      </div>
 
      <div class="description">
       <p>
-       A portable declaration modifier for static importing symbols on platforms that require them. This may be used with headers declarations for symbols that will be linked from shared libraries that were exported with <code class="ref"><a href="extit.html#EXTIT_EXPORT">EXTIT_EXPORT</a></code>. This differs from <code class="ref"><a href="extit.html#EXTIT_IMPORT">EXTIT_IMPORT</a></code>, in that it will link stubs during compile time on platforms that have them. Use of this modifier should be avoided, but is included for situations where linking requires it.<br />
+       A portable declaration modifier for linking static stub symbols on platforms that require them. This may be used with headers declarations for symbols that will be linked from shared libraries that were exported with <code class="ref"><a href="extit.html#EXTIT_EXPORT">EXTIT_EXPORT</a></code>. This differs from <code class="ref"><a href="extit.html#EXTIT_IMPORT">EXTIT_IMPORT</a></code>, in that it will link stubs during compile time on platforms that have them. Use of this modifier should be avoided, but is included for situations where linking requires it.<br />
       </p>
      </div>
 
