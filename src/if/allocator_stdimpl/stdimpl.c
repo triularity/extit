@@ -21,7 +21,7 @@ void *
 EXTIT_DECL
 allocator_op_alloc__1_0
 (
-	if_allocator_t *allocator,
+	if_allocator_1_0_t *allocator,
 	size_t size
 )
 {
@@ -38,7 +38,7 @@ void *
 EXTIT_DECL
 allocator_op_dup__1_0
 (
-	if_allocator_t *allocator,
+	if_allocator_1_0_t *allocator,
 	void *ptr,
 	size_t size
 )
@@ -65,7 +65,7 @@ void
 EXTIT_DECL
 allocator_op_free__1_0
 (
-	if_allocator_t *allocator,
+	if_allocator_1_0_t *allocator,
 	void *ptr
 )
 {
@@ -83,7 +83,7 @@ void *
 EXTIT_DECL
 allocator_op_realloc__1_0
 (
-	if_allocator_t *allocator,
+	if_allocator_1_0_t *allocator,
 	void *ptr,
 	size_t size
 )
@@ -106,7 +106,7 @@ void *
 EXTIT_DECL
 allocator_op_zalloc__1_0
 (
-	if_allocator_t *allocator,
+	if_allocator_1_0_t *allocator,
 	size_t size
 )
 {

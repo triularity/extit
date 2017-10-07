@@ -31,5 +31,10 @@ if_messaging_remove_listener_by_id__1_0
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return messaging->ops->v0.op_remove_listener_by_id(messaging, id);
+#define	IMPL(x)		((if_messaging_1_0_t *) (x))
+
+	return IMPL(messaging)->ops->v0.op_remove_listener_by_id(
+		IMPL(messaging), id);
+
+#undef	IMPL
 }

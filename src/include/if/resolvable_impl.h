@@ -23,12 +23,12 @@ extern "C" {
 typedef struct _if_resolvable_ops_comp_1_0
 {
 	void *			(EXTIT_DECL *op_get_interface)(
-					if_resolvable_t *resolvable,
+					if_resolvable_1_0_t *resolvable,
 					const char *id,
 					iv_version_t version);
 
 	iv_version_t		(EXTIT_DECL *op_query_interface)(
-					if_resolvable_t *resolvable,
+					if_resolvable_1_0_t *resolvable,
 					const char *id,
 					iv_version_t base_version);
 } if_resolvable_ops_comp_1_0_t;
@@ -44,11 +44,23 @@ typedef struct _if_resolvable_ops_1_0
 
 
 /*
+ * Resolvable (base)
+ */
+struct _if_resolvable
+{
+	iv_version_t			version;
+};
+
+
+/*
  * Resolvable (1.0)
  */
 struct _if_resolvable_1_0
 {
+	/* base */
 	iv_version_t			version;	/* 1.0+ */
+
+	/* 1.0+ */
 	if_resolvable_ops_1_0_t *	ops;
 };
 

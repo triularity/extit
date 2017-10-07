@@ -29,25 +29,19 @@ extern "C" {
  */
 #define IF_DISPOSABLE_IID		"{c20950b5-310a-11e6-9b95-406186e454c1}/disposable"
 
+
+/*
+ * Disposable (base)
+ */
+typedef struct _if_disposable		if_disposable_t;
+
+
 /*
  * Disposable (v1.0)
  */
 #define IF_DISPOSABLE_ABI_1_0		IV_VERSION(1,0)
+
 typedef struct _if_disposable_1_0	if_disposable_1_0_t;
-
-
-/*
- * ABI Version
- */
-#ifndef	IF_DISPOSABLE_ABI_TARGET
-#define	IF_DISPOSABLE_ABI_TARGET	IF_DISPOSABLE_ABI_1_0
-#endif
-
-#if	IF_DISPOSABLE_ABI_TARGET == IF_DISPOSABLE_ABI_1_0
-typedef	if_disposable_1_0_t		if_disposable_t;
-#else
-#error	Unsupported IF_DISPOSABLE_ABI_TARGET version
-#endif
 
 
 /*
@@ -58,6 +52,13 @@ extit_status_t		EXTIT_DECL
 			if_disposable_free__1_0(
 				if_disposable_t *disposable);
 
+
+/*
+ * ABI Version
+ */
+#ifndef	IF_DISPOSABLE_ABI_TARGET
+#define	IF_DISPOSABLE_ABI_TARGET	IF_DISPOSABLE_ABI_1_0
+#endif
 
 #if	IV_VERSION_MAJOR(IF_DISPOSABLE_ABI_TARGET) == 1
 #define	if_disposable_free		if_disposable_free__1_0

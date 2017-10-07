@@ -18,7 +18,7 @@
 struct _item
 {
 	void			(*wfunc)(void);
-	if_disposable_t		disposable;
+	if_disposable_1_0_t	disposable;
 };
 
 
@@ -27,7 +27,7 @@ extit_status_t
 EXTIT_DECL
 item_disposable_free
 (
-	if_disposable_t *disposable
+	if_disposable_1_0_t *disposable
 )
 {
 	item_t *	item;
@@ -83,6 +83,6 @@ item_dosomething(item_t *item)
 if_disposable_t *
 item_get_disposable(item_t *item)
 {
-	return &item->disposable;
+	return (if_disposable_t *) &item->disposable;
 }
 

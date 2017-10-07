@@ -33,6 +33,10 @@ if_messaging_bound_add_listener__1_0
 		return IF_MESSAGING_LISTENER_ID_NONE;
 #endif
 
-	return messaging->ops->v0.op_bound_add_listener(
-		messaging, bound, callback, client_data);
+#define	IMPL(x)		((if_messaging_1_0_t *) (x))
+
+	return IMPL(messaging)->ops->v0.op_bound_add_listener(
+		IMPL(messaging), bound, callback, client_data);
+
+#undef	IMPL
 }

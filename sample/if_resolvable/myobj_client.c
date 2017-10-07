@@ -15,7 +15,7 @@ if_resolvable_t *
 EXTIT_DECL
 myobj_get_resolvable(myobj_t *obj)
 {
-	return &obj->resolvable;
+	return (if_resolvable_t *) &obj->resolvable;
 }
 
 

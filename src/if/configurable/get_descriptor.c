@@ -31,5 +31,9 @@ if_configurable_get_descriptor__1_0
 		return NULL;
 #endif
 
-	return configurable->descriptor;
+#define	IMPL(x)		((if_configurable_1_0_t *) (x))
+
+	return IMPL(configurable)->descriptor;
+
+#undef	IMPL
 }

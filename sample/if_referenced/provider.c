@@ -22,7 +22,7 @@ struct myobj_internal;
 
 struct if_referenced_internal
 {
-	if_referenced_t			pub;		/* The public object */
+	if_referenced_1_0_t		pub;		/* The public object */
 	struct myobj_internal *		myobj;
 };
 
@@ -43,18 +43,18 @@ myobj__get_if_referenced(myobj_t *obj)
 
 	obji = (struct myobj_internal *) obj;
 
-	return &obji->if_referenced.pub;
+	return (if_referenced_t *) &obji->if_referenced.pub;
 }
 
 
 static
 extit_status_t
-myobj__referenced__add(if_referenced_t *refcount)
+myobj__referenced__add(if_referenced_1_0_t *referenced)
 {
 	struct myobj_internal *	obji;
 
 
-	obji = ((struct if_referenced_internal *) refcount)->myobj;
+	obji = ((struct if_referenced_internal *) referenced)->myobj;
 
 	return extit_refcount_add(&obji->refcount);
 }
@@ -62,13 +62,13 @@ myobj__referenced__add(if_referenced_t *refcount)
 
 static
 extit_status_t
-myobj__referenced__release(if_referenced_t *refcount)
+myobj__referenced__release(if_referenced_1_0_t *referenced)
 {
 	struct myobj_internal *	obji;
 	extit_status_t		status;
 
 
-	obji = ((struct if_referenced_internal *) refcount)->myobj;
+	obji = ((struct if_referenced_internal *) referenced)->myobj;
 
 	status = extit_refcount_release(&obji->refcount);
 

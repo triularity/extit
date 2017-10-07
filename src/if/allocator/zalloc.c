@@ -32,5 +32,9 @@ if_allocator_zalloc__1_0
 		return NULL;
 #endif
 
-	return allocator->ops->v0.op_zalloc(allocator, size);
+#define	IMPL(x)		((if_allocator_1_0_t *) (x))
+
+	return IMPL(allocator)->ops->v0.op_zalloc(IMPL(allocator), size);
+
+#undef	IMPL
 }

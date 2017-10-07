@@ -22,7 +22,7 @@ extit_status_t
 EXTIT_DECL
 if_messaging_stdimpl_remove_listener_by_id__1_0
 (
-	if_messaging_t *messaging,
+	if_messaging_1_0_t *messaging,
 	if_messaging_listener_id_t id
 )
 {

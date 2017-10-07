@@ -23,24 +23,24 @@ extern "C" {
 typedef struct _if_allocator_ops_comp_1_0
 {
 	void *			(EXTIT_DECL *op_alloc)(
-					if_allocator_t *allocator,
+					if_allocator_1_0_t *allocator,
 					size_t size);
 
 	void			(EXTIT_DECL *op_free)(
-					if_allocator_t *allocator,
+					if_allocator_1_0_t *allocator,
 					void *ptr);
 
 	void *			(EXTIT_DECL *op_realloc)(
-					if_allocator_t *allocator,
+					if_allocator_1_0_t *allocator,
 					void *ptr,
 					size_t size);
 
 	void *			(EXTIT_DECL *op_zalloc)(
-					if_allocator_t *allocator,
+					if_allocator_1_0_t *allocator,
 					size_t size);
 
 	void *			(EXTIT_DECL *op_dup)(
-					if_allocator_t *allocator,
+					if_allocator_1_0_t *allocator,
 					void *ptr,
 					size_t size);
 } if_allocator_ops_comp_1_0_t;
@@ -56,11 +56,23 @@ typedef struct _if_allocator_ops_1_0
 
 
 /*
+ * Allocator (base)
+ */
+struct _if_allocator
+{
+	iv_version_t			version;
+};
+
+
+/*
  * Allocator (1.0)
  */
 struct _if_allocator_1_0
 {
+	/* base */
 	iv_version_t			version;	/* 1.0+ */
+
+	/* 1.0+ */
 	if_allocator_ops_1_0_t *	ops;
 };
 

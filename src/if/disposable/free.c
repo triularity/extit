@@ -29,5 +29,9 @@ if_disposable_free__1_0
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return disposable->ops->v0.op_free(disposable);
+#define	IMPL(x)		((if_disposable_1_0_t *) (x))
+
+	return IMPL(disposable)->ops->v0.op_free(IMPL(disposable));
+
+#undef	IMPL
 }

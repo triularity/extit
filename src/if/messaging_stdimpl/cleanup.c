@@ -46,7 +46,7 @@ void
 EXTIT_DECL
 if_messaging_stdimpl_cleanup
 (
-	if_messaging_t *messaging
+	if_messaging_1_0_t *messaging
 )
 {
 	if_messaging_internal_t *	messaging_i;

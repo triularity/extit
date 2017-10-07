@@ -97,7 +97,7 @@ void *
 EXTIT_DECL
 my_resolv_get_interface
 (
-	if_resolvable_t *resolvable,
+	if_resolvable_1_0_t *resolvable,
 	const char *id,
 	iv_version_t version
 )
@@ -138,7 +138,7 @@ iv_version_t
 EXTIT_DECL
 my_resolv_query_interface
 (
-	if_resolvable_t *resolvable,
+	if_resolvable_1_0_t *resolvable,
 	const char *id,
 	iv_version_t base_version
 )
@@ -183,7 +183,7 @@ if_resolvable_ops_1_0_t		my_resolv_ops =
 static
 extit_status_t
 EXTIT_DECL
-my_referenced_add(if_referenced_t *referenced)
+my_referenced_add(if_referenced_1_0_t *referenced)
 {
 	myobj_t *	obj;
 
@@ -198,7 +198,7 @@ my_referenced_add(if_referenced_t *referenced)
 static
 extit_status_t
 EXTIT_DECL
-my_referenced_release(if_referenced_t *referenced)
+my_referenced_release(if_referenced_1_0_t *referenced)
 {
 	myobj_t *	obj;
 	extit_status_t	status;

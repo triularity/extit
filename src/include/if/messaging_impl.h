@@ -25,7 +25,7 @@ typedef struct _if_messaging_ops_comp_1_0
 {
 	if_messaging_listener_id_t
 				(EXTIT_DECL *op_add_listener)(
-					if_messaging_t *messaging,
+					if_messaging_1_0_t *messaging,
 					const char *mid,
 					const char *iid,
 					iv_version_t version,
@@ -33,7 +33,7 @@ typedef struct _if_messaging_ops_comp_1_0
 					void *client_data);
 
 	extit_status_t		(EXTIT_DECL *op_remove_listener)(
-					if_messaging_t *messaging,
+					if_messaging_1_0_t *messaging,
 					const char *mid,
 					const char *iid,
 					iv_version_t version,
@@ -41,17 +41,17 @@ typedef struct _if_messaging_ops_comp_1_0
 					void *client_data);
 
 	extit_status_t		(EXTIT_DECL *op_remove_listener_by_id)(
-					if_messaging_t *messaging,
+					if_messaging_1_0_t *messaging,
 					if_messaging_listener_id_t id);
 
 	extit_bool_t		(EXTIT_DECL *op_has_listener)(
-					if_messaging_t *messaging,
+					if_messaging_1_0_t *messaging,
 					const char *mid,
 					const char *iid,
 					iv_version_t version);
 
 	extit_status_t		(EXTIT_DECL *op_send)(
-					if_messaging_t *messaging,
+					if_messaging_1_0_t *messaging,
 					const char *mid,
 					const char *iid,
 					iv_version_t version,
@@ -59,34 +59,34 @@ typedef struct _if_messaging_ops_comp_1_0
 
 	if_messaging_bound_t *
 				(EXTIT_DECL *op_bind)(
-					if_messaging_t *messaging,
+					if_messaging_1_0_t *messaging,
 					const char *mid,
 					const char *iid,
 					iv_version_t version);
 
 	extit_status_t		(EXTIT_DECL *op_unbind)(
-					if_messaging_t *messaging,
+					if_messaging_1_0_t *messaging,
 					if_messaging_bound_t *bound);
 
 	if_messaging_listener_id_t
 				(EXTIT_DECL *op_bound_add_listener)(
-					if_messaging_t *messaging,
+					if_messaging_1_0_t *messaging,
 					if_messaging_bound_t *bound,
 					if_messaging_listener_t cb,
 					void *client_data);
 
 	extit_status_t		(EXTIT_DECL *op_bound_remove_listener)(
-					if_messaging_t *messaging,
+					if_messaging_1_0_t *messaging,
 					if_messaging_bound_t *bound,
 					if_messaging_listener_t cb,
 					void *client_data);
 
 	extit_bool_t		(EXTIT_DECL *op_bound_has_listener)(
-					if_messaging_t *messaging,
+					if_messaging_1_0_t *messaging,
 					if_messaging_bound_t *bound);
 
 	extit_status_t		(EXTIT_DECL *op_bound_send)(
-					if_messaging_t *messaging,
+					if_messaging_1_0_t *messaging,
 					if_messaging_bound_t *bound,
 					void *data);
 } if_messaging_ops_comp_1_0_t;
@@ -102,11 +102,23 @@ typedef struct _if_messaging_ops_1_0
 
 
 /*
+ * Messaging (base)
+ */
+struct _if_messaging
+{
+	iv_version_t			version;
+};
+
+
+/*
  * Messaging (1.0)
  */
 struct _if_messaging_1_0
 {
+	/* base */
 	iv_version_t			version;	/* 1.0+ */
+
+	/* 1.0+ */
 	if_messaging_ops_1_0_t *	ops;
 };
 

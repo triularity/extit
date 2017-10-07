@@ -22,7 +22,7 @@ extit_status_t
 EXTIT_DECL
 if_configurable_stdimpl_get_int32__1_0
 (
-	if_configurable_t *conf,
+	if_configurable_1_0_t *conf,
 	if_configurable_propref_t *prop,
 	int32_t *valuep
 )
@@ -42,7 +42,7 @@ extit_status_t
 EXTIT_DECL
 if_configurable_stdimpl_get_int32__1_0_base
 (
-	if_configurable_t *conf,
+	if_configurable_1_0_t *conf,
 	void *base,
 	if_configurable_propref_t *prop,
 	int32_t *valuep

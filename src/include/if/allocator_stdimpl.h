@@ -27,10 +27,6 @@ LIBAPI
 extern	if_allocator_1_0_t		if_allocator_stdimpl_1_0;
 
 
-#if	IF_ALLOCATOR_ABI_TARGET == IF_ALLOCATOR_ABI_1_0
-#define	if_allocator_stdimpl		if_allocator_stdimpl_1_0
-#endif
-
 #undef	LIBAPI
 
 #ifdef	__cplusplus

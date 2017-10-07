@@ -32,24 +32,16 @@ extern "C" {
 #define IF_ALLOCATOR_IID		"{c1c017b1-44d5-11e6-9660-406186e454c1}/allocator"
 
 /*
+ * Allocator (base)
+ */
+typedef struct _if_allocator		if_allocator_t;
+
+/*
  * Allocator (v1.0)
  */
 #define IF_ALLOCATOR_ABI_1_0		IV_VERSION(1,0)
+
 typedef struct _if_allocator_1_0	if_allocator_1_0_t;
-
-
-/*
- * ABI Version
- */
-#ifndef	IF_ALLOCATOR_ABI_TARGET
-#define	IF_ALLOCATOR_ABI_TARGET		IF_ALLOCATOR_ABI_1_0
-#endif
-
-#if	IF_ALLOCATOR_ABI_TARGET == IF_ALLOCATOR_ABI_1_0
-typedef	if_allocator_1_0_t		if_allocator_t;
-#else
-#error	Unsupported IF_ALLOCATOR_ABI_TARGET version
-#endif
 
 
 /*
@@ -87,6 +79,13 @@ void *			EXTIT_DECL
 				if_allocator_t *allocator,
 				size_t size);
 
+
+/*
+ * ABI Version
+ */
+#ifndef	IF_ALLOCATOR_ABI_TARGET
+#define	IF_ALLOCATOR_ABI_TARGET		IF_ALLOCATOR_ABI_1_0
+#endif
 
 #if	IV_VERSION_MAJOR(IF_ALLOCATOR_ABI_TARGET) == 1
 #define	if_allocator_alloc		if_allocator_alloc__1_0

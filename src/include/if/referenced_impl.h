@@ -23,10 +23,10 @@ extern "C" {
 typedef struct _if_referenced_ops_comp_1_0
 {
 	extit_status_t		(EXTIT_DECL *op_add)(
-					if_referenced_t *referenced);
+					if_referenced_1_0_t *referenced);
 
 	extit_status_t		(EXTIT_DECL *op_release)(
-					if_referenced_t *referenced);
+					if_referenced_1_0_t *referenced);
 } if_referenced_ops_comp_1_0_t;
 
 
@@ -40,11 +40,23 @@ typedef struct _if_referenced_ops_1_0
 
 
 /*
+ * Referenced (base)
+ */
+struct _if_referenced
+{
+	iv_version_t			version;
+};
+
+
+/*
  * Referenced (1.0)
  */
 struct _if_referenced_1_0
 {
+	/* base */
 	iv_version_t			version;	/* 1.x */
+
+	/* 1.0+ */
 	if_referenced_ops_1_0_t *	ops;
 };
 

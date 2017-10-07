@@ -33,5 +33,10 @@ if_messaging_bind__1_0
 		return IF_MESSAGING_BOUND_NONE;
 #endif
 
-	return messaging->ops->v0.op_bind(messaging, mid, iid, version);
+#define	IMPL(x)		((if_messaging_1_0_t *) (x))
+
+	return IMPL(messaging)->ops->v0.op_bind(
+		IMPL(messaging), mid, iid, version);
+
+#undef	IMPL
 }

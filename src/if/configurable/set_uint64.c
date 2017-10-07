@@ -31,5 +31,10 @@ if_configurable_set_uint64__1_0
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return configurable->ops->v0.op_set_uint64(configurable, prop, value);
+#define	IMPL(x)		((if_configurable_1_0_t *) (x))
+
+	return IMPL(configurable)->ops->v0.op_set_uint64(
+		IMPL(configurable), prop, value);
+
+#undef	IMPL
 }

@@ -24,7 +24,7 @@ bound_destroy(void *value)
 
 
 EXTIT_EXPORT
-if_messaging_t *
+if_messaging_1_0_t *
 EXTIT_DECL
 if_messaging_stdimpl_create
 (
@@ -49,7 +49,6 @@ if_messaging_stdimpl_create
 	messaging_i->lid_list = NULL;
 	messaging_i->lid_next = 1;
 	messaging_i->num_deletes = 0;
-
 
 	return &messaging_i->pub;
 }

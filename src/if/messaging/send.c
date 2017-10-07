@@ -34,5 +34,10 @@ if_messaging_send__1_0
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return messaging->ops->v0.op_send(messaging, mid, iid, version, data);
+#define	IMPL(x)		((if_messaging_1_0_t *) (x))
+
+	return IMPL(messaging)->ops->v0.op_send(
+		IMPL(messaging), mid, iid, version, data);
+
+#undef	IMPL
 }

@@ -34,5 +34,10 @@ if_resolvable_get_interface__1_0
 		return NULL;
 #endif
 
-	return resolvable->ops->v0.op_get_interface(resolvable, id, version);
+#define	IMPL(x)		((if_resolvable_1_0_t *) (x))
+
+	return IMPL(resolvable)->ops->v0.op_get_interface(
+		IMPL(resolvable), id, version);
+
+#undef	IMPL
 }

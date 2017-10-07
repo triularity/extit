@@ -29,5 +29,9 @@ if_configurable_reset__1_0
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return configurable->ops->v0.op_reset(configurable);
+#define	IMPL(x)		((if_configurable_1_0_t *) (x))
+
+	return IMPL(configurable)->ops->v0.op_reset(IMPL(configurable));
+
+#undef	IMPL
 }

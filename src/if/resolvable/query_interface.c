@@ -34,6 +34,10 @@ if_resolvable_query_interface__1_0
 		return IV_VERSION_NONE;
 #endif
 
-	return resolvable->ops->v0.op_query_interface(
-		resolvable, id, base_version);
+#define	IMPL(x)		((if_resolvable_1_0_t *) (x))
+
+	return IMPL(resolvable)->ops->v0.op_query_interface(
+		IMPL(resolvable), id, base_version);
+
+#undef	IMPL
 }

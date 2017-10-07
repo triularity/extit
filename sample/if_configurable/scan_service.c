@@ -21,7 +21,7 @@ struct _scan_service
 {
 	char *			somebuffer;
 	unsigned int		hw_version;
-	if_configurable_t	configurable;
+	if_configurable_1_0_t	configurable;
 	scan_mode_t		mode;
 	uint32_t		start_x;
 	uint32_t		start_y;
@@ -228,6 +228,6 @@ scan_service_create(void)
 if_configurable_t *
 scan_service_get_configurable(scan_service_t *service)
 {
-	return &service->configurable;
+	return (if_configurable_t *) &service->configurable;
 }
 

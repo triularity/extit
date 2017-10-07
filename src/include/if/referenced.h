@@ -29,25 +29,19 @@ extern "C" {
  */
 #define IF_REFERENCED_IID		"{e8fc9c0b-30fa-11e6-9b95-406186e454c1}/referenced"
 
+
+/*
+ * Referenced (base)
+ */
+typedef struct _if_referenced		if_referenced_t;
+
+
 /*
  * Referenced (v1.0)
  */
 #define IF_REFERENCED_ABI_1_0		IV_VERSION(1,0)
+
 typedef struct _if_referenced_1_0	if_referenced_1_0_t;
-
-
-/*
- * ABI Version
- */
-#ifndef	IF_REFERENCED_ABI_TARGET
-#define	IF_REFERENCED_ABI_TARGET	IF_REFERENCED_ABI_1_0
-#endif
-
-#if	IF_REFERENCED_ABI_TARGET == IF_REFERENCED_ABI_1_0
-typedef	if_referenced_1_0_t		if_referenced_t;
-#else
-#error	Unsupported IF_REFERENCED_ABI_TARGET version
-#endif
 
 
 /*
@@ -63,6 +57,13 @@ extit_status_t		EXTIT_DECL
 			if_referenced_release__1_0(
 				if_referenced_t *referenced);
 
+
+/*
+ * ABI Version
+ */
+#ifndef	IF_REFERENCED_ABI_TARGET
+#define	IF_REFERENCED_ABI_TARGET	IF_REFERENCED_ABI_1_0
+#endif
 
 #if	IV_VERSION_MAJOR(IF_REFERENCED_ABI_TARGET) == 1
 #define	if_referenced_add		if_referenced_add__1_0

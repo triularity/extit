@@ -32,11 +32,20 @@ extern "C" {
  */
 #define IF_MESSAGING_IID		"{25eb0d84-38ee-11e6-9660-406186e454c1}/messaging"
 
+
+/*
+ * Messaging (base)
+ */
+typedef struct _if_messaging		if_messaging_t;
+
+
 /*
  * Messaging (v1.0)
  */
 #define IF_MESSAGING_ABI_1_0		IV_VERSION(1,0)
+
 typedef struct _if_messaging_1_0	if_messaging_1_0_t;
+
 
 /*
  * A bound interface message
@@ -44,6 +53,7 @@ typedef struct _if_messaging_1_0	if_messaging_1_0_t;
 typedef struct _if_messaging_bound 	if_messaging_bound_t;
 
 #define	IF_MESSAGING_BOUND_NONE		((if_messaging_bound_t *) NULL)
+
 
 /*
  * Message listener callback
@@ -53,26 +63,13 @@ typedef void				(*if_messaging_listener_t)(
 						void *data,
 						void *client_data);
 
+
 /*
  * A registered listener ID
  */
 typedef uint32_t			if_messaging_listener_id_t;
 
 #define	IF_MESSAGING_LISTENER_ID_NONE	0
-
-
-/*
- * ABI Version
- */
-#ifndef	IF_MESSAGING_ABI_TARGET
-#define	IF_MESSAGING_ABI_TARGET		IF_MESSAGING_ABI_1_0
-#endif
-
-#if	IF_MESSAGING_ABI_TARGET == IF_MESSAGING_ABI_1_0
-typedef	if_messaging_1_0_t		if_messaging_t;
-#else
-#error	Unsupported IF_MESSAGING_ABI_TARGET version
-#endif
 
 
 /*
@@ -167,6 +164,13 @@ extit_status_t		EXTIT_DECL
 				if_messaging_t *messaging,
 				if_messaging_bound_t *bound);
 
+
+/*
+ * ABI Version
+ */
+#ifndef	IF_MESSAGING_ABI_TARGET
+#define	IF_MESSAGING_ABI_TARGET		IF_MESSAGING_ABI_1_0
+#endif
 
 #if	IV_VERSION_MAJOR(IF_MESSAGING_ABI_TARGET) == 1
 #define	if_messaging_add_listener	if_messaging_add_listener__1_0

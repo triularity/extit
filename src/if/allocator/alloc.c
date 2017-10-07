@@ -32,5 +32,9 @@ if_allocator_alloc__1_0
 		return NULL;
 #endif
 
-	return allocator->ops->v0.op_alloc(allocator, size);
+#define	IMPL(x)		((if_allocator_1_0_t *) (x))
+
+	return IMPL(allocator)->ops->v0.op_alloc(IMPL(allocator), size);
+
+#undef	IMPL
 }

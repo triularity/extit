@@ -24,7 +24,7 @@ extit_status_t
 EXTIT_DECL
 if_configurable_stdimpl_set_float__1_0
 (
-	if_configurable_t *conf,
+	if_configurable_1_0_t *conf,
 	if_configurable_propref_t *prop,
 	float value
 )
@@ -44,7 +44,7 @@ extit_status_t
 EXTIT_DECL
 if_configurable_stdimpl_set_float__1_0_base
 (
-	if_configurable_t *conf,
+	if_configurable_1_0_t *conf,
 	void *base,
 	if_configurable_propref_t *prop,
 	float value
@@ -87,7 +87,7 @@ if_configurable_stdimpl_set_float__1_0_base
 	}
 
 	if(prop->update_notifier != NULL)
-		prop->update_notifier(conf, prop);
+		prop->update_notifier((if_configurable_t *) conf, prop);
 
 	return EXTIT_STATUS_OK;
 }

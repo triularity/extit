@@ -29,12 +29,20 @@ extern "C" {
  */
 #define IF_CONFIGURABLE_IID		"{e89cceaa-459c-11e6-9660-406186e454c1}/configurable"
 
+
+/*
+ * Configurable (base)
+ */
+typedef struct _if_configurable		if_configurable_t;
+
+
 /*
  * Configurable (v1.0)
  */
 #define IF_CONFIGURABLE_ABI_1_0		IV_VERSION(1,0)
 
 typedef struct _if_configurable_1_0	if_configurable_1_0_t;
+
 
 typedef enum if_configurable_type
 {
@@ -55,6 +63,9 @@ typedef enum if_configurable_type
 } if_configurable_type_t;
 
 
+/*
+ * Configurable Status (v1.0)
+ */
 #define	IF_CONFIGURABLE_STATUS_MISMATCH	\
 			((extit_status_t) (EXTIT_STATUS_CUSTOM_BASE + 0))
 
@@ -220,20 +231,6 @@ typedef struct _if_configurable_descriptor
 
 
 typedef struct if_configurable_propref	if_configurable_propref_t;
-
-
-/*
- * ABI Version
- */
-#ifndef	IF_CONFIGURABLE_ABI_TARGET
-#define	IF_CONFIGURABLE_ABI_TARGET	IF_CONFIGURABLE_ABI_1_0
-#endif
-
-#if	IF_CONFIGURABLE_ABI_TARGET == IF_CONFIGURABLE_ABI_1_0
-typedef	if_configurable_1_0_t		if_configurable_t;
-#else
-#error	Unsupported IF_CONFIGURABLE_ABI_TARGET version
-#endif
 
 
 /*
@@ -482,6 +479,13 @@ extit_status_t
 				if_configurable_propref_t *prop,
 				const char *value);
 
+
+/*
+ * ABI Version
+ */
+#ifndef	IF_CONFIGURABLE_ABI_TARGET
+#define	IF_CONFIGURABLE_ABI_TARGET	IF_CONFIGURABLE_ABI_1_0
+#endif
 
 #if	IV_VERSION_MAJOR(IF_CONFIGURABLE_ABI_TARGET) == 1
 #define	if_configurable_find_property	if_configurable_find_property__1_0

@@ -31,5 +31,10 @@ if_configurable_get_uint32__1_0
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return configurable->ops->v0.op_get_uint32(configurable, prop, valuep);
+#define	IMPL(x)		((if_configurable_1_0_t *) (x))
+
+	return IMPL(configurable)->ops->v0.op_get_uint32(
+		IMPL(configurable), prop, valuep);
+
+#undef	IMPL
 }

@@ -18,7 +18,7 @@
 
 struct _myobj
 {
-	if_resolvable_t		resolvable;
+	if_resolvable_1_0_t	resolvable;
 
 	extit_refcount_t	numrefs;
 	extit_bool_t		enabled;
@@ -26,8 +26,8 @@ struct _myobj
 
 	void			(EXTIT_DECL *op_send)(myobj_t *obj);
 
-	if_referenced_t		referenced;
-	if_configurable_t	configurable;
+	if_referenced_1_0_t	referenced;
+	if_configurable_1_0_t	configurable;
 };
 
 

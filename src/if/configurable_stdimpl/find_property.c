@@ -25,7 +25,7 @@ if_configurable_propref_t *
 EXTIT_DECL
 if_configurable_stdimpl_find_property__1_0
 (
-	if_configurable_t *conf,
+	if_configurable_1_0_t *conf,
 	const char *id
 )
 {
@@ -75,7 +75,7 @@ if_configurable_propref_t *
 EXTIT_DECL
 if_configurable_stdimpl_find_property__1_0_sorted
 (
-	if_configurable_t *conf,
+	if_configurable_1_0_t *conf,
 	const char *id
 )
 {

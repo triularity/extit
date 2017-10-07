@@ -33,5 +33,9 @@ if_allocator_realloc__1_0
 		return NULL;
 #endif
 
-	return allocator->ops->v0.op_realloc(allocator, ptr, size);
+#define	IMPL(x)		((if_allocator_1_0_t *) (x))
+
+	return IMPL(allocator)->ops->v0.op_realloc(IMPL(allocator), ptr, size);
+
+#undef	IMPL
 }

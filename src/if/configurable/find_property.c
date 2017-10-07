@@ -32,5 +32,10 @@ if_configurable_find_property__1_0
 		return NULL;
 #endif
 
-	return configurable->ops->v0.op_find_property(configurable, id);
+#define	IMPL(x)		((if_configurable_1_0_t *) (x))
+
+	return IMPL(configurable)->ops->v0.op_find_property(
+		IMPL(configurable), id);
+
+#undef	IMPL
 }

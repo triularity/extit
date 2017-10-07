@@ -31,5 +31,9 @@ if_allocator_free__1_0
 		return;
 #endif
 
-	allocator->ops->v0.op_free(allocator, ptr);
+#define	IMPL(x)		((if_allocator_1_0_t *) (x))
+
+	IMPL(allocator)->ops->v0.op_free(IMPL(allocator), ptr);
+
+#undef	IMPL
 }

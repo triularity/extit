@@ -29,5 +29,9 @@ if_referenced_add__1_0
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return referenced->ops->v0.op_add(referenced);
+#define	IMPL(x)		((if_referenced_1_0_t *) (x))
+
+	return IMPL(referenced)->ops->v0.op_add(IMPL(referenced));
+
+#undef	IMPL
 }

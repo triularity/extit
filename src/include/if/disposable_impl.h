@@ -23,7 +23,7 @@ extern "C" {
 typedef struct _if_disposable_ops_comp_1_0
 {
 	extit_status_t		(EXTIT_DECL *op_free)(
-					if_disposable_t *disposable);
+					if_disposable_1_0_t *disposable);
 } if_disposable_ops_comp_1_0_t;
 
 
@@ -37,11 +37,24 @@ typedef struct _if_disposable_ops_1_0
 
 
 /*
+ * Disposable (base)
+ */
+struct _if_disposable
+{
+	/* base */
+	iv_version_t			version;
+};
+
+
+/*
  * Disposable (1.0)
  */
 struct _if_disposable_1_0
 {
+	/* base */
 	iv_version_t			version;	/* 1.0+ */
+
+	/* 1.0+ */
 	if_disposable_ops_1_0_t *	ops;
 };
 
