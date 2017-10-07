@@ -755,7 +755,6 @@ else(MSVC)
 	set(TEST_COMPILE_FLAGS "")
 
 	set(EXTRA_COMPILE_FLAGS "-Wall -pedantic")
-	set(EXTRA_COMPILE_FLAGS "${EXTRA_COMPILE_FLAGS} -Wmissing-prototypes -Wstrict-prototypes")
 
 	if(EXTIT_WARNFREE)
 		set(EXTRA_COMPILE_FLAGS "${EXTRA_COMPILE_FLAGS} -Werror")
@@ -763,6 +762,7 @@ else(MSVC)
 
 	if(${CMAKE_C_COMPILER_ID} STREQUAL "GNU" OR ${CMAKE_C_COMPILER_ID} STREQUAL "Clang")
 		set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99")
+		set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wmissing-prototypes -Wstrict-prototypes")
 		set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${EXTRA_COMPILE_FLAGS}")
 	endif()
 
