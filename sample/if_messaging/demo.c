@@ -83,7 +83,7 @@ char alarm_name[] = "Alarm #1";
 int
 main(int argc, char **argv)
 {
-	if_messaging_1_0_t *	messaging;
+	if_messaging_t *	messaging;
 	if_messaging_bound_t *	alarm_2_0_bound;
 	alarm_1_0_t		alarm_1_0;
 	alarm_1_1_t		alarm_1_1;
@@ -92,11 +92,11 @@ main(int argc, char **argv)
 
 
 	/* XXX - Check for NULL in real thing */
-	messaging = if_messaging_stdimpl_create();
+	messaging = if_messaging_stdimpl_create(IF_MESSAGING_ABI_1_0);
 
 	/* XXX - Check status in real thing */
 	if_messaging_add_listener(
-		(if_messaging_t *) messaging,
+		messaging,
 		"clock_alarm_set",
 		ALARM_TYPE_IID,
 		ALARM_TYPE_VERSION_1_0,
@@ -105,7 +105,7 @@ main(int argc, char **argv)
 
 	/* XXX - Check status in real thing */
 	if_messaging_add_listener(
-		(if_messaging_t *) messaging,
+		messaging,
 		"alarm:activate",
 		ALARM_TYPE_IID,
 		ALARM_TYPE_VERSION_1_0,
@@ -114,7 +114,7 @@ main(int argc, char **argv)
 
 	/* XXX - Check status in real thing */
 	if_messaging_add_listener(
-		(if_messaging_t *) messaging,
+		messaging,
 		"alarm:activate",
 		ALARM_TYPE_IID,
 		ALARM_TYPE_VERSION_2_0,
@@ -122,7 +122,7 @@ main(int argc, char **argv)
 		NULL);
 
 	alarm_2_0_bound = if_messaging_bind(
-		(if_messaging_t *) messaging,
+		messaging,
 		"alarm:activate",
 		ALARM_TYPE_IID,
 		ALARM_TYPE_VERSION_2_0);
@@ -139,7 +139,7 @@ main(int argc, char **argv)
 
 	/* XXX - Check status in real thing */
 	if_messaging_send(
-		(if_messaging_t *) messaging,
+		messaging,
 		"clock_alarm_set",
 		ALARM_TYPE_IID,
 		ALARM_TYPE_VERSION_1_0,
@@ -149,7 +149,7 @@ main(int argc, char **argv)
 
 	/* XXX - Check status in real thing */
 	if_messaging_send(
-		(if_messaging_t *) messaging,
+		messaging,
 		"alarm:activate",
 		ALARM_TYPE_IID,
 		ALARM_TYPE_VERSION_1_0,
@@ -165,7 +165,7 @@ main(int argc, char **argv)
 
 	/* XXX - Check status in real thing */
 	if_messaging_send(
-		(if_messaging_t *) messaging,
+		messaging,
 		"alarm:activate",
 		ALARM_TYPE_IID,
 		ALARM_TYPE_VERSION_1_1,
@@ -177,7 +177,7 @@ main(int argc, char **argv)
 
 	/* XXX - Check status in real thing */
 	if_messaging_bound_send(
-		(if_messaging_t *) messaging,
+		messaging,
 		alarm_2_0_bound,
 		&alarm_2_0);
 
@@ -191,7 +191,7 @@ main(int argc, char **argv)
 
 		/* XXX - Check status in real thing */
 		if_messaging_bound_send(
-			(if_messaging_t *) messaging,
+			messaging,
 			alarm_2_0_bound,
 			&alarm_2_0);
 	}

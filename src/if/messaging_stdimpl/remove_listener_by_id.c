@@ -72,7 +72,7 @@ if_messaging_stdimpl_remove_listener_by_id__1_0
 	free(lid_entry);
 
 	if(++messaging_i->num_deletes == CLEANUP_DELETES)
-		if_messaging_stdimpl_cleanup(messaging);
+		if_messaging_stdimpl_cleanup((if_messaging_t *) messaging);
 
 	return EXTIT_STATUS_OK;
 }

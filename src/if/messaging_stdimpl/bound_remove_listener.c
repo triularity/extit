@@ -70,7 +70,7 @@ if_messaging_stdimpl_bound_remove_listener__1_0
 	free(l_entry);
 
 	if(++messaging_i->num_deletes == CLEANUP_DELETES)
-		if_messaging_stdimpl_cleanup(messaging);
+		if_messaging_stdimpl_cleanup((if_messaging_t *) messaging);
 
 	return EXTIT_STATUS_OK;
 }

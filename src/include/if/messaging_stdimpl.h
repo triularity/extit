@@ -12,6 +12,7 @@
 
 #include <stddef.h>
 
+#include <iv/base.h>
 #include <extit/base.h>
 #include <if/messaging.h>
 #include <if/messaging_impl.h>
@@ -82,19 +83,6 @@ extit_status_t		EXTIT_DECL
         			void *data);
 
 LIBAPI
-void			if_messaging_stdimpl_cleanup(
-				if_messaging_1_0_t *messaging);
-
-LIBAPI
-if_messaging_1_0_t *	EXTIT_DECL
-			if_messaging_stdimpl_create(void);
-
-LIBAPI
-void			EXTIT_DECL
-			if_messaging_stdimpl_destroy(
-				if_messaging_1_0_t *messaging);
-
-LIBAPI
 extit_bool_t		EXTIT_DECL
 			if_messaging_stdimpl_has_listener__1_0(
 				if_messaging_1_0_t *messaging,
@@ -132,6 +120,24 @@ extit_status_t		EXTIT_DECL
 			if_messaging_stdimpl_unbind__1_0(
 				if_messaging_1_0_t *messaging,
 				if_messaging_bound_t *bound);
+
+
+/*
+ * Management
+ */
+LIBAPI
+void			if_messaging_stdimpl_cleanup(
+				if_messaging_t *messaging);
+
+LIBAPI
+if_messaging_t *	EXTIT_DECL
+			if_messaging_stdimpl_create(
+				iv_version_t version);
+
+LIBAPI
+void			EXTIT_DECL
+			if_messaging_stdimpl_destroy(
+				if_messaging_t *messaging);
 
 #ifdef	__cplusplus
 }

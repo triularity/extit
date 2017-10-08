@@ -35,7 +35,10 @@ if_messaging_stdimpl_unbind__1_0
 		messaging_i = (if_messaging_internal_t *) messaging;
 
 		if(++messaging_i->num_deletes == CLEANUP_DELETES)
-			if_messaging_stdimpl_cleanup(messaging);
+		{
+			if_messaging_stdimpl_cleanup(
+				(if_messaging_t *) messaging);
+		}
 	}
 
 	return status;

@@ -23,16 +23,18 @@ bound_destroy(void *value)
 }
 
 
-EXTIT_EXPORT
-if_messaging_1_0_t *
+if_messaging_t *
 EXTIT_DECL
 if_messaging_stdimpl_create
 (
-	void
+	iv_version_t version
 )
 {
 	if_messaging_internal_t *	messaging_i;
 
+
+	if(version != IF_MESSAGING_ABI_1_0)
+		return NULL;
 
 	if((messaging_i = malloc(sizeof(if_messaging_internal_t))) == NULL)
 		return NULL;
@@ -50,5 +52,5 @@ if_messaging_stdimpl_create
 	messaging_i->lid_next = 1;
 	messaging_i->num_deletes = 0;
 
-	return &messaging_i->pub;
+	return (if_messaging_t *) &messaging_i->pub;
 }
