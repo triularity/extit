@@ -226,7 +226,7 @@ typedef struct if_configurable_propref	if_configurable_propref_t;
 /*
  * Configurable Interface ID
  */
-#define IF_CONFIGURABLE_IID		"{e89cceaa-459c-11e6-9660-406186e454c1}/configurable"
+#define IF_CONFIGURABLE_IID		"{c1c017b1-44d5-11e6-9660-406186e454c1}/configurable"
 
 
 /*

@@ -26,7 +26,7 @@ extern "C" {
 /*
  * Resolvable Interface ID
  */
-#define IF_RESOLVABLE_IID		"{7b1c1a0e-399b-11e6-9660-406186e454c1}/resolvable"
+#define IF_RESOLVABLE_IID		"{c1c017b1-44d5-11e6-9660-406186e454c1}/resolvable"
 
 
 /*

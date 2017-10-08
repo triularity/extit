@@ -26,7 +26,7 @@ extern "C" {
 /*
  * Referenced Interface ID
  */
-#define IF_REFERENCED_IID		"{e8fc9c0b-30fa-11e6-9b95-406186e454c1}/referenced"
+#define IF_REFERENCED_IID		"{c1c017b1-44d5-11e6-9660-406186e454c1}/referenced"
 
 
 /*

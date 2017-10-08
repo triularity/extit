@@ -54,7 +54,7 @@ typedef uint32_t			if_messaging_listener_id_t;
 /*
  * Messaging Interface ID
  */
-#define IF_MESSAGING_IID		"{25eb0d84-38ee-11e6-9660-406186e454c1}/messaging"
+#define IF_MESSAGING_IID		"{c1c017b1-44d5-11e6-9660-406186e454c1}/messaging"
 
 
 /*

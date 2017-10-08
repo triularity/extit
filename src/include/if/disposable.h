@@ -26,7 +26,7 @@ extern "C" {
 /*
  * Disposable Interface ID
  */
-#define IF_DISPOSABLE_IID		"{c20950b5-310a-11e6-9b95-406186e454c1}/disposable"
+#define IF_DISPOSABLE_IID		"{c1c017b1-44d5-11e6-9660-406186e454c1}/disposable"
 
 
 /*
