@@ -1,9 +1,9 @@
 /*
  * @(#) if/resolvable/get_interface.c
  *
- * Resolvable Interface client API wrappers.
+ * Resolvable Interface - get_interface@1.0 wrapper.
  *
- * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -29,7 +29,7 @@ if_resolvable_get_interface__1_0
 )
 {
 #ifdef	EXTIT_PARANOID
-	if(!iv_matches(resolvable->version, IF_RESOLVABLE_ABI_1_0))
+	if(!IV_MATCHES(resolvable->version, IF_RESOLVABLE_ABI_1_0))
 		return NULL;
 #endif
 

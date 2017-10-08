@@ -1,9 +1,9 @@
 /*
  * @(#) if/messaging/bound_has_listener.c
  *
- * Messaging Interface client API wrappers.
+ * Messaging Interface - bound_has_listener@1.0 wrapper.
  *
- * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -26,7 +26,7 @@ if_messaging_bound_has_listener__1_0
 )
 {
 #ifdef	EXTIT_PARANOID
-	if(!iv_matches(messaging->version, IF_MESSAGING_ABI_1_0))
+	if(!IV_MATCHES(messaging->version, IF_MESSAGING_ABI_1_0))
 		return EXTIT_FALSE;
 #endif
 

@@ -1,9 +1,9 @@
 /*
  * @(#) if/allocator/zalloc.c
  *
- * Allocator Interface client API wrappers.
+ * Allocator Interface - zalloc@1.0 wrapper.
  *
- * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -27,7 +27,7 @@ if_allocator_zalloc__1_0
 )
 {
 #ifdef	EXTIT_PARANOID
-	if(!iv_matches(allocator->version, IF_ALLOCATOR_ABI_1_0))
+	if(!IV_MATCHES(allocator->version, IF_ALLOCATOR_ABI_1_0))
 		return NULL;
 #endif
 

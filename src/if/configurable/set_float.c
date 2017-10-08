@@ -1,9 +1,9 @@
 /*
  * @(#) if/configurable/set_float.c
  *
- * Configurable Interface client API wrappers.
+ * Configurable Interface - set_float@1.0 wrapper.
  *
- * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -26,7 +26,7 @@ if_configurable_set_float__1_0
 )
 {
 #ifdef	EXTIT_PARANOID
-	if(!iv_matches(configurable->version, IF_CONFIGURABLE_ABI_1_0))
+	if(!IV_MATCHES(configurable->version, IF_CONFIGURABLE_ABI_1_0))
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 

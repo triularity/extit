@@ -1,9 +1,9 @@
 /*
  * @(#) if/disposable/free.c
  *
- * Disposable Interface client API wrappers.
+ * Disposable Interface - free@1.0 wrapper.
  *
- * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -24,7 +24,7 @@ if_disposable_free__1_0
 )
 {
 #ifdef	EXTIT_PARANOID
-	if(!iv_matches(disposable->version, IF_DISPOSABLE_ABI_1_0))
+	if(!IV_MATCHES(disposable->version, IF_DISPOSABLE_ABI_1_0))
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 

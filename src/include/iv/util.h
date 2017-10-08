@@ -14,15 +14,38 @@
 
 #include <iv/base.h>
 
-#ifdef	__cplusplus
-extern "C" {
-#endif
-
 #ifdef	iv_util_EXPORTS
 #define	LIBAPI		IV_EXPORT
 #else
 #define	LIBAPI		IV_IMPORT
 #endif
+
+#ifdef	__cplusplus
+extern "C" {
+#endif
+
+/*
+ * Inline iv_matches() optimized for compile-time req_version constant
+ */
+#define	IV_MATCHES(version, req_version)	\
+		( \
+			( \
+				(IV_VERSION_MAJOR(req_version) == 0) \
+					&& ((version) == (req_version)) \
+			) \
+			|| \
+			( \
+				(IV_VERSION_MAJOR(req_version) \
+					== IV_VERSION_MAJOR(version)) \
+				&& \
+				( \
+					(IV_VERSION_MINOR(req_version) == 0) \
+					|| \
+					((version) >= (req_version)) \
+				) \
+			) \
+		)
+
 
 #ifdef	IV_COMPAT
 typedef	struct _iv_keymap	iv_keymap_t;
@@ -140,10 +163,10 @@ iv_bool_t		IV_DECL
 				iv_version_t version,
 				iv_version_t req_version);
 
-#undef	LIBAPI
-
 #ifdef	__cplusplus
 }
 #endif
+
+#undef	LIBAPI
 
 #endif	/* !__iv__util_h */
