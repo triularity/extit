@@ -19,17 +19,11 @@
 #include <extit/container.h>
 #include <extit/container_impl.h>
 #include <extit/pmodule.h>
+#include <extit/platform.h>
 
 #include "../pmodule_internal.h"
 
-#ifdef  __GNUC__
-#define	FUNCPTR_TO_VOIDPTR(x)	(*((void **) &x))
-#else
-#define	FUNCPTR_TO_VOIDPTR(x)	((void *) x)
-#endif
 
-
-EXTIT_EXPORT
 extit_module_t *
 EXTIT_DECL
 extit_module_load
@@ -107,7 +101,7 @@ extit_module_load
 	 * Create the module from a descriptor
 	 */
 	module = extit_module_bind(
-		container, FUNCPTR_TO_VOIDPTR(descriptor), flags);
+		container, FARPROC_TO_VOIDPTR(descriptor), flags);
 
 	if(module == NULL)
 	{
@@ -122,7 +116,6 @@ extit_module_load
 
 
 #ifdef	EXTIT_WCHAR
-EXTIT_EXPORT
 extit_module_t *
 EXTIT_DECL
 extit_module_load_wc
@@ -200,7 +193,7 @@ extit_module_load_wc
 	 * Create the module from a descriptor
 	 */
 	module = extit_module_bind(
-		container, FUNCPTR_TO_VOIDPTR(descriptor), flags);
+		container, FARPROC_TO_VOIDPTR(descriptor), flags);
 
 	if(module == NULL)
 	{

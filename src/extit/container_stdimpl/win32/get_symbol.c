@@ -12,9 +12,9 @@
 #include <extit/base.h>
 #include <extit/container.h>
 #include <extit/container_stdimpl.h>
+#include <extit/platform.h>
 
 
-EXTIT_EXPORT
 void *
 EXTIT_DECL
 extit_container_stdimpl_get_symbol__1_0
@@ -23,14 +23,5 @@ extit_container_stdimpl_get_symbol__1_0
 	const char *name
 )
 {
-	FARPROC	ptr;
-
-
-	ptr = GetProcAddress(GetModuleHandle(NULL), name);
-
-#ifdef	__GNUC__
-	return *((void **) &ptr);
-#else
-	return (void *) ptr;
-#endif
+	return FARPROC_TO_VOIDPTR(GetProcAddress(GetModuleHandle(NULL), name));
 }

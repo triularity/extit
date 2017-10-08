@@ -3,7 +3,7 @@
  *
  * Platform specific portability definitions/macros.
  *
- * Copyright (c) 2014, 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2014, 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -26,6 +26,16 @@
 #define	EXTIT_FN_WCSCMP(a,b)		EXTIT_WCSCASECMP((a),(b))
 #define	EXTIT_FN_WCSNCMP(a,b,l)		EXTIT_WCNSCASECMP((a),(b),(l))
 #endif	/* EXTIT_WCHAR */
+
+#ifdef	__GNUC__
+#if	defined(__LP64__) || defined(_WIN64)
+#define	FARPROC_TO_VOIDPTR(x)		((void *) ((uint64_t) (x)))
+#else
+#define	FARPROC_TO_VOIDPTR(x)		((void *) ((uint32_t) (x)))
+#endif	/* __LP64__ || _WIN64 */
+#else
+#define	FARPROC_TO_VOIDPTR(x)		((void *) (x))
+#endif	/* __GNUC__ */
 
 #else	/* _WIN32 */
 #include <string.h>

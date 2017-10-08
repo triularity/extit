@@ -3,7 +3,7 @@
  *
  * Windows specific implementations of container library.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -11,11 +11,11 @@
 
 #include <extit/base.h>
 #include <extit/pmodule.h>
+#include <extit/platform.h>
 
 #include "../pmodule_internal.h"
 
 
-EXTIT_EXPORT
 void *
 EXTIT_DECL
 extit_module_get_symbol
@@ -24,14 +24,5 @@ extit_module_get_symbol
 	const char *name
 )
 {
-	FARPROC	ptr;
-
-
-	ptr = GetProcAddress(module->handle, name);
-
-#ifdef  __GNUC__
-	return *((void **) &ptr);
-#else
-	return (void *) ptr;
-#endif
+	return FARPROC_TO_VOIDPTR(GetProcAddress(module->handle, name));
 }
