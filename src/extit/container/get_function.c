@@ -13,7 +13,6 @@
 #include <extit/container_impl.h>
 
 
-EXTIT_EXPORT
 extit_func_t
 EXTIT_DECL
 extit_container_get_function__1_0

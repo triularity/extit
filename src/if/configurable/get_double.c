@@ -16,7 +16,6 @@
 #endif
 
 
-EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
 if_configurable_get_double__1_0

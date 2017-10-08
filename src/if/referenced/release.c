@@ -16,7 +16,6 @@
 #endif
 
 
-EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
 if_referenced_release__1_0

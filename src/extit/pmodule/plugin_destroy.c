@@ -20,7 +20,6 @@
 #include "pmodule_internal.h"
 
 
-EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
 extit_plugin_destroy

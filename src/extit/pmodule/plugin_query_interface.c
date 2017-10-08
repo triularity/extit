@@ -18,7 +18,6 @@
 #include "pmodule_internal.h"
 
 
-EXTIT_EXPORT
 iv_version_t
 EXTIT_DECL
 extit_plugin_query_interface

@@ -3,7 +3,7 @@
  *
  * Platform neutral container library implementation.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -16,7 +16,6 @@
 #include "pmodule_internal.h"
 
 
-EXTIT_EXPORT
 const char *
 EXTIT_DECL
 extit_module_get_name

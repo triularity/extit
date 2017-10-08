@@ -33,7 +33,6 @@
 #endif
 
 
-EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
 extit_module_scan
@@ -204,7 +203,6 @@ extit_module_scan
 
 
 #ifdef	EXTIT_WCHAR
-EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
 extit_module_scan_wc

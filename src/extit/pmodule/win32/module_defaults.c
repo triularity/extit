@@ -21,7 +21,6 @@
 #include <extit/platform.h>
 
 
-EXTIT_EXPORT
 extit_bool_t
 EXTIT_DECL
 extit_module_scan_fnfilter_default
@@ -42,7 +41,6 @@ extit_module_scan_fnfilter_default
 
 
 #ifdef	EXTIT_WCHAR
-EXTIT_EXPORT
 extit_bool_t
 EXTIT_DECL
 extit_module_scan_fnfilter_wc_default

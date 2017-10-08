@@ -13,7 +13,6 @@
 #include <extit/container_impl.h>
 
 
-EXTIT_EXPORT
 iv_version_t
 EXTIT_DECL
 extit_container_get_version

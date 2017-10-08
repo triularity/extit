@@ -18,7 +18,6 @@
 #include "pmodule_internal.h"
 
 
-EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
 _extit_module_unload

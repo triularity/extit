@@ -17,7 +17,6 @@
 #endif
 
 
-EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
 if_messaging_bound_remove_listener__1_0

@@ -19,7 +19,6 @@
 #endif
 
 
-EXTIT_EXPORT
 void *
 EXTIT_DECL
 if_resolvable_get_interface__1_0

@@ -15,7 +15,6 @@
 #include <extit/platform.h>
 
 
-EXTIT_EXPORT
 extit_bool_t
 EXTIT_DECL
 extit_module_scan_fnfilter_default

@@ -20,7 +20,6 @@
 #include "pmodule_internal.h"
 
 
-EXTIT_EXPORT
 extit_plugin_t *
 EXTIT_DECL
 extit_module_create_plugin

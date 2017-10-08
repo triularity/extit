@@ -17,7 +17,6 @@
 #endif
 
 
-EXTIT_EXPORT
 if_messaging_listener_id_t
 EXTIT_DECL
 if_messaging_add_listener__1_0

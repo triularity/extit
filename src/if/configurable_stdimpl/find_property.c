@@ -20,7 +20,6 @@
 #endif
 
 
-EXTIT_EXPORT
 if_configurable_propref_t *
 EXTIT_DECL
 if_configurable_stdimpl_find_property__1_0
@@ -70,7 +69,6 @@ prop_compare(const void *key, const void *elem)
 }
 
 
-EXTIT_EXPORT
 if_configurable_propref_t *
 EXTIT_DECL
 if_configurable_stdimpl_find_property__1_0_sorted

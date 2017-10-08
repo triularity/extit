@@ -17,7 +17,6 @@
 #include "internal.h"
 
 
-EXTIT_EXPORT
 extit_bool_t
 EXTIT_DECL
 if_messaging_stdimpl_has_listener__1_0

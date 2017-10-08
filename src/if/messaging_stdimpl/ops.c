@@ -11,7 +11,6 @@
 #include "internal.h"
 
 
-EXTIT_EXPORT
 if_messaging_ops_1_0_t		if_messaging_stdimpl_ops__1_0 =
 {
 	/* v0 */

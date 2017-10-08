@@ -138,7 +138,6 @@ if_allocator_ops_1_0_t	allocator_ops_1_0 =
 };
 
 
-EXTIT_EXPORT
 if_allocator_1_0_t	if_allocator_stdimpl_1_0 =
 {
 	IF_ALLOCATOR_ABI_1_0,		/* version */

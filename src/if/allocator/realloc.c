@@ -18,7 +18,6 @@
 #endif
 
 
-EXTIT_EXPORT
 void *
 EXTIT_DECL
 if_allocator_realloc__1_0

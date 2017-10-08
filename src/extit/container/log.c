@@ -13,7 +13,6 @@
 #include <extit/container_impl.h>
 
 
-EXTIT_EXPORT
 void
 EXTIT_DECL
 extit_container_log__1_0

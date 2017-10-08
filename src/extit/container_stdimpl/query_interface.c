@@ -13,7 +13,6 @@
 #include <extit/container_stdimpl.h>
 
 
-EXTIT_EXPORT
 iv_version_t
 EXTIT_DECL
 extit_container_stdimpl_query_interface__1_0

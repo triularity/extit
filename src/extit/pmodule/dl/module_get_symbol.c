@@ -3,7 +3,7 @@
  *
  * [lib]dl specific implementations of container library.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -16,7 +16,6 @@
 #include "../pmodule_internal.h"
 
 
-EXTIT_EXPORT
 void *
 EXTIT_DECL
 extit_module_get_symbol

@@ -19,7 +19,6 @@
 #endif
 
 
-EXTIT_EXPORT
 iv_version_t
 EXTIT_DECL
 if_resolvable_query_interface__1_0

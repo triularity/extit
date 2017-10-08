@@ -18,7 +18,6 @@
 #endif
 
 
-EXTIT_EXPORT
 const if_configurable_descriptor_t *
 EXTIT_DECL
 if_configurable_get_descriptor__1_0

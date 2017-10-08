@@ -14,7 +14,6 @@
 #include <extit/container_stdimpl.h>
 
 
-EXTIT_EXPORT
 void
 EXTIT_DECL
 extit_container_stdimpl_log__1_0

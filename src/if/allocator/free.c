@@ -17,7 +17,6 @@
 #endif
 
 
-EXTIT_EXPORT
 void
 EXTIT_DECL
 if_allocator_free__1_0

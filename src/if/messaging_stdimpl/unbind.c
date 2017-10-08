@@ -15,7 +15,6 @@
 #include "internal.h"
 
 
-EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
 if_messaging_stdimpl_unbind__1_0

@@ -143,7 +143,6 @@ reset_prop
 }
 
 
-EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
 if_configurable_stdimpl_reset__1_0

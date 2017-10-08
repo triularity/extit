@@ -3,7 +3,7 @@
  *
  * Configurable Interface utilities.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -14,7 +14,6 @@
 #include <if/configurable_util.h>
 
 
-EXTIT_EXPORT
 const if_configurable_enum32_t *
 EXTIT_DECL
 if_configurable_enum32_find_by_value

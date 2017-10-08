@@ -12,7 +12,6 @@
 #include <if/configurable_stdimpl.h>
 
 
-EXTIT_EXPORT
 if_configurable_ops_1_0_t  if_configurable_stdimpl_ops_1_0	=
 {
 	/* v0 */

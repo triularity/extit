@@ -19,7 +19,6 @@
 #endif
 
 
-EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
 if_configurable_stdimpl_set_int16__1_0
@@ -39,7 +38,6 @@ if_configurable_stdimpl_set_int16__1_0
 }
 
 
-EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
 if_configurable_stdimpl_set_int16__1_0_base

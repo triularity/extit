@@ -10,7 +10,6 @@
 #include <extit/container_stdimpl.h>
 
 
-EXTIT_EXPORT
 extit_container_ops_1_0_t	extit_container_stdimpl_ops_1_0 =
 {
 	/* v0 */

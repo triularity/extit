@@ -21,7 +21,6 @@
 #include "../pmodule_internal.h"
 
 
-EXTIT_EXPORT
 extit_module_t *
 EXTIT_DECL
 extit_module_load(

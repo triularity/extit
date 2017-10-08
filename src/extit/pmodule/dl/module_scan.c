@@ -41,7 +41,6 @@
 #endif	/* __FreeBSD__ || __NetBSD__ || __OpenBSD__ || __bsdi__ || __DragonFly__*/
 
 
-EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
 extit_module_scan(

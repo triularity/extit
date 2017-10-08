@@ -18,7 +18,6 @@
 #endif
 
 
-EXTIT_EXPORT
 if_configurable_propref_t *
 EXTIT_DECL
 if_configurable_find_property__1_0

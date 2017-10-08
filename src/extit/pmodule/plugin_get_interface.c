@@ -18,7 +18,6 @@
 #include "pmodule_internal.h"
 
 
-EXTIT_EXPORT
 void *
 EXTIT_DECL
 extit_plugin_get_interface

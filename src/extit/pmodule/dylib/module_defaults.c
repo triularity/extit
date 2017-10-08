@@ -4,7 +4,7 @@
  * [lib]dylib specific implementations of container library.
  * Default extit_module_*() function implementations.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -15,7 +15,6 @@
 #include <extit/platform.h>
 
 
-EXTIT_EXPORT
 extit_bool_t
 EXTIT_DECL
 extit_module_scan_fnfilter_default

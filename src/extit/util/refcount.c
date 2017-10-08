@@ -11,7 +11,6 @@
 #include <extit/util.h>
 
 
-EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
 extit_refcount_add
@@ -31,7 +30,6 @@ extit_refcount_add
 }
 
 
-EXTIT_EXPORT
 extit_bool_t
 EXTIT_DECL
 extit_refcount_isnone
@@ -43,7 +41,6 @@ extit_refcount_isnone
 }
 
 
-EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
 extit_refcount_release

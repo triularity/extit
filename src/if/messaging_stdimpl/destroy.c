@@ -15,7 +15,6 @@
 #include "internal.h"
 
 
-EXTIT_EXPORT
 void
 EXTIT_DECL
 if_messaging_stdimpl_destroy

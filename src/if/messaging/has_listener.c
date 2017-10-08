@@ -17,7 +17,6 @@
 #endif
 
 
-EXTIT_EXPORT
 extit_bool_t
 EXTIT_DECL
 if_messaging_has_listener__1_0

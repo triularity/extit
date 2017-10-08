@@ -16,7 +16,6 @@
 #include "internal.h"
 
 
-EXTIT_EXPORT
 if_messaging_bound_t *
 EXTIT_DECL
 if_messaging_stdimpl_bind__1_0

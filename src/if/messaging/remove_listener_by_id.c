@@ -17,7 +17,6 @@
 #endif
 
 
-EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
 if_messaging_remove_listener_by_id__1_0

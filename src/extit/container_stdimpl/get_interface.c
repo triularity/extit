@@ -15,7 +15,6 @@
 #include <extit/container_stdimpl.h>
 
 
-EXTIT_EXPORT
 void *
 EXTIT_DECL
 extit_container_stdimpl_get_interface__1_0
