@@ -12,10 +12,6 @@
 #include <if/configurable_impl.h>
 #include <if/configurable_stdimpl.h>
 
-#ifdef  EXTIT_PARANOID
-#include <iv/util.h>
-#endif
-
 
 const if_configurable_descriptor_t *
 EXTIT_DECL
@@ -24,11 +20,6 @@ if_configurable_stdimpl_get_descriptor__1_0
 	if_configurable_1_0_t *conf
 )
 {
-#ifdef  EXTIT_PARANOID
-        if(!iv_matches(conf->version, IF_CONFIGURABLE_ABI_1_0))
-                return NULL;
-#endif
-
 #define	IMPL(x)		((if_configurable_stdimpl_1_0_t *) (x))
 
 	return IMPL(conf)->descriptor;

@@ -15,10 +15,6 @@
 #include <if/configurable_impl.h>
 #include <if/configurable_stdimpl.h>
 
-#ifdef  EXTIT_PARANOID
-#include <iv/util.h>
-#endif
-
 
 if_configurable_propref_t *
 EXTIT_DECL
@@ -32,11 +28,6 @@ if_configurable_stdimpl_find_property__1_0
 	const if_configurable_propdef_t **	props;
 	uint32_t				count;
 
-
-#ifdef  EXTIT_PARANOID
-        if(!iv_matches(conf->version, IF_CONFIGURABLE_ABI_1_0))
-                return NULL;
-#endif
 
 	descriptor = conf->ops->v0.op_get_descriptor(conf);
 
@@ -80,11 +71,6 @@ if_configurable_stdimpl_find_property__1_0_sorted
 	const if_configurable_descriptor_t *	descriptor;
 	void *					pp;
 
-
-#ifdef  EXTIT_PARANOID
-        if(!iv_matches(conf->version, IF_CONFIGURABLE_ABI_1_0))
-                return NULL;
-#endif
 
 	descriptor = conf->ops->v0.op_get_descriptor(conf);
 

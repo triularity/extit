@@ -15,10 +15,6 @@
 #include <if/configurable_stdimpl.h>
 #include <if/configurable_util.h>
 
-#ifdef  EXTIT_PARANOID
-#include <iv/util.h>
-#endif
-
 
 extit_status_t
 EXTIT_DECL
@@ -29,11 +25,6 @@ if_configurable_stdimpl_set_uint32__1_0
 	uint32_t value
 )
 {
-#ifdef  EXTIT_PARANOID
-        if(!iv_matches(conf->version, IF_CONFIGURABLE_ABI_1_0))
-                return EXTIT_STATUS_UNSUPPORTED;
-#endif
-
 	return if_configurable_stdimpl_set_uint32__1_0_base(
 		conf, conf, prop, value);
 }

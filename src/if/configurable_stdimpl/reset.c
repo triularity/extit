@@ -12,10 +12,6 @@
 #include <if/configurable_impl.h>
 #include <if/configurable_stdimpl.h>
 
-#ifdef  EXTIT_PARANOID
-#include <iv/util.h>
-#endif
-
 
 static
 extit_status_t
@@ -155,11 +151,6 @@ if_configurable_stdimpl_reset__1_0
 	uint32_t				count;
 	extit_status_t				status;
 
-
-#ifdef  EXTIT_PARANOID
-        if(!iv_matches(conf->version, IF_CONFIGURABLE_ABI_1_0))
-                return EXTIT_STATUS_UNSUPPORTED;
-#endif
 
 	descriptor = conf->ops->v0.op_get_descriptor(conf);
 
