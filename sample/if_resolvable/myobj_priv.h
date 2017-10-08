@@ -10,6 +10,7 @@
 #include <extit/base.h>
 #include <extit/util.h>
 #include <if/configurable_impl.h>
+#include <if/configurable_stdimpl.h>
 #include <if/referenced_impl.h>
 #include <if/resolvable_impl.h>
 
@@ -18,16 +19,16 @@
 
 struct _myobj
 {
-	if_resolvable_1_0_t	resolvable;
+	if_resolvable_1_0_t		resolvable;
 
-	extit_refcount_t	numrefs;
-	extit_bool_t		enabled;
-	char *			message;
+	extit_refcount_t		numrefs;
+	extit_bool_t			enabled;
+	char *				message;
 
-	void			(EXTIT_DECL *op_send)(myobj_t *obj);
+	void				(EXTIT_DECL *op_send)(myobj_t *obj);
 
-	if_referenced_1_0_t	referenced;
-	if_configurable_1_0_t	configurable;
+	if_referenced_1_0_t		referenced;
+	if_configurable_stdimpl_1_0_t	configurable;
 };
 
 

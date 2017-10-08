@@ -19,14 +19,14 @@
 
 struct _scan_service
 {
-	char *			somebuffer;
-	unsigned int		hw_version;
-	if_configurable_1_0_t	configurable;
-	scan_mode_t		mode;
-	uint32_t		start_x;
-	uint32_t		start_y;
-	uint32_t		width;
-	uint32_t		height;
+	char *				somebuffer;
+	unsigned int			hw_version;
+	if_configurable_stdimpl_1_0_t	configurable;
+	scan_mode_t			mode;
+	uint32_t			start_x;
+	uint32_t			start_y;
+	uint32_t			width;
+	uint32_t			height;
 };
 
 
@@ -73,7 +73,8 @@ if_configurable_propref_t	conf_prop_mode =
 		.spec.type_enum32.def_value = SCAN_MODE_COLOR
 	},
 	offsetof(scan_service_t, mode)
-		- offsetof(scan_service_t, configurable),
+		- (offsetof(scan_service_t, configurable)
+			+ offsetof(if_configurable_stdimpl_1_0_t, pub)),
 	conf_mode_notifier
 };
 
@@ -92,7 +93,8 @@ if_configurable_propref_t	conf_prop_x =
 		.spec.type_uint32.def_value = 0
 	},
 	offsetof(scan_service_t, start_x)
-		- offsetof(scan_service_t, configurable),
+		- (offsetof(scan_service_t, configurable)
+			+ offsetof(if_configurable_stdimpl_1_0_t, pub)),
 	NULL
 };
 
@@ -111,7 +113,8 @@ if_configurable_propref_t	conf_prop_y =
 		.spec.type_uint32.def_value = 0
 	},
 	offsetof(scan_service_t, start_y)
-		- offsetof(scan_service_t, configurable),
+		- (offsetof(scan_service_t, configurable)
+			+ offsetof(if_configurable_stdimpl_1_0_t, pub)),
 	NULL
 };
 
@@ -130,7 +133,8 @@ if_configurable_propref_t	conf_prop_width =
 		.spec.type_uint32.def_value = 8 * 300
 	},
 	offsetof(scan_service_t, width)
-		- offsetof(scan_service_t, configurable),
+		- (offsetof(scan_service_t, configurable)
+			+ offsetof(if_configurable_stdimpl_1_0_t, pub)),
 	NULL
 };
 
@@ -149,7 +153,8 @@ if_configurable_propref_t	conf_prop_height =
 		.spec.type_uint32.def_value = 14 * 300
 	},
 	offsetof(scan_service_t, height)
-		- offsetof(scan_service_t, configurable),
+		- (offsetof(scan_service_t, configurable)
+			+ offsetof(if_configurable_stdimpl_1_0_t, pub)),
 	NULL
 };
 
@@ -211,8 +216,8 @@ scan_service_create(void)
 	/* XXX - Do NULL check in real thing! */
 	service = malloc(sizeof(scan_service_t));
 
-	service->configurable.version = IF_CONFIGURABLE_ABI_TARGET;
-	service->configurable.ops = &if_configurable_stdimpl_ops_1_0;
+	service->configurable.pub.version = IF_CONFIGURABLE_ABI_TARGET;
+	service->configurable.pub.ops = &if_configurable_stdimpl_ops_1_0;
 	service->configurable.descriptor = &conf_descriptor;
 
 	service->mode = SCAN_MODE_COLOR;
@@ -228,6 +233,6 @@ scan_service_create(void)
 if_configurable_t *
 scan_service_get_configurable(scan_service_t *service)
 {
-	return (if_configurable_t *) &service->configurable;
+	return (if_configurable_t *) &service->configurable.pub;
 }
 

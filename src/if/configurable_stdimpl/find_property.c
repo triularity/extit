@@ -39,7 +39,7 @@ if_configurable_stdimpl_find_property__1_0
                 return NULL;
 #endif
 
-	descriptor = conf->descriptor;
+	descriptor = conf->ops->v0.op_get_descriptor(conf);
 
 	props = descriptor->properties;
 	count = descriptor->count;
@@ -88,7 +88,7 @@ if_configurable_stdimpl_find_property__1_0_sorted
                 return NULL;
 #endif
 
-	descriptor = conf->descriptor;
+	descriptor = conf->ops->v0.op_get_descriptor(conf);
 
 	pp = bsearch(
 		id,

@@ -126,7 +126,8 @@ my_resolv_get_interface
 	{
 		return ((char *) resolvable)
 			- offsetof(myobj_t, resolvable)
-			+ offsetof(myobj_t, configurable);
+			+ offsetof(myobj_t, configurable)
+			+ offsetof(if_configurable_stdimpl_1_0_t, pub);
 	}
 
 	return NULL;
@@ -272,8 +273,8 @@ myobj_secret_create(void)
 	obj->resolvable.version = IF_RESOLVABLE_ABI_1_0;
 	obj->resolvable.ops = &my_resolv_ops;
 
-	obj->configurable.version = IF_CONFIGURABLE_ABI_1_0;
-	obj->configurable.ops = &if_configurable_stdimpl_ops_1_0;
+	obj->configurable.pub.version = IF_CONFIGURABLE_ABI_1_0;
+	obj->configurable.pub.ops = &if_configurable_stdimpl_ops_1_0;
 	obj->configurable.descriptor = &conf_descriptor;
 
 	obj->referenced.version = IF_REFERENCED_ABI_1_0;

@@ -245,7 +245,6 @@ struct _if_configurable_1_0
 
 	/* 1.0+ */
 	if_configurable_ops_1_0_t *		ops;
-	const if_configurable_descriptor_t *	descriptor;
 };
 
 #ifdef	__cplusplus

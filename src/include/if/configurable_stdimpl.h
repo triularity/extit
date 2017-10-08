@@ -42,8 +42,16 @@ struct if_configurable_propref
 /*
  * Configurable (v1.0)
  */
+typedef struct _if_configurable_stdimpl_1_0
+{
+	if_configurable_1_0_t			pub;
+	const if_configurable_descriptor_t *	descriptor;
+} if_configurable_stdimpl_1_0_t;
+
+
 LIBAPI
 extern if_configurable_ops_1_0_t	if_configurable_stdimpl_ops_1_0;
+
 
 LIBAPI_STUB
 if_configurable_propref_t *

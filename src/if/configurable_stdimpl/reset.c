@@ -162,7 +162,7 @@ if_configurable_stdimpl_reset__1_0
                 return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	descriptor = conf->descriptor;
+	descriptor = conf->ops->v0.op_get_descriptor(conf);
 
 	props = descriptor->properties;
 	count = descriptor->count;
