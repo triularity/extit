@@ -102,7 +102,9 @@ set(EXTIT_UTIL_HEADER_FILES
 	src/include/extit/util.h)
 
 set(EXTIT_UTIL_SOURCE_FILES
-	src/extit/util/refcount.c)
+	src/extit/util/refcount_add.c
+	src/extit/util/refcount_isnone.c
+	src/extit/util/refcount_release.c)
 
 
 # Standard interfaces (client side)
