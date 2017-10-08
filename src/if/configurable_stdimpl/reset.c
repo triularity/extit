@@ -30,11 +30,11 @@ reset_prop
 
 	switch(prop->definition.type)
 	{
-		case IF_CONFIGURABLE_TYPE_CUSTOM:
-			status = conf->ops->v0.op_set_custom(
+		case IF_CONFIGURABLE_TYPE_DATA:
+			status = conf->ops->v0.op_set_data(
 				conf,
 				prop,
-				prop->definition.spec.type_custom.def_value);
+				prop->definition.spec.type_data.def_value);
 			break;
 
 		case IF_CONFIGURABLE_TYPE_BOOL:
@@ -63,6 +63,13 @@ reset_prop
 				conf,
 				prop,
 				prop->definition.spec.type_float.def_value);
+			break;
+
+		case IF_CONFIGURABLE_TYPE_FUNCTION:
+			status = conf->ops->v0.op_set_function(
+				conf,
+				prop,
+				prop->definition.spec.type_function.def_value);
 			break;
 
 		case IF_CONFIGURABLE_TYPE_INT8:

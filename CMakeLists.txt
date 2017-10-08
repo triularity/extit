@@ -124,11 +124,12 @@ set(IF_CONFIGURABLE_HEADER_FILES
 set(IF_CONFIGURABLE_SOURCE_FILES
 	src/if/configurable/find_property.c
 	src/if/configurable/get_bool.c
-	src/if/configurable/get_custom.c
+	src/if/configurable/get_data.c
 	src/if/configurable/get_descriptor.c
 	src/if/configurable/get_double.c
 	src/if/configurable/get_enum32.c
 	src/if/configurable/get_float.c
+	src/if/configurable/get_function.c
 	src/if/configurable/get_int8.c
 	src/if/configurable/get_int16.c
 	src/if/configurable/get_int32.c
@@ -140,10 +141,11 @@ set(IF_CONFIGURABLE_SOURCE_FILES
 	src/if/configurable/get_utf8.c
 	src/if/configurable/reset.c
 	src/if/configurable/set_bool.c
-	src/if/configurable/set_custom.c
+	src/if/configurable/set_data.c
 	src/if/configurable/set_double.c
 	src/if/configurable/set_enum32.c
 	src/if/configurable/set_float.c
+	src/if/configurable/set_function.c
 	src/if/configurable/set_int8.c
 	src/if/configurable/set_int16.c
 	src/if/configurable/set_int32.c
@@ -215,10 +217,12 @@ set(IF_CONFIGURABLE_STDIMPL_HEADER_FILES
 set(IF_CONFIGURABLE_STDIMPL_SOURCE_FILES
 	src/if/configurable_stdimpl/find_property.c
 	src/if/configurable_stdimpl/get_bool.c
-	src/if/configurable_stdimpl/get_custom.c
+	src/if/configurable_stdimpl/get_data.c
+	src/if/configurable_stdimpl/get_descriptor.c
 	src/if/configurable_stdimpl/get_double.c
 	src/if/configurable_stdimpl/get_enum32.c
 	src/if/configurable_stdimpl/get_float.c
+	src/if/configurable_stdimpl/get_function.c
 	src/if/configurable_stdimpl/get_int8.c
 	src/if/configurable_stdimpl/get_int16.c
 	src/if/configurable_stdimpl/get_int32.c
@@ -231,10 +235,11 @@ set(IF_CONFIGURABLE_STDIMPL_SOURCE_FILES
 	src/if/configurable_stdimpl/ops.c
 	src/if/configurable_stdimpl/reset.c
 	src/if/configurable_stdimpl/set_bool.c
-	src/if/configurable_stdimpl/set_custom.c
+	src/if/configurable_stdimpl/set_data.c
 	src/if/configurable_stdimpl/set_double.c
 	src/if/configurable_stdimpl/set_enum32.c
 	src/if/configurable_stdimpl/set_float.c
+	src/if/configurable_stdimpl/set_function.c
 	src/if/configurable_stdimpl/set_int8.c
 	src/if/configurable_stdimpl/set_int16.c
 	src/if/configurable_stdimpl/set_int32.c

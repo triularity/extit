@@ -39,7 +39,8 @@ typedef enum if_configurable_type
 	IF_CONFIGURABLE_TYPE_UINT32	= 10,
 	IF_CONFIGURABLE_TYPE_UINT64	= 11,
 	IF_CONFIGURABLE_TYPE_UTF8	= 12,
-	IF_CONFIGURABLE_TYPE_CUSTOM	= 13
+	IF_CONFIGURABLE_TYPE_DATA	= 13,
+	IF_CONFIGURABLE_TYPE_FUNCTION	= 14
 } if_configurable_type_t;
 
 
@@ -68,12 +69,12 @@ typedef struct _if_configurable_propspec_bool
 } if_configurable_propspec_bool_t;
 
 
-typedef struct _if_configurable_propspec_custom
+typedef struct _if_configurable_propspec_data
 {
 	void *			def_value;
 	const char *		iid;
 	iv_version_t		version;
-} if_configurable_propspec_custom_t;
+} if_configurable_propspec_data_t;
 
 
 typedef struct _if_configurable_propspec_double
@@ -102,6 +103,14 @@ typedef struct _if_configurable_propspec_float
 	float			step_hint;
 	float			def_value;
 } if_configurable_propspec_float_t;
+
+
+typedef struct _if_configurable_propspec_function
+{
+	extit_func_t		def_value;
+	const char *		iid;
+	iv_version_t		version;
+} if_configurable_propspec_function_t;
 
 
 typedef struct _if_configurable_propspec_int8
@@ -184,10 +193,11 @@ typedef struct _if_configurable_propdef
 	union
 	{
 		if_configurable_propspec_bool_t		type_bool;
-		if_configurable_propspec_custom_t	type_custom;
+		if_configurable_propspec_data_t		type_data;
 		if_configurable_propspec_double_t	type_double;
 		if_configurable_propspec_enum32_t	type_enum32;
 		if_configurable_propspec_float_t	type_float;
+		if_configurable_propspec_function_t	type_function;
 		if_configurable_propspec_int8_t		type_int8;
 		if_configurable_propspec_int16_t	type_int16;
 		if_configurable_propspec_int32_t	type_int32;
@@ -241,7 +251,7 @@ if_configurable_propref_t *
 
 LIBAPI
 extit_status_t		EXTIT_DECL
-			if_configurable_get_custom__1_0(
+			if_configurable_get_data__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				void **valuep);
@@ -279,6 +289,13 @@ extit_status_t		EXTIT_DECL
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				float *valuep);
+
+LIBAPI
+extit_status_t		EXTIT_DECL
+			if_configurable_get_function__1_0(
+				if_configurable_t *configurable,
+				if_configurable_propref_t *prop,
+				extit_func_t *valuep);
 
 LIBAPI
 extit_status_t		EXTIT_DECL
@@ -357,7 +374,7 @@ extit_status_t		EXTIT_DECL
 
 LIBAPI
 extit_status_t		EXTIT_DECL
-			if_configurable_set_custom__1_0(
+			if_configurable_set_data__1_0(
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				void *value);
@@ -382,6 +399,13 @@ extit_status_t		EXTIT_DECL
 				if_configurable_t *configurable,
 				if_configurable_propref_t *prop,
 				float value);
+
+LIBAPI
+extit_status_t		EXTIT_DECL
+			if_configurable_set_function__1_0(
+				if_configurable_t *configurable,
+				if_configurable_propref_t *prop,
+				extit_func_t value);
 
 LIBAPI
 extit_status_t		EXTIT_DECL
@@ -457,11 +481,12 @@ extit_status_t		EXTIT_DECL
 #if	IV_VERSION_MAJOR(IF_CONFIGURABLE_ABI_TARGET) == 1
 #define	if_configurable_find_property	if_configurable_find_property__1_0
 #define	if_configurable_get_bool	if_configurable_get_bool__1_0
-#define	if_configurable_get_custom	if_configurable_get_custom__1_0
+#define	if_configurable_get_data	if_configurable_get_data__1_0
 #define	if_configurable_get_descriptor	if_configurable_get_descriptor__1_0
 #define	if_configurable_get_double	if_configurable_get_double__1_0
 #define	if_configurable_get_enum32	if_configurable_get_enum32__1_0
 #define	if_configurable_get_float	if_configurable_get_float__1_0
+#define	if_configurable_get_function	if_configurable_get_function__1_0
 #define	if_configurable_get_int16	if_configurable_get_int16__1_0
 #define	if_configurable_get_int32	if_configurable_get_int32__1_0
 #define	if_configurable_get_int64	if_configurable_get_int64__1_0
@@ -473,10 +498,11 @@ extit_status_t		EXTIT_DECL
 #define	if_configurable_get_utf8	if_configurable_get_utf8__1_0
 #define	if_configurable_reset		if_configurable_reset__1_0
 #define	if_configurable_set_bool	if_configurable_set_bool__1_0
-#define	if_configurable_set_custom	if_configurable_set_custom__1_0
+#define	if_configurable_set_data	if_configurable_set_data__1_0
 #define	if_configurable_set_double	if_configurable_set_double__1_0
 #define	if_configurable_set_enum32	if_configurable_set_enum32__1_0
 #define	if_configurable_set_float	if_configurable_set_float__1_0
+#define	if_configurable_set_function	if_configurable_set_function__1_0
 #define	if_configurable_set_int16	if_configurable_set_int16__1_0
 #define	if_configurable_set_int32	if_configurable_set_int32__1_0
 #define	if_configurable_set_int64	if_configurable_set_int64__1_0

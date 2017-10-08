@@ -76,18 +76,24 @@ extit_status_t		EXTIT_DECL
 
 LIBAPI_STUB
 extit_status_t		EXTIT_DECL
-			if_configurable_stdimpl_get_custom__1_0(
+			if_configurable_stdimpl_get_data__1_0(
 				if_configurable_1_0_t *conf,
 				if_configurable_propref_t *prop,
 				void **valuep);
 
 LIBAPI
 extit_status_t		EXTIT_DECL
-			if_configurable_stdimpl_get_custom__1_0_base(
+			if_configurable_stdimpl_get_data__1_0_base(
 				if_configurable_1_0_t *conf,
 				void *base,
 				if_configurable_propref_t *prop,
 				void **valuep);
+
+LIBAPI_STUB
+const if_configurable_descriptor_t *
+			EXTIT_DECL
+			if_configurable_stdimpl_get_descriptor__1_0(
+				if_configurable_1_0_t *conf);
 
 LIBAPI_STUB
 extit_status_t		EXTIT_DECL
@@ -133,6 +139,21 @@ extit_status_t		EXTIT_DECL
 				void *base,
 				if_configurable_propref_t *prop,
 				float *valuep);
+
+LIBAPI_STUB
+extit_status_t		EXTIT_DECL
+			if_configurable_stdimpl_get_function__1_0(
+				if_configurable_1_0_t *conf,
+				if_configurable_propref_t *prop,
+				extit_func_t *valuep);
+
+LIBAPI
+extit_status_t		EXTIT_DECL
+			if_configurable_stdimpl_get_function__1_0_base(
+				if_configurable_1_0_t *conf,
+				void *base,
+				if_configurable_propref_t *prop,
+				extit_func_t *valuep);
 
 LIBAPI_STUB
 extit_status_t		EXTIT_DECL
@@ -291,14 +312,14 @@ extit_status_t		EXTIT_DECL
 
 LIBAPI_STUB
 extit_status_t		EXTIT_DECL
-			if_configurable_stdimpl_set_custom__1_0(
+			if_configurable_stdimpl_set_data__1_0(
 				if_configurable_1_0_t *conf,
 				if_configurable_propref_t *prop,
 				void *value);
 
 LIBAPI
 extit_status_t		EXTIT_DECL
-			if_configurable_stdimpl_set_custom__1_0_base(
+			if_configurable_stdimpl_set_data__1_0_base(
 				if_configurable_1_0_t *conf,
 				void *base,
 				if_configurable_propref_t *prop,
@@ -348,6 +369,21 @@ extit_status_t		EXTIT_DECL
 				void *base,
 				if_configurable_propref_t *prop,
 				float value);
+
+LIBAPI_STUB
+extit_status_t		EXTIT_DECL
+			if_configurable_stdimpl_set_function__1_0(
+				if_configurable_1_0_t *conf,
+				if_configurable_propref_t *prop,
+				extit_func_t value);
+
+LIBAPI
+extit_status_t		EXTIT_DECL
+			if_configurable_stdimpl_set_function__1_0_base(
+				if_configurable_1_0_t *conf,
+				void *base,
+				if_configurable_propref_t *prop,
+				extit_func_t value);
 
 LIBAPI_STUB
 extit_status_t		EXTIT_DECL

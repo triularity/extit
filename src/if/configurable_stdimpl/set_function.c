@@ -1,5 +1,5 @@
 /*
- * @(#) if/configurable_stdimpl/set_custom.c
+ * @(#) if/configurable_stdimpl/set_function.c
  *
  * Configurable Interface standard implementation.
  *
@@ -22,11 +22,11 @@
 EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
-if_configurable_stdimpl_set_custom__1_0
+if_configurable_stdimpl_set_function__1_0
 (
 	if_configurable_1_0_t *conf,
 	if_configurable_propref_t *prop,
-	void *value
+	extit_func_t value
 )
 {
 #ifdef  EXTIT_PARANOID
@@ -34,7 +34,7 @@ if_configurable_stdimpl_set_custom__1_0
                 return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return if_configurable_stdimpl_set_custom__1_0_base(
+	return if_configurable_stdimpl_set_function__1_0_base(
 		conf, conf, prop, value);
 }
 
@@ -42,20 +42,20 @@ if_configurable_stdimpl_set_custom__1_0
 EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
-if_configurable_stdimpl_set_custom__1_0_base
+if_configurable_stdimpl_set_function__1_0_base
 (
 	if_configurable_1_0_t *conf,
 	void *base,
 	if_configurable_propref_t *prop,
-	void *value
+	extit_func_t value
 )
 {
 	base = ((char *) base) + prop->offset;
 
 	switch(prop->definition.type)
 	{
-		case IF_CONFIGURABLE_TYPE_CUSTOM:
-			*((void **) base) = value;
+		case IF_CONFIGURABLE_TYPE_FUNCTION:
+			*((extit_func_t *) base) = value;
 			break;
 
 		default:

@@ -1,5 +1,5 @@
 /*
- * @(#) if/configurable_stdimpl/get_custom.c
+ * @(#) if/configurable_stdimpl/get_data.c
  *
  * Configurable Interface standard implementation.
  *
@@ -20,7 +20,7 @@
 EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
-if_configurable_stdimpl_get_custom__1_0
+if_configurable_stdimpl_get_data__1_0
 (
 	if_configurable_1_0_t *conf,
 	if_configurable_propref_t *prop,
@@ -32,7 +32,7 @@ if_configurable_stdimpl_get_custom__1_0
                 return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-	return if_configurable_stdimpl_get_custom__1_0_base(
+	return if_configurable_stdimpl_get_data__1_0_base(
 		conf, conf, prop, valuep);
 }
 
@@ -40,7 +40,7 @@ if_configurable_stdimpl_get_custom__1_0
 EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
-if_configurable_stdimpl_get_custom__1_0_base
+if_configurable_stdimpl_get_data__1_0_base
 (
 	if_configurable_1_0_t *conf,
 	void *base,
@@ -52,7 +52,7 @@ if_configurable_stdimpl_get_custom__1_0_base
 
 	switch(prop->definition.type)
 	{
-		case IF_CONFIGURABLE_TYPE_CUSTOM:
+		case IF_CONFIGURABLE_TYPE_DATA:
 			*valuep = *((void **) base);
 			break;
 

@@ -22,6 +22,10 @@ extern "C" {
  */
 typedef struct _if_configurable_ops_comp_1_0
 {
+	const if_configurable_descriptor_t *
+				(EXTIT_DECL *op_get_descriptor)(
+					if_configurable_1_0_t *conf);
+
 	extit_status_t
 				(EXTIT_DECL *op_reset)(
 					if_configurable_1_0_t *conf);
@@ -38,7 +42,7 @@ typedef struct _if_configurable_ops_comp_1_0
 					extit_bool_t *valuep);
 
 	extit_status_t
-				(EXTIT_DECL *op_get_custom)(
+				(EXTIT_DECL *op_get_data)(
 					if_configurable_1_0_t *conf,
 					if_configurable_propref_t *prop,
 					void **valuep);
@@ -60,6 +64,12 @@ typedef struct _if_configurable_ops_comp_1_0
 					if_configurable_1_0_t *conf,
 					if_configurable_propref_t *prop,
 					float *valuep);
+
+	extit_status_t	
+				(EXTIT_DECL *op_get_function)(
+					if_configurable_1_0_t *conf,
+					if_configurable_propref_t *prop,
+					extit_func_t *valuep);
 
 	extit_status_t	
 				(EXTIT_DECL *op_get_int8)(
@@ -122,7 +132,7 @@ typedef struct _if_configurable_ops_comp_1_0
 					extit_bool_t value);
 
 	extit_status_t	
-				(EXTIT_DECL *op_set_custom)(
+				(EXTIT_DECL *op_set_data)(
 					if_configurable_1_0_t *conf,
 					if_configurable_propref_t *prop,
 					void *value);
@@ -144,6 +154,12 @@ typedef struct _if_configurable_ops_comp_1_0
 					if_configurable_1_0_t *conf,
 					if_configurable_propref_t *prop,
 					float value);
+
+	extit_status_t	
+				(EXTIT_DECL *op_set_function)(
+					if_configurable_1_0_t *conf,
+					if_configurable_propref_t *prop,
+					extit_func_t value);
 
 	extit_status_t	
 				(EXTIT_DECL *op_set_int8)(

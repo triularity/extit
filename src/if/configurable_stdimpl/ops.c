@@ -17,6 +17,9 @@ if_configurable_ops_1_0_t  if_configurable_stdimpl_ops_1_0	=
 {
 	/* v0 */
 	{
+		/* op_get_descriptor */
+		if_configurable_stdimpl_get_descriptor__1_0,
+
 		/* op_reset */
 		if_configurable_stdimpl_reset__1_0,
 
@@ -26,8 +29,8 @@ if_configurable_ops_1_0_t  if_configurable_stdimpl_ops_1_0	=
 		/* op_get_bool */
 		if_configurable_stdimpl_get_bool__1_0,
 
-		/* op_get_custom */
-		if_configurable_stdimpl_get_custom__1_0,
+		/* op_get_data */
+		if_configurable_stdimpl_get_data__1_0,
 
 		/* op_get_double */
 		if_configurable_stdimpl_get_double__1_0,
@@ -37,6 +40,9 @@ if_configurable_ops_1_0_t  if_configurable_stdimpl_ops_1_0	=
 
 		/* op_get_float */
 		if_configurable_stdimpl_get_float__1_0,
+
+		/* op_get_function */
+		if_configurable_stdimpl_get_function__1_0,
 
 		/* op_get_int8 */
 		if_configurable_stdimpl_get_int8__1_0,
@@ -68,8 +74,8 @@ if_configurable_ops_1_0_t  if_configurable_stdimpl_ops_1_0	=
 		/* op_set_bool */
 		if_configurable_stdimpl_set_bool__1_0,
 
-		/* op_set_custom */
-		if_configurable_stdimpl_set_custom__1_0,
+		/* op_set_data */
+		if_configurable_stdimpl_set_data__1_0,
 
 		/* op_set_double */
 		if_configurable_stdimpl_set_double__1_0,
@@ -79,6 +85,9 @@ if_configurable_ops_1_0_t  if_configurable_stdimpl_ops_1_0	=
 
 		/* op_set_float */
 		if_configurable_stdimpl_set_float__1_0,
+
+		/* op_set_function */
+		if_configurable_stdimpl_set_function__1_0,
 
 		/* op_set_int8 */
 		if_configurable_stdimpl_set_int8__1_0,

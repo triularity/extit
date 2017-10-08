@@ -1,5 +1,5 @@
 /*
- * @(#) if/configurable/set_custom.c
+ * @(#) if/configurable/get_data.c
  *
  * Configurable Interface client API wrappers.
  *
@@ -19,11 +19,11 @@
 EXTIT_EXPORT
 extit_status_t
 EXTIT_DECL
-if_configurable_set_custom__1_0
+if_configurable_get_data__1_0
 (
 	if_configurable_t *configurable,
 	if_configurable_propref_t *prop,
-	void *value
+	void **valuep
 )
 {
 #ifdef	EXTIT_PARANOID
@@ -33,8 +33,8 @@ if_configurable_set_custom__1_0
 
 #define	IMPL(x)		((if_configurable_1_0_t *) (x))
 
-	return IMPL(configurable)->ops->v0.op_set_custom(
-		IMPL(configurable), prop, value);
+	return IMPL(configurable)->ops->v0.op_get_data(
+		IMPL(configurable), prop, valuep);
 
 #undef	IMPL
 }
