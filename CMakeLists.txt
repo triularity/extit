@@ -408,6 +408,13 @@ if(IV_COMPAT)
 	add_definitions("-DIV_COMPAT")
 endif()
 
+# MinGW printf %lld / %I64 / PRId64 broken
+# XXX - This may just be an erroneous gcc warning with working printf runtime
+# XXX - Need to verify
+if(MINGW)
+	add_definitions("-DBROKEN_PRINTF_64BIT")
+endif()
+
 
 #
 # [lib]extit_pmodule

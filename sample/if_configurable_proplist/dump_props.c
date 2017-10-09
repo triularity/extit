@@ -9,12 +9,19 @@
 #include <inttypes.h>
 
 #include <iv/base.h>
+#include <extit/platform.h>
 
 #define	IF_CONFIGURABLE_ABI_TARGET	IF_CONFIGURABLE_ABI_1_0
 
 #include <if/configurable.h>
 #include <if/configurable_stdimpl.h>
 #include <if/configurable_util.h>
+
+#ifdef	_WIN32
+#define	FUNCPTR_TO_VOIDPTR(x)		FARPROC_TO_VOIDPTR(x)
+#else
+#define	FUNCPTR_TO_VOIDPTR(x)		((void *) (x))
+#endif
 
 
 static
@@ -376,6 +383,7 @@ dump_prop(const if_configurable_propdef_t *propdef)
 		case IF_CONFIGURABLE_TYPE_INT64:
 			printf("    Type: INT64\n");
 
+#ifndef	BROKEN_PRINTF_64BIT
 			printf("    Default: %" PRId64 "\n",
 				propdef->spec.type_int64.def_value);
 
@@ -384,6 +392,7 @@ dump_prop(const if_configurable_propdef_t *propdef)
 
 			printf("    Maximum: %" PRId64 "\n",
 				propdef->spec.type_int64.max_value);
+#endif	/* !BROKEN_PRINTF_64BIT */
 
 			break;
 
@@ -432,6 +441,7 @@ dump_prop(const if_configurable_propdef_t *propdef)
 		case IF_CONFIGURABLE_TYPE_UINT64:
 			printf("    Type: UINT64\n");
 
+#ifndef	BROKEN_PRINTF_64BIT
 			printf("    Default: %" PRIu64 "\n",
 				propdef->spec.type_uint64.def_value);
 
@@ -440,6 +450,7 @@ dump_prop(const if_configurable_propdef_t *propdef)
 
 			printf("    Maximum: %" PRIu64 "\n",
 				propdef->spec.type_uint64.max_value);
+#endif	/* !BROKEN_PRINTF_64BIT */
 
 			break;
 
@@ -477,7 +488,8 @@ dump_prop(const if_configurable_propdef_t *propdef)
 			printf("    Type: FUNCTION\n");
 
 			printf("    Default: 0x%p\n",
-				propdef->spec.type_function.def_value);
+				FUNCPTR_TO_VOIDPTR(
+				 propdef->spec.type_function.def_value));
 
 			printf("    Interface: %s@%u.%u\n",
 				propdef->spec.type_function.iid,
