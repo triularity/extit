@@ -24,5 +24,5 @@ extit_module_get_symbol
 	const char *name
 )
 {
-	return FARPROC_TO_VOIDPTR(GetProcAddress(module->handle, name));
+	return FUNCPTR_TO_VOIDPTR(GetProcAddress(module->handle, name));
 }

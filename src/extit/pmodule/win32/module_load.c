@@ -101,7 +101,7 @@ extit_module_load
 	 * Create the module from a descriptor
 	 */
 	module = extit_module_bind(
-		container, FARPROC_TO_VOIDPTR(descriptor), flags);
+		container, FUNCPTR_TO_VOIDPTR(descriptor), flags);
 
 	if(module == NULL)
 	{
@@ -193,7 +193,7 @@ extit_module_load_wc
 	 * Create the module from a descriptor
 	 */
 	module = extit_module_bind(
-		container, FARPROC_TO_VOIDPTR(descriptor), flags);
+		container, FUNCPTR_TO_VOIDPTR(descriptor), flags);
 
 	if(module == NULL)
 	{

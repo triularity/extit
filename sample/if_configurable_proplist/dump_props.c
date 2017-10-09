@@ -17,12 +17,6 @@
 #include <if/configurable_stdimpl.h>
 #include <if/configurable_util.h>
 
-#ifdef	_WIN32
-#define	FUNCPTR_TO_VOIDPTR(x)		FARPROC_TO_VOIDPTR(x)
-#else
-#define	FUNCPTR_TO_VOIDPTR(x)		((void *) (x))
-#endif
-
 
 static
 if_configurable_t *	get_configurable(void);
