@@ -970,6 +970,25 @@ if(EXTIT_COMPILE_SAMPLES)
 
 
 	#
+	# Configurable Interface (List Properties)
+	#
+	add_executable(
+		sample_if_configurable_proplist
+			sample/if_configurable_proplist/dump_props.c
+			${EXTIT_HEADER_FILES}
+			${IF_CONFIGURABLE_HEADER_FILES}
+			${IF_CONFIGURABLE_STDIMPL_HEADER_FILES}
+			${IF_CONFIGURABLE_UTIL_HEADER_FILES}
+			${IV_HEADER_FILES})
+
+	target_link_libraries(
+		sample_if_configurable_proplist
+			if_configurable
+			if_configurable_stdimpl
+			if_configurable_util)
+
+
+	#
 	# Disposable Interface
 	#
 	add_executable(
