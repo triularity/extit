@@ -44,6 +44,39 @@
      <div class="declaration">
       <table>
        <tr>
+        <td><span class="macro-name"><a name="IV_MATCHES">IV_MATCHES</a></span>(<em class="parameter-name">version</em>, <em class="parameter-name">req_version</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      <p>
+       Check if an interface version implements a required version. For a normal <em class="parameter-reference">req_version</em>, not <code class="literal">0.x</code>, this will check if the major versions are equal and that the minor version is greater than or equal to the required minor version. For a special <em class="parameter-reference">req_version</em>, <code class="literal">0.x</code>, the minor versions must be equal to match.<br />
+<br />
+ This is an inline version of <code class="ref"><a href="iv_matches.html#iv_matches">iv_matches()</a></code> that is optimized for a compile-time <em class="parameter-reference">req_version</em> constant. Using this with a non-constant may be less efficient than calling the function implementation.<br />
+      </p>
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">version</em> - The version being checked.<br />
+       <em class="parameter-name">req_version</em> - The required version.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd><code class="ref"><a href="iv.html#IV_TRUE">IV_TRUE</a></code> if compatible, <code class="ref"><a href="iv.html#IV_FALSE">IV_FALSE</a></code> otherwise.</dd>
+
+      <dt class="since"><strong class="label">Since:</strong></dt>
+      <dd>1.0</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
         <td><a href="iv.html#iv_bool_t">iv_bool_t</a></td>
        </tr>
        <tr>

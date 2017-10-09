@@ -12,6 +12,83 @@
 	],
 	"synopsis":
 	[
+
+		{
+			"type": "macro",
+			"name": "IV_MATCHES",
+			"parameters":
+			[
+				{
+					"name": "version",
+					"description": "The version being checked."
+				},
+				{
+					"name": "req_version",
+					"description": "The required version."
+				}
+			],
+			"returns":
+			[
+				{
+					"type": "ref:constant",
+					"name": "IV_TRUE"
+				},
+				" if compatible, ",
+				{
+					"type": "ref:constant",
+					"name": "IV_FALSE"
+				},
+				" otherwise."
+			],
+			"summary": "Check if an interface version implements a required version.",
+			"description":
+			[
+				"Check if an interface version implements a required version.",
+				" For a normal ",
+				{
+					"type": "ref:parameter",
+					"name": "req_version"
+				},
+				", not ",
+				{
+					"type": "text:code",
+					"value": "0.x"
+				},
+				", this will check if the major versions are equal and that the minor version is greater than or equal to the required minor version.",
+				" For a special ",
+				{
+					"type": "ref:parameter",
+					"name": "req_version"
+				},
+				", ",
+				{
+					"type": "text:code",
+					"value": "0.x"
+				},
+				", the minor versions must be equal to match.",
+				{
+					"type": "parabreak"
+				},
+				" This is an inline version of ",
+				{
+					"type": "ref:function",
+					"name": "iv_matches",
+					"parameters":
+					[
+						"iv_version_t",
+						"iv_version_t"
+					]
+				},
+				" that is optimized for a compile-time ",
+				{
+					"type": "ref:parameter",
+					"name": "req_version"
+				},
+				" constant.",
+				" Using this with a non-constant may be less efficient than calling the function implementation."
+			],
+			"since": "1.0"
+		},
 		{
 			"type": "function",
 			"name": "iv_matches",
