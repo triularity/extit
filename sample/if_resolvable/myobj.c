@@ -12,6 +12,7 @@
 #include <iv/base.h>
 #include <iv/util.h>
 #include <extit/base.h>
+#include <extit/platform.h>
 #include <extit/util.h>
 #include <if/configurable.h>
 #include <if/configurable_impl.h>
@@ -107,14 +108,14 @@ my_resolv_get_interface
 	 * Just simple if/else if's for example ...
 	 */
 
-	if((strcmp(id, MYOBJ_IID) == 0)
+	if((EXTIT_STRCASECMP(id, MYOBJ_IID) == 0)
 	 && iv_matches(MYOBJ_ABI_1_0, version))
 	{
 		return ((char *) resolvable)
 			- offsetof(myobj_t, resolvable);
 	}
 
-	if((strcmp(id, IF_REFERENCED_IID) == 0)
+	if((EXTIT_STRCASECMP(id, IF_REFERENCED_IID) == 0)
 	 && iv_matches(IF_REFERENCED_ABI_1_0, version))
 	{
 		return ((char *) resolvable)
@@ -122,7 +123,7 @@ my_resolv_get_interface
 			+ offsetof(myobj_t, referenced);
 	}
 
-	if((strcmp(id, IF_CONFIGURABLE_IID) == 0)
+	if((EXTIT_STRCASECMP(id, IF_CONFIGURABLE_IID) == 0)
 	 && iv_matches(IF_CONFIGURABLE_ABI_1_0, version))
 	{
 		return ((char *) resolvable)
@@ -145,19 +146,19 @@ my_resolv_query_interface
 	iv_version_t base_version
 )
 {
-	if((strcmp(id, MYOBJ_IID) == 0)
+	if((EXTIT_STRCASECMP(id, MYOBJ_IID) == 0)
 	 && iv_matches(MYOBJ_ABI_1_0, base_version))
 	{
 		return MYOBJ_ABI_1_0;
 	}
 
-	if((strcmp(id, IF_REFERENCED_IID) == 0)
+	if((EXTIT_STRCASECMP(id, IF_REFERENCED_IID) == 0)
 	 && iv_matches(IF_REFERENCED_ABI_1_0, base_version))
 	{
 		return IF_REFERENCED_ABI_1_0;
 	}
 
-	if((strcmp(id, IF_CONFIGURABLE_IID) == 0)
+	if((EXTIT_STRCASECMP(id, IF_CONFIGURABLE_IID) == 0)
 	 && iv_matches(IF_CONFIGURABLE_ABI_1_0, base_version))
 	{
 		return IF_CONFIGURABLE_ABI_1_0;

@@ -13,6 +13,7 @@
 #include <extit/base.h>
 #include <extit/container.h>
 #include <extit/container_impl.h>
+#include <extit/platform.h>
 #include <extit/pmodule_impl.h>
 
 #include "recipe.h"
@@ -108,7 +109,7 @@ plugin_get_interface
 	/*
 	 * Recipe is the only supported interface by this
 	 */
-	if((strcmp(RECIPE_INTERFACE_ID, iid) == 0)
+	if((EXTIT_STRCASECMP(RECIPE_INTERFACE_ID, iid) == 0)
 	 && iv_matches(RECIPE_INTERFACE_VERSION, version))
 	{
 		impl = (recipe_impl_t *) ctx;
@@ -135,7 +136,7 @@ plugin_query_interface
 	/*
 	 * Recipe is the only supported interface by this
 	 */
-	if((strcmp(RECIPE_INTERFACE_ID, iid) == 0)
+	if((EXTIT_STRCASECMP(RECIPE_INTERFACE_ID, iid) == 0)
 	 && iv_matches(RECIPE_INTERFACE_VERSION, base_version))
 	{
 		return RECIPE_INTERFACE_VERSION;
