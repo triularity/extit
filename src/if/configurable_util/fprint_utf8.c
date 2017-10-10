@@ -38,7 +38,7 @@ _if_configurable_fprint_utf8
 
 		if((ch & 0x80) == 0)
 		{
-			if(esc_ctrl && (iscntrl(ch) || (ch == '\\')))
+			if(esc_ctrl && iscntrl(ch))
 			{
 				switch(ch)
 				{
@@ -70,13 +70,13 @@ _if_configurable_fprint_utf8
 						fputs("\\e", fp);
 						break;
 
-					case '\\':
-						fputs("\\\\", fp);
-						break;
-
 					default:
 						fprintf(fp, "\\x%02x", ch);
 				}
+			}
+			else if(ch == '\\')
+			{
+				fputs("\\\\", fp);
 			}
 			else
 			{
