@@ -175,7 +175,8 @@ static
 if_configurable_descriptor_t	conf_descriptor =
 {
 	conf_props,
-	5
+	5,
+	"scanner"
 };
 
 

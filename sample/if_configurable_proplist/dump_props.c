@@ -219,7 +219,8 @@ static
 if_configurable_descriptor_t	conf_descriptor =
 {
 	conf_props,
-	sizeof(conf_props) / sizeof(conf_props[0])
+	sizeof(conf_props) / sizeof(conf_props[0]),
+	"object"
 };
 
 

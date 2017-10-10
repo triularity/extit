@@ -216,7 +216,8 @@ typedef struct _if_configurable_descriptor
 	const if_configurable_propdef_t **
 				properties;
 
-	uint32_t		count;
+	uint32_t		count;		/* Number of properties */
+	const char *		id;		/* Internalization context */
 } if_configurable_descriptor_t;
 
 

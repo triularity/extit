@@ -8,6 +8,7 @@
  */
 
 #include <stdio.h>
+#include <stddef.h>
 #include <stdint.h>
 
 #include <if/configurable.h>
@@ -25,6 +26,13 @@ _if_configurable_dump_descriptor
 {
 	uint32_t	i;
 
+
+	if(descr->id != NULL)
+	{
+		fputc('[', fp);
+		fputs(descr->id, fp);
+		fputs("]\n", fp);
+	}
 
 	for(i = 0; i < descr->count; i++)
 	{

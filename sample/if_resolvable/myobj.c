@@ -84,7 +84,8 @@ static
 if_configurable_descriptor_t	conf_descriptor =
 {
 	conf_props,
-	2
+	2,
+	NULL
 };
 
 
