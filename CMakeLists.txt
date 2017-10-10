@@ -162,8 +162,14 @@ set(IF_CONFIGURABLE_UTIL_HEADER_FILES
 	src/include/if/configurable_util.h)
 
 set(IF_CONFIGURABLE_UTIL_SOURCE_FILES
+	src/if/configurable_util/dump_descriptor.c
+	src/if/configurable_util/dump_enum32.c
+	src/if/configurable_util/dump_propdef.c
 	src/if/configurable_util/enum32_find_by_id.c
-	src/if/configurable_util/enum32_find_by_value.c)
+	src/if/configurable_util/enum32_find_by_value.c
+	src/if/configurable_util/fprint_property.c
+	src/if/configurable_util/fprint_utf8.c
+	src/if/configurable_util/type_to_string.c)
 
 set(IF_DISPOSABLE_HEADER_FILES 
 	src/include/if/disposable.h
@@ -408,13 +414,6 @@ if(IV_COMPAT)
 	add_definitions("-DIV_COMPAT")
 endif()
 
-# MinGW printf %lld / %I64 / PRId64 broken
-# XXX - This may just be an erroneous gcc warning with working printf runtime
-# XXX - Need to verify
-if(MINGW)
-	add_definitions("-DBROKEN_PRINTF_64BIT")
-endif()
-
 
 #
 # [lib]extit_pmodule
@@ -586,6 +585,15 @@ add_library(
 		${IF_CONFIGURABLE_UTIL_HEADER_FILES}
 		${IV_HEADER_FILES}
 		${IV_UTIL_HEADER_FILES})
+
+if(MINGW AND ${CMAKE_C_COMPILER_ID} STREQUAL "GNU")
+	#
+	# MinGW printf PRId64 / PRIu64 / PRIxPTR(64-bit) compile check broken
+	#
+	target_compile_options(
+		if_configurable_util
+			PRIVATE -Wno-error=format)
+endif()
 
 set_target_properties(
 	if_configurable_util PROPERTIES

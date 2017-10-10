@@ -1,7 +1,7 @@
 /*
  * @(#) if/configurable_util/get_enum32_id.c
  *
- * Configurable Interface utilities.
+ * Find a configurable interface enum descriptor by ID.
  *
  * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
