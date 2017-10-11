@@ -19,15 +19,6 @@
 #include <iv/base.h>
 
 /*
- * ExtIt Library Version (v0.9.2)
- */
-#define	EXTIT_LIB_VERSION_MAJOR		0
-#define	EXTIT_LIB_VERSION_MINOR		9
-#define	EXTIT_LIB_VERSION_PATCH		2
-#define	EXTIT_LIB_VERSION		((EXTIT_LIB_VERSION_MAJOR << 16)|(EXTIT_LIB_VERSION_MINOR<<8)|EXTIT_LIB_VERSION_PATCH)
-
-
-/*
  * ExtIt ABI Version (v1.0)
  */
 #define	EXTIT_ABI_1_0		IV_VERSION(1,0)

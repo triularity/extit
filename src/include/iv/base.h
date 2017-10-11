@@ -17,15 +17,6 @@ extern "C" {
 #endif
 
 /*
- * Library version (v0.9.1)
- */
-#define	IV_LIB_VERSION_MAJOR		0
-#define	IV_LIB_VERSION_MINOR		9
-#define	IV_LIB_VERSION_PATCH		1
-#define	IV_LIB_VERSION			((IV_LIB_VERSION_MAJOR << 16)|(IV_LIB_VERSION_MINOR<<8)|IV_LIB_VERSION_PATCH)
-
-
-/*
  * Interface Version
  */
 typedef	uint32_t		iv_version_t;

@@ -42,7 +42,8 @@ include_directories(BEFORE src/include)
 # ExtIt core
 set(EXTIT_HEADER_FILES 
 	src/include/extit/base.h
-	src/include/extit/platform.h)
+	src/include/extit/platform.h
+	src/include/extit/version.h)
 
 
 # ExtIt container (client side)
@@ -107,6 +108,9 @@ set(EXTIT_UTIL_SOURCE_FILES
 	src/extit/util/refcount_isnone.c
 	src/extit/util/refcount_release.c)
 
+# Standard Interfaces (core)
+set(IF_HEADER_FILES 
+	src/include/if/version.h)
 
 # Standard interfaces (client side)
 set(IF_ALLOCATOR_HEADER_FILES 
@@ -283,7 +287,8 @@ set(IF_MESSAGING_STDIMPL_SOURCE_FILES
 
 # IV core
 set(IV_HEADER_FILES 
-	src/include/iv/base.h)
+	src/include/iv/base.h
+	src/include/iv/version.h)
 
 
 # IV repository
@@ -906,6 +911,7 @@ install(
 
 install(
 	FILES
+		${IF_HEADER_FILES}
 		${IF_ALLOCATOR_HEADER_FILES}
 		${IF_ALLOCATOR_STDIMPL_HEADER_FILES}
 		${IF_CONFIGURABLE_HEADER_FILES}
