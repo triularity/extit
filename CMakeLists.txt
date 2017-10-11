@@ -939,8 +939,8 @@ if(EXTIT_COMPILE_SAMPLES)
 	# Allocator Interface Plugin
 	#
 	add_library(
-		sample_if_allocator_plugin SHARED
-			sample/if_allocator/plugin.c
+		sample_stdif_allocator_plugin SHARED
+			sample/stdif_allocator/plugin.c
 			${EXTIT_HEADER_FILES}
 			${EXTIT_ALLOCATOR_HEADER_FILES}
 			${EXTIT_PMODULE_HEADER_FILES}
@@ -949,7 +949,7 @@ if(EXTIT_COMPILE_SAMPLES)
 			${IV_UTIL_HEADER_FILES})
 
 	target_link_libraries(
-		sample_if_allocator_plugin
+		sample_stdif_allocator_plugin
 			if_allocator
 			extit_container
 			iv_util)
@@ -959,8 +959,8 @@ if(EXTIT_COMPILE_SAMPLES)
 	# Allocator Interface Server
 	#
 	add_executable(
-		sample_if_allocator_server
-			sample/if_allocator/server.c
+		sample_stdif_allocator_server
+			sample/stdif_allocator/server.c
 			${EXTIT_HEADER_FILES}
 			${EXTIT_ALLOCATOR_HEADER_FILES}
 			${EXTIT_PMODULE_HEADER_FILES}
@@ -968,7 +968,7 @@ if(EXTIT_COMPILE_SAMPLES)
 			${IV_UTIL_HEADER_FILES})
 
 	target_link_libraries(
-		sample_if_allocator_server
+		sample_stdif_allocator_server
 			if_allocator_stdimpl
 			extit_container_stdimpl
 			extit_pmodule)
@@ -978,10 +978,10 @@ if(EXTIT_COMPILE_SAMPLES)
 	# Configurable Interface
 	#
 	add_executable(
-		sample_if_configurable
-			sample/if_configurable/client.c
-			sample/if_configurable/scan_service.c
-			sample/if_configurable/scan_service.h
+		sample_stdif_configurable
+			sample/stdif_configurable/client.c
+			sample/stdif_configurable/scan_service.c
+			sample/stdif_configurable/scan_service.h
 			${EXTIT_HEADER_FILES}
 			${STDIF_CONFIGURABLE_HEADER_FILES}
 			${STDIF_CONFIGURABLE_STDIMPL_HEADER_FILES}
@@ -989,7 +989,7 @@ if(EXTIT_COMPILE_SAMPLES)
 			${IV_HEADER_FILES})
 
 	target_link_libraries(
-		sample_if_configurable
+		sample_stdif_configurable
 			if_configurable
 			if_configurable_stdimpl
 			if_configurable_util)
@@ -999,8 +999,8 @@ if(EXTIT_COMPILE_SAMPLES)
 	# Configurable Interface (List Properties)
 	#
 	add_executable(
-		sample_if_configurable_proplist
-			sample/if_configurable_proplist/dump_props.c
+		sample_stdif_configurable_proplist
+			sample/stdif_configurable_proplist/dump_props.c
 			${EXTIT_HEADER_FILES}
 			${STDIF_CONFIGURABLE_HEADER_FILES}
 			${STDIF_CONFIGURABLE_STDIMPL_HEADER_FILES}
@@ -1008,7 +1008,7 @@ if(EXTIT_COMPILE_SAMPLES)
 			${IV_HEADER_FILES})
 
 	target_link_libraries(
-		sample_if_configurable_proplist
+		sample_stdif_configurable_proplist
 			if_configurable
 			if_configurable_stdimpl
 			if_configurable_util)
@@ -1018,19 +1018,19 @@ if(EXTIT_COMPILE_SAMPLES)
 	# Disposable Interface
 	#
 	add_executable(
-		sample_if_disposable
-			sample/if_disposable/client.c
-			sample/if_disposable/item.c
-			sample/if_disposable/item.h
-			sample/if_disposable/itemsource.c
-			sample/if_disposable/itemsource.h
+		sample_stdif_disposable
+			sample/stdif_disposable/client.c
+			sample/stdif_disposable/item.c
+			sample/stdif_disposable/item.h
+			sample/stdif_disposable/itemsource.c
+			sample/stdif_disposable/itemsource.h
 			${EXTIT_HEADER_FILES}
 			${STDIF_DISPOSABLE_HEADER_FILES}
 			${STDIF_DISPOSABLE_IMPL_HEADER_FILES}
 			${IV_HEADER_FILES})
 
 	target_link_libraries(
-		sample_if_disposable
+		sample_stdif_disposable
 			if_disposable)
 
 
@@ -1038,16 +1038,16 @@ if(EXTIT_COMPILE_SAMPLES)
 	# Messaging Interface (alarm)
 	#
 	add_executable(
-		sample_if_messaging_alarm
-			sample/if_messaging/alarm.h
-			sample/if_messaging/demo.c
+		sample_stdif_messaging_alarm
+			sample/stdif_messaging/alarm.h
+			sample/stdif_messaging/demo.c
 			${EXTIT_HEADER_FILES}
 			${EXTIT_MESSAGING_HEADER_FILES}
 			${EXTIT_MESSAGING_STDIMPL_HEADER_FILES}
 			${IV_HEADER_FILES})
 
 	target_link_libraries(
-		sample_if_messaging_alarm
+		sample_stdif_messaging_alarm
 			if_messaging
 			if_messaging_stdimpl)
 
@@ -1056,13 +1056,13 @@ if(EXTIT_COMPILE_SAMPLES)
 	# Refcount Interface
 	#
 	add_executable(
-		sample_if_referenced
-			sample/if_referenced/client.c
-			sample/if_referenced/myobj.h
-			sample/if_referenced/provider.c
-			sample/if_referenced/provider.h
-			sample/if_referenced/worklist.c
-			sample/if_referenced/worklist.h
+		sample_stdif_referenced
+			sample/stdif_referenced/client.c
+			sample/stdif_referenced/myobj.h
+			sample/stdif_referenced/provider.c
+			sample/stdif_referenced/provider.h
+			sample/stdif_referenced/worklist.c
+			sample/stdif_referenced/worklist.h
 			${EXTIT_HEADER_FILES}
 			${STDIF_REFERENCED_HEADER_FILES}
 			${EXTIT_UTIL_HEADER_FILES}
@@ -1070,7 +1070,7 @@ if(EXTIT_COMPILE_SAMPLES)
 			${IV_UTIL_HEADER_FILES})
 
 	target_link_libraries(
-		sample_if_referenced
+		sample_stdif_referenced
 			if_referenced)
 
 
@@ -1078,12 +1078,12 @@ if(EXTIT_COMPILE_SAMPLES)
 	# Resolvable Interface
 	#
 	add_executable(
-		sample_if_resolvable
-			sample/if_resolvable/client.c
-			sample/if_resolvable/myobj.c
-			sample/if_resolvable/myobj.h
-			sample/if_resolvable/myobj_client.c
-			sample/if_resolvable/myobj_priv.h
+		sample_stdif_resolvable
+			sample/stdif_resolvable/client.c
+			sample/stdif_resolvable/myobj.c
+			sample/stdif_resolvable/myobj.h
+			sample/stdif_resolvable/myobj_client.c
+			sample/stdif_resolvable/myobj_priv.h
 			${EXTIT_HEADER_FILES}
 			${STDIF_REFERENCED_HEADER_FILES}
 			${STDIF_REFERENCED_IMPL_HEADER_FILES}
@@ -1097,7 +1097,7 @@ if(EXTIT_COMPILE_SAMPLES)
 			${IV_UTIL_HEADER_FILES})
 
 	target_link_libraries(
-		sample_if_resolvable
+		sample_stdif_resolvable
 			extit_util
 			if_referenced
 			if_resolvable
