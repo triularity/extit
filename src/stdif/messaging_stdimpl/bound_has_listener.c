@@ -1,5 +1,5 @@
 /*
- * @(#) if/messaging_stdimpl/bound_has_listener.c
+ * @(#) stdif/messaging_stdimpl/bound_has_listener.c
  *
  * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
@@ -9,19 +9,19 @@
 
 #include <iv/base.h>
 #include <extit/base.h>
-#include <if/messaging.h>
-#include <if/messaging_impl.h>
-#include <if/messaging_stdimpl.h>
+#include <stdif/messaging.h>
+#include <stdif/messaging_impl.h>
+#include <stdif/messaging_stdimpl.h>
 
 #include "internal.h"
 
 
 extit_bool_t
 EXTIT_DECL
-if_messaging_stdimpl_bound_has_listener__1_0
+stdif_messaging_stdimpl_bound_has_listener__1_0
 (
-	if_messaging_1_0_t *messaging,
-	if_messaging_bound_t *bound
+	stdif_messaging_1_0_t *messaging,
+	stdif_messaging_bound_t *bound
 )
 {
 	iv_version_t		min_version;

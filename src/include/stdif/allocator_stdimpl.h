@@ -1,5 +1,5 @@
 /*
- * @(#) if/allocator_stdimpl.h
+ * @(#) stdif/allocator_stdimpl.h
  *
  * Allocator Interface - standard implementation.
  *
@@ -7,12 +7,12 @@
  * http://www.triularity.org/
  */
 
-#ifndef	__if__allocator_stdimpl_h
-#define	__if__allocator_stdimpl_h
+#ifndef	__stdif__allocator_stdimpl_h
+#define	__stdif__allocator_stdimpl_h
 
-#include <if/allocator.h>
+#include <stdif/allocator.h>
 
-#ifdef	if_allocator_stdimpl_EXPORTS
+#ifdef	stdif_allocator_stdimpl_EXPORTS
 #define	LIBAPI		EXTIT_EXPORT
 #else
 #define	LIBAPI		EXTIT_IMPORT
@@ -26,7 +26,7 @@ extern "C" {
  * Allocator (v1.0)
  */
 LIBAPI
-extern	if_allocator_1_0_t		if_allocator_stdimpl_1_0;
+extern	stdif_allocator_1_0_t		stdif_allocator_stdimpl_1_0;
 
 #ifdef	__cplusplus
 }
@@ -34,4 +34,4 @@ extern	if_allocator_1_0_t		if_allocator_stdimpl_1_0;
 
 #undef	LIBAPI
 
-#endif	/* !__if__allocator_stdimpl_h */
+#endif	/* !__stdif__allocator_stdimpl_h */

@@ -1,5 +1,5 @@
 /*
- * @(#) if/configurable/get_descriptor.c
+ * @(#) stdif/configurable/get_descriptor.c
  *
  * Configurable Interface - get_descriptor@1.0 wrapper.
  *
@@ -10,27 +10,27 @@
 #include <stdlib.h>
 
 #include <extit/base.h>
-#include <if/configurable.h>
-#include <if/configurable_impl.h>
+#include <stdif/configurable.h>
+#include <stdif/configurable_impl.h>
 
 #ifdef	EXTIT_PARANOID
 #include <iv/util.h>
 #endif
 
 
-const if_configurable_descriptor_t *
+const stdif_configurable_descriptor_t *
 EXTIT_DECL
-if_configurable_get_descriptor__1_0
+stdif_configurable_get_descriptor__1_0
 (
-	if_configurable_t *configurable
+	stdif_configurable_t *configurable
 )
 {
 #ifdef	EXTIT_PARANOID
-	if(!IV_MATCHES(configurable->version, IF_CONFIGURABLE_ABI_1_0))
+	if(!IV_MATCHES(configurable->version, STDIF_CONFIGURABLE_ABI_1_0))
 		return NULL;
 #endif
 
-#define	IMPL(x)		((if_configurable_1_0_t *) (x))
+#define	IMPL(x)		((stdif_configurable_1_0_t *) (x))
 
 	return IMPL(configurable)->ops->v0.op_get_descriptor(
 		IMPL(configurable));

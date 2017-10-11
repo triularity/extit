@@ -1,5 +1,5 @@
 /*
- * @(#) if/resolvable_impl.h
+ * @(#) stdif/resolvable_impl.h
  *
  * Resolvable Interface - implementation.
  *
@@ -7,11 +7,11 @@
  * http://www.triularity.org/
  */
 
-#ifndef	__if__resolvable_impl_h
-#define	__if__resolvable_impl_h
+#ifndef	__stdif__resolvable_impl_h
+#define	__stdif__resolvable_impl_h
 
 #include <iv/base.h>
-#include <if/resolvable.h>
+#include <stdif/resolvable.h>
 
 #ifdef	__cplusplus
 extern "C" {
@@ -20,33 +20,33 @@ extern "C" {
 /*
  * Resolvable operations (v1.0 component)
  */
-typedef struct _if_resolvable_ops_comp_1_0
+typedef struct _stdif_resolvable_ops_comp_1_0
 {
 	void *			(EXTIT_DECL *op_get_interface)(
-					if_resolvable_1_0_t *resolvable,
+					stdif_resolvable_1_0_t *resolvable,
 					const char *id,
 					iv_version_t version);
 
 	iv_version_t		(EXTIT_DECL *op_query_interface)(
-					if_resolvable_1_0_t *resolvable,
+					stdif_resolvable_1_0_t *resolvable,
 					const char *id,
 					iv_version_t base_version);
-} if_resolvable_ops_comp_1_0_t;
+} stdif_resolvable_ops_comp_1_0_t;
 
 
 /*
  * Resolvable operations (v1.0)
  */
-typedef struct _if_resolvable_ops_1_0
+typedef struct _stdif_resolvable_ops_1_0
 {
-	if_resolvable_ops_comp_1_0_t	v0;		/* [1].0 component */
-} if_resolvable_ops_1_0_t;
+	stdif_resolvable_ops_comp_1_0_t	v0;		/* [1].0 component */
+} stdif_resolvable_ops_1_0_t;
 
 
 /*
  * Resolvable (base)
  */
-struct _if_resolvable
+struct _stdif_resolvable
 {
 	iv_version_t			version;
 };
@@ -55,17 +55,17 @@ struct _if_resolvable
 /*
  * Resolvable (v1.0)
  */
-struct _if_resolvable_1_0
+struct _stdif_resolvable_1_0
 {
 	/* base */
 	iv_version_t			version;	/* 1.0+ */
 
 	/* 1.0+ */
-	if_resolvable_ops_1_0_t *	ops;
+	stdif_resolvable_ops_1_0_t *	ops;
 };
 
 #ifdef	__cplusplus
 }
 #endif
 
-#endif	/* !__if__resolvable_impl_h */
+#endif	/* !__stdif__resolvable_impl_h */

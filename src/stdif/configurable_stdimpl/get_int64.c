@@ -1,5 +1,5 @@
 /*
- * @(#) if/configurable_stdimpl/get_int64.c
+ * @(#) stdif/configurable_stdimpl/get_int64.c
  *
  * Configurable Interface standard implementation.
  *
@@ -8,32 +8,32 @@
  */
 
 #include <extit/base.h>
-#include <if/configurable.h>
-#include <if/configurable_impl.h>
-#include <if/configurable_stdimpl.h>
+#include <stdif/configurable.h>
+#include <stdif/configurable_impl.h>
+#include <stdif/configurable_stdimpl.h>
 
 
 extit_status_t
 EXTIT_DECL
-if_configurable_stdimpl_get_int64__1_0
+stdif_configurable_stdimpl_get_int64__1_0
 (
-	if_configurable_1_0_t *conf,
-	if_configurable_propref_t *prop,
+	stdif_configurable_1_0_t *conf,
+	stdif_configurable_propref_t *prop,
 	int64_t *valuep
 )
 {
-	return if_configurable_stdimpl_get_int64__1_0_base(
+	return stdif_configurable_stdimpl_get_int64__1_0_base(
 		conf, conf, prop, valuep);
 }
 
 
 extit_status_t
 EXTIT_DECL
-if_configurable_stdimpl_get_int64__1_0_base
+stdif_configurable_stdimpl_get_int64__1_0_base
 (
-	if_configurable_1_0_t *conf,
+	stdif_configurable_1_0_t *conf,
 	void *base,
-	if_configurable_propref_t *prop,
+	stdif_configurable_propref_t *prop,
 	int64_t *valuep
 )
 {
@@ -41,24 +41,24 @@ if_configurable_stdimpl_get_int64__1_0_base
 
 	switch(prop->definition.type)
 	{
-		case IF_CONFIGURABLE_TYPE_INT8:
+		case STDIF_CONFIGURABLE_TYPE_INT8:
 			*valuep = *((int8_t *) base);
 			break;
 
-		case IF_CONFIGURABLE_TYPE_INT16:
+		case STDIF_CONFIGURABLE_TYPE_INT16:
 			*valuep = *((int16_t *) base);
 			break;
 
-		case IF_CONFIGURABLE_TYPE_INT32:
+		case STDIF_CONFIGURABLE_TYPE_INT32:
 			*valuep = *((int32_t *) base);
 			break;
 
-		case IF_CONFIGURABLE_TYPE_INT64:
+		case STDIF_CONFIGURABLE_TYPE_INT64:
 			*valuep = *((int64_t *) base);
 			break;
 
 		default:
-			return IF_CONFIGURABLE_STATUS_MISMATCH;
+			return STDIF_CONFIGURABLE_STATUS_MISMATCH;
 	}
 
 	return EXTIT_STATUS_OK;

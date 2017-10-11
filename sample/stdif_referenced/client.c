@@ -1,5 +1,5 @@
 /*
- * @(#) sample/if_referenced/client.c
+ * @(#) sample/stdif_referenced/client.c
  *
  * This file is in the Public Domain.
  */
@@ -8,7 +8,7 @@
 #include <stdio.h>
 
 #include <iv/base.h>
-#include <if/referenced.h>
+#include <stdif/referenced.h>
 
 #include "myobj.h"
 #include "worklist.h"
@@ -20,7 +20,7 @@ main(int argc, char **argv)
 {
 	struct worklist *	list;
 	myobj_t *		obj;
-	if_referenced_t *	if_refed;
+	stdif_referenced_t *	stdif_refed;
 
 
 	list = worklist_create();
@@ -32,7 +32,7 @@ main(int argc, char **argv)
 		/*
 		 * Ideally this would be done via the resolvable interface
 		 */
-		if_refed = obj->get_if_referenced(obj);
+		stdif_refed = obj->get_referenced(obj);
 
 		printf("Done with our ref\n");
 
@@ -40,7 +40,7 @@ main(int argc, char **argv)
 		 * Release our reference
 		 * The worklist may or may not have a reference
 		 */
-		if(if_referenced_release(if_refed) != EXTIT_STATUS_OK)
+		if(stdif_referenced_release(stdif_refed) != EXTIT_STATUS_OK)
 		{
 			/* Log or handle the error ... */
 		}

@@ -1,5 +1,5 @@
 /*
- * @(#) if/configurable_util/get_enum32_id.c
+ * @(#) stdif/configurable_util/get_enum32_id.c
  *
  * Find a configurable interface enum descriptor by value.
  *
@@ -10,15 +10,15 @@
 #include <stdlib.h>
 
 #include <extit/base.h>
-#include <if/configurable.h>
-#include <if/configurable_util.h>
+#include <stdif/configurable.h>
+#include <stdif/configurable_util.h>
 
 
-const if_configurable_enum32_t *
+const stdif_configurable_enum32_t *
 EXTIT_DECL
-if_configurable_enum32_find_by_value
+stdif_configurable_enum32_find_by_value
 (
-	const if_configurable_enum32_t *choices,
+	const stdif_configurable_enum32_t *choices,
 	uint32_t count,
 	uint32_t value
 )

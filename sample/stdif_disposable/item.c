@@ -1,5 +1,5 @@
 /*
- * @(#) if_disposable/item.c
+ * @(#) stdif_disposable/item.c
  *
  * This file is in the Public Domain.
  */
@@ -9,8 +9,8 @@
 #include <stdlib.h>
 
 #include <extit/base.h>
-#include <if/disposable.h>
-#include <if/disposable_impl.h>
+#include <stdif/disposable.h>
+#include <stdif/disposable_impl.h>
 
 #include "item.h"
 
@@ -18,7 +18,7 @@
 struct _item
 {
 	void			(*wfunc)(void);
-	if_disposable_1_0_t	disposable;
+	stdif_disposable_1_0_t	disposable;
 };
 
 
@@ -27,7 +27,7 @@ extit_status_t
 EXTIT_DECL
 item_disposable_free
 (
-	if_disposable_1_0_t *disposable
+	stdif_disposable_1_0_t *disposable
 )
 {
 	item_t *	item;
@@ -45,7 +45,7 @@ item_disposable_free
 
 
 static
-if_disposable_ops_1_0_t		item_disposable_ops =
+stdif_disposable_ops_1_0_t		item_disposable_ops =
 {
 	/* v0 */
 	{
@@ -66,7 +66,7 @@ item_create(void (*wfunc)(void))
 
 	item->wfunc = wfunc;
 
-	item->disposable.version = IF_DISPOSABLE_ABI_1_0;
+	item->disposable.version = STDIF_DISPOSABLE_ABI_1_0;
 	item->disposable.ops = &item_disposable_ops;
 
 	return item;
@@ -80,9 +80,9 @@ item_dosomething(item_t *item)
 }
 
 
-if_disposable_t *
+stdif_disposable_t *
 item_get_disposable(item_t *item)
 {
-	return (if_disposable_t *) &item->disposable;
+	return (stdif_disposable_t *) &item->disposable;
 }
 

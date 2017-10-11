@@ -1,5 +1,5 @@
 /*
- * @(#) if/disposable/free.c
+ * @(#) stdif/disposable/free.c
  *
  * Disposable Interface - free@1.0 wrapper.
  *
@@ -8,8 +8,8 @@
  */
 
 #include <extit/base.h>
-#include <if/disposable.h>
-#include <if/disposable_impl.h>
+#include <stdif/disposable.h>
+#include <stdif/disposable_impl.h>
 
 #ifdef	EXTIT_PARANOID
 #include <iv/util.h>
@@ -18,17 +18,17 @@
 
 extit_status_t
 EXTIT_DECL
-if_disposable_free__1_0
+stdif_disposable_free__1_0
 (
-	if_disposable_t *disposable
+	stdif_disposable_t *disposable
 )
 {
 #ifdef	EXTIT_PARANOID
-	if(!IV_MATCHES(disposable->version, IF_DISPOSABLE_ABI_1_0))
+	if(!IV_MATCHES(disposable->version, STDIF_DISPOSABLE_ABI_1_0))
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-#define	IMPL(x)		((if_disposable_1_0_t *) (x))
+#define	IMPL(x)		((stdif_disposable_1_0_t *) (x))
 
 	return IMPL(disposable)->ops->v0.op_free(IMPL(disposable));
 

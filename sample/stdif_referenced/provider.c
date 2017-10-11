@@ -1,5 +1,5 @@
 /*
- * @(#) sample/if_referenced/provider.c
+ * @(#) sample/stdif_referenced/provider.c
  *
  * This file is in the Public Domain.
  */
@@ -9,7 +9,7 @@
 
 #include <extit/base.h>
 #include <extit/util.h>
-#include <if/referenced_impl.h>
+#include <stdif/referenced_impl.h>
 
 #include "myobj.h"
 #include "provider.h"
@@ -20,41 +20,41 @@
 
 struct myobj_internal;
 
-struct if_referenced_internal
+typedef struct stdif_referenced_internal
 {
-	if_referenced_1_0_t		pub;		/* The public object */
+	stdif_referenced_1_0_t		pub;		/* The public object */
 	struct myobj_internal *		myobj;
-};
+} stdif_referenced_internal_t;
 
 struct myobj_internal
 {
 	myobj_t				pub;		/* The public object */
 	extit_refcount_t		refcount;
-	struct if_referenced_internal	if_referenced;
+	stdif_referenced_internal_t	stdif_referenced;
 };
 
 
 static
-if_referenced_t *
-myobj__get_if_referenced(myobj_t *obj)
+stdif_referenced_t *
+myobj__get_referenced(myobj_t *obj)
 {
 	struct myobj_internal *	obji;
 
 
 	obji = (struct myobj_internal *) obj;
 
-	return (if_referenced_t *) &obji->if_referenced.pub;
+	return (stdif_referenced_t *) &obji->stdif_referenced.pub;
 }
 
 
 static
 extit_status_t
-myobj__referenced__add(if_referenced_1_0_t *referenced)
+myobj__referenced__add(stdif_referenced_1_0_t *referenced)
 {
 	struct myobj_internal *	obji;
 
 
-	obji = ((struct if_referenced_internal *) referenced)->myobj;
+	obji = ((stdif_referenced_internal_t *) referenced)->myobj;
 
 	return extit_refcount_add(&obji->refcount);
 }
@@ -62,13 +62,13 @@ myobj__referenced__add(if_referenced_1_0_t *referenced)
 
 static
 extit_status_t
-myobj__referenced__release(if_referenced_1_0_t *referenced)
+myobj__referenced__release(stdif_referenced_1_0_t *referenced)
 {
 	struct myobj_internal *	obji;
 	extit_status_t		status;
 
 
-	obji = ((struct if_referenced_internal *) referenced)->myobj;
+	obji = ((stdif_referenced_internal_t *) referenced)->myobj;
 
 	status = extit_refcount_release(&obji->refcount);
 
@@ -87,7 +87,7 @@ myobj__referenced__release(if_referenced_1_0_t *referenced)
 
 
 static
-if_referenced_ops_1_0_t	myobj__referenced_ops =
+stdif_referenced_ops_1_0_t	myobj__referenced_ops =
 {
 	/* v0 */
 	{
@@ -107,14 +107,14 @@ alloc_myobj(myobj_type_t type)
 	if((obji = malloc(sizeof(struct myobj_internal))) != NULL)
 	{
 		obji->pub.type = type;
-		obji->pub.get_if_referenced = myobj__get_if_referenced;
+		obji->pub.get_referenced = myobj__get_referenced;
 
 		obji->refcount = EXTIT_REFCOUNT_NONE;
 
-		obji->if_referenced.pub.version = IF_REFERENCED_ABI_1_0;
-		obji->if_referenced.pub.ops = &myobj__referenced_ops;
+		obji->stdif_referenced.pub.version = STDIF_REFERENCED_ABI_1_0;
+		obji->stdif_referenced.pub.ops = &myobj__referenced_ops;
 
-		obji->if_referenced.myobj = obji;
+		obji->stdif_referenced.myobj = obji;
 	}
 
 	return obji;

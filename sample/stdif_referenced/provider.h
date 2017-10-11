@@ -1,5 +1,5 @@
 /*
- * @(#) sample/if_referenced/provider.h
+ * @(#) sample/stdif_referenced/provider.h
  *
  * This file is in the Public Domain.
  */

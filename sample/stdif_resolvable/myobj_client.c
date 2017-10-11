@@ -1,21 +1,21 @@
 /*
- * @(#) if_resolvable/myobj_client.c
+ * @(#) stdif_resolvable/myobj_client.c
  *
  * This file is in the Public Domain.
  */
 
 #include <extit/base.h>
-#include <if/resolvable.h>
+#include <stdif/resolvable.h>
 
 #include "myobj.h"
 #include "myobj_priv.h"
 
 
-if_resolvable_t *
+stdif_resolvable_t *
 EXTIT_DECL
 myobj_get_resolvable(myobj_t *obj)
 {
-	return (if_resolvable_t *) &obj->resolvable;
+	return (stdif_resolvable_t *) &obj->resolvable;
 }
 
 

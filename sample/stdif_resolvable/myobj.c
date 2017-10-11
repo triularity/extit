@@ -1,5 +1,5 @@
 /*
- * @(#) sample/if_resolvable/myobj.c
+ * @(#) sample/stdif_resolvable/myobj.c
  *
  * This file is in the Public Domain.
  */
@@ -14,13 +14,13 @@
 #include <extit/base.h>
 #include <extit/platform.h>
 #include <extit/util.h>
-#include <if/configurable.h>
-#include <if/configurable_impl.h>
-#include <if/configurable_stdimpl.h>
-#include <if/referenced.h>
-#include <if/referenced_impl.h>
-#include <if/resolvable.h>
-#include <if/resolvable_impl.h>
+#include <stdif/configurable.h>
+#include <stdif/configurable_impl.h>
+#include <stdif/configurable_stdimpl.h>
+#include <stdif/referenced.h>
+#include <stdif/referenced_impl.h>
+#include <stdif/resolvable.h>
+#include <stdif/resolvable_impl.h>
 
 #include "myobj.h"
 #include "myobj_priv.h"
@@ -39,13 +39,13 @@ my_free_obj(myobj_t *obj);
  **/
 
 static
-if_configurable_propref_t	conf_prop_enabled =
+stdif_configurable_propref_t	conf_prop_enabled =
 {
 	{
 		"enabled",
 		"Enabled",
 		"Enable the action",
-		IF_CONFIGURABLE_TYPE_BOOL,
+		STDIF_CONFIGURABLE_TYPE_BOOL,
 
 		.spec.type_bool.def_value = EXTIT_TRUE
 	},
@@ -56,13 +56,13 @@ if_configurable_propref_t	conf_prop_enabled =
 
 
 static
-if_configurable_propref_t	conf_prop_message =
+stdif_configurable_propref_t	conf_prop_message =
 {
 	{
 		"message",
 		"Message",
 		"The message to send",
-		IF_CONFIGURABLE_TYPE_UTF8,
+		STDIF_CONFIGURABLE_TYPE_UTF8,
 
 		.spec.type_utf8.def_value = NULL
 	},
@@ -74,7 +74,7 @@ if_configurable_propref_t	conf_prop_message =
 
 static
 const
-if_configurable_propdef_t *	conf_props[2] =
+stdif_configurable_propdef_t *	conf_props[2] =
 {
 	&conf_prop_enabled.definition,
 	&conf_prop_message.definition
@@ -82,7 +82,7 @@ if_configurable_propdef_t *	conf_props[2] =
 
 
 static
-if_configurable_descriptor_t	conf_descriptor =
+stdif_configurable_descriptor_t	conf_descriptor =
 {
 	conf_props,
 	2,
@@ -99,13 +99,13 @@ void *
 EXTIT_DECL
 my_resolv_get_interface
 (
-	if_resolvable_1_0_t *resolvable,
+	stdif_resolvable_1_0_t *resolvable,
 	const char *id,
 	iv_version_t version
 )
 {
 	/*
-	 * Just simple if/else if's for example ...
+	 * Just simple stdif/else if's for example ...
 	 */
 
 	if((EXTIT_STRCASECMP(id, MYOBJ_IID) == 0)
@@ -115,21 +115,21 @@ my_resolv_get_interface
 			- offsetof(myobj_t, resolvable);
 	}
 
-	if((EXTIT_STRCASECMP(id, IF_REFERENCED_IID) == 0)
-	 && iv_matches(IF_REFERENCED_ABI_1_0, version))
+	if((EXTIT_STRCASECMP(id, STDIF_REFERENCED_IID) == 0)
+	 && iv_matches(STDIF_REFERENCED_ABI_1_0, version))
 	{
 		return ((char *) resolvable)
 			- offsetof(myobj_t, resolvable)
 			+ offsetof(myobj_t, referenced);
 	}
 
-	if((EXTIT_STRCASECMP(id, IF_CONFIGURABLE_IID) == 0)
-	 && iv_matches(IF_CONFIGURABLE_ABI_1_0, version))
+	if((EXTIT_STRCASECMP(id, STDIF_CONFIGURABLE_IID) == 0)
+	 && iv_matches(STDIF_CONFIGURABLE_ABI_1_0, version))
 	{
 		return ((char *) resolvable)
 			- offsetof(myobj_t, resolvable)
 			+ offsetof(myobj_t, configurable)
-			+ offsetof(if_configurable_stdimpl_1_0_t, pub);
+			+ offsetof(stdif_configurable_stdimpl_1_0_t, pub);
 	}
 
 	return NULL;
@@ -141,7 +141,7 @@ iv_version_t
 EXTIT_DECL
 my_resolv_query_interface
 (
-	if_resolvable_1_0_t *resolvable,
+	stdif_resolvable_1_0_t *resolvable,
 	const char *id,
 	iv_version_t base_version
 )
@@ -152,16 +152,16 @@ my_resolv_query_interface
 		return MYOBJ_ABI_1_0;
 	}
 
-	if((EXTIT_STRCASECMP(id, IF_REFERENCED_IID) == 0)
-	 && iv_matches(IF_REFERENCED_ABI_1_0, base_version))
+	if((EXTIT_STRCASECMP(id, STDIF_REFERENCED_IID) == 0)
+	 && iv_matches(STDIF_REFERENCED_ABI_1_0, base_version))
 	{
-		return IF_REFERENCED_ABI_1_0;
+		return STDIF_REFERENCED_ABI_1_0;
 	}
 
-	if((EXTIT_STRCASECMP(id, IF_CONFIGURABLE_IID) == 0)
-	 && iv_matches(IF_CONFIGURABLE_ABI_1_0, base_version))
+	if((EXTIT_STRCASECMP(id, STDIF_CONFIGURABLE_IID) == 0)
+	 && iv_matches(STDIF_CONFIGURABLE_ABI_1_0, base_version))
 	{
-		return IF_CONFIGURABLE_ABI_1_0;
+		return STDIF_CONFIGURABLE_ABI_1_0;
 	}
 
 	return IV_VERSION_NONE;
@@ -169,7 +169,7 @@ my_resolv_query_interface
 
 
 static
-if_resolvable_ops_1_0_t		my_resolv_ops =
+stdif_resolvable_ops_1_0_t		my_resolv_ops =
 {
 	/* v0 */
 	{
@@ -186,7 +186,7 @@ if_resolvable_ops_1_0_t		my_resolv_ops =
 static
 extit_status_t
 EXTIT_DECL
-my_referenced_add(if_referenced_1_0_t *referenced)
+my_referenced_add(stdif_referenced_1_0_t *referenced)
 {
 	myobj_t *	obj;
 
@@ -201,7 +201,7 @@ my_referenced_add(if_referenced_1_0_t *referenced)
 static
 extit_status_t
 EXTIT_DECL
-my_referenced_release(if_referenced_1_0_t *referenced)
+my_referenced_release(stdif_referenced_1_0_t *referenced)
 {
 	myobj_t *	obj;
 	extit_status_t	status;
@@ -220,7 +220,7 @@ my_referenced_release(if_referenced_1_0_t *referenced)
 
 
 static
-if_referenced_ops_1_0_t		my_referenced_ops =
+stdif_referenced_ops_1_0_t		my_referenced_ops =
 {
 	/* v0 */
 	{
@@ -272,14 +272,14 @@ myobj_secret_create(void)
 	/* XXX - Do NULL check in real thing! */
 	obj = malloc(sizeof(myobj_t));
 
-	obj->resolvable.version = IF_RESOLVABLE_ABI_1_0;
+	obj->resolvable.version = STDIF_RESOLVABLE_ABI_1_0;
 	obj->resolvable.ops = &my_resolv_ops;
 
-	obj->configurable.pub.version = IF_CONFIGURABLE_ABI_1_0;
-	obj->configurable.pub.ops = &if_configurable_stdimpl_ops_1_0;
+	obj->configurable.pub.version = STDIF_CONFIGURABLE_ABI_1_0;
+	obj->configurable.pub.ops = &stdif_configurable_stdimpl_ops_1_0;
 	obj->configurable.descriptor = &conf_descriptor;
 
-	obj->referenced.version = IF_REFERENCED_ABI_1_0;
+	obj->referenced.version = STDIF_REFERENCED_ABI_1_0;
 	obj->referenced.ops = &my_referenced_ops;
 
 	obj->numrefs = EXTIT_REFCOUNT_NONE;

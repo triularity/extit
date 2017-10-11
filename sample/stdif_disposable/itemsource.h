@@ -1,5 +1,5 @@
 /*
- * @(#) if_disposable/itemsource.h
+ * @(#) stdif_disposable/itemsource.h
  *
  * This file is in the Public Domain.
  */

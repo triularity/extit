@@ -1,5 +1,5 @@
 /*
- * @(#) if/configurable_util/dump_propdef.c
+ * @(#) stdif/configurable_util/dump_propdef.c
  *
  * Dump a configurable interface property definition.
  *
@@ -15,8 +15,8 @@
 #include <iv/base.h>
 #include <extit/platform.h>
 
-#include <if/configurable.h>
-#include <if/configurable_util.h>
+#include <stdif/configurable.h>
+#include <stdif/configurable_util.h>
 
 
 static
@@ -38,15 +38,15 @@ findent
 
 void
 EXTIT_DECL
-_if_configurable_dump_propdef
+_stdif_configurable_dump_propdef
 (
 	FILE *fp,
 	unsigned int indent,
-	const if_configurable_propdef_t *propdef
+	const stdif_configurable_propdef_t *propdef
 )
 {
-	const if_configurable_enum32_t *		enum32;
-	const if_configurable_propspec_enum32_t *	spec_enum32;
+	const stdif_configurable_enum32_t *		enum32;
+	const stdif_configurable_propspec_enum32_t *	spec_enum32;
 	uint32_t					i;
 	unsigned int 					next_indent;
 	const char *					type_str;
@@ -56,10 +56,11 @@ _if_configurable_dump_propdef
 	fputs(propdef->id, fp);
 	fputc('\n', fp);
 
-	if((type_str = if_configurable_type_to_string(propdef->type)) != NULL)
+	if((type_str = stdif_configurable_type_to_string(propdef->type))
+	 != NULL)
 	{
 		findent(fp, indent);
-		fputs("    Type: IF_CONFIGURABLE_TYPE_", fp);
+		fputs("    Type: STDIF_CONFIGURABLE_TYPE_", fp);
 		fputs(type_str, fp);
 		fputc('\n', fp);
 	}
@@ -71,7 +72,7 @@ _if_configurable_dump_propdef
 
 	findent(fp, indent);
 	fputs("    Name: ", fp);
-	_if_configurable_fprint_utf8(fp, propdef->name, EXTIT_TRUE);
+	_stdif_configurable_fprint_utf8(fp, propdef->name, EXTIT_TRUE);
 	fputc('\n', fp);
 
 	if(propdef->description != NULL)
@@ -79,7 +80,7 @@ _if_configurable_dump_propdef
 		findent(fp, indent);
 		fputs("    Description: ", fp);
 
-		_if_configurable_fprint_utf8(
+		_stdif_configurable_fprint_utf8(
 			fp, propdef->description, EXTIT_TRUE);
 
 		fputc('\n', fp);
@@ -87,7 +88,7 @@ _if_configurable_dump_propdef
 
 	switch(propdef->type)
 	{
-		case IF_CONFIGURABLE_TYPE_BOOL:
+		case STDIF_CONFIGURABLE_TYPE_BOOL:
 			findent(fp, indent);
 			fputs("    Default: ", fp);
 
@@ -98,7 +99,7 @@ _if_configurable_dump_propdef
 
 			break;
 
-		case IF_CONFIGURABLE_TYPE_DATA:
+		case STDIF_CONFIGURABLE_TYPE_DATA:
 			findent(fp, indent);
 			fprintf(fp, "    Default: 0x%0*" PRIxPTR "\n",
 				(int) sizeof(uintptr_t) * 2,
@@ -114,7 +115,7 @@ _if_configurable_dump_propdef
 
 			break;
 
-		case IF_CONFIGURABLE_TYPE_DOUBLE:
+		case STDIF_CONFIGURABLE_TYPE_DOUBLE:
 			findent(fp, indent);
 			fprintf(fp, "    Default: %f\n",
 				propdef->spec.type_double.def_value);
@@ -136,10 +137,10 @@ _if_configurable_dump_propdef
 
 			break;
 
-		case IF_CONFIGURABLE_TYPE_ENUM32:
+		case STDIF_CONFIGURABLE_TYPE_ENUM32:
 			spec_enum32 = &propdef->spec.type_enum32;
 
-			enum32 = if_configurable_enum32_find_by_value(
+			enum32 = stdif_configurable_enum32_find_by_value(
 				spec_enum32->choices,
 				spec_enum32->choice_count,
 				spec_enum32->def_value);
@@ -167,7 +168,7 @@ _if_configurable_dump_propdef
 
 			for(i = 0; i < spec_enum32->choice_count; i++)
 			{
-				_if_configurable_dump_enum32(
+				_stdif_configurable_dump_enum32(
 					fp,
 					next_indent,
 					&spec_enum32->choices[i]);
@@ -175,7 +176,7 @@ _if_configurable_dump_propdef
 
 			break;
 
-		case IF_CONFIGURABLE_TYPE_FLOAT:
+		case STDIF_CONFIGURABLE_TYPE_FLOAT:
 			findent(fp, indent);
 			fprintf(fp, "    Default: %f\n",
 				propdef->spec.type_float.def_value);
@@ -197,7 +198,7 @@ _if_configurable_dump_propdef
 
 			break;
 
-		case IF_CONFIGURABLE_TYPE_FUNCTION:
+		case STDIF_CONFIGURABLE_TYPE_FUNCTION:
 			findent(fp, indent);
 			fprintf(fp, "    Default: 0x%0*" PRIxPTR "\n",
 				(int) sizeof(extit_func_t) * 2,
@@ -214,7 +215,7 @@ _if_configurable_dump_propdef
 
 			break;
 
-		case IF_CONFIGURABLE_TYPE_INT8:
+		case STDIF_CONFIGURABLE_TYPE_INT8:
 			findent(fp, indent);
 			fprintf(fp, "    Default: %d\n",
 				propdef->spec.type_int8.def_value);
@@ -229,7 +230,7 @@ _if_configurable_dump_propdef
 
 			break;
 
-		case IF_CONFIGURABLE_TYPE_INT16:
+		case STDIF_CONFIGURABLE_TYPE_INT16:
 			findent(fp, indent);
 			fprintf(fp, "    Default: %d\n",
 				propdef->spec.type_int16.def_value);
@@ -244,7 +245,7 @@ _if_configurable_dump_propdef
 
 			break;
 
-		case IF_CONFIGURABLE_TYPE_INT32:
+		case STDIF_CONFIGURABLE_TYPE_INT32:
 			findent(fp, indent);
 			fprintf(fp, "    Default: %" PRId32 "\n",
 				propdef->spec.type_int32.def_value);
@@ -259,7 +260,7 @@ _if_configurable_dump_propdef
 
 			break;
 
-		case IF_CONFIGURABLE_TYPE_INT64:
+		case STDIF_CONFIGURABLE_TYPE_INT64:
 			findent(fp, indent);
 			fprintf(fp, "    Default: %" PRId64 "\n",
 				propdef->spec.type_int64.def_value);
@@ -274,7 +275,7 @@ _if_configurable_dump_propdef
 
 			break;
 
-		case IF_CONFIGURABLE_TYPE_UINT8:
+		case STDIF_CONFIGURABLE_TYPE_UINT8:
 			findent(fp, indent);
 			fprintf(fp, "    Default: %u\n",
 				propdef->spec.type_uint8.def_value);
@@ -289,7 +290,7 @@ _if_configurable_dump_propdef
 
 			break;
 
-		case IF_CONFIGURABLE_TYPE_UINT16:
+		case STDIF_CONFIGURABLE_TYPE_UINT16:
 			findent(fp, indent);
 			fprintf(fp, "    Default: %u\n",
 				propdef->spec.type_uint16.def_value);
@@ -304,7 +305,7 @@ _if_configurable_dump_propdef
 
 			break;
 
-		case IF_CONFIGURABLE_TYPE_UINT32:
+		case STDIF_CONFIGURABLE_TYPE_UINT32:
 			findent(fp, indent);
 			fprintf(fp, "    Default: %" PRIu32 "\n",
 				propdef->spec.type_uint32.def_value);
@@ -319,7 +320,7 @@ _if_configurable_dump_propdef
 
 			break;
 
-		case IF_CONFIGURABLE_TYPE_UINT64:
+		case STDIF_CONFIGURABLE_TYPE_UINT64:
 			findent(fp, indent);
 			fprintf(fp, "    Default: %" PRIu64 "\n",
 				propdef->spec.type_uint64.def_value);
@@ -334,13 +335,13 @@ _if_configurable_dump_propdef
 
 			break;
 
-		case IF_CONFIGURABLE_TYPE_UTF8:
+		case STDIF_CONFIGURABLE_TYPE_UTF8:
 			findent(fp, indent);
 			fputs("    Default: ", fp);
 
 			if(propdef->spec.type_utf8.def_value != NULL)
 			{
-				_if_configurable_fprint_utf8(
+				_stdif_configurable_fprint_utf8(
 					fp,
 					propdef->spec.type_utf8.def_value,
 					EXTIT_TRUE);

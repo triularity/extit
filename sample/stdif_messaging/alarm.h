@@ -1,5 +1,5 @@
 /*
- * @(#) sample/if_messaging/alarm.h
+ * @(#) sample/stdif_messaging/alarm.h
  *
  * This file is in the Public Domain.
  */

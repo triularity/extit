@@ -1,5 +1,5 @@
 /*
- * @(#) sample/if_resolvable/client.c
+ * @(#) sample/stdif_resolvable/client.c
  *
  * This file is in the Public Domain.
  */
@@ -12,18 +12,18 @@
 /*
  * Select the interface targets we need (before those headers are included)
  */
-#define	IF_CONFIGURABLE_ABI_TARGET	IF_CONFIGURABLE_ABI_1_0
-#define	IF_REFERENCED_ABI_TARGET	IF_REFERENCED_ABI_1_0
+#define	STDIF_CONFIGURABLE_ABI_TARGET	STDIF_CONFIGURABLE_ABI_1_0
+#define	STDIF_REFERENCED_ABI_TARGET	STDIF_REFERENCED_ABI_1_0
 
-#include <if/configurable.h>
-#include <if/referenced.h>
-#include <if/resolvable.h>
+#include <stdif/configurable.h>
+#include <stdif/referenced.h>
+#include <stdif/resolvable.h>
 
 #include "myobj.h"
 
 
 static
-if_resolvable_t *
+stdif_resolvable_t *
 acquire_object_somehow(void)
 {
 	myobj_t *	obj;
@@ -38,11 +38,11 @@ acquire_object_somehow(void)
 int
 main(int argc, char **argv)
 {
-	if_resolvable_t *		resolvable;
-	if_configurable_t *		configurable;
-	if_configurable_propref_t *	prop_enabled;
-	if_configurable_propref_t *	prop_message;
-	if_referenced_t *		referenced;
+	stdif_resolvable_t *		resolvable;
+	stdif_configurable_t *		configurable;
+	stdif_configurable_propref_t *	prop_enabled;
+	stdif_configurable_propref_t *	prop_message;
+	stdif_referenced_t *		referenced;
 	myobj_t *			obj;
 
 
@@ -56,26 +56,28 @@ main(int argc, char **argv)
 	 * Let's configure it
 	 * XXX - Do NULL check in real code!
 	 */
-	configurable = (if_configurable_t *) if_resolvable_get_interface(
+	configurable = (stdif_configurable_t *) stdif_resolvable_get_interface(
 		resolvable,
-		IF_CONFIGURABLE_IID,
-		IF_CONFIGURABLE_ABI_1_0);
+		STDIF_CONFIGURABLE_IID,
+		STDIF_CONFIGURABLE_ABI_1_0);
 
 
 	/*
 	 * Make sure we are enabled
 	 */
-	prop_enabled = if_configurable_find_property(configurable, "enabled");
+	prop_enabled = stdif_configurable_find_property(
+		configurable, "enabled");
 
-	if_configurable_set_bool(configurable, prop_enabled, EXTIT_TRUE);
+	stdif_configurable_set_bool(configurable, prop_enabled, EXTIT_TRUE);
 
 
 	/*
 	 * Set something to say
 	 */
-	prop_message = if_configurable_find_property(configurable, "message");
+	prop_message = stdif_configurable_find_property(
+		configurable, "message");
 
-	if_configurable_set_utf8(
+	stdif_configurable_set_utf8(
 		configurable, prop_message, "What are you doing, Dave?");
 
 
@@ -83,7 +85,7 @@ main(int argc, char **argv)
 	 * Get our object
 	 * XXX - Do NULL check in real code!
 	 */
-	obj = (myobj_t *) if_resolvable_get_interface(
+	obj = (myobj_t *) stdif_resolvable_get_interface(
 		resolvable,
 		MYOBJ_IID,
 		MYOBJ_ABI_1_0);
@@ -97,7 +99,7 @@ main(int argc, char **argv)
 	/*
 	 * So many Dave quotes!
 	 */
-	if_configurable_set_utf8(
+	stdif_configurable_set_utf8(
 		configurable,
 		prop_message,
 		"They're all dead, Dave. Yes, Dave, they're all dead, Dave.");
@@ -108,11 +110,11 @@ main(int argc, char **argv)
 	/*
 	 * Going out drinking.. Disable messages, incase we get totally drunk.
 	 */
-	if_configurable_set_bool(configurable, prop_enabled, EXTIT_FALSE);
+	stdif_configurable_set_bool(configurable, prop_enabled, EXTIT_FALSE);
 
 	/* Glug.. glug.. glug.. */
 
-	if_configurable_set_utf8(
+	stdif_configurable_set_utf8(
 		configurable,
 		prop_message,
 		"Youu kno sumbin, yuuu errr the best!");
@@ -126,9 +128,9 @@ main(int argc, char **argv)
 	/*
 	 * [Next day]
 	 */
-	if_configurable_set_bool(configurable, prop_enabled, EXTIT_TRUE);
+	stdif_configurable_set_bool(configurable, prop_enabled, EXTIT_TRUE);
 
-	if_configurable_set_utf8(
+	stdif_configurable_set_utf8(
 		configurable,
 		prop_message,
 		"Ugh. What a night. Why is the sun so bright?");
@@ -143,16 +145,16 @@ main(int argc, char **argv)
 	 * Done with it
 	 * XXX - Do NULL check in real code!
 	 */
-	referenced = (if_referenced_t *) if_resolvable_get_interface(
+	referenced = (stdif_referenced_t *) stdif_resolvable_get_interface(
 		resolvable,
-		IF_REFERENCED_IID,
-		IF_REFERENCED_ABI_1_0);
+		STDIF_REFERENCED_IID,
+		STDIF_REFERENCED_ABI_1_0);
 
 	/*
 	 * !!! All interfaces/references derived from resolvable should be
 	 * considered invalid [to us] after this call (assuming it succeeds).
 	 */
-	if_referenced_release(referenced);
+	stdif_referenced_release(referenced);
 
 
 	return 0;

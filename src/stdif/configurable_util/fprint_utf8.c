@@ -1,5 +1,5 @@
 /*
- * @(#) if/configurable_util/fprint_utf8.c
+ * @(#) stdif/configurable_util/fprint_utf8.c
  *
  * Print a configurable interface property value.
  *
@@ -15,13 +15,13 @@
 
 #include <iv/base.h>
 
-#include <if/configurable.h>
-#include <if/configurable_util.h>
+#include <stdif/configurable.h>
+#include <stdif/configurable_util.h>
 
 
 void
 EXTIT_DECL
-_if_configurable_fprint_utf8
+_stdif_configurable_fprint_utf8
 (
 	FILE *fp,
 	const char *utf,

@@ -1,5 +1,5 @@
 /*
- * @(#) if/configurable_util/dump_enum32.c
+ * @(#) stdif/configurable_util/dump_enum32.c
  *
  * Dump a configurable interface enum32 descriptor.
  *
@@ -13,8 +13,8 @@
 
 #include <iv/base.h>
 
-#include <if/configurable.h>
-#include <if/configurable_util.h>
+#include <stdif/configurable.h>
+#include <stdif/configurable_util.h>
 
 
 static
@@ -36,11 +36,11 @@ findent
 
 void
 EXTIT_DECL
-_if_configurable_dump_enum32
+_stdif_configurable_dump_enum32
 (
 	FILE *fp,
 	unsigned int indent,
-	const if_configurable_enum32_t *enum32
+	const stdif_configurable_enum32_t *enum32
 )
 {
 	findent(fp, indent);
@@ -57,7 +57,7 @@ _if_configurable_dump_enum32
 		findent(fp, indent);
 		fputs("    Description: ", fp);
 
-		_if_configurable_fprint_utf8(
+		_stdif_configurable_fprint_utf8(
 			fp, enum32->description, EXTIT_TRUE);
 
 		fputc('\n', fp);

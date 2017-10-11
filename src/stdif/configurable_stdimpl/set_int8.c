@@ -1,5 +1,5 @@
 /*
- * @(#) if/configurable_stdimpl/set_int8.c
+ * @(#) stdif/configurable_stdimpl/set_int8.c
  *
  * Configurable Interface standard implementation.
  *
@@ -10,46 +10,46 @@
 #include <stdlib.h>
 
 #include <extit/base.h>
-#include <if/configurable.h>
-#include <if/configurable_impl.h>
-#include <if/configurable_stdimpl.h>
+#include <stdif/configurable.h>
+#include <stdif/configurable_impl.h>
+#include <stdif/configurable_stdimpl.h>
 
 
 extit_status_t
 EXTIT_DECL
-if_configurable_stdimpl_set_int8__1_0
+stdif_configurable_stdimpl_set_int8__1_0
 (
-	if_configurable_1_0_t *conf,
-	if_configurable_propref_t *prop,
+	stdif_configurable_1_0_t *conf,
+	stdif_configurable_propref_t *prop,
 	int8_t value
 )
 {
-	return if_configurable_stdimpl_set_int8__1_0_base(
+	return stdif_configurable_stdimpl_set_int8__1_0_base(
 		conf, conf, prop, value);
 }
 
 
 extit_status_t
 EXTIT_DECL
-if_configurable_stdimpl_set_int8__1_0_base
+stdif_configurable_stdimpl_set_int8__1_0_base
 (
-	if_configurable_1_0_t *conf,
+	stdif_configurable_1_0_t *conf,
 	void *base,
-	if_configurable_propref_t *prop,
+	stdif_configurable_propref_t *prop,
 	int8_t value
 )
 {
-	if_configurable_propspec_int8_t *	spec_int8;
-	if_configurable_propspec_int16_t *	spec_int16;
-	if_configurable_propspec_int32_t *	spec_int32;
-	if_configurable_propspec_int64_t *	spec_int64;
+	stdif_configurable_propspec_int8_t *	spec_int8;
+	stdif_configurable_propspec_int16_t *	spec_int16;
+	stdif_configurable_propspec_int32_t *	spec_int32;
+	stdif_configurable_propspec_int64_t *	spec_int64;
 
 
 	base = ((char *) base) + prop->offset;
 
 	switch(prop->definition.type)
 	{
-		case IF_CONFIGURABLE_TYPE_INT8:
+		case STDIF_CONFIGURABLE_TYPE_INT8:
 			spec_int8 = &prop->definition.spec.type_int8;
 
 			if((value < spec_int8->min_value)
@@ -61,7 +61,7 @@ if_configurable_stdimpl_set_int8__1_0_base
 			*((int8_t *) base) = value;
 			break;
 
-		case IF_CONFIGURABLE_TYPE_INT16:
+		case STDIF_CONFIGURABLE_TYPE_INT16:
 			spec_int16 = &prop->definition.spec.type_int16;
 
 			if((value < spec_int16->min_value)
@@ -73,7 +73,7 @@ if_configurable_stdimpl_set_int8__1_0_base
 			*((int16_t *) base) = value;
 			break;
 
-		case IF_CONFIGURABLE_TYPE_INT32:
+		case STDIF_CONFIGURABLE_TYPE_INT32:
 			spec_int32 = &prop->definition.spec.type_int32;
 
 			if((value < spec_int32->min_value)
@@ -85,7 +85,7 @@ if_configurable_stdimpl_set_int8__1_0_base
 			*((int32_t *) base) = value;
 			break;
 
-		case IF_CONFIGURABLE_TYPE_INT64:
+		case STDIF_CONFIGURABLE_TYPE_INT64:
 			spec_int64 = &prop->definition.spec.type_int64;
 
 			if((value < spec_int64->min_value)
@@ -98,11 +98,11 @@ if_configurable_stdimpl_set_int8__1_0_base
 			break;
 
 		default:
-			return IF_CONFIGURABLE_STATUS_MISMATCH;
+			return STDIF_CONFIGURABLE_STATUS_MISMATCH;
 	}
 
 	if(prop->update_notifier != NULL)
-		prop->update_notifier((if_configurable_t *) conf, prop);
+		prop->update_notifier((stdif_configurable_t *) conf, prop);
 
 	return EXTIT_STATUS_OK;
 }

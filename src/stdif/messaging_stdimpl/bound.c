@@ -1,5 +1,5 @@
 /*
- * @(#) if/messaging_stdimpl/bound.c
+ * @(#) stdif/messaging_stdimpl/bound.c
  *
  * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
@@ -15,15 +15,15 @@
 #include "internal.h"
 
 
-if_messaging_bound_t *
-if_messaging_stdimpl_bound_acquire
+stdif_messaging_bound_t *
+stdif_messaging_stdimpl_bound_acquire
 (
-	if_messaging_bound_t **bound_listp,
+	stdif_messaging_bound_t **bound_listp,
 	iv_version_t version,
 	const char *mid
 )
 {
-	if_messaging_bound_t *	bound_entry;
+	stdif_messaging_bound_t *	bound_entry;
 
 
 	while((bound_entry = *bound_listp) != NULL)
@@ -37,7 +37,7 @@ if_messaging_stdimpl_bound_acquire
 		bound_listp = &bound_entry->next;
 	}
 
-	bound_entry = malloc(sizeof(if_messaging_bound_t));
+	bound_entry = malloc(sizeof(stdif_messaging_bound_t));
 
 	bound_entry->version = version;
 	bound_entry->bound_refcount = EXTIT_REFCOUNT_NONE;
@@ -52,14 +52,14 @@ if_messaging_stdimpl_bound_acquire
 
 
 void
-if_messaging_stdimpl_bound_destroy
+stdif_messaging_stdimpl_bound_destroy
 (
-	if_messaging_bound_t *bound_list
+	stdif_messaging_bound_t *bound_list
 )
 {
-	if_messaging_bound_t *	bound_next;
-	listener_entry_t *	l_entry;
-	listener_entry_t *	l_entry_next;
+	stdif_messaging_bound_t *	bound_next;
+	listener_entry_t *		l_entry;
+	listener_entry_t *		l_entry_next;
 
 
 	while(bound_list != NULL)
@@ -80,10 +80,10 @@ if_messaging_stdimpl_bound_destroy
 }
 
 
-if_messaging_bound_t *
-if_messaging_stdimpl_bound_get
+stdif_messaging_bound_t *
+stdif_messaging_stdimpl_bound_get
 (
-	if_messaging_bound_t *bound_list,
+	stdif_messaging_bound_t *bound_list,
 	iv_version_t version
 )
 {
@@ -102,10 +102,10 @@ if_messaging_stdimpl_bound_get
 }
 
 
-if_messaging_bound_t *
-if_messaging_stdimpl_bound_getmatch
+stdif_messaging_bound_t *
+stdif_messaging_stdimpl_bound_getmatch
 (
-	if_messaging_bound_t *bound_list,
+	stdif_messaging_bound_t *bound_list,
 	iv_version_t version
 )
 {

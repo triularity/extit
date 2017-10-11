@@ -1,5 +1,5 @@
 /*
- * @(#) if/disposable_impl.h
+ * @(#) stdif/disposable_impl.h
  *
  * Disposable Interface - implementation.
  *
@@ -7,11 +7,11 @@
  * http://www.triularity.org/
  */
 
-#ifndef	__if__disposable_impl_h
-#define	__if__disposable_impl_h
+#ifndef	__stdif__disposable_impl_h
+#define	__stdif__disposable_impl_h
 
 #include <extit/base.h>
-#include <if/disposable.h>
+#include <stdif/disposable.h>
 
 #ifdef	__cplusplus
 extern "C" {
@@ -20,26 +20,26 @@ extern "C" {
 /*
  * Disposable operations (v1.0 component)
  */
-typedef struct _if_disposable_ops_comp_1_0
+typedef struct _stdif_disposable_ops_comp_1_0
 {
 	extit_status_t		(EXTIT_DECL *op_free)(
-					if_disposable_1_0_t *disposable);
-} if_disposable_ops_comp_1_0_t;
+					stdif_disposable_1_0_t *disposable);
+} stdif_disposable_ops_comp_1_0_t;
 
 
 /*
  * Disposable operations (v1.0)
  */
-typedef struct _if_disposable_ops_1_0
+typedef struct _stdif_disposable_ops_1_0
 {
-	if_disposable_ops_comp_1_0_t	v0;		/* [1].0 component */
-} if_disposable_ops_1_0_t;
+	stdif_disposable_ops_comp_1_0_t	v0;		/* [1].0 component */
+} stdif_disposable_ops_1_0_t;
 
 
 /*
  * Disposable (base)
  */
-struct _if_disposable
+struct _stdif_disposable
 {
 	/* base */
 	iv_version_t			version;
@@ -49,17 +49,17 @@ struct _if_disposable
 /*
  * Disposable (v1.0)
  */
-struct _if_disposable_1_0
+struct _stdif_disposable_1_0
 {
 	/* base */
 	iv_version_t			version;	/* 1.0+ */
 
 	/* 1.0+ */
-	if_disposable_ops_1_0_t *	ops;
+	stdif_disposable_ops_1_0_t *	ops;
 };
 
 #ifdef	__cplusplus
 }
 #endif
 
-#endif	/* !__if__disposable_impl_h */
+#endif	/* !__stdif__disposable_impl_h */

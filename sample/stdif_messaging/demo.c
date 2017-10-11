@@ -1,5 +1,5 @@
 /*
- * @(#) if_messaging/demo.c
+ * @(#) stdif_messaging/demo.c
  *
  * This file is in the Public Domain.
  */
@@ -17,8 +17,8 @@
 #endif
 
 #include <iv/base.h>
-#include <if/messaging.h>
-#include <if/messaging_stdimpl.h>
+#include <stdif/messaging.h>
+#include <stdif/messaging_stdimpl.h>
 
 #include "alarm.h"
 
@@ -83,8 +83,8 @@ char alarm_name[] = "Alarm #1";
 int
 main(int argc, char **argv)
 {
-	if_messaging_t *	messaging;
-	if_messaging_bound_t *	alarm_2_0_bound;
+	stdif_messaging_t *	messaging;
+	stdif_messaging_bound_t *	alarm_2_0_bound;
 	alarm_1_0_t		alarm_1_0;
 	alarm_1_1_t		alarm_1_1;
 	alarm_2_0_t		alarm_2_0;
@@ -92,10 +92,10 @@ main(int argc, char **argv)
 
 
 	/* XXX - Check for NULL in real thing */
-	messaging = if_messaging_stdimpl_create(IF_MESSAGING_ABI_1_0);
+	messaging = stdif_messaging_stdimpl_create(STDIF_MESSAGING_ABI_1_0);
 
 	/* XXX - Check status in real thing */
-	if_messaging_add_listener(
+	stdif_messaging_add_listener(
 		messaging,
 		"clock_alarm_set",
 		ALARM_TYPE_IID,
@@ -104,7 +104,7 @@ main(int argc, char **argv)
 		alarm_name);
 
 	/* XXX - Check status in real thing */
-	if_messaging_add_listener(
+	stdif_messaging_add_listener(
 		messaging,
 		"alarm:activate",
 		ALARM_TYPE_IID,
@@ -113,7 +113,7 @@ main(int argc, char **argv)
 		NULL);
 
 	/* XXX - Check status in real thing */
-	if_messaging_add_listener(
+	stdif_messaging_add_listener(
 		messaging,
 		"alarm:activate",
 		ALARM_TYPE_IID,
@@ -121,13 +121,13 @@ main(int argc, char **argv)
 		new_alarm_triggered,
 		NULL);
 
-	alarm_2_0_bound = if_messaging_bind(
+	alarm_2_0_bound = stdif_messaging_bind(
 		messaging,
 		"alarm:activate",
 		ALARM_TYPE_IID,
 		ALARM_TYPE_VERSION_2_0);
 
-	if(alarm_2_0_bound == IF_MESSAGING_BOUND_NONE)
+	if(alarm_2_0_bound == STDIF_MESSAGING_BOUND_NONE)
 	{
 		fprintf(stderr, "Message bind failed\n");
 		return 1;
@@ -138,7 +138,7 @@ main(int argc, char **argv)
 	alarm_1_0.minute = 35;
 
 	/* XXX - Check status in real thing */
-	if_messaging_send(
+	stdif_messaging_send(
 		messaging,
 		"clock_alarm_set",
 		ALARM_TYPE_IID,
@@ -148,7 +148,7 @@ main(int argc, char **argv)
 	/* ... */
 
 	/* XXX - Check status in real thing */
-	if_messaging_send(
+	stdif_messaging_send(
 		messaging,
 		"alarm:activate",
 		ALARM_TYPE_IID,
@@ -164,7 +164,7 @@ main(int argc, char **argv)
 	alarm_1_1.minute = 59;
 
 	/* XXX - Check status in real thing */
-	if_messaging_send(
+	stdif_messaging_send(
 		messaging,
 		"alarm:activate",
 		ALARM_TYPE_IID,
@@ -176,7 +176,7 @@ main(int argc, char **argv)
 	alarm_2_0.message = "Pre-flood alert";
 
 	/* XXX - Check status in real thing */
-	if_messaging_bound_send(
+	stdif_messaging_bound_send(
 		messaging,
 		alarm_2_0_bound,
 		&alarm_2_0);
@@ -190,13 +190,13 @@ main(int argc, char **argv)
 		alarm_2_0.timestamp = time(NULL);
 
 		/* XXX - Check status in real thing */
-		if_messaging_bound_send(
+		stdif_messaging_bound_send(
 			messaging,
 			alarm_2_0_bound,
 			&alarm_2_0);
 	}
 
-	if_messaging_stdimpl_destroy(messaging);
+	stdif_messaging_stdimpl_destroy(messaging);
 
 	return 0;
 }

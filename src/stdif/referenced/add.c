@@ -1,5 +1,5 @@
 /*
- * @(#) if/referenced/add.c
+ * @(#) stdif/referenced/add.c
  *
  * Referenced Interface - add@1.0 wrapper.
  *
@@ -8,8 +8,8 @@
  */
 
 #include <extit/base.h>
-#include <if/referenced.h>
-#include <if/referenced_impl.h>
+#include <stdif/referenced.h>
+#include <stdif/referenced_impl.h>
 
 #ifdef	EXTIT_PARANOID
 #include <iv/util.h>
@@ -18,17 +18,17 @@
 
 extit_status_t
 EXTIT_DECL
-if_referenced_add__1_0
+stdif_referenced_add__1_0
 (
-	if_referenced_t *referenced
+	stdif_referenced_t *referenced
 )
 {
 #ifdef	EXTIT_PARANOID
-	if(!IV_MATCHES(referenced->version, IF_REFERENCED_ABI_1_0))
+	if(!IV_MATCHES(referenced->version, STDIF_REFERENCED_ABI_1_0))
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif
 
-#define	IMPL(x)		((if_referenced_1_0_t *) (x))
+#define	IMPL(x)		((stdif_referenced_1_0_t *) (x))
 
 	return IMPL(referenced)->ops->v0.op_add(IMPL(referenced));
 

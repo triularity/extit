@@ -1,5 +1,5 @@
 /*
- * @(#) sample/if_allocator/plugin.c
+ * @(#) sample/stdif_allocator/plugin.c
  *
  * This file is in the Public Domain.
  */
@@ -9,12 +9,12 @@
 #include <extit/base.h>
 #include <extit/container.h>
 #include <extit/pmodule_impl.h>
-#include <if/allocator.h>
+#include <stdif/allocator.h>
 
 
 typedef struct _myplugin
 {
-	if_allocator_t *	allocator;
+	stdif_allocator_t *	allocator;
 	char *			buffer;
 } myplugin_t;
 
@@ -32,7 +32,7 @@ plugin_probe
 	 * Verify allocator support
 	 */
 	if(extit_container_query_interface(
-	 container, IF_ALLOCATOR_IID, IF_ALLOCATOR_ABI_1_0)
+	 container, STDIF_ALLOCATOR_IID, STDIF_ALLOCATOR_ABI_1_0)
 	  == IV_VERSION_NONE)
 	{
 		extit_container_log(
@@ -55,7 +55,7 @@ plugin_create
 	void **ctx_ptr
 )
 {
-	if_allocator_t *	allocator;
+	stdif_allocator_t *	allocator;
 	myplugin_t *		myplugin;
 
 
@@ -65,12 +65,12 @@ plugin_create
 	 * Get allocator
 	 */
 	allocator = extit_container_get_interface(
-		container, IF_ALLOCATOR_IID, IF_ALLOCATOR_ABI_1_0);
+		container, STDIF_ALLOCATOR_IID, STDIF_ALLOCATOR_ABI_1_0);
 
 	/*
 	 * Use allocator to create plugin
 	 */
-	myplugin = if_allocator_alloc(allocator, sizeof(myplugin_t));
+	myplugin = stdif_allocator_alloc(allocator, sizeof(myplugin_t));
 
 	if(myplugin == NULL)
 		return EXTIT_STATUS_NOMEM;
@@ -80,11 +80,11 @@ plugin_create
 	/*
 	 * And some data buffer
 	 */
-	myplugin->buffer = if_allocator_alloc(allocator, 1000);
+	myplugin->buffer = stdif_allocator_alloc(allocator, 1000);
 
 	if(myplugin->buffer == NULL)
 	{
-		if_allocator_free(allocator, myplugin);
+		stdif_allocator_free(allocator, myplugin);
 		return EXTIT_STATUS_NOMEM;
 	}
 
@@ -104,7 +104,7 @@ plugin_destroy
 )
 {
 	myplugin_t *		myplugin;
-	if_allocator_t *	allocator;
+	stdif_allocator_t *	allocator;
 
 
 	extit_container_log(container, "Destroying plugin\n");
@@ -112,8 +112,8 @@ plugin_destroy
 	myplugin = (myplugin_t *) ctx;
 	allocator = myplugin->allocator;
 
-	if_allocator_free(allocator, myplugin->buffer);
-	if_allocator_free(allocator, myplugin);
+	stdif_allocator_free(allocator, myplugin->buffer);
+	stdif_allocator_free(allocator, myplugin);
 
 	return EXTIT_STATUS_OK;
 }

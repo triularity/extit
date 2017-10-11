@@ -1,5 +1,5 @@
 /*
- * @(#) if/allocator/free.c
+ * @(#) stdif/allocator/free.c
  *
  * Allocator Interface - free@1.0 wrapper.
  *
@@ -9,8 +9,8 @@
 
 //-#include <stddef.h>
 #include <extit/base.h>
-#include <if/allocator.h>
-#include <if/allocator_impl.h>
+#include <stdif/allocator.h>
+#include <stdif/allocator_impl.h>
 
 #ifdef	EXTIT_PARANOID
 #include <iv/util.h>
@@ -19,18 +19,18 @@
 
 void
 EXTIT_DECL
-if_allocator_free__1_0
+stdif_allocator_free__1_0
 (
-	if_allocator_t *allocator,
+	stdif_allocator_t *allocator,
 	void *ptr
 )
 {
 #ifdef	EXTIT_PARANOID
-	if(!IV_MATCHES(allocator->version, IF_ALLOCATOR_ABI_1_0))
+	if(!IV_MATCHES(allocator->version, STDIF_ALLOCATOR_ABI_1_0))
 		return;
 #endif
 
-#define	IMPL(x)		((if_allocator_1_0_t *) (x))
+#define	IMPL(x)		((stdif_allocator_1_0_t *) (x))
 
 	IMPL(allocator)->ops->v0.op_free(IMPL(allocator), ptr);
 

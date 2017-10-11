@@ -1,5 +1,5 @@
 /*
- * @(#) sample/if_referenced/worklist.c
+ * @(#) sample/stdif_referenced/worklist.c
  *
  * This file is in the Public Domain.
  */
@@ -30,7 +30,7 @@ void
 worklist_add(struct worklist *list, myobj_t *obj)
 {
 	struct worklist_node *	node;
-	if_referenced_t *	if_refed;
+	stdif_referenced_t *	stdif_refed;
 
 
 	/* We only handle Foo types */
@@ -45,12 +45,12 @@ worklist_add(struct worklist *list, myobj_t *obj)
 		/*
 		 * Ideally this would be done via the resolvable interface
 		 */
-		if_refed = obj->get_if_referenced(obj);
+		stdif_refed = obj->get_referenced(obj);
 
 		/*
 		 * Keep a reference
 		 */
-		if(if_referenced_add(if_refed) == EXTIT_STATUS_OK)
+		if(stdif_referenced_add(stdif_refed) == EXTIT_STATUS_OK)
 		{
 			*list->next_p = node;
 			list->next_p = &node->next;
@@ -66,7 +66,7 @@ worklist_add(struct worklist *list, myobj_t *obj)
 void
 worklist_execute(struct worklist *list)
 {
-	if_referenced_t *	if_refed;
+	stdif_referenced_t *	stdif_refed;
 	struct worklist_node *	node;
 	struct worklist_node *	next_node;
 	myobj_t *		obj;
@@ -84,12 +84,12 @@ worklist_execute(struct worklist *list)
 		/*
 		 * Ideally this would be done via the resolvable interface
 		 */
-		if_refed = obj->get_if_referenced(obj);
+		stdif_refed = obj->get_referenced(obj);
 
 		/*
 		 * Release it
 		 */
-		if(if_referenced_release(if_refed) != EXTIT_STATUS_OK)
+		if(stdif_referenced_release(stdif_refed) != EXTIT_STATUS_OK)
 		{
 			/* Log or handle the error ... */
 		}

@@ -1,5 +1,5 @@
 /*
- * @(#) if/referenced_impl.h
+ * @(#) stdif/referenced_impl.h
  *
  * Referenced Interface - implementation.
  *
@@ -7,11 +7,11 @@
  * http://www.triularity.org/
  */
 
-#ifndef	__if__referenced_impl_h
-#define	__if__referenced_impl_h
+#ifndef	__stdif__referenced_impl_h
+#define	__stdif__referenced_impl_h
 
 #include <extit/base.h>
-#include <if/referenced.h>
+#include <stdif/referenced.h>
 
 #ifdef	__cplusplus
 extern "C" {
@@ -20,29 +20,29 @@ extern "C" {
 /*
  * Referenced operations (v1.0 component)
  */
-typedef struct _if_referenced_ops_comp_1_0
+typedef struct _stdif_referenced_ops_comp_1_0
 {
 	extit_status_t		(EXTIT_DECL *op_add)(
-					if_referenced_1_0_t *referenced);
+					stdif_referenced_1_0_t *referenced);
 
 	extit_status_t		(EXTIT_DECL *op_release)(
-					if_referenced_1_0_t *referenced);
-} if_referenced_ops_comp_1_0_t;
+					stdif_referenced_1_0_t *referenced);
+} stdif_referenced_ops_comp_1_0_t;
 
 
 /*
  * Referenced operations (v1.0)
  */
-typedef struct _if_referenced_ops_1_0
+typedef struct _stdif_referenced_ops_1_0
 {
-	if_referenced_ops_comp_1_0_t	v0;		/* [1].0 component */
-} if_referenced_ops_1_0_t;
+	stdif_referenced_ops_comp_1_0_t	v0;		/* [1].0 component */
+} stdif_referenced_ops_1_0_t;
 
 
 /*
  * Referenced (base)
  */
-struct _if_referenced
+struct _stdif_referenced
 {
 	iv_version_t			version;
 };
@@ -51,17 +51,17 @@ struct _if_referenced
 /*
  * Referenced (v1.0)
  */
-struct _if_referenced_1_0
+struct _stdif_referenced_1_0
 {
 	/* base */
 	iv_version_t			version;	/* 1.x */
 
 	/* 1.0+ */
-	if_referenced_ops_1_0_t *	ops;
+	stdif_referenced_ops_1_0_t *	ops;
 };
 
 #ifdef	__cplusplus
 }
 #endif
 
-#endif	/* !__if__referenced_impl_h */
+#endif	/* !__stdif__referenced_impl_h */

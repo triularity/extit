@@ -1,5 +1,5 @@
 /*
- * @(#) if/configurable_stdimpl/get_double.c
+ * @(#) stdif/configurable_stdimpl/get_double.c
  *
  * Configurable Interface standard implementation.
  *
@@ -8,32 +8,32 @@
  */
 
 #include <extit/base.h>
-#include <if/configurable.h>
-#include <if/configurable_impl.h>
-#include <if/configurable_stdimpl.h>
+#include <stdif/configurable.h>
+#include <stdif/configurable_impl.h>
+#include <stdif/configurable_stdimpl.h>
 
 
 extit_status_t
 EXTIT_DECL
-if_configurable_stdimpl_get_double__1_0
+stdif_configurable_stdimpl_get_double__1_0
 (
-	if_configurable_1_0_t *conf,
-	if_configurable_propref_t *prop,
+	stdif_configurable_1_0_t *conf,
+	stdif_configurable_propref_t *prop,
 	double *valuep
 )
 {
-	return if_configurable_stdimpl_get_double__1_0_base(
+	return stdif_configurable_stdimpl_get_double__1_0_base(
 		conf, conf, prop, valuep);
 }
 
 
 extit_status_t
 EXTIT_DECL
-if_configurable_stdimpl_get_double__1_0_base
+stdif_configurable_stdimpl_get_double__1_0_base
 (
-	if_configurable_1_0_t *conf,
+	stdif_configurable_1_0_t *conf,
 	void *base,
-	if_configurable_propref_t *prop,
+	stdif_configurable_propref_t *prop,
 	double *valuep
 )
 {
@@ -41,16 +41,16 @@ if_configurable_stdimpl_get_double__1_0_base
 
 	switch(prop->definition.type)
 	{
-		case IF_CONFIGURABLE_TYPE_DOUBLE:
+		case STDIF_CONFIGURABLE_TYPE_DOUBLE:
 			*valuep = *((double *) base);
 			break;
 
-		case IF_CONFIGURABLE_TYPE_FLOAT:
+		case STDIF_CONFIGURABLE_TYPE_FLOAT:
 			*valuep = *((float *) base);
 			break;
 
 		default:
-			return IF_CONFIGURABLE_STATUS_MISMATCH;
+			return STDIF_CONFIGURABLE_STATUS_MISMATCH;
 	}
 
 	return EXTIT_STATUS_OK;

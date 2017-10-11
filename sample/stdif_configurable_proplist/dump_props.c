@@ -1,5 +1,5 @@
 /*
- * @(#) if_configurable_proplist/dump_props.c
+ * @(#) stdif_configurable_proplist/dump_props.c
  *
  * This file is in the Public Domain.
  */
@@ -11,20 +11,22 @@
 #include <iv/base.h>
 #include <extit/platform.h>
 
-#define	IF_CONFIGURABLE_ABI_TARGET	IF_CONFIGURABLE_ABI_1_0
+#define	STDIF_CONFIGURABLE_ABI_TARGET	STDIF_CONFIGURABLE_ABI_1_0
 
-#include <if/configurable.h>
-#include <if/configurable_stdimpl.h>
-#include <if/configurable_util.h>
+#include <stdif/configurable.h>
+#include <stdif/configurable_stdimpl.h>
+#include <stdif/configurable_util.h>
 
 
 static
-if_configurable_t *	get_configurable(void);
+stdif_configurable_t *	get_configurable(void);
 
 
 typedef struct _conf_data
 {
-	if_configurable_stdimpl_1_0_t	configurable;
+	stdif_configurable_stdimpl_1_0_t
+					configurable;
+
 	uint32_t			color;
 	double				height;
 	double				width;
@@ -34,7 +36,7 @@ typedef struct _conf_data
 
 
 static
-if_configurable_enum32_t	conf_prop_color_choices[] =
+stdif_configurable_enum32_t	conf_prop_color_choices[] =
 {
 	{
 		"red",
@@ -94,13 +96,13 @@ if_configurable_enum32_t	conf_prop_color_choices[] =
 
 
 static
-if_configurable_propref_t	conf_prop_color =
+stdif_configurable_propref_t	conf_prop_color =
 {
 	{
 		"color",
 		"Color",
 		"The color of the object",
-		IF_CONFIGURABLE_TYPE_ENUM32,
+		STDIF_CONFIGURABLE_TYPE_ENUM32,
 
 		.spec.type_enum32.choices = conf_prop_color_choices,
 		.spec.type_enum32.choice_count =
@@ -110,19 +112,19 @@ if_configurable_propref_t	conf_prop_color =
 	},
 	offsetof(conf_data_t, color)
 		- (offsetof(conf_data_t, configurable)
-			+ offsetof(if_configurable_stdimpl_1_0_t, pub)),
+			+ offsetof(stdif_configurable_stdimpl_1_0_t, pub)),
 	NULL
 };
 
 
 static
-if_configurable_propref_t	conf_prop_height =
+stdif_configurable_propref_t	conf_prop_height =
 {
 	{
 		"height",
 		"Height",
 		"The height of the object",
-		IF_CONFIGURABLE_TYPE_DOUBLE,
+		STDIF_CONFIGURABLE_TYPE_DOUBLE,
 
 		.spec.type_double.min_value = 0.0,
 		.spec.type_double.max_value = 1000.0,
@@ -130,19 +132,19 @@ if_configurable_propref_t	conf_prop_height =
 	},
 	offsetof(conf_data_t, height)
 		- (offsetof(conf_data_t, configurable)
-			+ offsetof(if_configurable_stdimpl_1_0_t, pub)),
+			+ offsetof(stdif_configurable_stdimpl_1_0_t, pub)),
 	NULL
 };
 
 
 static
-if_configurable_propref_t	conf_prop_width =
+stdif_configurable_propref_t	conf_prop_width =
 {
 	{
 		"width",
 		"Width",
 		"The width of the object",
-		IF_CONFIGURABLE_TYPE_DOUBLE,
+		STDIF_CONFIGURABLE_TYPE_DOUBLE,
 
 		.spec.type_double.min_value = 0.0,
 		.spec.type_double.max_value = 1000.0,
@@ -150,19 +152,19 @@ if_configurable_propref_t	conf_prop_width =
 	},
 	offsetof(conf_data_t, width)
 		- (offsetof(conf_data_t, configurable)
-			+ offsetof(if_configurable_stdimpl_1_0_t, pub)),
+			+ offsetof(stdif_configurable_stdimpl_1_0_t, pub)),
 	NULL
 };
 
 
 static
-if_configurable_propref_t	conf_prop_depth =
+stdif_configurable_propref_t	conf_prop_depth =
 {
 	{
 		"depth",
 		"Depth",
 		"The depth of the object",
-		IF_CONFIGURABLE_TYPE_DOUBLE,
+		STDIF_CONFIGURABLE_TYPE_DOUBLE,
 
 		.spec.type_double.min_value = 0.0,
 		.spec.type_double.max_value = 1000.0,
@@ -170,7 +172,7 @@ if_configurable_propref_t	conf_prop_depth =
 	},
 	offsetof(conf_data_t, depth)
 		- (offsetof(conf_data_t, configurable)
-			+ offsetof(if_configurable_stdimpl_1_0_t, pub)),
+			+ offsetof(stdif_configurable_stdimpl_1_0_t, pub)),
 	NULL
 };
 
@@ -184,13 +186,13 @@ def_onlick(void)
 
 
 static
-if_configurable_propref_t	conf_prop_onclick =
+stdif_configurable_propref_t	conf_prop_onclick =
 {
 	{
 		"onclick",
 		"On-Click Callback",
 		"Function to call when object is clicked",
-		IF_CONFIGURABLE_TYPE_FUNCTION,
+		STDIF_CONFIGURABLE_TYPE_FUNCTION,
 
 		.spec.type_function.iid = "notify-void",
 		.spec.type_function.version = IV_VERSION(1, 0),
@@ -198,14 +200,14 @@ if_configurable_propref_t	conf_prop_onclick =
 	},
 	offsetof(conf_data_t, onclick)
 		- (offsetof(conf_data_t, configurable)
-			+ offsetof(if_configurable_stdimpl_1_0_t, pub)),
+			+ offsetof(stdif_configurable_stdimpl_1_0_t, pub)),
 	NULL
 };
 
 
 static
 const
-if_configurable_propdef_t *	conf_props[] =
+stdif_configurable_propdef_t *	conf_props[] =
 {
 	&conf_prop_color.definition,
 	&conf_prop_height.definition,
@@ -216,7 +218,7 @@ if_configurable_propdef_t *	conf_props[] =
 
 
 static
-if_configurable_descriptor_t	conf_descriptor =
+stdif_configurable_descriptor_t	conf_descriptor =
 {
 	conf_props,
 	sizeof(conf_props) / sizeof(conf_props[0]),
@@ -225,7 +227,7 @@ if_configurable_descriptor_t	conf_descriptor =
 
 
 static
-if_configurable_t *
+stdif_configurable_t *
 get_configurable(void)
 {
 	conf_data_t *	data;
@@ -234,8 +236,8 @@ get_configurable(void)
 	/* XXX - Do NULL check in real thing! */
 	data = malloc(sizeof(conf_data_t));
 
-	data->configurable.pub.version = IF_CONFIGURABLE_ABI_TARGET;
-	data->configurable.pub.ops = &if_configurable_stdimpl_ops_1_0;
+	data->configurable.pub.version = STDIF_CONFIGURABLE_ABI_TARGET;
+	data->configurable.pub.ops = &stdif_configurable_stdimpl_ops_1_0;
 	data->configurable.descriptor = &conf_descriptor;
 
 	data->color = 0x808080;
@@ -243,20 +245,20 @@ get_configurable(void)
 	data->height = 1.0;
 	data->depth = 1.0;
 
-	return (if_configurable_t *) &data->configurable.pub;
+	return (stdif_configurable_t *) &data->configurable.pub;
 }
 
 
 int
 main(int argc, char **argv)
 {
-	if_configurable_t *	conf;
+	stdif_configurable_t *	conf;
 
 
 	conf = get_configurable();
 
-	_if_configurable_dump_descriptor(
-		stdout, 0, if_configurable_get_descriptor(conf));
+	_stdif_configurable_dump_descriptor(
+		stdout, 0, stdif_configurable_get_descriptor(conf));
 
 	return 0;
 }

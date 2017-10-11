@@ -1,5 +1,5 @@
 /*
- * @(#) if_configurable/scan_service.h
+ * @(#) stdif_configurable/scan_service.h
  *
  * This file is in the Public Domain.
  */
@@ -7,7 +7,7 @@
 #ifndef	__scan_service_h
 #define	__scan_service_h
 
-#include <if/configurable.h>
+#include <stdif/configurable.h>
 
 typedef enum scan_mode
 {
@@ -22,7 +22,7 @@ typedef struct _scan_service		scan_service_t;
 
 scan_service_t *			scan_service_create(void);
 
-if_configurable_t *		scan_service_get_configurable(
+stdif_configurable_t *			scan_service_get_configurable(
 						scan_service_t *service);
 
 #endif	/* !__scan_service_h */

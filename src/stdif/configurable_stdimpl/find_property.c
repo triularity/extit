@@ -1,5 +1,5 @@
 /*
- * @(#) if/configurable_stdimpl/find_property.c
+ * @(#) stdif/configurable_stdimpl/find_property.c
  *
  * Configurable Interface standard implementation.
  *
@@ -11,21 +11,21 @@
 #include <string.h>
 
 #include <extit/base.h>
-#include <if/configurable.h>
-#include <if/configurable_impl.h>
-#include <if/configurable_stdimpl.h>
+#include <stdif/configurable.h>
+#include <stdif/configurable_impl.h>
+#include <stdif/configurable_stdimpl.h>
 
 
-if_configurable_propref_t *
+stdif_configurable_propref_t *
 EXTIT_DECL
-if_configurable_stdimpl_find_property__1_0
+stdif_configurable_stdimpl_find_property__1_0
 (
-	if_configurable_1_0_t *conf,
+	stdif_configurable_1_0_t *conf,
 	const char *id
 )
 {
-	const if_configurable_descriptor_t *	descriptor;
-	const if_configurable_propdef_t **	props;
+	const stdif_configurable_descriptor_t *	descriptor;
+	const stdif_configurable_propdef_t **	props;
 	uint32_t				count;
 
 
@@ -37,7 +37,7 @@ if_configurable_stdimpl_find_property__1_0
 	while(count-- != 0)
 	{
 		if(strcmp((*props)->id, id) == 0)
-			return (if_configurable_propref_t *) *props;
+			return (stdif_configurable_propref_t *) *props;
 
 		props++;
 	}
@@ -51,7 +51,7 @@ int
 prop_compare(const void *key, const void *elem)
 {
 #define	_id	((const char *) key)
-#define	_pp	((const if_configurable_propdef_t **) elem)
+#define	_pp	((const stdif_configurable_propdef_t **) elem)
 
 	return strcmp(_id, (*_pp)->id);
 
@@ -60,15 +60,15 @@ prop_compare(const void *key, const void *elem)
 }
 
 
-if_configurable_propref_t *
+stdif_configurable_propref_t *
 EXTIT_DECL
-if_configurable_stdimpl_find_property__1_0_sorted
+stdif_configurable_stdimpl_find_property__1_0_sorted
 (
-	if_configurable_1_0_t *conf,
+	stdif_configurable_1_0_t *conf,
 	const char *id
 )
 {
-	const if_configurable_descriptor_t *	descriptor;
+	const stdif_configurable_descriptor_t *	descriptor;
 	void *					pp;
 
 
@@ -77,11 +77,11 @@ if_configurable_stdimpl_find_property__1_0_sorted
 	pp = bsearch(
 		id,
 		descriptor->properties,
-		sizeof(const if_configurable_propdef_t *),
+		sizeof(const stdif_configurable_propdef_t *),
 		descriptor->count,
 		prop_compare);
 
 	return (pp != NULL)
-		? *((if_configurable_propref_t **) pp)
+		? *((stdif_configurable_propref_t **) pp)
 		: NULL;
 }

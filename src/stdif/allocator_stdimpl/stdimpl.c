@@ -1,5 +1,5 @@
 /*
- * @(#) if/allocator_stdimpl/stdimpl.c
+ * @(#) stdif/allocator_stdimpl/stdimpl.c
  *
  * A standard system implemtation for an Allocator Interface.
  *
@@ -11,9 +11,9 @@
 #include <string.h>
 
 #include <extit/base.h>
-#include <if/allocator.h>
-#include <if/allocator_impl.h>
-#include <if/allocator_stdimpl.h>
+#include <stdif/allocator.h>
+#include <stdif/allocator_impl.h>
+#include <stdif/allocator_stdimpl.h>
 
 
 static
@@ -21,7 +21,7 @@ void *
 EXTIT_DECL
 allocator_op_alloc__1_0
 (
-	if_allocator_1_0_t *allocator,
+	stdif_allocator_1_0_t *allocator,
 	size_t size
 )
 {
@@ -40,7 +40,7 @@ void *
 EXTIT_DECL
 allocator_op_dup__1_0
 (
-	if_allocator_1_0_t *allocator,
+	stdif_allocator_1_0_t *allocator,
 	void *ptr,
 	size_t size
 )
@@ -69,7 +69,7 @@ void
 EXTIT_DECL
 allocator_op_free__1_0
 (
-	if_allocator_1_0_t *allocator,
+	stdif_allocator_1_0_t *allocator,
 	void *ptr
 )
 {
@@ -87,7 +87,7 @@ void *
 EXTIT_DECL
 allocator_op_realloc__1_0
 (
-	if_allocator_1_0_t *allocator,
+	stdif_allocator_1_0_t *allocator,
 	void *ptr,
 	size_t size
 )
@@ -112,7 +112,7 @@ void *
 EXTIT_DECL
 allocator_op_zalloc__1_0
 (
-	if_allocator_1_0_t *allocator,
+	stdif_allocator_1_0_t *allocator,
 	size_t size
 )
 {
@@ -133,7 +133,7 @@ allocator_op_zalloc__1_0
 
 
 static
-if_allocator_ops_1_0_t	allocator_ops_1_0 =
+stdif_allocator_ops_1_0_t	allocator_ops_1_0 =
 {
 	/* v0 */
 	{
@@ -146,9 +146,9 @@ if_allocator_ops_1_0_t	allocator_ops_1_0 =
 };
 
 
-if_allocator_1_0_t	if_allocator_stdimpl_1_0 =
+stdif_allocator_1_0_t	stdif_allocator_stdimpl_1_0 =
 {
-	IF_ALLOCATOR_ABI_1_0,		/* version */
+	STDIF_ALLOCATOR_ABI_1_0,	/* version */
 	&allocator_ops_1_0		/* ops_1_0 */
 };
 

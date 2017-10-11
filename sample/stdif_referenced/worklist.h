@@ -1,5 +1,5 @@
 /*
- * @(#) sample/if_referenced/worklist.h
+ * @(#) sample/stdif_referenced/worklist.h
  *
  * This file is in the Public Domain.
  */

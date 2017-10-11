@@ -1,5 +1,5 @@
 /*
- * @(#) sample/if_allocator/server.c
+ * @(#) sample/stdif_allocator/server.c
  *
  * This file is in the Public Domain.
  */
@@ -13,8 +13,8 @@
 #include <extit/container_stdimpl.h>
 #include <extit/platform.h>
 #include <extit/pmodule.h>
-#include <if/allocator.h>
-#include <if/allocator_stdimpl.h>
+#include <stdif/allocator.h>
+#include <stdif/allocator_stdimpl.h>
 
 
 static
@@ -27,10 +27,10 @@ my_get_interface
 	iv_version_t version
 )
 {
-	if((EXTIT_STRCASECMP(id, IF_ALLOCATOR_IID) == 0)
-	 && (version == IF_ALLOCATOR_ABI_1_0))
+	if((EXTIT_STRCASECMP(id, STDIF_ALLOCATOR_IID) == 0)
+	 && (version == STDIF_ALLOCATOR_ABI_1_0))
 	{
-		return &if_allocator_stdimpl_1_0;
+		return &stdif_allocator_stdimpl_1_0;
 	}
 
 	return NULL;
@@ -47,10 +47,10 @@ my_query_interface
 	iv_version_t base_version
 )
 {
-	if((EXTIT_STRCASECMP(id, IF_ALLOCATOR_IID) == 0)
-	 && (base_version == IF_ALLOCATOR_ABI_1_0))
+	if((EXTIT_STRCASECMP(id, STDIF_ALLOCATOR_IID) == 0)
+	 && (base_version == STDIF_ALLOCATOR_ABI_1_0))
 	{
-		return IF_ALLOCATOR_ABI_1_0;
+		return STDIF_ALLOCATOR_ABI_1_0;
 	}
 
 	return IV_VERSION_NONE;
@@ -97,7 +97,7 @@ main(int argc, char **argv)
 
 	if(argc != 2)
 	{
-		fprintf(stderr, "Usage: if_allocator_server <plugin-path>\n");
+		fprintf(stderr, "Usage: %s <plugin-path>\n", argv[0]);
 		return 1;
 	}
 

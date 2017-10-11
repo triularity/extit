@@ -1,5 +1,5 @@
 /*
- * @(#) if_resolvable/myobj.h
+ * @(#) stdif_resolvable/myobj.h
  *
  * This file is in the Public Domain.
  */
@@ -8,7 +8,7 @@
 #define	__myobj_h
 
 #include <iv/base.h>
-#include <if/resolvable.h>
+#include <stdif/resolvable.h>
 
 
 #define	MYOBJ_IID		"myobj"
@@ -20,7 +20,7 @@ typedef struct _myobj		myobj_t;
 myobj_t *			myobj_secret_create(void);
 
 
-if_resolvable_t *		EXTIT_DECL
+stdif_resolvable_t *		EXTIT_DECL
 				myobj_get_resolvable(myobj_t *obj);
 
 void				EXTIT_DECL

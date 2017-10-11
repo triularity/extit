@@ -1,5 +1,5 @@
 /*
- * @(#) if/configurable_util/fprint_property.c
+ * @(#) stdif/configurable_util/fprint_property.c
  *
  * Print a configurable interface property value.
  *
@@ -14,48 +14,48 @@
 #include <iv/base.h>
 #include <extit/platform.h>
 
-#include <if/configurable.h>
-#include <if/configurable_impl.h>
-#include <if/configurable_util.h>
+#include <stdif/configurable.h>
+#include <stdif/configurable_impl.h>
+#include <stdif/configurable_util.h>
 
 
 extit_status_t
 EXTIT_DECL
-_if_configurable_fprint_property
+_stdif_configurable_fprint_property
 (
 	FILE *fp,
-	if_configurable_t *conf,
-	if_configurable_type_t type,
+	stdif_configurable_t *conf,
+	stdif_configurable_type_t type,
 	const char *id
 )
 {
-	if_configurable_propref_t *	prop;
-	if_configurable_1_0_t *		conf_1_0;
+	stdif_configurable_propref_t *	prop;
+	stdif_configurable_1_0_t *	conf_1_0;
 
 
 	/*
 	 * For now, just 1.0 supported
 	 */
-	if(conf->version != IF_CONFIGURABLE_ABI_1_0)
+	if(conf->version != STDIF_CONFIGURABLE_ABI_1_0)
 		return EXTIT_STATUS_UNSUPPORTED;
 
-	conf_1_0 = (if_configurable_1_0_t *) conf;
+	conf_1_0 = (stdif_configurable_1_0_t *) conf;
 
 	if((prop = conf_1_0->ops->v0.op_find_property(conf_1_0, id)) == NULL)
 		return EXTIT_STATUS_NOTFOUND;
 
-	return _if_configurable_fprint_property__1_0(fp, conf_1_0, type, prop);
+	return _stdif_configurable_fprint_property__1_0(fp, conf_1_0, type, prop);
 }
 
 
 extit_status_t
 EXTIT_DECL
-_if_configurable_fprint_property__1_0
+_stdif_configurable_fprint_property__1_0
 (
 	FILE *fp,
-	if_configurable_1_0_t *conf,
-	if_configurable_type_t type,
-	if_configurable_propref_t *prop
+	stdif_configurable_1_0_t *conf,
+	stdif_configurable_type_t type,
+	stdif_configurable_propref_t *prop
 )
 {
 	extit_status_t	status;
@@ -63,7 +63,7 @@ _if_configurable_fprint_property__1_0
 
 	switch(type)
 	{
-		case IF_CONFIGURABLE_TYPE_BOOL:
+		case STDIF_CONFIGURABLE_TYPE_BOOL:
 		{
 			extit_bool_t	value;
 
@@ -80,7 +80,7 @@ _if_configurable_fprint_property__1_0
 			break;
 		}
 
-		case IF_CONFIGURABLE_TYPE_DATA:
+		case STDIF_CONFIGURABLE_TYPE_DATA:
 		{
 			void *		value;
 
@@ -98,7 +98,7 @@ _if_configurable_fprint_property__1_0
 			break;
 		}
 
-		case IF_CONFIGURABLE_TYPE_DOUBLE:
+		case STDIF_CONFIGURABLE_TYPE_DOUBLE:
 		{
 			double		value;
 
@@ -113,7 +113,7 @@ _if_configurable_fprint_property__1_0
 			break;
 		}
 
-		case IF_CONFIGURABLE_TYPE_ENUM32:
+		case STDIF_CONFIGURABLE_TYPE_ENUM32:
 		{
 			uint32_t	value;
 
@@ -128,7 +128,7 @@ _if_configurable_fprint_property__1_0
 			break;
 		}
 
-		case IF_CONFIGURABLE_TYPE_FLOAT:
+		case STDIF_CONFIGURABLE_TYPE_FLOAT:
 		{
 			float		value;
 
@@ -143,7 +143,7 @@ _if_configurable_fprint_property__1_0
 			break;
 		}
 
-		case IF_CONFIGURABLE_TYPE_FUNCTION:
+		case STDIF_CONFIGURABLE_TYPE_FUNCTION:
 		{
 			extit_func_t	value;
 
@@ -161,7 +161,7 @@ _if_configurable_fprint_property__1_0
 			break;
 		}
 
-		case IF_CONFIGURABLE_TYPE_INT8:
+		case STDIF_CONFIGURABLE_TYPE_INT8:
 		{
 			int8_t		value;
 
@@ -176,7 +176,7 @@ _if_configurable_fprint_property__1_0
 			break;
 		}
 
-		case IF_CONFIGURABLE_TYPE_INT16:
+		case STDIF_CONFIGURABLE_TYPE_INT16:
 		{
 			int16_t		value;
 
@@ -191,7 +191,7 @@ _if_configurable_fprint_property__1_0
 			break;
 		}
 
-		case IF_CONFIGURABLE_TYPE_INT32:
+		case STDIF_CONFIGURABLE_TYPE_INT32:
 		{
 			int32_t		value;
 
@@ -206,7 +206,7 @@ _if_configurable_fprint_property__1_0
 			break;
 		}
 
-		case IF_CONFIGURABLE_TYPE_INT64:
+		case STDIF_CONFIGURABLE_TYPE_INT64:
 		{
 			int64_t		value;
 
@@ -221,7 +221,7 @@ _if_configurable_fprint_property__1_0
 			break;
 		}
 
-		case IF_CONFIGURABLE_TYPE_UINT8:
+		case STDIF_CONFIGURABLE_TYPE_UINT8:
 		{
 			uint8_t		value;
 
@@ -236,7 +236,7 @@ _if_configurable_fprint_property__1_0
 			break;
 		}
 
-		case IF_CONFIGURABLE_TYPE_UINT16:
+		case STDIF_CONFIGURABLE_TYPE_UINT16:
 		{
 			uint16_t	value;
 
@@ -251,7 +251,7 @@ _if_configurable_fprint_property__1_0
 			break;
 		}
 
-		case IF_CONFIGURABLE_TYPE_UINT32:
+		case STDIF_CONFIGURABLE_TYPE_UINT32:
 		{
 			uint32_t	value;
 
@@ -266,7 +266,7 @@ _if_configurable_fprint_property__1_0
 			break;
 		}
 
-		case IF_CONFIGURABLE_TYPE_UINT64:
+		case STDIF_CONFIGURABLE_TYPE_UINT64:
 		{
 			uint64_t	value;
 
@@ -281,7 +281,7 @@ _if_configurable_fprint_property__1_0
 			break;
 		}
 
-		case IF_CONFIGURABLE_TYPE_UTF8:
+		case STDIF_CONFIGURABLE_TYPE_UTF8:
 		{
 			const char *	value;
 
@@ -294,7 +294,7 @@ _if_configurable_fprint_property__1_0
 
 			if(value != NULL)
 			{
-				_if_configurable_fprint_utf8(
+				_stdif_configurable_fprint_utf8(
 					fp, value, EXTIT_TRUE);
 			}
 			else

@@ -110,12 +110,12 @@ set(EXTIT_UTIL_SOURCE_FILES
 
 # Standard Interfaces (core)
 set(STDIF_HEADER_FILES 
-	src/include/if/version.h)
+	src/include/stdif/version.h)
 
 # Standard interfaces (client side)
 set(STDIF_ALLOCATOR_HEADER_FILES 
-	src/include/if/allocator.h
-	src/include/if/allocator_impl.h)
+	src/include/stdif/allocator.h
+	src/include/stdif/allocator_impl.h)
 
 set(STDIF_ALLOCATOR_SOURCE_FILES
 	src/stdif/allocator/alloc.c
@@ -125,8 +125,8 @@ set(STDIF_ALLOCATOR_SOURCE_FILES
 	src/stdif/allocator/zalloc.c)
 
 set(STDIF_CONFIGURABLE_HEADER_FILES 
-	src/include/if/configurable.h
-	src/include/if/configurable_impl.h)
+	src/include/stdif/configurable.h
+	src/include/stdif/configurable_impl.h)
 
 set(STDIF_CONFIGURABLE_SOURCE_FILES
 	src/stdif/configurable/find_property.c
@@ -164,7 +164,7 @@ set(STDIF_CONFIGURABLE_SOURCE_FILES
 	src/stdif/configurable/set_utf8.c)
 
 set(STDIF_CONFIGURABLE_UTIL_HEADER_FILES 
-	src/include/if/configurable_util.h)
+	src/include/stdif/configurable_util.h)
 
 set(STDIF_CONFIGURABLE_UTIL_SOURCE_FILES
 	src/stdif/configurable_util/dump_descriptor.c
@@ -177,15 +177,15 @@ set(STDIF_CONFIGURABLE_UTIL_SOURCE_FILES
 	src/stdif/configurable_util/type_to_string.c)
 
 set(STDIF_DISPOSABLE_HEADER_FILES 
-	src/include/if/disposable.h
-	src/include/if/disposable_impl.h)
+	src/include/stdif/disposable.h
+	src/include/stdif/disposable_impl.h)
 
 set(STDIF_DISPOSABLE_SOURCE_FILES
 	src/stdif/disposable/free.c)
 
 set(STDIF_MESSAGING_HEADER_FILES 
-	src/include/if/messaging.h
-	src/include/if/messaging_impl.h)
+	src/include/stdif/messaging.h
+	src/include/stdif/messaging_impl.h)
 
 set(STDIF_MESSAGING_SOURCE_FILES
 	src/stdif/messaging/add_listener.c
@@ -201,16 +201,16 @@ set(STDIF_MESSAGING_SOURCE_FILES
 	src/stdif/messaging/unbind.c)
 
 set(STDIF_REFERENCED_HEADER_FILES 
-	src/include/if/referenced.h
-	src/include/if/referenced_impl.h)
+	src/include/stdif/referenced.h
+	src/include/stdif/referenced_impl.h)
 
 set(STDIF_REFERENCED_SOURCE_FILES
 	src/stdif/referenced/add.c
 	src/stdif/referenced/release.c)
 
 set(STDIF_RESOLVABLE_HEADER_FILES 
-	src/include/if/resolvable.h
-	src/include/if/resolvable_impl.h)
+	src/include/stdif/resolvable.h
+	src/include/stdif/resolvable_impl.h)
 
 set(STDIF_RESOLVABLE_SOURCE_FILES
 	src/stdif/resolvable/get_interface.c
@@ -219,13 +219,13 @@ set(STDIF_RESOLVABLE_SOURCE_FILES
 
 # Standard interface implementations
 set(STDIF_ALLOCATOR_STDIMPL_HEADER_FILES
-	src/include/if/allocator_stdimpl.h)
+	src/include/stdif/allocator_stdimpl.h)
 
 set(STDIF_ALLOCATOR_STDIMPL_SOURCE_FILES
 	src/stdif/allocator_stdimpl/stdimpl.c)
 
 set(STDIF_CONFIGURABLE_STDIMPL_HEADER_FILES 
-	src/include/if/configurable_stdimpl.h)
+	src/include/stdif/configurable_stdimpl.h)
 
 set(STDIF_CONFIGURABLE_STDIMPL_SOURCE_FILES
 	src/stdif/configurable_stdimpl/find_property.c
@@ -264,7 +264,7 @@ set(STDIF_CONFIGURABLE_STDIMPL_SOURCE_FILES
 	src/stdif/configurable_stdimpl/set_utf8.c)
 
 set(STDIF_MESSAGING_STDIMPL_HEADER_FILES
-	src/include/if/messaging_stdimpl.h)
+	src/include/stdif/messaging_stdimpl.h)
 
 set(STDIF_MESSAGING_STDIMPL_SOURCE_FILES
 	src/stdif/messaging_stdimpl/add_listener.c
@@ -499,10 +499,10 @@ set_target_properties(
 
 
 #
-# [lib]if_allocator
+# [lib]stdif_allocator
 #
 add_library(
-	if_allocator
+	stdif_allocator
 		${STDIF_ALLOCATOR_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
 		${STDIF_ALLOCATOR_HEADER_FILES}
@@ -510,21 +510,21 @@ add_library(
 		${IV_UTIL_HEADER_FILES})
 
 set_target_properties(
-	if_allocator PROPERTIES
+	stdif_allocator PROPERTIES
 		POSITION_INDEPENDENT_CODE ON)
 
 if(EXTIT_PARANOID)
 	target_link_libraries(
-		if_allocator
+		stdif_allocator
 			iv_util)
 endif()
 
 
 #
-# [lib]if_allocator_stdimpl
+# [lib]stdif_allocator_stdimpl
 #
 add_library(
-	if_allocator_stdimpl
+	stdif_allocator_stdimpl
 		${STDIF_ALLOCATOR_STDIMPL_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
 		${STDIF_ALLOCATOR_HEADER_FILES}
@@ -532,15 +532,15 @@ add_library(
 		${IV_HEADER_FILES})
 
 set_target_properties(
-	if_allocator_stdimpl PROPERTIES
+	stdif_allocator_stdimpl PROPERTIES
 		POSITION_INDEPENDENT_CODE ON)
 
 
 #
-# [lib]if_configurable
+# [lib]stdif_configurable
 #
 add_library(
-	if_configurable
+	stdif_configurable
 		${STDIF_CONFIGURABLE_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
 		${STDIF_CONFIGURABLE_HEADER_FILES}
@@ -548,21 +548,21 @@ add_library(
 		${IV_UTIL_HEADER_FILES})
 
 set_target_properties(
-	if_configurable PROPERTIES
+	stdif_configurable PROPERTIES
 		POSITION_INDEPENDENT_CODE ON)
 
 if(EXTIT_PARANOID)
 	target_link_libraries(
-		if_configurable
+		stdif_configurable
 			iv_util)
 endif()
 
 
 #
-# [lib]if_configurable_stdimpl
+# [lib]stdif_configurable_stdimpl
 #
 add_library(
-	if_configurable_stdimpl
+	stdif_configurable_stdimpl
 		${STDIF_CONFIGURABLE_STDIMPL_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
 		${STDIF_CONFIGURABLE_HEADER_FILES}
@@ -570,25 +570,25 @@ add_library(
 		${IV_HEADER_FILES})
 
 set_target_properties(
-	if_configurable_stdimpl PROPERTIES
+	stdif_configurable_stdimpl PROPERTIES
 		POSITION_INDEPENDENT_CODE ON)
 
 target_link_libraries(
-	if_configurable_stdimpl
-		if_configurable_util)
+	stdif_configurable_stdimpl
+		stdif_configurable_util)
 
 if(EXTIT_PARANOID)
 	target_link_libraries(
-		if_configurable_stdimpl
+		stdif_configurable_stdimpl
 			iv_util)
 endif()
 
 
 #
-# [lib]if_configurable_util
+# [lib]stdif_configurable_util
 #
 add_library(
-	if_configurable_util
+	stdif_configurable_util
 		${STDIF_CONFIGURABLE_UTIL_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
 		${STDIF_CONFIGURABLE_HEADER_FILES}
@@ -601,20 +601,20 @@ if(MINGW AND ${CMAKE_C_COMPILER_ID} STREQUAL "GNU")
 	# MinGW printf PRId64 / PRIu64 / PRIxPTR(64-bit) compile check broken
 	#
 	target_compile_options(
-		if_configurable_util
+		stdif_configurable_util
 			PRIVATE -Wno-error=format)
 endif()
 
 set_target_properties(
-	if_configurable_util PROPERTIES
+	stdif_configurable_util PROPERTIES
 		POSITION_INDEPENDENT_CODE ON)
 
 
 #
-# [lib]if_disposable
+# [lib]stdif_disposable
 #
 add_library(
-	if_disposable
+	stdif_disposable
 		${STDIF_DISPOSABLE_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
 		${STDIF_DISPOSABLE_HEADER_FILES}
@@ -622,21 +622,21 @@ add_library(
 		${IV_UTIL_HEADER_FILES})
 
 set_target_properties(
-	if_disposable PROPERTIES
+	stdif_disposable PROPERTIES
 		POSITION_INDEPENDENT_CODE ON)
 
 if(EXTIT_PARANOID)
 	target_link_libraries(
-		if_disposable
+		stdif_disposable
 			iv_util)
 endif()
 
 
 #
-# [lib]if_messaging
+# [lib]stdif_messaging
 #
 add_library(
-	if_messaging
+	stdif_messaging
 		${STDIF_MESSAGING_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
 		${STDIF_MESSAGING_HEADER_FILES}
@@ -644,21 +644,21 @@ add_library(
 		${IV_UTIL_HEADER_FILES})
 
 set_target_properties(
-	if_messaging PROPERTIES
+	stdif_messaging PROPERTIES
 		POSITION_INDEPENDENT_CODE ON)
 
 if(EXTIT_PARANOID)
 	target_link_libraries(
-		if_messaging
+		stdif_messaging
 			iv_util)
 endif()
 
 
 #
-# [lib]if_messaging_stdimpl
+# [lib]stdif_messaging_stdimpl
 #
 add_library(
-	if_messaging_stdimpl
+	stdif_messaging_stdimpl
 		${STDIF_MESSAGING_STDIMPL_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
 		${STDIF_MESSAGING_HEADER_FILES}
@@ -666,20 +666,20 @@ add_library(
 		${IV_HEADER_FILES})
 
 set_target_properties(
-	if_messaging_stdimpl PROPERTIES
+	stdif_messaging_stdimpl PROPERTIES
 		POSITION_INDEPENDENT_CODE ON)
 
 target_link_libraries(
-	if_messaging_stdimpl
+	stdif_messaging_stdimpl
 		iv_util
 		extit_util)
 
 
 #
-# [lib]if_referenced
+# [lib]stdif_referenced
 #
 add_library(
-	if_referenced
+	stdif_referenced
 		${STDIF_REFERENCED_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
 		${STDIF_REFERENCED_HEADER_FILES}
@@ -688,25 +688,25 @@ add_library(
 		${IV_UTIL_HEADER_FILES})
 
 set_target_properties(
-	if_referenced PROPERTIES
+	stdif_referenced PROPERTIES
 		POSITION_INDEPENDENT_CODE ON)
 
 target_link_libraries(
-	if_referenced
+	stdif_referenced
 		extit_util)
 
 if(EXTIT_PARANOID)
 	target_link_libraries(
-		if_referenced
+		stdif_referenced
 			iv_util)
 endif()
 
 
 #
-# [lib]if_resolvable
+# [lib]stdif_resolvable
 #
 add_library(
-	if_resolvable
+	stdif_resolvable
 		${STDIF_RESOLVABLE_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
 		${STDIF_RESOLVABLE_HEADER_FILES}
@@ -714,12 +714,12 @@ add_library(
 		${IV_UTIL_HEADER_FILES})
 
 set_target_properties(
-	if_resolvable PROPERTIES
+	stdif_resolvable PROPERTIES
 		POSITION_INDEPENDENT_CODE ON)
 
 if(EXTIT_PARANOID)
 	target_link_libraries(
-		if_resolvable
+		stdif_resolvable
 			iv_util)
 endif()
 
@@ -835,32 +835,32 @@ if(DEFINED LIBNAME_POSTFIX)
 			OUTPUT_NAME "extit_pmodule${LIBNAME_POSTFIX}")
 
 	set_target_properties(
-		if_allocator PROPERTIES
-			OUTPUT_NAME "if_allocator${LIBNAME_POSTFIX}")
+		stdif_allocator PROPERTIES
+			OUTPUT_NAME "stdif_allocator${LIBNAME_POSTFIX}")
 
 	set_target_properties(
-		if_allocator_stdimpl PROPERTIES
-			OUTPUT_NAME "if_allocator_stdimpl${LIBNAME_POSTFIX}")
+		stdif_allocator_stdimpl PROPERTIES
+			OUTPUT_NAME "stdif_allocator_stdimpl${LIBNAME_POSTFIX}")
 
 	set_target_properties(
-		if_disposable PROPERTIES
-			OUTPUT_NAME "if_disposable${LIBNAME_POSTFIX}")
+		stdif_disposable PROPERTIES
+			OUTPUT_NAME "stdif_disposable${LIBNAME_POSTFIX}")
 
 	set_target_properties(
-		if_messaging PROPERTIES
-			OUTPUT_NAME "if_messaging${LIBNAME_POSTFIX}")
+		stdif_messaging PROPERTIES
+			OUTPUT_NAME "stdif_messaging${LIBNAME_POSTFIX}")
 
 	set_target_properties(
-		if_messaging_stdimpl PROPERTIES
-			OUTPUT_NAME "if_messaging_stdimpl${LIBNAME_POSTFIX}")
+		stdif_messaging_stdimpl PROPERTIES
+			OUTPUT_NAME "stdif_messaging_stdimpl${LIBNAME_POSTFIX}")
 
 	set_target_properties(
-		if_referenced PROPERTIES
-			OUTPUT_NAME "if_referenced${LIBNAME_POSTFIX}")
+		stdif_referenced PROPERTIES
+			OUTPUT_NAME "stdif_referenced${LIBNAME_POSTFIX}")
 
 	set_target_properties(
-		if_resolvable PROPERTIES
-			OUTPUT_NAME "if_resolvable${LIBNAME_POSTFIX}")
+		stdif_resolvable PROPERTIES
+			OUTPUT_NAME "stdif_resolvable${LIBNAME_POSTFIX}")
 
 	set_target_properties(
 		extif_util PROPERTIES
@@ -882,16 +882,16 @@ endif(DEFINED LIBNAME_POSTFIX)
 install(
 	TARGETS
 		extit_pmodule
-		if_allocator
-		if_allocator_stdimpl
-		if_configurable
-		if_configurable_stdimpl
-		if_configurable_util
-		if_disposable
-		if_messaging
-		if_messaging_stdimpl
-		if_referenced
-		if_resolvable
+		stdif_allocator
+		stdif_allocator_stdimpl
+		stdif_configurable
+		stdif_configurable_stdimpl
+		stdif_configurable_util
+		stdif_disposable
+		stdif_messaging
+		stdif_messaging_stdimpl
+		stdif_referenced
+		stdif_resolvable
 		extit_container
 		extit_container_stdimpl
 		extit_pmodule
@@ -950,7 +950,7 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	target_link_libraries(
 		sample_stdif_allocator_plugin
-			if_allocator
+			stdif_allocator
 			extit_container
 			iv_util)
 
@@ -969,7 +969,7 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	target_link_libraries(
 		sample_stdif_allocator_server
-			if_allocator_stdimpl
+			stdif_allocator_stdimpl
 			extit_container_stdimpl
 			extit_pmodule)
 
@@ -990,9 +990,9 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	target_link_libraries(
 		sample_stdif_configurable
-			if_configurable
-			if_configurable_stdimpl
-			if_configurable_util)
+			stdif_configurable
+			stdif_configurable_stdimpl
+			stdif_configurable_util)
 
 
 	#
@@ -1009,9 +1009,9 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	target_link_libraries(
 		sample_stdif_configurable_proplist
-			if_configurable
-			if_configurable_stdimpl
-			if_configurable_util)
+			stdif_configurable
+			stdif_configurable_stdimpl
+			stdif_configurable_util)
 
 
 	#
@@ -1031,7 +1031,7 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	target_link_libraries(
 		sample_stdif_disposable
-			if_disposable)
+			stdif_disposable)
 
 
 	#
@@ -1048,8 +1048,8 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	target_link_libraries(
 		sample_stdif_messaging_alarm
-			if_messaging
-			if_messaging_stdimpl)
+			stdif_messaging
+			stdif_messaging_stdimpl)
 
 
 	#
@@ -1071,7 +1071,7 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	target_link_libraries(
 		sample_stdif_referenced
-			if_referenced)
+			stdif_referenced)
 
 
 	#
@@ -1099,10 +1099,10 @@ if(EXTIT_COMPILE_SAMPLES)
 	target_link_libraries(
 		sample_stdif_resolvable
 			extit_util
-			if_referenced
-			if_resolvable
-			if_configurable
-			if_configurable_stdimpl
+			stdif_referenced
+			stdif_resolvable
+			stdif_configurable
+			stdif_configurable_stdimpl
 			iv_util)
 
 

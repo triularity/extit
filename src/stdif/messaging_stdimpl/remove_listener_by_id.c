@@ -1,5 +1,5 @@
 /*
- * @(#) if/messaging_stdimpl/remove_listener_by_id.c
+ * @(#) stdif/messaging_stdimpl/remove_listener_by_id.c
  *
  * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
@@ -10,29 +10,29 @@
 #include <iv/base.h>
 #include <iv/util.h>
 #include <extit/base.h>
-#include <if/messaging.h>
-#include <if/messaging_impl.h>
-#include <if/messaging_stdimpl.h>
+#include <stdif/messaging.h>
+#include <stdif/messaging_impl.h>
+#include <stdif/messaging_stdimpl.h>
 
 #include "internal.h"
 
 
 extit_status_t
 EXTIT_DECL
-if_messaging_stdimpl_remove_listener_by_id__1_0
+stdif_messaging_stdimpl_remove_listener_by_id__1_0
 (
-	if_messaging_1_0_t *messaging,
-	if_messaging_listener_id_t id
+	stdif_messaging_1_0_t *messaging,
+	stdif_messaging_listener_id_t id
 )
 {
-	if_messaging_internal_t *	messaging_i;
+	stdif_messaging_internal_t *	messaging_i;
 	listener_entry_t **		lid_entryp;
 	listener_entry_t *		lid_entry;
 	listener_entry_t **		l_entryp;
 	listener_entry_t *		l_entry;
 
 
-	messaging_i = (if_messaging_internal_t *) messaging;
+	messaging_i = (stdif_messaging_internal_t *) messaging;
 
 	/*
 	 * Find/remove ID entry
@@ -71,7 +71,10 @@ if_messaging_stdimpl_remove_listener_by_id__1_0
 	free(lid_entry);
 
 	if(++messaging_i->num_deletes == CLEANUP_DELETES)
-		if_messaging_stdimpl_cleanup((if_messaging_t *) messaging);
+	{
+		stdif_messaging_stdimpl_cleanup(
+			(stdif_messaging_t *) messaging);
+	}
 
 	return EXTIT_STATUS_OK;
 }
