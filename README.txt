@@ -53,6 +53,8 @@ This project uses Cmake (2.8.12+). Configuration options are:
 
 	EXTIT_HAVE_DLFUNC [*]	Enable dlfunc() support (dl load only).
 
+	EXTIT_MALLOC_0_SUCCEEDS	Calling malloc(0) doesn't return NULL.
+
 [*] - Auto detected.
 
 

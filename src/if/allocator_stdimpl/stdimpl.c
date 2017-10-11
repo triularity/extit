@@ -3,7 +3,7 @@
  *
  * A standard system implemtation for an Allocator Interface.
  *
- * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -25,9 +25,11 @@ allocator_op_alloc__1_0
 	size_t size
 )
 {
+#ifndef	EXTIT_MALLOC_0_SUCCEEDS
 	/* Skip if malloc(0) returns non-NULL */
 	if(size == 0)
 		size = 1;
+#endif
 
 	return malloc(size);
 }
@@ -47,10 +49,12 @@ allocator_op_dup__1_0
 	void *	nptr;
 
 
+#ifndef	EXTIT_MALLOC_0_SUCCEEDS
 	/* Skip if malloc(0) returns non-NULL */
 	if(size == 0)
 		nsize = 1;
 	else
+#endif
 		nsize = size;
 
 	if((nptr = malloc(nsize)) != NULL)
@@ -88,14 +92,16 @@ allocator_op_realloc__1_0
 	size_t size
 )
 {
+#ifndef	EXTIT_MALLOC_0_SUCCEEDS
+	/* Skip if malloc(0) returns non-NULL */
+	if(size == 0)
+		size = 1;
+#endif
+
 #ifdef	EXTIT_PARANOID
 	if(ptr == NULL)
 		return malloc(size);
 #endif
-
-	/* Skip if malloc(0) returns non-NULL */
-	if(size == 0)
-		size = 1;
 
 	return realloc(ptr, size);
 }
@@ -113,9 +119,11 @@ allocator_op_zalloc__1_0
 	void *	ptr;
 
 
+#ifndef	EXTIT_MALLOC_0_SUCCEEDS
 	/* Skip if malloc(0) returns non-NULL */
 	if(size == 0)
 		size = 1;
+#endif
 
 	if((ptr = malloc(size)) != NULL)
 		memset(ptr, '\0', size);

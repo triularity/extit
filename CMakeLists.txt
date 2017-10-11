@@ -29,6 +29,7 @@ set(EXTIT_LIB_LOADER ${DEFAULT_LIB_LOADER} CACHE STRING "Library Loader (dl|win3
 set(EXTIT_WCHAR ${DEFAULT_WCHAR} CACHE BOOL "Enable wchar_t support")
 set(EXTIT_HAVE_DLFUNC ${DEFAULT_HAVE_DLFUNC} CACHE BOOL "Platform supports dlfunc()")
 set(EXTIT_COMPAT FALSE CACHE BOOL "Enable Backward Compatibility")
+set(EXTIT_MALLOC_0_SUCCEEDS FALSE CACHE BOOL "malloc/realloc succeeds with size 0")
 
 
 # Piggy back off of ExtIt setting for now
@@ -412,6 +413,10 @@ endif()
 
 if(IV_COMPAT)
 	add_definitions("-DIV_COMPAT")
+endif()
+
+if(EXTIT_MALLOC_0_SUCCEEDS)
+	add_definitions("-DEXTIT_MALLOC_0_SUCCEEDS")
 endif()
 
 
