@@ -109,180 +109,180 @@ set(EXTIT_UTIL_SOURCE_FILES
 	src/extit/util/refcount_release.c)
 
 # Standard Interfaces (core)
-set(IF_HEADER_FILES 
+set(STDIF_HEADER_FILES 
 	src/include/if/version.h)
 
 # Standard interfaces (client side)
-set(IF_ALLOCATOR_HEADER_FILES 
+set(STDIF_ALLOCATOR_HEADER_FILES 
 	src/include/if/allocator.h
 	src/include/if/allocator_impl.h)
 
-set(IF_ALLOCATOR_SOURCE_FILES
-	src/if/allocator/alloc.c
-	src/if/allocator/dup.c
-	src/if/allocator/free.c
-	src/if/allocator/realloc.c
-	src/if/allocator/zalloc.c)
+set(STDIF_ALLOCATOR_SOURCE_FILES
+	src/stdif/allocator/alloc.c
+	src/stdif/allocator/dup.c
+	src/stdif/allocator/free.c
+	src/stdif/allocator/realloc.c
+	src/stdif/allocator/zalloc.c)
 
-set(IF_CONFIGURABLE_HEADER_FILES 
+set(STDIF_CONFIGURABLE_HEADER_FILES 
 	src/include/if/configurable.h
 	src/include/if/configurable_impl.h)
 
-set(IF_CONFIGURABLE_SOURCE_FILES
-	src/if/configurable/find_property.c
-	src/if/configurable/get_bool.c
-	src/if/configurable/get_data.c
-	src/if/configurable/get_descriptor.c
-	src/if/configurable/get_double.c
-	src/if/configurable/get_enum32.c
-	src/if/configurable/get_float.c
-	src/if/configurable/get_function.c
-	src/if/configurable/get_int8.c
-	src/if/configurable/get_int16.c
-	src/if/configurable/get_int32.c
-	src/if/configurable/get_int64.c
-	src/if/configurable/get_uint8.c
-	src/if/configurable/get_uint16.c
-	src/if/configurable/get_uint32.c
-	src/if/configurable/get_uint64.c
-	src/if/configurable/get_utf8.c
-	src/if/configurable/reset.c
-	src/if/configurable/set_bool.c
-	src/if/configurable/set_data.c
-	src/if/configurable/set_double.c
-	src/if/configurable/set_enum32.c
-	src/if/configurable/set_float.c
-	src/if/configurable/set_function.c
-	src/if/configurable/set_int8.c
-	src/if/configurable/set_int16.c
-	src/if/configurable/set_int32.c
-	src/if/configurable/set_int64.c
-	src/if/configurable/set_uint8.c
-	src/if/configurable/set_uint16.c
-	src/if/configurable/set_uint32.c
-	src/if/configurable/set_uint64.c
-	src/if/configurable/set_utf8.c)
+set(STDIF_CONFIGURABLE_SOURCE_FILES
+	src/stdif/configurable/find_property.c
+	src/stdif/configurable/get_bool.c
+	src/stdif/configurable/get_data.c
+	src/stdif/configurable/get_descriptor.c
+	src/stdif/configurable/get_double.c
+	src/stdif/configurable/get_enum32.c
+	src/stdif/configurable/get_float.c
+	src/stdif/configurable/get_function.c
+	src/stdif/configurable/get_int8.c
+	src/stdif/configurable/get_int16.c
+	src/stdif/configurable/get_int32.c
+	src/stdif/configurable/get_int64.c
+	src/stdif/configurable/get_uint8.c
+	src/stdif/configurable/get_uint16.c
+	src/stdif/configurable/get_uint32.c
+	src/stdif/configurable/get_uint64.c
+	src/stdif/configurable/get_utf8.c
+	src/stdif/configurable/reset.c
+	src/stdif/configurable/set_bool.c
+	src/stdif/configurable/set_data.c
+	src/stdif/configurable/set_double.c
+	src/stdif/configurable/set_enum32.c
+	src/stdif/configurable/set_float.c
+	src/stdif/configurable/set_function.c
+	src/stdif/configurable/set_int8.c
+	src/stdif/configurable/set_int16.c
+	src/stdif/configurable/set_int32.c
+	src/stdif/configurable/set_int64.c
+	src/stdif/configurable/set_uint8.c
+	src/stdif/configurable/set_uint16.c
+	src/stdif/configurable/set_uint32.c
+	src/stdif/configurable/set_uint64.c
+	src/stdif/configurable/set_utf8.c)
 
-set(IF_CONFIGURABLE_UTIL_HEADER_FILES 
+set(STDIF_CONFIGURABLE_UTIL_HEADER_FILES 
 	src/include/if/configurable_util.h)
 
-set(IF_CONFIGURABLE_UTIL_SOURCE_FILES
-	src/if/configurable_util/dump_descriptor.c
-	src/if/configurable_util/dump_enum32.c
-	src/if/configurable_util/dump_propdef.c
-	src/if/configurable_util/enum32_find_by_id.c
-	src/if/configurable_util/enum32_find_by_value.c
-	src/if/configurable_util/fprint_property.c
-	src/if/configurable_util/fprint_utf8.c
-	src/if/configurable_util/type_to_string.c)
+set(STDIF_CONFIGURABLE_UTIL_SOURCE_FILES
+	src/stdif/configurable_util/dump_descriptor.c
+	src/stdif/configurable_util/dump_enum32.c
+	src/stdif/configurable_util/dump_propdef.c
+	src/stdif/configurable_util/enum32_find_by_id.c
+	src/stdif/configurable_util/enum32_find_by_value.c
+	src/stdif/configurable_util/fprint_property.c
+	src/stdif/configurable_util/fprint_utf8.c
+	src/stdif/configurable_util/type_to_string.c)
 
-set(IF_DISPOSABLE_HEADER_FILES 
+set(STDIF_DISPOSABLE_HEADER_FILES 
 	src/include/if/disposable.h
 	src/include/if/disposable_impl.h)
 
-set(IF_DISPOSABLE_SOURCE_FILES
-	src/if/disposable/free.c)
+set(STDIF_DISPOSABLE_SOURCE_FILES
+	src/stdif/disposable/free.c)
 
-set(IF_MESSAGING_HEADER_FILES 
+set(STDIF_MESSAGING_HEADER_FILES 
 	src/include/if/messaging.h
 	src/include/if/messaging_impl.h)
 
-set(IF_MESSAGING_SOURCE_FILES
-	src/if/messaging/add_listener.c
-	src/if/messaging/bind.c
-	src/if/messaging/bound_add_listener.c
-	src/if/messaging/bound_has_listener.c
-	src/if/messaging/bound_remove_listener.c
-	src/if/messaging/bound_send.c
-	src/if/messaging/has_listener.c
-	src/if/messaging/remove_listener.c
-	src/if/messaging/remove_listener_by_id.c
-	src/if/messaging/send.c
-	src/if/messaging/unbind.c)
+set(STDIF_MESSAGING_SOURCE_FILES
+	src/stdif/messaging/add_listener.c
+	src/stdif/messaging/bind.c
+	src/stdif/messaging/bound_add_listener.c
+	src/stdif/messaging/bound_has_listener.c
+	src/stdif/messaging/bound_remove_listener.c
+	src/stdif/messaging/bound_send.c
+	src/stdif/messaging/has_listener.c
+	src/stdif/messaging/remove_listener.c
+	src/stdif/messaging/remove_listener_by_id.c
+	src/stdif/messaging/send.c
+	src/stdif/messaging/unbind.c)
 
-set(IF_REFERENCED_HEADER_FILES 
+set(STDIF_REFERENCED_HEADER_FILES 
 	src/include/if/referenced.h
 	src/include/if/referenced_impl.h)
 
-set(IF_REFERENCED_SOURCE_FILES
-	src/if/referenced/add.c
-	src/if/referenced/release.c)
+set(STDIF_REFERENCED_SOURCE_FILES
+	src/stdif/referenced/add.c
+	src/stdif/referenced/release.c)
 
-set(IF_RESOLVABLE_HEADER_FILES 
+set(STDIF_RESOLVABLE_HEADER_FILES 
 	src/include/if/resolvable.h
 	src/include/if/resolvable_impl.h)
 
-set(IF_RESOLVABLE_SOURCE_FILES
-	src/if/resolvable/get_interface.c
-	src/if/resolvable/query_interface.c)
+set(STDIF_RESOLVABLE_SOURCE_FILES
+	src/stdif/resolvable/get_interface.c
+	src/stdif/resolvable/query_interface.c)
 
 
 # Standard interface implementations
-set(IF_ALLOCATOR_STDIMPL_HEADER_FILES
+set(STDIF_ALLOCATOR_STDIMPL_HEADER_FILES
 	src/include/if/allocator_stdimpl.h)
 
-set(IF_ALLOCATOR_STDIMPL_SOURCE_FILES
-	src/if/allocator_stdimpl/stdimpl.c)
+set(STDIF_ALLOCATOR_STDIMPL_SOURCE_FILES
+	src/stdif/allocator_stdimpl/stdimpl.c)
 
-set(IF_CONFIGURABLE_STDIMPL_HEADER_FILES 
+set(STDIF_CONFIGURABLE_STDIMPL_HEADER_FILES 
 	src/include/if/configurable_stdimpl.h)
 
-set(IF_CONFIGURABLE_STDIMPL_SOURCE_FILES
-	src/if/configurable_stdimpl/find_property.c
-	src/if/configurable_stdimpl/get_bool.c
-	src/if/configurable_stdimpl/get_data.c
-	src/if/configurable_stdimpl/get_descriptor.c
-	src/if/configurable_stdimpl/get_double.c
-	src/if/configurable_stdimpl/get_enum32.c
-	src/if/configurable_stdimpl/get_float.c
-	src/if/configurable_stdimpl/get_function.c
-	src/if/configurable_stdimpl/get_int8.c
-	src/if/configurable_stdimpl/get_int16.c
-	src/if/configurable_stdimpl/get_int32.c
-	src/if/configurable_stdimpl/get_int64.c
-	src/if/configurable_stdimpl/get_uint8.c
-	src/if/configurable_stdimpl/get_uint16.c
-	src/if/configurable_stdimpl/get_uint32.c
-	src/if/configurable_stdimpl/get_uint64.c
-	src/if/configurable_stdimpl/get_utf8.c
-	src/if/configurable_stdimpl/ops.c
-	src/if/configurable_stdimpl/reset.c
-	src/if/configurable_stdimpl/set_bool.c
-	src/if/configurable_stdimpl/set_data.c
-	src/if/configurable_stdimpl/set_double.c
-	src/if/configurable_stdimpl/set_enum32.c
-	src/if/configurable_stdimpl/set_float.c
-	src/if/configurable_stdimpl/set_function.c
-	src/if/configurable_stdimpl/set_int8.c
-	src/if/configurable_stdimpl/set_int16.c
-	src/if/configurable_stdimpl/set_int32.c
-	src/if/configurable_stdimpl/set_int64.c
-	src/if/configurable_stdimpl/set_uint8.c
-	src/if/configurable_stdimpl/set_uint16.c
-	src/if/configurable_stdimpl/set_uint32.c
-	src/if/configurable_stdimpl/set_uint64.c
-	src/if/configurable_stdimpl/set_utf8.c)
+set(STDIF_CONFIGURABLE_STDIMPL_SOURCE_FILES
+	src/stdif/configurable_stdimpl/find_property.c
+	src/stdif/configurable_stdimpl/get_bool.c
+	src/stdif/configurable_stdimpl/get_data.c
+	src/stdif/configurable_stdimpl/get_descriptor.c
+	src/stdif/configurable_stdimpl/get_double.c
+	src/stdif/configurable_stdimpl/get_enum32.c
+	src/stdif/configurable_stdimpl/get_float.c
+	src/stdif/configurable_stdimpl/get_function.c
+	src/stdif/configurable_stdimpl/get_int8.c
+	src/stdif/configurable_stdimpl/get_int16.c
+	src/stdif/configurable_stdimpl/get_int32.c
+	src/stdif/configurable_stdimpl/get_int64.c
+	src/stdif/configurable_stdimpl/get_uint8.c
+	src/stdif/configurable_stdimpl/get_uint16.c
+	src/stdif/configurable_stdimpl/get_uint32.c
+	src/stdif/configurable_stdimpl/get_uint64.c
+	src/stdif/configurable_stdimpl/get_utf8.c
+	src/stdif/configurable_stdimpl/ops.c
+	src/stdif/configurable_stdimpl/reset.c
+	src/stdif/configurable_stdimpl/set_bool.c
+	src/stdif/configurable_stdimpl/set_data.c
+	src/stdif/configurable_stdimpl/set_double.c
+	src/stdif/configurable_stdimpl/set_enum32.c
+	src/stdif/configurable_stdimpl/set_float.c
+	src/stdif/configurable_stdimpl/set_function.c
+	src/stdif/configurable_stdimpl/set_int8.c
+	src/stdif/configurable_stdimpl/set_int16.c
+	src/stdif/configurable_stdimpl/set_int32.c
+	src/stdif/configurable_stdimpl/set_int64.c
+	src/stdif/configurable_stdimpl/set_uint8.c
+	src/stdif/configurable_stdimpl/set_uint16.c
+	src/stdif/configurable_stdimpl/set_uint32.c
+	src/stdif/configurable_stdimpl/set_uint64.c
+	src/stdif/configurable_stdimpl/set_utf8.c)
 
-set(IF_MESSAGING_STDIMPL_HEADER_FILES
+set(STDIF_MESSAGING_STDIMPL_HEADER_FILES
 	src/include/if/messaging_stdimpl.h)
 
-set(IF_MESSAGING_STDIMPL_SOURCE_FILES
-	src/if/messaging_stdimpl/add_listener.c
-	src/if/messaging_stdimpl/bind.c
-	src/if/messaging_stdimpl/bound.c
-	src/if/messaging_stdimpl/bound_add_listener.c
-	src/if/messaging_stdimpl/bound_has_listener.c
-	src/if/messaging_stdimpl/bound_remove_listener.c
-	src/if/messaging_stdimpl/bound_send.c
-	src/if/messaging_stdimpl/cleanup.c
-	src/if/messaging_stdimpl/create.c
-	src/if/messaging_stdimpl/destroy.c
-	src/if/messaging_stdimpl/has_listener.c
-	src/if/messaging_stdimpl/ops.c
-	src/if/messaging_stdimpl/remove_listener.c
-	src/if/messaging_stdimpl/remove_listener_by_id.c
-	src/if/messaging_stdimpl/send.c
-	src/if/messaging_stdimpl/unbind.c)
+set(STDIF_MESSAGING_STDIMPL_SOURCE_FILES
+	src/stdif/messaging_stdimpl/add_listener.c
+	src/stdif/messaging_stdimpl/bind.c
+	src/stdif/messaging_stdimpl/bound.c
+	src/stdif/messaging_stdimpl/bound_add_listener.c
+	src/stdif/messaging_stdimpl/bound_has_listener.c
+	src/stdif/messaging_stdimpl/bound_remove_listener.c
+	src/stdif/messaging_stdimpl/bound_send.c
+	src/stdif/messaging_stdimpl/cleanup.c
+	src/stdif/messaging_stdimpl/create.c
+	src/stdif/messaging_stdimpl/destroy.c
+	src/stdif/messaging_stdimpl/has_listener.c
+	src/stdif/messaging_stdimpl/ops.c
+	src/stdif/messaging_stdimpl/remove_listener.c
+	src/stdif/messaging_stdimpl/remove_listener_by_id.c
+	src/stdif/messaging_stdimpl/send.c
+	src/stdif/messaging_stdimpl/unbind.c)
 
 
 # IV core
@@ -503,9 +503,9 @@ set_target_properties(
 #
 add_library(
 	if_allocator
-		${IF_ALLOCATOR_SOURCE_FILES}
+		${STDIF_ALLOCATOR_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
-		${IF_ALLOCATOR_HEADER_FILES}
+		${STDIF_ALLOCATOR_HEADER_FILES}
 		${IV_HEADER_FILES}
 		${IV_UTIL_HEADER_FILES})
 
@@ -525,10 +525,10 @@ endif()
 #
 add_library(
 	if_allocator_stdimpl
-		${IF_ALLOCATOR_STDIMPL_SOURCE_FILES}
+		${STDIF_ALLOCATOR_STDIMPL_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
-		${IF_ALLOCATOR_HEADER_FILES}
-		${IF_ALLOCATOR_STDIMPL_HEADER_FILES}
+		${STDIF_ALLOCATOR_HEADER_FILES}
+		${STDIF_ALLOCATOR_STDIMPL_HEADER_FILES}
 		${IV_HEADER_FILES})
 
 set_target_properties(
@@ -541,9 +541,9 @@ set_target_properties(
 #
 add_library(
 	if_configurable
-		${IF_CONFIGURABLE_SOURCE_FILES}
+		${STDIF_CONFIGURABLE_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
-		${IF_CONFIGURABLE_HEADER_FILES}
+		${STDIF_CONFIGURABLE_HEADER_FILES}
 		${IV_HEADER_FILES}
 		${IV_UTIL_HEADER_FILES})
 
@@ -563,10 +563,10 @@ endif()
 #
 add_library(
 	if_configurable_stdimpl
-		${IF_CONFIGURABLE_STDIMPL_SOURCE_FILES}
+		${STDIF_CONFIGURABLE_STDIMPL_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
-		${IF_CONFIGURABLE_HEADER_FILES}
-		${IF_CONFIGURABLE_STDIMPL_HEADER_FILES}
+		${STDIF_CONFIGURABLE_HEADER_FILES}
+		${STDIF_CONFIGURABLE_STDIMPL_HEADER_FILES}
 		${IV_HEADER_FILES})
 
 set_target_properties(
@@ -589,10 +589,10 @@ endif()
 #
 add_library(
 	if_configurable_util
-		${IF_CONFIGURABLE_UTIL_SOURCE_FILES}
+		${STDIF_CONFIGURABLE_UTIL_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
-		${IF_CONFIGURABLE_HEADER_FILES}
-		${IF_CONFIGURABLE_UTIL_HEADER_FILES}
+		${STDIF_CONFIGURABLE_HEADER_FILES}
+		${STDIF_CONFIGURABLE_UTIL_HEADER_FILES}
 		${IV_HEADER_FILES}
 		${IV_UTIL_HEADER_FILES})
 
@@ -615,9 +615,9 @@ set_target_properties(
 #
 add_library(
 	if_disposable
-		${IF_DISPOSABLE_SOURCE_FILES}
+		${STDIF_DISPOSABLE_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
-		${IF_DISPOSABLE_HEADER_FILES}
+		${STDIF_DISPOSABLE_HEADER_FILES}
 		${IV_HEADER_FILES}
 		${IV_UTIL_HEADER_FILES})
 
@@ -637,9 +637,9 @@ endif()
 #
 add_library(
 	if_messaging
-		${IF_MESSAGING_SOURCE_FILES}
+		${STDIF_MESSAGING_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
-		${IF_MESSAGING_HEADER_FILES}
+		${STDIF_MESSAGING_HEADER_FILES}
 		${IV_HEADER_FILES}
 		${IV_UTIL_HEADER_FILES})
 
@@ -659,10 +659,10 @@ endif()
 #
 add_library(
 	if_messaging_stdimpl
-		${IF_MESSAGING_STDIMPL_SOURCE_FILES}
+		${STDIF_MESSAGING_STDIMPL_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
-		${IF_MESSAGING_HEADER_FILES}
-		${IF_MESSAGING_STDIMPL_HEADER_FILES}
+		${STDIF_MESSAGING_HEADER_FILES}
+		${STDIF_MESSAGING_STDIMPL_HEADER_FILES}
 		${IV_HEADER_FILES})
 
 set_target_properties(
@@ -680,9 +680,9 @@ target_link_libraries(
 #
 add_library(
 	if_referenced
-		${IF_REFERENCED_SOURCE_FILES}
+		${STDIF_REFERENCED_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
-		${IF_REFERENCED_HEADER_FILES}
+		${STDIF_REFERENCED_HEADER_FILES}
 		${EXTIT_UTIL_HEADER_FILES}
 		${IV_HEADER_FILES}
 		${IV_UTIL_HEADER_FILES})
@@ -707,9 +707,9 @@ endif()
 #
 add_library(
 	if_resolvable
-		${IF_RESOLVABLE_SOURCE_FILES}
+		${STDIF_RESOLVABLE_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
-		${IF_RESOLVABLE_HEADER_FILES}
+		${STDIF_RESOLVABLE_HEADER_FILES}
 		${IV_HEADER_FILES}
 		${IV_UTIL_HEADER_FILES})
 
@@ -911,17 +911,17 @@ install(
 
 install(
 	FILES
-		${IF_HEADER_FILES}
-		${IF_ALLOCATOR_HEADER_FILES}
-		${IF_ALLOCATOR_STDIMPL_HEADER_FILES}
-		${IF_CONFIGURABLE_HEADER_FILES}
-		${IF_CONFIGURABLE_STDIMPL_HEADER_FILES}
-		${IF_CONFIGURABLE_UTIL_HEADER_FILES}
-		${IF_DISPOSABLE_HEADER_FILES}
-		${IF_MESSAGING_HEADER_FILES}
-		${IF_MESSAGING_STDIMPL_HEADER_FILES}
-		${IF_REFERENCED_HEADER_FILES}
-		${IF_RESOLVABLE_HEADER_FILES}
+		${STDIF_HEADER_FILES}
+		${STDIF_ALLOCATOR_HEADER_FILES}
+		${STDIF_ALLOCATOR_STDIMPL_HEADER_FILES}
+		${STDIF_CONFIGURABLE_HEADER_FILES}
+		${STDIF_CONFIGURABLE_STDIMPL_HEADER_FILES}
+		${STDIF_CONFIGURABLE_UTIL_HEADER_FILES}
+		${STDIF_DISPOSABLE_HEADER_FILES}
+		${STDIF_MESSAGING_HEADER_FILES}
+		${STDIF_MESSAGING_STDIMPL_HEADER_FILES}
+		${STDIF_REFERENCED_HEADER_FILES}
+		${STDIF_RESOLVABLE_HEADER_FILES}
 	DESTINATION ${CMAKE_INSTALL_PREFIX}/include/if)
 
 install(
@@ -983,9 +983,9 @@ if(EXTIT_COMPILE_SAMPLES)
 			sample/if_configurable/scan_service.c
 			sample/if_configurable/scan_service.h
 			${EXTIT_HEADER_FILES}
-			${IF_CONFIGURABLE_HEADER_FILES}
-			${IF_CONFIGURABLE_STDIMPL_HEADER_FILES}
-			${IF_CONFIGURABLE_UTIL_HEADER_FILES}
+			${STDIF_CONFIGURABLE_HEADER_FILES}
+			${STDIF_CONFIGURABLE_STDIMPL_HEADER_FILES}
+			${STDIF_CONFIGURABLE_UTIL_HEADER_FILES}
 			${IV_HEADER_FILES})
 
 	target_link_libraries(
@@ -1002,9 +1002,9 @@ if(EXTIT_COMPILE_SAMPLES)
 		sample_if_configurable_proplist
 			sample/if_configurable_proplist/dump_props.c
 			${EXTIT_HEADER_FILES}
-			${IF_CONFIGURABLE_HEADER_FILES}
-			${IF_CONFIGURABLE_STDIMPL_HEADER_FILES}
-			${IF_CONFIGURABLE_UTIL_HEADER_FILES}
+			${STDIF_CONFIGURABLE_HEADER_FILES}
+			${STDIF_CONFIGURABLE_STDIMPL_HEADER_FILES}
+			${STDIF_CONFIGURABLE_UTIL_HEADER_FILES}
 			${IV_HEADER_FILES})
 
 	target_link_libraries(
@@ -1025,8 +1025,8 @@ if(EXTIT_COMPILE_SAMPLES)
 			sample/if_disposable/itemsource.c
 			sample/if_disposable/itemsource.h
 			${EXTIT_HEADER_FILES}
-			${IF_DISPOSABLE_HEADER_FILES}
-			${IF_DISPOSABLE_IMPL_HEADER_FILES}
+			${STDIF_DISPOSABLE_HEADER_FILES}
+			${STDIF_DISPOSABLE_IMPL_HEADER_FILES}
 			${IV_HEADER_FILES})
 
 	target_link_libraries(
@@ -1064,7 +1064,7 @@ if(EXTIT_COMPILE_SAMPLES)
 			sample/if_referenced/worklist.c
 			sample/if_referenced/worklist.h
 			${EXTIT_HEADER_FILES}
-			${IF_REFERENCED_HEADER_FILES}
+			${STDIF_REFERENCED_HEADER_FILES}
 			${EXTIT_UTIL_HEADER_FILES}
 			${IV_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
@@ -1085,13 +1085,13 @@ if(EXTIT_COMPILE_SAMPLES)
 			sample/if_resolvable/myobj_client.c
 			sample/if_resolvable/myobj_priv.h
 			${EXTIT_HEADER_FILES}
-			${IF_REFERENCED_HEADER_FILES}
-			${IF_REFERENCED_IMPL_HEADER_FILES}
-			${IF_CONFIGURABLE_HEADER_FILES}
-			${IF_CONFIGURABLE_IMPL_HEADER_FILES}
-			${IF_CONFIGURABLE_STDIMPL_HEADER_FILES}
-			${IF_RESOLVABLE_HEADER_FILES}
-			${IF_RESOLVABLE_IMPL_HEADER_FILES}
+			${STDIF_REFERENCED_HEADER_FILES}
+			${STDIF_REFERENCED_IMPL_HEADER_FILES}
+			${STDIF_CONFIGURABLE_HEADER_FILES}
+			${STDIF_CONFIGURABLE_IMPL_HEADER_FILES}
+			${STDIF_CONFIGURABLE_STDIMPL_HEADER_FILES}
+			${STDIF_RESOLVABLE_HEADER_FILES}
+			${STDIF_RESOLVABLE_IMPL_HEADER_FILES}
 			${EXTIT_UTIL_HEADER_FILES}
 			${IV_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
