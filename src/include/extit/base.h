@@ -49,7 +49,12 @@ typedef FARPROC		extit_func_t;
 #elif	defined(EXTIT_HAVE_DLFUNC_T)
 typedef dlfunc_t	extit_func_t;
 #else
-typedef void *		extit_func_t;
+struct __extit_dummyarg_
+{
+	int		nothing;
+};
+
+typedef void		(*extit_func_t)(struct __extit_dummyarg_);
 #endif
 
 

@@ -10,7 +10,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
-#include <ctype.h>
 #include <inttypes.h>
 
 #include <iv/base.h>
@@ -28,7 +27,7 @@ _stdif_configurable_fprint_utf8
 	extit_bool_t esc_ctrl
 )
 {
-	char		ch;
+	uint8_t		ch;
 	uint32_t	code;
 
 
@@ -38,7 +37,7 @@ _stdif_configurable_fprint_utf8
 
 		if((ch & 0x80) == 0)
 		{
-			if(esc_ctrl && iscntrl(ch))
+			if(esc_ctrl && ((ch < 0x20) || (ch == 0x7F)))
 			{
 				switch(ch)
 				{
