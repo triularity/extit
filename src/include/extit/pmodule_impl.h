@@ -120,11 +120,17 @@ typedef	extit_pmodule_descriptor_1_0_t	extit_pmodule_descriptor_t;
 #define	EXTIT_PMODULE_DESCRIPTOR_NAME	_extit_PMODULE_DESCRIPTOR
 #define	EXTIT_PMODULE_DESCRIPTOR_SYMBOL	"_extit_PMODULE_DESCRIPTOR"
 
-EXTIT_EXPORT
+#ifdef	_WIN32
+#define _EXTIT_PMODULE_EXPORT		__declspec(dllexport)
+#else
+#define _EXTIT_PMODULE_EXPORT		/* */
+#endif
+
+_EXTIT_PMODULE_EXPORT
 extern extit_pmodule_descriptor_t	EXTIT_PMODULE_DESCRIPTOR_NAME;
 
 #define	EXTIT_DECLARE_PMODULE(id, id_version, name, version, ops) \
-		EXTIT_EXPORT \
+		_EXTIT_PMODULE_EXPORT \
 		extit_pmodule_descriptor_t EXTIT_PMODULE_DESCRIPTOR_NAME = \
 		{ \
 			EXTIT_PMODULE_MAGIC, \

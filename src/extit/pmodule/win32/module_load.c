@@ -89,7 +89,8 @@ extit_module_load
 		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
 		{
 			fprintf(stderr,
-				"[extit:module] No plugin descriptor.\n");
+				"[extit:module] No plugin descriptor [%s].\n",
+					EXTIT_PMODULE_DESCRIPTOR_SYMBOL);
 		}
 #endif	/* EXTIT_DEBUG */
 
@@ -181,7 +182,8 @@ extit_module_load_wc
 		if((flags & EXTIT_FLAG_LOG) >= EXTIT_FLAG_LOG_DEBUG)
 		{
 			fprintf(stderr,
-				"[extit:module] No plugin descriptor.\n");
+				"[extit:module] No plugin descriptor [%s].\n",
+					EXTIT_PMODULE_DESCRIPTOR_SYMBOL);
 		}
 #endif	/* EXTIT_DEBUG */
 
