@@ -1,5 +1,5 @@
 /*
- * @(#) sample/stdif_allocator/plugin.c
+ * @(#) examples/stdif_allocator/plugin.c
  *
  * This file is in the Public Domain.
  */

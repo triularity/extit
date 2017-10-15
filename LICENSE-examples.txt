@@ -1,4 +1,4 @@
-The sample files included in this package are in the Public Domain.
+The example files included in this package are in the Public Domain.
 
 In the event that your jurisdiction is irrational/idiotic/insane and does not acknowledge the inherent right of Public Domain, then the following copyright shall apply:
 

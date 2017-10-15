@@ -1,5 +1,5 @@
 /*
- * @(#) sample/stdif_referenced/worklist.c
+ * @(#) examples/stdif_referenced/worklist.c
  *
  * This file is in the Public Domain.
  */

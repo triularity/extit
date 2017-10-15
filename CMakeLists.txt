@@ -23,7 +23,7 @@ set(EXTIT_PARANOID TRUE CACHE BOOL "Enable Paranoid Code Checks")
 set(EXTIT_DEBUG TRUE CACHE BOOL "Enable Runtime Debugging")
 set(EXTIT_WARNFREE FALSE CACHE BOOL "Enable Error on Compile Warnings")
 set(EXTIT_WITH_CXX TRUE CACHE BOOL "Enable C++ Wrappers")
-set(EXTIT_COMPILE_SAMPLES FALSE CACHE BOOL "Compile Sample Programs")
+set(EXTIT_COMPILE_EXAMPLES FALSE CACHE BOOL "Compile Example Code")
 set(EXTIT_COMPILE_TESTS FALSE CACHE BOOL "Compile Unit Tests")
 set(EXTIT_LIB_LOADER ${DEFAULT_LIB_LOADER} CACHE STRING "Library Loader (dl|win32|dylib)")
 set(EXTIT_WCHAR ${DEFAULT_WCHAR} CACHE BOOL "Enable wchar_t support")
@@ -902,13 +902,13 @@ install(
 #
 # Sample Code
 #
-if(EXTIT_COMPILE_SAMPLES)
+if(EXTIT_COMPILE_EXAMPLES)
 	#
 	# Allocator Interface Plugin
 	#
 	add_library(
-		sample_stdif_allocator_plugin SHARED
-			sample/stdif_allocator/plugin.c
+		example_stdif_allocator_plugin SHARED
+			examples/stdif_allocator/plugin.c
 			${EXTIT_HEADER_FILES}
 			${EXTIT_ALLOCATOR_HEADER_FILES}
 			${EXTIT_PMODULE_HEADER_FILES}
@@ -917,11 +917,11 @@ if(EXTIT_COMPILE_SAMPLES)
 			${IV_UTIL_HEADER_FILES})
 
 	set_target_properties(
-		sample_stdif_allocator_plugin PROPERTIES
+		example_stdif_allocator_plugin PROPERTIES
 			PREFIX "")
 
 	target_link_libraries(
-		sample_stdif_allocator_plugin
+		example_stdif_allocator_plugin
 			stdif_allocator
 			extit_container
 			iv_util)
@@ -931,8 +931,8 @@ if(EXTIT_COMPILE_SAMPLES)
 	# Allocator Interface Server
 	#
 	add_executable(
-		sample_stdif_allocator_server
-			sample/stdif_allocator/server.c
+		example_stdif_allocator_server
+			examples/stdif_allocator/server.c
 			${EXTIT_HEADER_FILES}
 			${EXTIT_ALLOCATOR_HEADER_FILES}
 			${EXTIT_PMODULE_HEADER_FILES}
@@ -940,7 +940,7 @@ if(EXTIT_COMPILE_SAMPLES)
 			${IV_UTIL_HEADER_FILES})
 
 	target_link_libraries(
-		sample_stdif_allocator_server
+		example_stdif_allocator_server
 			stdif_allocator_stdimpl
 			extit_container_stdimpl
 			extit_pmodule)
@@ -950,10 +950,10 @@ if(EXTIT_COMPILE_SAMPLES)
 	# Configurable Interface
 	#
 	add_executable(
-		sample_stdif_configurable
-			sample/stdif_configurable/client.c
-			sample/stdif_configurable/scan_service.c
-			sample/stdif_configurable/scan_service.h
+		example_stdif_configurable
+			examples/stdif_configurable/client.c
+			examples/stdif_configurable/scan_service.c
+			examples/stdif_configurable/scan_service.h
 			${EXTIT_HEADER_FILES}
 			${STDIF_CONFIGURABLE_HEADER_FILES}
 			${STDIF_CONFIGURABLE_STDIMPL_HEADER_FILES}
@@ -961,7 +961,7 @@ if(EXTIT_COMPILE_SAMPLES)
 			${IV_HEADER_FILES})
 
 	target_link_libraries(
-		sample_stdif_configurable
+		example_stdif_configurable
 			stdif_configurable
 			stdif_configurable_stdimpl
 			stdif_configurable_util)
@@ -971,8 +971,8 @@ if(EXTIT_COMPILE_SAMPLES)
 	# Configurable Interface (List Properties)
 	#
 	add_executable(
-		sample_stdif_configurable_proplist
-			sample/stdif_configurable_proplist/dump_props.c
+		example_stdif_configurable_proplist
+			examples/stdif_configurable_proplist/dump_props.c
 			${EXTIT_HEADER_FILES}
 			${STDIF_CONFIGURABLE_HEADER_FILES}
 			${STDIF_CONFIGURABLE_STDIMPL_HEADER_FILES}
@@ -980,7 +980,7 @@ if(EXTIT_COMPILE_SAMPLES)
 			${IV_HEADER_FILES})
 
 	target_link_libraries(
-		sample_stdif_configurable_proplist
+		example_stdif_configurable_proplist
 			stdif_configurable
 			stdif_configurable_stdimpl
 			stdif_configurable_util)
@@ -990,19 +990,19 @@ if(EXTIT_COMPILE_SAMPLES)
 	# Disposable Interface
 	#
 	add_executable(
-		sample_stdif_disposable
-			sample/stdif_disposable/client.c
-			sample/stdif_disposable/item.c
-			sample/stdif_disposable/item.h
-			sample/stdif_disposable/itemsource.c
-			sample/stdif_disposable/itemsource.h
+		example_stdif_disposable
+			examples/stdif_disposable/client.c
+			examples/stdif_disposable/item.c
+			examples/stdif_disposable/item.h
+			examples/stdif_disposable/itemsource.c
+			examples/stdif_disposable/itemsource.h
 			${EXTIT_HEADER_FILES}
 			${STDIF_DISPOSABLE_HEADER_FILES}
 			${STDIF_DISPOSABLE_IMPL_HEADER_FILES}
 			${IV_HEADER_FILES})
 
 	target_link_libraries(
-		sample_stdif_disposable
+		example_stdif_disposable
 			stdif_disposable)
 
 
@@ -1010,16 +1010,16 @@ if(EXTIT_COMPILE_SAMPLES)
 	# Messaging Interface (alarm)
 	#
 	add_executable(
-		sample_stdif_messaging_alarm
-			sample/stdif_messaging/alarm.h
-			sample/stdif_messaging/demo.c
+		example_stdif_messaging_alarm
+			examples/stdif_messaging/alarm.h
+			examples/stdif_messaging/demo.c
 			${EXTIT_HEADER_FILES}
 			${EXTIT_MESSAGING_HEADER_FILES}
 			${EXTIT_MESSAGING_STDIMPL_HEADER_FILES}
 			${IV_HEADER_FILES})
 
 	target_link_libraries(
-		sample_stdif_messaging_alarm
+		example_stdif_messaging_alarm
 			stdif_messaging
 			stdif_messaging_stdimpl)
 
@@ -1028,13 +1028,13 @@ if(EXTIT_COMPILE_SAMPLES)
 	# Refcount Interface
 	#
 	add_executable(
-		sample_stdif_referenced
-			sample/stdif_referenced/client.c
-			sample/stdif_referenced/myobj.h
-			sample/stdif_referenced/provider.c
-			sample/stdif_referenced/provider.h
-			sample/stdif_referenced/worklist.c
-			sample/stdif_referenced/worklist.h
+		example_stdif_referenced
+			examples/stdif_referenced/client.c
+			examples/stdif_referenced/myobj.h
+			examples/stdif_referenced/provider.c
+			examples/stdif_referenced/provider.h
+			examples/stdif_referenced/worklist.c
+			examples/stdif_referenced/worklist.h
 			${EXTIT_HEADER_FILES}
 			${STDIF_REFERENCED_HEADER_FILES}
 			${EXTIT_UTIL_HEADER_FILES}
@@ -1042,7 +1042,7 @@ if(EXTIT_COMPILE_SAMPLES)
 			${IV_UTIL_HEADER_FILES})
 
 	target_link_libraries(
-		sample_stdif_referenced
+		example_stdif_referenced
 			stdif_referenced)
 
 
@@ -1050,12 +1050,12 @@ if(EXTIT_COMPILE_SAMPLES)
 	# Resolvable Interface
 	#
 	add_executable(
-		sample_stdif_resolvable
-			sample/stdif_resolvable/client.c
-			sample/stdif_resolvable/myobj.c
-			sample/stdif_resolvable/myobj.h
-			sample/stdif_resolvable/myobj_client.c
-			sample/stdif_resolvable/myobj_priv.h
+		example_stdif_resolvable
+			examples/stdif_resolvable/client.c
+			examples/stdif_resolvable/myobj.c
+			examples/stdif_resolvable/myobj.h
+			examples/stdif_resolvable/myobj_client.c
+			examples/stdif_resolvable/myobj_priv.h
 			${EXTIT_HEADER_FILES}
 			${STDIF_REFERENCED_HEADER_FILES}
 			${STDIF_REFERENCED_IMPL_HEADER_FILES}
@@ -1069,7 +1069,7 @@ if(EXTIT_COMPILE_SAMPLES)
 			${IV_UTIL_HEADER_FILES})
 
 	target_link_libraries(
-		sample_stdif_resolvable
+		example_stdif_resolvable
 			extit_util
 			stdif_referenced
 			stdif_resolvable
@@ -1082,14 +1082,14 @@ if(EXTIT_COMPILE_SAMPLES)
 	# Interface Repository
 	#
 	add_executable(
-		sample_iv_repository
-			sample/iv_repository/repository.c
+		example_iv_repository
+			examples/iv_repository/repository.c
 			${IV_HEADER_FILES}
 			${IV_REPOSITORY_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
 
 	target_link_libraries(
-		sample_iv_repository
+		example_iv_repository
 			iv_map
 			iv_repository)
 
@@ -1098,9 +1098,9 @@ if(EXTIT_COMPILE_SAMPLES)
 	# Multi-Version
 	#
 	add_executable(
-		sample_multiver_server_1_0
-			sample/multiver/persistence_impl.c
-			sample/multiver/multiver_server.c
+		example_multiver_server_1_0
+			examples/multiver/persistence_impl.c
+			examples/multiver/multiver_server.c
 			${EXTIT_HEADER_FILES}
 			${EXTIT_PMODULE_HEADER_FILES}
 			${IV_HEADER_FILES}
@@ -1108,12 +1108,12 @@ if(EXTIT_COMPILE_SAMPLES)
 			${IV_UTIL_HEADER_FILES})
 
 	set_target_properties(
-		sample_multiver_server_1_0 PROPERTIES
+		example_multiver_server_1_0 PROPERTIES
 			COMPILE_DEFINITIONS
 				"PERSISTENCE_ABI_TARGET=PERSISTENCE_ABI_1_0")
 
 	target_link_libraries(
-		sample_multiver_server_1_0
+		example_multiver_server_1_0
 			extit_container_stdimpl
 			extit_pmodule
 			iv_map
@@ -1121,9 +1121,9 @@ if(EXTIT_COMPILE_SAMPLES)
 
 
 	add_executable(
-		sample_multiver_server_1_1
-			sample/multiver/persistence_impl.c
-			sample/multiver/multiver_server.c
+		example_multiver_server_1_1
+			examples/multiver/persistence_impl.c
+			examples/multiver/multiver_server.c
 			${EXTIT_HEADER_FILES}
 			${EXTIT_PMODULE_HEADER_FILES}
 			${IV_HEADER_FILES}
@@ -1131,12 +1131,12 @@ if(EXTIT_COMPILE_SAMPLES)
 			${IV_UTIL_HEADER_FILES})
 
 	set_target_properties(
-		sample_multiver_server_1_1 PROPERTIES
+		example_multiver_server_1_1 PROPERTIES
 			COMPILE_DEFINITIONS
 				"PERSISTENCE_ABI_TARGET=PERSISTENCE_ABI_1_1")
 
 	target_link_libraries(
-		sample_multiver_server_1_1
+		example_multiver_server_1_1
 			extit_container_stdimpl
 			extit_pmodule
 			iv_map
@@ -1144,9 +1144,9 @@ if(EXTIT_COMPILE_SAMPLES)
 
 
 	add_executable(
-		sample_multiver_server_1_2
-			sample/multiver/persistence_impl.c
-			sample/multiver/multiver_server.c
+		example_multiver_server_1_2
+			examples/multiver/persistence_impl.c
+			examples/multiver/multiver_server.c
 			${EXTIT_HEADER_FILES}
 			${EXTIT_PMODULE_HEADER_FILES}
 			${IV_HEADER_FILES}
@@ -1154,12 +1154,12 @@ if(EXTIT_COMPILE_SAMPLES)
 			${IV_UTIL_HEADER_FILES})
 
 	set_target_properties(
-		sample_multiver_server_1_2 PROPERTIES
+		example_multiver_server_1_2 PROPERTIES
 			COMPILE_DEFINITIONS
 				"PERSISTENCE_ABI_TARGET=PERSISTENCE_ABI_1_2")
 
 	target_link_libraries(
-		sample_multiver_server_1_2
+		example_multiver_server_1_2
 			extit_container_stdimpl
 			extit_pmodule
 			iv_map
@@ -1167,8 +1167,8 @@ if(EXTIT_COMPILE_SAMPLES)
 
 
 	add_library(
-		sample_multiver_plugin_1_0 SHARED
-			sample/multiver/multiver_plugin.c
+		example_multiver_plugin_1_0 SHARED
+			examples/multiver/multiver_plugin.c
 			${EXTIT_HEADER_FILES}
 			${EXTIT_PMODULE_HEADER_FILES}
 			${EXTIT_CONTAINER_HEADER_FILES}
@@ -1176,22 +1176,22 @@ if(EXTIT_COMPILE_SAMPLES)
 			${IV_UTIL_HEADER_FILES})
 
 	target_compile_definitions(
-		sample_multiver_plugin_1_0
+		example_multiver_plugin_1_0
 			PRIVATE "-DPERSISTENCE_ABI_TARGET=PERSISTENCE_ABI_1_0")
 
 	set_target_properties(
-		sample_multiver_plugin_1_0 PROPERTIES
+		example_multiver_plugin_1_0 PROPERTIES
 			PREFIX "")
 
 	target_link_libraries(
-		sample_multiver_plugin_1_0
+		example_multiver_plugin_1_0
 			extit_container
 			iv_util)
 
 
 	add_library(
-		sample_multiver_plugin_1_1 SHARED
-			sample/multiver/multiver_plugin.c
+		example_multiver_plugin_1_1 SHARED
+			examples/multiver/multiver_plugin.c
 			${EXTIT_HEADER_FILES}
 			${EXTIT_PMODULE_HEADER_FILES}
 			${EXTIT_CONTAINER_HEADER_FILES}
@@ -1199,22 +1199,22 @@ if(EXTIT_COMPILE_SAMPLES)
 			${IV_UTIL_HEADER_FILES})
 
 	target_compile_definitions(
-		sample_multiver_plugin_1_1
+		example_multiver_plugin_1_1
 			PRIVATE "-DPERSISTENCE_ABI_TARGET=PERSISTENCE_ABI_1_1")
 
 	set_target_properties(
-		sample_multiver_plugin_1_1 PROPERTIES
+		example_multiver_plugin_1_1 PROPERTIES
 			PREFIX "")
 
 	target_link_libraries(
-		sample_multiver_plugin_1_1
+		example_multiver_plugin_1_1
 			extit_container
 			iv_util)
 
 
 	add_library(
-		sample_multiver_plugin_1_2 SHARED
-			sample/multiver/multiver_plugin.c
+		example_multiver_plugin_1_2 SHARED
+			examples/multiver/multiver_plugin.c
 			${EXTIT_HEADER_FILES}
 			${EXTIT_PMODULE_HEADER_FILES}
 			${EXTIT_CONTAINER_HEADER_FILES}
@@ -1222,15 +1222,15 @@ if(EXTIT_COMPILE_SAMPLES)
 			${IV_UTIL_HEADER_FILES})
 
 	target_compile_definitions(
-		sample_multiver_plugin_1_2
+		example_multiver_plugin_1_2
 			PRIVATE "-DPERSISTENCE_ABI_TARGET=PERSISTENCE_ABI_1_2")
 
 	set_target_properties(
-		sample_multiver_plugin_1_2 PROPERTIES
+		example_multiver_plugin_1_2 PROPERTIES
 			PREFIX "")
 
 	target_link_libraries(
-		sample_multiver_plugin_1_2
+		example_multiver_plugin_1_2
 			extit_container
 			iv_util)
 
@@ -1239,22 +1239,22 @@ if(EXTIT_COMPILE_SAMPLES)
 	# Plugin Scanning
 	#
 	add_executable(
-		sample_scan_server
-			sample/scan/recipe_server.c
+		example_scan_server
+			examples/scan/recipe_server.c
 			${EXTIT_HEADER_FILES}
 			${EXTIT_PMODULE_HEADER_FILES}
 			${IV_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
 
 	target_link_libraries(
-		sample_scan_server
+		example_scan_server
 			extit_container_stdimpl
 			extit_pmodule)
 
 
 	add_library(
-		sample_scan_plugin_pie SHARED
-			sample/scan/recipe_pie.c
+		example_scan_plugin_pie SHARED
+			examples/scan/recipe_pie.c
 			${EXTIT_HEADER_FILES}
 			${EXTIT_PMODULE_HEADER_FILES}
 			${EXTIT_CONTAINER_HEADER_FILES}
@@ -1262,18 +1262,18 @@ if(EXTIT_COMPILE_SAMPLES)
 			${IV_UTIL_HEADER_FILES})
 
 	set_target_properties(
-		sample_scan_plugin_pie PROPERTIES
+		example_scan_plugin_pie PROPERTIES
 			PREFIX ""
 			OUTPUT_NAME "recipe-pie")
 
 	target_link_libraries(
-		sample_scan_plugin_pie
+		example_scan_plugin_pie
 			iv_util)
 
 
 	add_library(
-		sample_scan_plugin_tea SHARED
-			sample/scan/recipe_tea.c
+		example_scan_plugin_tea SHARED
+			examples/scan/recipe_tea.c
 			${EXTIT_HEADER_FILES}
 			${EXTIT_PMODULE_HEADER_FILES}
 			${EXTIT_CONTAINER_HEADER_FILES}
@@ -1281,18 +1281,18 @@ if(EXTIT_COMPILE_SAMPLES)
 			${IV_UTIL_HEADER_FILES})
 
 	set_target_properties(
-		sample_scan_plugin_tea PROPERTIES
+		example_scan_plugin_tea PROPERTIES
 			PREFIX ""
 			OUTPUT_NAME "recipe-tea")
 
 	target_link_libraries(
-		sample_scan_plugin_tea
+		example_scan_plugin_tea
 			iv_util)
 
 
 	add_library(
-		sample_scan_plugin_tacos SHARED
-			sample/scan/recipe_tacos.c
+		example_scan_plugin_tacos SHARED
+			examples/scan/recipe_tacos.c
 			${EXTIT_HEADER_FILES}
 			${EXTIT_PMODULE_HEADER_FILES}
 			${EXTIT_CONTAINER_HEADER_FILES}
@@ -1300,12 +1300,12 @@ if(EXTIT_COMPILE_SAMPLES)
 			${IV_UTIL_HEADER_FILES})
 
 	set_target_properties(
-		sample_scan_plugin_tacos PROPERTIES
+		example_scan_plugin_tacos PROPERTIES
 			PREFIX ""
 			OUTPUT_NAME "recipe-tacos")
 
 	target_link_libraries(
-		sample_scan_plugin_tacos
+		example_scan_plugin_tacos
 			iv_util)
 
 
@@ -1313,22 +1313,22 @@ if(EXTIT_COMPILE_SAMPLES)
 	# Simple Plugin
 	#
 	add_executable(
-		sample_simple_server
-			sample/simple/simple_server.c
+		example_simple_server
+			examples/simple/simple_server.c
 			${EXTIT_HEADER_FILES}
 			${EXTIT_PMODULE_HEADER_FILES}
 			${IV_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
 
 	target_link_libraries(
-		sample_simple_server
+		example_simple_server
 			extit_container_stdimpl
 			extit_pmodule)
 
 
 	add_library(
-		sample_simple_plugin SHARED
-			sample/simple/simple_plugin.c
+		example_simple_plugin SHARED
+			examples/simple/simple_plugin.c
 			${EXTIT_HEADER_FILES}
 			${EXTIT_PMODULE_HEADER_FILES}
 			${EXTIT_CONTAINER_HEADER_FILES}
@@ -1336,14 +1336,14 @@ if(EXTIT_COMPILE_SAMPLES)
 			${IV_UTIL_HEADER_FILES})
 
 	set_target_properties(
-		sample_simple_plugin PROPERTIES
+		example_simple_plugin PROPERTIES
 			PREFIX "")
 
 	target_link_libraries(
-		sample_simple_plugin
+		example_simple_plugin
 			extit_container
 			iv_util)
-endif(EXTIT_COMPILE_SAMPLES)
+endif(EXTIT_COMPILE_EXAMPLES)
 
 
 if(EXTIT_COMPILE_TESTS)

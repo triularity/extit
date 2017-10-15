@@ -1,5 +1,5 @@
 /*
- * @(#) sample/stdif_referenced/myobj.h
+ * @(#) examples/stdif_referenced/myobj.h
  *
  * This file is in the Public Domain.
  */

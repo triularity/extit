@@ -1,5 +1,5 @@
 /*
- * @(#) sample/stdif_resolvable/myobj_priv.h
+ * @(#) examples/stdif_resolvable/myobj_priv.h
  *
  * This file is in the Public Domain.
  */

@@ -43,7 +43,7 @@ This project uses Cmake (2.8.12+). Configuration options are:
 
 	EXTIT_WARNFREE		Cause the build to fail on compile warnings.
 
-	EXTIT_COMPILE_SAMPLES	Compile the sample code.
+	EXTIT_COMPILE_EXAMPLES	Compile the example code.
 
 	EXTIT_COMPILE_TESTS	Compile the unit tests.
 
@@ -67,7 +67,7 @@ src/include/		Public header files.
 src/iv/			IV source code.
 src/extit/		ExtIt source code.
 src/if/			Standard ExtIt interfaces source code.
-samples/		Sample code.
+examples/		Example code.
 tests/			Unit tests.
 docs/			Documentation.
 

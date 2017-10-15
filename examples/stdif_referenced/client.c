@@ -1,5 +1,5 @@
 /*
- * @(#) sample/stdif_referenced/client.c
+ * @(#) examples/stdif_referenced/client.c
  *
  * This file is in the Public Domain.
  */
