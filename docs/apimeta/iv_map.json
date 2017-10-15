@@ -3,7 +3,6 @@
 	"description": "A low level library for mapping name/interface pairs. It is intended to be used as a base implementation for services that need such mappings.",
 	"includes":
 	[
-		"iv/base.h",
 		"iv/map.h"
 	],
 	"libraries":
