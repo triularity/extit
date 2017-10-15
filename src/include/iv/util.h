@@ -118,6 +118,7 @@ const unsigned char *	IV_DECL
 #endif	/* IV_COMPAT */
 
 
+LIBAPI
 iv_bool_t		IV_DECL
 			iv_matches(
 				iv_version_t version,
