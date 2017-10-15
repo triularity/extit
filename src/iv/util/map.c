@@ -11,20 +11,8 @@
 #include <stddef.h>
 #include <string.h>
 
-#ifdef	_WIN32
-#include <windows.h>
-#else
-#include <strings.h>
-#endif
-
 #include <iv/base.h>
 #include <iv/util.h>
-
-#ifdef	_WIN32
-#define	STRCASECMP(a,b)		_stricmp((a),(b))
-#else
-#define	STRCASECMP(a,b)		strcasecmp((a),(b))
-#endif
 
 #define	DEFAULT_HASH_SIZE	29
 #define	BUCKET_SIZE		10
@@ -136,7 +124,7 @@ bucket_acquire_valueptr
 			entry = &bucket->entries[idx];
 
 			if((entry->hashval == hashval)
-			 && (STRCASECMP(entry->iid, iid) == 0)
+			 && (IV_IID_STRCMP(entry->iid, iid) == 0)
 			 && (strcmp(entry->nid, nid) == 0))
 			{
 				if(internal_nidp != NULL)
@@ -308,7 +296,7 @@ bucket_get
 			entry = (bucket_entry_t *) &bucket->entries[idx];
 
 			if((entry->hashval == hashval)
-			 && (STRCASECMP(entry->iid, iid) == 0)
+			 && (IV_IID_STRCMP(entry->iid, iid) == 0)
 			 && (strcmp(entry->nid, nid) == 0))
 			{
 				return entry;

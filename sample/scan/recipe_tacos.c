@@ -109,7 +109,7 @@ plugin_get_interface
 	/*
 	 * Recipe is the only supported interface by this
 	 */
-	if((EXTIT_STRCASECMP(RECIPE_INTERFACE_ID, iid) == 0)
+	if((IV_IID_STRCMP(RECIPE_INTERFACE_ID, iid) == 0)
 	 && iv_matches(RECIPE_INTERFACE_VERSION, version))
 	{
 		impl = (recipe_impl_t *) ctx;
@@ -136,7 +136,7 @@ plugin_query_interface
 	/*
 	 * Recipe is the only supported interface by this
 	 */
-	if((EXTIT_STRCASECMP(RECIPE_INTERFACE_ID, iid) == 0)
+	if((IV_IID_STRCMP(RECIPE_INTERFACE_ID, iid) == 0)
 	 && iv_matches(RECIPE_INTERFACE_VERSION, base_version))
 	{
 		return RECIPE_INTERFACE_VERSION;

@@ -8,6 +8,7 @@
 #include <string.h>
 
 #include <iv/base.h>
+#include <iv/util.h>
 #include <extit/container.h>
 #include <extit/container_impl.h>
 #include <extit/container_stdimpl.h>
@@ -27,7 +28,7 @@ my_get_interface
 	iv_version_t version
 )
 {
-	if((EXTIT_STRCASECMP(id, STDIF_ALLOCATOR_IID) == 0)
+	if((IV_IID_STRCMP(id, STDIF_ALLOCATOR_IID) == 0)
 	 && (version == STDIF_ALLOCATOR_ABI_1_0))
 	{
 		return &stdif_allocator_stdimpl_1_0;
@@ -47,7 +48,7 @@ my_query_interface
 	iv_version_t base_version
 )
 {
-	if((EXTIT_STRCASECMP(id, STDIF_ALLOCATOR_IID) == 0)
+	if((IV_IID_STRCMP(id, STDIF_ALLOCATOR_IID) == 0)
 	 && (base_version == STDIF_ALLOCATOR_ABI_1_0))
 	{
 		return STDIF_ALLOCATOR_ABI_1_0;

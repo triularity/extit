@@ -1,6 +1,6 @@
 {
-	"title": "iv_matches()",
-	"description": "A utility for checking interface version compatibility.",
+	"title": "IV Utilities",
+	"description": "Interface Versioning Utilities",
 	"includes":
 	[
 		"iv/base.h",
@@ -12,7 +12,87 @@
 	],
 	"synopsis":
 	[
-
+		{
+			"type": "macro",
+			"name": "IV_IID_STRCMP",
+			"parameters":
+			[
+				{
+					"name": "iid_1",
+					"description": "An interface ID."
+				},
+				{
+					"name": "iid_2",
+					"description": "An interface ID."
+				}
+			],
+			"returns":
+			[
+				{
+					"type": "text:code",
+					"value": "0"
+				},
+				" if the identifiers are equal."
+			],
+			"summary": "Compare two interface identifiers.",
+			"description":
+			[
+				"Compare two interface identifiers with the same semantics as ",
+				{
+					"type": "ref:function",
+					"name": "strcmp",
+					"parameters":
+					[
+						[ "const",  "char", "*" ],
+						[ "const",  "char", "*" ]
+					]
+				},
+				"."
+			]
+		},
+		{
+			"type": "macro",
+			"name": "IV_IID_STRNCMP",
+			"parameters":
+			[
+				{
+					"name": "iid_1",
+					"description": "An interface ID."
+				},
+				{
+					"name": "iid_2",
+					"description": "An interface ID."
+				},
+				{
+					"name": "len",
+					"description": "The maximum characters to compare."
+				}
+			],
+			"returns":
+			[
+				{
+					"type": "text:code",
+					"value": "0"
+				},
+				" if the identifiers are equal."
+			],
+			"summary": "Compare two interface identifiers.",
+			"description":
+			[
+				"Compare two interface identifiers with the same semantics as ",
+				{
+					"type": "ref:function",
+					"name": "strncmp",
+					"parameters":
+					[
+						[ "const",  "char", "*" ],
+						[ "const",  "char", "*" ],
+						"size_t"
+					]
+				},
+				"."
+			]
+		},
 		{
 			"type": "macro",
 			"name": "IV_MATCHES",

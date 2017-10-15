@@ -12,6 +12,12 @@
 
 #include <stddef.h>
 
+#ifdef	_WIN32
+#include <windows.h>
+#else
+#include <strings.h>
+#endif
+
 #include <iv/base.h>
 
 #ifdef	iv_util_EXPORTS
@@ -23,6 +29,18 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif
+
+/*
+ * Interface ID strcmp() and strncmp()
+ */
+#ifdef	_WIN32
+#define	IV_IID_STRCMP(a,b)		_stricmp((a),(b))
+#define	IV_IID_STRNCMP(a,b,l)		_strnicmp((a),(b),(l))
+#else
+#define	IV_IID_STRCMP(a,b)		strcasecmp((a),(b))
+#define	IV_IID_STRNCMP(a,b,l)		strncasecmp((a),(b),(l))
+#endif
+
 
 /*
  * Inline iv_matches() optimized for compile-time req_version constant

@@ -3,14 +3,14 @@
  <head>
   <!-- !!! THIS FILE WAS AUTOMATICALLY GENERATED - ANY EDITS MAY BE LOST !!! -->
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>iv_matches()</title>
+  <title>IV Utilities</title>
   <link rel="stylesheet" href="style.css">
  </head>
 
  <body>
   <div class="description">
    <p>
-    A utility for checking interface version compatibility.
+    Interface Versioning Utilities
    </p>
   </div class="description">
   <div class="section" id="libraries">
@@ -44,6 +44,63 @@
      <div class="declaration">
       <table>
        <tr>
+        <td><span class="macro-name"><a name="IV_IID_STRCMP">IV_IID_STRCMP</a></span>(<em class="parameter-name">iid_1</em>, <em class="parameter-name">iid_2</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      <p>
+       Compare two interface identifiers with the same semantics as <code class="ref">strcmp()</code>.<br />
+      </p>
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">iid_1</em> - An interface ID.<br />
+       <em class="parameter-name">iid_2</em> - An interface ID.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd><code class="literal">0</code> if the identifiers are equal.</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
+        <td><span class="macro-name"><a name="IV_IID_STRNCMP">IV_IID_STRNCMP</a></span>(<em class="parameter-name">iid_1</em>, <em class="parameter-name">iid_2</em>, <em class="parameter-name">len</em>)</td>
+       </tr>
+      </table>
+     </div>
+
+     <div class="description">
+      <p>
+       Compare two interface identifiers with the same semantics as <code class="ref">strncmp()</code>.<br />
+      </p>
+     </div>
+
+     <dl class="details">
+      <dt class="parameters"><strong class="label">Parameters:</strong></dt>
+      <dd>
+       <em class="parameter-name">iid_1</em> - An interface ID.<br />
+       <em class="parameter-name">iid_2</em> - An interface ID.<br />
+       <em class="parameter-name">len</em> - The maximum characters to compare.<br />
+      </dd>
+
+      <dt class="returns"><strong class="label">Returns:</strong></dt>
+      <dd><code class="literal">0</code> if the identifiers are equal.</dd>
+
+     </dl>
+    </div>
+
+    <div class="item">
+     <div class="declaration">
+      <table>
+       <tr>
         <td><span class="macro-name"><a name="IV_MATCHES">IV_MATCHES</a></span>(<em class="parameter-name">version</em>, <em class="parameter-name">req_version</em>)</td>
        </tr>
       </table>
@@ -53,7 +110,7 @@
       <p>
        Check if an interface version implements a required version. For a normal <em class="parameter-reference">req_version</em>, not <code class="literal">0.x</code>, this will check if the major versions are equal and that the minor version is greater than or equal to the required minor version. For a special <em class="parameter-reference">req_version</em>, <code class="literal">0.x</code>, the minor versions must be equal to match.<br />
 <br />
- This is an inline version of <code class="ref"><a href="iv_matches.html#iv_matches">iv_matches()</a></code> that is optimized for a compile-time <em class="parameter-reference">req_version</em> constant. Using this with a non-constant may be less efficient than calling the function implementation.<br />
+ This is an inline version of <code class="ref"><a href="iv_util.html#iv_matches">iv_matches()</a></code> that is optimized for a compile-time <em class="parameter-reference">req_version</em> constant. Using this with a non-constant may be less efficient than calling the function implementation.<br />
       </p>
      </div>
 

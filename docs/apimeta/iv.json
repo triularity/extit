@@ -3,7 +3,8 @@
 	"description": "A collection of types and macros for managing interface versions.",
 	"includes":
 	[
-		"iv/base.h"
+		"iv/base.h",
+		"iv/version.h"
 	],
 	"synopsis":
 	[
@@ -175,11 +176,6 @@
 	"see":
 	[
 		{
-			"type": "ref:function",
-			"name": "iv_matches",
-			"section": "3"
-		},
-		{
 			"type": "ref:generic",
 			"name": "Interface Versioning Map",
 			"link": "iv_map",
@@ -189,6 +185,12 @@
 			"type": "ref:generic",
 			"name": "Interface Versioning Repository",
 			"link": "iv_repository",
+			"section": "3"
+		},
+		{
+			"type": "ref:generic",
+			"name": "Interface Versioning Utilities",
+			"link": "iv_util",
 			"section": "3"
 		}
 	]

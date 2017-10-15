@@ -108,14 +108,14 @@ my_resolv_get_interface
 	 * Just simple stdif/else if's for example ...
 	 */
 
-	if((EXTIT_STRCASECMP(id, MYOBJ_IID) == 0)
+	if((IV_IID_STRCMP(id, MYOBJ_IID) == 0)
 	 && iv_matches(MYOBJ_ABI_1_0, version))
 	{
 		return ((char *) resolvable)
 			- offsetof(myobj_t, resolvable);
 	}
 
-	if((EXTIT_STRCASECMP(id, STDIF_REFERENCED_IID) == 0)
+	if((IV_IID_STRCMP(id, STDIF_REFERENCED_IID) == 0)
 	 && iv_matches(STDIF_REFERENCED_ABI_1_0, version))
 	{
 		return ((char *) resolvable)
@@ -123,7 +123,7 @@ my_resolv_get_interface
 			+ offsetof(myobj_t, referenced);
 	}
 
-	if((EXTIT_STRCASECMP(id, STDIF_CONFIGURABLE_IID) == 0)
+	if((IV_IID_STRCMP(id, STDIF_CONFIGURABLE_IID) == 0)
 	 && iv_matches(STDIF_CONFIGURABLE_ABI_1_0, version))
 	{
 		return ((char *) resolvable)
@@ -146,19 +146,19 @@ my_resolv_query_interface
 	iv_version_t base_version
 )
 {
-	if((EXTIT_STRCASECMP(id, MYOBJ_IID) == 0)
+	if((IV_IID_STRCMP(id, MYOBJ_IID) == 0)
 	 && iv_matches(MYOBJ_ABI_1_0, base_version))
 	{
 		return MYOBJ_ABI_1_0;
 	}
 
-	if((EXTIT_STRCASECMP(id, STDIF_REFERENCED_IID) == 0)
+	if((IV_IID_STRCMP(id, STDIF_REFERENCED_IID) == 0)
 	 && iv_matches(STDIF_REFERENCED_ABI_1_0, base_version))
 	{
 		return STDIF_REFERENCED_ABI_1_0;
 	}
 
-	if((EXTIT_STRCASECMP(id, STDIF_CONFIGURABLE_IID) == 0)
+	if((IV_IID_STRCMP(id, STDIF_CONFIGURABLE_IID) == 0)
 	 && iv_matches(STDIF_CONFIGURABLE_ABI_1_0, base_version))
 	{
 		return STDIF_CONFIGURABLE_ABI_1_0;
