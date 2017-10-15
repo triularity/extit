@@ -916,6 +916,10 @@ if(EXTIT_COMPILE_SAMPLES)
 			${IV_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
 
+	set_target_properties(
+		sample_stdif_allocator_plugin PROPERTIES
+			PREFIX "")
+
 	target_link_libraries(
 		sample_stdif_allocator_plugin
 			stdif_allocator
@@ -1178,6 +1182,7 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	set_target_properties(
 		sample_multiver_plugin_1_0 PROPERTIES
+			PREFIX ""
 			COMPILE_DEFINITIONS
 				"PERSISTENCE_ABI_TARGET=PERSISTENCE_ABI_1_0")
 
@@ -1198,6 +1203,7 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	set_target_properties(
 		sample_multiver_plugin_1_1 PROPERTIES
+			PREFIX ""
 			COMPILE_DEFINITIONS
 				"PERSISTENCE_ABI_TARGET=PERSISTENCE_ABI_1_1")
 
@@ -1218,8 +1224,9 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	set_target_properties(
 		sample_multiver_plugin_1_2 PROPERTIES
+			PREFIX ""
 			COMPILE_DEFINITIONS
-			"PERSISTENCE_ABI_TARGET=PERSISTENCE_ABI_1_2")
+				"PERSISTENCE_ABI_TARGET=PERSISTENCE_ABI_1_2")
 
 
 	#
@@ -1321,6 +1328,10 @@ if(EXTIT_COMPILE_SAMPLES)
 			${EXTIT_CONTAINER_HEADER_FILES}
 			${IV_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
+
+	set_target_properties(
+		sample_simple_plugin PROPERTIES
+			PREFIX "")
 
 	target_link_libraries(
 		sample_simple_plugin
