@@ -1,7 +1,7 @@
 /*
  * @(#) extit/src/iv/util/matches.c
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -9,7 +9,6 @@
 #include <iv/util.h>
 
 
-IV_EXPORT
 iv_bool_t
 IV_DECL
 iv_matches

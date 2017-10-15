@@ -3,7 +3,7 @@
  *
  * Interface versioning ID map.
  *
- * Copyright (c) 2016, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -310,7 +310,6 @@ bucket_get_valueptr
 
 
 
-IV_EXPORT
 iv_keymap_t *
 IV_DECL
 iv_keymap_create
@@ -337,7 +336,6 @@ iv_keymap_create
 }
 
 
-IV_EXPORT
 void **
 IV_DECL
 iv_keymap_acquire_valueptr
@@ -362,7 +360,6 @@ iv_keymap_acquire_valueptr
 }
 
 
-IV_EXPORT
 void
 IV_DECL
 iv_keymap_cleanup
@@ -379,7 +376,6 @@ iv_keymap_cleanup
 }
 
 
-IV_EXPORT
 void
 IV_DECL
 iv_keymap_destroy
@@ -399,7 +395,6 @@ iv_keymap_destroy
 }
 
 
-IV_EXPORT
 void *
 IV_DECL
 iv_keymap_get
@@ -428,7 +423,6 @@ iv_keymap_get
 }
 
 
-IV_EXPORT
 void **
 IV_DECL
 iv_keymap_get_valueptr
@@ -451,7 +445,6 @@ iv_keymap_get_valueptr
 }
 
 
-IV_EXPORT
 const unsigned char *
 IV_DECL
 iv_keymap_intern_key

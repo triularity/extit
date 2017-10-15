@@ -332,7 +332,6 @@ bucket_get_valueptr
 
 
 
-IV_EXPORT
 iv_map_t *
 IV_DECL
 iv_map_create
@@ -359,7 +358,6 @@ iv_map_create
 }
 
 
-IV_EXPORT
 void **
 IV_DECL
 iv_map_acquire_valueptr
@@ -394,7 +392,6 @@ iv_map_acquire_valueptr
 }
 
 
-IV_EXPORT
 void
 IV_DECL
 iv_map_cleanup
@@ -411,7 +408,6 @@ iv_map_cleanup
 }
 
 
-IV_EXPORT
 void
 IV_DECL
 iv_map_destroy
@@ -431,7 +427,6 @@ iv_map_destroy
 }
 
 
-IV_EXPORT
 void *
 IV_DECL
 iv_map_get
@@ -468,7 +463,6 @@ iv_map_get
 }
 
 
-IV_EXPORT
 void **
 IV_DECL
 iv_map_get_valueptr
@@ -499,7 +493,6 @@ iv_map_get_valueptr
 }
 
 
-IV_EXPORT
 const char *
 IV_DECL
 iv_map_intern_interfaceid
@@ -536,7 +529,6 @@ iv_map_intern_interfaceid
 }
 
 
-IV_EXPORT
 const char *
 IV_DECL
 iv_map_intern_nameid
