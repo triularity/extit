@@ -1175,16 +1175,18 @@ if(EXTIT_COMPILE_SAMPLES)
 			${IV_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
 
+	target_compile_definitions(
+		sample_multiver_plugin_1_0
+			PRIVATE "-DPERSISTENCE_ABI_TARGET=PERSISTENCE_ABI_1_0")
+
+	set_target_properties(
+		sample_multiver_plugin_1_0 PROPERTIES
+			PREFIX "")
+
 	target_link_libraries(
 		sample_multiver_plugin_1_0
 			extit_container
 			iv_util)
-
-	set_target_properties(
-		sample_multiver_plugin_1_0 PROPERTIES
-			PREFIX ""
-			COMPILE_DEFINITIONS
-				"PERSISTENCE_ABI_TARGET=PERSISTENCE_ABI_1_0")
 
 
 	add_library(
@@ -1196,16 +1198,18 @@ if(EXTIT_COMPILE_SAMPLES)
 			${IV_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
 
+	target_compile_definitions(
+		sample_multiver_plugin_1_1
+			PRIVATE "-DPERSISTENCE_ABI_TARGET=PERSISTENCE_ABI_1_1")
+
+	set_target_properties(
+		sample_multiver_plugin_1_1 PROPERTIES
+			PREFIX "")
+
 	target_link_libraries(
 		sample_multiver_plugin_1_1
 			extit_container
 			iv_util)
-
-	set_target_properties(
-		sample_multiver_plugin_1_1 PROPERTIES
-			PREFIX ""
-			COMPILE_DEFINITIONS
-				"PERSISTENCE_ABI_TARGET=PERSISTENCE_ABI_1_1")
 
 
 	add_library(
@@ -1217,16 +1221,18 @@ if(EXTIT_COMPILE_SAMPLES)
 			${IV_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
 
+	target_compile_definitions(
+		sample_multiver_plugin_1_2
+			PRIVATE "-DPERSISTENCE_ABI_TARGET=PERSISTENCE_ABI_1_2")
+
+	set_target_properties(
+		sample_multiver_plugin_1_2 PROPERTIES
+			PREFIX "")
+
 	target_link_libraries(
 		sample_multiver_plugin_1_2
 			extit_container
 			iv_util)
-
-	set_target_properties(
-		sample_multiver_plugin_1_2 PROPERTIES
-			PREFIX ""
-			COMPILE_DEFINITIONS
-				"PERSISTENCE_ABI_TARGET=PERSISTENCE_ABI_1_2")
 
 
 	#
@@ -1255,14 +1261,14 @@ if(EXTIT_COMPILE_SAMPLES)
 			${IV_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
 
-	target_link_libraries(
-		sample_scan_plugin_pie
-			iv_util)
-
 	set_target_properties(
 		sample_scan_plugin_pie PROPERTIES
 			PREFIX ""
 			OUTPUT_NAME "recipe-pie")
+
+	target_link_libraries(
+		sample_scan_plugin_pie
+			iv_util)
 
 
 	add_library(
@@ -1274,14 +1280,14 @@ if(EXTIT_COMPILE_SAMPLES)
 			${IV_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
 
-	target_link_libraries(
-		sample_scan_plugin_tea
-			iv_util)
-
 	set_target_properties(
 		sample_scan_plugin_tea PROPERTIES
 			PREFIX ""
 			OUTPUT_NAME "recipe-tea")
+
+	target_link_libraries(
+		sample_scan_plugin_tea
+			iv_util)
 
 
 	add_library(
@@ -1293,14 +1299,14 @@ if(EXTIT_COMPILE_SAMPLES)
 			${IV_HEADER_FILES}
 			${IV_UTIL_HEADER_FILES})
 
-	target_link_libraries(
-		sample_scan_plugin_tacos
-			iv_util)
-
 	set_target_properties(
 		sample_scan_plugin_tacos PROPERTIES
 			PREFIX ""
 			OUTPUT_NAME "recipe-tacos")
+
+	target_link_libraries(
+		sample_scan_plugin_tacos
+			iv_util)
 
 
 	#
