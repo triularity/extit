@@ -445,10 +445,6 @@ add_library(
 		${IV_HEADER_FILES}
 		${IV_UTIL_HEADER_FILES})
 
-set_target_properties(
-	extit_pmodule PROPERTIES
-		POSITION_INDEPENDENT_CODE ON)
-
 target_link_libraries(
 	extit_pmodule
 		extit_container
@@ -470,10 +466,6 @@ add_library(
 		${IV_HEADER_FILES}
 		${EXTIT_HEADER_FILES})
 
-set_target_properties(
-	extit_container PROPERTIES
-		POSITION_INDEPENDENT_CODE ON)
-
 
 #
 # [lib]extit_container_stdimpl
@@ -485,10 +477,6 @@ add_library(
 		${IV_HEADER_FILES}
 		${IV_MAP_HEADER_FILES}
 		${EXTIT_HEADER_FILES})
-
-set_target_properties(
-	extit_container_stdimpl PROPERTIES
-		POSITION_INDEPENDENT_CODE ON)
 
 target_link_libraries(
 	extit_container_stdimpl
@@ -505,10 +493,6 @@ add_library(
 		${EXTIT_HEADER_FILES}
 		${EXTIT_UTIL_HEADER_FILES})
 
-set_target_properties(
-	extit_util PROPERTIES
-		POSITION_INDEPENDENT_CODE ON)
-
 
 #
 # [lib]stdif_allocator
@@ -520,10 +504,6 @@ add_library(
 		${STDIF_ALLOCATOR_HEADER_FILES}
 		${IV_HEADER_FILES}
 		${IV_UTIL_HEADER_FILES})
-
-set_target_properties(
-	stdif_allocator PROPERTIES
-		POSITION_INDEPENDENT_CODE ON)
 
 if(EXTIT_PARANOID)
 	target_link_libraries(
@@ -543,10 +523,6 @@ add_library(
 		${STDIF_ALLOCATOR_STDIMPL_HEADER_FILES}
 		${IV_HEADER_FILES})
 
-set_target_properties(
-	stdif_allocator_stdimpl PROPERTIES
-		POSITION_INDEPENDENT_CODE ON)
-
 
 #
 # [lib]stdif_configurable
@@ -558,10 +534,6 @@ add_library(
 		${STDIF_CONFIGURABLE_HEADER_FILES}
 		${IV_HEADER_FILES}
 		${IV_UTIL_HEADER_FILES})
-
-set_target_properties(
-	stdif_configurable PROPERTIES
-		POSITION_INDEPENDENT_CODE ON)
 
 if(EXTIT_PARANOID)
 	target_link_libraries(
@@ -580,10 +552,6 @@ add_library(
 		${STDIF_CONFIGURABLE_HEADER_FILES}
 		${STDIF_CONFIGURABLE_STDIMPL_HEADER_FILES}
 		${IV_HEADER_FILES})
-
-set_target_properties(
-	stdif_configurable_stdimpl PROPERTIES
-		POSITION_INDEPENDENT_CODE ON)
 
 target_link_libraries(
 	stdif_configurable_stdimpl
@@ -617,10 +585,6 @@ if(MINGW AND ${CMAKE_C_COMPILER_ID} STREQUAL "GNU")
 			PRIVATE -Wno-error=format)
 endif()
 
-set_target_properties(
-	stdif_configurable_util PROPERTIES
-		POSITION_INDEPENDENT_CODE ON)
-
 
 #
 # [lib]stdif_disposable
@@ -632,10 +596,6 @@ add_library(
 		${STDIF_DISPOSABLE_HEADER_FILES}
 		${IV_HEADER_FILES}
 		${IV_UTIL_HEADER_FILES})
-
-set_target_properties(
-	stdif_disposable PROPERTIES
-		POSITION_INDEPENDENT_CODE ON)
 
 if(EXTIT_PARANOID)
 	target_link_libraries(
@@ -655,10 +615,6 @@ add_library(
 		${IV_HEADER_FILES}
 		${IV_UTIL_HEADER_FILES})
 
-set_target_properties(
-	stdif_messaging PROPERTIES
-		POSITION_INDEPENDENT_CODE ON)
-
 if(EXTIT_PARANOID)
 	target_link_libraries(
 		stdif_messaging
@@ -677,10 +633,6 @@ add_library(
 		${STDIF_MESSAGING_STDIMPL_HEADER_FILES}
 		${IV_HEADER_FILES})
 
-set_target_properties(
-	stdif_messaging_stdimpl PROPERTIES
-		POSITION_INDEPENDENT_CODE ON)
-
 target_link_libraries(
 	stdif_messaging_stdimpl
 		iv_map
@@ -698,10 +650,6 @@ add_library(
 		${EXTIT_UTIL_HEADER_FILES}
 		${IV_HEADER_FILES}
 		${IV_UTIL_HEADER_FILES})
-
-set_target_properties(
-	stdif_referenced PROPERTIES
-		POSITION_INDEPENDENT_CODE ON)
 
 target_link_libraries(
 	stdif_referenced
@@ -725,10 +673,6 @@ add_library(
 		${IV_HEADER_FILES}
 		${IV_UTIL_HEADER_FILES})
 
-set_target_properties(
-	stdif_resolvable PROPERTIES
-		POSITION_INDEPENDENT_CODE ON)
-
 if(EXTIT_PARANOID)
 	target_link_libraries(
 		stdif_resolvable
@@ -746,10 +690,6 @@ add_library(
 		${IV_UTIL_HEADER_FILES}
 		${IV_MAP_HEADER_FILES})
 
-set_target_properties(
-	iv_map PROPERTIES
-		POSITION_INDEPENDENT_CODE ON)
-
 
 #
 # [lib]iv_repository
@@ -760,10 +700,6 @@ add_library(
 		${IV_HEADER_FILES}
 		${IV_MAP_FILES}
 		${IV_REPOSITORY_HEADER_FILES})
-
-set_target_properties(
-	iv_repository PROPERTIES
-		POSITION_INDEPENDENT_CODE ON)
 
 target_link_libraries(
 	iv_repository
@@ -779,10 +715,6 @@ add_library(
 		${IV_UTIL_SOURCE_FILES}
 		${IV_HEADER_FILES}
 		${IV_UTIL_HEADER_FILES})
-
-set_target_properties(
-	iv_util PROPERTIES
-		POSITION_INDEPENDENT_CODE ON)
 
 
 #
