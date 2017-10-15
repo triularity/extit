@@ -9,7 +9,7 @@
 #include <stdlib.h>
 
 #include <iv/base.h>
-#include <iv/util.h>
+#include <iv/map.h>
 #include <iv/repository.h>
 
 #include "internal.h"
@@ -34,7 +34,6 @@ free_vlist(void *value)
 }
 
 
-IV_EXPORT
 iv_repository_t *
 IV_DECL
 iv_repository_create(void)

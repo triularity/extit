@@ -6,13 +6,12 @@
  */
 
 #include <iv/base.h>
-#include <iv/util.h>
+#include <iv/map.h>
 #include <iv/repository.h>
 
 #include "internal.h"
 
 
-IV_EXPORT
 void *
 IV_DECL
 iv_repository_get

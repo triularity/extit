@@ -1,5 +1,5 @@
 /*
- * @(#) extit/src/iv/util/map.c
+ * @(#) extit/src/iv/map.c
  *
  * Interface versioning ID map.
  *
@@ -12,6 +12,7 @@
 #include <string.h>
 
 #include <iv/base.h>
+#include <iv/map.h>
 #include <iv/util.h>
 
 #define	DEFAULT_HASH_SIZE	29

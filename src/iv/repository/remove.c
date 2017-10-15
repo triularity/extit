@@ -8,13 +8,12 @@
 #include <stdlib.h>
 
 #include <iv/base.h>
-#include <iv/util.h>
+#include <iv/map.h>
 #include <iv/repository.h>
 
 #include "internal.h"
 
 
-IV_EXPORT
 iv_repository_status_t
 IV_DECL
 iv_repository_remove

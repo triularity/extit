@@ -11,7 +11,7 @@
 #include <stddef.h>
 
 #include <iv/base.h>
-#include <iv/util.h>
+#include <iv/map.h>
 #include <extit/base.h>
 #include <extit/util.h>
 #include <stdif/messaging.h>

@@ -118,64 +118,6 @@ const unsigned char *	IV_DECL
 #endif	/* IV_COMPAT */
 
 
-typedef	struct _iv_map		iv_map_t;
-
-
-LIBAPI
-void **			IV_DECL
-			iv_map_acquire_valueptr(
-				iv_map_t *map,
-				const char *nid,
-				const char *iid,
-				const char **internal_nidp,
-				const char **internal_iidp);
-
-LIBAPI
-void			IV_DECL
-			iv_map_cleanup(
-				iv_map_t *map,
-				void (*cleaner)(void **valueptr));
-
-LIBAPI
-iv_map_t *		IV_DECL
-			iv_map_create(
-				uint32_t hashsize,
-				void (*free_callback)(void *value));
-
-LIBAPI
-void			IV_DECL
-			iv_map_destroy(
-				iv_map_t *map);
-
-LIBAPI
-void *			IV_DECL
-			iv_map_get(
-				iv_map_t *map,
-				const char *nid,
-				const char *iid);
-
-LIBAPI
-void **			IV_DECL
-			iv_map_get_valueptr(
-				iv_map_t *map,
-				const char *nid,
-				const char *iid);
-
-LIBAPI
-const char *		IV_DECL
-			iv_map_intern_interfaceid(
-				iv_map_t *map,
-				const char *nid,
-				const char *iid);
-
-LIBAPI
-const char *		IV_DECL
-			iv_map_intern_nameid(
-				iv_map_t *map,
-				const char *nid,
-				const char *iid);
-
-LIBAPI
 iv_bool_t		IV_DECL
 			iv_matches(
 				iv_version_t version,

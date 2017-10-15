@@ -9,7 +9,7 @@
 #define	__internal_h
 
 #include <iv/base.h>
-#include <iv/util.h>
+#include <iv/map.h>
 
 #ifdef	__cplusplus
 extern "C" {

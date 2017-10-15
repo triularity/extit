@@ -291,6 +291,14 @@ set(IV_HEADER_FILES
 	src/include/iv/version.h)
 
 
+# IV map
+set(IV_MAP_HEADER_FILES 
+	src/include/iv/map.h)
+
+set(IV_MAP_SOURCE_FILES
+	src/iv/map.c)
+
+
 # IV repository
 set(IV_REPOSITORY_HEADER_FILES 
 	src/include/iv/repository.h)
@@ -310,7 +318,6 @@ set(IV_UTIL_HEADER_FILES
 	src/include/iv/util.h)
 
 set(IV_UTIL_SOURCE_FILES
-	src/iv/util/map.c
 	src/iv/util/matches.c)
 
 if(IV_COMPAT)
@@ -476,11 +483,16 @@ add_library(
 		${EXTIT_CONTAINER_STDIMPL_SOURCE_FILES}
 		${EXTIT_CONTAINER_STDIMPL_HEADER_FILES}
 		${IV_HEADER_FILES}
+		${IV_MAP_HEADER_FILES}
 		${EXTIT_HEADER_FILES})
 
 set_target_properties(
 	extit_container_stdimpl PROPERTIES
 		POSITION_INDEPENDENT_CODE ON)
+
+target_link_libraries(
+	extit_container_stdimpl
+		iv_map)
 
 
 #
@@ -671,7 +683,7 @@ set_target_properties(
 
 target_link_libraries(
 	stdif_messaging_stdimpl
-		iv_util
+		iv_map
 		extit_util)
 
 
@@ -725,12 +737,28 @@ endif()
 
 
 #
+# [lib]iv_map
+#
+add_library(
+	iv_map
+		${IV_MAP_SOURCE_FILES}
+		${IV_HEADER_FILES}
+		${IV_UTIL_HEADER_FILES}
+		${IV_MAP_HEADER_FILES})
+
+set_target_properties(
+	iv_map PROPERTIES
+		POSITION_INDEPENDENT_CODE ON)
+
+
+#
 # [lib]iv_repository
 #
 add_library(
 	iv_repository
 		${IV_REPOSITORY_SOURCE_FILES}
 		${IV_HEADER_FILES}
+		${IV_MAP_FILES}
 		${IV_REPOSITORY_HEADER_FILES})
 
 set_target_properties(
@@ -739,6 +767,7 @@ set_target_properties(
 
 target_link_libraries(
 	iv_repository
+		iv_map
 		iv_util)
 
 
@@ -867,6 +896,10 @@ if(DEFINED LIBNAME_POSTFIX)
 			OUTPUT_NAME "extif_util${LIBNAME_POSTFIX}")
 
 	set_target_properties(
+		iv_map PROPERTIES
+			OUTPUT_NAME "iv_map${LIBNAME_POSTFIX}")
+
+	set_target_properties(
 		iv_repository PROPERTIES
 			OUTPUT_NAME "iv_repository${LIBNAME_POSTFIX}")
 
@@ -896,6 +929,7 @@ install(
 		extit_container_stdimpl
 		extit_pmodule
 		extit_util
+		iv_map
 		iv_repository
 		iv_util
 	DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
@@ -927,6 +961,8 @@ install(
 install(
 	FILES
 		${IV_HEADER_FILES}
+		${IV_MAP_HEADER_FILES}
+		${IV_REPOSITORY_HEADER_FILES}
 		${IV_UTIL_HEADER_FILES}
 	DESTINATION ${CMAKE_INSTALL_PREFIX}/include/iv)
 
@@ -1118,6 +1154,7 @@ if(EXTIT_COMPILE_SAMPLES)
 
 	target_link_libraries(
 		sample_iv_repository
+			iv_map
 			iv_repository)
 
 
@@ -1143,6 +1180,7 @@ if(EXTIT_COMPILE_SAMPLES)
 		sample_multiver_server_1_0
 			extit_container_stdimpl
 			extit_pmodule
+			iv_map
 			iv_repository)
 
 
@@ -1165,6 +1203,7 @@ if(EXTIT_COMPILE_SAMPLES)
 		sample_multiver_server_1_1
 			extit_container_stdimpl
 			extit_pmodule
+			iv_map
 			iv_repository)
 
 
@@ -1187,6 +1226,7 @@ if(EXTIT_COMPILE_SAMPLES)
 		sample_multiver_server_1_2
 			extit_container_stdimpl
 			extit_pmodule
+			iv_map
 			iv_repository)
 
 
@@ -1419,7 +1459,7 @@ if(EXTIT_COMPILE_TESTS)
 		test_iv_map
 			tests/iv_map/test_iv_map.c
 			${IV_HEADER_FILES}
-			${IV_UTIL_HEADER_FILES})
+			${IV_MAP_HEADER_FILES})
 
 	target_compile_options(
 		test_iv_map
@@ -1427,7 +1467,7 @@ if(EXTIT_COMPILE_TESTS)
 
 	target_link_libraries(
 		test_iv_map
-			iv_util)
+			iv_map)
 
 	add_executable(
 		test_iv_matches

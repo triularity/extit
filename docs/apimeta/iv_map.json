@@ -4,11 +4,11 @@
 	"includes":
 	[
 		"iv/base.h",
-		"iv/util.h"
+		"iv/map.h"
 	],
 	"libraries":
 	[
-		"iv_util"
+		"iv_map"
 	],
 	"synopsis":
 	[

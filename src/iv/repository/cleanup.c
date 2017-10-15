@@ -5,13 +5,12 @@
  * http://www.triularity.org/
  */
 
-#include <iv/util.h>
+#include <iv/map.h>
 #include <iv/repository.h>
 
 #include "internal.h"
 
 
-IV_EXPORT
 void
 IV_DECL
 iv_repository_cleanup
