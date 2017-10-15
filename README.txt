@@ -1,6 +1,8 @@
 
 EXTend-IT is a lightweight, interface versioning based plugin library.
 
+When compiling code that will link against shared ExtIt libraries, include the compiler flag: -DEXTIT_LINK_SHARED
+
 
 Supported OS's:
 	Windows (tested on Windows 7, 64-bit)
