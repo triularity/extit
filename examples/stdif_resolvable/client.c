@@ -5,6 +5,7 @@
  */
 
 #include <stddef.h>
+#include <stdbool.h>
 
 #include <iv/base.h>
 #include <extit/base.h>
@@ -68,7 +69,7 @@ main(int argc, char **argv)
 	prop_enabled = stdif_configurable_find_property(
 		configurable, "enabled");
 
-	stdif_configurable_set_bool(configurable, prop_enabled, EXTIT_TRUE);
+	stdif_configurable_set_bool(configurable, prop_enabled, true);
 
 
 	/*
@@ -110,7 +111,7 @@ main(int argc, char **argv)
 	/*
 	 * Going out drinking.. Disable messages, incase we get totally drunk.
 	 */
-	stdif_configurable_set_bool(configurable, prop_enabled, EXTIT_FALSE);
+	stdif_configurable_set_bool(configurable, prop_enabled, false);
 
 	/* Glug.. glug.. glug.. */
 
@@ -128,7 +129,7 @@ main(int argc, char **argv)
 	/*
 	 * [Next day]
 	 */
-	stdif_configurable_set_bool(configurable, prop_enabled, EXTIT_TRUE);
+	stdif_configurable_set_bool(configurable, prop_enabled, true);
 
 	stdif_configurable_set_utf8(
 		configurable,

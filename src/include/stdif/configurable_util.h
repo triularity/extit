@@ -11,6 +11,7 @@
 #define	__stdif__configurable_util_h
 
 #include <stdio.h>
+#include <stdbool.h>
 
 #include <extit/base.h>
 #include <stdif/configurable.h>
@@ -86,7 +87,7 @@ void			EXTIT_DECL
 			_stdif_configurable_fprint_utf8(
 				FILE *fp,
 				const char *utf,
-				extit_bool_t esc_ctrl);
+				bool esc_ctrl);
 
 LIBAPI
 const char *		EXTIT_DECL

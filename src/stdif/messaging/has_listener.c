@@ -7,6 +7,8 @@
  * http://www.triularity.org/
  */
 
+#include <stdbool.h>
+
 #include <iv/base.h>
 #include <extit/base.h>
 #include <stdif/messaging.h>
@@ -17,7 +19,7 @@
 #endif
 
 
-extit_bool_t
+bool
 EXTIT_DECL
 stdif_messaging_has_listener__1_0
 (
@@ -29,7 +31,7 @@ stdif_messaging_has_listener__1_0
 {
 #ifdef	EXTIT_PARANOID
 	if(!IV_MATCHES(messaging->version, STDIF_MESSAGING_ABI_1_0))
-		return EXTIT_FALSE;
+		return false;
 #endif
 
 #define	IMPL(x)		((stdif_messaging_1_0_t *) (x))

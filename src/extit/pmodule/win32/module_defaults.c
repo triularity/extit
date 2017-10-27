@@ -9,6 +9,7 @@
  */
 
 #include <stddef.h>
+#include <stdbool.h>
 
 #ifdef	EXTIT_WCHAR
 #include <wchar.h>
@@ -21,7 +22,7 @@
 #include <extit/platform.h>
 
 
-extit_bool_t
+bool
 EXTIT_DECL
 extit_module_scan_fnfilter_default
 (
@@ -41,7 +42,7 @@ extit_module_scan_fnfilter_default
 
 
 #ifdef	EXTIT_WCHAR
-extit_bool_t
+bool
 EXTIT_DECL
 extit_module_scan_fnfilter_wc_default
 (

@@ -8,6 +8,7 @@
  */
 
 #include <stdlib.h>
+#include <stdbool.h>
 
 #include <extit/base.h>
 #include <stdif/configurable.h>
@@ -21,7 +22,7 @@ stdif_configurable_stdimpl_set_bool__1_0
 (
 	stdif_configurable_1_0_t *conf,
 	stdif_configurable_propref_t *prop,
-	extit_bool_t value
+	bool value
 )
 {
 	return stdif_configurable_stdimpl_set_bool__1_0_base(
@@ -36,7 +37,7 @@ stdif_configurable_stdimpl_set_bool__1_0_base
 	stdif_configurable_1_0_t *conf,
 	void *base,
 	stdif_configurable_propref_t *prop,
-	extit_bool_t value
+	bool value
 )
 {
 	base = ((char *) base) + prop->offset;
@@ -44,7 +45,7 @@ stdif_configurable_stdimpl_set_bool__1_0_base
 	switch(prop->definition.type)
 	{
 		case STDIF_CONFIGURABLE_TYPE_BOOL:
-			*((extit_bool_t *) base) = value;
+			*((bool *) base) = value;
 			break;
 
 		default:

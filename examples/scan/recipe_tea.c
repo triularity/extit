@@ -6,6 +6,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <string.h>
 
 #include <iv/base.h>
@@ -28,7 +29,7 @@ typedef struct _recipe_impl
 	 */
 	unsigned int	stage;
 	unsigned int	time_passed;
-	extit_bool_t	cup_ready;
+	bool		cup_ready;
 } recipe_impl_t;
 
 
@@ -67,7 +68,7 @@ plugin_create
 	impl->recipe.prep_time = 2;
 	impl->recipe.total_time = 10;
 	impl->recipe.prepare = prepare_tea;
-	impl->cup_ready = EXTIT_FALSE;
+	impl->cup_ready = false;
 
 	impl->stage = 0;
 	impl->time_passed = 0;

@@ -26,12 +26,12 @@ extit_status_t
 proxy_callback(extit_module_t *module, void *client_data);
 
 EXTIT_DECL
-extit_bool_t
+bool
 proxy_fnfilter(const char *basename, size_t length, void *client_data);
 
 #ifdef	EXTIT_WCHAR
 EXTIT_DECL
-extit_bool_t
+bool
 proxy_fnfilter_wc(const wchar_t *basename, size_t length, void *client_data);
 #endif
 } // extern "C"
@@ -464,7 +464,7 @@ namespace
 {
 extern "C"
 EXTIT_DECL
-extit_bool_t
+bool
 proxy_fnfilter(const char *basename, size_t length, void *client_data)
 {
 	std::string			str(basename, length);
@@ -473,7 +473,7 @@ proxy_fnfilter(const char *basename, size_t length, void *client_data)
 
 	info = (struct fnfilter_string_info *) client_data;
 
-	return (extit_bool_t) info->fnfilter(str, info->client_data);
+	return info->fnfilter(str, info->client_data);
 }
 }
 
@@ -546,7 +546,7 @@ namespace
 {
 extern "C"
 EXTIT_DECL
-extit_bool_t
+bool
 proxy_fnfilter_wc(const wchar_t *basename, size_t length, void *client_data)
 {
 	std::wstring			str(basename, length);
@@ -555,7 +555,7 @@ proxy_fnfilter_wc(const wchar_t *basename, size_t length, void *client_data)
 
 	info = (struct fnfilter_wstring_info *) client_data;
 
-	return (extit_bool_t) info->fnfilter(str, info->client_data);
+	return info->fnfilter(str, info->client_data);
 }
 }
 

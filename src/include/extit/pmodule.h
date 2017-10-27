@@ -11,6 +11,7 @@
 #define	__extit__pmodule_h
 
 #include <stddef.h>
+#include <stdbool.h>
 
 #ifdef	EXTIT_WCHAR
 #include <wchar.h>
@@ -46,13 +47,13 @@ typedef	extit_status_t	(EXTIT_DECL *extit_module_scan_callback_t)(
 				extit_module_t *module,
 				void *client_data);
 
-typedef	extit_bool_t	(EXTIT_DECL *extit_module_scan_fnfilter_t)(
+typedef	bool		(EXTIT_DECL *extit_module_scan_fnfilter_t)(
 				const char *basename,
 				size_t length,
 				void *client_data);
 
 #ifdef	EXTIT_WCHAR
-typedef	extit_bool_t	(EXTIT_DECL *extit_module_scan_fnfilter_wc_t)(
+typedef	bool		(EXTIT_DECL *extit_module_scan_fnfilter_wc_t)(
 				const wchar_t *basename,
 				size_t length,
 				void *client_data);
@@ -168,7 +169,7 @@ extit_status_t		EXTIT_DECL
 #endif	/* EXTIT_WCHAR */
 
 LIBAPI_STUB
-extit_bool_t		EXTIT_DECL
+bool			EXTIT_DECL
 			extit_module_scan_fnfilter_default(
 				const char *libname,
 				size_t length,
@@ -176,7 +177,7 @@ extit_bool_t		EXTIT_DECL
 
 #ifdef	EXTIT_WCHAR
 LIBAPI_STUB
-extit_bool_t		EXTIT_DECL
+bool			EXTIT_DECL
 			extit_module_scan_fnfilter_wc_default(
 				const wchar_t *libname,
 				size_t length,

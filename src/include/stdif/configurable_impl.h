@@ -10,6 +10,8 @@
 #ifndef	__stdif__configurable_impl_h
 #define	__stdif__configurable_impl_h
 
+#include <stdbool.h>
+
 #include <extit/base.h>
 #include <stdif/configurable.h>
 
@@ -39,7 +41,7 @@ typedef struct _stdif_configurable_ops_comp_1_0
 				(EXTIT_DECL *op_get_bool)(
 					stdif_configurable_1_0_t *conf,
 					stdif_configurable_propref_t *prop,
-					extit_bool_t *valuep);
+					bool *valuep);
 
 	extit_status_t
 				(EXTIT_DECL *op_get_data)(
@@ -129,7 +131,7 @@ typedef struct _stdif_configurable_ops_comp_1_0
 				(EXTIT_DECL *op_set_bool)(
 					stdif_configurable_1_0_t *conf,
 					stdif_configurable_propref_t *prop,
-					extit_bool_t value);
+					bool value);
 
 	extit_status_t	
 				(EXTIT_DECL *op_set_data)(

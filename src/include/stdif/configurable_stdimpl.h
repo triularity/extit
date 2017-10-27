@@ -11,6 +11,7 @@
 #define	__stdif__configurable_stdimpl_h
 
 #include <stddef.h>
+#include <stdbool.h>
 
 #include <extit/base.h>
 #include <stdif/configurable.h>
@@ -72,7 +73,7 @@ extit_status_t		EXTIT_DECL
 			stdif_configurable_stdimpl_get_bool__1_0(
 				stdif_configurable_1_0_t *conf,
 				stdif_configurable_propref_t *prop,
-				extit_bool_t *valuep);
+				bool *valuep);
 
 LIBAPI
 extit_status_t		EXTIT_DECL
@@ -80,7 +81,7 @@ extit_status_t		EXTIT_DECL
 				stdif_configurable_1_0_t *conf,
 				void *base,
 				stdif_configurable_propref_t *prop,
-				extit_bool_t *valuep);
+				bool *valuep);
 
 LIBAPI_STUB
 extit_status_t		EXTIT_DECL
@@ -308,7 +309,7 @@ extit_status_t		EXTIT_DECL
 			stdif_configurable_stdimpl_set_bool__1_0(
 				stdif_configurable_1_0_t *conf,
 				stdif_configurable_propref_t *prop,
-				extit_bool_t value);
+				bool value);
 
 LIBAPI
 extit_status_t		EXTIT_DECL
@@ -316,7 +317,7 @@ extit_status_t		EXTIT_DECL
 				stdif_configurable_1_0_t *conf,
 				void *base,
 				stdif_configurable_propref_t *prop,
-				extit_bool_t value);
+				bool value);
 
 LIBAPI_STUB
 extit_status_t		EXTIT_DECL

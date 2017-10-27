@@ -6,6 +6,7 @@
  */
 
 #include <stddef.h>
+#include <stdbool.h>
 
 #include <iv/base.h>
 #include <extit/base.h>
@@ -16,7 +17,7 @@
 #include "internal.h"
 
 
-extit_bool_t
+bool
 EXTIT_DECL
 stdif_messaging_stdimpl_bound_has_listener__1_0
 (
@@ -38,10 +39,10 @@ stdif_messaging_stdimpl_bound_has_listener__1_0
 		if(bound->version < min_version)
 
 		if(bound->listeners != NULL)
-			return EXTIT_TRUE;
+			return true;
 
 		bound = bound->next;
 	}
 
-	return EXTIT_FALSE;
+	return false;
 }

@@ -10,6 +10,8 @@
 #ifndef	__stdif__configurable_h
 #define	__stdif__configurable_h
 
+#include <stdbool.h>
+
 #include <iv/base.h>
 #include <extit/base.h>
 
@@ -65,7 +67,7 @@ typedef struct _stdif_configurable_enum32
 
 typedef struct _stdif_configurable_propspec_bool
 {
-	extit_bool_t		def_value;
+	bool			def_value;
 } stdif_configurable_propspec_bool_t;
 
 
@@ -262,7 +264,7 @@ extit_status_t		EXTIT_DECL
 			stdif_configurable_get_bool__1_0(
 				stdif_configurable_t *configurable,
 				stdif_configurable_propref_t *prop,
-				extit_bool_t *valuep);
+				bool *valuep);
 
 LIBAPI
 const stdif_configurable_descriptor_t *
@@ -371,7 +373,7 @@ extit_status_t		EXTIT_DECL
 			stdif_configurable_set_bool__1_0(
 				stdif_configurable_t *configurable,
 				stdif_configurable_propref_t *prop,
-				extit_bool_t value);
+				bool value);
 
 LIBAPI
 extit_status_t		EXTIT_DECL

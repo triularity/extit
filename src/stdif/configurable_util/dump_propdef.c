@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <stdbool.h>
 #include <inttypes.h>
 
 #include <iv/base.h>
@@ -72,7 +73,7 @@ _stdif_configurable_dump_propdef
 
 	findent(fp, indent);
 	fputs("    Name: ", fp);
-	_stdif_configurable_fprint_utf8(fp, propdef->name, EXTIT_TRUE);
+	_stdif_configurable_fprint_utf8(fp, propdef->name, true);
 	fputc('\n', fp);
 
 	if(propdef->description != NULL)
@@ -81,7 +82,7 @@ _stdif_configurable_dump_propdef
 		fputs("    Description: ", fp);
 
 		_stdif_configurable_fprint_utf8(
-			fp, propdef->description, EXTIT_TRUE);
+			fp, propdef->description, true);
 
 		fputc('\n', fp);
 	}
@@ -93,9 +94,9 @@ _stdif_configurable_dump_propdef
 			fputs("    Default: ", fp);
 
 			if(propdef->spec.type_bool.def_value)
-				fputs("EXTIT_TRUE\n", fp);
+				fputs("true\n", fp);
 			else
-				fputs("EXTIT_FALSE\n", fp);
+				fputs("false\n", fp);
 
 			break;
 
@@ -344,7 +345,7 @@ _stdif_configurable_dump_propdef
 				_stdif_configurable_fprint_utf8(
 					fp,
 					propdef->spec.type_utf8.def_value,
-					EXTIT_TRUE);
+					true);
 			}
 			else
 			{

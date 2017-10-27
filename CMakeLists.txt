@@ -1348,15 +1348,6 @@ endif(EXTIT_COMPILE_EXAMPLES)
 
 if(EXTIT_COMPILE_TESTS)
 	add_executable(
-		test_extit_bool_t
-			tests/extit_bool_t/test_bool.c
-			${EXTIT_HEADER_FILES})
-
-	target_compile_options(
-		test_extit_bool_t
-			PRIVATE ${TEST_COMPILE_FLAGS})
-
-	add_executable(
 		test_extit_refcount
 			tests/extit_refcount/test_refcount.c
 			${EXTIT_HEADER_FILES}
@@ -1377,15 +1368,6 @@ if(EXTIT_COMPILE_TESTS)
 
 	target_compile_options(
 		test_iv_version
-			PRIVATE ${TEST_COMPILE_FLAGS})
-
-	add_executable(
-		test_iv_bool_t
-			tests/iv_bool_t/test_iv_bool.c
-			${IV_HEADER_FILES})
-
-	target_compile_options(
-		test_iv_bool_t
 			PRIVATE ${TEST_COMPILE_FLAGS})
 
 	if(IV_COMPAT)

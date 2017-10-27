@@ -7,6 +7,8 @@
  * http://www.triularity.org/
  */
 
+#include <stdbool.h>
+
 #include <extit/base.h>
 #include <stdif/configurable.h>
 #include <stdif/configurable_impl.h>
@@ -22,7 +24,7 @@ stdif_configurable_set_bool__1_0
 (
 	stdif_configurable_t *configurable,
 	stdif_configurable_propref_t *prop,
-	extit_bool_t value
+	bool value
 )
 {
 #ifdef	EXTIT_PARANOID

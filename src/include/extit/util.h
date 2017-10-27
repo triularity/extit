@@ -11,6 +11,7 @@
 #define	__extit__util_h
 
 #include <stdint.h>
+#include <stdbool.h>
 
 #include <extit/base.h>
 
@@ -37,7 +38,7 @@ extit_status_t		EXTIT_DECL
 				extit_refcount_t *refcount);
 
 LIBAPI
-extit_bool_t		EXTIT_DECL
+bool			EXTIT_DECL
 			extit_refcount_isnone(
 				const extit_refcount_t *refcount);
 

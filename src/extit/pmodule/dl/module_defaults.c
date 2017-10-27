@@ -9,13 +9,14 @@
  */
 
 #include <stddef.h>
+#include <stdbool.h>
 
 #include <extit/base.h>
 #include <extit/pmodule.h>
 #include <extit/platform.h>
 
 
-extit_bool_t
+bool
 EXTIT_DECL
 extit_module_scan_fnfilter_default
 (

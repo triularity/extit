@@ -9,6 +9,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <inttypes.h>
 
 #include <iv/base.h>
@@ -65,7 +66,7 @@ _stdif_configurable_fprint_property__1_0
 	{
 		case STDIF_CONFIGURABLE_TYPE_BOOL:
 		{
-			extit_bool_t	value;
+			bool		value;
 
 
 			if((status = conf->ops->v0.op_get_bool(
@@ -74,8 +75,7 @@ _stdif_configurable_fprint_property__1_0
 				return status;
 			}
 
-			fprintf(fp, "%s",
-				value ? "EXTIT_TRUE" : "EXTIT_FALSE");
+			fprintf(fp, "%s", value ? "true" : "false");
 
 			break;
 		}
@@ -124,6 +124,7 @@ _stdif_configurable_fprint_property__1_0
 				return status;
 			}
 
+			// XXX - Oops! FIXME!
 			fprintf(fp, "%xxxxx", value);
 			break;
 		}
@@ -295,7 +296,7 @@ _stdif_configurable_fprint_property__1_0
 			if(value != NULL)
 			{
 				_stdif_configurable_fprint_utf8(
-					fp, value, EXTIT_TRUE);
+					fp, value, true);
 			}
 			else
 			{

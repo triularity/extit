@@ -3,9 +3,11 @@
  *
  * Configurable Interface standard implementation.
  *
- * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
+
+#include <stdbool.h>
 
 #include <extit/base.h>
 #include <stdif/configurable.h>
@@ -19,7 +21,7 @@ stdif_configurable_stdimpl_get_bool__1_0
 (
 	stdif_configurable_1_0_t *conf,
 	stdif_configurable_propref_t *prop,
-	extit_bool_t *valuep
+	bool *valuep
 )
 {
 	return stdif_configurable_stdimpl_get_bool__1_0_base(
@@ -34,7 +36,7 @@ stdif_configurable_stdimpl_get_bool__1_0_base
 	stdif_configurable_1_0_t *conf,
 	void *base,
 	stdif_configurable_propref_t *prop,
-	extit_bool_t *valuep
+	bool *valuep
 )
 {
 	base = ((char *) base) + prop->offset;
@@ -42,7 +44,7 @@ stdif_configurable_stdimpl_get_bool__1_0_base
 	switch(prop->definition.type)
 	{
 		case STDIF_CONFIGURABLE_TYPE_BOOL:
-			*valuep = *((extit_bool_t *) base);
+			*valuep = *((bool *) base);
 			break;
 
 		default:

@@ -10,6 +10,8 @@
 #ifndef	__stdif__messaging_impl_h
 #define	__stdif__messaging_impl_h
 
+#include <stdbool.h>
+
 #include <iv/base.h>
 #include <extit/base.h>
 #include <stdif/messaging.h>
@@ -44,7 +46,7 @@ typedef struct _stdif_messaging_ops_comp_1_0
 					stdif_messaging_1_0_t *messaging,
 					stdif_messaging_listener_id_t id);
 
-	extit_bool_t		(EXTIT_DECL *op_has_listener)(
+	bool			(EXTIT_DECL *op_has_listener)(
 					stdif_messaging_1_0_t *messaging,
 					const char *mid,
 					const char *iid,
@@ -81,7 +83,7 @@ typedef struct _stdif_messaging_ops_comp_1_0
 					stdif_messaging_listener_t cb,
 					void *client_data);
 
-	extit_bool_t		(EXTIT_DECL *op_bound_has_listener)(
+	bool			(EXTIT_DECL *op_bound_has_listener)(
 					stdif_messaging_1_0_t *messaging,
 					stdif_messaging_bound_t *bound);
 

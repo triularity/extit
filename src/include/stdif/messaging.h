@@ -12,6 +12,7 @@
 
 #include <stdlib.h>
 #include <stdint.h>
+#include <stdbool.h>
 
 #include <iv/base.h>
 #include <extit/base.h>
@@ -99,7 +100,7 @@ stdif_messaging_listener_id_t
 				void *client_data);
 
 LIBAPI
-extit_bool_t		EXTIT_DECL
+bool			EXTIT_DECL
 			stdif_messaging_bound_has_listener__1_0(
 				stdif_messaging_t *messaging,
 				stdif_messaging_bound_t *bound);
@@ -120,7 +121,7 @@ extit_status_t		EXTIT_DECL
 				void *data);
 
 LIBAPI
-extit_bool_t		EXTIT_DECL
+bool			EXTIT_DECL
 			stdif_messaging_has_listener__1_0(
 				stdif_messaging_t *messaging,
 				const char *mid,

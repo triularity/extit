@@ -6,6 +6,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <string.h>
 
 #include <iv/base.h>
@@ -28,7 +29,7 @@ struct _module_list
 };
 
 
-extit_bool_t
+bool
 EXTIT_DECL
 recipe_fnfilter(const char *basename, size_t length, void *client_data);
 
@@ -108,7 +109,7 @@ main(int argc, char **argv)
 }
 
 
-extit_bool_t
+bool
 EXTIT_DECL
 recipe_fnfilter
 (

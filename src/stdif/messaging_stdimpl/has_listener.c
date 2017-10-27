@@ -6,6 +6,7 @@
  */
 
 #include <stddef.h>
+#include <stdbool.h>
 
 #include <iv/base.h>
 #include <iv/map.h>
@@ -17,7 +18,7 @@
 #include "internal.h"
 
 
-extit_bool_t
+bool
 EXTIT_DECL
 stdif_messaging_stdimpl_has_listener__1_0
 (
@@ -38,12 +39,12 @@ stdif_messaging_stdimpl_has_listener__1_0
 		iv_map_get(messaging_i->map, mid, iid);
 
 	if(bound_list == NULL)
-		return EXTIT_FALSE;
+		return false;
 
 	bound_entry = stdif_messaging_stdimpl_bound_get(bound_list, version);
 
 	if(bound_entry == NULL)
-		return EXTIT_FALSE;
+		return false;
 
 	return stdif_messaging_stdimpl_bound_has_listener__1_0(
 		messaging, bound_entry);

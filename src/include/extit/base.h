@@ -25,17 +25,6 @@
 
 
 /*
- * ExtIt boolean
- * (These match C++'s true/false values for binary interoperability)
- */
-typedef	enum _extit_bool
-{
-	EXTIT_FALSE = 0,
-	EXTIT_TRUE = 1
-} extit_bool_t;
-
-
-/*
  * ExtIt function pointer
  */
 #ifndef	EXTIT_HAVE_DLFUNC_T

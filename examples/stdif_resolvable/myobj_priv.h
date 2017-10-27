@@ -7,6 +7,8 @@
 #ifndef	__myobj_priv_h
 #define	__myobj_priv_h
 
+#include <stdbool.h>
+
 #include <extit/base.h>
 #include <extit/util.h>
 #include <stdif/configurable_impl.h>
@@ -22,7 +24,7 @@ struct _myobj
 	stdif_resolvable_1_0_t		resolvable;
 
 	extit_refcount_t		numrefs;
-	extit_bool_t			enabled;
+	bool				enabled;
 	char *				message;
 
 	void				(EXTIT_DECL *op_send)(myobj_t *obj);

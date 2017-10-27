@@ -9,6 +9,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <inttypes.h>
 
 #include <iv/base.h>
@@ -58,7 +59,7 @@ _stdif_configurable_dump_enum32
 		fputs("    Description: ", fp);
 
 		_stdif_configurable_fprint_utf8(
-			fp, enum32->description, EXTIT_TRUE);
+			fp, enum32->description, true);
 
 		fputc('\n', fp);
 	}

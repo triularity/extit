@@ -11,6 +11,7 @@
 #define	__iv__util_h
 
 #include <stddef.h>
+#include <stdbool.h>
 
 #ifdef	_WIN32
 #include <windows.h>
@@ -119,7 +120,7 @@ const unsigned char *	IV_DECL
 
 
 LIBAPI
-iv_bool_t		IV_DECL
+bool			IV_DECL
 			iv_matches(
 				iv_version_t version,
 				iv_version_t req_version);

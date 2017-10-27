@@ -5,11 +5,13 @@
  * http://www.triularity.org/
  */
 
+#include <stdbool.h>
+
 #include <iv/base.h>
 #include <iv/util.h>
 
 
-iv_bool_t
+bool
 IV_DECL
 iv_matches
 (
@@ -27,5 +29,5 @@ iv_matches
 	else if(version_major == IV_VERSION_MAJOR(req_version))
 		return (version >= req_version);
 	else
-		return IV_FALSE;
+		return false;
 }

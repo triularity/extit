@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <stdbool.h>
 #include <inttypes.h>
 
 #include <iv/base.h>
@@ -24,7 +25,7 @@ _stdif_configurable_fprint_utf8
 (
 	FILE *fp,
 	const char *utf,
-	extit_bool_t esc_ctrl
+	bool esc_ctrl
 )
 {
 	uint8_t		ch;

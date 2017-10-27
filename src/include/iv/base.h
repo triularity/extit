@@ -21,16 +21,6 @@ extern "C" {
  */
 typedef	uint32_t		iv_version_t;
 
-/*
- * IV boolean
- * (These match C++'s true/false values for binary interoperability)
- */
-typedef	enum _iv_bool
-{
-	IV_FALSE = 0,
-	IV_TRUE = 1
-} iv_bool_t;
-
 
 /*
  * Create an interface version

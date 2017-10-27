@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
+#include <stdbool.h>
 #include <string.h>
 
 #include <iv/base.h>
@@ -47,7 +48,7 @@ stdif_configurable_propref_t	conf_prop_enabled =
 		"Enable the action",
 		STDIF_CONFIGURABLE_TYPE_BOOL,
 
-		.spec.type_bool.def_value = EXTIT_TRUE
+		.spec.type_bool.def_value = true
 	},
 	(int) offsetof(myobj_t, enabled)
 		- (int) offsetof(myobj_t, configurable),
@@ -283,7 +284,7 @@ myobj_secret_create(void)
 	obj->referenced.ops = &my_referenced_ops;
 
 	obj->numrefs = EXTIT_REFCOUNT_NONE;
-	obj->enabled = EXTIT_TRUE;
+	obj->enabled = true;
 	obj->message = NULL;
 	obj->op_send = my_send;
 

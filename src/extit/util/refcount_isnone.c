@@ -7,16 +7,18 @@
  * http://www.triularity.org/
  */
 
+#include <stdbool.h>
+
 #include <extit/base.h>
 #include <extit/util.h>
 
 
-extit_bool_t
+bool
 EXTIT_DECL
 extit_refcount_isnone
 (
 	const extit_refcount_t *refcount
 )
 {
-	return (*refcount == EXTIT_REFCOUNT_NONE) ? EXTIT_TRUE : EXTIT_FALSE;
+	return (*refcount == EXTIT_REFCOUNT_NONE);
 }
