@@ -87,12 +87,12 @@
 			],
 			"returns":
 			{
-				"type": "extit_bool_t",
+				"type": "bool",
 				"description":
 				[
 					{
 						"type": "ref:constant",
-						"name": "EXTIT_TRUE"
+						"name": "true"
 					},
 					" if the count is ",
 					{
@@ -102,7 +102,7 @@
 					", otherwise ",
 					{
 						"type": "ref:constant",
-						"name": "EXTIT_FALSE"
+						"name": "false"
 					},
 					"."
 				]

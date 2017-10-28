@@ -110,17 +110,17 @@
 				],
 				"returns":
 				{
-					"type": "extit_bool_t",
+					"type": "bool",
 					"description":
 					[
 						{
 							"type": "ref:constant",
-							"name": "EXTIT_TRUE"
+							"name": "true"
 						},
 						", if the filename is acceptable, or ",
 						{
 							"type": "ref:constant",
-							"name": "EXTIT_FALSE"
+							"name": "false"
 						},
 						" otherwise."
 					]
@@ -164,17 +164,17 @@
 				],
 				"returns":
 				{
-					"type": "extit_bool_t",
+					"type": "bool",
 					"description":
 					[
 						{
 							"type": "ref:constant",
-							"name": "EXTIT_TRUE"
+							"name": "true"
 						},
 						", if the filename is acceptable, or ",
 						{
 							"type": "ref:constant",
-							"name": "EXTIT_FALSE"
+							"name": "false"
 						},
 						" otherwise."
 					]
@@ -791,12 +791,12 @@
 				" will be called for each normal file, which should return ",
 				{
 					"type": "ref:constant",
-					"name": "EXTIT_TRUE"
+					"name": "true"
 				},
 				", if the filename is acceptable, or ",
 				{
 					"type": "ref:constant",
-					"name": "EXTIT_FALSE"
+					"name": "false"
 				},
 				" otherwise.",
 				" For each valid module found and loaded, ",
@@ -918,12 +918,12 @@
 				" will be called for each normal file, which should return ",
 				{
 					"type": "ref:constant",
-					"name": "EXTIT_TRUE"
+					"name": "true"
 				},
 				", if the filename is acceptable, or ",
 				{
 					"type": "ref:constant",
-					"name": "EXTIT_FALSE"
+					"name": "false"
 				},
 				" otherwise.",
 				" For each valid module found and loaded, ",
@@ -979,17 +979,17 @@
 			],
 			"returns":
 			{
-				"type": "extit_bool_t",
+				"type": "bool",
 				"description":
 				[
 					{
 						"type": "ref:constant",
-						"name": "EXTIT_TRUE"
+						"name": "true"
 					},
 					" to accept the file, or ",
 					{
 						"type": "ref:constant",
-						"name": "EXTIT_FALSE"
+						"name": "false"
 					},
 					" to reject it."
 				]
@@ -1046,17 +1046,17 @@
 			],
 			"returns":
 			{
-				"type": "extit_bool_t",
+				"type": "bool",
 				"description":
 				[
 					{
 						"type": "ref:constant",
-						"name": "EXTIT_TRUE"
+						"name": "true"
 					},
 					" to accept the file, or ",
 					{
 						"type": "ref:constant",
-						"name": "EXTIT_FALSE"
+						"name": "false"
 					},
 					" to reject it."
 				]

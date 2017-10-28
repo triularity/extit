@@ -111,12 +111,12 @@
 			[
 				{
 					"type": "ref:constant",
-					"name": "IV_TRUE"
+					"name": "true"
 				},
 				" if compatible, ",
 				{
 					"type": "ref:constant",
-					"name": "IV_FALSE"
+					"name": "false"
 				},
 				" otherwise."
 			],
@@ -187,17 +187,17 @@
 			],
 			"returns":
 			{
-				"type": "iv_bool_t",
+				"type": "bool",
 				"description":
 				[
 					{
 						"type": "ref:constant",
-						"name": "IV_TRUE"
+						"name": "true"
 					},
 					" if compatible, ",
 					{
 						"type": "ref:constant",
-						"name": "IV_FALSE"
+						"name": "false"
 					},
 					" otherwise."
 				]

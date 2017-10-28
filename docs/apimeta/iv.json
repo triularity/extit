@@ -126,42 +126,6 @@
 			"since": "1.0"
 		},
 		{
-			"type": "enum",
-			"_name": "_iv_bool",
-			"typedef": "iv_bool_t",
-			"members":
-			[
-				{
-					"name": "IV_FALSE",
-					"description":
-					[
-						"The false value.",
-						" Its value is equivalent to the ",
-						{
-							"type": "ref:constant",
-							"name": "false"
-						},
-						" keyword used by C++."
-					]
-				},
-				{
-					"name": "IV_TRUE",
-					"description":
-					[
-						"The true value.",
-						" Its value is equivalent to the ",
-						{
-							"type": "ref:constant",
-							"name": "true"
-						},
-						" keyword used by C++."
-					]
-				}
-			],
-			"description": "A boolean type used by the IV library.",
-			"since": "1.0"
-		},
-		{
 			"type": "typedef",
 			"value": "uint32_t",
 			"name": "iv_version_t",
