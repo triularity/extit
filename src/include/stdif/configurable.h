@@ -329,6 +329,13 @@ extit_status_t		EXTIT_DECL
 				int64_t *valuep);
 
 LIBAPI
+const stdif_configurable_propdef_t *
+			EXTIT_DECL
+			stdif_configurable_get_definition__1_0(
+				stdif_configurable_t *configurable,
+				stdif_configurable_propref_t *prop);
+
+LIBAPI
 extit_status_t		EXTIT_DECL
 			stdif_configurable_get_uint8__1_0(
 				stdif_configurable_t *configurable,
@@ -487,6 +494,9 @@ extit_status_t		EXTIT_DECL
 
 #define	stdif_configurable_get_bool	stdif_configurable_get_bool__1_0
 #define	stdif_configurable_get_data	stdif_configurable_get_data__1_0
+
+#define	stdif_configurable_get_definition	\
+					stdif_configurable_get_definition__1_0
 
 #define	stdif_configurable_get_descriptor	\
 					stdif_configurable_get_descriptor__1_0

@@ -99,6 +99,13 @@ extit_status_t		EXTIT_DECL
 				void **valuep);
 
 LIBAPI_STUB
+const stdif_configurable_propdef_t *
+			EXTIT_DECL
+			stdif_configurable_stdimpl_get_definition__1_0(
+				stdif_configurable_1_0_t *conf,
+				stdif_configurable_propref_t *prop);
+
+LIBAPI_STUB
 const stdif_configurable_descriptor_t *
 			EXTIT_DECL
 			stdif_configurable_stdimpl_get_descriptor__1_0(

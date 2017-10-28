@@ -132,6 +132,7 @@ set(STDIF_CONFIGURABLE_SOURCE_FILES
 	src/stdif/configurable/find_property.c
 	src/stdif/configurable/get_bool.c
 	src/stdif/configurable/get_data.c
+	src/stdif/configurable/get_definition.c
 	src/stdif/configurable/get_descriptor.c
 	src/stdif/configurable/get_double.c
 	src/stdif/configurable/get_enum32.c
@@ -231,6 +232,7 @@ set(STDIF_CONFIGURABLE_STDIMPL_SOURCE_FILES
 	src/stdif/configurable_stdimpl/find_property.c
 	src/stdif/configurable_stdimpl/get_bool.c
 	src/stdif/configurable_stdimpl/get_data.c
+	src/stdif/configurable_stdimpl/get_definition.c
 	src/stdif/configurable_stdimpl/get_descriptor.c
 	src/stdif/configurable_stdimpl/get_double.c
 	src/stdif/configurable_stdimpl/get_enum32.c

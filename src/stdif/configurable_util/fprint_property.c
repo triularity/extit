@@ -115,7 +115,9 @@ _stdif_configurable_fprint_property__1_0
 
 		case STDIF_CONFIGURABLE_TYPE_ENUM32:
 		{
-			uint32_t	value;
+			uint32_t				value;
+			const stdif_configurable_propdef_t *	propdef;
+			const stdif_configurable_enum32_t *	enum32;
 
 
 			if((status = conf->ops->v0.op_get_enum32(
@@ -124,8 +126,18 @@ _stdif_configurable_fprint_property__1_0
 				return status;
 			}
 
-			// XXX - Oops! FIXME!
-			fprintf(fp, "%xxxxx", value);
+			propdef = conf->ops->v0.op_get_definition(conf, prop);
+
+			enum32 = stdif_configurable_enum32_find_by_value(
+				propdef->spec.type_enum32.choices,
+				propdef->spec.type_enum32.choice_count,
+				value);
+
+			if(enum32 != NULL)
+				fprintf(fp, "%s", enum32->id);
+			else
+				fprintf(fp, "%" PRIu32 " (unmapped)", value);
+
 			break;
 		}
 

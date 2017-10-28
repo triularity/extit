@@ -216,6 +216,12 @@ typedef struct _stdif_configurable_ops_comp_1_0
 					stdif_configurable_1_0_t *conf,
 					stdif_configurable_propref_t *prop,
 					const char *value);
+
+	const stdif_configurable_propdef_t *
+				(EXTIT_DECL *op_get_definition)(
+					stdif_configurable_1_0_t *conf,
+					stdif_configurable_propref_t *prop);
+
 } stdif_configurable_ops_comp_1_0_t;
 
 
