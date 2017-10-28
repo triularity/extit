@@ -100,7 +100,7 @@
      <div class="declaration">
       <table>
        <tr>
-        <td>typedef <a href="extit.html#extit_bool_t">extit_bool_t</a> (*<a name="extit_module_scan_fnfilter_t"><span class="typedef-name">extit_module_scan_fnfilter_t</span></a>)(const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">basename</em>, size_t&nbsp;<em class="parameter-name">length</em>, void&nbsp;*&nbsp;<em class="parameter-name">client_data</em>)</td>
+        <td>typedef bool (*<a name="extit_module_scan_fnfilter_t"><span class="typedef-name">extit_module_scan_fnfilter_t</span></a>)(const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">basename</em>, size_t&nbsp;<em class="parameter-name">length</em>, void&nbsp;*&nbsp;<em class="parameter-name">client_data</em>)</td>
        </tr>
       </table>
      </div>
@@ -120,7 +120,7 @@
       </dd>
 
       <dt class="returns"><strong class="label">Returns:</strong></dt>
-      <dd><code class="ref"><a href="extit.html#EXTIT_TRUE">EXTIT_TRUE</a></code>, if the filename is acceptable, or <code class="ref"><a href="extit.html#EXTIT_FALSE">EXTIT_FALSE</a></code> otherwise.</dd>
+      <dd><code class="ref">true</code>, if the filename is acceptable, or <code class="ref">false</code> otherwise.</dd>
 
       <dt class="since"><strong class="label">Since:</strong></dt>
       <dd>1.0</dd>
@@ -132,7 +132,7 @@
      <div class="declaration">
       <table>
        <tr>
-        <td>typedef <a href="extit.html#extit_bool_t">extit_bool_t</a> (*<a name="extit_module_scan_fnfilter_wc_t"><span class="typedef-name">extit_module_scan_fnfilter_wc_t</span></a>)(const&nbsp;wchar_t&nbsp;*&nbsp;<em class="parameter-name">basename</em>, size_t&nbsp;<em class="parameter-name">length</em>, void&nbsp;*&nbsp;<em class="parameter-name">client_data</em>)</td>
+        <td>typedef bool (*<a name="extit_module_scan_fnfilter_wc_t"><span class="typedef-name">extit_module_scan_fnfilter_wc_t</span></a>)(const&nbsp;wchar_t&nbsp;*&nbsp;<em class="parameter-name">basename</em>, size_t&nbsp;<em class="parameter-name">length</em>, void&nbsp;*&nbsp;<em class="parameter-name">client_data</em>)</td>
        </tr>
       </table>
      </div>
@@ -152,7 +152,7 @@
       </dd>
 
       <dt class="returns"><strong class="label">Returns:</strong></dt>
-      <dd><code class="ref"><a href="extit.html#EXTIT_TRUE">EXTIT_TRUE</a></code>, if the filename is acceptable, or <code class="ref"><a href="extit.html#EXTIT_FALSE">EXTIT_FALSE</a></code> otherwise.</dd>
+      <dd><code class="ref">true</code>, if the filename is acceptable, or <code class="ref">false</code> otherwise.</dd>
 
       <dt class="since"><strong class="label">Since:</strong></dt>
       <dd>1.0</dd>
@@ -644,7 +644,7 @@
 
      <div class="description">
       <p>
-       Scan a directory for plugin modules. <em class="parameter-reference">fnfilter</em> will be called for each normal file, which should return <code class="ref"><a href="extit.html#EXTIT_TRUE">EXTIT_TRUE</a></code>, if the filename is acceptable, or <code class="ref"><a href="extit.html#EXTIT_FALSE">EXTIT_FALSE</a></code> otherwise. For each valid module found and loaded, <em class="parameter-reference">callback</em> will be called with it. Any module that was passed to <em class="parameter-reference">callback</em>, which returned <code class="ref"><a href="extit.html#EXTIT_STATUS_OK">EXTIT_STATUS_OK</a></code>, must be released with <code class="ref"><a href="extit_pmodule.html#extit_module_release">extit_module_release()</a></code> to prevent memory and/or resource leaks, even if the callback does not use the module.<br />
+       Scan a directory for plugin modules. <em class="parameter-reference">fnfilter</em> will be called for each normal file, which should return <code class="ref">true</code>, if the filename is acceptable, or <code class="ref">false</code> otherwise. For each valid module found and loaded, <em class="parameter-reference">callback</em> will be called with it. Any module that was passed to <em class="parameter-reference">callback</em>, which returned <code class="ref"><a href="extit.html#EXTIT_STATUS_OK">EXTIT_STATUS_OK</a></code>, must be released with <code class="ref"><a href="extit_pmodule.html#extit_module_release">extit_module_release()</a></code> to prevent memory and/or resource leaks, even if the callback does not use the module.<br />
       </p>
      </div>
 
@@ -683,7 +683,7 @@
 
      <div class="description">
       <p>
-       Scan a directory for plugin modules. <em class="parameter-reference">fnfilter</em> will be called for each normal file, which should return <code class="ref"><a href="extit.html#EXTIT_TRUE">EXTIT_TRUE</a></code>, if the filename is acceptable, or <code class="ref"><a href="extit.html#EXTIT_FALSE">EXTIT_FALSE</a></code> otherwise. For each valid module found and loaded, <em class="parameter-reference">callback</em> will be called with it. Any module that was passed to <em class="parameter-reference">callback</em>, which returned <code class="ref"><a href="extit.html#EXTIT_STATUS_OK">EXTIT_STATUS_OK</a></code>, must be released with <code class="ref"><a href="extit_pmodule.html#extit_module_release">extit_module_release()</a></code> to prevent memory and/or resource leaks, even if the callback does not use the module. This function is only available on platforms that support wide character filenames.<br />
+       Scan a directory for plugin modules. <em class="parameter-reference">fnfilter</em> will be called for each normal file, which should return <code class="ref">true</code>, if the filename is acceptable, or <code class="ref">false</code> otherwise. For each valid module found and loaded, <em class="parameter-reference">callback</em> will be called with it. Any module that was passed to <em class="parameter-reference">callback</em>, which returned <code class="ref"><a href="extit.html#EXTIT_STATUS_OK">EXTIT_STATUS_OK</a></code>, must be released with <code class="ref"><a href="extit_pmodule.html#extit_module_release">extit_module_release()</a></code> to prevent memory and/or resource leaks, even if the callback does not use the module. This function is only available on platforms that support wide character filenames.<br />
       </p>
      </div>
 
@@ -712,7 +712,7 @@
      <div class="declaration">
       <table>
        <tr>
-        <td><a href="extit.html#extit_bool_t">extit_bool_t</a></td>
+        <td>bool</td>
        </tr>
        <tr>
         <td><span class="function-name"><a name="extit_module_scan_fnfilter_default">extit_module_scan_fnfilter_default</a></span>(const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">libname</em>, size_t&nbsp;<em class="parameter-name">length</em>, void&nbsp;*&nbsp;<em class="parameter-name">client_data</em>)</td>
@@ -735,7 +735,7 @@
       </dd>
 
       <dt class="returns"><strong class="label">Returns:</strong></dt>
-      <dd><code class="ref"><a href="extit.html#EXTIT_TRUE">EXTIT_TRUE</a></code> to accept the file, or <code class="ref"><a href="extit.html#EXTIT_FALSE">EXTIT_FALSE</a></code> to reject it.</dd>
+      <dd><code class="ref">true</code> to accept the file, or <code class="ref">false</code> to reject it.</dd>
 
       <dt class="since"><strong class="label">Since:</strong></dt>
       <dd>1.0</dd>
@@ -747,7 +747,7 @@
      <div class="declaration">
       <table>
        <tr>
-        <td><a href="extit.html#extit_bool_t">extit_bool_t</a></td>
+        <td>bool</td>
        </tr>
        <tr>
         <td><span class="function-name"><a name="extit_module_scan_fnfilter_wc_default">extit_module_scan_fnfilter_wc_default</a></span>(const&nbsp;wchar_t&nbsp;*&nbsp;<em class="parameter-name">libname</em>, size_t&nbsp;<em class="parameter-name">length</em>, void&nbsp;*&nbsp;<em class="parameter-name">client_data</em>)</td>
@@ -770,7 +770,7 @@
       </dd>
 
       <dt class="returns"><strong class="label">Returns:</strong></dt>
-      <dd><code class="ref"><a href="extit.html#EXTIT_TRUE">EXTIT_TRUE</a></code> to accept the file, or <code class="ref"><a href="extit.html#EXTIT_FALSE">EXTIT_FALSE</a></code> to reject it.</dd>
+      <dd><code class="ref">true</code> to accept the file, or <code class="ref">false</code> to reject it.</dd>
 
       <dt class="since"><strong class="label">Since:</strong></dt>
       <dd>1.0</dd>
