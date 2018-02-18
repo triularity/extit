@@ -3,7 +3,7 @@
  *
  * Referenced Interface.
  *
- * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2018, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -26,7 +26,7 @@ extern "C" {
 /*
  * Referenced Interface ID
  */
-#define STDIF_REFERENCED_IID		"{c1c017b1-44d5-11e6-9660-406186e454c1}/referenced"
+#define STDIF_REFERENCED_IID		"referenced@{c1c017b1-44d5-11e6-9660-406186e454c1}"
 
 
 /*

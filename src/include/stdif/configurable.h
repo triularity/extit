@@ -3,7 +3,7 @@
  *
  * Configurable Interface.
  *
- * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2018, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -229,7 +229,7 @@ typedef struct stdif_configurable_propref	stdif_configurable_propref_t;
 /*
  * Configurable Interface ID
  */
-#define STDIF_CONFIGURABLE_IID		"{c1c017b1-44d5-11e6-9660-406186e454c1}/configurable"
+#define STDIF_CONFIGURABLE_IID		"configurable@{c1c017b1-44d5-11e6-9660-406186e454c1}"
 
 
 /*
