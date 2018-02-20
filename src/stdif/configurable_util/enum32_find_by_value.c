@@ -3,7 +3,7 @@
  *
  * Find a configurable interface enum descriptor by value.
  *
- * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2018, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -14,6 +14,17 @@
 #include <stdif/configurable_util.h>
 
 
+/**
+ * Find a configurable enum32 choice by value.
+ *
+ * @param	choices		The enum32 choices.
+ * @param	count		The number of choices.
+ * @param	value		The choice value.
+ *
+ * @return	The matching enum32 choice, or @{constant NULL} if not found.
+ *
+ * @since	1.0
+ */
 const stdif_configurable_enum32_t *
 EXTIT_DECL
 stdif_configurable_enum32_find_by_value

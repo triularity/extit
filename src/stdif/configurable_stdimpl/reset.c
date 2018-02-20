@@ -1,9 +1,9 @@
 /*
  * @(#) stdif/configurable_stdimpl/reset.c
  *
- * Configurable Interface standard implementation.
+ * Configurable Interface - reset@1.0 standard implementation.
  *
- * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2018, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -13,6 +13,18 @@
 #include <stdif/configurable_stdimpl.h>
 
 
+/**
+ * Reset a property to its default value.
+ *
+ * @param	conf		The configurable instance.
+ * @param	prop		The property reference.
+ *
+ * @return	@{constant EXTIT_STATUS_OK} all properties where reset
+ *		successfully, otherwise a @{constant EXTIT_STATUS_}*
+ *		value returned by the failing property setter.
+ *
+ * @since	1.0
+ */
 static
 extit_status_t
 reset_prop
@@ -139,6 +151,24 @@ reset_prop
 }
 
 
+/**
+ * Standard implementation to reset all properties to their default values.
+ *
+ * @note	This implementation iterates though all the properties in
+ *		the @{param conf}'s descriptor and call the appropriete
+ *		type setter with that property's default value.
+ *
+ * @note	The @{param conf} may be left in a partially reset
+ *		state if this function fails.
+ *
+ * @param	conf		The configurable instance.
+ *
+ * @return	@{constant EXTIT_STATUS_OK} all properties where reset
+ *		successfully, otherwise a @{constant EXTIT_STATUS_}*
+ *		value returned by the failing property setter.
+ *
+ * @since	1.0
+ */
 extit_status_t
 EXTIT_DECL
 stdif_configurable_stdimpl_reset__1_0

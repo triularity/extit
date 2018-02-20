@@ -1,9 +1,9 @@
 /*
  * @(#) stdif/configurable_stdimpl/find_property.c
  *
- * Configurable Interface standard implementation.
+ * Configurable Interface - find_property@1.0 standard implementation.
  *
- * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2018, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -16,6 +16,17 @@
 #include <stdif/configurable_stdimpl.h>
 
 
+/**
+ * Standard implementation to find a property reference by its ID.
+ *
+ * @param	conf		The configurable instance.
+ * @param	id		The property ID.
+ *
+ * @return	A pointer to the property reference,
+ *		or @{constant NULL} if not found.
+ *
+ * @since	1.0
+ */
 stdif_configurable_propref_t *
 EXTIT_DECL
 stdif_configurable_stdimpl_find_property__1_0
@@ -60,6 +71,22 @@ prop_compare(const void *key, const void *elem)
 }
 
 
+/**
+ * Standard implementation to find a property reference by its ID using
+ * a binary search.
+ *
+ * @note	This function assumes that properties are in lexical order
+ *		with regard to the @{func strcmp(const char *, const char *)}
+ *		function.
+ *
+ * @param	conf		The configurable instance.
+ * @param	id		The property ID.
+ *
+ * @return	A pointer to the property reference,
+ *		or @{constant NULL} if not found.
+ *
+ * @since	1.0
+ */
 stdif_configurable_propref_t *
 EXTIT_DECL
 stdif_configurable_stdimpl_find_property__1_0_sorted

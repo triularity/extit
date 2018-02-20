@@ -3,7 +3,7 @@
  *
  * Dump a configurable interface enum32 descriptor.
  *
- * Copyright (c) 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2017-2018, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -35,6 +35,18 @@ findent
 }
 
 
+/**
+ * Dump a configurable enum32 choice in human readable form.
+ *
+ * @note	This is a utility function and not part of the
+ *		standard configurable API. Use with caution.
+ *
+ * @param	fp		The file pointer to write to.
+ * @param	indent		The number of spaces to indent.
+ * @param	enum32		The enum32 choice.
+ *
+ * @since	1.0
+ */
 void
 EXTIT_DECL
 _stdif_configurable_dump_enum32

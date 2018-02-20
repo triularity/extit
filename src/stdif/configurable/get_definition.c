@@ -18,6 +18,25 @@
 #endif
 
 
+/**
+ * Get the property definition from a property reference.
+ *
+ * This is a convenience function that calls
+ * @{param configurable}@{code ->ops->v0.op_get_definition( ... )}
+ *
+ * @note	If @{param prop} was not obtained from this
+ *		@{param configurable}, then the results are undefined.
+ *
+ * @note	The definition returned is guaranteed to be valid as long
+ *		as the @{param configurable} is valid.
+ *
+ * @param	configurable	The configurable instance.
+ * @param	prop		The property reference.
+ *
+ * @return	The property definition.
+ *
+ * @since	1.0
+ */
 const stdif_configurable_propdef_t *
 EXTIT_DECL
 stdif_configurable_get_definition__1_0

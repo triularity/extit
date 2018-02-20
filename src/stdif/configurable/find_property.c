@@ -3,7 +3,7 @@
  *
  * Configurable Interface - find_property@1.0 wrapper.
  *
- * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2018, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -18,6 +18,20 @@
 #endif
 
 
+/**
+ * Find a property reference by its ID.
+ *
+ * This is a convenience function that calls
+ * @{param configurable}@{code ->ops->v0.op_find_property( ... )}
+ *
+ * @param	configurable	The configurable instance.
+ * @param	id		The property ID.
+ *
+ * @return	A pointer to the property reference,
+ *		or @{constant NULL} if not found.
+ *
+ * @since	1.0
+ */
 stdif_configurable_propref_t *
 EXTIT_DECL
 stdif_configurable_find_property__1_0

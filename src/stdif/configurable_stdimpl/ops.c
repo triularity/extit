@@ -1,9 +1,9 @@
 /*
  * @(#) stdif/configurable_stdimpl/ops.c
  *
- * Configurable Interface standard implementation.
+ * Configurable Interface - Operators standard implementation.
  *
- * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2018, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -12,6 +12,11 @@
 #include <stdif/configurable_stdimpl.h>
 
 
+/**
+ * Standard implementation operators for a configurable 1.0 interface.
+ *
+ * @since	1.0
+ */
 stdif_configurable_ops_1_0_t  stdif_configurable_stdimpl_ops_1_0	=
 {
 	/* v0 */

@@ -3,7 +3,7 @@
  *
  * Configurable Interface - set_utf8@1.0 wrapper.
  *
- * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2018, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -16,6 +16,31 @@
 #endif
 
 
+/**
+ * Set a property value as a UTF-8 string.
+ *
+ * This is a convenience function that calls
+ * @{param configurable}@{code ->ops->v0.op_set_utf8( ... )}
+ *
+ * @note	The property will be left unchanged if anything except
+ *		@{constant EXTIT_STATUS_OK} is returned.
+ *
+ * @note	The string will be copied internally and @{param value}
+ * 		does not need to remain valid after this function returns.
+ *
+ * @param	configurable	The configurable instance.
+ * @param	prop		The property reference.
+ * @param	value		The new value, or @{constant NULL}.
+ *
+ * @return	@{constant EXTIT_STATUS_OK} if successful,
+ *		@{constant STDIF_CONFIGURABLE_STATUS_MISMATCH} if the
+ *		property type is incompatible,
+ *		or @{constant EXTIT_STATUS_NOMEM} if memory allocation failed.
+ *
+ * @since	1.0
+ *
+ * @see		@{func stdif_configurable_get_utf8__1_0(stdif_configurable_t *, stdif_configurable_propref_t *, const char **)}
+ */
 extit_status_t
 EXTIT_DECL
 stdif_configurable_set_utf8__1_0

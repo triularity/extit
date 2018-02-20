@@ -3,7 +3,7 @@
  *
  * Configurable Interface - set_function@1.0 wrapper.
  *
- * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2018, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -16,6 +16,30 @@
 #endif
 
 
+/**
+ * Set a property value as a function pointer.
+ *
+ * This is a convenience function that calls
+ * @{param configurable}@{code ->ops->v0.op_set_function( ... )}
+ *
+ * @note	The property will be left unchanged if anything except
+ *		@{constant EXTIT_STATUS_OK} is returned.
+ *
+ * @note	If the value set does not match the interface and version
+ *		defined by the property then implementation is undefined.
+ *
+ * @param	configurable	The configurable instance.
+ * @param	prop		The property reference.
+ * @param	value		The new value, or @{constant NULL}.
+ *
+ * @return	@{constant EXTIT_STATUS_OK} if successful,
+ *		@{constant STDIF_CONFIGURABLE_STATUS_MISMATCH} if the
+ *		property type is incompatible.
+ *
+ * @since	1.0
+ *
+ * @see		@{func stdif_configurable_get_function__1_0(stdif_configurable_t *, stdif_configurable_propref_t *, extit_func_t *)}
+ */
 extit_status_t
 EXTIT_DECL
 stdif_configurable_set_function__1_0

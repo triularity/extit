@@ -1,9 +1,9 @@
 /*
  * @(#) stdif/configurable_stdimpl/set_utf8.c
  *
- * Configurable Interface standard implementation.
+ * Configurable Interface - set_utf8@1.0 standard implementation.
  *
- * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2018, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -16,6 +16,34 @@
 #include <stdif/configurable_stdimpl.h>
 
 
+/**
+ * Standard implementation to set a property value as a UTF-8 string.
+ *
+ * @note	The property will be left unchanged if anything except
+ *		@{constant EXTIT_STATUS_OK} is returned.
+ *
+ * @note	This implementation calls @{func free(void *)} with the
+ *		@{type char *} value at @{param conf} @{code +}
+ *		@{param prop}@{code ->offset}, if non-@{code NULL},
+ *		then stores the copy of the @{param value} string there.
+ *
+ * @note	This implementation supports the following property types:
+ *		@{constant STDIF_CONFIGURABLE_TYPE_UTF8}
+ *
+ * @param	conf		The configurable instance.
+ * @param	prop		The property reference.
+ * @param	value		The new value.
+ *
+ * @return	@{constant EXTIT_STATUS_OK} if successful,
+ *		@{constant STDIF_CONFIGURABLE_STATUS_MISMATCH} if the
+ *		property type is incompatible.
+ *		or @{constant EXTIT_STATUS_NOMEM} if memory allocation failed.
+ *
+ * @since	1.0
+ *
+ * @see         @{func stdif_configurable_stdimpl_get_utf8__1_0(stdif_configurable_t *, stdif_configurable_propref_t *, const char **)}
+ * @see         @{func stdif_configurable_stdimpl_set_utf8__1_0_base(stdif_configurable_t *, void *, stdif_configurable_propref_t *, const char *)}
+ */
 extit_status_t
 EXTIT_DECL
 stdif_configurable_stdimpl_set_utf8__1_0
@@ -30,6 +58,35 @@ stdif_configurable_stdimpl_set_utf8__1_0
 }
 
 
+/**
+ * Standard implementation helper to set a property value as a UTF-8 string.
+ *
+ * @note	The property will be left unchanged if anything except
+ *		@{constant EXTIT_STATUS_OK} is returned.
+ *
+ * @note	This implementation calls @{func free(void *)} with the
+ *		@{type char *} value at @{param base} @{code +}
+ *		@{param prop}@{code ->offset}, if non-@{code NULL},
+ *		then stores the copy of the @{param value} string there.
+ *
+ * @note	This implementation supports the following property types:
+ *		@{constant STDIF_CONFIGURABLE_TYPE_UTF8}
+ *
+ * @param	conf		The configurable instance.
+ * @param	base		The base address.
+ * @param	prop		The property reference.
+ * @param	value		The new value.
+ *
+ * @return	@{constant EXTIT_STATUS_OK} if successful,
+ *		@{constant STDIF_CONFIGURABLE_STATUS_MISMATCH} if the
+ *		property type is incompatible.
+ *		or @{constant EXTIT_STATUS_NOMEM} if memory allocation failed.
+ *
+ * @since	1.0
+ *
+ * @see         @{func stdif_configurable_stdimpl_get_utf8__1_0_base(stdif_configurable_t *, void *, stdif_configurable_propref_t *, const char **)}
+ * @see         @{func stdif_configurable_stdimpl_set_utf8__1_0(stdif_configurable_t *, stdif_configurable_propref_t *, const char *)}
+ */
 extit_status_t
 EXTIT_DECL
 stdif_configurable_stdimpl_set_utf8__1_0_base

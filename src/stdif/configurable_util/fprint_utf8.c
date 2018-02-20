@@ -3,7 +3,7 @@
  *
  * Print a configurable interface property value.
  *
- * Copyright (c) 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2017-2018, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -19,6 +19,25 @@
 #include <stdif/configurable_util.h>
 
 
+/**
+ * Print a UTF-8 string in ASCII form. Backslashes will be escaped as
+ * @{code \\\\}, non-ASCII characters as @{code \\u}@{placeholder HHHH} or
+ * @{code \\U}@{placeholder hhhhhhhh} and, optionally, non-printables in
+ * escape C style ({@code \\b}, {@code \\e}, {@code \\f}, {@code \\n},
+ * {@code \\r}, {@code \\t}, {@code \\v}, {@code \\x}@{placeholder HH}).
+ *
+ * @note	This implementation assumes valid UTF-8 encoding and does
+ *		not perform extensive validation checks.
+ *
+ * @note	This is a utility function and not part of the
+ *		standard configurable API. Use with caution.
+ *
+ * @param	fp		The file pointer to write to.
+ * @param	utf		The string.
+ * @param	esc_ctrl	Whether to escape non-printable characters.
+ *
+ * @since	1.0
+ */
 void
 EXTIT_DECL
 _stdif_configurable_fprint_utf8

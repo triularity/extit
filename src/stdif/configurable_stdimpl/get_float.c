@@ -1,9 +1,9 @@
 /*
  * @(#) stdif/configurable_stdimpl/get_float.c
  *
- * Configurable Interface standard implementation.
+ * Configurable Interface - get_float@1.0 standard implementation.
  *
- * Copyright (c) 2016, 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2018, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -13,6 +13,34 @@
 #include <stdif/configurable_stdimpl.h>
 
 
+/**
+ * Standard implementation to get a property value as a 32-bit
+ * floating point.
+ *
+ * @note	The contents of memory referenced by @{param valuep}
+ *		will be left unchanged if anything except
+ *		@{constant EXTIT_STATUS_OK} is returned.
+ *
+ * @note	This implementation returns the value at
+ *		@{param conf} @{code +} @{param prop}@{code ->offset}
+ *		of the binary type defined by the property.
+ *
+ * @note	This implementation supports the following property types:
+ *		@{constant STDIF_CONFIGURABLE_TYPE_FLOAT}.
+ *
+ * @param	conf		The configurable instance.
+ * @param	prop		The property reference.
+ * @param	valuep		The address to store the value.
+ *
+ * @return	@{constant EXTIT_STATUS_OK} if successful,
+ *		@{constant STDIF_CONFIGURABLE_STATUS_MISMATCH} if the
+ *		property type is incompatible.
+ *
+ * @since	1.0
+ *
+ * @see         @{func stdif_configurable_stdimpl_set_float__1_0(stdif_configurable_t *, stdif_configurable_propref_t *, float)}
+ * @see         @{func stdif_configurable_stdimpl_get_float__1_0_base(stdif_configurable_t *, void *, stdif_configurable_propref_t *, float *)}
+ */
 extit_status_t
 EXTIT_DECL
 stdif_configurable_stdimpl_get_float__1_0
@@ -27,6 +55,35 @@ stdif_configurable_stdimpl_get_float__1_0
 }
 
 
+/**
+ * Standard implementation helper to get a property value as a 32-bit
+ * floating point.
+ *
+ * @note	The contents of memory referenced by @{param valuep}
+ *		will be left unchanged if anything except
+ *		@{constant EXTIT_STATUS_OK} is returned.
+ *
+ * @note	This implementation returns the value at
+ *		@{param base} @{code +} @{param prop}@{code ->offset}
+ *		of the binary type defined by the property.
+ *
+ * @note	This implementation supports the following property types:
+ *		@{constant STDIF_CONFIGURABLE_TYPE_FLOAT}.
+ *
+ * @param	conf		The configurable instance.
+ * @param	base		The base address.
+ * @param	prop		The property reference.
+ * @param	valuep		The address to store the value.
+ *
+ * @return	@{constant EXTIT_STATUS_OK} if successful,
+ *		@{constant STDIF_CONFIGURABLE_STATUS_MISMATCH} if the
+ *		property type is incompatible.
+ *
+ * @since	1.0
+ *
+ * @see         @{func stdif_configurable_stdimpl_set_float__1_0_base(stdif_configurable_t *, void *, stdif_configurable_propref_t *, float)}
+ * @see         @{func stdif_configurable_stdimpl_get_float__1_0(stdif_configurable_t *, stdif_configurable_propref_t *, float *)}
+ */
 extit_status_t
 EXTIT_DECL
 stdif_configurable_stdimpl_get_float__1_0_base

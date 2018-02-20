@@ -3,7 +3,7 @@
  *
  * Allocator Interface - zalloc@1.0 wrapper.
  *
- * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2018, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -18,6 +18,22 @@
 #endif
 
 
+/**
+ * Allocate zero initialized memory.
+ *
+ * This is a convenience function that calls
+ * @{param allocator}@{code ->ops->v0.op_zalloc( ... )}
+ *
+ * @note	The @{param size} may be @{literal 0} and implementations
+ *		should ensure it does not fail, even if an underlying
+ *		implementation normally would (such as @{func malloc()}).
+ *
+ * @param	allocator	The allocator instance.
+ * @param	size		The size of memory to allocate (in bytes).
+ *
+ * @return	A pointer to the allocated memory,
+ *		or @{constant NULL} on failure.
+ */
 void *
 EXTIT_DECL
 stdif_allocator_zalloc__1_0

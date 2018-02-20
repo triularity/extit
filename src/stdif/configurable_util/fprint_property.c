@@ -3,7 +3,7 @@
  *
  * Print a configurable interface property value.
  *
- * Copyright (c) 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2017-2018, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -20,6 +20,27 @@
 #include <stdif/configurable_util.h>
 
 
+/**
+ * Print a configurable property value in human readable form.
+ *
+ * @note	This is a utility function and not part of the
+ *		standard configurable API. Use with caution.
+ *
+ * @param	fp		The file pointer to write to.
+ * @param	conf		The configurable instance.
+ * @param	type		The property type.
+ * @param	id		The property ID.
+ *
+ * @return	@{constant EXTIT_STATUS_OK} if successful,
+ *		@{constant EXTIT_STATUS_UNSUPPORTED} if the interface version
+ *		or property type is unsupported,
+ *		or @{constant EXTIT_STATUS_NOTFOUND} if the property ID
+ *		is not found.
+ *
+ * @see		@{func _stdif_configurable_fprint_property__1_0(FILE *, stdif_configurable_1_0_t *, stdif_configurable_type_t, stdif_configurable_propref_t)}
+ *
+ * @since	1.0
+ */
 extit_status_t
 EXTIT_DECL
 _stdif_configurable_fprint_property
@@ -49,6 +70,23 @@ _stdif_configurable_fprint_property
 }
 
 
+/**
+ * Print a configurable 1.0 property value in human readable form.
+ *
+ * @note	This is a utility function and not part of the
+ *		configurable standard API/ABI. Use with caution.
+ *
+ * @param	fp		The file pointer to write to.
+ * @param	conf		The configurable instance.
+ * @param	type		The property type.
+ * @param	prop		The property reference.
+ *
+ * @return	@{constant EXTIT_STATUS_OK} if successful,
+ *		@{constant EXTIT_STATUS_UNSUPPORTED} if the property type
+ *		is unsupported.
+ *
+ * @see		@{func _stdif_configurable_fprint_property(FILE *, stdif_configurable_t *, stdif_configurable_type_t, const char *)}
+ */
 extit_status_t
 EXTIT_DECL
 _stdif_configurable_fprint_property__1_0

@@ -3,7 +3,7 @@
  *
  * Get the string representation of a configurable interface property type.
  *
- * Copyright (c) 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2017-2018, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -13,7 +13,17 @@
 #include <stdif/configurable.h>
 #include <stdif/configurable_util.h>
 
-
+/**
+ * Map a @{code STDIF_CONFIGURABLE_TYPE_}* value to its string.
+ * The value returned is the same as its constant, minus the
+ * @{code STDIF_CONFIGURABLE_TYPE_BOOL_} prefix.
+ *
+ * @param	type		A configurable type.
+ *
+ * @return	A string representation, or @{constant NULL} if unknown.
+ *
+ * @since	1.0
+ */
 const char *
 EXTIT_DECL
 stdif_configurable_type_to_string

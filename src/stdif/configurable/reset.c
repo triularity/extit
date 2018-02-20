@@ -3,7 +3,7 @@
  *
  * Configurable Interface - reset@1.0 wrapper.
  *
- * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2018, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -16,6 +16,23 @@
 #endif
 
 
+/**
+ * Reset all properties to their default values.
+ *
+ * This is a convenience function that calls
+ * @{param configurable}@{code ->ops->v0.op_reset( ... )}
+ *
+ * @note	The @{param configurable} may be left in a partially reset
+ *		state if this function fails.
+ *
+ * @param	configurable	The configurable instance.
+ *
+ * @return	@{constant EXTIT_STATUS_OK} all properties where reset
+ *		successfully, otherwise a @{constant EXTIT_STATUS_}*
+ *		value returned by the failing property setter.
+ *
+ * @since	1.0
+ */
 extit_status_t
 EXTIT_DECL
 stdif_configurable_reset__1_0

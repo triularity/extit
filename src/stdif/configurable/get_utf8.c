@@ -3,7 +3,7 @@
  *
  * Configurable Interface - get_utf8@1.0 wrapper.
  *
- * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2018, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -16,6 +16,34 @@
 #endif
 
 
+/**
+ * Get a property value as a UTF8 string.
+ * The string value can be @{constant NULL}.
+ *
+ * This is a convenience function that calls
+ * @{param configurable}@{code ->ops->v0.op_get_utf8( ... )}
+ *
+ * @note	The contents of memory referenced by @{param valuep}
+ *		will be left unchanged if anything except
+ *		@{constant EXTIT_STATUS_OK} is returned.
+ *
+ * @note	The string returned is owned by the @{param configurable}
+ *		instance and should not be modified. It is only guaranteed
+ *		to be valid while the instance exists and the property value
+ *		is not changed.
+ *
+ * @param	configurable	The configurable instance.
+ * @param	prop		The property reference.
+ * @param	valuep		The address to store the value.
+ *
+ * @return	@{constant EXTIT_STATUS_OK} if successful,
+ *		@{constant STDIF_CONFIGURABLE_STATUS_MISMATCH} if the
+ *		property type is incompatible.
+ *
+ * @since	1.0
+ *
+ * @see         @{func stdif_configurable_set_utf8__1_0(stdif_configurable_t *, stdif_configurable_propref_t *, const char *)}
+ */
 extit_status_t
 EXTIT_DECL
 stdif_configurable_get_utf8__1_0
