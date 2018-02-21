@@ -173,7 +173,7 @@ extit_status_t
 EXTIT_DECL
 stdif_configurable_stdimpl_reset__1_0
 (
-	stdif_configurable_1_0_t *conf
+	stdif_configurable_1_0_t *configurable
 )
 {
 	const stdif_configurable_descriptor_t *	descriptor;
@@ -182,7 +182,7 @@ stdif_configurable_stdimpl_reset__1_0
 	extit_status_t				status;
 
 
-	descriptor = configurable->ops->v0.op_get_descriptor(conf);
+	descriptor = configurable->ops->v0.op_get_descriptor(configurable);
 
 	props = descriptor->properties;
 	count = descriptor->count;

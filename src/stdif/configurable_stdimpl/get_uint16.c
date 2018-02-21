@@ -52,7 +52,7 @@ stdif_configurable_stdimpl_get_uint16__1_0
 )
 {
 	return stdif_configurable_stdimpl_get_uint16__1_0_base(
-		configurable, conf, prop, valuep);
+		configurable, configurable, prop, valuep);
 }
 
 

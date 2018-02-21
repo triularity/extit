@@ -31,7 +31,7 @@ const stdif_configurable_descriptor_t *
 EXTIT_DECL
 stdif_configurable_stdimpl_get_descriptor__1_0
 (
-	stdif_configurable_1_0_t *conf
+	stdif_configurable_1_0_t *configurable
 )
 {
 #define	IMPL(x)		((stdif_configurable_stdimpl_1_0_t *) (x))
