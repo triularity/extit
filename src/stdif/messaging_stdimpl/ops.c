@@ -1,7 +1,7 @@
 /*
  * @(#) stdif/messaging_stdimpl/ops.c
  *
- * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2018, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -11,6 +11,11 @@
 #include "internal.h"
 
 
+/**
+ * Standard implementation operators for a messaging 1.0 interface.
+ *
+ * @since	1.0
+ */
 stdif_messaging_ops_1_0_t	stdif_messaging_stdimpl_ops__1_0 =
 {
 	/* v0 */

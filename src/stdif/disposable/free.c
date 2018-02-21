@@ -3,7 +3,7 @@
  *
  * Disposable Interface - free@1.0 wrapper.
  *
- * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2018, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -16,6 +16,20 @@
 #endif
 
 
+/**
+ * Release an object.
+ *
+ * This is a convenience function that calls
+ * @{param disposable}@{code ->ops->v0.op_free( ... )}
+ *
+ * @param	disposable	The disposable instance.
+ *
+ * @return	@{constant EXTIT_STATUS_OK} if successful,
+ * 		@{constant EXTIT_STATUS_BUSY} the object is still in use,
+ * 		or another @{constant EXTIT_STATUS_}*.
+ *
+ * @since	1.0
+ */
 extit_status_t
 EXTIT_DECL
 stdif_disposable_free__1_0

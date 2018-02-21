@@ -1,7 +1,7 @@
 /*
  * @(#) stdif/messaging_stdimpl/bound.c
  *
- * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2018, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -15,6 +15,20 @@
 #include "internal.h"
 
 
+/**
+ * Find or create a bound entry on a list by version.
+ *
+ * @note	The entry's reference count will be unincremented, and
+ *		should be incremented by the caller.
+ *
+ * @param	bound_listp	The head list pointer.
+ * @param	version		The version to acquire for.
+ * @param	mid		The message ID to store with a new entry.
+ *
+ * @return	A bound entry, or @{constant NULL} on error.
+ *
+ * @see		@{func stdif_messaging_stdimpl_bound_get(stdif_messaging_bound_t *, iv_version_t)}
+ */
 stdif_messaging_bound_t *
 stdif_messaging_stdimpl_bound_acquire
 (
@@ -51,6 +65,11 @@ stdif_messaging_stdimpl_bound_acquire
 }
 
 
+/**
+ * Destroy an entire bound entry list.
+ *
+ * @param	bound_list	The head of the list, or @{constant NULL}.
+ */
 void
 stdif_messaging_stdimpl_bound_destroy
 (
@@ -80,6 +99,16 @@ stdif_messaging_stdimpl_bound_destroy
 }
 
 
+/**
+ * Find a bound entry on a list by version.
+ *
+ * @param	bound_list	The head of the list, or @{constant NULL}.
+ * @param	version		The version to match.
+ *
+ * @return	A bound entry, or @{constant NULL} if not found.
+ *
+ * @see		@{func stdif_messaging_stdimpl_bound_getmatch(stdif_messaging_bound_t *, iv_version_t)}
+ */
 stdif_messaging_bound_t *
 stdif_messaging_stdimpl_bound_get
 (
@@ -102,6 +131,16 @@ stdif_messaging_stdimpl_bound_get
 }
 
 
+/**
+ * Find a bound entry on a list with a compatible version.
+ *
+ * @param	bound_list	The head of the list, or @{constant NULL}.
+ * @param	version		The version to support.
+ *
+ * @return	A bound entry, or @{constant NULL} if not found.
+ *
+ * @see		@{func stdif_messaging_stdimpl_bound_get(stdif_messaging_bound_t *, iv_version_t)}
+ */
 stdif_messaging_bound_t *
 stdif_messaging_stdimpl_bound_getmatch
 (

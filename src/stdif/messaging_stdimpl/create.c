@@ -1,7 +1,7 @@
 /*
  * @(#) stdif/messaging_stdimpl/create.c
  *
- * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2018, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -15,6 +15,11 @@
 #include "internal.h"
 
 
+/**
+ * A callback wrapper for @{func iv_map_create}.
+ *
+ * @param	value		The bound entry list to destroy.
+ */
 static
 void
 bound_destroy(void *value)
@@ -24,6 +29,19 @@ bound_destroy(void *value)
 }
 
 
+/**
+ * Create a messaging interface instance using standard implementation.
+ *
+ * @param	version		The messaging interface version.
+ *
+ * @return	A messaging instance,
+ *		or @{constant NULL} on error or if @{param version} is
+ *		not supported.
+ *
+ * @since	1.0
+ *
+ * @see		@{func stdif_messaging_stdimpl_destroy(stdif_messaging_t *)}
+ */
 stdif_messaging_t *
 EXTIT_DECL
 stdif_messaging_stdimpl_create

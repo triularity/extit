@@ -3,7 +3,7 @@
  *
  * Messaging Interface - bind@1.0 wrapper.
  *
- * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2018, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -17,6 +17,31 @@
 #endif
 
 
+/**
+ * Bind to a message ID and interface.
+ *
+ * This is used to pre-resolve a specific message/interface that can be
+ * used multiple times without the overhead of resolving each time.
+ *
+ * This is a convenience function that calls
+ * @{param messaging}@{code ->ops->v0.op_bind( ... )}
+ *
+ * @note	Bound messages are reference counted. An equal number of
+ *		unbinds as binds must be done before internal resources are
+ *		release.
+ *
+ * @param	messaging	The messaging instance.
+ * @param	mid		The message ID.
+ * @param	iid		The interface ID of the callback.
+ * @param	version		The interface version of the callback.
+ *
+ * @return	A bound message,
+ * 		or @{constant STDIF_MESSAGING_BOUND_NONE} on error.
+ *
+ * @since	1.0
+ *
+ * @see		@{func stdif_messaging_unbind__1_0(stdif_messaging_t *, stdif_messaging_bound_t *)}
+ */
 stdif_messaging_bound_t *
 EXTIT_DECL
 stdif_messaging_bind__1_0

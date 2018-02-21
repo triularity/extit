@@ -1,7 +1,9 @@
 /*
  * @(#) stdif/messaging_stdimpl/has_listener.c
  *
- * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
+ * Messaging Interface - has_listener@1.0 standard implementation.
+ *
+ * Copyright (c) 2016-2018, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -18,6 +20,25 @@
 #include "internal.h"
 
 
+/**
+ * Standard implementation to check if the messaging instance has any
+ * listeners currently registered that are compatible with the given
+ * message/interface.
+ *
+ * @param	messaging	The messaging instance.
+ * @param	mid		The message ID.
+ * @param	iid		The interface ID of the callback.
+ * @param	version		The interface version of the callback.
+ *
+ * @return	@{constant true} if there is at least one listener,
+ * 		@{constant false} if there are none or there was an error.
+ *
+ * @since	1.0
+ *
+ * @see		@{func stdif_messaging_stdimpl_bound_has_listener__1_0(stdif_messaging_1_0_t *, stdif_messaging_bound_t *)}
+ * @see		@{func stdif_messaging_stdimpl_add_listener__1_0(stdif_messaging_1_0_t *, const char *, const char *, iv_version_t, stdif_messaging_listener_t, void *)}
+ * @see		@{func stdif_messaging_stdimpl_bound_add_listener__1_0(stdif_messaging_1_0_t *, stdif_messaging_bound_t *, stdif_messaging_listener_t, void *)}
+ */
 bool
 EXTIT_DECL
 stdif_messaging_stdimpl_has_listener__1_0

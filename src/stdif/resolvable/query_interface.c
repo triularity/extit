@@ -19,6 +19,22 @@
 #endif
 
 
+/**
+ * Query a supported interface version.
+ *
+ * This is a convenience function that calls
+ * @{param resolvable}@{code ->ops->v0.op_query_interface( ... )}
+ *
+ * @param	resolvable	The resolvable instance.
+ * @param	id		The interface ID (IID).
+ * @param	base_version	The base interface version.
+ *
+ * @return	The highest supported version that is compatible with
+ * 		the @{param base_version}, or @{constant IV_VERSION_NONE}
+ *		if none found or an error occured.
+ *
+ * @since	1.0
+ */
 iv_version_t
 EXTIT_DECL
 stdif_resolvable_query_interface__1_0

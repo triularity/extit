@@ -16,6 +16,22 @@
 #endif
 
 
+/**
+ * Remove an object reference. The object will be destroyed if the reference
+ * count reaches zero. After this function successfully returns, it and the
+ * object it represents should be considered invalid if no other known
+ * references exist.
+ *
+ * This is a convenience function that calls
+ * @{param referenced}@{code ->ops->v0.op_release( ... )}
+ *
+ * @param	referenced	The referenced instance.
+ *
+ * @return	@{constant EXTIT_STATUS_OK} if successful,
+ * 		otherwise another @{constant EXTIT_STATUS_}*.
+ *
+ * @since	1.0
+ */
 extit_status_t
 EXTIT_DECL
 stdif_referenced_release__1_0

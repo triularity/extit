@@ -1,7 +1,7 @@
 /*
  * @(#) stdif/messaging_stdimpl/destroy.c
  *
- * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2018, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -15,6 +15,15 @@
 #include "internal.h"
 
 
+/**
+ * Destroy a standard implementation of a messaging interface.
+ *
+ * @param	messaging	A messaging instance.
+ *
+ * @since	1.0
+ *
+ * @see		@{func stdif_messaging_stdimpl_create(iv_version_t)}
+ */
 void
 EXTIT_DECL
 stdif_messaging_stdimpl_destroy

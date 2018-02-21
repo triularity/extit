@@ -3,7 +3,7 @@
  *
  * Messaging Interface - add_listener@1.0 wrapper.
  *
- * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2018, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -17,6 +17,30 @@
 #endif
 
 
+/**
+ * Add a listener to the messaging instance.
+ *
+ * This is a convenience function that calls
+ * @{param messaging}@{code ->ops->v0.op_add_listener( ... )}
+ *
+ * @note	This may not check for duplicate listeners. Adding such
+ *		listeners could cause them to be called multiple times.
+ *
+ * @param	messaging	The messaging instance.
+ * @param	mid		The message ID.
+ * @param	iid		The interface ID of the callback.
+ * @param	version		The interface version of the callback.
+ * @param	callback	The listener callback.
+ * @param	client_data	Additional data passed to callback.
+ *
+ * @return	A listener ID,
+ * 		or @{constant STDIF_MESSAGING_LISTENER_ID_NONE} on error.
+ *
+ * @since	1.0
+ *
+ * @see		@{func stdif_messaging_remove_listener_by_id__1_0(stdif_messaging_t *, stdif_messaging_listener_id_t)}
+ * @see		@{func stdif_messaging_remove_listener__1_0(stdif_messaging_t *, const char *, const char *, iv_version_t, stdif_messaging_listener_t, void *)}
+ */
 stdif_messaging_listener_id_t
 EXTIT_DECL
 stdif_messaging_add_listener__1_0

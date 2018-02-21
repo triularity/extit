@@ -1,7 +1,9 @@
 /*
  * @(#) stdif/messaging_stdimpl/send.c
  *
- * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
+ * Messaging Interface - send@1.0 standard implementation.
+ *
+ * Copyright (c) 2016-2018, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -17,6 +19,31 @@
 #include "internal.h"
 
 
+/**
+ * Standard implementation to send a message.
+ *
+ * This will call any registered listeners that are compatible with
+ * @{param mid}, @{param iid} and @{param version}.
+ *
+ * @note	If @{param data} is not compatible with @{param bound}'s
+ *		interface/version, then results are undefined.
+ *
+ * @param	messaging	The messaging instance.
+ * @param	mid		The message ID.
+ * @param	iid		The interface ID of the callback.
+ * @param	version		The interface version of the callback.
+ * @param	data		The data to send.
+ *
+ * @return	@{constant EXTIT_STATUS_OK} on success,
+ *		@{constant EXTIT_STATUS_UNSUPPORTED} if the messaging
+ *		interface version is not supported.
+ *
+ * @since	1.0
+ *
+ * @see		@{func stdif_messaging_stdimpl_bound_send__1_0(stdif_messaging_1_0_t *, stdif_messaging_bound_t *, void *)}
+ * @see		@{func stdif_messaging_stdimpl_add_listener__1_0(stdif_messaging_1_0_t *, const char *, const char *, iv_version_t , stdif_messaging_listener_t, void *)}
+ * @see		@{func stdif_messaging_stdimpl_bound_add_listener__1_0(stdif_messaging_1_0_t *, stdif_messaging_bound_t *, stdif_messaging_listener_t, void *)}
+ */
 extit_status_t
 EXTIT_DECL
 stdif_messaging_stdimpl_send__1_0
@@ -25,7 +52,7 @@ stdif_messaging_stdimpl_send__1_0
 	const char *mid,
 	const char *iid,
 	iv_version_t version,
-        void *data
+	void *data
 )
 {
 	stdif_messaging_internal_t *	messaging_i;

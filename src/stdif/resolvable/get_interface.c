@@ -19,6 +19,21 @@
 #endif
 
 
+/**
+ * Get a versioned interface instance.
+ *
+ * This is a convenience function that calls
+ * @{param resolvable}@{code ->ops->v0.op_get_interface( ... )}
+ *
+ * @param	resolvable	The resolvable instance.
+ * @param	id		The interface ID (IID).
+ * @param	version		The interface version.
+ *
+ * @return	A compatible interface instance,
+ * 		or @{constant NULL} if none found or an error occured.
+ *
+ * @since	1.0
+ */
 void *
 EXTIT_DECL
 stdif_resolvable_get_interface__1_0

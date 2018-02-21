@@ -1,7 +1,7 @@
 /*
  * @(#) stdif/messaging_stdimpl/cleanup.c
  *
- * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2018, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -15,6 +15,11 @@
 #include "internal.h"
 
 
+/**
+ * The cleanup callback used by @{func iv_map_cleanup}.
+ *
+ * @param	valueptr		A pointer to the value holder.
+ */
 static
 void
 bound_cleaner(void **valueptr)
@@ -41,6 +46,18 @@ bound_cleaner(void **valueptr)
 }
 
 
+/**
+ * Remove any unused internal resources.
+ *
+ * To improve efficiency, this implementation defers scanning of removable
+ * shared internal resources. This function is automatically called
+ * periodically during normal modifications, but can be called explicitly
+ * to force cleanup.
+ *
+ * @param	messaging		The messaging instance.
+ *
+ * @since	1.0
+ */
 void
 EXTIT_DECL
 stdif_messaging_stdimpl_cleanup

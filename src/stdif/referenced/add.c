@@ -16,6 +16,19 @@
 #endif
 
 
+/**
+ * Add an object reference.
+ *
+ * This is a convenience function that calls
+ * @{param referenced}@{code ->ops->v0.op_add( ... )}
+ *
+ * @param	referenced	The referenced instance.
+ *
+ * @return	@{constant EXTIT_STATUS_OK} if successful,
+ * 		otherwise another @{constant EXTIT_STATUS_}*.
+ *
+ * @since	1.0
+ */
 extit_status_t
 EXTIT_DECL
 stdif_referenced_add__1_0
