@@ -36,7 +36,7 @@
  *
  * @since	1.0
  *
- * @see         @{func stdif_configurable_set_uint8__1_0(stdif_configurable_t *, stdif_configurable_propref_t *, uint8_t)}
+ * @see		@{func stdif_configurable_set_uint8__1_0(stdif_configurable_t *, stdif_configurable_propref_t *, uint8_t)}
  */
 extit_status_t
 EXTIT_DECL

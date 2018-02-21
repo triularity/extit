@@ -42,8 +42,8 @@
  *
  * @since	1.0
  *
- * @see         @{func stdif_configurable_stdimpl_get_int16__1_0(stdif_configurable_t *, stdif_configurable_propref_t *, int16_t *)}
- * @see         @{func stdif_configurable_stdimpl_set_int16__1_0_base(stdif_configurable_t *, void *, stdif_configurable_propref_t *, int16_t)}
+ * @see		@{func stdif_configurable_stdimpl_get_int16__1_0(stdif_configurable_1_0_t *, stdif_configurable_propref_t *, int16_t *)}
+ * @see		@{func stdif_configurable_stdimpl_set_int16__1_0_base(stdif_configurable_1_0_t *, void *, stdif_configurable_propref_t *, int16_t)}
  */
 extit_status_t
 EXTIT_DECL
@@ -88,8 +88,8 @@ stdif_configurable_stdimpl_set_int16__1_0
  *
  * @since	1.0
  *
- * @see         @{func stdif_configurable_stdimpl_get_int16__1_0_base(stdif_configurable_t *, void *, stdif_configurable_propref_t *, int16_t *)}
- * @see         @{func stdif_configurable_stdimpl_set_int16__1_0(stdif_configurable_t *, stdif_configurable_propref_t *, int16_t)}
+ * @see		@{func stdif_configurable_stdimpl_get_int16__1_0_base(stdif_configurable_1_0_t *, void *, stdif_configurable_propref_t *, int16_t *)}
+ * @see		@{func stdif_configurable_stdimpl_set_int16__1_0(stdif_configurable_1_0_t *, stdif_configurable_propref_t *, int16_t)}
  */
 extit_status_t
 EXTIT_DECL

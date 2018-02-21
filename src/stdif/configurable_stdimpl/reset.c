@@ -144,7 +144,7 @@ reset_prop
 			break;
 
 		default:
-                	return STDIF_CONFIGURABLE_STATUS_MISMATCH;
+			return STDIF_CONFIGURABLE_STATUS_MISMATCH;
 	}
 
 	return status;

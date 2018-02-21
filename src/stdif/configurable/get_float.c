@@ -36,7 +36,7 @@
  *
  * @since	1.0
  *
- * @see         @{func stdif_configurable_set_float__1_0(stdif_configurable_t *, stdif_configurable_propref_t *, float)}
+ * @see		@{func stdif_configurable_set_float__1_0(stdif_configurable_t *, stdif_configurable_propref_t *, float)}
  */
 extit_status_t
 EXTIT_DECL
