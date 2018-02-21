@@ -16,7 +16,7 @@
 /**
  * Reset a property to its default value.
  *
- * @param	conf		The configurable instance.
+ * @param	configurable	The configurable instance.
  * @param	prop		The property reference.
  *
  * @return	@{constant EXTIT_STATUS_OK} all properties where reset
@@ -29,7 +29,7 @@ static
 extit_status_t
 reset_prop
 (
-	stdif_configurable_1_0_t *conf,
+	stdif_configurable_1_0_t *configurable,
 	stdif_configurable_propref_t *prop
 )
 {
@@ -39,106 +39,106 @@ reset_prop
 	switch(prop->definition.type)
 	{
 		case STDIF_CONFIGURABLE_TYPE_DATA:
-			status = conf->ops->v0.op_set_data(
-				conf,
+			status = configurable->ops->v0.op_set_data(
+				configurable,
 				prop,
 				prop->definition.spec.type_data.def_value);
 			break;
 
 		case STDIF_CONFIGURABLE_TYPE_BOOL:
-			status = conf->ops->v0.op_set_bool(
-				conf,
+			status = configurable->ops->v0.op_set_bool(
+				configurable,
 				prop,
 				prop->definition.spec.type_bool.def_value);
 			break;
 
 		case STDIF_CONFIGURABLE_TYPE_DOUBLE:
-			status = conf->ops->v0.op_set_double(
-				conf,
+			status = configurable->ops->v0.op_set_double(
+				configurable,
 				prop,
 				prop->definition.spec.type_double.def_value);
 			break;
 
 		case STDIF_CONFIGURABLE_TYPE_ENUM32:
-			status = conf->ops->v0.op_set_enum32(
-				conf,
+			status = configurable->ops->v0.op_set_enum32(
+				configurable,
 				prop,
 				prop->definition.spec.type_enum32.def_value);
 			break;
 
 		case STDIF_CONFIGURABLE_TYPE_FLOAT:
-			status = conf->ops->v0.op_set_float(
-				conf,
+			status = configurable->ops->v0.op_set_float(
+				configurable,
 				prop,
 				prop->definition.spec.type_float.def_value);
 			break;
 
 		case STDIF_CONFIGURABLE_TYPE_FUNCTION:
-			status = conf->ops->v0.op_set_function(
-				conf,
+			status = configurable->ops->v0.op_set_function(
+				configurable,
 				prop,
 				prop->definition.spec.type_function.def_value);
 			break;
 
 		case STDIF_CONFIGURABLE_TYPE_INT8:
-			status = conf->ops->v0.op_set_int8(
-				conf,
+			status = configurable->ops->v0.op_set_int8(
+				configurable,
 				prop,
 				prop->definition.spec.type_int8.def_value);
 			break;
 
 		case STDIF_CONFIGURABLE_TYPE_INT16:
-			status = conf->ops->v0.op_set_int16(
-				conf,
+			status = configurable->ops->v0.op_set_int16(
+				configurable,
 				prop,
 				prop->definition.spec.type_int16.def_value);
 			break;
 
 		case STDIF_CONFIGURABLE_TYPE_INT32:
-			status = conf->ops->v0.op_set_int32(
-				conf,
+			status = configurable->ops->v0.op_set_int32(
+				configurable,
 				prop,
 				prop->definition.spec.type_int32.def_value);
 			break;
 
 		case STDIF_CONFIGURABLE_TYPE_INT64:
-			status = conf->ops->v0.op_set_int64(
-				conf,
+			status = configurable->ops->v0.op_set_int64(
+				configurable,
 				prop,
 				prop->definition.spec.type_int64.def_value);
 			break;
 
 		case STDIF_CONFIGURABLE_TYPE_UINT8:
-			status = conf->ops->v0.op_set_uint8(
-				conf,
+			status = configurable->ops->v0.op_set_uint8(
+				configurable,
 				prop,
 				prop->definition.spec.type_uint8.def_value);
 			break;
 
 		case STDIF_CONFIGURABLE_TYPE_UINT16:
-			status = conf->ops->v0.op_set_uint16(
-				conf,
+			status = configurable->ops->v0.op_set_uint16(
+				configurable,
 				prop,
 				prop->definition.spec.type_uint16.def_value);
 			break;
 
 		case STDIF_CONFIGURABLE_TYPE_UINT32:
-			status = conf->ops->v0.op_set_uint32(
-				conf,
+			status = configurable->ops->v0.op_set_uint32(
+				configurable,
 				prop,
 				prop->definition.spec.type_uint32.def_value);
 			break;
 
 		case STDIF_CONFIGURABLE_TYPE_UINT64:
-			status = conf->ops->v0.op_set_uint64(
-				conf,
+			status = configurable->ops->v0.op_set_uint64(
+				configurable,
 				prop,
 				prop->definition.spec.type_uint64.def_value);
 			break;
 
 		case STDIF_CONFIGURABLE_TYPE_UTF8:
-			status = conf->ops->v0.op_set_utf8(
-				conf,
+			status = configurable->ops->v0.op_set_utf8(
+				configurable,
 				prop,
 				prop->definition.spec.type_utf8.def_value);
 			break;
@@ -155,13 +155,13 @@ reset_prop
  * Standard implementation to reset all properties to their default values.
  *
  * @note	This implementation iterates though all the properties in
- *		the @{param conf}'s descriptor and call the appropriete
+ *		the @{param configurable}'s descriptor and call the appropriete
  *		type setter with that property's default value.
  *
- * @note	The @{param conf} may be left in a partially reset
+ * @note	The @{param configurable} may be left in a partially reset
  *		state if this function fails.
  *
- * @param	conf		The configurable instance.
+ * @param	configurable	The configurable instance.
  *
  * @return	@{constant EXTIT_STATUS_OK} all properties where reset
  *		successfully, otherwise a @{constant EXTIT_STATUS_}*
@@ -182,7 +182,7 @@ stdif_configurable_stdimpl_reset__1_0
 	extit_status_t				status;
 
 
-	descriptor = conf->ops->v0.op_get_descriptor(conf);
+	descriptor = configurable->ops->v0.op_get_descriptor(conf);
 
 	props = descriptor->properties;
 	count = descriptor->count;
@@ -190,7 +190,7 @@ stdif_configurable_stdimpl_reset__1_0
 	while(count-- != 0)
 	{
 		if((status = reset_prop(
-		 conf, (stdif_configurable_propref_t *) *props))
+		 configurable, (stdif_configurable_propref_t *) *props))
 		 != EXTIT_STATUS_OK)
 		{
 			return status;

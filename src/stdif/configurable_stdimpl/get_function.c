@@ -21,13 +21,13 @@
  *		@{constant EXTIT_STATUS_OK} is returned.
  *
  * @note	This implementation returns the value at
- *		@{param conf} @{code +} @{param prop}@{code ->offset}
+ *		@{param configurable} @{code +} @{param prop}@{code ->offset}
  *		of the binary type defined by the property.
  *
  * @note	This implementation supports the following property types:
  *		@{constant STDIF_CONFIGURABLE_TYPE_FUNCTION}.
  *
- * @param	conf		The configurable instance.
+ * @param	configurable	The configurable instance.
  * @param	prop		The property reference.
  * @param	valuep		The address to store the value.
  *
@@ -44,13 +44,13 @@ extit_status_t
 EXTIT_DECL
 stdif_configurable_stdimpl_get_function__1_0
 (
-	stdif_configurable_1_0_t *conf,
+	stdif_configurable_1_0_t *configurable,
 	stdif_configurable_propref_t *prop,
 	extit_func_t *valuep
 )
 {
 	return stdif_configurable_stdimpl_get_function__1_0_base(
-		conf, conf, prop, valuep);
+		configurable, configurable, prop, valuep);
 }
 
 
@@ -69,7 +69,7 @@ stdif_configurable_stdimpl_get_function__1_0
  * @note	This implementation supports the following property types:
  *		@{constant STDIF_CONFIGURABLE_TYPE_FUNCTION}.
  *
- * @param	conf		The configurable instance.
+ * @param	configurable	The configurable instance.
  * @param	base		The base address.
  * @param	prop		The property reference.
  * @param	valuep		The address to store the value.
@@ -87,7 +87,7 @@ extit_status_t
 EXTIT_DECL
 stdif_configurable_stdimpl_get_function__1_0_base
 (
-	stdif_configurable_1_0_t *conf,
+	stdif_configurable_1_0_t *configurable,
 	void *base,
 	stdif_configurable_propref_t *prop,
 	extit_func_t *valuep

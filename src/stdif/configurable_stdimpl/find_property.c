@@ -19,7 +19,7 @@
 /**
  * Standard implementation to find a property reference by its ID.
  *
- * @param	conf		The configurable instance.
+ * @param	configurable	The configurable instance.
  * @param	id		The property ID.
  *
  * @return	A pointer to the property reference,
@@ -31,7 +31,7 @@ stdif_configurable_propref_t *
 EXTIT_DECL
 stdif_configurable_stdimpl_find_property__1_0
 (
-	stdif_configurable_1_0_t *conf,
+	stdif_configurable_1_0_t *configurable,
 	const char *id
 )
 {
@@ -40,7 +40,7 @@ stdif_configurable_stdimpl_find_property__1_0
 	uint32_t				count;
 
 
-	descriptor = conf->ops->v0.op_get_descriptor(conf);
+	descriptor = configurable->ops->v0.op_get_descriptor(configurable);
 
 	props = descriptor->properties;
 	count = descriptor->count;
@@ -79,7 +79,7 @@ prop_compare(const void *key, const void *elem)
  *		with regard to the @{func strcmp(const char *, const char *)}
  *		function.
  *
- * @param	conf		The configurable instance.
+ * @param	configurable	The configurable instance.
  * @param	id		The property ID.
  *
  * @return	A pointer to the property reference,
@@ -91,7 +91,7 @@ stdif_configurable_propref_t *
 EXTIT_DECL
 stdif_configurable_stdimpl_find_property__1_0_sorted
 (
-	stdif_configurable_1_0_t *conf,
+	stdif_configurable_1_0_t *configurable,
 	const char *id
 )
 {
@@ -99,7 +99,7 @@ stdif_configurable_stdimpl_find_property__1_0_sorted
 	void *					pp;
 
 
-	descriptor = conf->ops->v0.op_get_descriptor(conf);
+	descriptor = configurable->ops->v0.op_get_descriptor(configurable);
 
 	pp = bsearch(
 		id,

@@ -23,7 +23,7 @@
  * @note	The definition returned is guaranteed to be valid as long
  *		as the @{param configurable} is valid.
  *
- * @param	conf		The configurable instance.
+ * @param	configurable	The configurable instance.
  * @param	prop		The property reference.
  *
  * @return	The property definition.
@@ -34,7 +34,7 @@ const stdif_configurable_propdef_t *
 EXTIT_DECL
 stdif_configurable_stdimpl_get_definition__1_0
 (
-	stdif_configurable_1_0_t *conf,
+	stdif_configurable_1_0_t *configurable,
 	stdif_configurable_propref_t *prop
 )
 {

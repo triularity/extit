@@ -19,9 +19,9 @@
  * configurable.
  *
  * @note	The definition returned is guaranteed to be valid as long
- *		as the @{param conf} is valid.
+ *		as the @{param configurable} is valid.
  *
- * @param	conf		The configurable instance.
+ * @param	configurable	The configurable instance.
  *
  * @return	The configurable descriptor.
  *
@@ -36,7 +36,7 @@ stdif_configurable_stdimpl_get_descriptor__1_0
 {
 #define	IMPL(x)		((stdif_configurable_stdimpl_1_0_t *) (x))
 
-	return IMPL(conf)->descriptor;
+	return IMPL(configurable)->descriptor;
 
 #undef	IMPL
 }

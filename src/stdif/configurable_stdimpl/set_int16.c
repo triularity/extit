@@ -22,7 +22,7 @@
  *		@{constant EXTIT_STATUS_OK} is returned.
  *
  * @note	This implementation stores @{param value} to
- *		@{param conf} @{code +} @{param prop}@{code ->offset}
+ *		@{param configurable} @{code +} @{param prop}@{code ->offset}
  *		as the binary type defined by the property.
  *
  * @note	This implementation supports the following property types:
@@ -30,7 +30,7 @@
  *		@{constant STDIF_CONFIGURABLE_TYPE_INT32},
  *		@{constant STDIF_CONFIGURABLE_TYPE_INT64}.
  *
- * @param	conf		The configurable instance.
+ * @param	configurable	The configurable instance.
  * @param	prop		The property reference.
  * @param	value		The new value.
  *
@@ -49,13 +49,13 @@ extit_status_t
 EXTIT_DECL
 stdif_configurable_stdimpl_set_int16__1_0
 (
-	stdif_configurable_1_0_t *conf,
+	stdif_configurable_1_0_t *configurable,
 	stdif_configurable_propref_t *prop,
 	int16_t value
 )
 {
 	return stdif_configurable_stdimpl_set_int16__1_0_base(
-		conf, conf, prop, value);
+		configurable, conf, prop, value);
 }
 
 
@@ -75,7 +75,7 @@ stdif_configurable_stdimpl_set_int16__1_0
  *		@{constant STDIF_CONFIGURABLE_TYPE_INT32},
  *		@{constant STDIF_CONFIGURABLE_TYPE_INT64}.
  *
- * @param	conf		The configurable instance.
+ * @param	configurable	The configurable instance.
  * @param	base		The base address.
  * @param	prop		The property reference.
  * @param	value		The new value.
@@ -95,7 +95,7 @@ extit_status_t
 EXTIT_DECL
 stdif_configurable_stdimpl_set_int16__1_0_base
 (
-	stdif_configurable_1_0_t *conf,
+	stdif_configurable_1_0_t *configurable,
 	void *base,
 	stdif_configurable_propref_t *prop,
 	int16_t value
@@ -151,7 +151,10 @@ stdif_configurable_stdimpl_set_int16__1_0_base
 	}
 
 	if(prop->update_notifier != NULL)
-		prop->update_notifier((stdif_configurable_t *) conf, prop);
+	{
+		prop->update_notifier(
+			(stdif_configurable_t *) configurable, prop);
+	}
 
 	return EXTIT_STATUS_OK;
 }
