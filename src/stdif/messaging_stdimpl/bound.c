@@ -51,7 +51,8 @@ stdif_messaging_stdimpl_bound_acquire
 		bound_listp = &bound_entry->next;
 	}
 
-	bound_entry = malloc(sizeof(stdif_messaging_bound_t));
+	if((bound_entry = malloc(sizeof(stdif_messaging_bound_t))) == NULL)
+		return NULL;
 
 	bound_entry->version = version;
 	bound_entry->bound_refcount = EXTIT_REFCOUNT_NONE;
