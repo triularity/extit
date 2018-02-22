@@ -7,10 +7,25 @@
  * http://www.triularity.org/
  */
 
+#include <stdint.h>
+#include <float.h>
+#include <math.h>
+
 #include <extit/base.h>
 #include <stdif/configurable.h>
 #include <stdif/configurable_impl.h>
 #include <stdif/configurable_stdimpl.h>
+
+/*
+ * The number of precision bits in a double/float
+ */
+#if	FLT_RADIX == 2
+#define	DBL_MANT_BITS	DBL_MANT_DIG
+#define	FLT_MANT_BITS	FLT_MANT_DIG
+#elif	FLT_RADIX == 16
+#define	DBL_MANT_BITS	(DBL_MANT_DIG * 4)
+#define	FLT_MANT_BITS	(FLT_MANT_DIG * 4)
+#endif
 
 
 /**
@@ -26,10 +41,17 @@
  *		of the binary type defined by the property.
  *
  * @note	This implementation supports the following property types:
+ *		@{constant STDIF_CONFIGURABLE_TYPE_DOUBLE},
+ *		@{constant STDIF_CONFIGURABLE_TYPE_ENUM32},
+ *		@{constant STDIF_CONFIGURABLE_TYPE_FLOAT},
+ *		@{constant STDIF_CONFIGURABLE_TYPE_INT8},
+ *		@{constant STDIF_CONFIGURABLE_TYPE_INT16},
+ *		@{constant STDIF_CONFIGURABLE_TYPE_INT32},
+ *		@{constant STDIF_CONFIGURABLE_TYPE_INT64},
  *		@{constant STDIF_CONFIGURABLE_TYPE_UINT8},
  *		@{constant STDIF_CONFIGURABLE_TYPE_UINT16},
  *		@{constant STDIF_CONFIGURABLE_TYPE_UINT32},
- *		@{constant STDIF_CONFIGURABLE_TYPE_ENUM32}.
+ *		@{constant STDIF_CONFIGURABLE_TYPE_UINT64}.
  *
  * @param	configurable	The configurable instance.
  * @param	prop		The property reference.
@@ -37,7 +59,9 @@
  *
  * @return	@{constant EXTIT_STATUS_OK} if successful,
  *		@{constant STDIF_CONFIGURABLE_STATUS_MISMATCH} if the
- *		property type is incompatible.
+ *		property type is incompatible,
+ *		or @{constant EXTIT_STATUS_INVALID} if the value is out
+ *		of valid range for the return type.
  *
  * @since	1.0
  *
@@ -71,10 +95,17 @@ stdif_configurable_stdimpl_get_uint32__1_0
  *		of the binary type defined by the property.
  *
  * @note	This implementation supports the following property types:
+ *		@{constant STDIF_CONFIGURABLE_TYPE_DOUBLE},
+ *		@{constant STDIF_CONFIGURABLE_TYPE_ENUM32},
+ *		@{constant STDIF_CONFIGURABLE_TYPE_FLOAT},
+ *		@{constant STDIF_CONFIGURABLE_TYPE_INT8},
+ *		@{constant STDIF_CONFIGURABLE_TYPE_INT16},
+ *		@{constant STDIF_CONFIGURABLE_TYPE_INT32},
+ *		@{constant STDIF_CONFIGURABLE_TYPE_INT64},
  *		@{constant STDIF_CONFIGURABLE_TYPE_UINT8},
  *		@{constant STDIF_CONFIGURABLE_TYPE_UINT16},
  *		@{constant STDIF_CONFIGURABLE_TYPE_UINT32},
- *		@{constant STDIF_CONFIGURABLE_TYPE_ENUM32}.
+ *		@{constant STDIF_CONFIGURABLE_TYPE_UINT64}.
  *
  * @param	configurable	The configurable instance.
  * @param	base		The base address.
@@ -83,7 +114,9 @@ stdif_configurable_stdimpl_get_uint32__1_0
  *
  * @return	@{constant EXTIT_STATUS_OK} if successful,
  *		@{constant STDIF_CONFIGURABLE_STATUS_MISMATCH} if the
- *		property type is incompatible.
+ *		property type is incompatible,
+ *		or @{constant EXTIT_STATUS_INVALID} if the value is out
+ *		of valid range for the return type.
  *
  * @since	1.0
  *
@@ -100,10 +133,89 @@ stdif_configurable_stdimpl_get_uint32__1_0_base
 	uint32_t *valuep
 )
 {
+	double		value_d;
+	float		value_f;
+	int8_t		value_i8;
+	int16_t		value_i16;
+	int32_t		value_i32;
+	int64_t		value_i64;
+	uint64_t	value_u64;
+
+
 	base = ((char *) base) + prop->offset;
 
 	switch(prop->definition.type)
 	{
+#ifdef	DBL_MANT_BITS
+		case STDIF_CONFIGURABLE_TYPE_DOUBLE:
+			value_d = trunc(*((double *) base));
+
+#if	DBL_MANT_BITS < 32
+			if((value_d > UINT32_MAX) || (value_d < 0.0))
+				return EXTIT_STATUS_INVALID;
+#endif	/* DBL_MANT_BITS < 32 */
+
+			*valuep = (uint32_t) value_d;
+			break;
+#else	/* DBL_MANT_BITS */
+#warn	STDIF_CONFIGURABLE_TYPE_DOUBLE property not supported
+#endif	/* DBL_MANT_BITS */
+
+#ifdef	FLT_MANT_BITS
+		case STDIF_CONFIGURABLE_TYPE_FLOAT:
+			value_f = truncf(*((float *) base));
+
+#if	FLT_MANT_BITS < 32
+			if((value_f > UINT32_MAX) || (value_f < 0.0f))
+				return EXTIT_STATUS_INVALID;
+#endif	/* FLT_MANT_BITS < 32 */
+
+			*valuep = (uint32_t) value_f;
+			break;
+#else	/* FLT_MANT_BITS */
+#warn	STDIF_CONFIGURABLE_TYPE_FLOAT property not supported
+#endif	/* FLT_MANT_BITS */
+
+		case STDIF_CONFIGURABLE_TYPE_INT8:
+			value_i8 = *((int8_t *) base);
+
+			if(value_i8 < 0)
+				return EXTIT_STATUS_INVALID;
+
+			*valuep = (uint32_t) value_i8;
+			break;
+
+		case STDIF_CONFIGURABLE_TYPE_INT16:
+			value_i16 = *((int16_t *) base);
+
+			if(value_i16 < 0)
+				return EXTIT_STATUS_INVALID;
+
+			*valuep = (uint32_t) value_i16;
+			break;
+
+		case STDIF_CONFIGURABLE_TYPE_INT32:
+			value_i32 = *((int32_t *) base);
+
+			if(value_i32 < 0)
+				return EXTIT_STATUS_INVALID;
+
+			*valuep = (uint32_t) value_i32;
+			break;
+
+		case STDIF_CONFIGURABLE_TYPE_INT64:
+			value_i64 = *((int64_t *) base);
+
+			if((value_i64 > (int64_t) UINT32_MAX)
+			 || (value_i64 < 0))
+			{
+				return EXTIT_STATUS_INVALID;
+			}
+
+			*valuep = (uint32_t) value_i64;
+			break;
+
+
 		case STDIF_CONFIGURABLE_TYPE_UINT8:
 			*valuep = *((uint8_t *) base);
 			break;
@@ -115,6 +227,15 @@ stdif_configurable_stdimpl_get_uint32__1_0_base
 		case STDIF_CONFIGURABLE_TYPE_UINT32:
 		case STDIF_CONFIGURABLE_TYPE_ENUM32:
 			*valuep = *((uint32_t *) base);
+			break;
+
+		case STDIF_CONFIGURABLE_TYPE_UINT64:
+			value_u64 = *((uint64_t *) base);
+
+			if(value_u64 > UINT32_MAX)
+				return EXTIT_STATUS_INVALID;
+
+			*valuep = (uint32_t) value_u64;
 			break;
 
 		default:
