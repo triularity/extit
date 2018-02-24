@@ -59,8 +59,6 @@ stdif_configurable_stdimpl_set_bool__1_0
 /**
  * Standard implementation helper to set a property value as a boolean.
  *
- * @note	If this function fails, the property is left unchanged.
- *
  * @note	The property will be left unchanged if anything except
  *		@{constant EXTIT_STATUS_OK} is returned.
  *

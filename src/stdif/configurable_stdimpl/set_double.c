@@ -26,7 +26,8 @@
  *		as the binary type defined by the property.
  *
  * @note	This implementation supports the following property types:
- *		@{constant STDIF_CONFIGURABLE_TYPE_DOUBLE}
+ *		@{constant STDIF_CONFIGURABLE_TYPE_DOUBLE},
+ *		@{constant STDIF_CONFIGURABLE_TYPE_FLOAT}.
  *
  * @param	configurable	The configurable instance.
  * @param	prop		The property reference.
@@ -69,7 +70,8 @@ stdif_configurable_stdimpl_set_double__1_0
  *		as the binary type defined by the property.
  *
  * @note	This implementation supports the following property types:
- *		@{constant STDIF_CONFIGURABLE_TYPE_DOUBLE}
+ *		@{constant STDIF_CONFIGURABLE_TYPE_DOUBLE},
+ *		@{constant STDIF_CONFIGURABLE_TYPE_FLOAT}.
  *
  * @param	configurable	The configurable instance.
  * @param	base		The base address.
@@ -98,6 +100,7 @@ stdif_configurable_stdimpl_set_double__1_0_base
 )
 {
 	stdif_configurable_propspec_double_t *	spec_double;
+	stdif_configurable_propspec_float_t *	spec_float;
 
 
 	base = ((char *) base) + prop->offset;
@@ -114,6 +117,18 @@ stdif_configurable_stdimpl_set_double__1_0_base
 			}
 
 			*((double *) base) = value;
+			break;
+
+		case STDIF_CONFIGURABLE_TYPE_FLOAT:
+			spec_float = &prop->definition.spec.type_float;
+
+			if((value < spec_float->min_value)
+			 || (value > spec_float->max_value))
+			{
+				return EXTIT_STATUS_INVALID;
+			}
+
+			*((float *) base) = (float) value;
 			break;
 
 		default:

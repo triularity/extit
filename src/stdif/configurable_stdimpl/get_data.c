@@ -25,7 +25,8 @@
  *		of the binary type defined by the property.
  *
  * @note	This implementation supports the following property types:
- *		@{constant STDIF_CONFIGURABLE_TYPE_DATA}.
+ *		@{constant STDIF_CONFIGURABLE_TYPE_DATA},
+ *		@{constant STDIF_CONFIGURABLE_TYPE_UTF8}.
  *
  * @param	configurable	The configurable instance.
  * @param	prop		The property reference.
@@ -66,7 +67,8 @@ stdif_configurable_stdimpl_get_data__1_0
  *		of the binary type defined by the property.
  *
  * @note	This implementation supports the following property types:
- *		@{constant STDIF_CONFIGURABLE_TYPE_DATA}.
+ *		@{constant STDIF_CONFIGURABLE_TYPE_DATA},
+ *		@{constant STDIF_CONFIGURABLE_TYPE_UTF8}.
  *
  * @param	configurable	The configurable instance.
  * @param	base		The base address.
@@ -98,6 +100,11 @@ stdif_configurable_stdimpl_get_data__1_0_base
 	{
 		case STDIF_CONFIGURABLE_TYPE_DATA:
 			*valuep = *((void **) base);
+			break;
+
+		case STDIF_CONFIGURABLE_TYPE_UTF8:
+			/* Warning - dropping const qualifier */
+			*valuep = *((char **) base);
 			break;
 
 		default:

@@ -8,11 +8,13 @@
  */
 
 #include <stdlib.h>
+#include <stdint.h>
 
 #include <extit/base.h>
 #include <stdif/configurable.h>
 #include <stdif/configurable_impl.h>
 #include <stdif/configurable_stdimpl.h>
+#include <stdif/configurable_util.h>
 
 
 /**
@@ -27,6 +29,11 @@
  *		as the binary type defined by the property.
  *
  * @note	This implementation supports the following property types:
+ *		@{constant STDIF_CONFIGURABLE_TYPE_ENUM32},
+ *		@{constant STDIF_CONFIGURABLE_TYPE_INT8},
+ *		@{constant STDIF_CONFIGURABLE_TYPE_INT16},
+ *		@{constant STDIF_CONFIGURABLE_TYPE_INT32},
+ *		@{constant STDIF_CONFIGURABLE_TYPE_INT64},
  *		@{constant STDIF_CONFIGURABLE_TYPE_UINT8},
  *		@{constant STDIF_CONFIGURABLE_TYPE_UINT16},
  *		@{constant STDIF_CONFIGURABLE_TYPE_UINT32},
@@ -73,6 +80,11 @@ stdif_configurable_stdimpl_set_uint8__1_0
  *		as the binary type defined by the property.
  *
  * @note	This implementation supports the following property types:
+ *		@{constant STDIF_CONFIGURABLE_TYPE_ENUM32},
+ *		@{constant STDIF_CONFIGURABLE_TYPE_INT8},
+ *		@{constant STDIF_CONFIGURABLE_TYPE_INT16},
+ *		@{constant STDIF_CONFIGURABLE_TYPE_INT32},
+ *		@{constant STDIF_CONFIGURABLE_TYPE_INT64},
  *		@{constant STDIF_CONFIGURABLE_TYPE_UINT8},
  *		@{constant STDIF_CONFIGURABLE_TYPE_UINT16},
  *		@{constant STDIF_CONFIGURABLE_TYPE_UINT32},
@@ -104,16 +116,97 @@ stdif_configurable_stdimpl_set_uint8__1_0_base
 	uint8_t value
 )
 {
+	stdif_configurable_propspec_enum32_t *	spec_enum32;
+	stdif_configurable_propspec_int8_t *	spec_int8;
+	stdif_configurable_propspec_int16_t *	spec_int16;
+	stdif_configurable_propspec_int32_t *	spec_int32;
+	stdif_configurable_propspec_int64_t *	spec_int64;
 	stdif_configurable_propspec_uint8_t *	spec_uint8;
 	stdif_configurable_propspec_uint16_t *	spec_uint16;
 	stdif_configurable_propspec_uint32_t *	spec_uint32;
 	stdif_configurable_propspec_uint64_t *	spec_uint64;
+	int8_t		value_i8;
+	int16_t		value_i16;
+	int32_t		value_i32;
+	int64_t		value_i64;
 
 
 	base = ((char *) base) + prop->offset;
 
 	switch(prop->definition.type)
 	{
+		case STDIF_CONFIGURABLE_TYPE_ENUM32:
+			spec_enum32 = &prop->definition.spec.type_enum32;
+
+			if(stdif_configurable_enum32_find_by_value(
+			 spec_enum32->choices, spec_enum32->choice_count,
+			 value) == NULL)
+			{
+				return EXTIT_STATUS_INVALID;
+			}
+
+			*((uint32_t *) base) = value;
+			break;
+
+		case STDIF_CONFIGURABLE_TYPE_INT8:
+			if(value > (uint8_t) INT8_MAX)
+				return EXTIT_STATUS_INVALID;
+
+			value_i8 = (int8_t) value;
+
+			spec_int8 = &prop->definition.spec.type_int8;
+
+			if((value_i8 < spec_int8->min_value)
+			 || (value_i8 > spec_int8->max_value))
+			{
+				return EXTIT_STATUS_INVALID;
+			}
+
+			*((int8_t *) base) = value_i8;
+			break;
+
+		case STDIF_CONFIGURABLE_TYPE_INT16:
+			value_i16 = (int16_t) value;
+
+			spec_int16 = &prop->definition.spec.type_int16;
+
+			if((value_i16 < spec_int16->min_value)
+			 || (value_i16 > spec_int16->max_value))
+			{
+				return EXTIT_STATUS_INVALID;
+			}
+
+			*((int16_t *) base) = value_i16;
+			break;
+
+		case STDIF_CONFIGURABLE_TYPE_INT32:
+			value_i32 = (int32_t) value;
+
+			spec_int32 = &prop->definition.spec.type_int32;
+
+			if((value_i32 < spec_int32->min_value)
+			 || (value_i32 > spec_int32->max_value))
+			{
+				return EXTIT_STATUS_INVALID;
+			}
+
+			*((int32_t *) base) = value_i32;
+			break;
+
+		case STDIF_CONFIGURABLE_TYPE_INT64:
+			value_i64 = (int64_t) value;
+
+			spec_int64 = &prop->definition.spec.type_int64;
+
+			if((value_i64 < spec_int64->min_value)
+			 || (value_i64 > spec_int64->max_value))
+			{
+				return EXTIT_STATUS_INVALID;
+			}
+
+			*((int64_t *) base) = value_i64;
+			break;
+
 		case STDIF_CONFIGURABLE_TYPE_UINT8:
 			spec_uint8 = &prop->definition.spec.type_uint8;
 
