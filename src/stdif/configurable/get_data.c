@@ -11,7 +11,7 @@
 #include <stdif/configurable.h>
 #include <stdif/configurable_impl.h>
 
-#ifdef	EXTIT_PARANOID
+#ifdef	STDIF_PARANOID
 #include <iv/util.h>
 #endif
 
@@ -47,7 +47,7 @@ stdif_configurable_get_data__1_0
 	void **valuep
 )
 {
-#ifdef	EXTIT_PARANOID
+#ifdef	STDIF_PARANOID
 	if(!IV_MATCHES(configurable->version, STDIF_CONFIGURABLE_ABI_1_0))
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif

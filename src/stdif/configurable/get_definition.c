@@ -3,7 +3,7 @@
  *
  * Configurable Interface - get_definition@1.0 wrapper.
  *
- * Copyright (c) 2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2017-2018, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -13,7 +13,7 @@
 #include <stdif/configurable.h>
 #include <stdif/configurable_impl.h>
 
-#ifdef	EXTIT_PARANOID
+#ifdef	STDIF_PARANOID
 #include <iv/util.h>
 #endif
 
@@ -45,7 +45,7 @@ stdif_configurable_get_definition__1_0
 	stdif_configurable_propref_t *prop
 )
 {
-#ifdef	EXTIT_PARANOID
+#ifdef	STDIF_PARANOID
 	if(!IV_MATCHES(configurable->version, STDIF_CONFIGURABLE_ABI_1_0))
 		return NULL;
 #endif

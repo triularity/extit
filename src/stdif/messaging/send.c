@@ -12,7 +12,7 @@
 #include <stdif/messaging.h>
 #include <stdif/messaging_impl.h>
 
-#ifdef	EXTIT_PARANOID
+#ifdef	STDIF_PARANOID
 #include <iv/util.h>
 #endif
 
@@ -56,7 +56,7 @@ stdif_messaging_send__1_0
 	void *data
 )
 {
-#ifdef	EXTIT_PARANOID
+#ifdef	STDIF_PARANOID
 	if(!IV_MATCHES(messaging->version, STDIF_MESSAGING_ABI_1_0))
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif

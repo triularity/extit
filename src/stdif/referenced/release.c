@@ -3,7 +3,7 @@
  *
  * Referenced Interface - release@1.0 wrapper.
  *
- * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2018, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -11,7 +11,7 @@
 #include <stdif/referenced.h>
 #include <stdif/referenced_impl.h>
 
-#ifdef	EXTIT_PARANOID
+#ifdef	STDIF_PARANOID
 #include <iv/util.h>
 #endif
 
@@ -39,7 +39,7 @@ stdif_referenced_release__1_0
 	stdif_referenced_t *referenced
 )
 {
-#ifdef	EXTIT_PARANOID
+#ifdef	STDIF_PARANOID
 	if(!IV_MATCHES(referenced->version, STDIF_REFERENCED_ABI_1_0))
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif

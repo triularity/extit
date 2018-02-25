@@ -14,7 +14,7 @@
 #include <stdif/messaging.h>
 #include <stdif/messaging_impl.h>
 
-#ifdef	EXTIT_PARANOID
+#ifdef	STDIF_PARANOID
 #include <iv/util.h>
 #endif
 
@@ -49,7 +49,7 @@ stdif_messaging_bound_has_listener__1_0
 	stdif_messaging_bound_t *bound
 )
 {
-#ifdef	EXTIT_PARANOID
+#ifdef	STDIF_PARANOID
 	if(!IV_MATCHES(messaging->version, STDIF_MESSAGING_ABI_1_0))
 		return false;
 #endif

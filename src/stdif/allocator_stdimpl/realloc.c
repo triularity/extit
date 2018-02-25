@@ -40,7 +40,7 @@ stdif_allocator_stdimpl_realloc__1_0
 		size = 1;
 #endif
 
-#ifdef	EXTIT_PARANOID
+#ifdef	STDIF_PARANOID
 	if(ptr == NULL)
 		return malloc(size);
 #endif

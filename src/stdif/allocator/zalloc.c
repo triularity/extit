@@ -13,7 +13,7 @@
 #include <stdif/allocator.h>
 #include <stdif/allocator_impl.h>
 
-#ifdef	EXTIT_PARANOID
+#ifdef	STDIF_PARANOID
 #include <iv/util.h>
 #endif
 
@@ -42,7 +42,7 @@ stdif_allocator_zalloc__1_0
 	size_t size
 )
 {
-#ifdef	EXTIT_PARANOID
+#ifdef	STDIF_PARANOID
 	if(!IV_MATCHES(allocator->version, STDIF_ALLOCATOR_ABI_1_0))
 		return NULL;
 #endif

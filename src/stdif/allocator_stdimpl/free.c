@@ -31,7 +31,7 @@ stdif_allocator_stdimpl_free__1_0
 	void *ptr
 )
 {
-#ifdef	EXTIT_PARANOID
+#ifdef	STDIF_PARANOID
 	if(ptr == NULL)
 		return;
 #endif

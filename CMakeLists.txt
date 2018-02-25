@@ -412,6 +412,7 @@ endif()
 if(EXTIT_PARANOID)
 	add_definitions("-DIV_PARANOID")
 	add_definitions("-DEXTIT_PARANOID")
+	add_definitions("-DSTDIF_PARANOID")
 endif()
 
 if(EXTIT_DEBUG)

@@ -11,7 +11,7 @@
 #include <stdif/disposable.h>
 #include <stdif/disposable_impl.h>
 
-#ifdef	EXTIT_PARANOID
+#ifdef	STDIF_PARANOID
 #include <iv/util.h>
 #endif
 
@@ -37,7 +37,7 @@ stdif_disposable_free__1_0
 	stdif_disposable_t *disposable
 )
 {
-#ifdef	EXTIT_PARANOID
+#ifdef	STDIF_PARANOID
 	if(!IV_MATCHES(disposable->version, STDIF_DISPOSABLE_ABI_1_0))
 		return EXTIT_STATUS_UNSUPPORTED;
 #endif

@@ -3,7 +3,7 @@
  *
  * Resolvable Interface - get_interface@1.0 wrapper.
  *
- * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2018, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -14,7 +14,7 @@
 #include <stdif/resolvable.h>
 #include <stdif/resolvable_impl.h>
 
-#ifdef	EXTIT_PARANOID
+#ifdef	STDIF_PARANOID
 #include <iv/util.h>
 #endif
 
@@ -43,7 +43,7 @@ stdif_resolvable_get_interface__1_0
 	iv_version_t version
 )
 {
-#ifdef	EXTIT_PARANOID
+#ifdef	STDIF_PARANOID
 	if(!IV_MATCHES(resolvable->version, STDIF_RESOLVABLE_ABI_1_0))
 		return NULL;
 #endif
