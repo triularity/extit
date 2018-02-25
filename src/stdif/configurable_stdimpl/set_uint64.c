@@ -129,17 +129,13 @@ stdif_configurable_stdimpl_set_uint64__1_0_base
 	int16_t		value_i16;
 	int32_t		value_i32;
 	int64_t		value_i64;
-	int64_t		value_u32;
+	int32_t		value_u32;
 
 
 	base = ((char *) base) + prop->offset;
 
 	switch(prop->definition.type)
 	{
-
-
-
-
 		case STDIF_CONFIGURABLE_TYPE_ENUM32:
 			if(value > UINT32_MAX)
 				return EXTIT_STATUS_INVALID;
