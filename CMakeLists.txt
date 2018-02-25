@@ -223,7 +223,13 @@ set(STDIF_ALLOCATOR_STDIMPL_HEADER_FILES
 	src/include/stdif/allocator_stdimpl.h)
 
 set(STDIF_ALLOCATOR_STDIMPL_SOURCE_FILES
-	src/stdif/allocator_stdimpl/stdimpl.c)
+	src/stdif/allocator_stdimpl/alloc.c
+	src/stdif/allocator_stdimpl/dup.c
+	src/stdif/allocator_stdimpl/free.c
+	src/stdif/allocator_stdimpl/ops_1_0.c
+	src/stdif/allocator_stdimpl/realloc.c
+	src/stdif/allocator_stdimpl/zalloc.c)
+
 
 set(STDIF_CONFIGURABLE_STDIMPL_HEADER_FILES 
 	src/include/stdif/configurable_stdimpl.h)
