@@ -28,7 +28,8 @@
  *		is changed or the instance is destroyed.
  *
  * @note	This implementation supports the following property types:
- *		@{constant STDIF_CONFIGURABLE_TYPE_UTF8}
+ *		@{constant STDIF_CONFIGURABLE_TYPE_DATA},
+ *		@{constant STDIF_CONFIGURABLE_TYPE_UTF8}.
  *
  * @param	configurable	The configurable instance.
  * @param	prop		The property reference.
@@ -71,7 +72,8 @@ stdif_configurable_stdimpl_set_utf8__1_0
  *		then stores the copy of the @{param value} string there.
  *
  * @note	This implementation supports the following property types:
- *		@{constant STDIF_CONFIGURABLE_TYPE_UTF8}
+ *		@{constant STDIF_CONFIGURABLE_TYPE_DATA},
+ *		@{constant STDIF_CONFIGURABLE_TYPE_UTF8}.
  *
  * @param	configurable	The configurable instance.
  * @param	base		The base address.

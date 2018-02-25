@@ -28,6 +28,7 @@
  *		of the binary type defined by the property.
  *
  * @note	This implementation supports the following property types:
+ *		@{constant STDIF_CONFIGURABLE_TYPE_DATA},
  *		@{constant STDIF_CONFIGURABLE_TYPE_UTF8}.
  *
  * @param	configurable	The configurable instance.
@@ -69,6 +70,7 @@ stdif_configurable_stdimpl_get_utf8__1_0
  *		of the binary type defined by the property.
  *
  * @note	This implementation supports the following property types:
+ *		@{constant STDIF_CONFIGURABLE_TYPE_DATA},
  *		@{constant STDIF_CONFIGURABLE_TYPE_UTF8}.
  *
  * @param	configurable	The configurable instance.
