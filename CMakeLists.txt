@@ -557,7 +557,8 @@ add_library(
 
 target_link_libraries(
 	stdif_configurable_stdimpl
-		stdif_configurable_util)
+		stdif_configurable_util
+		m)
 
 if(EXTIT_PARANOID)
 	target_link_libraries(
