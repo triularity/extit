@@ -564,8 +564,13 @@ add_library(
 
 target_link_libraries(
 	stdif_configurable_stdimpl
-		stdif_configurable_util
-		m)
+		stdif_configurable_util)
+
+if(UNIX)
+	target_link_libraries(
+		stdif_configurable_stdimpl
+			m)
+endif()
 
 if(EXTIT_PARANOID)
 	target_link_libraries(
