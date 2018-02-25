@@ -31,13 +31,22 @@
  *		@{constant STDIF_CONFIGURABLE_TYPE_DATA},
  *		@{constant STDIF_CONFIGURABLE_TYPE_UTF8}.
  *
+ * @note	If the property is @{constant STDIF_CONFIGURABLE_TYPE_DATA}
+ *		then its @{member stdif_configurable_propspec_data_t.iid} and
+ *		@{member stdif_configurable_propspec_data_t.version} fields
+ *		must be set to @{constant STDIF_CONFIGURABLE_UTF8_IID} and
+ *		@{constant STDIF_CONFIGURABLE_UTF8_1_0}, respectively,
+ *		or @{constant EXTIT_STATUS_INVALID} will be returned.
+ *
  * @param	configurable	The configurable instance.
  * @param	prop		The property reference.
  * @param	valuep		The address to store the value.
  *
  * @return	@{constant EXTIT_STATUS_OK} if successful,
  *		@{constant STDIF_CONFIGURABLE_STATUS_MISMATCH} if the
- *		property type is incompatible.
+ *		property type is incompatible,
+ *		or @{constant EXTIT_STATUS_INVALID} if the value is out
+ *		of valid range for the return type.
  *
  * @since	1.0
  *
@@ -73,6 +82,13 @@ stdif_configurable_stdimpl_get_utf8__1_0
  *		@{constant STDIF_CONFIGURABLE_TYPE_DATA},
  *		@{constant STDIF_CONFIGURABLE_TYPE_UTF8}.
  *
+ * @note	If the property is @{constant STDIF_CONFIGURABLE_TYPE_DATA}
+ *		then its @{member stdif_configurable_propspec_data_t.iid} and
+ *		@{member stdif_configurable_propspec_data_t.version} fields
+ *		must be set to @{constant STDIF_CONFIGURABLE_UTF8_IID} and
+ *		@{constant STDIF_CONFIGURABLE_UTF8_1_0}, respectively,
+ *		or @{constant EXTIT_STATUS_INVALID} will be returned.
+ *
  * @param	configurable	The configurable instance.
  * @param	base		The base address.
  * @param	prop		The property reference.
@@ -80,7 +96,9 @@ stdif_configurable_stdimpl_get_utf8__1_0
  *
  * @return	@{constant EXTIT_STATUS_OK} if successful,
  *		@{constant STDIF_CONFIGURABLE_STATUS_MISMATCH} if the
- *		property type is incompatible.
+ *		property type is incompatible,
+ *		or @{constant EXTIT_STATUS_INVALID} if the value is out
+ *		of valid range for the return type.
  *
  * @since	1.0
  *

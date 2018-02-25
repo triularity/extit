@@ -31,6 +31,13 @@
  *		@{constant STDIF_CONFIGURABLE_TYPE_DATA},
  *		@{constant STDIF_CONFIGURABLE_TYPE_UTF8}.
  *
+ * @note	If the property is @{constant STDIF_CONFIGURABLE_TYPE_DATA}
+ *		then its @{member stdif_configurable_propspec_data_t.iid} and
+ *		@{member stdif_configurable_propspec_data_t.version} fields
+ *		must be set to @{constant STDIF_CONFIGURABLE_UTF8_IID} and
+ *		@{constant STDIF_CONFIGURABLE_UTF8_1_0}, respectively,
+ *		or @{constant EXTIT_STATUS_INVALID} will be returned.
+ *
  * @param	configurable	The configurable instance.
  * @param	prop		The property reference.
  * @param	value		The new value.
@@ -74,6 +81,13 @@ stdif_configurable_stdimpl_set_utf8__1_0
  * @note	This implementation supports the following property types:
  *		@{constant STDIF_CONFIGURABLE_TYPE_DATA},
  *		@{constant STDIF_CONFIGURABLE_TYPE_UTF8}.
+ *
+ * @note	If the property is @{constant STDIF_CONFIGURABLE_TYPE_DATA}
+ *		then its @{member stdif_configurable_propspec_data_t.iid} and
+ *		@{member stdif_configurable_propspec_data_t.version} fields
+ *		must be set to @{constant STDIF_CONFIGURABLE_UTF8_IID} and
+ *		@{constant STDIF_CONFIGURABLE_UTF8_1_0}, respectively,
+ *		or @{constant EXTIT_STATUS_INVALID} will be returned.
  *
  * @param	configurable	The configurable instance.
  * @param	base		The base address.

@@ -38,7 +38,9 @@
  *
  * @return	@{constant EXTIT_STATUS_OK} if successful,
  *		@{constant STDIF_CONFIGURABLE_STATUS_MISMATCH} if the
- *		property type is incompatible.
+ *		property type is incompatible,
+ *		or @{constant EXTIT_STATUS_INVALID} if the value is out
+ *		of valid range for the return type.
  *
  * @since	1.0
  *
