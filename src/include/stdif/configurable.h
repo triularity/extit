@@ -79,6 +79,17 @@ typedef struct _stdif_configurable_propspec_data
 } stdif_configurable_propspec_data_t;
 
 
+/**
+ * Data Interface ID for UTF-8 string.
+ */
+#define	STDIF_CONFIGURABLE_UTF8_IID	"utf8@{c1c017b1-44d5-11e6-9660-406186e454c1}"
+
+/**
+ * Data Interface Version 1.0 for UTF-8 string.
+ */
+#define	STDIF_CONFIGURABLE_UTF8_1_0	IV_VERSION(1,0)
+
+
 typedef struct _stdif_configurable_propspec_double
 {
 	double			min_value;

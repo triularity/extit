@@ -25,8 +25,10 @@
  * @note	The property will be left unchanged if anything except
  *		@{constant EXTIT_STATUS_OK} is returned.
  *
- * @note	The string will be copied internally and @{param value}
- * 		does not need to remain valid after this function returns.
+ * @note	Unless otherwise specified by the object implementing
+ *		the @{param configurable}, the pointer reference will
+ *		persist and should remain valid until the property value
+ *		is changed or the instance is destroyed.
  *
  * @param	configurable	The configurable instance.
  * @param	prop		The property reference.
@@ -35,7 +37,8 @@
  * @return	@{constant EXTIT_STATUS_OK} if successful,
  *		@{constant STDIF_CONFIGURABLE_STATUS_MISMATCH} if the
  *		property type is incompatible,
- *		or @{constant EXTIT_STATUS_NOMEM} if memory allocation failed.
+ *		or @{constant EXTIT_STATUS_INVALID} if the value is not
+ *		a defined choice for that property.
  *
  * @since	1.0
  *

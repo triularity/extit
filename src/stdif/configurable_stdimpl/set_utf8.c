@@ -7,9 +7,9 @@
  * http://www.triularity.org/
  */
 
-#include <stdlib.h>
 #include <string.h>
 
+#include <iv/base.h>
 #include <extit/base.h>
 #include <stdif/configurable.h>
 #include <stdif/configurable_impl.h>
@@ -22,10 +22,10 @@
  * @note	The property will be left unchanged if anything except
  *		@{constant EXTIT_STATUS_OK} is returned.
  *
- * @note	This implementation calls @{func free(void *)} with the
- *		@{type char *} value at @{param configurable} @{code +}
- *		@{param prop}@{code ->offset}, if non-@{code NULL},
- *		then stores the copy of the @{param value} string there.
+ * @note	Unless otherwise specified by the object implementing
+ *		the @{param configurable}, the pointer reference will
+ *		persist and should remain valid until the property value
+ *		is changed or the instance is destroyed.
  *
  * @note	This implementation supports the following property types:
  *		@{constant STDIF_CONFIGURABLE_TYPE_UTF8}
@@ -36,8 +36,9 @@
  *
  * @return	@{constant EXTIT_STATUS_OK} if successful,
  *		@{constant STDIF_CONFIGURABLE_STATUS_MISMATCH} if the
- *		property type is incompatible.
- *		or @{constant EXTIT_STATUS_NOMEM} if memory allocation failed.
+ *		property type is incompatible,
+ *		or @{constant EXTIT_STATUS_INVALID} if the value is not
+ *		a defined choice for that property.
  *
  * @since	1.0
  *
@@ -79,8 +80,9 @@ stdif_configurable_stdimpl_set_utf8__1_0
  *
  * @return	@{constant EXTIT_STATUS_OK} if successful,
  *		@{constant STDIF_CONFIGURABLE_STATUS_MISMATCH} if the
- *		property type is incompatible.
- *		or @{constant EXTIT_STATUS_NOMEM} if memory allocation failed.
+ *		property type is incompatible,
+ *		or @{constant EXTIT_STATUS_INVALID} if the value is not
+ *		a defined choice for that property.
  *
  * @since	1.0
  *
@@ -97,34 +99,32 @@ stdif_configurable_stdimpl_set_utf8__1_0_base
 	const char *value
 )
 {
-	size_t		len;
-	char *		new_utf8;
-	char *		old_utf8;
+	stdif_configurable_propspec_data_t *	spec_data;
 
 
 	base = ((char *) base) + prop->offset;
 
 	switch(prop->definition.type)
 	{
+		case STDIF_CONFIGURABLE_TYPE_DATA:
+			spec_data = &prop->definition.spec.type_data;
+
+			if(spec_data->iid == NULL)
+				return EXTIT_STATUS_INVALID;
+
+			if((strcmp(spec_data->iid,
+			 STDIF_CONFIGURABLE_UTF8_IID) != 0)
+			 || (spec_data->version
+			  != STDIF_CONFIGURABLE_UTF8_1_0))
+			{
+				return EXTIT_STATUS_INVALID;
+			}
+
+			*((const char **) base) = value;
+			break;
+
 		case STDIF_CONFIGURABLE_TYPE_UTF8:
-			if(value != NULL)
-			{
-				len = strlen(value) + 1;
-
-				if((new_utf8 = malloc(len)) == NULL)
-					return EXTIT_STATUS_NOMEM;
-
-				memcpy(new_utf8, value, len);
-			}
-			else
-			{
-				new_utf8 = NULL;
-			}
-
-			if((old_utf8 = *((char **) base)) != NULL)
-				free(old_utf8);
-
-			*((char **) base) = new_utf8;
+			*((const char **) base) = value;
 			break;
 
 		default:

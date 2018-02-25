@@ -7,6 +7,9 @@
  * http://www.triularity.org/
  */
 
+#include <string.h>
+
+#include <iv/base.h>
 #include <extit/base.h>
 #include <stdif/configurable.h>
 #include <stdif/configurable_impl.h>
@@ -20,8 +23,8 @@
  *		will be left unchanged if anything except
  *		@{constant EXTIT_STATUS_OK} is returned.
  *
- * @note	This implementation returns the @{type const char *} value
- *		at @{param configurable} @{code +} @{param prop}@{code ->offset}.
+ * @note	This implementation returns the @{type const char *} value at
+ *		@{param configurable} @{code +} @{param prop}@{code ->offset}
  *		of the binary type defined by the property.
  *
  * @note	This implementation supports the following property types:
@@ -92,10 +95,30 @@ stdif_configurable_stdimpl_get_utf8__1_0_base
 	const char **valuep
 )
 {
+	stdif_configurable_propspec_data_t *	spec_data;
+
+
 	base = ((char *) base) + prop->offset;
 
 	switch(prop->definition.type)
 	{
+		case STDIF_CONFIGURABLE_TYPE_DATA:
+			spec_data = &prop->definition.spec.type_data;
+
+			if(spec_data->iid == NULL)
+				return EXTIT_STATUS_INVALID;
+
+			if((strcmp(spec_data->iid,
+			 STDIF_CONFIGURABLE_UTF8_IID) != 0)
+			 || (spec_data->version
+			  != STDIF_CONFIGURABLE_UTF8_1_0))
+			{
+				return EXTIT_STATUS_INVALID;
+			}
+
+			*valuep = *((const char **) base);
+			break;
+
 		case STDIF_CONFIGURABLE_TYPE_UTF8:
 			*valuep = *((char **) base);
 			break;
