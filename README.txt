@@ -1,7 +1,7 @@
 
 EXTend-IT is a lightweight, interface versioning based plugin library.
 
-When compiling code that will link against shared ExtIt libraries, include the compiler flag: -DEXTIT_LINK_SHARED
+When compiling code that will link against shared ExtIt/stdif  libraries, include the compiler flag: -DEXTIT_LINK_SHARED
 
 
 Supported OS's:
@@ -12,6 +12,9 @@ Supported OS's:
 	FreeBSD (tested on 10.x, 64-bit)
 		clang 3.4 64-bit
 		gcc 6.4 64-bit
+	FreeBSD (tested on 11.x, 64-bit)
+		clang 4.0 64-bit
+		clang 5.0 64-bit
 	NetBSD (tested on 6.1.5, 64-bit)
 		gcc 4.5 64-bit
 	OpenBSD (tested on 5.7, 64-bit)
@@ -25,13 +28,15 @@ Planned OS's:
 
 
 This package contains 3 main components:
- * IV - The interface version library
- * ExtIt - The core plugin/extention library.
- * IF - Standard ExtIt interfaces.
+ * iv - The interface version library
+ * extit - The core plugin/extention library.
+ * stdif - Standard interfaces.
 
 
 COMPILING
 ---------
+
+A C99 build environment is required (or one with augmented stdint.h / stdbool.h files).
 
 This project uses Cmake (2.8.12+). Configuration options are:
 
@@ -66,7 +71,7 @@ FILES
 src/include/		Public header files.
 src/iv/			IV source code.
 src/extit/		ExtIt source code.
-src/if/			Standard ExtIt interfaces source code.
+src/stdif/		Standard interfaces source code.
 examples/		Example code.
 tests/			Unit tests.
 docs/			Documentation.
