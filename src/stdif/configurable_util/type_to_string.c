@@ -16,7 +16,7 @@
 /**
  * Map a @{code STDIF_CONFIGURABLE_TYPE_}* value to its string.
  * The value returned is the same as its constant, minus the
- * @{code STDIF_CONFIGURABLE_TYPE_BOOL_} prefix.
+ * @{code STDIF_CONFIGURABLE_TYPE_} prefix.
  *
  * @param	type		A configurable type.
  *

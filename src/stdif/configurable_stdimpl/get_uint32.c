@@ -29,7 +29,7 @@
 
 
 /**
- * Standard implementation to get a property value as a unsigned
+ * Standard implementation to get a property value as an unsigned
  * 32-bit integer.
  *
  * @note	The contents of memory referenced by @{param valuep}
@@ -83,7 +83,7 @@ stdif_configurable_stdimpl_get_uint32__1_0
 
 
 /**
- * Standard implementation helper to get a property value as a unsigned
+ * Standard implementation helper to get a property value as an unsigned
  * 32-bit integer.
  *
  * @note	The contents of memory referenced by @{param valuep}
