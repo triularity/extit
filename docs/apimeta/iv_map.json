@@ -24,7 +24,7 @@
 			"parameters":
 			[
 				{
-					"type": [ "const", "iv_map_t", "*" ],
+					"type": [ "iv_map_t", "*" ],
 					"name": "map",
 					"description": "The map."
 				},
