@@ -111,7 +111,16 @@
 						]
 					},
 					"name": "cleaner",
-					"description": "A callback for freeing unused entry values."
+					"description":
+					[
+						"A callback for optionally freeing unused entry values, or ",
+						{
+							"type": "ref:constant",
+							"name": "NULL"
+
+						},
+						"."
+					]
 				}
 			],
 			"summary": "Release any internal memory that is no longer needed.",
