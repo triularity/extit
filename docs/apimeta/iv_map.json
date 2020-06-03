@@ -75,7 +75,7 @@
 						"type": "ref:constant",
 						"name": "NULL"
 					},
-					" if none was found.",
+					" if a parameter was invalid, or memory could not be allocated.",
 					" Callers of this function are expected to set the contents of the pointer to non-",
 					{
 						"type": "ref:constant",
