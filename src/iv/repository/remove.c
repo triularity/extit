@@ -8,7 +8,7 @@
 #include <stdlib.h>
 
 #include <iv/base.h>
-#include <iv/map.h>
+#include <iv/idmap.h>
 #include <iv/repository.h>
 
 #include "internal.h"

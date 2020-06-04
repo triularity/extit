@@ -299,12 +299,24 @@ set(IV_HEADER_FILES
 	src/include/iv/version.h)
 
 
-# IV map
-set(IV_MAP_HEADER_FILES 
-	src/include/iv/map.h)
+# IV idmap
+set(IV_IDMAP_HEADER_FILES 
+	src/include/iv/idmap.h)
 
-set(IV_MAP_SOURCE_FILES
-	src/iv/map.c)
+
+set(IV_IDMAP_SOURCE_FILES
+	src/iv/idmap.c)
+
+# IV map
+if(IV_COMPAT)
+	set(IV_MAP_HEADER_FILES
+		${IV_MAP_HEADER_FILES}
+		src/include/iv/map.h)
+
+	set(IV_MAP_SOURCE_FILES
+		${IV_MAP_SOURCE_FILES}
+		src/iv/map.c)
+endif()
 
 
 # IV repository
@@ -489,7 +501,7 @@ add_library(
 
 target_link_libraries(
 	extit_container_stdimpl
-		iv_map)
+		iv_idmap)
 
 
 #
@@ -650,7 +662,7 @@ add_library(
 
 target_link_libraries(
 	stdif_messaging_stdimpl
-		iv_map
+		iv_idmap
 		extit_util)
 
 
@@ -696,14 +708,27 @@ endif()
 
 
 #
-# [lib]iv_map
+# [lib]iv_idmap
 #
 add_library(
-	iv_map
-		${IV_MAP_SOURCE_FILES}
+	iv_idmap
+		${IV_IDMAP_SOURCE_FILES}
 		${IV_HEADER_FILES}
 		${IV_UTIL_HEADER_FILES}
-		${IV_MAP_HEADER_FILES})
+		${IV_IDMAP_HEADER_FILES})
+
+
+#
+# [lib]iv_map
+#
+if(IV_COMPAT)
+	add_library(
+		iv_map
+			${IV_MAP_SOURCE_FILES}
+			${IV_HEADER_FILES}
+			${IV_UTIL_HEADER_FILES}
+			${IV_MAP_HEADER_FILES})
+endif()
 
 
 #
@@ -718,7 +743,7 @@ add_library(
 
 target_link_libraries(
 	iv_repository
-		iv_map
+		iv_idmap
 		iv_util)
 
 
@@ -843,8 +868,14 @@ if(DEFINED LIBNAME_POSTFIX)
 			OUTPUT_NAME "extif_util${LIBNAME_POSTFIX}")
 
 	set_target_properties(
-		iv_map PROPERTIES
-			OUTPUT_NAME "iv_map${LIBNAME_POSTFIX}")
+		iv_idmap PROPERTIES
+			OUTPUT_NAME "iv_idmap${LIBNAME_POSTFIX}")
+
+	if(IV_COMPAT)
+		set_target_properties(
+			iv_map PROPERTIES
+				OUTPUT_NAME "iv_map${LIBNAME_POSTFIX}")
+	endif()
 
 	set_target_properties(
 		iv_repository PROPERTIES
@@ -876,10 +907,17 @@ install(
 		extit_container_stdimpl
 		extit_pmodule
 		extit_util
-		iv_map
+		iv_idmap
 		iv_repository
 		iv_util
 	DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+
+if(IV_COMPAT)
+	install(
+		TARGETS
+			iv_map
+		DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+endif()
 
 install(
 	FILES
@@ -1105,7 +1143,7 @@ if(EXTIT_COMPILE_EXAMPLES)
 
 	target_link_libraries(
 		example_iv_repository
-			iv_map
+			iv_idmap
 			iv_repository)
 
 
@@ -1131,7 +1169,7 @@ if(EXTIT_COMPILE_EXAMPLES)
 		example_multiver_server_1_0
 			extit_container_stdimpl
 			extit_pmodule
-			iv_map
+			iv_idmap
 			iv_repository)
 
 
@@ -1154,7 +1192,7 @@ if(EXTIT_COMPILE_EXAMPLES)
 		example_multiver_server_1_1
 			extit_container_stdimpl
 			extit_pmodule
-			iv_map
+			iv_idmap
 			iv_repository)
 
 
@@ -1177,7 +1215,7 @@ if(EXTIT_COMPILE_EXAMPLES)
 		example_multiver_server_1_2
 			extit_container_stdimpl
 			extit_pmodule
-			iv_map
+			iv_idmap
 			iv_repository)
 
 
@@ -1402,18 +1440,34 @@ if(EXTIT_COMPILE_TESTS)
 	endif()
 
 	add_executable(
-		test_iv_map
-			tests/iv_map/test_iv_map.c
+		test_iv_idmap
+			tests/iv_idmap/test_iv_idmap.c
 			${IV_HEADER_FILES}
 			${IV_MAP_HEADER_FILES})
 
 	target_compile_options(
-		test_iv_map
+		test_iv_idmap
 			PRIVATE ${TEST_COMPILE_FLAGS})
 
 	target_link_libraries(
-		test_iv_map
+		test_iv_idmap
+			iv_idmap)
+
+	if(IV_COMPAT)
+		add_executable(
+			test_iv_map
+				tests/iv_map/test_iv_map.c
+				${IV_HEADER_FILES}
+				${IV_MAP_HEADER_FILES})
+
+		target_compile_options(
+			test_iv_map
+				PRIVATE ${TEST_COMPILE_FLAGS})
+
+		target_link_libraries(
+			test_iv_map
 			iv_map)
+	endif()
 
 	add_executable(
 		test_iv_matches

@@ -1,5 +1,5 @@
 /*
- * @(#) extit/src/iv/map.c
+ * @(#) extit/src/iv/idmap.c
  *
  * Interface versioning ID map.
  *
@@ -12,7 +12,7 @@
 #include <string.h>
 
 #include <iv/base.h>
-#include <iv/map.h>
+#include <iv/idmap.h>
 #include <iv/util.h>
 
 #define	DEFAULT_HASH_SIZE	29
@@ -38,7 +38,7 @@ struct _bucket
 };
 
 
-struct _iv_map
+struct _iv_idmap
 {
 	bucket_t **		buckets;
 	uint32_t		hashsize;
@@ -332,22 +332,22 @@ bucket_get_valueptr
 
 
 
-iv_map_t *
+iv_idmap_t *
 IV_DECL
-iv_map_create
+iv_idmap_create
 (
 	uint32_t hashsize,
 	void (*free_func)(void *value)
 )
 {
-	iv_map_t *	map;
+	iv_idmap_t *	map;
 
 
 	if(hashsize == 0)
 		hashsize = DEFAULT_HASH_SIZE;
 
 	if((map = calloc(
-	 1, sizeof(iv_map_t) + (sizeof(bucket_t *) * hashsize))) != NULL)
+	 1, sizeof(iv_idmap_t) + (sizeof(bucket_t *) * hashsize))) != NULL)
 	{
 		map->buckets = (bucket_t **) &map[1];
 		map->hashsize = hashsize;
@@ -360,9 +360,9 @@ iv_map_create
 
 void **
 IV_DECL
-iv_map_acquire_valueptr
+iv_idmap_acquire_valueptr
 (
-	iv_map_t *map,
+	iv_idmap_t *map,
 	const char *nid,
 	const char *iid,
 	const char **internal_nidp,
@@ -394,9 +394,9 @@ iv_map_acquire_valueptr
 
 void
 IV_DECL
-iv_map_cleanup
+iv_idmap_cleanup
 (
-	iv_map_t *map,
+	iv_idmap_t *map,
 	void (*value_cleaner)(void **valueptr)
 )
 {
@@ -410,9 +410,9 @@ iv_map_cleanup
 
 void
 IV_DECL
-iv_map_destroy
+iv_idmap_destroy
 (
-	iv_map_t *map
+	iv_idmap_t *map
 )
 {
 	size_t		i;
@@ -429,9 +429,9 @@ iv_map_destroy
 
 void *
 IV_DECL
-iv_map_get
+iv_idmap_get
 (
-	iv_map_t *map,
+	iv_idmap_t *map,
 	const char *nid,
 	const char *iid
 )
@@ -465,9 +465,9 @@ iv_map_get
 
 void **
 IV_DECL
-iv_map_get_valueptr
+iv_idmap_get_valueptr
 (
-	iv_map_t *map,
+	iv_idmap_t *map,
 	const char *nid,
 	const char *iid
 )
@@ -495,9 +495,9 @@ iv_map_get_valueptr
 
 const char *
 IV_DECL
-iv_map_intern_interfaceid
+iv_idmap_intern_interfaceid
 (
-	iv_map_t *map,
+	iv_idmap_t *map,
 	const char *nid,
 	const char *iid
 )
@@ -531,9 +531,9 @@ iv_map_intern_interfaceid
 
 const char *
 IV_DECL
-iv_map_intern_nameid
+iv_idmap_intern_nameid
 (
-	iv_map_t *map,
+	iv_idmap_t *map,
 	const char *nid,
 	const char *iid
 )
