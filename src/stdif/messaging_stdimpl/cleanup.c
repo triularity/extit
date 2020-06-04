@@ -16,7 +16,7 @@
 
 
 /**
- * The cleanup callback used by @{func iv_map_cleanup}.
+ * The cleanup callback used by @{func iv_idmap_cleanup}.
  *
  * @param	valueptr		A pointer to the value holder.
  */
@@ -70,6 +70,6 @@ stdif_messaging_stdimpl_cleanup
 
 	messaging_i = (stdif_messaging_internal_t *) messaging;
 
-	iv_map_cleanup(messaging_i->map, bound_cleaner);
+	iv_idmap_cleanup(messaging_i->map, bound_cleaner);
 	messaging_i->num_deletes = 0;
 }

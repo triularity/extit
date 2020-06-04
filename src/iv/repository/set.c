@@ -46,7 +46,7 @@ iv_repository_set
 	if(value == NULL)
 		return IV_REPOSITORY_STATUS_INVALID;
 
-	vlistp = (version_node_t **) iv_map_acquire_valueptr(
+	vlistp = (version_node_t **) iv_idmap_acquire_valueptr(
 		repo->map, key, iid, NULL, NULL);
 
 	if(vlistp == NULL)

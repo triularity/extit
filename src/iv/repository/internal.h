@@ -30,7 +30,7 @@ struct _version_node
 
 struct _iv_repository
 {
-	iv_map_t *		map;
+	iv_idmap_t *		map;
 	unsigned int		num_deletes;
 };
 

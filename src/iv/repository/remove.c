@@ -39,7 +39,7 @@ iv_repository_remove
 	if(version == IV_VERSION_NONE)
 		return IV_REPOSITORY_STATUS_INVALID;
 
-	vlistp = (version_node_t **) iv_map_get_valueptr(repo->map, key, iid);
+	vlistp = (version_node_t **) iv_idmap_get_valueptr(repo->map, key, iid);
 
 	if(vlistp == NULL)
 		return IV_REPOSITORY_STATUS_NOTFOUND;

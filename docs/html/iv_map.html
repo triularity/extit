@@ -41,7 +41,7 @@
      <div class="declaration">
       <table>
        <tr>
-        <td>typedef <span class="opaque">...</span> <a name="iv_map_t"><span class="typedef-name">iv_map_t</span></a></td>
+        <td>typedef <span class="opaque">...</span> <a name="iv_idmap_t"><span class="typedef-name">iv_idmap_t</span></a></td>
        </tr>
       </table>
      </div>
@@ -66,7 +66,7 @@
         <td>void&nbsp;**</td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="iv_map_acquire_valueptr">iv_map_acquire_valueptr</a></span>(iv_map_t&nbsp;*&nbsp;<em class="parameter-name">map</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">nid</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">iid</em>, const&nbsp;char&nbsp;**&nbsp;<em class="parameter-name">internal_nid</em>, const&nbsp;char&nbsp;**&nbsp;<em class="parameter-name">internal_iid</em>)</td>
+        <td><span class="function-name"><a name="iv_idmap_acquire_valueptr">iv_idmap_acquire_valueptr</a></span>(iv_idmap_t&nbsp;*&nbsp;<em class="parameter-name">map</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">nid</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">iid</em>, const&nbsp;char&nbsp;**&nbsp;<em class="parameter-name">internal_nid</em>, const&nbsp;char&nbsp;**&nbsp;<em class="parameter-name">internal_iid</em>)</td>
        </tr>
       </table>
      </div>
@@ -103,7 +103,7 @@
         <td>void</td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="iv_map_cleanup">iv_map_cleanup</a></span>(iv_map_t&nbsp;*&nbsp;<em class="parameter-name">map</em>, void (*<em class="parameter-name">cleaner</em>)(void&nbsp;**&nbsp;<em class="parameter-name">valueptr</em>))</td>
+        <td><span class="function-name"><a name="iv_idmap_cleanup">iv_idmap_cleanup</a></span>(iv_idmap_t&nbsp;*&nbsp;<em class="parameter-name">map</em>, void (*<em class="parameter-name">cleaner</em>)(void&nbsp;**&nbsp;<em class="parameter-name">valueptr</em>))</td>
        </tr>
       </table>
      </div>
@@ -131,17 +131,17 @@
      <div class="declaration">
       <table>
        <tr>
-        <td>iv_map_t&nbsp;*</td>
+        <td>iv_idmap_t&nbsp;*</td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="iv_map_create">iv_map_create</a></span>(uint32_t&nbsp;<em class="parameter-name">hashsize</em>, void (*<em class="parameter-name">free_callback</em>)(void&nbsp;*&nbsp;<em class="parameter-name">value</em>))</td>
+        <td><span class="function-name"><a name="iv_idmap_create">iv_idmap_create</a></span>(uint32_t&nbsp;<em class="parameter-name">hashsize</em>, void (*<em class="parameter-name">free_callback</em>)(void&nbsp;*&nbsp;<em class="parameter-name">value</em>))</td>
        </tr>
       </table>
      </div>
 
      <div class="description">
       <p>
-       Create an interface versioning map. The map should be freed using <code class="ref"><a href="iv_map.html#iv_map_destroy">iv_map_destroy()</a></code>.<br />
+       Create an interface versioning map. The map should be freed using <code class="ref"><a href="iv_map.html#iv_idmap_destroy">iv_idmap_destroy()</a></code>.<br />
       </p>
      </div>
 
@@ -168,7 +168,7 @@
         <td>void</td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="iv_map_destroy">iv_map_destroy</a></span>(iv_map_t&nbsp;*&nbsp;<em class="parameter-name">map</em>)</td>
+        <td><span class="function-name"><a name="iv_idmap_destroy">iv_idmap_destroy</a></span>(iv_idmap_t&nbsp;*&nbsp;<em class="parameter-name">map</em>)</td>
        </tr>
       </table>
      </div>
@@ -198,7 +198,7 @@
         <td>void&nbsp;*</td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="iv_map_get">iv_map_get</a></span>(const&nbsp;iv_map_t&nbsp;*&nbsp;<em class="parameter-name">map</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">nid</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">iid</em>)</td>
+        <td><span class="function-name"><a name="iv_idmap_get">iv_idmap_get</a></span>(const&nbsp;iv_idmap_t&nbsp;*&nbsp;<em class="parameter-name">map</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">nid</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">iid</em>)</td>
        </tr>
       </table>
      </div>
@@ -233,14 +233,14 @@
         <td>void&nbsp;**</td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="iv_map_get_valueptr">iv_map_get_valueptr</a></span>(const&nbsp;iv_map_t&nbsp;*&nbsp;<em class="parameter-name">map</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">nid</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">iid</em>)</td>
+        <td><span class="function-name"><a name="iv_idmap_get_valueptr">iv_idmap_get_valueptr</a></span>(const&nbsp;iv_idmap_t&nbsp;*&nbsp;<em class="parameter-name">map</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">nid</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">iid</em>)</td>
        </tr>
       </table>
      </div>
 
      <div class="description">
       <p>
-       Get the internal value pointer for a name/interface pair. This is similar to <code class="ref"><a href="iv_map.html#iv_map_acquire_valueptr">iv_map_acquire_valueptr()</a></code>, except an entry will not be created if it does not exist.<br />
+       Get the internal value pointer for a name/interface pair. This is similar to <code class="ref"><a href="iv_map.html#iv_idmap_acquire_valueptr">iv_idmap_acquire_valueptr()</a></code>, except an entry will not be created if it does not exist.<br />
       </p>
      </div>
 
@@ -268,7 +268,7 @@
         <td>const&nbsp;char&nbsp;*</td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="iv_map_intern_interfaceid">iv_map_intern_interfaceid</a></span>(iv_map_t&nbsp;*&nbsp;<em class="parameter-name">map</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">nid</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">iid</em>)</td>
+        <td><span class="function-name"><a name="iv_idmap_intern_interfaceid">iv_idmap_intern_interfaceid</a></span>(iv_idmap_t&nbsp;*&nbsp;<em class="parameter-name">map</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">nid</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">iid</em>)</td>
        </tr>
       </table>
      </div>
@@ -303,7 +303,7 @@
         <td>const&nbsp;char&nbsp;*</td>
        </tr>
        <tr>
-        <td><span class="function-name"><a name="iv_map_intern_nameid">iv_map_intern_nameid</a></span>(iv_map_t&nbsp;*&nbsp;<em class="parameter-name">map</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">nid</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">iid</em>)</td>
+        <td><span class="function-name"><a name="iv_idmap_intern_nameid">iv_idmap_intern_nameid</a></span>(iv_idmap_t&nbsp;*&nbsp;<em class="parameter-name">map</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">nid</em>, const&nbsp;char&nbsp;*&nbsp;<em class="parameter-name">iid</em>)</td>
        </tr>
       </table>
      </div>

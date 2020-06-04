@@ -44,7 +44,7 @@ iv_repository_create(void)
 	if((repo = malloc(sizeof(iv_repository_t))) == NULL)
 		return NULL;
 
-	if((repo->map = iv_map_create(0, free_vlist)) == NULL)
+	if((repo->map = iv_idmap_create(0, free_vlist)) == NULL)
 	{
 		free(repo);
 		return NULL;

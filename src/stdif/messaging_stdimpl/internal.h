@@ -51,7 +51,7 @@ typedef struct _stdif_messaging_internal
 {
 	stdif_messaging_1_0_t		pub;
 
-	iv_map_t *			map;
+	iv_idmap_t *			map;
 	listener_entry_t *		lid_list;
 	stdif_messaging_listener_id_t	lid_next;
 	unsigned int			num_deletes;

@@ -36,5 +36,5 @@ stdif_messaging_stdimpl_destroy
 
 	messaging_i = (stdif_messaging_internal_t *) messaging;
 
-	iv_map_destroy(messaging_i->map);
+	iv_idmap_destroy(messaging_i->map);
 }

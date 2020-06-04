@@ -18,6 +18,6 @@ iv_repository_cleanup
 	iv_repository_t *repo
 )
 {
-	iv_map_cleanup(repo->map, NULL);
+	iv_idmap_cleanup(repo->map, NULL);
 	repo->num_deletes = 0;
 }

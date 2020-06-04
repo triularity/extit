@@ -59,7 +59,7 @@ stdif_messaging_stdimpl_bind__1_0
 	messaging_i = (stdif_messaging_internal_t *) messaging;
 
 	bound_listp = (stdif_messaging_bound_t **)
-		iv_map_acquire_valueptr(
+		iv_idmap_acquire_valueptr(
 			messaging_i->map, mid, iid, &internal_mid, NULL);
 
 	if(bound_listp == NULL)

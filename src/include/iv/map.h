@@ -14,7 +14,7 @@
 
 #include <iv/base.h>
 
-#ifdef	iv_map_EXPORTS
+#ifdef	iv_idmap_EXPORTS
 #define	LIBAPI		IV_EXPORT
 #else
 #define	LIBAPI		IV_IMPORT
@@ -24,13 +24,13 @@
 extern "C" {
 #endif
 
-typedef	struct _iv_map		iv_map_t;
+typedef	struct _iv_map		iv_idmap_t;
 
 
 LIBAPI
 void **			IV_DECL
-			iv_map_acquire_valueptr(
-				iv_map_t *map,
+			iv_idmap_acquire_valueptr(
+				iv_idmap_t *map,
 				const char *nid,
 				const char *iid,
 				const char **internal_nidp,
@@ -38,46 +38,46 @@ void **			IV_DECL
 
 LIBAPI
 void			IV_DECL
-			iv_map_cleanup(
-				iv_map_t *map,
+			iv_idmap_cleanup(
+				iv_idmap_t *map,
 				void (*cleaner)(void **valueptr));
 
 LIBAPI
-iv_map_t *		IV_DECL
-			iv_map_create(
+iv_idmap_t *		IV_DECL
+			iv_idmap_create(
 				uint32_t hashsize,
 				void (*free_callback)(void *value));
 
 LIBAPI
 void			IV_DECL
-			iv_map_destroy(
-				iv_map_t *map);
+			iv_idmap_destroy(
+				iv_idmap_t *map);
 
 LIBAPI
 void *			IV_DECL
-			iv_map_get(
-				iv_map_t *map,
+			iv_idmap_get(
+				iv_idmap_t *map,
 				const char *nid,
 				const char *iid);
 
 LIBAPI
 void **			IV_DECL
-			iv_map_get_valueptr(
-				iv_map_t *map,
+			iv_idmap_get_valueptr(
+				iv_idmap_t *map,
 				const char *nid,
 				const char *iid);
 
 LIBAPI
 const char *		IV_DECL
-			iv_map_intern_interfaceid(
-				iv_map_t *map,
+			iv_idmap_intern_interfaceid(
+				iv_idmap_t *map,
 				const char *nid,
 				const char *iid);
 
 LIBAPI
 const char *		IV_DECL
-			iv_map_intern_nameid(
-				iv_map_t *map,
+			iv_idmap_intern_nameid(
+				iv_idmap_t *map,
 				const char *nid,
 				const char *iid);
 

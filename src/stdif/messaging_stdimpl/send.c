@@ -63,7 +63,7 @@ stdif_messaging_stdimpl_send__1_0
 	messaging_i = (stdif_messaging_internal_t *) messaging;
 
 	bound_list = (stdif_messaging_bound_t *)
-		iv_map_get(messaging_i->map, mid, iid);
+		iv_idmap_get(messaging_i->map, mid, iid);
 
 	if(bound_list == NULL)
 		return EXTIT_STATUS_OK;

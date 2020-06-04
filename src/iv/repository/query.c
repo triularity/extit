@@ -37,7 +37,7 @@ iv_repository_query
 	if(base_version == IV_VERSION_NONE)
 		return IV_VERSION_NONE;
 
-	vlist = (version_node_t *) iv_map_get(repo->map, key, iid);
+	vlist = (version_node_t *) iv_idmap_get(repo->map, key, iid);
 
 	if(vlist == NULL)
 		return IV_VERSION_NONE;

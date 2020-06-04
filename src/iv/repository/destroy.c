@@ -20,6 +20,6 @@ iv_repository_destroy
 	iv_repository_t *repo
 )
 {
-	iv_map_destroy(repo->map);
+	iv_idmap_destroy(repo->map);
 	free(repo);
 }

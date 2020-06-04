@@ -16,7 +16,7 @@
 
 
 /**
- * A callback wrapper for @{func iv_map_create}.
+ * A callback wrapper for @{func iv_idmap_create}.
  *
  * @param	value		The bound entry list to destroy.
  */
@@ -58,7 +58,7 @@ stdif_messaging_stdimpl_create
 	if((messaging_i = malloc(sizeof(stdif_messaging_internal_t))) == NULL)
 		return NULL;
 
-	if((messaging_i->map = iv_map_create(0, bound_destroy)) == NULL)
+	if((messaging_i->map = iv_idmap_create(0, bound_destroy)) == NULL)
 	{
 		free(messaging_i);
 		return NULL;
