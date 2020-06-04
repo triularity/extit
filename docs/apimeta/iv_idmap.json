@@ -1,30 +1,30 @@
 {
-	"title": "Interface Versioning Map",
+	"title": "Interface ID Versioning Map",
 	"description": "A low level library for mapping name/interface pairs. It is intended to be used as a base implementation for services that need such mappings.",
 	"includes":
 	[
-		"iv/map.h"
+		"iv/idmap.h"
 	],
 	"libraries":
 	[
-		"iv_map"
+		"iv_idmap"
 	],
 	"synopsis":
 	[
 		{
 			"type": "typedef",
-			"name": "iv_map_t",
-			"_value": [ "struct", "_iv_map" ],
+			"name": "iv_idmap_t",
+			"_value": [ "struct", "_iv_idmap" ],
 			"description": "An interface versioning map instance.",
 			"since": "1.0"
 		},
 		{
 			"type": "function",
-			"name": "iv_map_acquire_valueptr",
+			"name": "iv_idmap_acquire_valueptr",
 			"parameters":
 			[
 				{
-					"type": [ "iv_map_t", "*" ],
+					"type": [ "iv_idmap_t", "*" ],
 					"name": "map",
 					"description": "The map."
 				},
@@ -90,11 +90,11 @@
 		},
 		{
 			"type": "function",
-			"name": "iv_map_cleanup",
+			"name": "iv_idmap_cleanup",
 			"parameters":
 			[
 				{
-					"type": [ "iv_map_t", "*" ],
+					"type": [ "iv_idmap_t", "*" ],
 					"name": "map",
 					"description": "The map."
 				},
@@ -155,7 +155,7 @@
 		},
 		{
 			"type": "function",
-			"name": "iv_map_create",
+			"name": "iv_idmap_create",
 			"parameters":
 			[
 				{
@@ -189,7 +189,7 @@
 			],
 			"returns":
 			{
-				"type": [ "iv_map_t", "*" ],
+				"type": [ "iv_idmap_t", "*" ],
 				"description":
 				[
 					"A map, or ",
@@ -207,10 +207,10 @@
 				" The map should be freed using ",
 				{
 					"type": "ref:function",
-					"name": "iv_map_destroy",
+					"name": "iv_idmap_destroy",
 					"parameters":
 					[
-						[ "iv_map_t", "*" ]
+						[ "iv_idmap_t", "*" ]
 					]
 				},
 				"."
@@ -219,11 +219,11 @@
 		},
 		{
 			"type": "function",
-			"name": "iv_map_destroy",
+			"name": "iv_idmap_destroy",
 			"parameters":
 			[
 				{
-					"type": [ "iv_map_t", "*" ],
+					"type": [ "iv_idmap_t", "*" ],
 					"name": "map",
 					"description": "The map."
 				}
@@ -233,11 +233,11 @@
 		},
 		{
 			"type": "function",
-			"name": "iv_map_get",
+			"name": "iv_idmap_get",
 			"parameters":
 			[
 				{
-					"type": [ "const", "iv_map_t", "*" ],
+					"type": [ "const", "iv_idmap_t", "*" ],
 					"name": "map",
 					"description": "The map."
 				},
@@ -272,11 +272,11 @@
 
 		{
 			"type": "function",
-			"name": "iv_map_get_valueptr",
+			"name": "iv_idmap_get_valueptr",
 			"parameters":
 			[
 				{
-					"type": [ "const", "iv_map_t", "*" ],
+					"type": [ "const", "iv_idmap_t", "*" ],
 					"name": "map",
 					"description": "The map."
 				},
@@ -311,10 +311,10 @@
 				" This is similar to ",
 				{
 					"type": "ref:function",
-					"name": "iv_map_acquire_valueptr",
+					"name": "iv_idmap_acquire_valueptr",
 					"parameters":
 					[
-						[ "iv_map_t", "*" ],
+						[ "iv_idmap_t", "*" ],
 						[ "const", "char", "*" ],
 						[ "const", "char", "*" ],
 						[ "const", "char", "**" ],
@@ -327,11 +327,11 @@
 		},
 		{
 			"type": "function",
-			"name": "iv_map_intern_interfaceid",
+			"name": "iv_idmap_intern_interfaceid",
 			"parameters":
 			[
 				{
-					"type": [ "iv_map_t", "*" ],
+					"type": [ "iv_idmap_t", "*" ],
 					"name": "map",
 					"description": "The map."
 				},
@@ -374,11 +374,11 @@
 		},
 		{
 			"type": "function",
-			"name": "iv_map_intern_nameid",
+			"name": "iv_idmap_intern_nameid",
 			"parameters":
 			[
 				{
-					"type": [ "iv_map_t", "*" ],
+					"type": [ "iv_idmap_t", "*" ],
 					"name": "map",
 					"description": "The map."
 				},
