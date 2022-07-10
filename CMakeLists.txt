@@ -36,6 +36,9 @@ set(EXTIT_MALLOC_0_SUCCEEDS FALSE CACHE BOOL "malloc/realloc succeeds with size 
 set(IV_COMPAT ${EXTIT_COMPAT})
 
 
+add_subdirectory(iv)
+include_directories(BEFORE iv/src/include)
+
 include_directories(BEFORE src/include)
 
 
@@ -293,60 +296,6 @@ set(STDIF_MESSAGING_STDIMPL_SOURCE_FILES
 	src/stdif/messaging_stdimpl/unbind.c)
 
 
-# IV core
-set(IV_HEADER_FILES 
-	src/include/iv/base.h
-	src/include/iv/version.h)
-
-
-# IV idmap
-set(IV_IDMAP_HEADER_FILES 
-	src/include/iv/idmap.h)
-
-
-set(IV_IDMAP_SOURCE_FILES
-	src/iv/idmap.c)
-
-# IV map
-if(IV_COMPAT)
-	set(IV_MAP_HEADER_FILES
-		${IV_MAP_HEADER_FILES}
-		src/include/iv/map.h)
-
-	set(IV_MAP_SOURCE_FILES
-		${IV_MAP_SOURCE_FILES}
-		src/iv/map.c)
-endif()
-
-
-# IV repository
-set(IV_REPOSITORY_HEADER_FILES 
-	src/include/iv/repository.h)
-
-set(IV_REPOSITORY_SOURCE_FILES
-	src/iv/repository/cleanup.c
-	src/iv/repository/create.c
-	src/iv/repository/destroy.c
-	src/iv/repository/get.c
-	src/iv/repository/query.c
-	src/iv/repository/remove.c
-	src/iv/repository/set.c)
-
-
-# IV utilities
-set(IV_UTIL_HEADER_FILES 
-	src/include/iv/util.h)
-
-set(IV_UTIL_SOURCE_FILES
-	src/iv/util/matches.c)
-
-if(IV_COMPAT)
-	set(IV_UTIL_SOURCE_FILES
-		${IV_UTIL_SOURCE_FILES}
-		src/iv/util/keymap.c)
-endif()
-
-
 #
 # Library Loader
 #
@@ -422,14 +371,12 @@ endif()
 # Configuration Options
 #
 if(EXTIT_PARANOID)
-	add_definitions("-DIV_PARANOID")
 	add_definitions("-DEXTIT_PARANOID")
 	add_definitions("-DSTDIF_PARANOID")
 endif()
 
 if(EXTIT_DEBUG)
 	add_definitions("-DEXTIT_DEBUG")
-	add_definitions("-DIV_REPOSITORY_DEBUG")
 endif()
 
 if(EXTIT_WCHAR)
@@ -442,10 +389,6 @@ endif()
 
 if(EXTIT_COMPAT)
 	add_definitions("-DEXTIT_COMPAT")
-endif()
-
-if(IV_COMPAT)
-	add_definitions("-DIV_COMPAT")
 endif()
 
 if(EXTIT_MALLOC_0_SUCCEEDS)
@@ -462,9 +405,7 @@ add_library(
 		${EXTIT_HEADER_FILES}
 		${EXTIT_PMODULE_HEADER_FILES}
 		${EXTIT_CONTAINER_HEADER_FILES}
-		${EXTIT_UTIL_HEADER_FILES}
-		${IV_HEADER_FILES}
-		${IV_UTIL_HEADER_FILES})
+		${EXTIT_UTIL_HEADER_FILES})
 
 target_link_libraries(
 	extit_pmodule
@@ -484,7 +425,6 @@ endif()
 add_library(
 	extit_container
 		${EXTIT_CONTAINER_SOURCE_FILES}
-		${IV_HEADER_FILES}
 		${EXTIT_HEADER_FILES})
 
 
@@ -495,8 +435,6 @@ add_library(
 	extit_container_stdimpl
 		${EXTIT_CONTAINER_STDIMPL_SOURCE_FILES}
 		${EXTIT_CONTAINER_STDIMPL_HEADER_FILES}
-		${IV_HEADER_FILES}
-		${IV_MAP_HEADER_FILES}
 		${EXTIT_HEADER_FILES})
 
 target_link_libraries(
@@ -510,7 +448,6 @@ target_link_libraries(
 add_library(
 	extit_util
 		${EXTIT_UTIL_SOURCE_FILES}
-		${IV_HEADER_FILES}
 		${EXTIT_HEADER_FILES}
 		${EXTIT_UTIL_HEADER_FILES})
 
@@ -522,9 +459,7 @@ add_library(
 	stdif_allocator
 		${STDIF_ALLOCATOR_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
-		${STDIF_ALLOCATOR_HEADER_FILES}
-		${IV_HEADER_FILES}
-		${IV_UTIL_HEADER_FILES})
+		${STDIF_ALLOCATOR_HEADER_FILES})
 
 if(EXTIT_PARANOID)
 	target_link_libraries(
@@ -541,8 +476,7 @@ add_library(
 		${STDIF_ALLOCATOR_STDIMPL_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
 		${STDIF_ALLOCATOR_HEADER_FILES}
-		${STDIF_ALLOCATOR_STDIMPL_HEADER_FILES}
-		${IV_HEADER_FILES})
+		${STDIF_ALLOCATOR_STDIMPL_HEADER_FILES})
 
 
 #
@@ -552,9 +486,7 @@ add_library(
 	stdif_configurable
 		${STDIF_CONFIGURABLE_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
-		${STDIF_CONFIGURABLE_HEADER_FILES}
-		${IV_HEADER_FILES}
-		${IV_UTIL_HEADER_FILES})
+		${STDIF_CONFIGURABLE_HEADER_FILES})
 
 if(EXTIT_PARANOID)
 	target_link_libraries(
@@ -571,8 +503,7 @@ add_library(
 		${STDIF_CONFIGURABLE_STDIMPL_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
 		${STDIF_CONFIGURABLE_HEADER_FILES}
-		${STDIF_CONFIGURABLE_STDIMPL_HEADER_FILES}
-		${IV_HEADER_FILES})
+		${STDIF_CONFIGURABLE_STDIMPL_HEADER_FILES})
 
 target_link_libraries(
 	stdif_configurable_stdimpl
@@ -599,9 +530,7 @@ add_library(
 		${STDIF_CONFIGURABLE_UTIL_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
 		${STDIF_CONFIGURABLE_HEADER_FILES}
-		${STDIF_CONFIGURABLE_UTIL_HEADER_FILES}
-		${IV_HEADER_FILES}
-		${IV_UTIL_HEADER_FILES})
+		${STDIF_CONFIGURABLE_UTIL_HEADER_FILES})
 
 if(MINGW AND ${CMAKE_C_COMPILER_ID} STREQUAL "GNU")
 	#
@@ -620,9 +549,7 @@ add_library(
 	stdif_disposable
 		${STDIF_DISPOSABLE_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
-		${STDIF_DISPOSABLE_HEADER_FILES}
-		${IV_HEADER_FILES}
-		${IV_UTIL_HEADER_FILES})
+		${STDIF_DISPOSABLE_HEADER_FILES})
 
 if(EXTIT_PARANOID)
 	target_link_libraries(
@@ -638,9 +565,7 @@ add_library(
 	stdif_messaging
 		${STDIF_MESSAGING_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
-		${STDIF_MESSAGING_HEADER_FILES}
-		${IV_HEADER_FILES}
-		${IV_UTIL_HEADER_FILES})
+		${STDIF_MESSAGING_HEADER_FILES})
 
 if(EXTIT_PARANOID)
 	target_link_libraries(
@@ -657,8 +582,7 @@ add_library(
 		${STDIF_MESSAGING_STDIMPL_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
 		${STDIF_MESSAGING_HEADER_FILES}
-		${STDIF_MESSAGING_STDIMPL_HEADER_FILES}
-		${IV_HEADER_FILES})
+		${STDIF_MESSAGING_STDIMPL_HEADER_FILES})
 
 target_link_libraries(
 	stdif_messaging_stdimpl
@@ -674,9 +598,7 @@ add_library(
 		${STDIF_REFERENCED_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
 		${STDIF_REFERENCED_HEADER_FILES}
-		${EXTIT_UTIL_HEADER_FILES}
-		${IV_HEADER_FILES}
-		${IV_UTIL_HEADER_FILES})
+		${EXTIT_UTIL_HEADER_FILES})
 
 target_link_libraries(
 	stdif_referenced
@@ -696,65 +618,13 @@ add_library(
 	stdif_resolvable
 		${STDIF_RESOLVABLE_SOURCE_FILES}
 		${EXTIT_HEADER_FILES}
-		${STDIF_RESOLVABLE_HEADER_FILES}
-		${IV_HEADER_FILES}
-		${IV_UTIL_HEADER_FILES})
+		${STDIF_RESOLVABLE_HEADER_FILES})
 
 if(EXTIT_PARANOID)
 	target_link_libraries(
 		stdif_resolvable
 			iv_util)
 endif()
-
-
-#
-# [lib]iv_idmap
-#
-add_library(
-	iv_idmap
-		${IV_IDMAP_SOURCE_FILES}
-		${IV_HEADER_FILES}
-		${IV_UTIL_HEADER_FILES}
-		${IV_IDMAP_HEADER_FILES})
-
-
-#
-# [lib]iv_map
-#
-if(IV_COMPAT)
-	add_library(
-		iv_map
-			${IV_MAP_SOURCE_FILES}
-			${IV_HEADER_FILES}
-			${IV_UTIL_HEADER_FILES}
-			${IV_MAP_HEADER_FILES})
-endif()
-
-
-#
-# [lib]iv_repository
-#
-add_library(
-	iv_repository
-		${IV_REPOSITORY_SOURCE_FILES}
-		${IV_HEADER_FILES}
-		${IV_MAP_FILES}
-		${IV_REPOSITORY_HEADER_FILES})
-
-target_link_libraries(
-	iv_repository
-		iv_idmap
-		iv_util)
-
-
-#
-# [lib]iv_util
-#
-add_library(
-	iv_util
-		${IV_UTIL_SOURCE_FILES}
-		${IV_HEADER_FILES}
-		${IV_UTIL_HEADER_FILES})
 
 
 #
@@ -810,7 +680,6 @@ endif(MSVC)
 # Shared Linking
 #
 if(BUILD_SHARED_LIBS)
-	add_definitions("-DIV_LINK_SHARED")
 	add_definitions("-DEXTIT_LINK_SHARED")
 endif()
 
@@ -866,24 +735,6 @@ if(DEFINED LIBNAME_POSTFIX)
 	set_target_properties(
 		extif_util PROPERTIES
 			OUTPUT_NAME "extif_util${LIBNAME_POSTFIX}")
-
-	set_target_properties(
-		iv_idmap PROPERTIES
-			OUTPUT_NAME "iv_idmap${LIBNAME_POSTFIX}")
-
-	if(IV_COMPAT)
-		set_target_properties(
-			iv_map PROPERTIES
-				OUTPUT_NAME "iv_map${LIBNAME_POSTFIX}")
-	endif()
-
-	set_target_properties(
-		iv_repository PROPERTIES
-			OUTPUT_NAME "iv_repository${LIBNAME_POSTFIX}")
-
-	set_target_properties(
-		iv_util PROPERTIES
-			OUTPUT_NAME "iv_util${LIBNAME_POSTFIX}")
 endif(DEFINED LIBNAME_POSTFIX)
 
 
@@ -907,17 +758,7 @@ install(
 		extit_container_stdimpl
 		extit_pmodule
 		extit_util
-		iv_idmap
-		iv_repository
-		iv_util
 	DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
-
-if(IV_COMPAT)
-	install(
-		TARGETS
-			iv_map
-		DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
-endif()
 
 install(
 	FILES
@@ -943,24 +784,6 @@ install(
 		${STDIF_RESOLVABLE_HEADER_FILES}
 	DESTINATION ${CMAKE_INSTALL_PREFIX}/include/if)
 
-install(
-	FILES
-		${IV_HEADER_FILES}
-		${IV_IDMAP_HEADER_FILES}
-		${IV_REPOSITORY_HEADER_FILES}
-		${IV_UTIL_HEADER_FILES}
-	DESTINATION ${CMAKE_INSTALL_PREFIX}/include/iv)
-
-if(IV_COMPAT)
-	install(
-		FILES
-			${IV_HEADER_FILES}
-			${IV_MAP_HEADER_FILES}
-			${IV_REPOSITORY_HEADER_FILES}
-			${IV_UTIL_HEADER_FILES}
-		DESTINATION ${CMAKE_INSTALL_PREFIX}/include/iv)
-endif()
-
 
 #
 # Sample Code
@@ -975,9 +798,7 @@ if(EXTIT_COMPILE_EXAMPLES)
 			${EXTIT_HEADER_FILES}
 			${EXTIT_ALLOCATOR_HEADER_FILES}
 			${EXTIT_PMODULE_HEADER_FILES}
-			${EXTIT_CONTAINER_HEADER_FILES}
-			${IV_HEADER_FILES}
-			${IV_UTIL_HEADER_FILES})
+			${EXTIT_CONTAINER_HEADER_FILES})
 
 	set_target_properties(
 		example_stdif_allocator_plugin PROPERTIES
@@ -998,9 +819,7 @@ if(EXTIT_COMPILE_EXAMPLES)
 			examples/stdif_allocator/server.c
 			${EXTIT_HEADER_FILES}
 			${EXTIT_ALLOCATOR_HEADER_FILES}
-			${EXTIT_PMODULE_HEADER_FILES}
-			${IV_HEADER_FILES}
-			${IV_UTIL_HEADER_FILES})
+			${EXTIT_PMODULE_HEADER_FILES})
 
 	target_link_libraries(
 		example_stdif_allocator_server
@@ -1020,8 +839,7 @@ if(EXTIT_COMPILE_EXAMPLES)
 			${EXTIT_HEADER_FILES}
 			${STDIF_CONFIGURABLE_HEADER_FILES}
 			${STDIF_CONFIGURABLE_STDIMPL_HEADER_FILES}
-			${STDIF_CONFIGURABLE_UTIL_HEADER_FILES}
-			${IV_HEADER_FILES})
+			${STDIF_CONFIGURABLE_UTIL_HEADER_FILES})
 
 	target_link_libraries(
 		example_stdif_configurable
@@ -1039,8 +857,7 @@ if(EXTIT_COMPILE_EXAMPLES)
 			${EXTIT_HEADER_FILES}
 			${STDIF_CONFIGURABLE_HEADER_FILES}
 			${STDIF_CONFIGURABLE_STDIMPL_HEADER_FILES}
-			${STDIF_CONFIGURABLE_UTIL_HEADER_FILES}
-			${IV_HEADER_FILES})
+			${STDIF_CONFIGURABLE_UTIL_HEADER_FILES})
 
 	target_link_libraries(
 		example_stdif_configurable_proplist
@@ -1061,8 +878,7 @@ if(EXTIT_COMPILE_EXAMPLES)
 			examples/stdif_disposable/itemsource.h
 			${EXTIT_HEADER_FILES}
 			${STDIF_DISPOSABLE_HEADER_FILES}
-			${STDIF_DISPOSABLE_IMPL_HEADER_FILES}
-			${IV_HEADER_FILES})
+			${STDIF_DISPOSABLE_IMPL_HEADER_FILES})
 
 	target_link_libraries(
 		example_stdif_disposable
@@ -1078,8 +894,7 @@ if(EXTIT_COMPILE_EXAMPLES)
 			examples/stdif_messaging/demo.c
 			${EXTIT_HEADER_FILES}
 			${EXTIT_MESSAGING_HEADER_FILES}
-			${EXTIT_MESSAGING_STDIMPL_HEADER_FILES}
-			${IV_HEADER_FILES})
+			${EXTIT_MESSAGING_STDIMPL_HEADER_FILES})
 
 	target_link_libraries(
 		example_stdif_messaging_alarm
@@ -1100,9 +915,7 @@ if(EXTIT_COMPILE_EXAMPLES)
 			examples/stdif_referenced/worklist.h
 			${EXTIT_HEADER_FILES}
 			${STDIF_REFERENCED_HEADER_FILES}
-			${EXTIT_UTIL_HEADER_FILES}
-			${IV_HEADER_FILES}
-			${IV_UTIL_HEADER_FILES})
+			${EXTIT_UTIL_HEADER_FILES})
 
 	target_link_libraries(
 		example_stdif_referenced
@@ -1127,9 +940,7 @@ if(EXTIT_COMPILE_EXAMPLES)
 			${STDIF_CONFIGURABLE_STDIMPL_HEADER_FILES}
 			${STDIF_RESOLVABLE_HEADER_FILES}
 			${STDIF_RESOLVABLE_IMPL_HEADER_FILES}
-			${EXTIT_UTIL_HEADER_FILES}
-			${IV_HEADER_FILES}
-			${IV_UTIL_HEADER_FILES})
+			${EXTIT_UTIL_HEADER_FILES})
 
 	target_link_libraries(
 		example_stdif_resolvable
@@ -1142,22 +953,6 @@ if(EXTIT_COMPILE_EXAMPLES)
 
 
 	#
-	# Interface Repository
-	#
-	add_executable(
-		example_iv_repository
-			examples/iv_repository/repository.c
-			${IV_HEADER_FILES}
-			${IV_REPOSITORY_HEADER_FILES}
-			${IV_UTIL_HEADER_FILES})
-
-	target_link_libraries(
-		example_iv_repository
-			iv_idmap
-			iv_repository)
-
-
-	#
 	# Multi-Version
 	#
 	add_executable(
@@ -1165,10 +960,7 @@ if(EXTIT_COMPILE_EXAMPLES)
 			examples/multiver/persistence_impl.c
 			examples/multiver/multiver_server.c
 			${EXTIT_HEADER_FILES}
-			${EXTIT_PMODULE_HEADER_FILES}
-			${IV_HEADER_FILES}
-			${IV_REPOSITORY_HEADER_FILES}
-			${IV_UTIL_HEADER_FILES})
+			${EXTIT_PMODULE_HEADER_FILES})
 
 	set_target_properties(
 		example_multiver_server_1_0 PROPERTIES
@@ -1188,10 +980,7 @@ if(EXTIT_COMPILE_EXAMPLES)
 			examples/multiver/persistence_impl.c
 			examples/multiver/multiver_server.c
 			${EXTIT_HEADER_FILES}
-			${EXTIT_PMODULE_HEADER_FILES}
-			${IV_HEADER_FILES}
-			${IV_REPOSITORY_HEADER_FILES}
-			${IV_UTIL_HEADER_FILES})
+			${EXTIT_PMODULE_HEADER_FILES})
 
 	set_target_properties(
 		example_multiver_server_1_1 PROPERTIES
@@ -1211,10 +1000,7 @@ if(EXTIT_COMPILE_EXAMPLES)
 			examples/multiver/persistence_impl.c
 			examples/multiver/multiver_server.c
 			${EXTIT_HEADER_FILES}
-			${EXTIT_PMODULE_HEADER_FILES}
-			${IV_HEADER_FILES}
-			${IV_REPOSITORY_HEADER_FILES}
-			${IV_UTIL_HEADER_FILES})
+			${EXTIT_PMODULE_HEADER_FILES})
 
 	set_target_properties(
 		example_multiver_server_1_2 PROPERTIES
@@ -1234,9 +1020,7 @@ if(EXTIT_COMPILE_EXAMPLES)
 			examples/multiver/multiver_plugin.c
 			${EXTIT_HEADER_FILES}
 			${EXTIT_PMODULE_HEADER_FILES}
-			${EXTIT_CONTAINER_HEADER_FILES}
-			${IV_HEADER_FILES}
-			${IV_UTIL_HEADER_FILES})
+			${EXTIT_CONTAINER_HEADER_FILES})
 
 	target_compile_definitions(
 		example_multiver_plugin_1_0
@@ -1257,9 +1041,7 @@ if(EXTIT_COMPILE_EXAMPLES)
 			examples/multiver/multiver_plugin.c
 			${EXTIT_HEADER_FILES}
 			${EXTIT_PMODULE_HEADER_FILES}
-			${EXTIT_CONTAINER_HEADER_FILES}
-			${IV_HEADER_FILES}
-			${IV_UTIL_HEADER_FILES})
+			${EXTIT_CONTAINER_HEADER_FILES})
 
 	target_compile_definitions(
 		example_multiver_plugin_1_1
@@ -1280,9 +1062,7 @@ if(EXTIT_COMPILE_EXAMPLES)
 			examples/multiver/multiver_plugin.c
 			${EXTIT_HEADER_FILES}
 			${EXTIT_PMODULE_HEADER_FILES}
-			${EXTIT_CONTAINER_HEADER_FILES}
-			${IV_HEADER_FILES}
-			${IV_UTIL_HEADER_FILES})
+			${EXTIT_CONTAINER_HEADER_FILES})
 
 	target_compile_definitions(
 		example_multiver_plugin_1_2
@@ -1305,9 +1085,7 @@ if(EXTIT_COMPILE_EXAMPLES)
 		example_scan_server
 			examples/scan/recipe_server.c
 			${EXTIT_HEADER_FILES}
-			${EXTIT_PMODULE_HEADER_FILES}
-			${IV_HEADER_FILES}
-			${IV_UTIL_HEADER_FILES})
+			${EXTIT_PMODULE_HEADER_FILES})
 
 	target_link_libraries(
 		example_scan_server
@@ -1320,9 +1098,7 @@ if(EXTIT_COMPILE_EXAMPLES)
 			examples/scan/recipe_pie.c
 			${EXTIT_HEADER_FILES}
 			${EXTIT_PMODULE_HEADER_FILES}
-			${EXTIT_CONTAINER_HEADER_FILES}
-			${IV_HEADER_FILES}
-			${IV_UTIL_HEADER_FILES})
+			${EXTIT_CONTAINER_HEADER_FILES})
 
 	set_target_properties(
 		example_scan_plugin_pie PROPERTIES
@@ -1339,9 +1115,7 @@ if(EXTIT_COMPILE_EXAMPLES)
 			examples/scan/recipe_tea.c
 			${EXTIT_HEADER_FILES}
 			${EXTIT_PMODULE_HEADER_FILES}
-			${EXTIT_CONTAINER_HEADER_FILES}
-			${IV_HEADER_FILES}
-			${IV_UTIL_HEADER_FILES})
+			${EXTIT_CONTAINER_HEADER_FILES})
 
 	set_target_properties(
 		example_scan_plugin_tea PROPERTIES
@@ -1358,9 +1132,7 @@ if(EXTIT_COMPILE_EXAMPLES)
 			examples/scan/recipe_tacos.c
 			${EXTIT_HEADER_FILES}
 			${EXTIT_PMODULE_HEADER_FILES}
-			${EXTIT_CONTAINER_HEADER_FILES}
-			${IV_HEADER_FILES}
-			${IV_UTIL_HEADER_FILES})
+			${EXTIT_CONTAINER_HEADER_FILES})
 
 	set_target_properties(
 		example_scan_plugin_tacos PROPERTIES
@@ -1379,9 +1151,7 @@ if(EXTIT_COMPILE_EXAMPLES)
 		example_simple_server
 			examples/simple/simple_server.c
 			${EXTIT_HEADER_FILES}
-			${EXTIT_PMODULE_HEADER_FILES}
-			${IV_HEADER_FILES}
-			${IV_UTIL_HEADER_FILES})
+			${EXTIT_PMODULE_HEADER_FILES})
 
 	target_link_libraries(
 		example_simple_server
@@ -1394,9 +1164,7 @@ if(EXTIT_COMPILE_EXAMPLES)
 			examples/simple/simple_plugin.c
 			${EXTIT_HEADER_FILES}
 			${EXTIT_PMODULE_HEADER_FILES}
-			${EXTIT_CONTAINER_HEADER_FILES}
-			${IV_HEADER_FILES}
-			${IV_UTIL_HEADER_FILES})
+			${EXTIT_CONTAINER_HEADER_FILES})
 
 	set_target_properties(
 		example_simple_plugin PROPERTIES
@@ -1423,74 +1191,5 @@ if(EXTIT_COMPILE_TESTS)
 	target_link_libraries(
 		test_extit_refcount
 			extit_util)
-
-	add_executable(
-		test_iv_version
-			tests/iv_version/test_iv_version.c
-			${IV_HEADER_FILES})
-
-	target_compile_options(
-		test_iv_version
-			PRIVATE ${TEST_COMPILE_FLAGS})
-
-	if(IV_COMPAT)
-		add_executable(
-			test_iv_keymap
-				tests/iv_keymap/test_keymap.c
-				${IV_HEADER_FILES}
-				${IV_UTIL_HEADER_FILES})
-
-		target_compile_options(
-			test_iv_keymap
-				PRIVATE ${TEST_COMPILE_FLAGS})
-
-		target_link_libraries(
-			test_iv_keymap
-				iv_util)
-	endif()
-
-	add_executable(
-		test_iv_idmap
-			tests/iv_idmap/test_iv_idmap.c
-			${IV_HEADER_FILES}
-			${IV_MAP_HEADER_FILES})
-
-	target_compile_options(
-		test_iv_idmap
-			PRIVATE ${TEST_COMPILE_FLAGS})
-
-	target_link_libraries(
-		test_iv_idmap
-			iv_idmap)
-
-	if(IV_COMPAT)
-		add_executable(
-			test_iv_map
-				tests/iv_map/test_iv_map.c
-				${IV_HEADER_FILES}
-				${IV_MAP_HEADER_FILES})
-
-		target_compile_options(
-			test_iv_map
-				PRIVATE ${TEST_COMPILE_FLAGS})
-
-		target_link_libraries(
-			test_iv_map
-			iv_map)
-	endif()
-
-	add_executable(
-		test_iv_matches
-			tests/iv_matches/test_iv_matches.c
-			${IV_HEADER_FILES}
-			${IV_UTIL_HEADER_FILES})
-
-	target_compile_options(
-		test_iv_matches
-			PRIVATE ${TEST_COMPILE_FLAGS})
-
-	target_link_libraries(
-		test_iv_matches
-			iv_util)
 endif(EXTIT_COMPILE_TESTS)
 

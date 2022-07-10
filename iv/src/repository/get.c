@@ -1,5 +1,5 @@
 /*
- * @(#) iv/repository/get.c
+ * @(#) repository/get.c
  *
  * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/

@@ -1,5 +1,5 @@
 /*
- * @(#) iv/repository/create.c
+ * @(#) repository/create.c
  *
  * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/

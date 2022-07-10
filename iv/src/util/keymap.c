@@ -1,5 +1,5 @@
 /*
- * @(#) extit/src/iv/util/keymap.c
+ * @(#) util/keymap.c
  *
  * Interface versioning ID map.
  *

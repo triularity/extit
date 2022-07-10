@@ -1,5 +1,5 @@
 /*
- * @(#) iv/repository/remove.c
+ * @(#) repository/set.c
  *
  * Copyright (c) 2016-2017, Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
@@ -16,12 +16,13 @@
 
 iv_repository_status_t
 IV_DECL
-iv_repository_remove
+iv_repository_set
 (
 	iv_repository_t *repo,
 	const char *key,
 	const char *iid,
 	iv_version_t version,
+	void *value,
 	void **old_valuep
 )
 {
@@ -39,10 +40,17 @@ iv_repository_remove
 	if(version == IV_VERSION_NONE)
 		return IV_REPOSITORY_STATUS_INVALID;
 
-	vlistp = (version_node_t **) iv_idmap_get_valueptr(repo->map, key, iid);
+	/*
+	 * Can't 'unset' this way
+	 */
+	if(value == NULL)
+		return IV_REPOSITORY_STATUS_INVALID;
+
+	vlistp = (version_node_t **) iv_idmap_acquire_valueptr(
+		repo->map, key, iid, NULL, NULL);
 
 	if(vlistp == NULL)
-		return IV_REPOSITORY_STATUS_NOTFOUND;
+		return IV_REPOSITORY_STATUS_NOMEM;
 
 	while((entry = *vlistp) != NULL)
 	{
@@ -50,27 +58,37 @@ iv_repository_remove
 
 		if(entry_version == version)
 		{
+			/*
+			 * Just replace the existing entry
+			 */
 			if(old_valuep != NULL)
 				*old_valuep = entry->value;
 
-			*vlistp = entry->next;
-			free(entry);
-
-			if(++repo->num_deletes >= DELETES_PER_CLEANUP)
-				iv_repository_cleanup(repo);
+			entry->value = value;
 
 			return IV_REPOSITORY_STATUS_OK;
 		}
-		else if(entry_version > version)
-		{
-			/*
-			 * Not found
-			 */
+
+		if(entry_version > version)
 			break;
-		}
 
 		vlistp = &entry->next;
 	}
 
-	return IV_REPOSITORY_STATUS_FAIL;
+	/*
+	 * New entry
+	 */
+	if((entry = calloc(1, sizeof(version_node_t))) == NULL)
+		return IV_REPOSITORY_STATUS_NOMEM;
+
+	entry->version = version;
+	entry->value = value;
+
+	entry->next = *vlistp;
+	*vlistp = entry;
+
+	if(old_valuep != NULL)
+		*old_valuep = NULL;
+
+	return IV_REPOSITORY_STATUS_OK;
 }
