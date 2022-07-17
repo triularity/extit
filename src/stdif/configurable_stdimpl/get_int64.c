@@ -3,12 +3,11 @@
  *
  * Configurable Interface - get_int64@1.0 standard implementation.
  *
- * Copyright (c) 2016-2018, Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2018, 2022. Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
 #include <stdint.h>
-#include <float.h>
 #include <math.h>
 
 #include <extit/base.h>
@@ -16,16 +15,7 @@
 #include <stdif/configurable_impl.h>
 #include <stdif/configurable_stdimpl.h>
 
-/*
- * The number of precision bits in a double/float
- */
-#if	FLT_RADIX == 2
-#define	DBL_MANT_BITS	DBL_MANT_DIG
-#define	FLT_MANT_BITS	FLT_MANT_DIG
-#elif	FLT_RADIX == 16
-#define	DBL_MANT_BITS	(DBL_MANT_DIG * 4)
-#define	FLT_MANT_BITS	(FLT_MANT_DIG * 4)
-#endif
+#include "floatrange.h"
 
 
 /**
@@ -147,8 +137,17 @@ stdif_configurable_stdimpl_get_int64__1_0_base
 			value_d = trunc(*((double *) base));
 
 #if	DBL_MANT_BITS < 63
-			if((value_d > INT64_MAX) || (value_d < INT64_MIN))
+			if((value_d > (double) DBL_MANT_MAXVAL)
+			 || (value_d < (double) -DBL_MANT_MAXVAL))
+			{
 				return EXTIT_STATUS_INVALID;
+			}
+#else
+			if((value_d > (double) INT64_MAX)
+			 || (value_d < (double) INT64_MIN))
+			{
+				return EXTIT_STATUS_INVALID;
+			}
 #endif	/* DBL_MANT_BITS < 63 */
 
 			*valuep = (int64_t) value_d;
@@ -162,8 +161,17 @@ stdif_configurable_stdimpl_get_int64__1_0_base
 			value_f = truncf(*((float *) base));
 
 #if	FLT_MANT_BITS < 63
-			if((value_f > INT64_MAX) || (value_f < INT64_MIN))
+			if((value_f > (float) FLT_MANT_MAXVAL)
+			 || (value_f < (float) -FLT_MANT_MAXVAL))
+			{
 				return EXTIT_STATUS_INVALID;
+			}
+#else
+			if((value_f > (float) INT64_MAX)
+			 || (value_f < (float) INT64_MIN))
+			{
+				return EXTIT_STATUS_INVALID;
+			}
 #endif	/* FLT_MANT_BITS < 63 */
 
 			*valuep = (int64_t) value_f;
