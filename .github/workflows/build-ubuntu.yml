@@ -3,15 +3,16 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
-  steps:
-  - name: Checkout
-    uses: actions/checkout@v3
 
-  - name: Setup
-    run: mkdir build
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
 
-  - name: Configure
-    run: cd build && cmake -DEXTIT_PARANOID=ON -DEXTIT_WARNFREE=ON -DEXTIT_COMPILE_EXAMPLES=ON -DEXTIT_COMPILE_TESTS=ON ..
+    - name: Setup
+      run: mkdir build
 
-  - name: Compile
-    run: cd build && make
+    - name: Configure
+      run: cd build && cmake -DEXTIT_PARANOID=ON -DEXTIT_WARNFREE=ON -DEXTIT_COMPILE_EXAMPLES=ON -DEXTIT_COMPILE_TESTS=ON ..
+
+    - name: Compile
+      run: cd build && make
