@@ -1,24 +1,56 @@
-name: Build on macOS
+name: Build on ${{ matrix.config.name }}
 on: push
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ${{ matrix.config.os }}
+
+    strategy:
+      matrix:
+        config:
+        [
+          {
+            name: macOS 11 Big Sur
+            os: macos-11
+          },
+          {
+            name: macOS 12 Monterey
+            os: macos-12
+          },
+          {
+            name: macOS 13 Ventura
+            os: macos-13
+          }
+        ]
 
     env:
       cmake_opts: -DEXTIT_PARANOID=ON -DEXTIT_WARNFREE=ON -DEXTIT_COMPILE_EXAMPLES=ON -DEXTIT_COMPILE_TESTS=ON
+      cmake_opts_gcc: -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
+      cmake_opts_clang: -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
 
     steps:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Configure (shared)
-      run: cmake -B build-shared -DBUILD_SHARED_LIBS=ON $cmake_opts
+    - name: Configure (gcc/shared)
+      run: cmake -B build-gcc-shared -DBUILD_SHARED_LIBS=ON $cmake_opts $cmake_opts_gcc
 
-    - name: Compile (shared)
-      run: cmake --build build-shared
+    - name: Compile (gcc/shared)
+      run: cmake --build build-gcc-shared
 
-    - name: Configure (static)
-      run: cmake -B build-static -DBUILD_SHARED_LIBS=OFF $cmake_opts
+    - name: Configure (gcc/static)
+      run: cmake -B build-gcc-static -DBUILD_SHARED_LIBS=OFF $cmake_opts $cmake_opts_gcc
 
-    - name: Compile (static)
-      run: cmake --build build-static
+    - name: Compile (gcc/static)
+      run: cmake --build build-gcc-static
+
+    - name: Configure (clang/shared)
+      run: cmake -B build-clang-shared -DBUILD_SHARED_LIBS=ON $cmake_opts $cmake_opts_clang
+
+    - name: Compile (clang/shared)
+      run: cmake --build build-clang-shared
+
+    - name: Configure (clang/static)
+      run: cmake -B build-clang-static -DBUILD_SHARED_LIBS=OFF $cmake_opts $cmake_opts_clang
+
+    - name: Compile (clang/static)
+      run: cmake --build build-clang-static
