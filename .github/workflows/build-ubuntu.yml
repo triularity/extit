@@ -1,0 +1,14 @@
+name: Build on Ubuntu
+on: foo
+jobs:
+  build:
+    runs-on: ubuntu-latest
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Setup
+      run: mkdir build
+    - name: Configure
+      run: cd build && cmake -DEXTIT_PARANOID=ON -DEXTIT_WARNFREE=ON -DEXTIT_COMPILE_EXAMPLES=ON -DEXTIT_COMPILE_TESTS=ON ..
+    - name: Compile
+      run: cd build && make
