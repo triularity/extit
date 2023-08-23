@@ -1,0 +1,45 @@
+name: Build on Windows
+on: push
+jobs:
+  build:
+    name: ${{ matrix.config.name }}
+    runs-on: ${{ matrix.config.os }}
+
+    strategy:
+      matrix:
+        config:
+        - name: Windows
+          os: windows-latest
+
+    env:
+      cmake_opts: -DEXTIT_PARANOID=ON -DEXTIT_WARNFREE=ON -DEXTIT_COMPILE_EXAMPLES=ON -DEXTIT_COMPILE_TESTS=ON
+      cmake_opts_msvc:
+      cmake_opts_clang: -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Configure (msvc/shared)
+      run: cmake -B build-msvc-shared -DBUILD_SHARED_LIBS=ON $cmake_opts $cmake_opts_msvc
+
+    - name: Compile (msvc/shared)
+      run: cmake --build build-msvc-shared
+
+    - name: Configure (msvc/static)
+      run: cmake -B build-msvc-static -DBUILD_SHARED_LIBS=OFF $cmake_opts $cmake_opts_msvc
+
+    - name: Compile (msvc/static)
+      run: cmake --build build-msvc-static
+
+    - name: Configure (clang/shared)
+      run: cmake -B build-clang-shared -DBUILD_SHARED_LIBS=ON $cmake_opts $cmake_opts_clang
+
+    - name: Compile (clang/shared)
+      run: cmake --build build-clang-shared
+
+    - name: Configure (clang/static)
+      run: cmake -B build-clang-static -DBUILD_SHARED_LIBS=OFF $cmake_opts $cmake_opts_clang
+
+    - name: Compile (clang/static)
+      run: cmake --build build-clang-static
