@@ -1,7 +1,8 @@
-name: Build on ${{ matrix.config.name }}
+name: Build on macOS
 on: push
 jobs:
   build:
+    name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
 
     strategy:
