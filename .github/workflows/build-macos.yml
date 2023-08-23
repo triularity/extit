@@ -7,20 +7,12 @@ jobs:
     strategy:
       matrix:
         config:
-        [
-          {
-            name: macOS 11 Big Sur
-            os: macos-11
-          },
-          {
-            name: macOS 12 Monterey
-            os: macos-12
-          },
-          {
-            name: macOS 13 Ventura
-            os: macos-13
-          }
-        ]
+        - name: macOS 11 Big Sur
+          os: macos-11
+        - name: macOS 12 Monterey
+          os: macos-12
+        - name: macOS 13 Ventura
+          os: macos-13
 
     env:
       cmake_opts: -DEXTIT_PARANOID=ON -DEXTIT_WARNFREE=ON -DEXTIT_COMPILE_EXAMPLES=ON -DEXTIT_COMPILE_TESTS=ON
