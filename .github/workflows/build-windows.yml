@@ -12,7 +12,7 @@ jobs:
           os: windows-latest
 
     env:
-      cmake_opts: -DEXTIT_PARANOID=ON -DEXTIT_WARNFREE=ON -DEXTIT_COMPILE_EXAMPLES=ON -DEXTIT_COMPILE_TESTS=ON
+      cmake_opts: -DEXTIT_PARANOID=ON -DEXTIT_WARNFREE=ON -DEXTIT_WITH_CXX=ON -DEXTIT_COMPILE_EXAMPLES=ON -DEXTIT_COMPILE_TESTS=ON
       cmake_opts_msvc:
       cmake_opts_clang: -G Ninja -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
 
