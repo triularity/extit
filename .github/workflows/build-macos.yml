@@ -4,15 +4,21 @@ jobs:
   build:
     runs-on: macos-latest
 
+    env:
+      cmake_opts: -DEXTIT_PARANOID=ON -DEXTIT_WARNFREE=ON -DEXTIT_COMPILE_EXAMPLES=ON -DEXTIT_COMPILE_TESTS=ON
+
     steps:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Setup
-      run: brew install cmake
+    - name: Configure (shared)
+      run: cmake -B build-shared -DBUILD_SHARED_LIBS=ON $cmake_opts
 
-    - name: Configure
-      run: cmake -B build -DEXTIT_PARANOID=ON -DEXTIT_WARNFREE=ON -DEXTIT_COMPILE_EXAMPLES=ON -DEXTIT_COMPILE_TESTS=ON
+    - name: Compile (shared)
+      run: cmake --build build-shared
 
-    - name: Compile
-      run: cmake --build build
+    - name: Configure (static)
+      run: cmake -B build-static -DBUILD_SHARED_LIBS=OFF $cmake_opts
+
+    - name: Compile (static)
+      run: cmake --build build-static
