@@ -1,5 +1,12 @@
 name: Build on Windows
 on: push
+env:
+  cmake_opts: >
+    -DEXTIT_PARANOID=ON
+    -DEXTIT_WARNFREE=ON
+    -DEXTIT_WITH_CXX=ON
+    -DEXTIT_COMPILE_EXAMPLES=ON
+    -DEXTIT_COMPILE_TESTS=ON
 jobs:
   build:
     name: ${{ matrix.config.name }}
@@ -12,12 +19,6 @@ jobs:
             os: windows-latest
 
     env:
-      cmake_opts: >
-        -DEXTIT_PARANOID=ON
-        -DEXTIT_WARNFREE=ON
-        -DEXTIT_WITH_CXX=ON
-        -DEXTIT_COMPILE_EXAMPLES=ON
-        -DEXTIT_COMPILE_TESTS=ON
       cmake_opts_msvc:
       cmake_opts_clang: >
         -G Ninja -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
@@ -29,7 +30,7 @@ jobs:
       - name: Configure (msvc/shared)
         run: >
           cmake -B build-msvc-shared
-            -DBUILD_SHARED_LIBS=ON $cmake_opts $cmake_opts_msvc
+          -DBUILD_SHARED_LIBS=ON $cmake_opts $cmake_opts_msvc
 
       - name: Compile (msvc/shared)
         run: cmake --build build-msvc-shared
@@ -37,7 +38,7 @@ jobs:
       - name: Configure (msvc/static)
         run: >
           cmake -B build-msvc-static
-            -DBUILD_SHARED_LIBS=OFF $cmake_opts $cmake_opts_msvc
+          -DBUILD_SHARED_LIBS=OFF $cmake_opts $cmake_opts_msvc
 
       - name: Compile (msvc/static)
         run: cmake --build build-msvc-static
@@ -45,7 +46,7 @@ jobs:
 #      - name: Configure (clang/shared)
 #        run: >
 #          cmake -B build-clang-shared
-#            -DBUILD_SHARED_LIBS=ON $cmake_opts $cmake_opts_clang
+#          -DBUILD_SHARED_LIBS=ON $cmake_opts $cmake_opts_clang
 #
 #      - name: Compile (clang/shared)
 #        run: cmake --build build-clang-shared
@@ -53,7 +54,7 @@ jobs:
 #      - name: Configure (clang/static)
 #        run: >
 #          cmake -B build-clang-static
-#            -DBUILD_SHARED_LIBS=OFF $cmake_opts $cmake_opts_clang
+#          -DBUILD_SHARED_LIBS=OFF $cmake_opts $cmake_opts_clang
 #
 #      - name: Compile (clang/static)
 #        run: cmake --build build-clang-static

@@ -1,5 +1,12 @@
 name: Build on Ubuntu
 on: push
+env:
+  cmake_opts: >
+    -DEXTIT_PARANOID=ON
+    -DEXTIT_WARNFREE=ON
+    -DEXTIT_WITH_CXX=ON
+    -DEXTIT_COMPILE_EXAMPLES=ON
+    -DEXTIT_COMPILE_TESTS=ON
 jobs:
   build:
     name: ${{ matrix.config.name }}
@@ -14,12 +21,6 @@ jobs:
             os: ubuntu-22.04
 
     env:
-      cmake_opts: >
-        -DEXTIT_PARANOID=ON
-        -DEXTIT_WARNFREE=ON
-        -DEXTIT_WITH_CXX=ON
-        -DEXTIT_COMPILE_EXAMPLES=ON
-        -DEXTIT_COMPILE_TESTS=ON
       cmake_opts_gcc: -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
       cmake_opts_clang: -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
 
@@ -30,7 +31,7 @@ jobs:
       - name: Configure (gcc/shared)
         run: >
           cmake -B build-gcc-shared
-            -DBUILD_SHARED_LIBS=ON $cmake_opts $cmake_opts_gcc
+          -DBUILD_SHARED_LIBS=ON $cmake_opts $cmake_opts_gcc
 
       - name: Compile (gcc/shared)
         run: cmake --build build-gcc-shared
@@ -38,7 +39,7 @@ jobs:
       - name: Configure (gcc/static)
         run: >
           cmake -B build-gcc-static
-            -DBUILD_SHARED_LIBS=OFF $cmake_opts $cmake_opts_gcc
+          -DBUILD_SHARED_LIBS=OFF $cmake_opts $cmake_opts_gcc
 
       - name: Compile (gcc/static)
         run: cmake --build build-gcc-static
@@ -46,7 +47,7 @@ jobs:
       - name: Configure (clang/shared)
         run: >
           cmake -B build-clang-shared
-            -DBUILD_SHARED_LIBS=ON $cmake_opts $cmake_opts_clang
+          -DBUILD_SHARED_LIBS=ON $cmake_opts $cmake_opts_clang
 
       - name: Compile (clang/shared)
         run: cmake --build build-clang-shared
@@ -54,7 +55,7 @@ jobs:
       - name: Configure (clang/static)
         run: >
           cmake -B build-clang-static
-            -DBUILD_SHARED_LIBS=OFF $cmake_opts $cmake_opts_clang
+          -DBUILD_SHARED_LIBS=OFF $cmake_opts $cmake_opts_clang
 
       - name: Compile (clang/static)
         run: cmake --build build-clang-static
