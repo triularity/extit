@@ -3,7 +3,7 @@
  *
  * Configurable Interface - get_int64@1.0 standard implementation.
  *
- * Copyright (c) 2016-2018, 2022. Chad M. Fraleigh.  All rights reserved.
+ * Copyright (c) 2016-2018, 2022-2023. Chad M. Fraleigh.  All rights reserved.
  * http://www.triularity.org/
  */
 
@@ -138,7 +138,7 @@ stdif_configurable_stdimpl_get_int64__1_0_base
 
 #if	DBL_MANT_BITS < 63
 			if((value_d > (double) DBL_MANT_MAXVAL)
-			 || (value_d < (double) -DBL_MANT_MAXVAL))
+			 || (value_d < (double) DBL_MANT_MINVAL))
 			{
 				return EXTIT_STATUS_INVALID;
 			}
@@ -162,7 +162,7 @@ stdif_configurable_stdimpl_get_int64__1_0_base
 
 #if	FLT_MANT_BITS < 63
 			if((value_f > (float) FLT_MANT_MAXVAL)
-			 || (value_f < (float) -FLT_MANT_MAXVAL))
+			 || (value_f < (float) FLT_MANT_MINVAL))
 			{
 				return EXTIT_STATUS_INVALID;
 			}
