@@ -1,5 +1,7 @@
 name: Build on macOS
 on: push
+env:
+  sample: value
 jobs:
   build:
     name: ${{ matrix.config.name }}
@@ -8,55 +10,75 @@ jobs:
     strategy:
       matrix:
         config:
-        - name: macOS 11 Big Sur
-          os: macos-11
-        - name: macOS 12 Monterey
-          os: macos-12
-        - name: macOS 13 Ventura
-          os: macos-13
+          - name: macOS 11 Big Sur
+            os: macos-11
+          - name: macOS 12 Monterey
+            os: macos-12
+          - name: macOS 13 Ventura
+            os: macos-13
 
     env:
-      cmake_opts: -DEXTIT_PARANOID=ON -DEXTIT_WARNFREE=ON -DEXTIT_WITH_CXX=ON -DEXTIT_COMPILE_EXAMPLES=ON -DEXTIT_COMPILE_TESTS=ON
+      cmake_opts: >
+        -DEXTIT_PARANOID=ON
+        -DEXTIT_WARNFREE=ON
+        -DEXTIT_WITH_CXX=ON
+        -DEXTIT_COMPILE_EXAMPLES=ON
+        -DEXTIT_COMPILE_TESTS=ON
       cmake_opts_apple:
       cmake_opts_gcc: -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
       cmake_opts_clang: -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
+      - name: Env Test
+        run: echo sample=$sample
 
-    - name: Configure (apple/shared)
-      run: cmake -B build-apple-shared -DBUILD_SHARED_LIBS=ON $cmake_opts $cmake_opts_apple
+      - name: Checkout
+        uses: actions/checkout@v3
 
-    - name: Compile (apple/shared)
-      run: cmake --build build-apple-shared
+      - name: Configure (apple/shared)
+        run: >
+          cmake -B build-apple-shared
+            -DBUILD_SHARED_LIBS=ON $cmake_opts $cmake_opts_apple
 
-    - name: Configure (apple/static)
-      run: cmake -B build-apple-static -DBUILD_SHARED_LIBS=OFF $cmake_opts $cmake_opts_apple
+      - name: Compile (apple/shared)
+        run: cmake --build build-apple-shared
 
-    - name: Compile (apple/static)
-      run: cmake --build build-apple-static
+      - name: Configure (apple/static)
+        run: >
+          cmake -B build-apple-static
+            -DBUILD_SHARED_LIBS=OFF $cmake_opts $cmake_opts_apple
 
-#    - name: Configure (gcc/shared)
-#      run: cmake -B build-gcc-shared -DBUILD_SHARED_LIBS=ON $cmake_opts $cmake_opts_gcc
-#
-#    - name: Compile (gcc/shared)
-#      run: cmake --build build-gcc-shared
-#
-#    - name: Configure (gcc/static)
-#      run: cmake -B build-gcc-static -DBUILD_SHARED_LIBS=OFF $cmake_opts $cmake_opts_gcc
-#
-#    - name: Compile (gcc/static)
-#      run: cmake --build build-gcc-static
+      - name: Compile (apple/static)
+        run: cmake --build build-apple-static
 
-#    - name: Configure (clang/shared)
-#      run: cmake -B build-clang-shared -DBUILD_SHARED_LIBS=ON $cmake_opts $cmake_opts_clang
+#      - name: Configure (gcc/shared)
+#        run: >
+#          cmake -B build-gcc-shared
+#            -DBUILD_SHARED_LIBS=ON $cmake_opts $cmake_opts_gcc
 #
-#    - name: Compile (clang/shared)
-#      run: cmake --build build-clang-shared
+#      - name: Compile (gcc/shared)
+#        run: cmake --build build-gcc-shared
 #
-#    - name: Configure (clang/static)
-#      run: cmake -B build-clang-static -DBUILD_SHARED_LIBS=OFF $cmake_opts $cmake_opts_clang
+#      - name: Configure (gcc/static)
+#        run: >
+#          cmake -B build-gcc-static
+#            -DBUILD_SHARED_LIBS=OFF $cmake_opts $cmake_opts_gcc
 #
-#    - name: Compile (clang/static)
-#      run: cmake --build build-clang-static
+#      - name: Compile (gcc/static)
+#        run: cmake --build build-gcc-static
+
+#      - name: Configure (clang/shared)
+#        run: >
+#          cmake -B build-clang-shared
+#            -DBUILD_SHARED_LIBS=ON $cmake_opts $cmake_opts_clang
+#
+#      - name: Compile (clang/shared)
+#        run: cmake --build build-clang-shared
+#
+#      - name: Configure (clang/static)
+#        run: >
+#          cmake -B build-clang-static
+#            -DBUILD_SHARED_LIBS=OFF $cmake_opts $cmake_opts_clang
+#
+#      - name: Compile (clang/static)
+#        run: cmake --build build-clang-static
